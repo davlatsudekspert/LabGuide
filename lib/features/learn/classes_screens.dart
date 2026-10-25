@@ -23,6 +23,7 @@ import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../settings/settings_controller.dart';
 import '../support/support_screens.dart' show formatWhen;
+import '../teacher_pro/teacher_pro_common.dart' show TtRoutes;
 import 'exam_question.dart';
 import 'exam_session.dart';
 import 'exam_widgets.dart';
@@ -336,6 +337,75 @@ class _ClassesScreenState extends State<ClassesScreen> {
             ],
           );
         }),
+        // Ustoz Pro (D-78) — faqat Pro bayrog'i yoqilgan buildda
+        // (`services.teacherTests != null`); bayroq o'chiq — hech narsa
+        // qo'shilmaydi (bepul ekran o'zgarmaydi).
+        if (context.services.teacherTests != null && _groups.data != null)
+          _TeacherProEntries(
+            groups: _groups.data!,
+            teacher: teacherFirst,
+            onOpen: _open,
+          ),
+      ],
+    );
+  }
+}
+
+/// Ustoz Pro kirish qatorlari: ustozga — “Mening testlarim”; guruh
+/// a'zosi talabaga — “Ustoz testlari” (bo'sh bo'lim ko'rsatilmaydi);
+/// hammaga — taklifnoma kodi bilan qo'shilish.
+class _TeacherProEntries extends StatelessWidget {
+  const _TeacherProEntries({
+    required this.groups,
+    required this.teacher,
+    required this.onOpen,
+  });
+
+  final List<StudyGroup> groups;
+  final bool teacher;
+  final Future<void> Function(String location, {Object? extra}) onOpen;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final rows = [
+      if (teacher || groups.any((g) => g.isTeacher))
+        (
+          'classes-tt-teacher',
+          l.ttEntryTeacher,
+          l.proTtEntryTeacherSub,
+          Icons.edit_document,
+          TtRoutes.tests,
+        ),
+      if (groups.any((g) => !g.isTeacher))
+        (
+          'classes-tt-student',
+          l.ttEntryStudent,
+          l.ttEntryStudentSub,
+          Icons.assignment_outlined,
+          TtRoutes.mine,
+        ),
+      (
+        'classes-tt-invite',
+        l.ttEntryInvite,
+        l.ttEntryInviteSub,
+        Icons.mark_email_read_outlined,
+        TtRoutes.invite(),
+      ),
+    ];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        LgSectionTitle(l.ttEntrySection),
+        for (final (i, (key, title, sub, icon, path)) in rows.indexed)
+          LgRow(
+            key: ValueKey(key),
+            title: title,
+            subtitle: sub,
+            icon: icon,
+            divider: i < rows.length - 1,
+            onTap: () => onOpen(path),
+          ),
       ],
     );
   }

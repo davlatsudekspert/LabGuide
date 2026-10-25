@@ -13981,4 +13981,705 @@ class AppLocalizationsRu extends AppLocalizations {
   String proPoints(String value) {
     return '$value п. п.';
   }
+
+  @override
+  String get ttEntrySection => 'Тесты преподавателя';
+
+  @override
+  String get ttEntryTeacher => 'Мои тесты';
+
+  @override
+  String get proTtEntryTeacherSub =>
+      'Преподаватель Pro: свои тесты, задания и результаты';
+
+  @override
+  String get ttEntryStudent => 'Тесты от преподавателя';
+
+  @override
+  String get ttEntryStudentSub =>
+      'Специальные тесты, которые дал преподаватель';
+
+  @override
+  String get ttEntryInvite => 'Код приглашения';
+
+  @override
+  String get ttEntryInviteSub =>
+      'Вступить в группу по 12-значному коду преподавателя';
+
+  @override
+  String get ttTestsTitle => 'Мои тесты';
+
+  @override
+  String get ttNewTest => 'Новый тест';
+
+  @override
+  String get ttTestsEmpty => 'Тестов пока нет';
+
+  @override
+  String get ttTestsEmptyBody =>
+      'Составьте тест из своих вопросов или из копий вопросов приложения.';
+
+  @override
+  String get ttStatusPublished => 'Опубликован';
+
+  @override
+  String get ttStatusUnpublished => 'Не опубликован';
+
+  @override
+  String ttQuestionsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count вопроса',
+      many: '$count вопросов',
+      few: '$count вопроса',
+      one: '$count вопрос',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ttAssignedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count задания',
+      many: '$count заданий',
+      few: '$count задания',
+      one: '$count задание',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get proTtLockedNote =>
+      'Создание, редактирование и выдача тестов — в Преподаватель Pro. Уже созданные тесты и результаты остаются доступны.';
+
+  @override
+  String get ttOfflineCached =>
+      'Нет интернета — показана последняя сохранённая копия.';
+
+  @override
+  String get ttEdit => 'Редактировать';
+
+  @override
+  String get ttAssign => 'Выдать';
+
+  @override
+  String get ttDeleteTest => 'Удалить тест';
+
+  @override
+  String get ttDeleteTestBody =>
+      'Тест, его задания и результаты будут удалены. Это нельзя отменить.';
+
+  @override
+  String get ttAssignmentsTitle => 'Задания';
+
+  @override
+  String get ttNoAssignments => 'Этот тест ещё не выдан.';
+
+  @override
+  String ttDueOn(String date) {
+    return 'срок $date';
+  }
+
+  @override
+  String ttSubmittedOf(int done, int total) {
+    return 'сдали $done/$total';
+  }
+
+  @override
+  String get ttClosed => 'Закрыто';
+
+  @override
+  String ttTimeLimit(int minutes) {
+    return 'Время: $minutes мин';
+  }
+
+  @override
+  String get ttNoTimeLimit => 'Без ограничения времени';
+
+  @override
+  String ttPassMark(int percent) {
+    return 'Проходной балл: $percent%';
+  }
+
+  @override
+  String get ttMustPublish => 'Опубликуйте тест, чтобы выдать его студентам.';
+
+  @override
+  String get ttQuestionsTitle => 'Вопросы';
+
+  @override
+  String ttQuestionNumber(int n) {
+    return 'Вопрос $n';
+  }
+
+  @override
+  String get ttCorrectAnswer => 'Правильный ответ';
+
+  @override
+  String ttFromBank(String bank) {
+    return 'Копия из приложения: $bank';
+  }
+
+  @override
+  String get ttSourceQuiz => 'Вопросы для практики';
+
+  @override
+  String get ttSourceToifa => 'Банк аттестационного экзамена';
+
+  @override
+  String get ttSourceDeck => 'Тест по теме';
+
+  @override
+  String get ttEditTitleNew => 'Новый тест';
+
+  @override
+  String get ttEditTitle => 'Редактирование теста';
+
+  @override
+  String get ttFieldTitle => 'Название теста';
+
+  @override
+  String get ttFieldDescription => 'Описание (необязательно)';
+
+  @override
+  String get ttFieldTimeLimit =>
+      'Ограничение времени, минуты (необязательно, 1–180)';
+
+  @override
+  String get ttFieldPassPercent => 'Проходной балл, % (необязательно, 1–100)';
+
+  @override
+  String get ttPublishToggle => 'Опубликован';
+
+  @override
+  String get ttPublishNote =>
+      'Выдать можно только опубликованный тест. Уже выданные задания сохраняют свою копию вопросов.';
+
+  @override
+  String get ttNoQuestionsYet =>
+      'Вопросов пока нет. Добавьте свои или скопируйте вопросы из приложения.';
+
+  @override
+  String get ttAddQuestion => 'Добавить вопрос';
+
+  @override
+  String get ttAddFromBank => 'Из вопросов приложения';
+
+  @override
+  String get ttMoveUp => 'Выше';
+
+  @override
+  String get ttMoveDown => 'Ниже';
+
+  @override
+  String get ttRemoveQuestion => 'Убрать вопрос';
+
+  @override
+  String get ttSave => 'Сохранить';
+
+  @override
+  String get ttSaved => 'Сохранено';
+
+  @override
+  String get ttVersionConflict =>
+      'Тест изменён на другом устройстве. Откройте его заново и повторите правки.';
+
+  @override
+  String get ttErrTitle => 'Название — от 3 до 120 символов.';
+
+  @override
+  String get ttErrDescription => 'Описание слишком длинное (до 1000 символов).';
+
+  @override
+  String get ttErrNoQuestions => 'Для публикации нужен хотя бы один вопрос.';
+
+  @override
+  String get ttErrTimeLimit => 'Время: от 1 до 180 минут.';
+
+  @override
+  String get ttErrPassPercent => 'Проходной балл: от 1 до 100%.';
+
+  @override
+  String get ttErrQuestionText => 'Напишите текст вопроса (до 1000 символов).';
+
+  @override
+  String get ttErrOptions =>
+      'Заполните от 2 до 6 вариантов (каждый до 300 символов).';
+
+  @override
+  String get ttErrDuplicateOptions => 'Варианты не должны повторяться.';
+
+  @override
+  String get ttErrCorrect => 'Отметьте правильный вариант.';
+
+  @override
+  String get ttErrQuestionGeneric =>
+      'Проверьте вопросы: текст, 2–6 разных вариантов и один правильный ответ.';
+
+  @override
+  String ttErrQuestionAt(int n, String error) {
+    return 'Вопрос $n: $error';
+  }
+
+  @override
+  String get ttErrAbusive =>
+      'В тексте есть недопустимые слова — перефразируйте.';
+
+  @override
+  String get ttErrLimitTests =>
+      'Достигнут предел — 200 тестов. Удалите старые, чтобы создать новые.';
+
+  @override
+  String get ttErrPlan => 'Для этого действия нужен план с этой возможностью.';
+
+  @override
+  String get ttErrTeacherRole =>
+      'Сначала зарегистрируйтесь как преподаватель: создайте группу в разделе «Группы».';
+
+  @override
+  String get ttFieldQuestion => 'Текст вопроса';
+
+  @override
+  String get ttOptionsHint => 'Нажмите кружок рядом с правильным вариантом.';
+
+  @override
+  String ttFieldOption(int n) {
+    return 'Вариант $n';
+  }
+
+  @override
+  String get ttMarkCorrect => 'Отметить как правильный ответ';
+
+  @override
+  String get ttRemoveOption => 'Убрать вариант';
+
+  @override
+  String get ttAddOption => 'Добавить вариант';
+
+  @override
+  String get ttFieldExplanation =>
+      'Пояснение (необязательно, показывается с результатом)';
+
+  @override
+  String get ttDone => 'Готово';
+
+  @override
+  String get ttBankTitle => 'Вопросы приложения';
+
+  @override
+  String get ttBankSubtitle =>
+      'Выбранные вопросы добавляются в тест как копии; источник сохраняется.';
+
+  @override
+  String get ttBankSearch => 'Поиск';
+
+  @override
+  String get ttBankAll => 'Все';
+
+  @override
+  String ttBankAdd(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Добавить $count вопроса',
+      many: 'Добавить $count вопросов',
+      few: 'Добавить $count вопроса',
+      one: 'Добавить $count вопрос',
+      zero: 'Выберите вопросы',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ttBankEmpty => 'Вопросы не найдены';
+
+  @override
+  String ttBankRefine(int count) {
+    return 'Показаны первые 100 из $count. Уточните поиск.';
+  }
+
+  @override
+  String get ttAssignTitle => 'Выдать тест';
+
+  @override
+  String get ttAssignGroup => 'Группа';
+
+  @override
+  String get ttAssignWho => 'Кому';
+
+  @override
+  String get ttAssignWholeGroup => 'Всей группе';
+
+  @override
+  String get ttAssignNoGroups =>
+      'Сначала создайте группу — студенты вступают по коду или приглашению.';
+
+  @override
+  String get ttAssignNoStudents =>
+      'В группе пока нет студентов. Те, кто вступит позже, тоже увидят тест.';
+
+  @override
+  String get ttAssignDue => 'Срок';
+
+  @override
+  String get ttAssignAttempts => 'Попытки';
+
+  @override
+  String get ttAssignLate =>
+      'Принимать после срока (с пометкой «с опозданием»)';
+
+  @override
+  String get ttAssignPrivacy =>
+      'Вы увидите результаты только тех студентов, которые сами вступили в группу. Студенты видят уведомление, что результат виден вам.';
+
+  @override
+  String get ttAssignSubmit => 'Выдать';
+
+  @override
+  String get ttAssigned => 'Тест выдан';
+
+  @override
+  String get ttErrDue => 'Выберите срок в будущем (до одного года).';
+
+  @override
+  String get ttErrMemberGone => 'Этого студента уже нет в группе.';
+
+  @override
+  String get ttErrLimitAssignments =>
+      'Слишком много активных заданий. Сначала закройте старые.';
+
+  @override
+  String get ttInvitesTitle => 'Приглашения';
+
+  @override
+  String get ttInvitesSubtitle =>
+      'Студент вводит код, читает, что вы увидите, и даёт согласие.';
+
+  @override
+  String get ttInviteDays => 'Действует';
+
+  @override
+  String get ttInviteMaxUses => 'Сколько студентов могут вступить';
+
+  @override
+  String get ttInviteCreate => 'Создать приглашение';
+
+  @override
+  String get ttInviteHowTo =>
+      'Отправьте код студентам. В приложении: Группы → Код приглашения. Вступление — только после согласия студента.';
+
+  @override
+  String get ttInvitesActive => 'Активные приглашения';
+
+  @override
+  String get ttInvitesEmpty => 'Активных приглашений нет';
+
+  @override
+  String ttInviteUses(int uses, int max) {
+    return 'использовано $uses/$max';
+  }
+
+  @override
+  String ttInviteUntil(String date) {
+    return 'до $date';
+  }
+
+  @override
+  String get ttInviteCopy => 'Скопировать приглашение';
+
+  @override
+  String get ttInviteCopied => 'Приглашение скопировано';
+
+  @override
+  String ttInviteShareText(String group, String code, String link) {
+    return 'LabGuide: приглашение в группу «$group». В приложении откройте Группы → Код приглашения и введите $code ($link)';
+  }
+
+  @override
+  String get ttInviteRevoke => 'Отозвать';
+
+  @override
+  String get ttInviteRevokeBody =>
+      'Код сразу перестанет работать. Уже вступившие студенты останутся в группе.';
+
+  @override
+  String get ttErrLimitInvites =>
+      'Слишком много активных приглашений в группе. Отзовите ненужные.';
+
+  @override
+  String get ttInviteAcceptTitle => 'Приглашение в группу';
+
+  @override
+  String get ttInviteCodeField => 'Код приглашения (12 символов)';
+
+  @override
+  String get ttInviteCheck => 'Проверить';
+
+  @override
+  String get ttInviteGroupTitle => 'Группа';
+
+  @override
+  String get ttInviteConsentTitle => 'Что увидит преподаватель';
+
+  @override
+  String get ttInviteConsentBody =>
+      'Если вы вступите, преподаватель увидит ваш псевдоним (или порядковый номер) в списке участников и ваши результаты в тестах преподавателя: ответы, балл и время. Email не показывается. Вы можете выйти из группы в любой момент — результаты тестов преподавателя будут удалены.';
+
+  @override
+  String get ttInviteConsentCheck => 'Я согласен(на)';
+
+  @override
+  String get ttInviteNickname => 'Псевдоним (необязательно)';
+
+  @override
+  String get ttInviteAccept => 'Вступить';
+
+  @override
+  String get ttInviteDecline => 'Отказаться';
+
+  @override
+  String get ttInviteJoined => 'Вы вступили в группу';
+
+  @override
+  String get ttInviteAlready => 'Вы уже в этой группе';
+
+  @override
+  String get ttInviteOpenGroup => 'Открыть группу';
+
+  @override
+  String get ttInviteOwn => 'Это ваша группа';
+
+  @override
+  String get ttInviteExpired =>
+      'Приглашение истекло или отозвано. Попросите у преподавателя новый код.';
+
+  @override
+  String get ttInviteNotFound => 'Код не найден — проверьте и введите снова.';
+
+  @override
+  String get ttResultsTitle => 'Результаты';
+
+  @override
+  String get ttSummaryTitle => 'Сводка';
+
+  @override
+  String get ttSumTargets => 'Студенты';
+
+  @override
+  String get ttSumSubmitted => 'Сдали';
+
+  @override
+  String get ttSumAverage => 'Средний результат';
+
+  @override
+  String get ttSumPassRate => 'Прошли';
+
+  @override
+  String get ttSumAvgTime => 'Среднее время';
+
+  @override
+  String get ttPrivacyTeacher =>
+      'Показаны результаты только тех студентов, которые сами вступили в группу. Если студент выходит из группы, его результаты удаляются.';
+
+  @override
+  String get ttStudentsTitle => 'По студентам';
+
+  @override
+  String get ttNoStudentsYet => 'В группе пока нет студентов.';
+
+  @override
+  String get ttMostMissed => 'Чаще всего ошибались';
+
+  @override
+  String get ttNoResultsYet => 'Пока никто не сдал.';
+
+  @override
+  String get ttQuestionsStatTitle => 'По вопросам';
+
+  @override
+  String get ttNoAnswersYet => 'ответов пока нет';
+
+  @override
+  String ttCorrectPercent(int percent) {
+    return '$percent% верно';
+  }
+
+  @override
+  String get ttStateAssigned => 'Не начат';
+
+  @override
+  String get ttStateStarted => 'В процессе';
+
+  @override
+  String get ttStateSubmitted => 'Сдан';
+
+  @override
+  String get ttStateExpired => 'Пропущен';
+
+  @override
+  String get ttPassed => 'сдал';
+
+  @override
+  String get ttNotPassed => 'не сдал';
+
+  @override
+  String get ttLate => 'с опозданием';
+
+  @override
+  String get ttLateAccepted => 'Принимается с опозданием';
+
+  @override
+  String ttAttemptsN(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count попытки',
+      many: '$count попыток',
+      few: '$count попытки',
+      one: '$count попытка',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ttMinSec(int m, int s) {
+    return '$m мин $s с';
+  }
+
+  @override
+  String get ttExportCsv => 'Скопировать в CSV';
+
+  @override
+  String get ttExportCopied => 'CSV скопирован — вставьте в таблицу';
+
+  @override
+  String get ttCloseAssignment => 'Закрыть задание';
+
+  @override
+  String get ttCloseAssignmentBody =>
+      'Новые попытки начать нельзя; тем, кто уже решает, остаётся 2 минуты, чтобы сдать.';
+
+  @override
+  String get ttDeleteAssignment => 'Удалить задание';
+
+  @override
+  String get ttDeleteAssignmentBody =>
+      'Задание и его результаты будут удалены.';
+
+  @override
+  String get ttMyTitle => 'Тесты преподавателя';
+
+  @override
+  String get ttMySubtitle => 'Специальные тесты от преподавателя';
+
+  @override
+  String get ttMyEmpty => 'Тестов пока нет';
+
+  @override
+  String get ttMyEmptyBody =>
+      'Когда преподаватель выдаст тест, он появится здесь.';
+
+  @override
+  String ttBest(int percent) {
+    return 'лучший $percent%';
+  }
+
+  @override
+  String get ttVisibleNoticeTitle => 'Результат виден преподавателю';
+
+  @override
+  String get ttVisibleNotice =>
+      'Преподаватель увидит ваш псевдоним (или порядковый номер), ответы, балл и время по этому тесту. Email не показывается.';
+
+  @override
+  String get proTtStudentLocked =>
+      'Начать тест преподавателя можно в Студент Pro. Ваши результаты остаются доступны.';
+
+  @override
+  String get ttLatePolicyAccept =>
+      'Принимается и после срока (с пометкой «с опозданием»).';
+
+  @override
+  String get ttLatePolicyReject => 'После срока начать нельзя.';
+
+  @override
+  String get ttCantClosed => 'Преподаватель закрыл это задание.';
+
+  @override
+  String get ttCantPastDue => 'Срок прошёл.';
+
+  @override
+  String get ttCantNoAttempts => 'Попытки закончились.';
+
+  @override
+  String get ttStart => 'Начать тест';
+
+  @override
+  String get ttContinue => 'Продолжить';
+
+  @override
+  String get ttYourAttempts => 'Ваши попытки';
+
+  @override
+  String ttAttemptN(int n) {
+    return 'Попытка $n';
+  }
+
+  @override
+  String get ttReviewHidden =>
+      'Правильные ответы показываются, когда попытки закончатся, после срока или когда преподаватель закроет задание.';
+
+  @override
+  String get ttYourAnswer => 'Ваш ответ';
+
+  @override
+  String get ttNoAnswer => 'без ответа';
+
+  @override
+  String ttSubmittedSnack(int score, int total) {
+    return 'Сдано: $score/$total';
+  }
+
+  @override
+  String get ttErrTimeOver => 'Время вышло — эта попытка не принята.';
+
+  @override
+  String get ttErrAlreadySubmitted => 'Эта попытка уже сдана.';
+
+  @override
+  String ttTimeLeft(String time) {
+    return 'Осталось: $time';
+  }
+
+  @override
+  String get ttSubmit => 'Сдать';
+
+  @override
+  String get ttSubmitConfirmTitle => 'Сдать ответы?';
+
+  @override
+  String ttSubmitUnanswered(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Без ответа $count вопроса.',
+      many: 'Без ответа $count вопросов.',
+      few: 'Без ответа $count вопроса.',
+      one: 'Без ответа $count вопрос.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ttSubmitFinal => 'После сдачи ответы изменить нельзя.';
+
+  @override
+  String get ttSubmitVisible => 'Результат будет виден преподавателю.';
+
+  @override
+  String get ttSubmitFailedSaved =>
+      'Не удалось сдать. Ответы сохранены на устройстве — попробуйте ещё раз.';
 }

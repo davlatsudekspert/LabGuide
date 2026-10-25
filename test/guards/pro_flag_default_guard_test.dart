@@ -19,6 +19,19 @@ const kGateCallSites = <String, Set<String>>{
   'lib/features/pro/results_screens.dart': {'resultsExport'},
   'lib/features/pro/calibration_export.dart': {'calibrationExport'},
   'lib/features/pro/qc_report_screen.dart': {'qcReport'},
+  // Ustoz Pro (yangi ekranlar): test yaratish/tahrir/saqlash, topshirish.
+  'lib/features/teacher_pro/teacher_test_screens.dart': {
+    'teacherTestBuilder',
+    'teacherTestAssign',
+  },
+  // Topshirish va taklifnoma yaratish.
+  'lib/features/teacher_pro/teacher_assign_screens.dart': {'teacherTestAssign'},
+  // Natijalar CSV eksporti.
+  'lib/features/teacher_pro/teacher_results_screens.dart': {'teacherResults'},
+  // Talaba: Ustoz testini BOSHLASH (boshlangan urinish — tekshiruvsiz).
+  'lib/features/teacher_pro/student_teacher_tests_screens.dart': {
+    'teacherTests',
+  },
 };
 
 void main() {

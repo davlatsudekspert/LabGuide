@@ -251,4 +251,68 @@ describe('sessiya', () => {
     const gs = await s.env.DB.prepare('SELECT COUNT(*) AS n FROM study_groups WHERE id = ?1').bind(g.data.id).first<{ n: number }>();
     expect(gs?.n).toBe(0);
   });
+  it("hisobni o'chirish (Ustoz Pro, LG_BILLING_ENABLED): Ustoz testlari, topshiriqlar, urinishlar, taklifnomalar ham o'chadi; user_id/owner_id ustunli jadvalda iz qolmaydi", async () => {
+    const s = makeServer({ LG_BILLING_ENABLED: 'true' } as never);
+    const teacher = await s.signInTeacher(uniqueEmail('tt'));
+    const student = await s.signIn(uniqueEmail('ts'));
+    const DAY = 86400_000;
+    for (const [uid, product] of [
+      [teacher.userId, 'uz.labguide.teacher.monthly'],
+      [student.userId, 'uz.labguide.student.monthly'],
+    ]) {
+      await s.env.DB.prepare(
+        `INSERT INTO entitlements (platform, original_transaction_id, user_id, product_id, status, started_at, expires_at,
+           latest_token, event_at, updated_at) VALUES ('play_store', ?1, ?2, ?3, 'active', ?4, ?5, 't', ?4, ?4)`,
+      )
+        .bind(`tx-${crypto.randomUUID()}`, uid, product, s.clock.now, s.clock.now + 30 * DAY)
+        .run();
+    }
+    const g = await s.call('POST', '/v1/groups', { token: teacher.token, body: { name: 'Gematologiya' } });
+    await s.call('POST', '/v1/groups/join', { token: student.token, body: { code: g.data.join_code } });
+    const test = await s.call('POST', '/v1/teacher/tests', {
+      token: teacher.token,
+      body: { title: 'Nazorat', status: 'published', questions: [{ text: 'S', options: ['A', 'B'], correct: 0 }] },
+    });
+    expect(test.status).toBe(201);
+    const a = await s.call('POST', `/v1/teacher/tests/${test.data.id}/assignments`, {
+      token: teacher.token,
+      body: { group_id: g.data.id, due_at: new Date(s.clock.now + DAY).toISOString() },
+    });
+    expect(a.status).toBe(201);
+    expect((await s.call('POST', `/v1/teacher/groups/${g.data.id}/invites`, { token: teacher.token, body: {} })).status).toBe(201);
+    const run = await s.call('POST', `/v1/me/teacher-tests/${a.data.id}/start`, { token: student.token });
+    await s.call('POST', `/v1/me/teacher-tests/${a.data.id}/submit`, {
+      token: student.token,
+      body: { attempt_id: run.data.attempt_id, answers: [0] },
+    });
+    const count = async (sql: string, v: string) =>
+      (await s.env.DB.prepare(sql).bind(v).first<{ n: number }>())!.n;
+    expect(await count('SELECT COUNT(*) AS n FROM teacher_test_attempts WHERE user_id = ?1', student.userId)).toBe(1);
+
+    expect((await s.call('DELETE', '/v1/me', { token: student.token })).status).toBe(204);
+    expect(await count('SELECT COUNT(*) AS n FROM teacher_test_attempts WHERE user_id = ?1', student.userId)).toBe(0);
+    // Ustozning testi va topshirig'i qoladi (u hali bor).
+    expect(await count('SELECT COUNT(*) AS n FROM teacher_test_assignments WHERE id = ?1', a.data.id)).toBe(1);
+
+    expect((await s.call('DELETE', '/v1/me', { token: teacher.token })).status).toBe(204);
+    // Hamma jadvalda o'chirilgan hisoblar izi qolmagan (sinov jadvali — dizayn
+    // bo'yicha `user_id` NULL bo'lib qoladi; audit jurnali — `actor`).
+    const tables = await s.env.DB.prepare(
+      `SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE '_cf%' AND name NOT LIKE 'sqlite%' AND name NOT LIKE 'd1_%'`,
+    ).all<{ name: string }>();
+    for (const { name } of tables.results) {
+      const cols = await s.env.DB.prepare(`SELECT name FROM pragma_table_info(?1)`).bind(name).all<{ name: string }>();
+      for (const col of cols.results.map((c) => c.name).filter((c) => c === 'user_id' || c === 'owner_id')) {
+        for (const uid of [student.userId, teacher.userId]) {
+          const n = await s.env.DB.prepare(`SELECT COUNT(*) AS n FROM "${name}" WHERE "${col}" = ?1`)
+            .bind(uid)
+            .first<{ n: number }>();
+          expect(n!.n, `${name}.${col}`).toBe(0);
+        }
+      }
+    }
+    expect(await count('SELECT COUNT(*) AS n FROM teacher_tests WHERE id = ?1', test.data.id)).toBe(0);
+    expect(await count('SELECT COUNT(*) AS n FROM teacher_test_assignments WHERE id = ?1', a.data.id)).toBe(0);
+    expect(await count('SELECT COUNT(*) AS n FROM teacher_invites WHERE group_id = ?1', g.data.id)).toBe(0);
+  });
 });

@@ -9,6 +9,7 @@ import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/entitlements/entitlement_models.dart';
 import 'package:labguide/core/entitlements/entitlement_service.dart';
 import 'package:labguide/core/entitlements/feature.dart';
+import 'package:labguide/core/entitlements/plan_matrix.dart';
 import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/features/profile/subscription_screen.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
@@ -92,8 +93,12 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(SubscriptionScreen), findsOneWidget);
 
-    // D-78: qurilgan pullik funksiyalar bor — "hammasi bepul" izohi yo'q.
-    expect(find.text(uz.proSubAllFree), findsNothing);
+    // D-78: qurilgan pullik funksiya bor (Ustoz Pro) — “hamma imkoniyat bepul,
+    // hech narsa sotilmayapti” izohi endi to'g'ri emas va ko'rsatilmaydi.
+    expect(
+      find.text(uz.proSubAllFree),
+      ProGatePolicy.gated.isEmpty ? findsOneWidget : findsNothing,
+    );
     expect(find.text(uz.proSubStatusFree), findsOneWidget);
     for (final spec in ProPricing.plans) {
       final panel = find.byKey(ValueKey('sub-plan-${spec.plan.name}'));
@@ -120,18 +125,13 @@ void main() {
         ),
         findsOneWidget,
       );
-      // D-78: har reja learner funksiyalarini ochadi; Mutaxassis Pro faqat
-      // Mutaxassis va Premium'da.
+      // D-78: reja qurilgan pullik funksiyani ochsa (masalan, Ustoz testlari —
+      // `learner`, Ustoz Pro — `teacher_panel`), “hech narsa ochmaydi” yo'q.
       expect(
         find.descendant(of: panel, matching: find.text(uz.proSubNothingGated)),
-        findsNothing,
-      );
-      expect(
-        find.descendant(
-          of: panel,
-          matching: find.text('• ${uz.proFeatResultsAnalytics}'),
-        ),
-        findsOneWidget,
+        PlanMatrix.unlockedBy(spec.plan, gated: ProGatePolicy.gated).isEmpty
+            ? findsOneWidget
+            : findsNothing,
       );
       final lab =
           spec.plan == ProPlan.specialist || spec.plan == ProPlan.premium;

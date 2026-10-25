@@ -13906,4 +13906,694 @@ class AppLocalizationsEn extends AppLocalizations {
   String proPoints(String value) {
     return '$value pp';
   }
+
+  @override
+  String get ttEntrySection => 'Teacher tests';
+
+  @override
+  String get ttEntryTeacher => 'My tests';
+
+  @override
+  String get proTtEntryTeacherSub =>
+      'Teacher Pro: your own tests, assignments and results';
+
+  @override
+  String get ttEntryStudent => 'Tests from my teacher';
+
+  @override
+  String get ttEntryStudentSub => 'Special tests your teacher assigned to you';
+
+  @override
+  String get ttEntryInvite => 'Invitation code';
+
+  @override
+  String get ttEntryInviteSub =>
+      'Join a group with the 12-character code from your teacher';
+
+  @override
+  String get ttTestsTitle => 'My tests';
+
+  @override
+  String get ttNewTest => 'New test';
+
+  @override
+  String get ttTestsEmpty => 'No tests yet';
+
+  @override
+  String get ttTestsEmptyBody =>
+      'Build a test from your own questions or from copies of the questions in the app.';
+
+  @override
+  String get ttStatusPublished => 'Published';
+
+  @override
+  String get ttStatusUnpublished => 'Not published';
+
+  @override
+  String ttQuestionsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count questions',
+      one: '1 question',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ttAssignedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count assignments',
+      one: '1 assignment',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get proTtLockedNote =>
+      'Creating, editing and assigning tests is part of Teacher Pro. Tests and results you already created stay visible.';
+
+  @override
+  String get ttOfflineCached => 'No internet — showing the last saved copy.';
+
+  @override
+  String get ttEdit => 'Edit';
+
+  @override
+  String get ttAssign => 'Assign';
+
+  @override
+  String get ttDeleteTest => 'Delete test';
+
+  @override
+  String get ttDeleteTestBody =>
+      'The test, its assignments and results will be deleted. This cannot be undone.';
+
+  @override
+  String get ttAssignmentsTitle => 'Assignments';
+
+  @override
+  String get ttNoAssignments => 'This test has not been assigned yet.';
+
+  @override
+  String ttDueOn(String date) {
+    return 'due $date';
+  }
+
+  @override
+  String ttSubmittedOf(int done, int total) {
+    return '$done/$total submitted';
+  }
+
+  @override
+  String get ttClosed => 'Closed';
+
+  @override
+  String ttTimeLimit(int minutes) {
+    return 'Time: $minutes min';
+  }
+
+  @override
+  String get ttNoTimeLimit => 'No time limit';
+
+  @override
+  String ttPassMark(int percent) {
+    return 'Pass mark: $percent%';
+  }
+
+  @override
+  String get ttMustPublish => 'Publish the test to assign it to students.';
+
+  @override
+  String get ttQuestionsTitle => 'Questions';
+
+  @override
+  String ttQuestionNumber(int n) {
+    return 'Question $n';
+  }
+
+  @override
+  String get ttCorrectAnswer => 'Correct answer';
+
+  @override
+  String ttFromBank(String bank) {
+    return 'Copy from the app: $bank';
+  }
+
+  @override
+  String get ttSourceQuiz => 'Practice questions';
+
+  @override
+  String get ttSourceToifa => 'Category exam bank';
+
+  @override
+  String get ttSourceDeck => 'Topic test';
+
+  @override
+  String get ttEditTitleNew => 'New test';
+
+  @override
+  String get ttEditTitle => 'Edit test';
+
+  @override
+  String get ttFieldTitle => 'Test title';
+
+  @override
+  String get ttFieldDescription => 'Description (optional)';
+
+  @override
+  String get ttFieldTimeLimit => 'Time limit, minutes (optional, 1–180)';
+
+  @override
+  String get ttFieldPassPercent => 'Pass mark, % (optional, 1–100)';
+
+  @override
+  String get ttPublishToggle => 'Published';
+
+  @override
+  String get ttPublishNote =>
+      'Only a published test can be assigned. Assignments already given keep their own copy of the questions.';
+
+  @override
+  String get ttNoQuestionsYet =>
+      'No questions yet. Add your own or copy questions from the app.';
+
+  @override
+  String get ttAddQuestion => 'Add question';
+
+  @override
+  String get ttAddFromBank => 'From the app questions';
+
+  @override
+  String get ttMoveUp => 'Move up';
+
+  @override
+  String get ttMoveDown => 'Move down';
+
+  @override
+  String get ttRemoveQuestion => 'Remove question';
+
+  @override
+  String get ttSave => 'Save';
+
+  @override
+  String get ttSaved => 'Saved';
+
+  @override
+  String get ttVersionConflict =>
+      'This test was changed on another device. Open it again and repeat your edits.';
+
+  @override
+  String get ttErrTitle => 'The title must be 3–120 characters.';
+
+  @override
+  String get ttErrDescription =>
+      'The description is too long (up to 1000 characters).';
+
+  @override
+  String get ttErrNoQuestions =>
+      'A published test needs at least one question.';
+
+  @override
+  String get ttErrTimeLimit => 'Time limit: 1–180 minutes.';
+
+  @override
+  String get ttErrPassPercent => 'Pass mark: 1–100%.';
+
+  @override
+  String get ttErrQuestionText =>
+      'Write the question text (up to 1000 characters).';
+
+  @override
+  String get ttErrOptions => 'Fill in 2–6 options (each up to 300 characters).';
+
+  @override
+  String get ttErrDuplicateOptions => 'Options must not repeat.';
+
+  @override
+  String get ttErrCorrect => 'Mark the correct option.';
+
+  @override
+  String get ttErrQuestionGeneric =>
+      'Check the questions: text, 2–6 different options and one correct answer.';
+
+  @override
+  String ttErrQuestionAt(int n, String error) {
+    return 'Question $n: $error';
+  }
+
+  @override
+  String get ttErrAbusive =>
+      'The text contains offensive words — please rephrase.';
+
+  @override
+  String get ttErrLimitTests =>
+      'You have reached the limit of 200 tests. Delete old ones to create new tests.';
+
+  @override
+  String get ttErrPlan => 'This action needs a plan with this feature.';
+
+  @override
+  String get ttErrTeacherRole =>
+      'Register as a teacher first: create a group in “Groups”.';
+
+  @override
+  String get ttFieldQuestion => 'Question text';
+
+  @override
+  String get ttOptionsHint => 'Tap the circle next to the correct option.';
+
+  @override
+  String ttFieldOption(int n) {
+    return 'Option $n';
+  }
+
+  @override
+  String get ttMarkCorrect => 'Mark as the correct answer';
+
+  @override
+  String get ttRemoveOption => 'Remove option';
+
+  @override
+  String get ttAddOption => 'Add option';
+
+  @override
+  String get ttFieldExplanation =>
+      'Explanation (optional, shown with the result)';
+
+  @override
+  String get ttDone => 'Done';
+
+  @override
+  String get ttBankTitle => 'Questions from the app';
+
+  @override
+  String get ttBankSubtitle =>
+      'Selected questions are added to your test as copies; the source is kept.';
+
+  @override
+  String get ttBankSearch => 'Search';
+
+  @override
+  String get ttBankAll => 'All';
+
+  @override
+  String ttBankAdd(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Add $count questions',
+      one: 'Add 1 question',
+      zero: 'Select questions',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ttBankEmpty => 'No questions found';
+
+  @override
+  String ttBankRefine(int count) {
+    return 'Showing the first 100 of $count. Narrow the search.';
+  }
+
+  @override
+  String get ttAssignTitle => 'Assign the test';
+
+  @override
+  String get ttAssignGroup => 'Group';
+
+  @override
+  String get ttAssignWho => 'To whom';
+
+  @override
+  String get ttAssignWholeGroup => 'Whole group';
+
+  @override
+  String get ttAssignNoGroups =>
+      'Create a group first — students join it with a code or an invitation.';
+
+  @override
+  String get ttAssignNoStudents =>
+      'No students in this group yet. Students who join later will also see the test.';
+
+  @override
+  String get ttAssignDue => 'Deadline';
+
+  @override
+  String get ttAssignAttempts => 'Attempts';
+
+  @override
+  String get ttAssignLate => 'Accept after the deadline (marked as late)';
+
+  @override
+  String get ttAssignPrivacy =>
+      'You will see results only of students who joined the group themselves. Students see a notice that their result is visible to you.';
+
+  @override
+  String get ttAssignSubmit => 'Assign';
+
+  @override
+  String get ttAssigned => 'The test has been assigned';
+
+  @override
+  String get ttErrDue => 'Choose a deadline in the future (up to one year).';
+
+  @override
+  String get ttErrMemberGone => 'This student is no longer in the group.';
+
+  @override
+  String get ttErrLimitAssignments =>
+      'Too many active assignments. Close old ones first.';
+
+  @override
+  String get ttInvitesTitle => 'Invitations';
+
+  @override
+  String get ttInvitesSubtitle =>
+      'The student enters the code, reads what you will see and agrees.';
+
+  @override
+  String get ttInviteDays => 'Valid for';
+
+  @override
+  String get ttInviteMaxUses => 'How many students can join';
+
+  @override
+  String get ttInviteCreate => 'Create invitation';
+
+  @override
+  String get ttInviteHowTo =>
+      'Send the code to students. In the app: Groups → Invitation code. Joining happens only after the student agrees.';
+
+  @override
+  String get ttInvitesActive => 'Active invitations';
+
+  @override
+  String get ttInvitesEmpty => 'No active invitations';
+
+  @override
+  String ttInviteUses(int uses, int max) {
+    return 'used $uses/$max';
+  }
+
+  @override
+  String ttInviteUntil(String date) {
+    return 'until $date';
+  }
+
+  @override
+  String get ttInviteCopy => 'Copy invitation';
+
+  @override
+  String get ttInviteCopied => 'Invitation copied';
+
+  @override
+  String ttInviteShareText(String group, String code, String link) {
+    return 'LabGuide: invitation to the group “$group”. In the app open Groups → Invitation code and enter $code ($link)';
+  }
+
+  @override
+  String get ttInviteRevoke => 'Revoke';
+
+  @override
+  String get ttInviteRevokeBody =>
+      'The code will stop working right away. Students who already joined stay in the group.';
+
+  @override
+  String get ttErrLimitInvites =>
+      'Too many active invitations for this group. Revoke unused ones.';
+
+  @override
+  String get ttInviteAcceptTitle => 'Invitation to a group';
+
+  @override
+  String get ttInviteCodeField => 'Invitation code (12 characters)';
+
+  @override
+  String get ttInviteCheck => 'Check';
+
+  @override
+  String get ttInviteGroupTitle => 'Group';
+
+  @override
+  String get ttInviteConsentTitle => 'What the teacher will see';
+
+  @override
+  String get ttInviteConsentBody =>
+      'If you join, the teacher sees your alias (or seat number) in the member list and your results in teacher tests: answers, score and time. Your email is not shown. You can leave the group at any time — your teacher-test results are then deleted.';
+
+  @override
+  String get ttInviteConsentCheck => 'I agree';
+
+  @override
+  String get ttInviteNickname => 'Alias (optional)';
+
+  @override
+  String get ttInviteAccept => 'Join';
+
+  @override
+  String get ttInviteDecline => 'Decline';
+
+  @override
+  String get ttInviteJoined => 'You joined the group';
+
+  @override
+  String get ttInviteAlready => 'You are already in this group';
+
+  @override
+  String get ttInviteOpenGroup => 'Open the group';
+
+  @override
+  String get ttInviteOwn => 'This is your own group';
+
+  @override
+  String get ttInviteExpired =>
+      'The invitation has expired or was revoked. Ask your teacher for a new code.';
+
+  @override
+  String get ttInviteNotFound => 'Code not found — check it and try again.';
+
+  @override
+  String get ttResultsTitle => 'Results';
+
+  @override
+  String get ttSummaryTitle => 'Summary';
+
+  @override
+  String get ttSumTargets => 'Students';
+
+  @override
+  String get ttSumSubmitted => 'Submitted';
+
+  @override
+  String get ttSumAverage => 'Average';
+
+  @override
+  String get ttSumPassRate => 'Passed';
+
+  @override
+  String get ttSumAvgTime => 'Average time';
+
+  @override
+  String get ttPrivacyTeacher =>
+      'Only results of students who joined the group themselves are shown. When a student leaves the group, their results are deleted.';
+
+  @override
+  String get ttStudentsTitle => 'By student';
+
+  @override
+  String get ttNoStudentsYet => 'No students in the group yet.';
+
+  @override
+  String get ttMostMissed => 'Most missed questions';
+
+  @override
+  String get ttNoResultsYet => 'Nobody has submitted yet.';
+
+  @override
+  String get ttQuestionsStatTitle => 'By question';
+
+  @override
+  String get ttNoAnswersYet => 'no answers yet';
+
+  @override
+  String ttCorrectPercent(int percent) {
+    return '$percent% correct';
+  }
+
+  @override
+  String get ttStateAssigned => 'Not started';
+
+  @override
+  String get ttStateStarted => 'In progress';
+
+  @override
+  String get ttStateSubmitted => 'Submitted';
+
+  @override
+  String get ttStateExpired => 'Missed';
+
+  @override
+  String get ttPassed => 'passed';
+
+  @override
+  String get ttNotPassed => 'not passed';
+
+  @override
+  String get ttLate => 'late';
+
+  @override
+  String get ttLateAccepted => 'Late work accepted';
+
+  @override
+  String ttAttemptsN(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count attempts',
+      one: '1 attempt',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ttMinSec(int m, int s) {
+    return '$m min $s s';
+  }
+
+  @override
+  String get ttExportCsv => 'Copy as CSV';
+
+  @override
+  String get ttExportCopied => 'CSV copied — paste it into a spreadsheet';
+
+  @override
+  String get ttCloseAssignment => 'Close assignment';
+
+  @override
+  String get ttCloseAssignmentBody =>
+      'No new attempts can start; students who are already solving have 2 minutes to submit.';
+
+  @override
+  String get ttDeleteAssignment => 'Delete assignment';
+
+  @override
+  String get ttDeleteAssignmentBody =>
+      'The assignment and its results will be deleted.';
+
+  @override
+  String get ttMyTitle => 'Teacher tests';
+
+  @override
+  String get ttMySubtitle => 'Special tests from your teacher';
+
+  @override
+  String get ttMyEmpty => 'No tests yet';
+
+  @override
+  String get ttMyEmptyBody =>
+      'When your teacher assigns a test, it appears here.';
+
+  @override
+  String ttBest(int percent) {
+    return 'best $percent%';
+  }
+
+  @override
+  String get ttVisibleNoticeTitle => 'Your result is visible to your teacher';
+
+  @override
+  String get ttVisibleNotice =>
+      'Your teacher will see your alias (or seat number), answers, score and time for this test. Your email is not shown.';
+
+  @override
+  String get proTtStudentLocked =>
+      'Starting a teacher test is part of Student Pro. Your results stay visible.';
+
+  @override
+  String get ttLatePolicyAccept =>
+      'Accepted after the deadline too (marked as late).';
+
+  @override
+  String get ttLatePolicyReject => 'Cannot be started after the deadline.';
+
+  @override
+  String get ttCantClosed => 'The teacher has closed this assignment.';
+
+  @override
+  String get ttCantPastDue => 'The deadline has passed.';
+
+  @override
+  String get ttCantNoAttempts => 'No attempts left.';
+
+  @override
+  String get ttStart => 'Start the test';
+
+  @override
+  String get ttContinue => 'Continue';
+
+  @override
+  String get ttYourAttempts => 'Your attempts';
+
+  @override
+  String ttAttemptN(int n) {
+    return 'Attempt $n';
+  }
+
+  @override
+  String get ttReviewHidden =>
+      'Correct answers are shown when your attempts are used up, after the deadline or when the teacher closes the assignment.';
+
+  @override
+  String get ttYourAnswer => 'Your answer';
+
+  @override
+  String get ttNoAnswer => 'no answer';
+
+  @override
+  String ttSubmittedSnack(int score, int total) {
+    return 'Submitted: $score/$total';
+  }
+
+  @override
+  String get ttErrTimeOver => 'Time is over — this attempt was not accepted.';
+
+  @override
+  String get ttErrAlreadySubmitted =>
+      'This attempt has already been submitted.';
+
+  @override
+  String ttTimeLeft(String time) {
+    return 'Time left: $time';
+  }
+
+  @override
+  String get ttSubmit => 'Submit';
+
+  @override
+  String get ttSubmitConfirmTitle => 'Submit your answers?';
+
+  @override
+  String ttSubmitUnanswered(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count questions are unanswered.',
+      one: '1 question is unanswered.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ttSubmitFinal => 'After submitting you cannot change the answers.';
+
+  @override
+  String get ttSubmitVisible => 'The result will be visible to your teacher.';
+
+  @override
+  String get ttSubmitFailedSaved =>
+      'Could not submit. Your answers are saved on this device — try again.';
 }

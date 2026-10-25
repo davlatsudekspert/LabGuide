@@ -159,6 +159,15 @@ enum ProTrialMechanism { undecided, storeIntroOffer, serverGranted }
 /// qilmaydi: `EntitlementService.disabled()` hamma narsani ochadi va Pro
 /// kirish nuqtalari ko'rsatilmaydi.
 abstract final class ProGatePolicy {
+  ///
+  /// Qurilgan (ekran + test): Talaba Pro va Mutaxassis Pro —
+  /// `lib/features/pro/*`; Ustoz Pro — test yaratish
+  /// (`lib/features/teacher_pro/teacher_test_screens.dart`), topshirish va
+  /// taklifnoma (`teacher_assign_screens.dart`), natijalar va CSV
+  /// (`teacher_results_screens.dart`); talaba tomoni — Ustoz testlarini
+  /// boshlash (`student_teacher_tests_screens.dart`). Testlar:
+  /// `test/widget/pro_learner_test.dart`, `pro_lab_test.dart`,
+  /// `teacher_pro_test.dart`, server `cloudflare/test/teachertests.test.ts`.
   static const Set<Feature> gated = {
     // Talaba Pro — ekranlar: lib/features/pro/{results,simulation}_screens.dart.
     Feature.resultsAnalytics,
@@ -167,7 +176,11 @@ abstract final class ProGatePolicy {
     // Mutaxassis Pro — lib/features/pro/{calibration_export,qc_report*}.dart.
     Feature.calibrationExport,
     Feature.qcReport,
-    // Ustoz Pro va `teacherTests` — ustoz paneli qurilgach qo'shiladi.
+    // Ustoz Pro va talaba tomoni (`teacherTests`).
+    Feature.teacherTests,
+    Feature.teacherTestBuilder,
+    Feature.teacherTestAssign,
+    Feature.teacherResults,
   };
 
   /// Butun pullik katalog (regressiya testi: hammasi yopilganda ham bugungi

@@ -9,6 +9,7 @@ import { randomFrom } from './crypto';
 import {
   ApiError,
   badRequest,
+  billingEnabled,
   conflict,
   forbidden,
   json,
@@ -18,6 +19,7 @@ import {
 } from './http';
 import { guardAbuse } from './moderation';
 import { hit } from './ratelimit';
+import { teacherLeaveStatements } from './teacherdata';
 import { drawVariant } from './variants';
 
 // Adashtiradigan 0/O/1/I siz — QR va qo'lda yozish uchun.
@@ -305,10 +307,13 @@ export async function leaveGroup(ctx: Ctx, gid: string): Promise<Response> {
   const s = await requireSession(ctx);
   const m = await requireMember(ctx, s, gid);
   if (m.role === 'teacher') throw badRequest('teacher_cannot_leave');
-  await ctx.db
-    .prepare(`DELETE FROM group_members WHERE group_id = ?1 AND user_id = ?2 AND member_role = 'student'`)
-    .bind(gid, s.userId)
-    .run();
+  await ctx.db.batch([
+    // Ustoz Pro (0020, faqat bayroq bilan): shu guruhdagi Ustoz testi urinishlari.
+    ...(billingEnabled(ctx.env) ? teacherLeaveStatements(ctx.db, gid, s.userId) : []),
+    ctx.db
+      .prepare(`DELETE FROM group_members WHERE group_id = ?1 AND user_id = ?2 AND member_role = 'student'`)
+      .bind(gid, s.userId),
+  ]);
   return noContent();
 }
 
@@ -385,12 +390,16 @@ export async function listMembers(ctx: Ctx, gid: string): Promise<Response> {
 export async function removeMember(ctx: Ctx, gid: string, uid: string): Promise<Response> {
   const s = await requireSession(ctx);
   await requireTeacher(ctx, s, gid);
-  const r = await ctx.db
-    .prepare(`DELETE FROM group_members WHERE group_id = ?1 AND user_id = ?2 AND member_role = 'student'`)
-    .bind(gid, uuidParam(uid))
-    .run();
+  const target = uuidParam(uid);
+  const res = await ctx.db.batch([
+    ctx.db
+      .prepare(`DELETE FROM group_members WHERE group_id = ?1 AND user_id = ?2 AND member_role = 'student'`)
+      .bind(gid, target),
+    // Ustoz Pro (0020, faqat bayroq bilan): chiqarilgan talabaning urinishlari.
+    ...(billingEnabled(ctx.env) ? teacherLeaveStatements(ctx.db, gid, target) : []),
+  ]);
   // Alohida kod: ilova buni "allaqachon chiqarilgan" deb tushunadi.
-  if (!r.meta.changes) throw new ApiError(404, 'member_not_found');
+  if (!res[0].meta.changes) throw new ApiError(404, 'member_not_found');
   return noContent();
 }
 

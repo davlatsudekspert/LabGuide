@@ -127,6 +127,13 @@ abstract final class StoreKeys {
   /// ishlatilgach yoki chiqishda o'chiriladi.
   static const pendingInvite = 'onboarding.pendingInvite';
 
+  /// Ustoz Pro (D-78): ustozning o'z testlari ro'yxati (oxirgi hisob,
+  /// `{"uid": .., "tests": [..]}`) — internetsiz ko'rish uchun; talabaning
+  /// boshlangan urinishidagi javoblar (`{attemptId: [..]}`, oxirgi 20 ta).
+  /// Faqat shu qurilmada; «Lokal ma'lumotni o'chirish» tozalaydi.
+  static const teacherTestsCache = 'teacherPro.tests';
+  static const teacherTestAnswers = 'teacherPro.answers';
+
   static const all = <String>{
     language,
     themeMode,
@@ -177,6 +184,8 @@ abstract final class StoreKeys {
     lectureOrientation,
     homeResume,
     pendingInvite,
+    teacherTestsCache,
+    teacherTestAnswers,
     communityRulesOpen,
     communityBlocked,
   };

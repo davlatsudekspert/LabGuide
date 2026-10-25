@@ -13770,4 +13770,667 @@ class AppLocalizationsUz extends AppLocalizations {
   String proPoints(String value) {
     return '$value foiz punkti';
   }
+
+  @override
+  String get ttEntrySection => 'Ustoz testlari';
+
+  @override
+  String get ttEntryTeacher => 'Mening testlarim';
+
+  @override
+  String get proTtEntryTeacherSub =>
+      'Ustoz Pro: o‘z testlaringiz, topshiriqlar va natijalar';
+
+  @override
+  String get ttEntryStudent => 'Ustoz testlari';
+
+  @override
+  String get ttEntryStudentSub => 'Ustozingiz bergan maxsus testlar';
+
+  @override
+  String get ttEntryInvite => 'Taklifnoma kodi';
+
+  @override
+  String get ttEntryInviteSub =>
+      'Ustoz bergan 12 belgili kod bilan guruhga qo‘shilish';
+
+  @override
+  String get ttTestsTitle => 'Mening testlarim';
+
+  @override
+  String get ttNewTest => 'Yangi test';
+
+  @override
+  String get ttTestsEmpty => 'Hali test yo‘q';
+
+  @override
+  String get ttTestsEmptyBody =>
+      'O‘z savollaringizdan yoki ilovadagi savollar nusxasidan test tuzing.';
+
+  @override
+  String get ttStatusPublished => 'Nashr etilgan';
+
+  @override
+  String get ttStatusUnpublished => 'Nashr etilmagan';
+
+  @override
+  String ttQuestionsCount(int count) {
+    return '$count ta savol';
+  }
+
+  @override
+  String ttAssignedCount(int count) {
+    return '$count ta topshiriq';
+  }
+
+  @override
+  String get proTtLockedNote =>
+      'Test yaratish, tahrirlash va topshirish — Ustoz Pro rejasida. Avval yaratilgan testlar va natijalar ko‘rinib turadi.';
+
+  @override
+  String get ttOfflineCached =>
+      'Internet yo‘q — oxirgi saqlangan nusxa ko‘rsatilmoqda.';
+
+  @override
+  String get ttEdit => 'Tahrirlash';
+
+  @override
+  String get ttAssign => 'Topshirish';
+
+  @override
+  String get ttDeleteTest => 'Testni o‘chirish';
+
+  @override
+  String get ttDeleteTestBody =>
+      'Test, uning topshiriqlari va natijalari o‘chiriladi. Buni qaytarib bo‘lmaydi.';
+
+  @override
+  String get ttAssignmentsTitle => 'Topshiriqlar';
+
+  @override
+  String get ttNoAssignments => 'Bu test hali topshirilmagan.';
+
+  @override
+  String ttDueOn(String date) {
+    return 'muddat $date';
+  }
+
+  @override
+  String ttSubmittedOf(int done, int total) {
+    return '$done/$total topshirdi';
+  }
+
+  @override
+  String get ttClosed => 'Yopilgan';
+
+  @override
+  String ttTimeLimit(int minutes) {
+    return 'Vaqt: $minutes daqiqa';
+  }
+
+  @override
+  String get ttNoTimeLimit => 'Vaqt cheklanmagan';
+
+  @override
+  String ttPassMark(int percent) {
+    return 'O‘tish chegarasi: $percent%';
+  }
+
+  @override
+  String get ttMustPublish =>
+      'Talabalarga topshirish uchun testni nashr eting.';
+
+  @override
+  String get ttQuestionsTitle => 'Savollar';
+
+  @override
+  String ttQuestionNumber(int n) {
+    return '$n-savol';
+  }
+
+  @override
+  String get ttCorrectAnswer => 'To‘g‘ri javob';
+
+  @override
+  String ttFromBank(String bank) {
+    return 'Ilovadan nusxa: $bank';
+  }
+
+  @override
+  String get ttSourceQuiz => 'Mashq savollari';
+
+  @override
+  String get ttSourceToifa => 'Toifa banki';
+
+  @override
+  String get ttSourceDeck => 'Mavzu testi';
+
+  @override
+  String get ttEditTitleNew => 'Yangi test';
+
+  @override
+  String get ttEditTitle => 'Testni tahrirlash';
+
+  @override
+  String get ttFieldTitle => 'Test nomi';
+
+  @override
+  String get ttFieldDescription => 'Izoh (ixtiyoriy)';
+
+  @override
+  String get ttFieldTimeLimit => 'Vaqt chegarasi, daqiqa (ixtiyoriy, 1–180)';
+
+  @override
+  String get ttFieldPassPercent => 'O‘tish chegarasi, % (ixtiyoriy, 1–100)';
+
+  @override
+  String get ttPublishToggle => 'Nashr etilgan';
+
+  @override
+  String get ttPublishNote =>
+      'Faqat nashr etilgan testni topshirish mumkin. Berilgan topshiriqlar savollarning o‘z nusxasini saqlaydi.';
+
+  @override
+  String get ttNoQuestionsYet =>
+      'Hali savol yo‘q. O‘zingiz yozing yoki ilovadagi savollardan nusxa oling.';
+
+  @override
+  String get ttAddQuestion => 'Savol qo‘shish';
+
+  @override
+  String get ttAddFromBank => 'Ilovadagi savollardan';
+
+  @override
+  String get ttMoveUp => 'Yuqoriga';
+
+  @override
+  String get ttMoveDown => 'Pastga';
+
+  @override
+  String get ttRemoveQuestion => 'Savolni olib tashlash';
+
+  @override
+  String get ttSave => 'Saqlash';
+
+  @override
+  String get ttSaved => 'Saqlandi';
+
+  @override
+  String get ttVersionConflict =>
+      'Test boshqa qurilmada o‘zgartirilgan. Qayta oching va tahrirni takrorlang.';
+
+  @override
+  String get ttErrTitle => 'Nom 3–120 belgi bo‘lsin.';
+
+  @override
+  String get ttErrDescription => 'Izoh juda uzun (1000 belgigacha).';
+
+  @override
+  String get ttErrNoQuestions => 'Nashr etish uchun kamida bitta savol kerak.';
+
+  @override
+  String get ttErrTimeLimit => 'Vaqt: 1–180 daqiqa.';
+
+  @override
+  String get ttErrPassPercent => 'O‘tish chegarasi: 1–100%.';
+
+  @override
+  String get ttErrQuestionText => 'Savol matnini yozing (1000 belgigacha).';
+
+  @override
+  String get ttErrOptions =>
+      '2–6 ta variantni to‘ldiring (har biri 300 belgigacha).';
+
+  @override
+  String get ttErrDuplicateOptions => 'Variantlar takrorlanmasin.';
+
+  @override
+  String get ttErrCorrect => 'To‘g‘ri variantni belgilang.';
+
+  @override
+  String get ttErrQuestionGeneric =>
+      'Savollarni tekshiring: matn, 2–6 ta har xil variant va bitta to‘g‘ri javob.';
+
+  @override
+  String ttErrQuestionAt(int n, String error) {
+    return '$n-savol: $error';
+  }
+
+  @override
+  String get ttErrAbusive => 'Matnda nojo‘ya so‘z bor — boshqacha yozing.';
+
+  @override
+  String get ttErrLimitTests =>
+      '200 ta test chegarasiga yetdingiz. Yangisi uchun eskilarini o‘chiring.';
+
+  @override
+  String get ttErrPlan => 'Bu amal uchun shu imkoniyat bor reja kerak.';
+
+  @override
+  String get ttErrTeacherRole =>
+      'Avval ustoz sifatida ro‘yxatdan o‘ting: “Guruhlar” bo‘limida guruh oching.';
+
+  @override
+  String get ttFieldQuestion => 'Savol matni';
+
+  @override
+  String get ttOptionsHint => 'To‘g‘ri variant yonidagi doirachani bosing.';
+
+  @override
+  String ttFieldOption(int n) {
+    return '$n-variant';
+  }
+
+  @override
+  String get ttMarkCorrect => 'To‘g‘ri javob deb belgilash';
+
+  @override
+  String get ttRemoveOption => 'Variantni olib tashlash';
+
+  @override
+  String get ttAddOption => 'Variant qo‘shish';
+
+  @override
+  String get ttFieldExplanation =>
+      'Izoh (ixtiyoriy, natija bilan ko‘rsatiladi)';
+
+  @override
+  String get ttDone => 'Tayyor';
+
+  @override
+  String get ttBankTitle => 'Ilovadagi savollar';
+
+  @override
+  String get ttBankSubtitle =>
+      'Tanlangan savollar testga nusxa sifatida qo‘shiladi; manbasi saqlanadi.';
+
+  @override
+  String get ttBankSearch => 'Qidirish';
+
+  @override
+  String get ttBankAll => 'Hammasi';
+
+  @override
+  String ttBankAdd(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ta savolni qo‘shish',
+      zero: 'Savollarni tanlang',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ttBankEmpty => 'Savol topilmadi';
+
+  @override
+  String ttBankRefine(int count) {
+    return '$count tadan birinchi 100 tasi ko‘rsatilmoqda. Qidiruvni aniqlashtiring.';
+  }
+
+  @override
+  String get ttAssignTitle => 'Testni topshirish';
+
+  @override
+  String get ttAssignGroup => 'Guruh';
+
+  @override
+  String get ttAssignWho => 'Kimga';
+
+  @override
+  String get ttAssignWholeGroup => 'Butun guruhga';
+
+  @override
+  String get ttAssignNoGroups =>
+      'Avval guruh yarating — talabalar unga kod yoki taklifnoma bilan qo‘shiladi.';
+
+  @override
+  String get ttAssignNoStudents =>
+      'Guruhda hali talaba yo‘q. Keyin qo‘shilganlar ham testni ko‘radi.';
+
+  @override
+  String get ttAssignDue => 'Muddat';
+
+  @override
+  String get ttAssignAttempts => 'Urinishlar';
+
+  @override
+  String get ttAssignLate =>
+      'Muddatdan keyin ham qabul qilish (“kechikkan” deb belgilanadi)';
+
+  @override
+  String get ttAssignPrivacy =>
+      'Faqat guruhga o‘zi qo‘shilgan talabalar natijasini ko‘rasiz. Talabalarga natija sizga ko‘rinishi haqida ogohlantirish ko‘rsatiladi.';
+
+  @override
+  String get ttAssignSubmit => 'Topshirish';
+
+  @override
+  String get ttAssigned => 'Test topshirildi';
+
+  @override
+  String get ttErrDue => 'Kelajakdagi muddatni tanlang (bir yilgacha).';
+
+  @override
+  String get ttErrMemberGone => 'Bu talaba endi guruhda emas.';
+
+  @override
+  String get ttErrLimitAssignments =>
+      'Faol topshiriqlar juda ko‘p. Avval eskilarini yoping.';
+
+  @override
+  String get ttInvitesTitle => 'Taklifnomalar';
+
+  @override
+  String get ttInvitesSubtitle =>
+      'Talaba kodni kiritadi, sizga nima ko‘rinishini o‘qiydi va rozilik beradi.';
+
+  @override
+  String get ttInviteDays => 'Amal qilish muddati';
+
+  @override
+  String get ttInviteMaxUses => 'Necha kishi qo‘shila oladi';
+
+  @override
+  String get ttInviteCreate => 'Taklifnoma yaratish';
+
+  @override
+  String get ttInviteHowTo =>
+      'Kodni talabalarga yuboring. Ilovada: Guruhlar → Taklifnoma kodi. Qo‘shilish faqat talaba rozilik bergach bo‘ladi.';
+
+  @override
+  String get ttInvitesActive => 'Faol taklifnomalar';
+
+  @override
+  String get ttInvitesEmpty => 'Faol taklifnoma yo‘q';
+
+  @override
+  String ttInviteUses(int uses, int max) {
+    return '$uses/$max marta ishlatildi';
+  }
+
+  @override
+  String ttInviteUntil(String date) {
+    return '$date gacha';
+  }
+
+  @override
+  String get ttInviteCopy => 'Taklifnomadan nusxa olish';
+
+  @override
+  String get ttInviteCopied => 'Taklifnoma nusxalandi';
+
+  @override
+  String ttInviteShareText(String group, String code, String link) {
+    return 'LabGuide: “$group” guruhiga taklifnoma. Ilovada Guruhlar → Taklifnoma kodi bo‘limiga $code ni kiriting ($link)';
+  }
+
+  @override
+  String get ttInviteRevoke => 'Bekor qilish';
+
+  @override
+  String get ttInviteRevokeBody =>
+      'Kod darhol ishlamay qoladi. Qo‘shilib bo‘lgan talabalar guruhda qoladi.';
+
+  @override
+  String get ttErrLimitInvites =>
+      'Guruhda faol taklifnomalar juda ko‘p. Keraksizlarini bekor qiling.';
+
+  @override
+  String get ttInviteAcceptTitle => 'Guruhga taklifnoma';
+
+  @override
+  String get ttInviteCodeField => 'Taklifnoma kodi (12 belgi)';
+
+  @override
+  String get ttInviteCheck => 'Tekshirish';
+
+  @override
+  String get ttInviteGroupTitle => 'Guruh';
+
+  @override
+  String get ttInviteConsentTitle => 'Ustozga nima ko‘rinadi';
+
+  @override
+  String get ttInviteConsentBody =>
+      'Qo‘shilsangiz, ustoz a’zolar ro‘yxatida taxallusingizni (yoki tartib raqamingizni) va ustoz testlaridagi natijalaringizni ko‘radi: javoblar, ball va vaqt. Emailingiz ko‘rinmaydi. Istalgan vaqtda guruhdan chiqishingiz mumkin — ustoz testlari natijalaringiz o‘chiriladi.';
+
+  @override
+  String get ttInviteConsentCheck => 'Roziman';
+
+  @override
+  String get ttInviteNickname => 'Taxallus (ixtiyoriy)';
+
+  @override
+  String get ttInviteAccept => 'Qo‘shilish';
+
+  @override
+  String get ttInviteDecline => 'Rad etish';
+
+  @override
+  String get ttInviteJoined => 'Guruhga qo‘shildingiz';
+
+  @override
+  String get ttInviteAlready => 'Siz bu guruhdasiz';
+
+  @override
+  String get ttInviteOpenGroup => 'Guruhni ochish';
+
+  @override
+  String get ttInviteOwn => 'Bu sizning guruhingiz';
+
+  @override
+  String get ttInviteExpired =>
+      'Taklifnoma muddati o‘tgan yoki bekor qilingan. Ustozdan yangi kod so‘rang.';
+
+  @override
+  String get ttInviteNotFound => 'Kod topilmadi — tekshirib qayta kiriting.';
+
+  @override
+  String get ttResultsTitle => 'Natijalar';
+
+  @override
+  String get ttSummaryTitle => 'Jamlanma';
+
+  @override
+  String get ttSumTargets => 'Talabalar';
+
+  @override
+  String get ttSumSubmitted => 'Topshirdi';
+
+  @override
+  String get ttSumAverage => 'O‘rtacha natija';
+
+  @override
+  String get ttSumPassRate => 'O‘tganlar';
+
+  @override
+  String get ttSumAvgTime => 'O‘rtacha vaqt';
+
+  @override
+  String get ttPrivacyTeacher =>
+      'Faqat guruhga o‘zi qo‘shilgan talabalar natijasi ko‘rinadi. Talaba guruhdan chiqsa, natijalari o‘chiriladi.';
+
+  @override
+  String get ttStudentsTitle => 'Talabalar kesimida';
+
+  @override
+  String get ttNoStudentsYet => 'Guruhda hali talaba yo‘q.';
+
+  @override
+  String get ttMostMissed => 'Eng ko‘p xato qilingan savollar';
+
+  @override
+  String get ttNoResultsYet => 'Hali hech kim topshirmagan.';
+
+  @override
+  String get ttQuestionsStatTitle => 'Savollar kesimida';
+
+  @override
+  String get ttNoAnswersYet => 'javob hali yo‘q';
+
+  @override
+  String ttCorrectPercent(int percent) {
+    return '$percent% to‘g‘ri';
+  }
+
+  @override
+  String get ttStateAssigned => 'Boshlanmagan';
+
+  @override
+  String get ttStateStarted => 'Yechilmoqda';
+
+  @override
+  String get ttStateSubmitted => 'Topshirilgan';
+
+  @override
+  String get ttStateExpired => 'Muddati o‘tgan';
+
+  @override
+  String get ttPassed => 'o‘tdi';
+
+  @override
+  String get ttNotPassed => 'o‘tmadi';
+
+  @override
+  String get ttLate => 'kechikkan';
+
+  @override
+  String get ttLateAccepted => 'Kechikkani qabul qilinadi';
+
+  @override
+  String ttAttemptsN(int count) {
+    return '$count urinish';
+  }
+
+  @override
+  String ttMinSec(int m, int s) {
+    return '$m daq $s s';
+  }
+
+  @override
+  String get ttExportCsv => 'CSV nusxasini olish';
+
+  @override
+  String get ttExportCopied => 'CSV nusxalandi — jadvalga joylashtiring';
+
+  @override
+  String get ttCloseAssignment => 'Topshiriqni yopish';
+
+  @override
+  String get ttCloseAssignmentBody =>
+      'Yangi urinish boshlanmaydi; hozir yechayotganlar 2 daqiqa ichida topshira oladi.';
+
+  @override
+  String get ttDeleteAssignment => 'Topshiriqni o‘chirish';
+
+  @override
+  String get ttDeleteAssignmentBody =>
+      'Topshiriq va uning natijalari o‘chiriladi.';
+
+  @override
+  String get ttMyTitle => 'Ustoz testlari';
+
+  @override
+  String get ttMySubtitle => 'Ustozingiz bergan maxsus testlar';
+
+  @override
+  String get ttMyEmpty => 'Hozircha test yo‘q';
+
+  @override
+  String get ttMyEmptyBody => 'Ustoz test topshirganda shu yerda ko‘rinadi.';
+
+  @override
+  String ttBest(int percent) {
+    return 'eng yaxshi $percent%';
+  }
+
+  @override
+  String get ttVisibleNoticeTitle => 'Natija ustozingizga ko‘rinadi';
+
+  @override
+  String get ttVisibleNotice =>
+      'Ustozingiz bu test bo‘yicha taxallusingizni (yoki tartib raqamingizni), javoblaringiz, ball va vaqtni ko‘radi. Emailingiz ko‘rinmaydi.';
+
+  @override
+  String get proTtStudentLocked =>
+      'Ustoz testini boshlash — Talaba Pro rejasida. Natijalaringiz ko‘rinib turadi.';
+
+  @override
+  String get ttLatePolicyAccept =>
+      'Muddatdan keyin ham qabul qilinadi (“kechikkan” deb belgilanadi).';
+
+  @override
+  String get ttLatePolicyReject => 'Muddatdan keyin boshlab bo‘lmaydi.';
+
+  @override
+  String get ttCantClosed => 'Ustoz bu topshiriqni yopgan.';
+
+  @override
+  String get ttCantPastDue => 'Muddat o‘tgan.';
+
+  @override
+  String get ttCantNoAttempts => 'Urinishlar tugagan.';
+
+  @override
+  String get ttStart => 'Testni boshlash';
+
+  @override
+  String get ttContinue => 'Davom ettirish';
+
+  @override
+  String get ttYourAttempts => 'Urinishlaringiz';
+
+  @override
+  String ttAttemptN(int n) {
+    return '$n-urinish';
+  }
+
+  @override
+  String get ttReviewHidden =>
+      'To‘g‘ri javoblar urinishlar tugagach, muddat o‘tgach yoki ustoz topshiriqni yopgach ko‘rsatiladi.';
+
+  @override
+  String get ttYourAnswer => 'Javobingiz';
+
+  @override
+  String get ttNoAnswer => 'javob yo‘q';
+
+  @override
+  String ttSubmittedSnack(int score, int total) {
+    return 'Topshirildi: $score/$total';
+  }
+
+  @override
+  String get ttErrTimeOver => 'Vaqt tugagan — bu urinish qabul qilinmadi.';
+
+  @override
+  String get ttErrAlreadySubmitted => 'Bu urinish allaqachon topshirilgan.';
+
+  @override
+  String ttTimeLeft(String time) {
+    return 'Qolgan vaqt: $time';
+  }
+
+  @override
+  String get ttSubmit => 'Topshirish';
+
+  @override
+  String get ttSubmitConfirmTitle => 'Javoblarni topshirasizmi?';
+
+  @override
+  String ttSubmitUnanswered(int count) {
+    return '$count ta savolga javob berilmagan.';
+  }
+
+  @override
+  String get ttSubmitFinal => 'Topshirgach javoblarni o‘zgartirib bo‘lmaydi.';
+
+  @override
+  String get ttSubmitVisible => 'Natija ustozingizga ko‘rinadi.';
+
+  @override
+  String get ttSubmitFailedSaved =>
+      'Topshirib bo‘lmadi. Javoblar qurilmada saqlandi — qayta urinib ko‘ring.';
 }

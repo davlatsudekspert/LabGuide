@@ -12,12 +12,14 @@ import '../entitlements/pro_catalog.dart' show ProPlan;
 import 'admin_console.dart';
 import 'admin_team.dart';
 import 'backend_models.dart';
+import 'cloudflare_teacher_tests.dart';
 import 'community_backend.dart';
 import 'lab_backend.dart';
 import 'partner_models.dart';
 import 'pro_grants.dart';
 import 'step_up.dart';
 import 'supabase_backend.dart' show SessionStore;
+import 'teacher_tests.dart';
 
 /// Cloudflare Worker API manzili (build vaqtida, repoda yo'q):
 ///
@@ -123,7 +125,8 @@ class CloudflareLabBackend
         ComplaintsBackend,
         SupportAttachmentPolicy,
         StepUpBackend,
-        SessionsBackend {
+        SessionsBackend,
+        TeacherTestHost {
   CloudflareLabBackend(
     this.config, {
     SessionStore? sessionStore,
@@ -300,6 +303,15 @@ class CloudflareLabBackend
     final r = await _send(method, path, body: body, auth: auth);
     return (status: r.status, data: r.map);
   }
+
+  /// Ustoz Pro (D-78): `/v1/teacher/*`, `/v1/teacher-invites/*`,
+  /// `/v1/me/teacher-tests*`. Faqat Pro bayrog'i yoqilgan buildda ishlatiladi
+  /// (`AppServices.teacherTests`); server bayrog'i o'chiq bo'lsa — 404.
+  @override
+  late final TeacherTestBackend teacherTestApi = CloudflareTeacherTests(
+    (method, path, {body, query}) async =>
+        (await _call(method, path, body: body, query: query)).data,
+  );
 
   /// Ro'yxat o'qish: a'zo bo'lmagan guruh (404) — bo'sh ro'yxat, xuddi
   /// Supabase RLS dagi kabi (begona ustoz va admin ham hech narsa ko'rmaydi).

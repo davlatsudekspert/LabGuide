@@ -69,6 +69,10 @@ void main() {
         purchases: shop,
         entitlementSource: FakeEntitlementSource(user: null),
         allFeaturesOpen: false,
+        // D-78: standart `gated` endi qurilgan Ustoz Pro funksiyalarini
+        // o'z ichiga oladi (test/widget/teacher_pro_test.dart); bu yerda —
+        // bo'sh ro'yxat holati (hech narsa yopilmaydi).
+        gatedFeatures: const {},
       );
       await s.entitlements.start();
       await pumpApp(tester, s, size: const Size(390, 2400));

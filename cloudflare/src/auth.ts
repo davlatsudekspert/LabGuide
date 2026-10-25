@@ -29,6 +29,7 @@ import { communityDeleteStatements, userHash } from './community';
 import { hit } from './ratelimit';
 import { applyPendingGrants } from './progrants';
 import { revokeAppleOnDelete } from './social';
+import { teacherDeleteStatements } from './teacherdata';
 import { trialDeleteStatements } from './trial';
 
 export const OTP_TTL_SEC = 600;
@@ -607,6 +608,9 @@ export async function deleteUserData(ctx: Ctx, u: string, adminActor?: string): 
     // Bepul sinov (D-74): yozuv QOLADI (qayta ro'yxatdan o'tish sinovni
     // qaytarmasin), faqat hisob id si uziladi. Jadval faqat bayroq bilan.
     ...(billingEnabled(ctx.env) ? trialDeleteStatements(ctx.db, u, ctx.now) : []),
+    // Ustoz Pro (0020): o'z testlari, topshiriqlari, taklifnomalari va urinishlari
+    // (guruh/hisob qatorlaridan OLDIN). Jadval faqat bayroq bilan.
+    ...(billingEnabled(ctx.env) ? teacherDeleteStatements(ctx.db, u) : []),
     ...stmts.map((q) => ctx.db.prepare(q).bind(u)),
     adminActor
       ? ctx.db
