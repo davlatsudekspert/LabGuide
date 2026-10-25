@@ -18037,37 +18037,37 @@ abstract class AppLocalizations {
   /// No description provided for @imgDiagramCalibrationOverviewAlt.
   ///
   /// In en, this message translates to:
-  /// **'Diagram, general calibration workflow in six steps: confirm instrument and method; verify reagent, REF and IFU revision; prepare a lot-matched calibrator; follow the verified instrument interface; evaluate the calibration and independent QC; record results and release per SOP. Not an instrument screenshot.'**
+  /// **'Diagram, calibration workflow: 1 model, reagent and instruction revision; 2 calibrator lot, with values from this lot’s value sheet; 3 method-specific preparation; 4 calibration according to the instructions. Decision: post-calibration QC passed? Yes — accepted by an authorized person; no — not accepted, troubleshoot per the IFU and SOP. Parameters come only from the matching IFU.'**
   String get imgDiagramCalibrationOverviewAlt;
 
   /// No description provided for @imgDiagramDifferentialCountAlt.
   ///
   /// In en, this message translates to:
-  /// **'Diagram, manual leukocyte differential in six steps: inspect the smear and cell distribution; classify cells in the prescribed area; count to the local SOP target; calculate relative percentages; use WBC for absolute counts; review abnormal cells and report.'**
+  /// **'Diagram, manual leukocyte differential: 1 check the film (even, no lines or holes; if poor, make a new one); 2 count in the monolayer with the ×100 oil objective, moving one way without repeating fields; 3 count to the SOP target, usually 100 cells; 4 percentage of each cell type, absolute count = fraction × WBC. Decision: blasts or unidentified cells? Yes — do not interpret yourself, a hematologist or physician reviews the smear; no — compare with the reference interval on your laboratory’s report form.'**
   String get imgDiagramDifferentialCountAlt;
 
   /// No description provided for @imgDiagramQcDecisionAlt.
   ///
   /// In en, this message translates to:
-  /// **'Diagram, quality-control decision workflow in six steps: measure the control(s); compare with lot targets and SD; evaluate the approved QC rules; if QC fails, investigate the cause; if needed, correct the cause and rerun QC; if QC passes, follow the release SOP. If QC is out of control, do not release patient results until the issue is resolved under SOP.'**
+  /// **'Diagram, QC run decision: 1 measure the control materials; 2 plot them on the Levey–Jennings chart against the target mean ± SD. Decision: is a rejection rule violated (1-3s, 2-2s, R-4s, 4-1s, 10x)? No — accept the run (1-2s alone is a warning only). Yes — reject: stop and do not report patient results; find the cause instead of just repeating QC; fix it and recheck QC and patient samples; report once QC is in control and record the actions.'**
   String get imgDiagramQcDecisionAlt;
 
   /// No description provided for @imgDiagramPreanalyticsAlt.
   ///
   /// In en, this message translates to:
-  /// **'Diagram, preanalytics and specimen integrity in six steps: correct patient identification; confirm requested tests; select the proper tube and method; label at collection; transport per the temperature and time SOP; assess acceptance before analysis. Example process map.'**
+  /// **'Diagram, preanalytical phase in five steps: 1 prepare for testing (patient preparation); 2 select specimen and additive (tube for the test, order of draw); 3 collect and identify (full name matches the request form); 4 separate and store within sample stability; 5 transport and receive, rechecking labels and forms. Decision: specimen acceptable? Yes — analysis; no — follow the laboratory SOP.'**
   String get imgDiagramPreanalyticsAlt;
 
   /// No description provided for @imgDiagramPhotometryAlt.
   ///
   /// In en, this message translates to:
-  /// **'Diagram, principle of absorbance photometry in six steps: light source and wavelength; optical path through the cuvette; the sample absorbs light; the detector measures transmitted light; calculate absorbance A = log10(I0/I); quantify with a verified calibration. Beer–Lambert linearity has limits; the reagent IFU sets wavelengths, blanks and calibration.'**
+  /// **'Diagram, absorbance photometry: light source, filter (wavelength λ), cuvette with light path ℓ, detector and result. Incident light I0, transmitted light I; absorbance A = log10(I0/I); Beer–Lambert law A = ε·ℓ·c. Measure blank, standard and sample; C = (A sample ÷ A standard) × C standard. Above the linearity limit: dilute, repeat and multiply by the dilution factor. Wavelength, blank and limits follow the reagent IFU.'**
   String get imgDiagramPhotometryAlt;
 
   /// No description provided for @imgDiagramEducationalFeedbackAlt.
   ///
   /// In en, this message translates to:
-  /// **'Diagram, teacher–student learning loop in six steps: the teacher chooses a topic; creates an evidence-linked assignment; the student studies the materials; completes the assessment; receives explained feedback; the teacher reviews progress and adapts. A product workflow diagram, not a scientific image.'**
+  /// **'Diagram, learning from a practice quiz: 1 answer the questions; 2 see your score. Decision: any mistakes? No — try again or choose another topic. Yes — 3 review your mistakes with the correct answer and explanation; 4 practice only the questions you missed, then answer again. An app workflow, not a laboratory procedure.'**
   String get imgDiagramEducationalFeedbackAlt;
 
   /// No description provided for @imgDiagramCaption.

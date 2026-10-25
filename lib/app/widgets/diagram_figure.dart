@@ -3,9 +3,10 @@ import 'package:material_ui/material_ui.dart';
 import '../../design/tokens.dart';
 import '../../l10n/gen/app_localizations.dart';
 
-/// LabGuide uchun chizilgan umumiy sxemalar (egasi taqdim etgan to'plam;
-/// huquq holati: docs/DIAGRAMS_PROVENANCE.md). Fayllar:
-/// `assets/diagrams/<mavzu>.<til>.png` (960×640, uz/ru/en).
+/// LabGuide uchun repoda yaratilgan original jarayon sxemalari
+/// (`tool/diagrams/gen_diagrams.py`; kelib chiqishi: docs/DIAGRAMS_PROVENANCE.md,
+/// mazmun manbalari: docs/DIAGRAMS_CONTENT_SOURCES.md). Fayllar:
+/// `assets/diagrams/<mavzu>.<til>.png` (1920×1280 = 960×640 nisbatda 2×, uz/ru/en).
 enum DiagramTopic {
   calibrationOverview('calibration_overview'),
   differentialCount('differential_count'),

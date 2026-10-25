@@ -10353,27 +10353,27 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get imgDiagramCalibrationOverviewAlt =>
-      'Kalibrlashning umumiy tartibi sxemasi, olti qadam: apparat va usulni aniqlash; reagent, REF va IFU versiyasini tekshirish; mos lotdagi kalibratorni tayyorlash; aniq apparat yo‘riqnomasiga rioya qilish; kalibrlash va mustaqil QC ni baholash; natijani qayd etish, qaror SOP bo‘yicha. Apparat monitori surati emas.';
+      'Kalibrlash tartibi sxemasi: 1 model, reagent va yo‘riqnoma versiyasi; 2 kalibrator loti, qiymatlar aynan shu lotning qiymatlar varag‘idan; 3 metodga mos tayyorlash; 4 yo‘riqnoma bo‘yicha kalibrlash. Qaror: kalibrlashdan keyingi QC o‘tdimi? Ha — vakolatli shaxs qabul qiladi; yo‘q — qabul qilinmaydi, sabab IFU va SOP bo‘yicha izlanadi. Parametrlar faqat mos IFU’dan olinadi.';
 
   @override
   String get imgDiagramDifferentialCountAlt =>
-      'Qo‘lda leykoformula sanog‘i sxemasi, olti qadam: surtma va hujayra taqsimotini baholash; belgilangan joyda hujayralarni tanish; SOP belgilagan sondagi hujayrani sanash; foiz ulushlarini hisoblash; WBC asosida mutlaq sonlarni hisoblash; atipik hujayralarni qayta ko‘rib, xulosa qilish.';
+      'Leykoformulani qo‘lda sanash sxemasi: 1 surtmani baholang (tekis, chiziq va teshiksiz; yomon bo‘lsa — yangisini tayyorlang); 2 ×100 immersiyada bir qavatli zonada, bir yo‘nalishda, maydonlarni takrorlamay sanang; 3 SOP bo‘yicha, odatda 100 hujayra sanang; 4 har bir tur ulushi %, mutlaq son = ulush × WBC. Qaror: blast yoki aniqlanmagan hujayra bormi? Ha — o‘zingiz talqin qilmang, surtmani gematolog yoki shifokor ko‘rsin; yo‘q — laboratoriya blankasidagi referens oraliq bilan solishtiring.';
 
   @override
   String get imgDiagramQcDecisionAlt =>
-      'Sifat nazorati bo‘yicha qaror qabul qilish sxemasi, olti qadam: nazorat materialini o‘lchash; lot maqsad qiymati va SD bilan solishtirish; tasdiqlangan QC qoidalarini tekshirish; QC buzilsa, sababini aniqlash; zarur bo‘lsa, tuzatib QC ni takrorlash; QC o‘tsa, natijani chiqarish SOP iga amal qilish. QC nazoratdan chiqsa, sabab SOP bo‘yicha bartaraf etilmaguncha bemor natijasini chiqarmang.';
+      'Sifat nazorati seriyasi bo‘yicha qaror sxemasi: 1 nazorat materiallarini o‘lchash; 2 qiymatlarni Levey–Jennings grafigiga maqsadli o‘rtacha ± SD bo‘yicha qo‘yish. Qaror: rad qoidasi buzildimi (1-3s, 2-2s, R-4s, 4-1s, 10x)? Yo‘q — seriya qabul qilinadi (faqat 1-2s — ogohlantirish). Ha — seriya rad etiladi: bemor natijalari berilmaydi; sabab izlanadi, nazorat shunchaki takrorlanmaydi; tuzatilib, QC va bemor namunalari qayta tekshiriladi; QC tiklangach natija beriladi, choralar yoziladi.';
 
   @override
   String get imgDiagramPreanalyticsAlt =>
-      'Preanalitika va namuna sifati sxemasi, olti qadam: bemor shaxsini to‘g‘ri aniqlash; buyurilgan tahlillarni tekshirish; mos probirka va usulni tanlash; olayotganda namunani belgilash; SOP dagi vaqt va haroratda yetkazish; tahlildan oldin yaroqliligini baholash. Namunaviy jarayon sxemasi.';
+      'Preanalitik bosqich sxemasi, besh qadam: 1 tahlilga tayyorlash (bemor tayyorgarligi); 2 namuna va qo‘shimchani tanlash (tahlilga mos probirka, olish tartibi); 3 olish va identifikatsiya (to‘liq ism yo‘llanmaga mos); 4 ajratish va saqlash, namuna barqarorligi muddatida; 5 tashish va qabul qilish, yorliq va yo‘llanmani qayta tekshirish. Qaror: namuna yaroqlimi? Ha — tahlil; yo‘q — laboratoriya SOP’iga ko‘ra.';
 
   @override
   String get imgDiagramPhotometryAlt =>
-      'Absorbsion fotometriya tamoyili sxemasi, olti qadam: yorug‘lik manbai va to‘lqin uzunligi; kyuveta orqali optik yo‘l; namuna yorug‘likni yutadi; detektor o‘tgan nurni o‘lchaydi; absorbsiya A = log10(I0/I); tasdiqlangan kalibrovka bilan miqdorini topish. Buger–Lambert–Ber qonunining chiziqli sohasi cheklangan; parametrlarni reagent IFU belgilaydi.';
+      'Absorbsion fotometriya sxemasi: nur manbai, filtr (to‘lqin uzunligi λ), optik yo‘li ℓ bo‘lgan kyuveta, detektor va natija. Tushayotgan nur I0, o‘tgan nur I; optik zichlik A = log10(I0/I); Buger–Lambert–Ber qonuni A = ε·ℓ·c. Blank, standart va namuna o‘lchanadi; C = (A namuna ÷ A standart) × C standart. Chiziqlilik chegarasidan oshsa — suyultirib takrorlanadi va natija suyultirish darajasiga ko‘paytiriladi. To‘lqin uzunligi, blank va chegaralar — reagent IFU’siga ko‘ra.';
 
   @override
   String get imgDiagramEducationalFeedbackAlt =>
-      'Ustoz–talaba o‘quv jarayoni sxemasi, olti qadam: ustoz mavzuni tanlaydi; manbali topshiriq tuzadi; talaba materialni o‘rganadi; testni bajaradi; izohli tahlilni oladi; ustoz natijani ko‘rib, rejalashtiradi. Ilova jarayoni sxemasi, ilmiy mikrofoto emas.';
+      'Test natijasidan o‘rganish sxemasi: 1 savollarga javob bering; 2 natijani ko‘ring. Qaror: xato bormi? Yo‘q — qayta boshlash yoki boshqa mavzu. Ha — 3 xatolar ustida ishlash: to‘g‘ri javob va izoh; 4 faqat xato javob berilgan savollarni qayta ishlash, so‘ng yana javob berish. Ilova ishlash tartibi, laboratoriya jarayoni emas.';
 
   @override
   String get imgDiagramCaption =>

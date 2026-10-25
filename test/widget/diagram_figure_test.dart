@@ -12,10 +12,34 @@ import 'package:material_ui/material_ui.dart';
 
 import '../helpers/harness.dart';
 
-/// Egasi taqdim etgan 18 ta sxema (6 mavzu × uz/ru/en): fayllar, o'lcham,
-/// hajm, huquq jadvali (sha256), uch tilli muqobil matn, 320 px / ×1.3
-/// maketi va ekranlarda ko'rinishi.
+/// Repoda yaratilgan 18 ta original sxema (6 mavzu × uz/ru/en): fayllar,
+/// o'lcham, hajm, kelib chiqish jadvali (PNG va SVG sha256, holat
+/// ORIGINAL_CREATED_IN_REPO), eski (muallifi noma'lum) rasmlar qaytmagani,
+/// uch tilli muqobil matn, 320 px / ×1.3 maketi va ekranlarda ko'rinishi.
 const _langs = ['uz', 'ru', 'en'];
+
+/// Iste'moldan chiqarilgan eski 18 ta rasm (muallifi noma'lum, 2026-10-24
+/// paketi) — sha256; docs/DIAGRAMS_PROVENANCE.md dagi RETIRED jadval.
+const _retired = <String>{
+  '65ebf953a8d7ac4a0e605a779dfa4f05eb834c23e97c58927bea0b4d8fabafbd',
+  'd18a55fcbd66fbb6e1dce193e31da88f32722f76f0ce776ee7d7a3c1ae0a9974',
+  'c99b6471e25191c0432609bb02f1858cb57e24ce8e2cdffd6f3f2465df122054',
+  '737341ae9ccb6897eb184b6251825a7308e44c71dc062bcd71954bb63a530e7e',
+  'e7b45f88ee87882badb8ada9e66fc9f4322703e2be728b018601bf85eca39d0d',
+  '0a3d92daa679fd4b14087d745b9e7ac7c115cbf808cb7eb47903f6cc06d2f595',
+  '447817f63c794d64a3d609cf14a7e3c7eebd71c6c350bd8c12d15c35e547dd6e',
+  '3043b84375dd34ba417f7149fd3fe99da19afbd484c5b491880dd54956cecc3a',
+  '81673cf2dddae5fa7b8c5967b56c51b576b6fea339b229cfd7c591f3f3ae129d',
+  '50c1ca01aef0897232299192ee9b62b9dc22dae4e037599ffc1193e506eae118',
+  'f2dc1edc870435fff67e48b7b4479cd88a937f5073bbc0fd982e4501880bfd0b',
+  '17e7f19fefe7bdff5cee6c245720e8d057c58fc9ecacdc4a52c5a0d03eafb062',
+  'c50788f4b95c2df6537eed50f934b468bcccee3015ca72663be9fb740c769afc',
+  '643c3fb8432ac420673e16d7fd28c852b2cac4ee1c3c97629f4d0becd9263c9b',
+  'f94c5fbe3b31c9e86ba17d7fe85236e58757016dd311a363638c641529c47dce',
+  '5491cab79b29facbd0aa3846bf2b75598669983bcac87f84518a1d567f4c14ab',
+  '217afce71b593ce4728cb80d4095c64aa9a9c194dfde2c17b8229ae89e8c490e',
+  '021090e740e0681c5c93d2657933b129b85378b53af3e01f06c7cb60cf349e07',
+};
 
 Future<void> _pump(
   WidgetTester tester,
@@ -72,8 +96,44 @@ void main() {
           final digest = sha256.convert(bytes).toString();
           expect(doc, contains(digest), reason: '$path sha256 missing in doc');
           expect(doc, contains(path.split('/').last), reason: path);
+          // Eski (muallifi noma'lum) rasm qaytib kelmasin.
+          expect(_retired, isNot(contains(digest)), reason: '$path is retired');
+          // Jadval qatori: fayl nomi, PNG sha, SVG manba sha, holat.
+          final name = path.split('/').last;
+          final row = doc
+              .split('\n')
+              .firstWhere(
+                (l) => l.startsWith('| `$name`') && l.contains(digest),
+                orElse: () => '',
+              );
+          expect(row, contains('ORIGINAL_CREATED_IN_REPO'), reason: name);
+          final svg = File(
+            'tool/diagrams/svg/${name.replaceAll('.png', '.svg')}',
+          );
+          expect(svg.existsSync(), isTrue, reason: svg.path);
+          final svgDigest = sha256.convert(svg.readAsBytesSync()).toString();
+          expect(row, contains(svgDigest), reason: '${svg.path} sha256');
         }
       }
+    });
+
+    test('provenance: original status, retired list, content sources doc', () {
+      final doc = File('docs/DIAGRAMS_PROVENANCE.md').readAsStringSync();
+      expect(doc, contains('ORIGINAL_CREATED_IN_REPO'));
+      expect(doc, contains('tool/diagrams/gen_diagrams.py'));
+      expect(doc, contains('docs/DIAGRAMS_CONTENT_SOURCES.md'));
+      // Eski 18 ta sha qayd uchun saqlangan; egasi nomidan tasdiq yozilmagan.
+      for (final h in _retired) {
+        expect(doc, contains(h));
+      }
+      expect(doc, isNot(contains('APPROVED')));
+      final sources = File('docs/DIAGRAMS_CONTENT_SOURCES.md');
+      expect(sources.existsSync(), isTrue);
+      final text = sources.readAsStringSync();
+      for (final t in DiagramTopic.values) {
+        expect(text, contains('## ${t.file}'), reason: t.file);
+      }
+      expect(text, contains('NEEDS_EXPERT'));
     });
 
     test('unknown language falls back to English asset', () {
