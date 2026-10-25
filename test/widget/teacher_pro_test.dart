@@ -12,6 +12,7 @@ import 'package:labguide/core/entitlements/entitlement_service.dart';
 import 'package:labguide/core/entitlements/feature.dart';
 import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/design/widgets/lg_widgets.dart';
+import 'package:labguide/features/profile/pro_gate.dart';
 import 'package:labguide/features/profile/purchase_screen.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/features/teacher_pro/student_teacher_tests_screens.dart';
@@ -32,7 +33,16 @@ final en = lookupAppLocalizations(const Locale('en'));
 const _tall = Size(390, 2400);
 
 /// Server huquqi holatlari (D-78 / D-76).
-enum Ent { free, trialTeacher, teacher, premium, student, expired, offline }
+enum Ent {
+  free,
+  trialTeacher,
+  trialStudent,
+  teacher,
+  premium,
+  student,
+  expired,
+  offline,
+}
 
 EntitlementSnapshot _snap(Ent e) {
   final now = DateTime.now().toUtc();
@@ -56,6 +66,20 @@ EntitlementSnapshot _snap(Ent e) {
           platform: 'trial',
           source: ServerEntitlement.trialSource,
           plan: ProPlan.teacher,
+          status: EntitlementStatus.active,
+          startedAt: now,
+          expiresAt: now.add(
+            const Duration(days: ProTrialConfig.serverTrialDays),
+          ),
+          ownership: 'trial',
+        ),
+      ],
+      Ent.trialStudent => [
+        ServerEntitlement(
+          productId: 'trial.student',
+          platform: 'trial',
+          source: ServerEntitlement.trialSource,
+          plan: ProPlan.student,
           status: EntitlementStatus.active,
           startedAt: now,
           expiresAt: now.add(
@@ -271,6 +295,21 @@ void main() {
         expect(e.api.calls, isEmpty);
       },
     );
+
+    testWidgets('mehmon: talaba tomoni gate oynasi (to‘lov oynasi) xatosiz '
+        'ochiladi — hisobga kirish taklifi bilan', (tester) async {
+      final e = await _env(tester, guest: true, role: AppRole.student);
+      await pumpApp(tester, e.s, size: _tall);
+      await goTo(tester, purchaseRoute(Feature.teacherTests));
+      expect(_purchaseOpen(), isTrue);
+      expect(tester.takeException(), isNull);
+      expect(find.text(uz.proFeatTeacherTests), findsWidgets);
+      expect(
+        find.text(uz.proPaySubscribe),
+        findsNothing,
+        reason: 'mehmon xarid qilmaydi',
+      );
+    });
 
     testWidgets(
       'obuna yo‘q, lekin avval yaratilgan testlar va natijalar ko‘rinadi '
@@ -545,6 +584,7 @@ void main() {
     for (final (ent, open) in [
       (Ent.free, false),
       (Ent.expired, false),
+      (Ent.trialStudent, true),
       (Ent.student, true),
       (Ent.premium, true),
       (Ent.offline, true),
