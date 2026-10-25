@@ -38,7 +38,8 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsPhotometerReagentsFn' => l.schemPartsPhotometerReagentsFn,
   'schemPartsPhotometerPrinciple' => l.schemPartsPhotometerPrinciple,
   'schemPartsPhotometerResult' => l.schemPartsPhotometerResult,
-  'schemPartsHematology5AutoloaderName' => l.schemPartsHematology5AutoloaderName,
+  'schemPartsHematology5AutoloaderName' =>
+    l.schemPartsHematology5AutoloaderName,
   'schemPartsHematology5AutoloaderFn' => l.schemPartsHematology5AutoloaderFn,
   'schemPartsHematology5ProbeName' => l.schemPartsHematology5ProbeName,
   'schemPartsHematology5ProbeFn' => l.schemPartsHematology5ProbeFn,
@@ -80,9 +81,11 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsImmunoassayIncubatorFn' => l.schemPartsImmunoassayIncubatorFn,
   'schemPartsImmunoassayWashName' => l.schemPartsImmunoassayWashName,
   'schemPartsImmunoassayWashFn' => l.schemPartsImmunoassayWashFn,
-  'schemPartsImmunoassayLuminometerName' => l.schemPartsImmunoassayLuminometerName,
+  'schemPartsImmunoassayLuminometerName' =>
+    l.schemPartsImmunoassayLuminometerName,
   'schemPartsImmunoassayLuminometerFn' => l.schemPartsImmunoassayLuminometerFn,
-  'schemPartsImmunoassaySolidwasteName' => l.schemPartsImmunoassaySolidwasteName,
+  'schemPartsImmunoassaySolidwasteName' =>
+    l.schemPartsImmunoassaySolidwasteName,
   'schemPartsImmunoassaySolidwasteFn' => l.schemPartsImmunoassaySolidwasteFn,
   'schemPartsImmunoassayLiquidsName' => l.schemPartsImmunoassayLiquidsName,
   'schemPartsImmunoassayLiquidsFn' => l.schemPartsImmunoassayLiquidsFn,
@@ -120,7 +123,8 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsUrineSystemResult' => l.schemPartsUrineSystemResult,
   'schemPartsMassSpecGcGasName' => l.schemPartsMassSpecGcGasName,
   'schemPartsMassSpecGcGasFn' => l.schemPartsMassSpecGcGasFn,
-  'schemPartsMassSpecGcAutosamplerName' => l.schemPartsMassSpecGcAutosamplerName,
+  'schemPartsMassSpecGcAutosamplerName' =>
+    l.schemPartsMassSpecGcAutosamplerName,
   'schemPartsMassSpecGcAutosamplerFn' => l.schemPartsMassSpecGcAutosamplerFn,
   'schemPartsMassSpecGcInjectorName' => l.schemPartsMassSpecGcInjectorName,
   'schemPartsMassSpecGcInjectorFn' => l.schemPartsMassSpecGcInjectorFn,
@@ -144,7 +148,8 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsMassSpecLcSolventsFn' => l.schemPartsMassSpecLcSolventsFn,
   'schemPartsMassSpecLcPumpName' => l.schemPartsMassSpecLcPumpName,
   'schemPartsMassSpecLcPumpFn' => l.schemPartsMassSpecLcPumpFn,
-  'schemPartsMassSpecLcAutosamplerName' => l.schemPartsMassSpecLcAutosamplerName,
+  'schemPartsMassSpecLcAutosamplerName' =>
+    l.schemPartsMassSpecLcAutosamplerName,
   'schemPartsMassSpecLcAutosamplerFn' => l.schemPartsMassSpecLcAutosamplerFn,
   'schemPartsMassSpecLcColumnName' => l.schemPartsMassSpecLcColumnName,
   'schemPartsMassSpecLcColumnFn' => l.schemPartsMassSpecLcColumnFn,
@@ -178,15 +183,22 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsMaldiTofResult' => l.schemPartsMaldiTofResult,
   'schemPartsMicrobialIdAstCardName' => l.schemPartsMicrobialIdAstCardName,
   'schemPartsMicrobialIdAstCardFn' => l.schemPartsMicrobialIdAstCardFn,
-  'schemPartsMicrobialIdAstSuspensionName' => l.schemPartsMicrobialIdAstSuspensionName,
-  'schemPartsMicrobialIdAstSuspensionFn' => l.schemPartsMicrobialIdAstSuspensionFn,
-  'schemPartsMicrobialIdAstFillingName' => l.schemPartsMicrobialIdAstFillingName,
+  'schemPartsMicrobialIdAstSuspensionName' =>
+    l.schemPartsMicrobialIdAstSuspensionName,
+  'schemPartsMicrobialIdAstSuspensionFn' =>
+    l.schemPartsMicrobialIdAstSuspensionFn,
+  'schemPartsMicrobialIdAstFillingName' =>
+    l.schemPartsMicrobialIdAstFillingName,
   'schemPartsMicrobialIdAstFillingFn' => l.schemPartsMicrobialIdAstFillingFn,
-  'schemPartsMicrobialIdAstIncubatorName' => l.schemPartsMicrobialIdAstIncubatorName,
-  'schemPartsMicrobialIdAstIncubatorFn' => l.schemPartsMicrobialIdAstIncubatorFn,
-  'schemPartsMicrobialIdAstScannerName' => l.schemPartsMicrobialIdAstScannerName,
+  'schemPartsMicrobialIdAstIncubatorName' =>
+    l.schemPartsMicrobialIdAstIncubatorName,
+  'schemPartsMicrobialIdAstIncubatorFn' =>
+    l.schemPartsMicrobialIdAstIncubatorFn,
+  'schemPartsMicrobialIdAstScannerName' =>
+    l.schemPartsMicrobialIdAstScannerName,
   'schemPartsMicrobialIdAstScannerFn' => l.schemPartsMicrobialIdAstScannerFn,
-  'schemPartsMicrobialIdAstSoftwareName' => l.schemPartsMicrobialIdAstSoftwareName,
+  'schemPartsMicrobialIdAstSoftwareName' =>
+    l.schemPartsMicrobialIdAstSoftwareName,
   'schemPartsMicrobialIdAstSoftwareFn' => l.schemPartsMicrobialIdAstSoftwareFn,
   'schemPartsMicrobialIdAstPrinciple' => l.schemPartsMicrobialIdAstPrinciple,
   'schemPartsMicrobialIdAstResult' => l.schemPartsMicrobialIdAstResult,
@@ -194,7 +206,8 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsBloodCultureVialsFn' => l.schemPartsBloodCultureVialsFn,
   'schemPartsBloodCultureSensorName' => l.schemPartsBloodCultureSensorName,
   'schemPartsBloodCultureSensorFn' => l.schemPartsBloodCultureSensorFn,
-  'schemPartsBloodCultureIncubatorName' => l.schemPartsBloodCultureIncubatorName,
+  'schemPartsBloodCultureIncubatorName' =>
+    l.schemPartsBloodCultureIncubatorName,
   'schemPartsBloodCultureIncubatorFn' => l.schemPartsBloodCultureIncubatorFn,
   'schemPartsBloodCultureReaderName' => l.schemPartsBloodCultureReaderName,
   'schemPartsBloodCultureReaderFn' => l.schemPartsBloodCultureReaderFn,
@@ -204,25 +217,40 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsBloodCultureSoftwareFn' => l.schemPartsBloodCultureSoftwareFn,
   'schemPartsBloodCulturePrinciple' => l.schemPartsBloodCulturePrinciple,
   'schemPartsBloodCultureResult' => l.schemPartsBloodCultureResult,
-  'schemPartsMycobacterialCultureTubeName' => l.schemPartsMycobacterialCultureTubeName,
-  'schemPartsMycobacterialCultureTubeFn' => l.schemPartsMycobacterialCultureTubeFn,
-  'schemPartsMycobacterialCultureSensorName' => l.schemPartsMycobacterialCultureSensorName,
-  'schemPartsMycobacterialCultureSensorFn' => l.schemPartsMycobacterialCultureSensorFn,
-  'schemPartsMycobacterialCultureDrawerName' => l.schemPartsMycobacterialCultureDrawerName,
-  'schemPartsMycobacterialCultureDrawerFn' => l.schemPartsMycobacterialCultureDrawerFn,
-  'schemPartsMycobacterialCultureLightsName' => l.schemPartsMycobacterialCultureLightsName,
-  'schemPartsMycobacterialCultureLightsFn' => l.schemPartsMycobacterialCultureLightsFn,
-  'schemPartsMycobacterialCulturePanelName' => l.schemPartsMycobacterialCulturePanelName,
-  'schemPartsMycobacterialCulturePanelFn' => l.schemPartsMycobacterialCulturePanelFn,
-  'schemPartsMycobacterialCultureSoftwareName' => l.schemPartsMycobacterialCultureSoftwareName,
-  'schemPartsMycobacterialCultureSoftwareFn' => l.schemPartsMycobacterialCultureSoftwareFn,
-  'schemPartsMycobacterialCulturePrinciple' => l.schemPartsMycobacterialCulturePrinciple,
-  'schemPartsMycobacterialCultureResult' => l.schemPartsMycobacterialCultureResult,
+  'schemPartsMycobacterialCultureTubeName' =>
+    l.schemPartsMycobacterialCultureTubeName,
+  'schemPartsMycobacterialCultureTubeFn' =>
+    l.schemPartsMycobacterialCultureTubeFn,
+  'schemPartsMycobacterialCultureSensorName' =>
+    l.schemPartsMycobacterialCultureSensorName,
+  'schemPartsMycobacterialCultureSensorFn' =>
+    l.schemPartsMycobacterialCultureSensorFn,
+  'schemPartsMycobacterialCultureDrawerName' =>
+    l.schemPartsMycobacterialCultureDrawerName,
+  'schemPartsMycobacterialCultureDrawerFn' =>
+    l.schemPartsMycobacterialCultureDrawerFn,
+  'schemPartsMycobacterialCultureLightsName' =>
+    l.schemPartsMycobacterialCultureLightsName,
+  'schemPartsMycobacterialCultureLightsFn' =>
+    l.schemPartsMycobacterialCultureLightsFn,
+  'schemPartsMycobacterialCulturePanelName' =>
+    l.schemPartsMycobacterialCulturePanelName,
+  'schemPartsMycobacterialCulturePanelFn' =>
+    l.schemPartsMycobacterialCulturePanelFn,
+  'schemPartsMycobacterialCultureSoftwareName' =>
+    l.schemPartsMycobacterialCultureSoftwareName,
+  'schemPartsMycobacterialCultureSoftwareFn' =>
+    l.schemPartsMycobacterialCultureSoftwareFn,
+  'schemPartsMycobacterialCulturePrinciple' =>
+    l.schemPartsMycobacterialCulturePrinciple,
+  'schemPartsMycobacterialCultureResult' =>
+    l.schemPartsMycobacterialCultureResult,
   'schemPartsFlowCytometerSheathName' => l.schemPartsFlowCytometerSheathName,
   'schemPartsFlowCytometerSheathFn' => l.schemPartsFlowCytometerSheathFn,
   'schemPartsFlowCytometerSampleName' => l.schemPartsFlowCytometerSampleName,
   'schemPartsFlowCytometerSampleFn' => l.schemPartsFlowCytometerSampleFn,
-  'schemPartsFlowCytometerFlowcellName' => l.schemPartsFlowCytometerFlowcellName,
+  'schemPartsFlowCytometerFlowcellName' =>
+    l.schemPartsFlowCytometerFlowcellName,
   'schemPartsFlowCytometerFlowcellFn' => l.schemPartsFlowCytometerFlowcellFn,
   'schemPartsFlowCytometerLaserName' => l.schemPartsFlowCytometerLaserName,
   'schemPartsFlowCytometerLaserFn' => l.schemPartsFlowCytometerLaserFn,
@@ -232,7 +260,8 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsFlowCytometerSscFn' => l.schemPartsFlowCytometerSscFn,
   'schemPartsFlowCytometerWasteName' => l.schemPartsFlowCytometerWasteName,
   'schemPartsFlowCytometerWasteFn' => l.schemPartsFlowCytometerWasteFn,
-  'schemPartsFlowCytometerComputerName' => l.schemPartsFlowCytometerComputerName,
+  'schemPartsFlowCytometerComputerName' =>
+    l.schemPartsFlowCytometerComputerName,
   'schemPartsFlowCytometerComputerFn' => l.schemPartsFlowCytometerComputerFn,
   'schemPartsFlowCytometerPrinciple' => l.schemPartsFlowCytometerPrinciple,
   'schemPartsFlowCytometerResult' => l.schemPartsFlowCytometerResult,
@@ -252,17 +281,27 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsRealTimePcrSoftwareFn' => l.schemPartsRealTimePcrSoftwareFn,
   'schemPartsRealTimePcrPrinciple' => l.schemPartsRealTimePcrPrinciple,
   'schemPartsRealTimePcrResult' => l.schemPartsRealTimePcrResult,
-  'schemPartsCartridgeMolecularCartridgeName' => l.schemPartsCartridgeMolecularCartridgeName,
-  'schemPartsCartridgeMolecularCartridgeFn' => l.schemPartsCartridgeMolecularCartridgeFn,
-  'schemPartsCartridgeMolecularTubeName' => l.schemPartsCartridgeMolecularTubeName,
+  'schemPartsCartridgeMolecularCartridgeName' =>
+    l.schemPartsCartridgeMolecularCartridgeName,
+  'schemPartsCartridgeMolecularCartridgeFn' =>
+    l.schemPartsCartridgeMolecularCartridgeFn,
+  'schemPartsCartridgeMolecularTubeName' =>
+    l.schemPartsCartridgeMolecularTubeName,
   'schemPartsCartridgeMolecularTubeFn' => l.schemPartsCartridgeMolecularTubeFn,
-  'schemPartsCartridgeMolecularSpecimenName' => l.schemPartsCartridgeMolecularSpecimenName,
-  'schemPartsCartridgeMolecularSpecimenFn' => l.schemPartsCartridgeMolecularSpecimenFn,
-  'schemPartsCartridgeMolecularModuleName' => l.schemPartsCartridgeMolecularModuleName,
-  'schemPartsCartridgeMolecularModuleFn' => l.schemPartsCartridgeMolecularModuleFn,
-  'schemPartsCartridgeMolecularSoftwareName' => l.schemPartsCartridgeMolecularSoftwareName,
-  'schemPartsCartridgeMolecularSoftwareFn' => l.schemPartsCartridgeMolecularSoftwareFn,
-  'schemPartsCartridgeMolecularPrinciple' => l.schemPartsCartridgeMolecularPrinciple,
+  'schemPartsCartridgeMolecularSpecimenName' =>
+    l.schemPartsCartridgeMolecularSpecimenName,
+  'schemPartsCartridgeMolecularSpecimenFn' =>
+    l.schemPartsCartridgeMolecularSpecimenFn,
+  'schemPartsCartridgeMolecularModuleName' =>
+    l.schemPartsCartridgeMolecularModuleName,
+  'schemPartsCartridgeMolecularModuleFn' =>
+    l.schemPartsCartridgeMolecularModuleFn,
+  'schemPartsCartridgeMolecularSoftwareName' =>
+    l.schemPartsCartridgeMolecularSoftwareName,
+  'schemPartsCartridgeMolecularSoftwareFn' =>
+    l.schemPartsCartridgeMolecularSoftwareFn,
+  'schemPartsCartridgeMolecularPrinciple' =>
+    l.schemPartsCartridgeMolecularPrinciple,
   'schemPartsCartridgeMolecularResult' => l.schemPartsCartridgeMolecularResult,
   'schemPartsCoagAnalyzerSamplesName' => l.schemPartsCoagAnalyzerSamplesName,
   'schemPartsCoagAnalyzerSamplesFn' => l.schemPartsCoagAnalyzerSamplesFn,
@@ -356,7 +395,8 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsHba1cAnalyzerEluentsFn' => l.schemPartsHba1cAnalyzerEluentsFn,
   'schemPartsHba1cAnalyzerColumnName' => l.schemPartsHba1cAnalyzerColumnName,
   'schemPartsHba1cAnalyzerColumnFn' => l.schemPartsHba1cAnalyzerColumnFn,
-  'schemPartsHba1cAnalyzerDetectorName' => l.schemPartsHba1cAnalyzerDetectorName,
+  'schemPartsHba1cAnalyzerDetectorName' =>
+    l.schemPartsHba1cAnalyzerDetectorName,
   'schemPartsHba1cAnalyzerDetectorFn' => l.schemPartsHba1cAnalyzerDetectorFn,
   'schemPartsHba1cAnalyzerDisplayName' => l.schemPartsHba1cAnalyzerDisplayName,
   'schemPartsHba1cAnalyzerDisplayFn' => l.schemPartsHba1cAnalyzerDisplayFn,
@@ -378,22 +418,38 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsLabFridgeFreezerFn' => l.schemPartsLabFridgeFreezerFn,
   'schemPartsLabFridgePrinciple' => l.schemPartsLabFridgePrinciple,
   'schemPartsLabFridgeResult' => l.schemPartsLabFridgeResult,
-  'schemPartsFluorescenceMicroscopeEyepiecesName' => l.schemPartsFluorescenceMicroscopeEyepiecesName,
-  'schemPartsFluorescenceMicroscopeEyepiecesFn' => l.schemPartsFluorescenceMicroscopeEyepiecesFn,
-  'schemPartsFluorescenceMicroscopeLedName' => l.schemPartsFluorescenceMicroscopeLedName,
-  'schemPartsFluorescenceMicroscopeLedFn' => l.schemPartsFluorescenceMicroscopeLedFn,
-  'schemPartsFluorescenceMicroscopeCubeName' => l.schemPartsFluorescenceMicroscopeCubeName,
-  'schemPartsFluorescenceMicroscopeCubeFn' => l.schemPartsFluorescenceMicroscopeCubeFn,
-  'schemPartsFluorescenceMicroscopeObjectiveName' => l.schemPartsFluorescenceMicroscopeObjectiveName,
-  'schemPartsFluorescenceMicroscopeObjectiveFn' => l.schemPartsFluorescenceMicroscopeObjectiveFn,
-  'schemPartsFluorescenceMicroscopeStageName' => l.schemPartsFluorescenceMicroscopeStageName,
-  'schemPartsFluorescenceMicroscopeStageFn' => l.schemPartsFluorescenceMicroscopeStageFn,
-  'schemPartsFluorescenceMicroscopeFocusName' => l.schemPartsFluorescenceMicroscopeFocusName,
-  'schemPartsFluorescenceMicroscopeFocusFn' => l.schemPartsFluorescenceMicroscopeFocusFn,
-  'schemPartsFluorescenceMicroscopeFieldName' => l.schemPartsFluorescenceMicroscopeFieldName,
-  'schemPartsFluorescenceMicroscopeFieldFn' => l.schemPartsFluorescenceMicroscopeFieldFn,
-  'schemPartsFluorescenceMicroscopePrinciple' => l.schemPartsFluorescenceMicroscopePrinciple,
-  'schemPartsFluorescenceMicroscopeResult' => l.schemPartsFluorescenceMicroscopeResult,
+  'schemPartsFluorescenceMicroscopeEyepiecesName' =>
+    l.schemPartsFluorescenceMicroscopeEyepiecesName,
+  'schemPartsFluorescenceMicroscopeEyepiecesFn' =>
+    l.schemPartsFluorescenceMicroscopeEyepiecesFn,
+  'schemPartsFluorescenceMicroscopeLedName' =>
+    l.schemPartsFluorescenceMicroscopeLedName,
+  'schemPartsFluorescenceMicroscopeLedFn' =>
+    l.schemPartsFluorescenceMicroscopeLedFn,
+  'schemPartsFluorescenceMicroscopeCubeName' =>
+    l.schemPartsFluorescenceMicroscopeCubeName,
+  'schemPartsFluorescenceMicroscopeCubeFn' =>
+    l.schemPartsFluorescenceMicroscopeCubeFn,
+  'schemPartsFluorescenceMicroscopeObjectiveName' =>
+    l.schemPartsFluorescenceMicroscopeObjectiveName,
+  'schemPartsFluorescenceMicroscopeObjectiveFn' =>
+    l.schemPartsFluorescenceMicroscopeObjectiveFn,
+  'schemPartsFluorescenceMicroscopeStageName' =>
+    l.schemPartsFluorescenceMicroscopeStageName,
+  'schemPartsFluorescenceMicroscopeStageFn' =>
+    l.schemPartsFluorescenceMicroscopeStageFn,
+  'schemPartsFluorescenceMicroscopeFocusName' =>
+    l.schemPartsFluorescenceMicroscopeFocusName,
+  'schemPartsFluorescenceMicroscopeFocusFn' =>
+    l.schemPartsFluorescenceMicroscopeFocusFn,
+  'schemPartsFluorescenceMicroscopeFieldName' =>
+    l.schemPartsFluorescenceMicroscopeFieldName,
+  'schemPartsFluorescenceMicroscopeFieldFn' =>
+    l.schemPartsFluorescenceMicroscopeFieldFn,
+  'schemPartsFluorescenceMicroscopePrinciple' =>
+    l.schemPartsFluorescenceMicroscopePrinciple,
+  'schemPartsFluorescenceMicroscopeResult' =>
+    l.schemPartsFluorescenceMicroscopeResult,
   'schemPartsCasaCameraName' => l.schemPartsCasaCameraName,
   'schemPartsCasaCameraFn' => l.schemPartsCasaCameraFn,
   'schemPartsCasaMicroscopeName' => l.schemPartsCasaMicroscopeName,
@@ -406,9 +462,12 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsCasaSoftwareFn' => l.schemPartsCasaSoftwareFn,
   'schemPartsCasaPrinciple' => l.schemPartsCasaPrinciple,
   'schemPartsCasaResult' => l.schemPartsCasaResult,
-  'schemPartsGelCardSystemCentrifugeName' => l.schemPartsGelCardSystemCentrifugeName,
-  'schemPartsGelCardSystemCentrifugeFn' => l.schemPartsGelCardSystemCentrifugeFn,
-  'schemPartsGelCardSystemIncubatorName' => l.schemPartsGelCardSystemIncubatorName,
+  'schemPartsGelCardSystemCentrifugeName' =>
+    l.schemPartsGelCardSystemCentrifugeName,
+  'schemPartsGelCardSystemCentrifugeFn' =>
+    l.schemPartsGelCardSystemCentrifugeFn,
+  'schemPartsGelCardSystemIncubatorName' =>
+    l.schemPartsGelCardSystemIncubatorName,
   'schemPartsGelCardSystemIncubatorFn' => l.schemPartsGelCardSystemIncubatorFn,
   'schemPartsGelCardSystemCardName' => l.schemPartsGelCardSystemCardName,
   'schemPartsGelCardSystemCardFn' => l.schemPartsGelCardSystemCardFn,
@@ -416,9 +475,11 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsGelCardSystemChamberFn' => l.schemPartsGelCardSystemChamberFn,
   'schemPartsGelCardSystemGelName' => l.schemPartsGelCardSystemGelName,
   'schemPartsGelCardSystemGelFn' => l.schemPartsGelCardSystemGelFn,
-  'schemPartsGelCardSystemPositiveName' => l.schemPartsGelCardSystemPositiveName,
+  'schemPartsGelCardSystemPositiveName' =>
+    l.schemPartsGelCardSystemPositiveName,
   'schemPartsGelCardSystemPositiveFn' => l.schemPartsGelCardSystemPositiveFn,
-  'schemPartsGelCardSystemNegativeName' => l.schemPartsGelCardSystemNegativeName,
+  'schemPartsGelCardSystemNegativeName' =>
+    l.schemPartsGelCardSystemNegativeName,
   'schemPartsGelCardSystemNegativeFn' => l.schemPartsGelCardSystemNegativeFn,
   'schemPartsGelCardSystemPrinciple' => l.schemPartsGelCardSystemPrinciple,
   'schemPartsGelCardSystemResult' => l.schemPartsGelCardSystemResult,
@@ -444,8 +505,10 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsAggregometerLightFn' => l.schemPartsAggregometerLightFn,
   'schemPartsAggregometerCuvetteName' => l.schemPartsAggregometerCuvetteName,
   'schemPartsAggregometerCuvetteFn' => l.schemPartsAggregometerCuvetteFn,
-  'schemPartsAggregometerPhotodetectorName' => l.schemPartsAggregometerPhotodetectorName,
-  'schemPartsAggregometerPhotodetectorFn' => l.schemPartsAggregometerPhotodetectorFn,
+  'schemPartsAggregometerPhotodetectorName' =>
+    l.schemPartsAggregometerPhotodetectorName,
+  'schemPartsAggregometerPhotodetectorFn' =>
+    l.schemPartsAggregometerPhotodetectorFn,
   'schemPartsAggregometerCurvesName' => l.schemPartsAggregometerCurvesName,
   'schemPartsAggregometerCurvesFn' => l.schemPartsAggregometerCurvesFn,
   'schemPartsAggregometerCupName' => l.schemPartsAggregometerCupName,
@@ -458,16 +521,21 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsAggregometerResult' => l.schemPartsAggregometerResult,
   'schemPartsElectrophoresisPowerName' => l.schemPartsElectrophoresisPowerName,
   'schemPartsElectrophoresisPowerFn' => l.schemPartsElectrophoresisPowerFn,
-  'schemPartsElectrophoresisElectrodesName' => l.schemPartsElectrophoresisElectrodesName,
-  'schemPartsElectrophoresisElectrodesFn' => l.schemPartsElectrophoresisElectrodesFn,
+  'schemPartsElectrophoresisElectrodesName' =>
+    l.schemPartsElectrophoresisElectrodesName,
+  'schemPartsElectrophoresisElectrodesFn' =>
+    l.schemPartsElectrophoresisElectrodesFn,
   'schemPartsElectrophoresisWicksName' => l.schemPartsElectrophoresisWicksName,
   'schemPartsElectrophoresisWicksFn' => l.schemPartsElectrophoresisWicksFn,
-  'schemPartsElectrophoresisMediumName' => l.schemPartsElectrophoresisMediumName,
+  'schemPartsElectrophoresisMediumName' =>
+    l.schemPartsElectrophoresisMediumName,
   'schemPartsElectrophoresisMediumFn' => l.schemPartsElectrophoresisMediumFn,
   'schemPartsElectrophoresisCoverName' => l.schemPartsElectrophoresisCoverName,
   'schemPartsElectrophoresisCoverFn' => l.schemPartsElectrophoresisCoverFn,
-  'schemPartsElectrophoresisDensitometerName' => l.schemPartsElectrophoresisDensitometerName,
-  'schemPartsElectrophoresisDensitometerFn' => l.schemPartsElectrophoresisDensitometerFn,
+  'schemPartsElectrophoresisDensitometerName' =>
+    l.schemPartsElectrophoresisDensitometerName,
+  'schemPartsElectrophoresisDensitometerFn' =>
+    l.schemPartsElectrophoresisDensitometerFn,
   'schemPartsElectrophoresisPrinciple' => l.schemPartsElectrophoresisPrinciple,
   'schemPartsElectrophoresisResult' => l.schemPartsElectrophoresisResult,
   'schemPartsOsmometerTubesName' => l.schemPartsOsmometerTubesName,
@@ -500,21 +568,33 @@ String? schematicPartsText(AppLocalizations l, String id) => switch (id) {
   'schemPartsTlcSpotsFn' => l.schemPartsTlcSpotsFn,
   'schemPartsTlcPrinciple' => l.schemPartsTlcPrinciple,
   'schemPartsTlcResult' => l.schemPartsTlcResult,
-  'schemPartsAnalyticalBalancePipetteName' => l.schemPartsAnalyticalBalancePipetteName,
-  'schemPartsAnalyticalBalancePipetteFn' => l.schemPartsAnalyticalBalancePipetteFn,
-  'schemPartsAnalyticalBalanceVesselName' => l.schemPartsAnalyticalBalanceVesselName,
-  'schemPartsAnalyticalBalanceVesselFn' => l.schemPartsAnalyticalBalanceVesselFn,
+  'schemPartsAnalyticalBalancePipetteName' =>
+    l.schemPartsAnalyticalBalancePipetteName,
+  'schemPartsAnalyticalBalancePipetteFn' =>
+    l.schemPartsAnalyticalBalancePipetteFn,
+  'schemPartsAnalyticalBalanceVesselName' =>
+    l.schemPartsAnalyticalBalanceVesselName,
+  'schemPartsAnalyticalBalanceVesselFn' =>
+    l.schemPartsAnalyticalBalanceVesselFn,
   'schemPartsAnalyticalBalancePanName' => l.schemPartsAnalyticalBalancePanName,
   'schemPartsAnalyticalBalancePanFn' => l.schemPartsAnalyticalBalancePanFn,
-  'schemPartsAnalyticalBalanceEnclosureName' => l.schemPartsAnalyticalBalanceEnclosureName,
-  'schemPartsAnalyticalBalanceEnclosureFn' => l.schemPartsAnalyticalBalanceEnclosureFn,
-  'schemPartsAnalyticalBalanceDisplayName' => l.schemPartsAnalyticalBalanceDisplayName,
-  'schemPartsAnalyticalBalanceDisplayFn' => l.schemPartsAnalyticalBalanceDisplayFn,
-  'schemPartsAnalyticalBalanceWaterName' => l.schemPartsAnalyticalBalanceWaterName,
+  'schemPartsAnalyticalBalanceEnclosureName' =>
+    l.schemPartsAnalyticalBalanceEnclosureName,
+  'schemPartsAnalyticalBalanceEnclosureFn' =>
+    l.schemPartsAnalyticalBalanceEnclosureFn,
+  'schemPartsAnalyticalBalanceDisplayName' =>
+    l.schemPartsAnalyticalBalanceDisplayName,
+  'schemPartsAnalyticalBalanceDisplayFn' =>
+    l.schemPartsAnalyticalBalanceDisplayFn,
+  'schemPartsAnalyticalBalanceWaterName' =>
+    l.schemPartsAnalyticalBalanceWaterName,
   'schemPartsAnalyticalBalanceWaterFn' => l.schemPartsAnalyticalBalanceWaterFn,
-  'schemPartsAnalyticalBalanceThermometerName' => l.schemPartsAnalyticalBalanceThermometerName,
-  'schemPartsAnalyticalBalanceThermometerFn' => l.schemPartsAnalyticalBalanceThermometerFn,
-  'schemPartsAnalyticalBalancePrinciple' => l.schemPartsAnalyticalBalancePrinciple,
+  'schemPartsAnalyticalBalanceThermometerName' =>
+    l.schemPartsAnalyticalBalanceThermometerName,
+  'schemPartsAnalyticalBalanceThermometerFn' =>
+    l.schemPartsAnalyticalBalanceThermometerFn,
+  'schemPartsAnalyticalBalancePrinciple' =>
+    l.schemPartsAnalyticalBalancePrinciple,
   'schemPartsAnalyticalBalanceResult' => l.schemPartsAnalyticalBalanceResult,
   _ => null,
 };

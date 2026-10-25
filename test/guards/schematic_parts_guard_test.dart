@@ -34,31 +34,35 @@ void main() {
     for (final k in allKeys) {
       final e = index.of(k)!;
       expect(e.parts, isNotEmpty, reason: k);
-      expect([for (final p in e.parts) p.n], [
-        for (var i = 1; i <= e.parts.length; i++) i,
-      ], reason: k);
-    }
-  });
-
-  test('SVG: belgilar soni = qismlar soni, raqamlar 1..n, boshqa matn yo‘q', () {
-    for (final k in allKeys) {
-      final svg = File(
-        'tool/illustrations/schematic/$k.svg',
-      ).readAsStringSync();
-      final n = index.of(k)!.parts.length;
-      expect(calloutNumbers(svg), [for (var i = 1; i <= n; i++) i], reason: k);
       expect(
-        '<g class="callout"'.allMatches(svg).length,
-        n,
-        reason: '$k: belgilar guruhi',
+        [for (final p in e.parts) p.n],
+        [for (var i = 1; i <= e.parts.length; i++) i],
+        reason: k,
       );
     }
   });
 
+  test(
+    'SVG: belgilar soni = qismlar soni, raqamlar 1..n, boshqa matn yo‘q',
+    () {
+      for (final k in allKeys) {
+        final svg = File('tool/illustrations/schematic/$k.svg')
+            .readAsStringSync();
+        final n = index.of(k)!.parts.length;
+        expect(calloutNumbers(svg), [
+          for (var i = 1; i <= n; i++) i,
+        ], reason: k);
+        expect(
+          '<g class="callout"'.allMatches(svg).length,
+          n,
+          reason: '$k: belgilar guruhi',
+        );
+      }
+    },
+  );
+
   test('har bir matn id uz/ru/en da bor va bo‘sh emas', () {
-    final ids = {
-      for (final k in index.keys) ...index.of(k)!.textIds,
-    };
+    final ids = {for (final k in index.keys) ...index.of(k)!.textIds};
     // Dart jadvali JSON bilan sinxron (generator: parts_l10n.py).
     expect(schematicPartsTextIds, ids);
     for (final lang in ['uz', 'ru', 'en']) {
@@ -109,9 +113,9 @@ void main() {
       'schemPartsClassNote',
     };
     for (final lang in ['uz', 'ru', 'en']) {
-      final arb =
-          jsonDecode(File('lib/l10n/app_$lang.arb').readAsStringSync())
-              as Map<String, Object?>;
+      final arb = jsonDecode(
+        File('lib/l10n/app_$lang.arb').readAsStringSync(),
+      ) as Map<String, Object?>;
       final keys = {
         for (final k in arb.keys)
           if (k.startsWith('schemParts')) k,
@@ -170,9 +174,7 @@ void main() {
     test('qismsiz yozuv', () {
       expect(
         () => SchematicPartsIndex.fromJson(
-          mutate(
-            (m) => (m['autoclave']! as Map)['parts'] = <Object>[],
-          ),
+          mutate((m) => (m['autoclave']! as Map)['parts'] = <Object>[]),
         ),
         throwsFormatException,
       );
