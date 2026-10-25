@@ -6,14 +6,14 @@ Kalit atamalar — EN: thermal cycler, heated lid, Peltier block, primer, polyme
 
 **Holat:** EXPERT_REVIEW_PENDING — bu ilmiy video-dars REJASI va storyboard, tayyor video emas.
 **Sxema:** `real_time_pcr` — `tool/illustrations/schematic/real_time_pcr.svg`
-(`assets/instruments/schematic/real_time_pcr_1200.png`), 7 ta raqamli belgi.
+(`assets/instruments/schematic/real_time_pcr_1200.png`), 9 ta raqamli belgi.
 **Ilovadagi kartalar:** `/lab/instruments/lc/a3-mol-realtime-pcr-platform`, `/lab/instruments/lc/a1-realtime-pcr-method`,
 `/lab/instruments/lc/hiv-rna-viral-load`.
 **Ishlaydigan namuna animatsiya:** bor (ovozsiz, subtitrli) — [SAMPLES.md](SAMPLES.md).
 
 ## 1. O‘quv maqsadlari
 
-- Real vaqt PCR apparatining 7 ta raqamli qismini sxemada ko‘rsatish.
+- Real vaqt PCR apparatining 9 ta raqamli qismini va fluoressent signal yo‘lini sxemada ko‘rsatish.
 - Bitta siklning uch bosqichini (zanjirlarning ajralishi, praymer birikishi, sintez) va nishonning ko‘payishini tushuntirish.
 - Fluoressensiya har siklda o‘lchanishini va signal nimani aks ettirishini aytish.
 - Kuchayish egri chizig‘i, chegara va Cq tushunchalarini farqlash.
@@ -25,23 +25,23 @@ Oldindan: DNK/RNK tuzilishi haqida umumiy tushuncha.
 
 ## 3. Davomiylik
 
-Taxminan 4 daqiqa (storyboard bo‘yicha 3:50). Ishlaydigan qisqa namuna (sahnalar 2–3, 5–10) — `SAMPLES.md`.
+Taxminan 4 daqiqa (storyboard bo‘yicha 3:54). Ishlaydigan qisqa namuna (sahnalar 2–3, 5–10) — `SAMPLES.md`.
 
 ## 4. Storyboard
 
 | # | Ekranda (SVG / qatlam / belgilar) | Animatsiya g‘oyasi | Diktor matni (uz) | EN / RU atamalar | Bayonotlar | s |
 |---|---|---|---|---|---|---|
 | 1 | Kirish kartochkasi; fon — `real_time_pcr.svg` xira | Sarlavha va yorliqlar “Sxematik animatsiya — aniq model emas”, “Ovozsiz namuna (diktorsiz)” | Bu darsda real vaqt PCR, ya’ni real vaqtda kuzatiladigan polimeraza zanjir reaksiyasi apparatini ilovadagi sxematik chizma asosida ko‘ramiz. Chizma aniq model emas. | real-time PCR / ПЦР в реальном времени | — | 10 |
-| 2 | `real_time_pcr.svg` to‘liq; 1–7-belgilar xira | Kamera korpus → ochiq qopqoq → optik modul → monitor bo‘ylab suriladi | Manbaga ko‘ra, apparat termosiklator va har siklda fluoressensiyani o‘lchaydigan optik detektordan iborat; yirik avtomat tizimlar ekstraksiya, kuchaytirish va aniqlashni birlashtiradi. | thermal cycler / термоциклер; optical detector / оптический детектор | L1 | 18 |
-| 3 | 1–3-belgilar navbat bilan | Har belgi atrofida halqa; pastda nom chipi | Umumiy tamoyil bo‘yicha: 1-belgi — sakkiz talik PCR probirkalari qatori, 2-belgi — isitiladigan qopqoq, u qopqoqlarda bug‘ to‘planishining oldini oladi, 3-belgi — termoblok. | PCR tubes / ПЦР-пробирки; heated lid / нагреваемая крышка; thermal block / термоблок | C1, C2, C3 | 18 |
-| 4 | 4–7-belgilar navbat bilan | Optik modul kesigi kattalashadi; so‘ng monitor | Umumiy tamoyil bo‘yicha: 4-belgi — qo‘zg‘atuvchi nur manbai, 5-belgi — filtr g‘ildiragi. Manbaga ko‘ra, 6-belgi — fluoressensiyani o‘lchaydigan detektor, 7-belgi — kuchayish egri chiziqlarini chizadigan dastur. | excitation source / источник возбуждения; filter wheel / колесо фильтров; detector / детектор | C4, C5, C6, C7 | 20 |
+| 2 | `real_time_pcr.svg` to‘liq; 1–9-belgilar xira | Kamera korpus → ochiq qopqoq → optik modul → monitor bo‘ylab suriladi | Manbaga ko‘ra, apparat termosiklator va har siklda fluoressensiyani o‘lchaydigan optik detektordan iborat; yirik avtomat tizimlar ekstraksiya, kuchaytirish va aniqlashni birlashtiradi. | thermal cycler / термоциклер; optical detector / оптический детектор | L1 | 18 |
+| 3 | 1–3-belgilar navbat bilan | Har belgi atrofida halqa; pastda nom chipi | Umumiy tamoyil bo‘yicha: 1-belgi — PCR probirkalari qatori, 2-belgi — isitiladigan qopqoq, u qopqoqlarda bug‘ to‘planishining oldini oladi, 3-belgi — termoblok. | PCR tubes / ПЦР-пробирки; heated lid / нагреваемая крышка; thermal block / термоблок | C1, C2, C3 | 18 |
+| 4 | 4–9-belgilar navbat bilan | Signal yo‘li kesigi kattalashadi; so‘ng monitor | Umumiy tamoyil bo‘yicha: 4-belgi — qo‘zg‘atuvchi nur manbai, 5-belgi — qo‘zg‘atish filtri, 6-belgi — termoblokdagi reaksiya probirkasi, 7-belgi — nurlanish filtri. Manbaga ko‘ra, 8-belgi — fluoressensiyani o‘lchaydigan detektor, 9-belgi — kuchayish egri chiziqlarini chizadigan dastur. | excitation / возбуждение; emission filter / эмиссионный фильтр; detector / детектор | C4, C5, C6, C7, C8, C9 | 24 |
 | 5 | 1-belgi yaqin plan | Matn chipi: “avval — nuklein kislota ajratish” | Manbaga ko‘ra, namunadan avval nuklein kislota ajratib olinadi. RNK nishon bo‘lsa, u avval teskari transkriptaza bilan kDNKga aylantiriladi. | nucleic acid extraction / выделение нуклеиновых кислот; reverse transcriptase / обратная транскриптаза | L3, L2 | 16 |
-| 6 | 1 va 3-belgilar | Probirkalar qatori yoy bo‘ylab termoblokka “uchib” o‘tadi; blokdagi 8 ta uyacha yonadi | Umumiy tamoyil bo‘yicha, reaksiya aralashmasi solingan probirkalar termoblokka qo‘yiladi va isitiladigan qopqoq bilan yopiladi. | reaction mix / реакционная смесь | C1, C2, C3 | 14 |
+| 6 | 1 va 3-belgilar | Probirkalar qatori yoy bo‘ylab termoblokka “uchib” o‘tadi; blokdagi uyachalar yonadi | Umumiy tamoyil bo‘yicha, reaksiya aralashmasi solingan probirkalar termoblokka qo‘yiladi va isitiladigan qopqoq bilan yopiladi. | reaction mix / реакционная смесь | C1, C2, C3 | 14 |
 | 7 | 3-belgi (blok) + pastki panelda sikl profili | Blok rangi qizil → ko‘k → sariq almashadi; panelda kursor bosqichlar bo‘ylab yuradi (raqamsiz) | Manbaga ko‘ra, har siklda qizdirish DNK zanjirlarini ajratadi, sovutishda praymerlar birikadi, issiqqa chidamli polimeraza yangi zanjir quradi. | denaturation / денатурация; annealing / отжиг; extension / элонгация | L2 | 20 |
 | 8 | Pastki panel: DNK belgichalari | Har sikl oxirida belgichalar soni ikki barobar bo‘ladi | Manbaga ko‘ra, har siklda nishon taxminan ikki barobar ko‘payadi. Umumiy tamoyil bo‘yicha, bunday tez harorat almashinuvini termoblok ta’minlaydi. | amplification / амплификация; amplicon / ампликон | L2, C3 | 16 |
-| 9 | 4–6-belgilar (optik modul) | Har sikl oxirida nur manbai chaqnaydi, filtr g‘ildiragi keyingi kanalga buriladi, detektor yonadi | Manbaga ko‘ra, detektor har siklda fluoressensiyani o‘lchaydi va signal amplikon to‘planishiga mutanosib. Umumiy tamoyil bo‘yicha, nur manbai bo‘yoq yoki zondni qo‘zg‘atadi, filtrlar kerakli rang kanalini tanlaydi. | fluorescence / флуоресценция; channel / канал | L4, C6, C4, C5 | 22 |
-| 10 | 7-belgi monitori; pastki panelda egri chiziqlar | Egri chiziqlar sikl sayin o‘sadi; chegara chizig‘i paydo bo‘ladi; Cq nuqtalari o‘qqa tushiriladi (raqamsiz) | Manbaga ko‘ra, asosiy natija — fluoressensiya belgilangan chegaradan o‘tgan sikl, ya’ni Cq. Cq qancha kichik bo‘lsa, boshlang‘ich nishon shuncha ko‘p. | amplification curve / кривая амплификации; threshold / порог; quantification cycle / пороговый цикл | L5, C7 | 22 |
-| 11 | 7-belgi | Egri chiziqlar yonida “standartlar bo‘yicha” belgisi | Manbaga ko‘ra, miqdoriy testlarda konsentratsiya standartlar bo‘yicha hisoblanadi; masalan, ilovadagi OIV-1 virus yuki kartasi shunday miqdoriy test. | standard curve / стандартная кривая; viral load / вирусная нагрузка | RS, L10 | 16 |
+| 9 | 4–8-belgilar (signal yo‘li) | Har sikl oxirida: manba chaqnaydi → qo‘zg‘atish filtri kanal rangini oladi → nur probirkaga tushadi → probirka fluoressensiya chiqaradi → nurlanish filtri → detektor yonadi | Manbaga ko‘ra, detektor har siklda probirkalardagi fluoressensiyani o‘lchaydi va signal amplikon to‘planishiga mutanosib. Umumiy tamoyil bo‘yicha, qo‘zg‘atuvchi nur probirkadagi bo‘yoq yoki zondga tushadi, filtrlar kerakli rang kanalini ajratadi. | fluorescence / флуоресценция; channel / канал | L4, C8, C4, C5, C6, C7 | 22 |
+| 10 | 9-belgi monitori; pastki panelda egri chiziqlar | Egri chiziqlar sikl sayin o‘sadi; chegara chizig‘i paydo bo‘ladi; Cq nuqtalari o‘qqa tushiriladi (raqamsiz) | Manbaga ko‘ra, asosiy natija — fluoressensiya belgilangan chegaradan o‘tgan sikl, ya’ni Cq. Cq qancha kichik bo‘lsa, boshlang‘ich nishon shuncha ko‘p. | amplification curve / кривая амплификации; threshold / порог; quantification cycle / пороговый цикл | L5, C9 | 22 |
+| 11 | 9-belgi | Egri chiziqlar yonida “standartlar bo‘yicha” belgisi | Manbaga ko‘ra, miqdoriy testlarda konsentratsiya standartlar bo‘yicha hisoblanadi; masalan, ilovadagi OIV-1 virus yuki kartasi shunday miqdoriy test. | standard curve / стандартная кривая; viral load / вирусная нагрузка | RS, L10 | 16 |
 | 12 | Butun sxema; piktogrammalar: alohida zona, qo‘lqop, niqob | Belgilar xira; pastda karta bo‘limlari: “Sifat nazorati va kalibrlash”, “Cheklovlar” | Manbaga ko‘ra, PZR o‘ta sezgir, ozgina ifloslanish soxta natija berishi mumkin. Shuning uchun alohida PCR zonasi, himoya vositalari va ajratilgan jihozlar ishlatiladi. Ingibitorlar esa kuchaytirishni susaytiradi. | contamination / контаминация; inhibitor / ингибитор | L7, L6, L8 | 24 |
 | 13 | Ilova kartalari eslatmasi, so‘ng savollar | Savollar birin-ketin chiqadi | Manbaga ko‘ra, amplifikatsiyaning yo‘qligi namuna manfiy ekanini ishonchli isbotlamaydi. Batafsil ma’lumot ilovadagi real vaqt PCR kartalarida. Endi o‘zingizni tekshiring. | — | L7 | 14 |
 
@@ -50,21 +50,24 @@ Taxminan 4 daqiqa (storyboard bo‘yicha 3:50). Ishlaydigan qisqa namuna (sahnal
 ### 5.1 Tashqi ko‘rinish
 
 Manbaga ko‘ra, apparat termosiklator va har siklda fluoressensiyani o‘lchaydigan optik detektordan iborat [L1].
-Umumiy tamoyil bo‘yicha, sxemada ochiq isitiladigan qopqoq, termoblok, old tomondagi optik modul kesigi, stol ustidagi
-probirkalar qatori va dastur monitori ko‘rinadi [C1, C2, C3, C4, C5].
+Umumiy tamoyil bo‘yicha, sxemada ochiq isitiladigan qopqoq, termoblok, old tomonda fluoressent signal yo‘lining
+kesigi (manba → qo‘zg‘atish filtri → blokdagi probirka → nurlanish filtri → detektor), stol ustidagi probirkalar
+qatori va dastur monitori ko‘rinadi [C1, C2, C3, C4, C5, C6, C7].
 
 ### 5.2 Asosiy qismlar (raqamli belgilar)
 
 <!-- auto:parts-list real_time_pcr -->
 | Belgi | Qism (uz) | RU | EN | Bayonot |
 |---|---|---|---|---|
-| 1 | PCR probirkalari (8 talik qator) | ПЦР-пробирки (стрип из 8) | PCR tubes (8-tube strip) | C1 |
+| 1 | PCR probirkalari (qator) | ПЦР-пробирки (стрип) | PCR tubes (strip) | C1 |
 | 2 | Isitiladigan qopqoq | Нагреваемая крышка | Heated lid | C2 |
 | 3 | Termoblok (Peltye) | Термоблок (Пельтье) | Thermal block (Peltier) | C3 |
 | 4 | Qo‘zg‘atuvchi nur manbai | Источник возбуждающего света | Excitation light source | C4 |
-| 5 | Filtr g‘ildiragi | Колесо фильтров | Filter wheel | C5 |
-| 6 | Detektor | Детектор | Detector | C6 |
-| 7 | Dastur (kuchayish egri chiziqlari) | Программа (кривые амплификации) | Software (amplification curves) | C7 |
+| 5 | Qo‘zg‘atish filtri (kanal tanlash) | Фильтр возбуждения (выбор канала) | Excitation filter (channel selection) | C5 |
+| 6 | Termoblokdagi reaksiya probirkasi | Реакционная пробирка в термоблоке | Reaction tube in the block | C6 |
+| 7 | Nurlanish filtri | Эмиссионный фильтр | Emission filter | C7 |
+| 8 | Detektor | Детектор | Detector | C8 |
+| 9 | Dastur (kuchayish egri chiziqlari) | Программа (кривые амплификации) | Software (amplification curves) | C9 |
 <!-- /auto:parts-list -->
 
 ### 5.3 Namuna qanday kiritiladi
@@ -82,13 +85,15 @@ termoblok almashtiradi [C3].
 ### 5.5 Signal qanday o‘lchanadi
 
 Manbaga ko‘ra, detektor har siklda fluoressensiyani o‘lchaydi, signal amplikon to‘planishiga mutanosib va real vaqtda
-kuzatiladi [C6, L4]. Umumiy tamoyil bo‘yicha, nur manbai bo‘yoq yoki zondni qo‘zg‘atadi va filtrlar rang kanalini
-tanlaydi [C4, C5].
+kuzatiladi [C8, L4]. Umumiy tamoyil bo‘yicha, qo‘zg‘atuvchi nur filtr orqali termoblokdagi probirkaga tushadi,
+probirkadagi bo‘yoq yoki zond fluoressensiya chiqaradi, nurlanish filtri uni qo‘zg‘atuvchi nurdan ajratib detektorga
+o‘tkazadi [C4, C5, C6, C7]. Sxemada manba turi, filtr tuzilishi va o‘qish yo‘nalishi ko‘rsatilmaydi — ular apparatga
+qarab farq qiladi.
 
 ### 5.6 Natija qanday olinadi
 
 Manbaga ko‘ra, dastur kuchayish egri chiziqlari, chegara chizig‘i va Cq qiymatlarini hisoblaydi; Cq qancha kichik
-bo‘lsa, boshlang‘ich nishon shuncha ko‘p; miqdoriy testlarda konsentratsiya standartlar bo‘yicha hisoblanadi [C7, L5,
+bo‘lsa, boshlang‘ich nishon shuncha ko‘p; miqdoriy testlarda konsentratsiya standartlar bo‘yicha hisoblanadi [C9, L5,
 RS]. Klinik talqin bu dars doirasidan tashqarida — ilovadagi test kartalarida manbali cheklovlar bilan.
 
 ## 6. Keng tarqalgan xatolar, xavfsizlik va QC
@@ -120,20 +125,23 @@ STANDARD_TEXTBOOK — darslik darajasidagi umumiy tamoyil; NEEDS_EXPERT — aniq
 tasdig‘ini kutadi. STANDARD_TEXTBOOK va NEEDS_EXPERT bayonotlar diktor matnida faqat “umumiy tamoyil bo‘yicha”
 darajasida aytiladi, aniq model xususiyati sifatida emas. Mutaxassis ko‘rigi: EXPERT_REVIEW_PENDING.
 Ataylab aytilmaydi: sikl harorati va davomiyligi, sikllar soni, Cq qiymatlari, bo‘yoq/zond nomlari, OIV toifalari
-chegaralari (ular ilovadagi test kartasida manbasi bilan). Sxemadagi optik yo‘l soddalashtirilgan — [README → Topilmalar](README.md#topilmalar).
+chegaralari (ular ilovadagi test kartasida manbasi bilan). Sxemadagi signal yo‘li darslik darajasida va soddalashtirilgan (2026-10-25 tuzatilgan: nur probirkadan o‘tadi) —
+[README → Topilmalar](README.md#topilmalar) F2, F9.
 
 ### 8.1 Sxema qismlari (avtomatik, `parts_src.py` dan)
 
 <!-- auto:epistemic-parts real_time_pcr -->
 | ID | Bayonot (uz) | Teg | Manba va joyi |
 |---|---|---|---|
-| C1 | PCR probirkalari (8 talik qator) — Reaksiya aralashmasi va namuna; shaffof qopqoq orqali o‘qiladi. | NEEDS_EXPERT | parts_src: TB (darslik, mutaxassis tasdig‘isiz); raqam darslik manbasiz; `schematic_parts.json` → `real_time_pcr` #1 |
+| C1 | PCR probirkalari (qator) — Reaksiya aralashmasi va namuna; shaffof qopqoq orqali o‘qiladi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `real_time_pcr` #1 |
 | C2 | Isitiladigan qopqoq — Probirka qopqoqlarida bug' to‘planishining oldini oladi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `real_time_pcr` #2 |
 | C3 | Termoblok (Peltye) — Denaturatsiya, praymer birikishi va sintez haroratlarini tez almashtiradi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); qisman manba: `a1-sp-pcr`; `schematic_parts.json` → `real_time_pcr` #3 |
-| C4 | Qo‘zg‘atuvchi nur manbai — Bo‘yoq yoki zondni qo‘zg‘atadigan yorug‘lik beradi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `real_time_pcr` #4 |
-| C5 | Filtr g‘ildiragi — Har bo‘yoq (kanal) uchun qo‘zg‘atish va nurlanish filtrini tanlaydi. | NEEDS_EXPERT | parts_src: TB; filtr g‘ildiragi — optik dizaynlardan biri, manbasiz; `schematic_parts.json` → `real_time_pcr` #5 |
-| C6 | Detektor — Har siklda fluoressensiyani o‘lchaydi. | SOURCED | `a1-sp-pcr`; `schematic_parts.json` → `real_time_pcr` #6 |
-| C7 | Dastur (kuchayish egri chiziqlari) — Egri chiziqlar, chegara chizig‘i va Cq qiymatlarini hisoblaydi. | SOURCED | `a1-sp-pcr`; `schematic_parts.json` → `real_time_pcr` #7 |
+| C4 | Qo‘zg‘atuvchi nur manbai — Bo‘yoq yoki zondni qo‘zg‘atadigan nur beradi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `real_time_pcr` #4 |
+| C5 | Qo‘zg‘atish filtri (kanal tanlash) — Har bir bo‘yoq kanali uchun kerakli qo‘zg‘atuvchi nurni ajratadi. | NEEDS_EXPERT | parts_src: TB; filtr g‘ildiragi — optik dizaynlardan biri, manbasiz; `schematic_parts.json` → `real_time_pcr` #5 |
+| C6 | Termoblokdagi reaksiya probirkasi — Qo‘zg‘atuvchi nur probirkadagi bo‘yoq yoki zondga tushadi; u amplikon miqdoriga mutanosib fluoressensiya chiqaradi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); qisman manba: `a1-sp-pcr`; `schematic_parts.json` → `real_time_pcr` #6 |
+| C7 | Nurlanish filtri — Faqat bo‘yoq chiqargan fluoressent nurni o‘tkazadi, qo‘zg‘atuvchi nurni to‘sadi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `real_time_pcr` #7 |
+| C8 | Detektor — Probirkalardan kelgan fluoressensiyani har siklda o‘lchaydi. | SOURCED | `a1-sp-pcr`; `schematic_parts.json` → `real_time_pcr` #8 |
+| C9 | Dastur (kuchayish egri chiziqlari) — Egri chiziqlar, chegara chizig‘i va Cq qiymatlarini hisoblaydi. | SOURCED | `a1-sp-pcr`; `schematic_parts.json` → `real_time_pcr` #9 |
 | PR | Termoblok har siklda haroratni almashtiradi: qizdirish DNK zanjirlarini ajratadi, sovutishda praymerlar birikadi, issiqqa chidamli polimeraza yangi zanjir quradi — nishon har siklda taxminan ikki barobar ko‘payadi (RNK avval teskari transkriptaza bilan kDNK ga aylantiriladi). Optik modul har siklda interkalyatsiyalanuvchi bo‘yoq yoki zond fluoressensiyasini o‘lchaydi; signal amplikon to‘planishiga mutanosib. | SOURCED | `a1-sp-pcr`; `schematic_parts.json` → `real_time_pcr`.principle |
 | RS | Kuchayish egri chiziqlari va har namuna uchun Cq (Ct) — fluoressensiya chegarani kesib o‘tgan sikl; Cq qancha past bo‘lsa, boshlang‘ich nishon shuncha ko‘p. Miqdoriy testlarda konsentratsiya standartlar bo‘yicha hisoblanadi (masalan, OIV-1 virus yuklamasi, nusxa/ml). | SOURCED | `a1-sp-pcr`, `a3-fda-cobas-hiv1`; `schematic_parts.json` → `real_time_pcr`.result |
 <!-- /auto:epistemic-parts -->

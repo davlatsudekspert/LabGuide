@@ -153,7 +153,7 @@ uch qismli analizator:
 | ID | Bayonot (uz) | Teg | Manba va joyi |
 |---|---|---|---|
 | H3-C1 | Termoprinter — Natijalar va gistogrammalarni chop etadi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `hematology3` #1 |
-| H3-C2 | Displey (3 ta gistogramma) — Natijalar hamda WBC, RBC va PLT gistogrammalarini ko‘rsatadi. | SOURCED | `mr-bc30s`; `schematic_parts.json` → `hematology3` #2 |
+| H3-C2 | Displey (3 ta gistogramma) — Natijalar hamda WBC, RBC va PLT gistogrammalarini ko‘rsatadi (rasmdagi shakllar sxematik). | SOURCED | `mr-bc30s`; `schematic_parts.json` → `hematology3` #2 |
 | H3-C3 | Namuna zondi — Ochiq probirkadan oz hajmdagi qonni so‘radi. | SOURCED | `hu-hc30ts`; `schematic_parts.json` → `hematology3` #3 |
 | H3-C4 | Impedans kamerasi — Hujayra teshikdan o‘tganda impuls hosil bo‘ladi: impulslar soni — hujayralar soni, kattaligi — hajmi. | SOURCED | `rst-71783`, `ab-emerald`; `schematic_parts.json` → `hematology3` #4 |
 | H3-C5 | Suyultiruvchi va lizislovchi eritma — Qonni suyultirish va eritrotsitlarni eritish (lizis) uchun. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `hematology3` #5 |

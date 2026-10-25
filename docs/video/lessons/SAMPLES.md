@@ -59,11 +59,11 @@ o‘qidagi raqamlar; vakuum nasosi (9) faqat nomi bilan (NEEDS_EXPERT).
 |---|---|---|---|
 | 0–3,5 | — | Kirish kartochkasi | — |
 | 3,5–10,5 | 1 Ko‘rinish | To‘liq sxema, 1–7-belgilar | L1 |
-| 10,5–22,5 | 2 Qismlar | 1–7-belgilar navbat bilan halqa va chip bilan | C1–C7 |
+| 10,5–22,5 | 2 Qismlar | 1–9-belgilar navbat bilan halqa va chip bilan | C1–C9 |
 | 22,5–31,5 | 3 Namuna | Probirkalar qatori yoy bo‘ylab termoblokka “ko‘chadi”, blokdagi 8 uyacha yonadi | L3, L2, C1, C3 |
 | 31,5–47,5 | 4 Jarayon | Blok rangi qizdirish/sovutish/sintez bo‘yicha almashadi; pastda raqamsiz sikl profili va DNK belgichalari: zanjir ajraladi, praymer birikadi, yangi zanjir quriladi, soni har siklda ikki barobar (16 tagacha ko‘rsatiladi) | L2, C3 |
-| 47,5–59,5 | 5 Signal | Optik modul: har sikl oxirida nur manbai chaqnaydi, filtr g‘ildiragi keyingi rang kanaliga buriladi, detektor yonadi; pastda kuchayish egri chiziqlari sikl sayin o‘sadi | L4, C6, C4, C5 |
-| 59,5–73,5 | 6 Natija | Monitor; egri chiziqlar plato; chegara chizig‘i va Cq nuqtalari o‘qqa tushiriladi (raqamsiz) | L5, C7 |
+| 47,5–59,5 | 5 Signal | Signal yo‘li: har sikl oxirida nur manbai chaqnaydi → qo‘zg‘atish filtri kanal rangini oladi → nur blokdagi probirkaga tushadi → probirka fluoressensiya chiqaradi → nurlanish filtri → detektor yonadi; pastda kuchayish egri chiziqlari sikl sayin o‘sadi | L4, C6, C4, C5 |
+| 59,5–73,5 | 6 Natija | Monitor; egri chiziqlar plato; chegara chizig‘i va Cq nuqtalari o‘qqa tushiriladi (raqamsiz) | L5, C9 |
 | 73,5–77 | — | Yakun kartochkasi | — |
 
 Ataylab ko‘rsatilmaydi: sikl harorati va vaqti, sikllar soni, Cq qiymatlari, bo‘yoq/zond nomlari. Sxemadagi optik
@@ -83,15 +83,15 @@ yo‘l soddalashtirilgan va animatsiya uni “to‘g‘irlamaydi” (nur probirk
 | `gc_ms_uz.mp4` | 96.00 s | 720×1280, 24 | h264 | 0 | 1.90 MB | `17fd1262b8a9a5a8cd383c805666c033811d68408f46dfeb589d2d8ee07e9433` |
 | `gc_ms_uz.srt` | — | — | srt | — | 1832 B | `59add21a5c4fa19450bdbd1ead4cfbaa2359670e14ff02f27be69333a9ae40a3` |
 | `gc_ms_uz.vtt` | — | — | vtt | — | 1840 B | `5b593be74b42de5f0f19a7fc9d4ad6e723ee95d3d3519e6ece1b7c52797b5a20` |
-| `real_time_pcr_en.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.37 MB | `f38a67d1bc8391e56e87d7d9343a16be70f9713d43046bcc56e1f29fd91f522d` |
-| `real_time_pcr_en.srt` | — | — | srt | — | 1609 B | `b44709ba5131250f668755536c0f35bb30ebe9356106c91e6a34618d6972e75f` |
-| `real_time_pcr_en.vtt` | — | — | vtt | — | 1617 B | `d30a62b687a8907bfc975e6d87acf013a4464168cbd336606512df8f5c841bfd` |
-| `real_time_pcr_ru.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.40 MB | `161cf1dcc589eaadf5ecd63e2ec5ba66eddc487ca154ffa0ec843a54db3b88b7` |
-| `real_time_pcr_ru.srt` | — | — | srt | — | 2531 B | `1b667d8fad1a29691d484caa2a64eca603cc6cb51244e2ebff4001668620c415` |
-| `real_time_pcr_ru.vtt` | — | — | vtt | — | 2539 B | `bbdd09a9ffd2608baef6e1d858ca8fb4ea902a6bb98311ef2b0459b5e0f2dde4` |
-| `real_time_pcr_uz.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.38 MB | `0136f9054e4c2c910d958fe8b3e422ae58edc6c4a81681e81eec6a2266a281be` |
-| `real_time_pcr_uz.srt` | — | — | srt | — | 1640 B | `ec7fab60fdb4045f42c0419a0943063af14d040ac47a5fc84e53e0bc248a35e0` |
-| `real_time_pcr_uz.vtt` | — | — | vtt | — | 1648 B | `060788bc0c5501d7cd556f6b590462c0e391191b0307613610f6965567e2e358` |
+| `real_time_pcr_en.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.29 MB | `2f5939fc70848507e94e97364f2a1bbb40c9a513a107d0aa3a3c9bddbe212533` |
+| `real_time_pcr_en.srt` | — | — | srt | — | 1710 B | `cc409a380ac358a0231ce7295da57cce564ea318f47032171bd49f2471d14526` |
+| `real_time_pcr_en.vtt` | — | — | vtt | — | 1718 B | `8c5ec730dee1779ffd866f0080a69ea8e5a44bf713f121e6447672727ed9f390` |
+| `real_time_pcr_ru.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.33 MB | `a47563f0addda9c0f75a67dbbd5b44972d83fc40e7454a4400cc1a3ceb18c929` |
+| `real_time_pcr_ru.srt` | — | — | srt | — | 2705 B | `7aa49150439d7d0b68fa6b6dc65374168b943221b84980290b096d0e5322f439` |
+| `real_time_pcr_ru.vtt` | — | — | vtt | — | 2713 B | `b5fce1d36c8b393e58428750dfb729b58f9e583e2063b465f98ed59f6d6fdec5` |
+| `real_time_pcr_uz.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.29 MB | `500eb930a5f2df640f274471b4ad3de611755509d8b3ffd3b0122e5ed1145dea` |
+| `real_time_pcr_uz.srt` | — | — | srt | — | 1743 B | `a4a5ec270cd246a6494c11efbd0fa3851c2d66757e870425ebbd7d4cb3aa468b` |
+| `real_time_pcr_uz.vtt` | — | — | vtt | — | 1751 B | `7a2cadcdc6b92143263d3a691940dca0bc30a87d5c9f8a1a0d69a400c8a51818` |
 <!-- samples:end -->
 
 Barcha MP4 larda audio oqimlari soni 0 (ovozsiz). ru va en subtitrlar — tarjima, `docs/L10N_REVIEW_QUEUE.md`
