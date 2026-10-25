@@ -18043,7 +18043,7 @@ abstract class AppLocalizations {
   /// No description provided for @labSchemAnalyticalBalance.
   ///
   /// In en, this message translates to:
-  /// **'Gravimetric calibration setup — analytical balance with draft shield and weighing vessel, pipette dispensing water, water beaker with thermometer'**
+  /// **'Gravimetric calibration setup — analytical balance with a glass weighing chamber and weighing vessel, pipette dispensing water, water beaker with thermometer'**
   String get labSchemAnalyticalBalance;
 
   /// No description provided for @imgDiagramCalibrationOverviewAlt.

@@ -10492,7 +10492,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get labSchemAnalyticalBalance =>
-      'Gravimetric calibration setup — analytical balance with draft shield and weighing vessel, pipette dispensing water, water beaker with thermometer';
+      'Gravimetric calibration setup — analytical balance with a glass weighing chamber and weighing vessel, pipette dispensing water, water beaker with thermometer';
 
   @override
   String get imgDiagramCalibrationOverviewAlt =>
