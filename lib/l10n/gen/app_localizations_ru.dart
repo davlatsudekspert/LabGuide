@@ -12727,7 +12727,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get howToSpermogramStep1 =>
-      '«Основные показатели»: нижние референсные пределы ВОЗ 2021.';
+      '«Основные показатели»: нижние референтные пределы ВОЗ 2021.';
 
   @override
   String get howToSpermogramStep2 =>
