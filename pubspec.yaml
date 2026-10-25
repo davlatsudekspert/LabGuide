@@ -110,6 +110,9 @@ flutter:
     - assets/lectures/
     - assets/lectures/d001/
     - assets/lectures/decks/
+    # “Qanday foydalaniladi?” videolari ro‘yxati (faqat manzillar; videolar
+    # ilovada emas — docs/video/DELIVERY_PLAN.md).
+    - assets/howto/
 
   fonts:
     - family: Inter

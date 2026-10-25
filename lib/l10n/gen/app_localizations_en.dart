@@ -12412,6 +12412,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get howToWatchVideo => 'Watch the video';
 
   @override
+  String howToVideoMb(String mb) {
+    return '$mb MB';
+  }
+
+  @override
+  String howToVideoNote(String duration) {
+    return 'Silent screen recording with subtitles · $duration · opens in your browser or video player';
+  }
+
+  @override
+  String howToVideoStartsAt(String time) {
+    return 'In the video, this section starts at $time.';
+  }
+
+  @override
+  String get howToVideoOffline =>
+      'The video needs an internet connection. The text guide is right here and works offline.';
+
+  @override
+  String get howToVideoUnavailable =>
+      'The video can’t be opened right now. Try again later — the text guide is right here.';
+
+  @override
   String get howToCalibrationStep1 =>
       '“1. Instrument”: choose the model from the catalog or add an instrument that isn’t listed.';
 

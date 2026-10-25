@@ -65,6 +65,7 @@ yurgizing, kadrlarni ko‘zdan kechiring, subtitrni `storyboards.json` da yangil
 ## “Qanday foydalaniladi?” bilan bog‘liqlik
 
 Har bo‘limning ilova ichidagi qadamlari (`lib/features/howto/howto_registry.dart`, ARB `howTo…`) shu
-storyboardlardan olingan. Video hozircha ilovaga qo‘shilmagan: `HowToContent.videoUrl` bo‘sh, oynada video
-haqida hech narsa ko‘rsatilmaydi. Video joylashtirilsa — faqat havola (https) ro‘yxatga yoziladi; video
-pleyer bog‘liqligi qo‘shilmaydi.
+storyboardlardan olingan. Video hozircha ilovaga qo‘shilmagan: `assets/howto/videos.json` bo‘sh, oynada video
+haqida hech narsa ko‘rsatilmaydi. Video joylashtirilsa — faqat havola (https, hajm, sha256) shu faylga
+yoziladi (`tool/video/make_manifest.py`); video pleyer bog‘liqligi qo‘shilmaydi. Yetkazish rejasi va egasi
+qarori: `docs/video/DELIVERY_PLAN.md`.

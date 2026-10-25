@@ -5,8 +5,11 @@
 // docs/video/<nn>_<mavzu>.md dagi storyboardlardan olingan va faqat
 // haqiqatan ishlaydigan ekranlarni tilga oladi (`routes` — qadamlar tilga
 // olgan ekranlar; test/unit/howto_registry_test.dart ular routerda borligini
-// tekshiradi). Video hozircha hech bir bo‘limga qo‘shilmagan: `videoUrl`
-// faqat haqiqiy video ro‘yxatga olinganda to‘ldiriladi.
+// tekshiradi). Video ro‘yxati alohida ma’lumot fayli — assets/howto/videos.json
+// (howto_videos.dart, docs/video/DELIVERY_PLAN.md): u bo‘sh ekan, oynada video
+// haqida hech narsa ko‘rsatilmaydi.
+import 'package:flutter/foundation.dart';
+
 import '../../l10n/gen/app_localizations.dart';
 
 /// How-to bor bo‘limlar. `id` — marshrutga bog‘liq bo‘lmagan barqaror nom.
@@ -33,6 +36,42 @@ enum HowToSection {
 
 typedef HowToText = String Function(AppLocalizations l);
 
+/// Bitta til uchun video: tashqi (https) manzil, hajm, davomiylik va
+/// sha256. Ilova faylni o‘zi yuklamaydi — tizim brauzeri/pleyerida ochadi;
+/// hajm tugmada (mobil internet uchun), sha256 — joylangan fayl bilan
+/// solishtirish uchun (tool/video/make_manifest.py).
+@immutable
+class HowToVideo {
+  const HowToVideo({
+    required this.url,
+    required this.bytes,
+    required this.seconds,
+    required this.sha256,
+    this.startSeconds,
+  });
+
+  final Uri url;
+  final int bytes;
+  final double seconds;
+  final String sha256;
+
+  /// Bir nechta bo‘lim bitta umumiy videoni ishlatsa — shu bo‘lim videoda
+  /// qayerdan boshlanadi (masalan, 10-mavzu: 8 bo‘lim bitta videoda).
+  final double? startSeconds;
+
+  @override
+  bool operator ==(Object other) =>
+      other is HowToVideo &&
+      other.url == url &&
+      other.bytes == bytes &&
+      other.seconds == seconds &&
+      other.sha256 == sha256 &&
+      other.startSeconds == startSeconds;
+
+  @override
+  int get hashCode => Object.hash(url, bytes, seconds, sha256, startSeconds);
+}
+
 class HowToContent {
   const HowToContent({
     required this.section,
@@ -40,7 +79,7 @@ class HowToContent {
     required this.steps,
     required this.result,
     this.routes = const [],
-    this.videoUrl,
+    this.videos = const {},
   });
 
   final HowToSection section;
@@ -51,11 +90,26 @@ class HowToContent {
   /// Qadamlarda tilga olingan ekranlar (faqat test uchun dalil).
   final List<String> routes;
 
-  /// Ro‘yxatga olingan video havolasi (https). Hozir hech biri yo‘q —
-  /// `null` bo‘lsa, how-to oynasida video haqida hech narsa ko‘rsatilmaydi.
-  final String? videoUrl;
+  /// Til kodi (`uz`/`ru`/`en`) → video. Registrda doim bo‘sh; to‘ldiriladi
+  /// faqat assets/howto/videos.json dan ([withVideos]). Bo‘sh bo‘lsa, how-to
+  /// oynasida video haqida hech narsa ko‘rsatilmaydi.
+  final Map<String, HowToVideo> videos;
 
   String get id => section.id;
+
+  /// Ilova tilidagi video yoki `null`. Boshqa tildagi video o‘rniga
+  /// ko‘rsatilmaydi: subtitrlar kadrga yozilgan, begona tildagi video
+  /// foydalanuvchiga o‘qib bo‘lmaydigan bo‘ladi (DELIVERY_PLAN.md, 4-bo‘lim).
+  HowToVideo? videoFor(String language) => videos[language];
+
+  HowToContent withVideos(Map<String, HowToVideo> videos) => HowToContent(
+    section: section,
+    title: title,
+    steps: steps,
+    result: result,
+    routes: routes,
+    videos: Map.unmodifiable(videos),
+  );
 }
 
 abstract final class HowToRegistry {

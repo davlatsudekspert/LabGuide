@@ -136,6 +136,8 @@ Future<AppServices> makeServices(
   if (loadToifa) await tester.runAsync(services.toifa.ensureLoaded);
   // O'quv dasturi asset'i (bundle'da bo'lmasa — “qo'shilmagan” holati).
   await tester.runAsync(services.curriculum.ensureLoaded);
+  // “Qanday foydalaniladi?” videolari ro‘yxati (ilova bilan keladigan JSON).
+  await tester.runAsync(services.howToVideos.ensureLoaded);
   // Tayyor taqdimotlar (Ma'ruza rejimi) — keshga oldindan.
   await tester.runAsync(
     () => LectureDecks.all(services.curriculum.bundle ?? rootBundle),

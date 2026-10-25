@@ -28,6 +28,7 @@ import 'features/content/content_controller.dart';
 import 'features/daily/daily_controller.dart';
 import 'features/daily/daily_reminder.dart';
 import 'features/differential/differential_controller.dart';
+import 'features/howto/howto_videos.dart';
 import 'features/learn/exam_controller.dart';
 import 'features/learn/quiz_progress.dart';
 import 'features/library/reading_controller.dart';
@@ -61,6 +62,8 @@ Future<void> main() async {
   unawaited(services.content.load());
   // O'quv dasturi (asset bo'lmasa — “qo'shilmagan”, ma'ruza qatori yo'q).
   unawaited(services.curriculum.ensureLoaded());
+  // “Qanday foydalaniladi?” videolari ro‘yxati (bo‘sh bo‘lsa — tugma yo‘q).
+  unawaited(services.howToVideos.ensureLoaded());
   // Hamkorlar keshdan darhol; serverdan fonda (sozlanmagan buildda — yo'q).
   unawaited(services.partners.refresh(force: true));
   // Kunlik eslatma yoqilgan bo'lsa — keyingi kunlar rejasi yangilanadi.
@@ -149,6 +152,12 @@ AppServices createServices({
     classroom: ClassroomLocal(store),
     topicTests: TopicTestController(store, clock: clock),
     qrScanner: qrScanner ?? const MobileQrScanner(),
+    // Video ro‘yxati — ilova bilan keladigan kichik JSON; tarmoqqa faqat
+    // “Videoni ko‘rish” bosilganda murojaat qilinadi.
+    howToVideos: HowToVideoService(
+      bundle: bundle,
+      client: httpClient ?? http.Client(),
+    ),
     // Hamjamiyat faqat Cloudflare serveri (LG_API_URL) bilan; aks holda
     // UI umuman ko'rinmaydi.
     community: CommunityController(

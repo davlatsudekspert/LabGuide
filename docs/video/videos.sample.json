@@ -1,0 +1,414 @@
+{
+  "schema_version": 1,
+  "owner_approval": null,
+  "videos": [
+    {
+      "section": "calibration",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/01_kalibrlash_uz.5e3181a9.mp4",
+      "bytes": 1304642,
+      "seconds": 45.5,
+      "sha256": "5e3181a90fc5721b2b901cbe1c84bac7c1c0e369826a13a7b41fce85f0eb1540"
+    },
+    {
+      "section": "calibration",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/01_kalibrlash_ru.0995812b.mp4",
+      "bytes": 1336481,
+      "seconds": 45.5,
+      "sha256": "0995812bf2b462c4f7e614ab9c4d20cce3c62c13f00f8a5c7b14e920e9e9361b"
+    },
+    {
+      "section": "calibration",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/01_kalibrlash_en.5b254f36.mp4",
+      "bytes": 1229198,
+      "seconds": 45.5,
+      "sha256": "5b254f36b6cc0ea5f5f6919bea925ad4e3ba7b35db43b831b774b43fef68c22f"
+    },
+    {
+      "section": "qc",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/02_sifat_nazorati_uz.aced2cdf.mp4",
+      "bytes": 1280244,
+      "seconds": 46.0,
+      "sha256": "aced2cdfd6b9a26b62aaf405b4e061f4acd3b1f62747f705c04cfa0b4d0f8f37"
+    },
+    {
+      "section": "qc",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/02_sifat_nazorati_ru.9463c68c.mp4",
+      "bytes": 1324342,
+      "seconds": 46.0,
+      "sha256": "9463c68cfe4f483b767b370ed94519c5d2d08c4662433e50eec6d411ea12335c"
+    },
+    {
+      "section": "qc",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/02_sifat_nazorati_en.3431eec5.mp4",
+      "bytes": 1208864,
+      "seconds": 46.0,
+      "sha256": "3431eec5856422fed8fd06ebdd7eff0528751c84a18fd43fa727f142c4af04f6"
+    },
+    {
+      "section": "preanalytics",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/03_preanalitika_uz.2f54886e.mp4",
+      "bytes": 972262,
+      "seconds": 31.0,
+      "sha256": "2f54886e427409a7f6af7537a42111b9fb345896ac42d7e38e4c6862350e5d4f"
+    },
+    {
+      "section": "preanalytics",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/03_preanalitika_ru.7d466946.mp4",
+      "bytes": 1038167,
+      "seconds": 31.0,
+      "sha256": "7d4669462ccea5da26f75af93a6f059fce40b4250e19440e235e1f9185d86415"
+    },
+    {
+      "section": "preanalytics",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/03_preanalitika_en.fe011456.mp4",
+      "bytes": 951883,
+      "seconds": 31.0,
+      "sha256": "fe011456181435fb18bf94deea260650498d12fe05967644a6928c9c15e371cb"
+    },
+    {
+      "section": "calculators",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/04_kalkulyatorlar_uz.8df423b3.mp4",
+      "bytes": 975918,
+      "seconds": 33.0,
+      "sha256": "8df423b3bbc237043a7e1d604545955b86e1e80aaec9b2b0e0b7d81bfbdc4ede"
+    },
+    {
+      "section": "calculators",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/04_kalkulyatorlar_ru.05828149.mp4",
+      "bytes": 1005662,
+      "seconds": 33.0,
+      "sha256": "05828149272dfc35ec24142ad30ed52437253770defb76bf7ca06a92f6da327d"
+    },
+    {
+      "section": "calculators",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/04_kalkulyatorlar_en.53001b64.mp4",
+      "bytes": 942035,
+      "seconds": 33.0,
+      "sha256": "53001b6497be923cad7d87e019f47554b934b5ec7ef45c025d44a6e2fb1a414a"
+    },
+    {
+      "section": "instruments",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/05_apparatlar_uz.9769eb6f.mp4",
+      "bytes": 1487081,
+      "seconds": 47.0,
+      "sha256": "9769eb6fdf750d2da03f698b1663f56b3a98f91305ee6f9beab1470ba526532c"
+    },
+    {
+      "section": "instruments",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/05_apparatlar_ru.c883aefa.mp4",
+      "bytes": 1530150,
+      "seconds": 47.0,
+      "sha256": "c883aefa9727fa0696c7f4f0db51776bb332f9efebcf5909b4f57fd7804521b0"
+    },
+    {
+      "section": "instruments",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/05_apparatlar_en.e4f085c6.mp4",
+      "bytes": 1422005,
+      "seconds": 47.0,
+      "sha256": "e4f085c66bc8cc151e17bda3e6d16b11f60385a45e8b545941c9a3624cf05f96"
+    },
+    {
+      "section": "microscopy",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/06_mikroskopiya_uz.feb3bcb3.mp4",
+      "bytes": 1221388,
+      "seconds": 43.0,
+      "sha256": "feb3bcb380853b769cfd0d73d3ffc16b232d660c283dc8a2b3e3724ace3a684b"
+    },
+    {
+      "section": "microscopy",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/06_mikroskopiya_ru.b3fa26c2.mp4",
+      "bytes": 1282897,
+      "seconds": 43.0,
+      "sha256": "b3fa26c2373f4ee7b6153ba17639cd37448cdef0f726ae7fe9dfd2ac40b02b6c"
+    },
+    {
+      "section": "microscopy",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/06_mikroskopiya_en.d434c679.mp4",
+      "bytes": 1216341,
+      "seconds": 43.0,
+      "sha256": "d434c679dd365dbf91934b9358fdf3debd515e0f73880b2713528c90841d884b"
+    },
+    {
+      "section": "coprology",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/07_najas_parazitologiya_uz.418ce512.mp4",
+      "bytes": 1387406,
+      "seconds": 41.0,
+      "sha256": "418ce51262a4640a97b217d0c336503bd84eeaa2adaeca40f13db9a581edb2f3"
+    },
+    {
+      "section": "coprology",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/07_najas_parazitologiya_ru.e850ada1.mp4",
+      "bytes": 1430487,
+      "seconds": 41.0,
+      "sha256": "e850ada13914539f14baf8a08e98ea35aa0d70ffc0a37286231de6bb6f2e5dce"
+    },
+    {
+      "section": "coprology",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/07_najas_parazitologiya_en.4a860bf7.mp4",
+      "bytes": 1415203,
+      "seconds": 41.0,
+      "sha256": "4a860bf77f2e44c96d319d780b4f5250c4a0f6806ebba041bbdcd8f7e969dba7"
+    },
+    {
+      "section": "assessment",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/08_bilim_baholash_uz.bc36f701.mp4",
+      "bytes": 1540231,
+      "seconds": 59.0,
+      "sha256": "bc36f70168e060110e5433a26dda04ec3f264c2d1308baec58a56216ff4c6c0b"
+    },
+    {
+      "section": "assessment",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/08_bilim_baholash_ru.99474476.mp4",
+      "bytes": 1861600,
+      "seconds": 64.0,
+      "sha256": "994744768278698482c2f241c0ce4d14f6a40eb301bc189777a2794e615ae984"
+    },
+    {
+      "section": "assessment",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/08_bilim_baholash_en.357c2042.mp4",
+      "bytes": 1802342,
+      "seconds": 64.0,
+      "sha256": "357c20429349d65d37ba44b97b6093857ceecec7e03684302658d82acf11bce3"
+    },
+    {
+      "section": "differential",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_uz.806f0f7b.mp4",
+      "bytes": 1815480,
+      "seconds": 56.0,
+      "sha256": "806f0f7b0da83759489bd3a45e30532f49714a45af8eee54bec1c75936ae552e",
+      "start_seconds": 6.0
+    },
+    {
+      "section": "differential",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_ru.326e67aa.mp4",
+      "bytes": 1804643,
+      "seconds": 56.0,
+      "sha256": "326e67aa6905631e946e67b7dc2d678912fcb62c3bb07a487bafbb72454c1986",
+      "start_seconds": 6.0
+    },
+    {
+      "section": "differential",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_en.43b97801.mp4",
+      "bytes": 1780274,
+      "seconds": 56.0,
+      "sha256": "43b9780132735f4403c50f2d69efc3445578655d7111297ab165b9e12cbad4aa",
+      "start_seconds": 6.0
+    },
+    {
+      "section": "cytology",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_uz.806f0f7b.mp4",
+      "bytes": 1815480,
+      "seconds": 56.0,
+      "sha256": "806f0f7b0da83759489bd3a45e30532f49714a45af8eee54bec1c75936ae552e",
+      "start_seconds": 18.0
+    },
+    {
+      "section": "cytology",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_ru.326e67aa.mp4",
+      "bytes": 1804643,
+      "seconds": 56.0,
+      "sha256": "326e67aa6905631e946e67b7dc2d678912fcb62c3bb07a487bafbb72454c1986",
+      "start_seconds": 18.0
+    },
+    {
+      "section": "cytology",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_en.43b97801.mp4",
+      "bytes": 1780274,
+      "seconds": 56.0,
+      "sha256": "43b9780132735f4403c50f2d69efc3445578655d7111297ab165b9e12cbad4aa",
+      "start_seconds": 18.0
+    },
+    {
+      "section": "spermogram",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_uz.806f0f7b.mp4",
+      "bytes": 1815480,
+      "seconds": 56.0,
+      "sha256": "806f0f7b0da83759489bd3a45e30532f49714a45af8eee54bec1c75936ae552e",
+      "start_seconds": 25.0
+    },
+    {
+      "section": "spermogram",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_ru.326e67aa.mp4",
+      "bytes": 1804643,
+      "seconds": 56.0,
+      "sha256": "326e67aa6905631e946e67b7dc2d678912fcb62c3bb07a487bafbb72454c1986",
+      "start_seconds": 25.0
+    },
+    {
+      "section": "spermogram",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_en.43b97801.mp4",
+      "bytes": 1780274,
+      "seconds": 56.0,
+      "sha256": "43b9780132735f4403c50f2d69efc3445578655d7111297ab165b9e12cbad4aa",
+      "start_seconds": 25.0
+    },
+    {
+      "section": "bloodGroup",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_uz.806f0f7b.mp4",
+      "bytes": 1815480,
+      "seconds": 56.0,
+      "sha256": "806f0f7b0da83759489bd3a45e30532f49714a45af8eee54bec1c75936ae552e",
+      "start_seconds": 28.5
+    },
+    {
+      "section": "bloodGroup",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_ru.326e67aa.mp4",
+      "bytes": 1804643,
+      "seconds": 56.0,
+      "sha256": "326e67aa6905631e946e67b7dc2d678912fcb62c3bb07a487bafbb72454c1986",
+      "start_seconds": 28.5
+    },
+    {
+      "section": "bloodGroup",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_en.43b97801.mp4",
+      "bytes": 1780274,
+      "seconds": 56.0,
+      "sha256": "43b9780132735f4403c50f2d69efc3445578655d7111297ab165b9e12cbad4aa",
+      "start_seconds": 28.5
+    },
+    {
+      "section": "histology",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_uz.806f0f7b.mp4",
+      "bytes": 1815480,
+      "seconds": 56.0,
+      "sha256": "806f0f7b0da83759489bd3a45e30532f49714a45af8eee54bec1c75936ae552e",
+      "start_seconds": 32.0
+    },
+    {
+      "section": "histology",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_ru.326e67aa.mp4",
+      "bytes": 1804643,
+      "seconds": 56.0,
+      "sha256": "326e67aa6905631e946e67b7dc2d678912fcb62c3bb07a487bafbb72454c1986",
+      "start_seconds": 32.0
+    },
+    {
+      "section": "histology",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_en.43b97801.mp4",
+      "bytes": 1780274,
+      "seconds": 56.0,
+      "sha256": "43b9780132735f4403c50f2d69efc3445578655d7111297ab165b9e12cbad4aa",
+      "start_seconds": 32.0
+    },
+    {
+      "section": "urinalysis",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_uz.806f0f7b.mp4",
+      "bytes": 1815480,
+      "seconds": 56.0,
+      "sha256": "806f0f7b0da83759489bd3a45e30532f49714a45af8eee54bec1c75936ae552e",
+      "start_seconds": 38.5
+    },
+    {
+      "section": "urinalysis",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_ru.326e67aa.mp4",
+      "bytes": 1804643,
+      "seconds": 56.0,
+      "sha256": "326e67aa6905631e946e67b7dc2d678912fcb62c3bb07a487bafbb72454c1986",
+      "start_seconds": 38.5
+    },
+    {
+      "section": "urinalysis",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_en.43b97801.mp4",
+      "bytes": 1780274,
+      "seconds": 56.0,
+      "sha256": "43b9780132735f4403c50f2d69efc3445578655d7111297ab165b9e12cbad4aa",
+      "start_seconds": 38.5
+    },
+    {
+      "section": "bloodMorph",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_uz.806f0f7b.mp4",
+      "bytes": 1815480,
+      "seconds": 56.0,
+      "sha256": "806f0f7b0da83759489bd3a45e30532f49714a45af8eee54bec1c75936ae552e",
+      "start_seconds": 42.0
+    },
+    {
+      "section": "bloodMorph",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_ru.326e67aa.mp4",
+      "bytes": 1804643,
+      "seconds": 56.0,
+      "sha256": "326e67aa6905631e946e67b7dc2d678912fcb62c3bb07a487bafbb72454c1986",
+      "start_seconds": 42.0
+    },
+    {
+      "section": "bloodMorph",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_en.43b97801.mp4",
+      "bytes": 1780274,
+      "seconds": 56.0,
+      "sha256": "43b9780132735f4403c50f2d69efc3445578655d7111297ab165b9e12cbad4aa",
+      "start_seconds": 42.0
+    },
+    {
+      "section": "coagulogram",
+      "lang": "uz",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_uz.806f0f7b.mp4",
+      "bytes": 1815480,
+      "seconds": 56.0,
+      "sha256": "806f0f7b0da83759489bd3a45e30532f49714a45af8eee54bec1c75936ae552e",
+      "start_seconds": 45.5
+    },
+    {
+      "section": "coagulogram",
+      "lang": "ru",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_ru.326e67aa.mp4",
+      "bytes": 1804643,
+      "seconds": 56.0,
+      "sha256": "326e67aa6905631e946e67b7dc2d678912fcb62c3bb07a487bafbb72454c1986",
+      "start_seconds": 45.5
+    },
+    {
+      "section": "coagulogram",
+      "lang": "en",
+      "url": "https://NEEDS-OWNER-HOST.invalid/labguide/howto/v1/10_boshqa_funksiyalar_en.43b97801.mp4",
+      "bytes": 1780274,
+      "seconds": 56.0,
+      "sha256": "43b9780132735f4403c50f2d69efc3445578655d7111297ab165b9e12cbad4aa",
+      "start_seconds": 45.5
+    }
+  ]
+}

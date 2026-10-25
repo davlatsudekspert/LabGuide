@@ -18,6 +18,7 @@ import '../features/daily/daily_controller.dart';
 import '../features/daily/daily_reminder.dart';
 import '../features/differential/differential_controller.dart';
 import '../features/home/resume_history.dart';
+import '../features/howto/howto_videos.dart';
 import '../features/instruments/instruments_controller.dart';
 import '../features/learn/exam_controller.dart';
 import '../features/learn/quiz_progress.dart';
@@ -85,6 +86,7 @@ class AppServices {
     required this.classroom,
     required this.community,
     required this.topicTests,
+    required this.howToVideos,
     this.qrScanner = const MobileQrScanner(),
   });
 
@@ -147,6 +149,10 @@ class AppServices {
 
   /// Ilova ichidagi QR skaner (D-68; testlarda — soxta skaner).
   final QrScanner qrScanner;
+
+  /// “Qanday foydalaniladi?” videolari ro‘yxati (assets/howto/videos.json)
+  /// va tugma bosilgandagi tarmoq tekshiruvi. Ro‘yxat bo‘sh — tugma yo‘q.
+  final HowToVideoService howToVideos;
 
   /// Adminlar boshqaruvi (D-44) — server bu imkoniyatga ega bo'lsa
   /// (hozircha faqat Cloudflare). Aks holda bo'lim ko'rinmaydi.
