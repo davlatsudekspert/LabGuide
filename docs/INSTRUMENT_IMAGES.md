@@ -46,9 +46,22 @@ dagi `SCHEMATICS`, bo'lmasa yo'nalishning standart chizmasi):
 | `urine_strip` | urinalysis | siydik test-chiziq o'quvchisi (cobas u 411) |
 | `urine_system` | urinalysis | siydik tahlili tizimi: chiziq + cho'kma (cobas 6500, EU-5600 Pro) |
 
-Katalogda koagulyatsiya analizatori va mikroplastinka (ELISA) o'quvchisi yo'q
-— ular chizilmadi; modeli paydo bo'lsa, tur qo'shiladi (`gen.py`,
-`InstrumentSchematic`, `SCHEMATIC_BY_CATEGORY`).
+Katalogdagi **modellar** orasida koagulyatsiya analizatori va mikroplastinka
+(ELISA) o'quvchisi yo'q — model turi sifatida qo'shilmadi; modeli paydo
+bo'lsa, tur qo'shiladi (`gen.py`, `InstrumentSchematic`, `SCHEMATIC_BY_CATEGORY`).
+
+**Yo'nalish (lab) kartalari** uchun alohida 25 ta apparat SINFI chizmasi bor
+(`gen.py` L1–L25: GC-MS, LC-MS, MALDI-TOF, ID/AST tizimi, gemokultura,
+mikobakteriya suyuq muhiti, oqim sitometri, real vaqt PCR, kartrijli
+molekulyar platforma, koagulometr, ELISA o'quvchi/yuvish, II sinf BXSh,
+avtoklav, qon gazlari/ISE, HbA1c, sovutgich + DDL, LED fluoressent mikroskop,
+CASA, gel karta, EChT, agregometr/viskoelastik, elektroforez, osmometr, YQX,
+analitik tarozi). Katalog kaliti `lab_cards[].schematic`, ro'yxat
+`LabSchematic` (`lab_direction_card.dart`), qamrov va istisnolar —
+`docs/LAB_CARD_IMAGE_COVERAGE.md`, kelib chiqishi va sha256 —
+`docs/SCHEMATICS_PROVENANCE.md`. Ishlab chiqaruvchi ruxsati yo'q — foto yoki
+o'xshatma ishlatilmaydi; izoh model kartasidagi bilan bir xil
+(“Sxematik tasvir — aniq model emas”).
 
 Fayllar: `assets/instruments/schematic/<kalit>_480.png` (karta, 480×320) va
 `<kalit>_1200.png` (to'liq ekran, 1200×800), shaffof fon (kunduzgi va tungi

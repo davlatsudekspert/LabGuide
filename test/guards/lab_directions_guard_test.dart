@@ -1,5 +1,6 @@
 // TB/OIV yo'nalish kartalari qorovuli: har karta rasmiy manbali (URL + sana),
-// uch tilli maydonlar bo'sh emas, uchinchi tomon rasmi yo'q, platforma va
+// uch tilli maydonlar bo'sh emas, uchinchi tomon rasmi yo'q (faqat o'z sinf
+// chizmasi kaliti — lab_card_schematic_guard_test.dart), platforma va
 // test alohida id, hammasi NEEDS_REVIEW.
 import 'dart:convert';
 import 'dart:io';
@@ -83,15 +84,29 @@ void main() {
     }
   });
 
-  test('rasm maydoni yo‘q (uchinchi tomon fotosi bo‘lishi mumkin emas)', () {
-    for (final c in raw['lab_cards']! as List) {
-      final m = c as Map;
-      expect(m.keys.where((k) => (k as String).contains('image')), isEmpty);
-      expect(m.keys.where((k) => (k as String).contains('photo')), isEmpty);
-      expect(jsonEncode(m).contains('.png'), isFalse, reason: '${m['id']}');
-      expect(jsonEncode(m).contains('.jpg'), isFalse, reason: '${m['id']}');
-    }
-  });
+  test(
+    'foto maydoni yo‘q: faqat o‘z sinf chizmasi kaliti (uchinchi tomon fotosi '
+    'bo‘lishi mumkin emas)',
+    () {
+      final known = {for (final s in LabSchematic.values) s.key};
+      for (final c in raw['lab_cards']! as List) {
+        final m = c as Map;
+        expect(m.keys.where((k) => (k as String).contains('image')), isEmpty);
+        expect(m.keys.where((k) => (k as String).contains('photo')), isEmpty);
+        // Fayl yo‘li emas, ro‘yxatdagi kalit (LabSchematic) — PNG yo‘li kodda.
+        expect(jsonEncode(m).contains('.png'), isFalse, reason: '${m['id']}');
+        expect(jsonEncode(m).contains('.jpg'), isFalse, reason: '${m['id']}');
+        if (m['schematic'] case final String key) {
+          expect(known, contains(key), reason: '${m['id']}');
+          expect(
+            m['audit_status'],
+            isNot('NEEDS_SOURCE'),
+            reason: '${m['id']}',
+          );
+        }
+      }
+    },
+  );
 
   test('platforma va test — alohida id; havolalar ikki tomonlama', () {
     final platforms = catalog.publicLabCards

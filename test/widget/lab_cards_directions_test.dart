@@ -55,6 +55,18 @@ void main() {
             );
           }
           expect(texts.contains('NEEDS_'), isFalse, reason: c.id);
+          // Apparat sinfi chizmasi: katalogda bo‘lsa — rasm + izoh, aks holda yo‘q
+          // (istisno, docs/LAB_CARD_IMAGE_COVERAGE.md).
+          expect(
+            find.byKey(const ValueKey('lab-card-schematic')),
+            c.schematic == null ? findsNothing : findsOneWidget,
+            reason: '${c.id} schematic',
+          );
+          expect(
+            texts.contains(l.instSchematicCaption),
+            c.schematic != null,
+            reason: '${c.id} schematic caption',
+          );
         }
       },
     );
