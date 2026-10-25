@@ -9,6 +9,7 @@ import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/entitlements/entitlement_models.dart';
 import 'package:labguide/core/entitlements/entitlement_service.dart';
 import 'package:labguide/core/entitlements/feature.dart';
+import 'package:labguide/core/entitlements/plan_matrix.dart';
 import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/features/profile/subscription_screen.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
@@ -92,7 +93,12 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(SubscriptionScreen), findsOneWidget);
 
-    expect(find.text(uz.proSubAllFree), findsOneWidget);
+    // D-78: qurilgan pullik funksiya bor (Ustoz Pro) — “hamma imkoniyat bepul,
+    // hech narsa sotilmayapti” izohi endi to'g'ri emas va ko'rsatilmaydi.
+    expect(
+      find.text(uz.proSubAllFree),
+      ProGatePolicy.gated.isEmpty ? findsOneWidget : findsNothing,
+    );
     expect(find.text(uz.proSubStatusFree), findsOneWidget);
     for (final spec in ProPricing.plans) {
       final panel = find.byKey(ValueKey('sub-plan-${spec.plan.name}'));
@@ -119,9 +125,13 @@ void main() {
         ),
         findsOneWidget,
       );
+      // D-78: reja qurilgan pullik funksiyani ochsa (masalan, Ustoz testlari —
+      // `learner`, Ustoz Pro — `teacher_panel`), “hech narsa ochmaydi” yo'q.
       expect(
         find.descendant(of: panel, matching: find.text(uz.proSubNothingGated)),
-        findsOneWidget,
+        PlanMatrix.unlockedBy(spec.plan, gated: ProGatePolicy.gated).isEmpty
+            ? findsOneWidget
+            : findsNothing,
       );
     }
     // Narxlar katalogdan: 1.49 / 9.99, 2.49 / 24.99, 3.49 / 34.99.
@@ -323,7 +333,7 @@ void main() {
   });
 
   testWidgets('Pro tugadi: “Pro tugadi, bepul imkoniyatlar ishlaydi”; '
-      'barcha imkoniyatlar ochiq', (tester) async {
+      'faqat qurilgan pullik funksiyalar yopiq, qolgani ochiq', (tester) async {
     final past = DateTime.now().toUtc().subtract(const Duration(days: 1));
     final src = FakeEntitlementSource()
       ..snapshot = EntitlementSnapshot.fromJson({
@@ -344,8 +354,14 @@ void main() {
     final uz = _l(AppLanguage.uz);
     expect(find.text(uz.proSubStatusFree), findsOneWidget);
     expect(find.byKey(const ValueKey('sub-ended')), findsOneWidget);
+    // D-78: katalogda faqat pullik funksiyalar; tugagach faqat QURILGAN
+    // (`gated`) lari yopiladi — bugungi bepul funksiyalar katalogda yo'q.
     for (final f in Feature.values) {
-      expect(s.entitlements.can(f), isTrue, reason: f.name);
+      expect(
+        s.entitlements.can(f),
+        !ProGatePolicy.gated.contains(f),
+        reason: f.name,
+      );
     }
   });
 }
