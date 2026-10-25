@@ -88,7 +88,7 @@
     "en": "Urinalysis"
    },
    "sub": {
-    "uz": "Test-chiziq o'quvchilar va cho'kma mikroskopiyasi",
+    "uz": "Test-chiziq o‘quvchilar va cho‘kma mikroskopiyasi",
     "ru": "Анализаторы тест-полосок и осадка",
     "en": "Strip readers and sediment analyzers"
    },
@@ -101,7 +101,7 @@
     "urinalysis",
     "осадок",
     "sediment",
-    "cho'kma"
+    "cho‘kma"
    ]
   }
  ],
@@ -116,7 +116,7 @@
     "url": "https://www.mindray.com/en/resources-center/ivd-edocs",
     "login": false,
     "note": {
-     "uz": "Login so'ramaydi. 2026-10-09 holatida faqat gematologiya reagent/nazorat IFU'lari bor (hujjat nomi, versiya, Part Number). Apparat qo'llanmalari bu yerda yo'q.",
+     "uz": "Login so‘ramaydi. 2026-10-09 holatida faqat gematologiya reagent/nazorat IFU’lari bor (hujjat nomi, versiya, Part Number). Apparat qo‘llanmalari bu yerda yo‘q.",
      "ru": "Без входа. На 2026-10-09 только IFU гематологических реагентов/контролей (название, версия, Part Number). Руководств к приборам нет.",
      "en": "No login. As of 2026-10-09 it lists only hematology reagent/control IFUs (document name, version, part number). Instrument manuals are not there."
     }
@@ -132,7 +132,7 @@
     "url": "https://www.human.de/target-value-sheets/",
     "login": null,
     "note": {
-     "uz": "Kalibrator/nazorat qiymatlar varaqlari shu sahifada (lot bo'yicha). Sayt avtomatik so'rovlarni bloklagani uchun qolgan bo'limlar tekshirilmadi.",
+     "uz": "Kalibrator/nazorat qiymatlar varaqlari shu sahifada (lot bo‘yicha). Sayt avtomatik so‘rovlarni bloklagani uchun qolgan bo‘limlar tekshirilmadi.",
      "ru": "Листы целевых значений калибраторов/контролей (по лоту). Остальные разделы не проверены: сайт блокирует автоматический доступ.",
      "en": "Calibrator/control target value sheets (by lot). Other sections were not verified: the site blocks automated access."
     }
@@ -148,7 +148,7 @@
     "url": "https://elabdoc-prod.roche.com/eLD/web/",
     "login": false,
     "note": {
-     "uz": "Asosiy qidiruv loginsiz: katalog raqami (REF), lot, hujjat ID yoki nomi bo'yicha. Method Sheet / IFU shu yerda. Operator qo'llanmalari va qiymat varaqlari — mijoz logini bilan.",
+     "uz": "Asosiy qidiruv loginsiz: katalog raqami (REF), lot, hujjat ID yoki nomi bo‘yicha. Method Sheet / IFU shu yerda. Operator qo‘llanmalari va qiymat varaqlari — mijoz logini bilan.",
      "ru": "Базовый поиск без входа: по каталожному номеру (REF), лоту, ID или названию документа. Method Sheet / IFU здесь. Руководства оператора и листы значений — с логином клиента.",
      "en": "Basic search without login: by catalog number (REF), lot, document ID or title. Method sheets / IFUs are here. Operator manuals and value sheets need a customer login."
     }
@@ -164,7 +164,7 @@
     "url": "https://labcentral.corelaboratory.abbott/int/en/faq.html",
     "login": true,
     "note": {
-     "uz": "Faqat Abbott Core Laboratory mijozlari uchun: ro'yxatdan o'tish mijoz raqami va apparat seriya raqami bilan. Technical Library'da IFU va COA bor.",
+     "uz": "Faqat Abbott Core Laboratory mijozlari uchun: ro‘yxatdan o‘tish mijoz raqami va apparat seriya raqami bilan. Technical Library’da IFU va COA bor.",
      "ru": "Только для клиентов Abbott Core Laboratory: регистрация по номеру клиента и серийному номеру прибора. В Technical Library — IFU и COA.",
      "en": "Abbott Core Laboratory customers only: registration with customer number and instrument serial number. The Technical Library holds IFUs and COAs."
     }
@@ -883,7 +883,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "Ko'p funksiyali, stol ustiga qo'yiladigan biokimyo analizatori.",
+     "uz": "Ko‘p funksiyali, stol ustiga qo‘yiladigan biokimyo analizatori.",
      "ru": "Многофункциональный настольный биохимический анализатор.",
      "en": "Multi-functional benchtop chemistry analyzer."
     },
@@ -923,7 +923,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -959,7 +959,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "Pol ustiga o'rnatiladigan, diskret, random access biokimyo analizatori.",
+     "uz": "Pol ustiga o‘rnatiladigan, diskret, random access biokimyo analizatori.",
      "ru": "Напольный дискретный биохимический анализатор с произвольным доступом.",
      "en": "Floor-standing, discrete, random-access clinical chemistry analyzer."
     },
@@ -1016,7 +1016,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -1050,7 +1050,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "O'rta unumdorlikdagi random access biokimyo tizimi.",
+     "uz": "O‘rta unumdorlikdagi random access biokimyo tizimi.",
      "ru": "Биохимическая система среднего потока с произвольным доступом.",
      "en": "Medium-throughput random-access clinical chemistry system."
     },
@@ -1063,7 +1063,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Avtomatik random access biokimyo tizimi; elektrolitlar uchun ichki ISE moduli. Fotometr turi flayerda ko'rsatilmagan.",
+     "uz": "Avtomatik random access biokimyo tizimi; elektrolitlar uchun ichki ISE moduli. Fotometr turi flayerda ko‘rsatilmagan.",
      "ru": "Автоматическая биохимическая система с произвольным доступом; встроенный модуль ISE для электролитов. Тип фотометра во флаере не указан.",
      "en": "Automated random-access chemistry system with a built-in ISE module for electrolytes. The photometer type is not stated in the flyer."
     },
@@ -1126,7 +1126,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -1159,7 +1159,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "Yarim avtomatik biokimyo fotometri: namuna va reagentni laborant qo'shadi, o'lchash va hisoblashni apparat bajaradi.",
+     "uz": "Yarim avtomatik biokimyo fotometri: namuna va reagentni laborant qo‘shadi, o‘lchash va hisoblashni apparat bajaradi.",
      "ru": "Полуавтоматический биохимический фотометр: пробу и реагент вносит лаборант, измерение и расчёт выполняет прибор.",
      "en": "Semi-automatic chemistry photometer: the operator pipettes sample and reagent; the instrument measures and calculates."
     },
@@ -1172,7 +1172,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Fotometriya (kolorimetriya, UV-testlar, turbidimetriya); 8 ta interferension filtrli referens kanal optikasi. O'lchash oqim kyuvetasi yoki kvadrat kyuvetada.",
+     "uz": "Fotometriya (kolorimetriya, UV-testlar, turbidimetriya); 8 ta interferension filtrli referens kanal optikasi. O‘lchash oqim kyuvetasi yoki kvadrat kyuvetada.",
      "ru": "Фотометрия (колориметрия, УФ-тесты, турбидиметрия); оптика с опорным каналом и 8 интерференционными фильтрами. Измерение в проточной или квадратной кювете.",
      "en": "Photometry (colorimetry, UV tests, turbidimetry) with reference-channel optics and 8 interference filters; measurement in a flow cell or square cuvette."
     },
@@ -1487,7 +1487,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -1517,7 +1517,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "To'liq avtomatik, diskret biokimyo analizatori.",
+     "uz": "To‘liq avtomatik, diskret biokimyo analizatori.",
      "ru": "Полностью автоматический дискретный биохимический анализатор.",
      "en": "Fully automated, discrete clinical chemistry analyzer."
     },
@@ -1579,7 +1579,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Roche operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
      "en": "The Roche operator's manual is available with a customer login (documents portal below)."
     }
@@ -1614,7 +1614,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "Ko'p turdagi miqdoriy va sifat in vitro testlar uchun to'liq avtomatik analizator (cobas pure tizimi tarkibida).",
+     "uz": "Ko‘p turdagi miqdoriy va sifat in vitro testlar uchun to‘liq avtomatik analizator (cobas pure tizimi tarkibida).",
      "ru": "Полностью автоматический анализатор для широкого спектра количественных и качественных тестов in vitro (в составе системы cobas pure).",
      "en": "Fully automated analyzer for a large array of quantitative and qualitative in vitro tests (part of the cobas pure system)."
     },
@@ -1627,7 +1627,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Ko'p to'lqinli spektrofotometr; elektrolitlar uchun alohida ISE bloki.",
+     "uz": "Ko‘p to‘lqinli spektrofotometr; elektrolitlar uchun alohida ISE bloki.",
      "ru": "Многоволновой спектрофотометр; отдельный блок ISE для электролитов.",
      "en": "Multiple-wavelength spectrophotometer; separate ISE unit for electrolytes."
     },
@@ -1676,7 +1676,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Roche operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
      "en": "The Roche operator's manual is available with a customer login (documents portal below)."
     }
@@ -1710,7 +1710,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "Inson namunalarida in vitro diagnostik testlar uchun (rasmiy sahifadagi umumiy ta'rif; modelga xos maqsad alohida yozilmagan).",
+     "uz": "Inson namunalarida in vitro diagnostik testlar uchun (rasmiy sahifadagi umumiy ta’rif; modelga xos maqsad alohida yozilmagan).",
      "ru": "Для диагностических тестов in vitro на образцах человека (общая формулировка на официальной странице; отдельной для модели нет).",
      "en": "For in vitro diagnostic assays on samples of human origin (general statement on the official page; no model-specific purpose)."
     },
@@ -1723,7 +1723,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Fotometrik, potensiometrik va turbidimetrik o'lchash; Na⁺, K⁺, Cl⁻ uchun ISE.",
+     "uz": "Fotometrik, potensiometrik va turbidimetrik o‘lchash; Na⁺, K⁺, Cl⁻ uchun ISE.",
      "ru": "Фотометрия, потенциометрия и турбидиметрия; ISE для Na⁺, K⁺, Cl⁻.",
      "en": "Photometric, potentiometric and turbidimetric measurement; ISE for Na⁺, K⁺, Cl⁻."
     },
@@ -1767,7 +1767,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Abbott operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
      "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
     }
@@ -1800,7 +1800,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Fotometrik va potensiometrik o'lchash.",
+     "uz": "Fotometrik va potensiometrik o‘lchash.",
      "ru": "Фотометрическое и потенциометрическое измерение.",
      "en": "Photometric and potentiometric measurement."
     },
@@ -1834,7 +1834,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Abbott operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
      "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
     }
@@ -1883,7 +1883,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Lazer sochilishi, oqim sitometriyasi va kimyoviy bo'yoq (leykotsitlar differensiali); impedans usuli bilan WBC, RBC, BAS va PLT sanaladi; HGB — kolorimetrik usul.",
+     "uz": "Lazer sochilishi, oqim sitometriyasi va kimyoviy bo‘yoq (leykotsitlar differensiali); impedans usuli bilan WBC, RBC, BAS va PLT sanaladi; HGB — kolorimetrik usul.",
      "ru": "Лазерное светорассеяние, проточная цитометрия и химический краситель (дифференциал лейкоцитов); импедансный метод для подсчёта WBC, RBC, BAS и PLT; HGB — колориметрический метод.",
      "en": "Laser scatter, flow cytometry and chemical dye (WBC differential); impedance counting of WBC, RBC, BAS and PLT; HGB by colorimetry."
     },
@@ -1916,7 +1916,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -1989,7 +1989,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -2057,7 +2057,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -2106,7 +2106,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Leykotsitlar differensiali 3D lazer sochilishi texnologiyasiga asoslangan. RBC/PLT usuli flayerda ko'rsatilmagan.",
+     "uz": "Leykotsitlar differensiali 3D lazer sochilishi texnologiyasiga asoslangan. RBC/PLT usuli flayerda ko‘rsatilmagan.",
      "ru": "Дифференциал лейкоцитов основан на технологии 3D-светорассеяния. Метод для RBC/PLT во флаере не указан.",
      "en": "WBC differential based on 3D scatter technology. The RBC/PLT method is not stated in the flyer."
     },
@@ -2156,7 +2156,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -2204,7 +2204,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Hujayralar Kulter (konduktometrik) usulida sanaladi; gemoglobin — fotometrik usul (Rosstandart tavsifi bo'yicha).",
+     "uz": "Hujayralar Kulter (konduktometrik) usulida sanaladi; gemoglobin — fotometrik usul (Rosstandart tavsifi bo‘yicha).",
      "ru": "Подсчёт клеток методом Коултера (кондуктометрическим); гемоглобин — фотометрическим методом (по описанию типа Росстандарта).",
      "en": "Cells counted by the Coulter (conductometric) method; hemoglobin photometrically (per the Rosstandart type description)."
     },
@@ -2248,7 +2248,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -2281,7 +2281,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "Kam va o'rta hajmli laboratoriyalar uchun 5 qismli differensialli avtomatik gematologik analizator.",
+     "uz": "Kam va o‘rta hajmli laboratoriyalar uchun 5 qismli differensialli avtomatik gematologik analizator.",
      "ru": "Автоматический гематологический анализатор с 5-diff для лабораторий малого и среднего потока.",
      "en": "Automated 5-part differential hematology analyzer for low- to mid-volume laboratories."
     },
@@ -2327,7 +2327,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Abbott operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
      "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
     }
@@ -2403,7 +2403,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Abbott operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
      "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
     }
@@ -2450,7 +2450,7 @@
    },
    "principle": {
     "text": {
-     "uz": "MAPSS — ko'p burchakli qutblangan yorug'lik sochilishi bo'yicha ajratish texnologiyasi.",
+     "uz": "MAPSS — ko‘p burchakli qutblangan yorug‘lik sochilishi bo‘yicha ajratish texnologiyasi.",
      "ru": "MAPSS — разделение по многоугловому поляризованному светорассеянию.",
      "en": "MAPSS (Multi Angle Polarized Scatter Separation) technology."
     },
@@ -2484,7 +2484,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Abbott operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
      "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
     }
@@ -2519,7 +2519,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "Ixcham, to'liq avtomatik xemilyuminessent immunoanalizator.",
+     "uz": "Ixcham, to‘liq avtomatik xemilyuminessent immunoanalizator.",
      "ru": "Компактный полностью автоматический хемилюминесцентный иммуноанализатор.",
      "en": "Compact, fully automated chemiluminescence immunoassay analyzer."
     },
@@ -2532,7 +2532,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Superparamagnit mikrozarrachalar, ishqoriy fosfataza bilan belgilangan reagentlar va AMPPD substrati; signal fotonlarni sanash bilan o'lchanadi.",
+     "uz": "Superparamagnit mikrozarrachalar, ishqoriy fosfataza bilan belgilangan reagentlar va AMPPD substrati; signal fotonlarni sanash bilan o‘lchanadi.",
      "ru": "Суперпарамагнитные микрочастицы, реагенты с меткой щелочной фосфатазы и субстрат AMPPD; сигнал измеряется счётом фотонов.",
      "en": "Superparamagnetic microparticles, ALP-labelled reagents and AMPPD substrate; signal measured by photon counting."
     },
@@ -2584,7 +2584,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -2677,7 +2677,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -2709,7 +2709,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "Kam va o'rta hajmli laboratoriyalar uchun immunoanaliz tizimi (tiroid, fertillik gormonlari, o'sma va kardiomarkerlar va boshqalar).",
+     "uz": "Kam va o‘rta hajmli laboratoriyalar uchun immunoanaliz tizimi (tiroid, fertillik gormonlari, o‘sma va kardiomarkerlar va boshqalar).",
      "ru": "Иммуноаналитическая система для лабораторий малого и среднего потока (тиреоидные, гормоны фертильности, онко- и кардиомаркеры и др.).",
      "en": "Immunoassay system for low- to mid-volume laboratories (thyroid, fertility hormones, tumour and cardiac markers, and more)."
     },
@@ -2766,7 +2766,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
@@ -2848,7 +2848,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Roche operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
      "en": "The Roche operator's manual is available with a customer login (documents portal below)."
     }
@@ -2883,7 +2883,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "To'liq avtomatik immunologik analizator (cobas pure tizimi tarkibida).",
+     "uz": "To‘liq avtomatik immunologik analizator (cobas pure tizimi tarkibida).",
      "ru": "Полностью автоматический иммунологический анализатор (в составе системы cobas pure).",
      "en": "Fully automated immunology analyzer (part of the cobas pure system)."
     },
@@ -2936,7 +2936,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Roche operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
      "en": "The Roche operator's manual is available with a customer login (documents portal below)."
     }
@@ -3021,7 +3021,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Abbott operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
      "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
     }
@@ -3089,7 +3089,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Abbott operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
      "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
     }
@@ -3120,13 +3120,13 @@
     "кобас у411"
    ],
    "kind": {
-    "uz": "Yarim avtomatik siydik test-chiziq o'quvchisi",
+    "uz": "Yarim avtomatik siydik test-chiziq o‘quvchisi",
     "ru": "Полуавтоматический анализатор тест-полосок мочи",
     "en": "Semi-automated urine strip reader"
    },
    "purpose": {
     "text": {
-     "uz": "Siydik ko'rsatkichlarini sifat yoki yarim miqdoriy aniqlash uchun yarim avtomatik tizim.",
+     "uz": "Siydik ko‘rsatkichlarini sifat yoki yarim miqdoriy aniqlash uchun yarim avtomatik tizim.",
      "ru": "Полуавтоматическая система для качественного или полуколичественного определения показателей мочи.",
      "en": "Semi-automated system for qualitative or semi-quantitative determination of urine analytes."
     },
@@ -3139,7 +3139,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Combur10 Test M test-chiziqlarini o'qiydi: 470, 555 va 620 nm LEDlar va fotosensorlar.",
+     "uz": "Combur10 Test M test-chiziqlarini o‘qiydi: 470, 555 va 620 nm LEDlar va fotosensorlar.",
      "ru": "Считывает тест-полоски Combur10 Test M: светодиоды 470, 555 и 620 нм и фотосенсоры.",
      "en": "Reads Combur10 Test M strips using 470, 555 and 620 nm LEDs and photo sensors."
     },
@@ -3162,7 +3162,7 @@
     },
     {
      "label": {
-      "uz": "Yorug'lik manbai",
+      "uz": "Yorug‘lik manbai",
       "ru": "Источник света",
       "en": "Light source"
      },
@@ -3182,7 +3182,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Roche operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
      "en": "The Roche operator's manual is available with a customer login (documents portal below)."
     }
@@ -3220,7 +3220,7 @@
    },
    "purpose": {
     "text": {
-     "uz": "u 601 — to'liq avtomatik siydik test-chiziq tahlili; u 701 — to'liq avtomatik siydik cho'kmasi mikroskopiyasi.",
+     "uz": "u 601 — to‘liq avtomatik siydik test-chiziq tahlili; u 701 — to‘liq avtomatik siydik cho‘kmasi mikroskopiyasi.",
      "ru": "u 601 — полностью автоматический анализ мочи на тест-полосках; u 701 — полностью автоматическая микроскопия осадка мочи.",
      "en": "u 601: fully automated strip urinalysis; u 701: fully automated urine microscopy."
     },
@@ -3275,7 +3275,7 @@
    "manual": {
     "access": "login",
     "note": {
-     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "uz": "Roche operator qo‘llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
      "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
      "en": "The Roche operator's manual is available with a customer login (documents portal below)."
     }
@@ -3305,7 +3305,7 @@
     "EU-5300"
    ],
    "kind": {
-    "uz": "Siydik tahlili tizimi (chiziq + cho'kma)",
+    "uz": "Siydik tahlili tizimi (chiziq + cho‘kma)",
     "ru": "Система анализа мочи (полоски + осадок)",
     "en": "Urinalysis system (strip + sediment)"
    },
@@ -3324,7 +3324,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Cho'kma raqamli tasvirlash orqali: namunadan 60 tagacha rangli tasvir olinadi.",
+     "uz": "Cho‘kma raqamli tasvirlash orqali: namunadan 60 tagacha rangli tasvir olinadi.",
      "ru": "Осадок — цифровая визуализация: до 60 цветных изображений пробы.",
      "en": "Sediment by digital imaging: up to 60 full-colour images per sample."
     },
@@ -3342,7 +3342,7 @@
    "manual": {
     "access": "not_public",
     "note": {
-     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "uz": "Operator qo‘llanmasi ishlab chiqaruvchi saytida ochiq e’lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo‘ying.",
      "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
      "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
     }
