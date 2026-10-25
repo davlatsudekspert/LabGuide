@@ -49,6 +49,10 @@ chizmani oladi — `docs/LAB_CARD_IMAGE_COVERAGE.md`.
   subpopulyatsiya, RBC, o‘ngga cho‘zilgan PLT). Qayta yaratilgan PNG lar:
   `elisa_reader`, `hba1c_analyzer`, `hematology5`, `hematology3`,
   `chemistry`, `immunoassay` (sha256 quyida).
+- 2026-10-25, real vaqt PCR (ilmiy ko‘rik F2): optik modul kesigi fluoressent signal yo‘li sifatida qayta chizildi
+  — manba → qo‘zg‘atish filtri → termoblok kesigidagi reaksiya probirkasi → nurlanish filtri → detektor (nur
+  probirkadan o‘tadi; avval filtr g‘ildiragidan to‘g‘ri detektorga borardi); belgilar 7 → 9. Manba turi, filtr
+  tuzilishi va o‘qish yo‘nalishi ataylab ko‘rsatilmaydi. Qayta yaratilgan PNG: `real_time_pcr`.
 - Har bir PNG ko‘zdan kechirildi (1200 px, 480 px, ~160 px eskiz, kunduzgi va
   tungi fon); anatomiya xatolari tuzatildi (masalan, MALDI-TOF da yengil ionlar
   detektorga yaqinroq, elektroforezda anod — qizil sim, albumin anod tomonda).
@@ -89,8 +93,8 @@ LabGuide’ning o‘z original ishi; ishlab chiqaruvchi dizayni yo‘q.
 | `mycobacterial_culture_1200.png` | L6 `mycobacterial_culture` | 1200×800 | 35 KB | `689730df64ee6c384b4768f917bc0eb51f48587812dee08eaca78144410e71fd` |
 | `flow_cytometer_480.png` | L7 `flow_cytometer` | 480×320 | 13 KB | `6ae2709779f4bf4f7cae472555d4341f241d68c646d7a0ed48311e2d7ac1b477` |
 | `flow_cytometer_1200.png` | L7 `flow_cytometer` | 1200×800 | 38 KB | `bc440fc6f2eca7977bf73f0ab7cc901dbe2736ed524a2d407e3542fb94598dbb` |
-| `real_time_pcr_480.png` | L8 `real_time_pcr` | 480×320 | 14 KB | `7660d3c126df9260c02ddf8b75739cc4f7dd1cf984ceab5a732642437caa8b06` |
-| `real_time_pcr_1200.png` | L8 `real_time_pcr` | 1200×800 | 38 KB | `54883a825c235a9c634bece81b26477bbab413ea985c732b5bfbc22d191889f8` |
+| `real_time_pcr_480.png` | L8 `real_time_pcr` | 480×320 | 15 KB | `209ff89065884846286d616d9b15022d59923e743b811e262bc218002e5bd0fa` |
+| `real_time_pcr_1200.png` | L8 `real_time_pcr` | 1200×800 | 40 KB | `f576a49e821834b3f3dd1d78d9be27954a7c784057b24be947eaa48b31a98570` |
 | `cartridge_molecular_480.png` | L9 `cartridge_molecular` | 480×320 | 11 KB | `befcda350705b5432095a417a49cd4d0a46a826dd40befdc94483d94e780f943` |
 | `cartridge_molecular_1200.png` | L9 `cartridge_molecular` | 1200×800 | 31 KB | `76567414d0357c4b7656238c150cc9ccebbd2f9da1e07706cec19b58db27174e` |
 | `coag_analyzer_480.png` | L10 `coag_analyzer` | 480×320 | 14 KB | `5d125d95a6a64195da5ed85bf73a2b5cc93579eb6caca1496fbc38324bc40c3e` |

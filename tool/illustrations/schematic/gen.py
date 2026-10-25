@@ -1311,17 +1311,28 @@ def real_time_pcr():
         for c in range(12):
             x = x0 + 10 + (x1 - x0 - 20) * c / 11
             s += ell(x, yy, 8 + 2 * t, 3.5 + 1.5 * t, "#4C5853")
-    # oldingi kesik: optik modul (yorug'lik manbai, filtrlar, detektor)
+    # oldingi kesik: fluoressent signal yo'li (darslik darajasida, sxematik):
+    # qo'zg'atuvchi nur manbai -> qo'zg'atish filtri -> termoblokdagi reaksiya
+    # probirkasi -> nurlanish filtri -> detektor. Manba turi, filtr tuzilishi va
+    # o'qish yo'nalishi (yuqori/past, skanerlash) ataylab ko'rsatilmaydi
+    # (ilmiy ko'rik F2: avval nur probirkadan o'tmas edi).
     s += rect(396, 456, 250, 206, 16, "url(#niche)", "#232B28", 2)
-    s += ell(446, 600, 18, 18, "#5B8FD0", None, extra='opacity="0.35"')
-    s += ell(446, 600, 9, 9, "#9CC3EC")
-    s += ell(540, 600, 40, 40, "#3E4A45", "#8E9B94", 2)
-    for i, c in enumerate(["#5B8FD0", "#6FCF7F", "#E3B93C", "#D9604F"]):
-        a = math.radians(-90 + i * 90)
-        s += ell(540 + math.cos(a) * 22, 600 + math.sin(a) * 22, 9, 9, c)
-    s += line(464, 600, 498, 600, "#9CC3EC", 3)
-    s += rect(590, 480, 40, 34, 6, "url(#metal)", "#7C8C84", 2)
-    s += line(540, 560, 540, 500, "#C5E8A1", 3) + line(540, 500, 590, 497, "#C5E8A1", 3)
+    s += line(532, 566, 560, 420, "#9FB3AA", 2, extra='stroke-dasharray="6 6"')
+    s += rect(408, 584, 38, 32, 6, "#5F6B65", "#8E9B94", 1.5)
+    s += ell(446, 600, 14, 14, "#5B8FD0", None, extra='opacity="0.35"') + ell(446, 600, 6, 6, "#9CC3EC")
+    # termoblok kesigi va bitta probirka
+    s += rect(500, 566, 64, 70, 6, "url(#metal)", "#7C8C84", 2)
+    s += path("M520 560 H544 V 596 L536 624 H528 L520 596 Z", "#F6F8F6", "#AFC3B8", 1.5)
+    s += path("M523 590 H541 L535 618 H529 Z", "#F3D9E1", None, 0)
+    s += rect(518, 554, 28, 9, 3, "#E8EDEA", "#AFC3B8", 1.2)
+    s += ell(532, 604, 9, 9, "#9BE36B", None, extra='opacity="0.5"')
+    # qo'zg'atuvchi nur filtr orqali probirkagacha (blok kesigi ustidan)
+    s += line(452, 600, 525, 602, "#9CC3EC", 3)
+    s += rect(462, 584, 7, 32, 2, "#5B8FD0", "#9CC3EC", 1)
+    # nurlanish: probirkadan detektorga (boshqa to'lqin uzunligi — yashil)
+    s += line(540, 588, 610, 520, "#9BE36B", 3)
+    s += f'<rect x="566" y="546" width="7" height="30" rx="2" fill="#6FCF7F" stroke="#C5E8A1" stroke-width="1" transform="rotate(45 569.5 561)"/>'
+    s += rect(592, 486, 40, 34, 6, "url(#metal)", "#7C8C84", 2)
     s += rect(666, 456, 150, 206, 16, "#F4F7F5", LINE, 3) + vents(688, 500, 106, 6) + led(690, 476)
     s += monitor(880, 250, 220, 160, ui_amp(200, 140), arm=[(840, 480), (990, 480), (990, 410)])
     return s

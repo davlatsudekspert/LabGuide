@@ -17929,7 +17929,7 @@ abstract class AppLocalizations {
   /// No description provided for @labSchemRealTimePcr.
   ///
   /// In en, this message translates to:
-  /// **'Real-time PCR instrument class — thermal block with wells, heated lid, optical module with light source, filter wheel and detector, tube strip and amplification-curve display'**
+  /// **'Real-time PCR instrument class — thermal block with wells, heated lid, cut-away of the fluorescence path (excitation source and filter → reaction tube in the block → emission filter → detector), tube strip and amplification-curve display'**
   String get labSchemRealTimePcr;
 
   /// No description provided for @labSchemCartridgeMolecular.
@@ -19618,17 +19618,41 @@ abstract class AppLocalizations {
   /// **'Provides light that excites the dye or probe.'**
   String get schemPartsRealTimePcrSourceFn;
 
-  /// No description provided for @schemPartsRealTimePcrFiltersName.
+  /// No description provided for @schemPartsRealTimePcrExfilterName.
   ///
   /// In en, this message translates to:
-  /// **'Filter wheel'**
-  String get schemPartsRealTimePcrFiltersName;
+  /// **'Excitation filter (channel selection)'**
+  String get schemPartsRealTimePcrExfilterName;
 
-  /// No description provided for @schemPartsRealTimePcrFiltersFn.
+  /// No description provided for @schemPartsRealTimePcrExfilterFn.
   ///
   /// In en, this message translates to:
-  /// **'Selects excitation and emission filters for each dye (channel).'**
-  String get schemPartsRealTimePcrFiltersFn;
+  /// **'Selects the excitation light needed for each dye channel.'**
+  String get schemPartsRealTimePcrExfilterFn;
+
+  /// No description provided for @schemPartsRealTimePcrTubeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Reaction tube in the block'**
+  String get schemPartsRealTimePcrTubeName;
+
+  /// No description provided for @schemPartsRealTimePcrTubeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Excitation light reaches the dye or probe in the tube, which emits fluorescence proportional to the amount of amplicon.'**
+  String get schemPartsRealTimePcrTubeFn;
+
+  /// No description provided for @schemPartsRealTimePcrEmfilterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Emission filter'**
+  String get schemPartsRealTimePcrEmfilterName;
+
+  /// No description provided for @schemPartsRealTimePcrEmfilterFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Passes only the dye’s fluorescence and blocks the excitation light.'**
+  String get schemPartsRealTimePcrEmfilterFn;
 
   /// No description provided for @schemPartsRealTimePcrDetectorName.
   ///
@@ -19639,7 +19663,7 @@ abstract class AppLocalizations {
   /// No description provided for @schemPartsRealTimePcrDetectorFn.
   ///
   /// In en, this message translates to:
-  /// **'Measures fluorescence in every cycle.'**
+  /// **'Measures the fluorescence from the tubes in every cycle.'**
   String get schemPartsRealTimePcrDetectorFn;
 
   /// No description provided for @schemPartsRealTimePcrSoftwareName.
@@ -21013,13 +21037,13 @@ abstract class AppLocalizations {
   /// No description provided for @schemPartsOsmometerPrinciple.
   ///
   /// In en, this message translates to:
-  /// **'The sample is supercooled below its freezing point in the cooling block, then vibration of the stirring wire starts freezing. Released latent heat raises the temperature to the freezing point, giving a plateau that the thermistor in a Wheatstone bridge circuit measures. Dissolved particles lower the freezing point: one mole of solute lowers that of water by about 1.86 °C, and osmolality is calculated from this.'**
+  /// **'The sample is supercooled below its freezing point in the cooling block, then vibration of the stirring wire starts freezing. Released latent heat raises the temperature to the freezing point, giving a plateau that the thermistor in a Wheatstone bridge circuit measures. Dissolved particles lower the freezing point: 1 mole of dissolved particles (1 osmol) per kilogram of water lowers it by about 1.86 °C; for electrolytes the particle count depends on dissociation. Osmolality is calculated from the measured depression.'**
   String get schemPartsOsmometerPrinciple;
 
   /// No description provided for @schemPartsOsmometerResult.
   ///
   /// In en, this message translates to:
-  /// **'Urine or serum osmolality in mOsm/kg (mmol/kg).'**
+  /// **'Urine or serum osmolality in mOsm/kg: particles per kilogram of water (osmolarity, by contrast, is per litre of solution, mOsm/L).'**
   String get schemPartsOsmometerResult;
 
   /// No description provided for @schemPartsTlcTankName.

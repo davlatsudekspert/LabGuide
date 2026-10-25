@@ -10281,7 +10281,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get labSchemRealTimePcr =>
-      'Real vaqt PCR amplifikatori sinfi — quduqchali termoblok, isitiladigan qopqoq, yorug‘lik manbai, filtr g‘ildiragi va detektorli optik modul, probirkalar qatori va kuchayish egri chiziqlari ekrani';
+      'Real vaqt PCR amplifikatori sinfi — quduqchali termoblok, isitiladigan qopqoq, fluoressensiya yo‘li kesigi (qo‘zg‘atuvchi nur manbai va filtri → termoblokdagi reaksiya probirkasi → nurlanish filtri → detektor), probirkalar qatori va kuchayish egri chiziqlari ekrani';
 
   @override
   String get labSchemCartridgeMolecular =>
@@ -11310,21 +11310,37 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsRealTimePcrSourceFn =>
-      'Bo‘yoq yoki zondni qo‘zg‘atadigan yorug‘lik beradi.';
+      'Bo‘yoq yoki zondni qo‘zg‘atadigan nur beradi.';
 
   @override
-  String get schemPartsRealTimePcrFiltersName => 'Filtr g‘ildiragi';
+  String get schemPartsRealTimePcrExfilterName =>
+      'Qo‘zg‘atish filtri (kanal tanlash)';
 
   @override
-  String get schemPartsRealTimePcrFiltersFn =>
-      'Har bo‘yoq (kanal) uchun qo‘zg‘atish va nurlanish filtrini tanlaydi.';
+  String get schemPartsRealTimePcrExfilterFn =>
+      'Har bir bo‘yoq kanali uchun kerakli qo‘zg‘atuvchi nurni ajratadi.';
+
+  @override
+  String get schemPartsRealTimePcrTubeName =>
+      'Termoblokdagi reaksiya probirkasi';
+
+  @override
+  String get schemPartsRealTimePcrTubeFn =>
+      'Qo‘zg‘atuvchi nur probirkadagi bo‘yoq yoki zondga tushadi; u amplikon miqdoriga mutanosib fluoressensiya chiqaradi.';
+
+  @override
+  String get schemPartsRealTimePcrEmfilterName => 'Nurlanish filtri';
+
+  @override
+  String get schemPartsRealTimePcrEmfilterFn =>
+      'Faqat bo‘yoq chiqargan fluoressent nurni o‘tkazadi, qo‘zg‘atuvchi nurni to‘sadi.';
 
   @override
   String get schemPartsRealTimePcrDetectorName => 'Detektor';
 
   @override
   String get schemPartsRealTimePcrDetectorFn =>
-      'Har siklda fluoressensiyani o‘lchaydi.';
+      'Probirkalardan kelgan fluoressensiyani har siklda o‘lchaydi.';
 
   @override
   String get schemPartsRealTimePcrSoftwareName =>
@@ -12141,11 +12157,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsOsmometerPrinciple =>
-      'Namuna sovutish blokida muzlash nuqtasidan pastgacha o‘ta sovutiladi, so‘ng aralashtirgich sim tebranishi muzlashni boshlaydi. Ajralgan yashirin issiqlik haroratni muzlash nuqtasigacha ko‘taradi va plato hosil bo‘ladi; uni Uitston ko‘prigi sxemasidagi termistor o‘lchaydi. Erigan zarrachalar muzlash nuqtasini pasaytiradi: 1 mol erigan modda suvnikini taxminan 1,86 °C ga tushiradi — shundan osmolyallik hisoblanadi.';
+      'Namuna sovutish blokida muzlash nuqtasidan pastgacha o‘ta sovutiladi, so‘ng aralashtirgich sim tebranishi muzlashni boshlaydi. Ajralgan yashirin issiqlik haroratni muzlash nuqtasigacha ko‘taradi va plato hosil bo‘ladi; uni Uitston ko‘prigi sxemasidagi termistor o‘lchaydi. Erigan zarrachalar muzlash nuqtasini pasaytiradi: 1 kg suvdagi 1 mol erigan zarracha (1 osmol) uni taxminan 1,86 °C ga tushiradi; elektrolitlarda zarrachalar soni dissotsiatsiyaga bog‘liq. O‘lchangan pasayishdan osmolyallik hisoblanadi.';
 
   @override
   String get schemPartsOsmometerResult =>
-      'Siydik yoki zardob osmolyalligi, mOsm/kg (mmol/kg).';
+      'Siydik yoki zardob osmolyalligi, mOsm/kg — suv kilogrammidagi zarrachalar miqdori (osmolyarlik esa eritma litriga, mOsm/l).';
 
   @override
   String get schemPartsTlcTankName => 'Rivojlantirish kamerasi (qopqoqli)';
