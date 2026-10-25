@@ -156,7 +156,7 @@ void main() {
       final img = tester.widget<Image>(find.byType(Image));
       expect(
         img.image,
-        const AssetImage('assets/instruments/schematic/urine_strip_480.png'),
+        const AssetImage('assets/instruments/schematic/urine_strip_1200.png'),
       );
       expect(img.fit, BoxFit.contain);
       expect(
@@ -184,7 +184,7 @@ void main() {
     );
     expect(
       tester.widget<Image>(find.byType(Image)).image,
-      const AssetImage('assets/instruments/schematic/hematology3_480.png'),
+      const AssetImage('assets/instruments/schematic/hematology3_1200.png'),
     );
     await tester.tap(find.byKey(const ValueKey('instrument-schematic')));
     await tester.pumpAndSettle();

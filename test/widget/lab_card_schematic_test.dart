@@ -97,7 +97,7 @@ void main() {
       );
       expect(
         img.image,
-        AssetImage('assets/instruments/schematic/${key}_480.png'),
+        AssetImage('assets/instruments/schematic/${key}_1200.png'),
         reason: id,
       );
       expect(img.fit, BoxFit.contain);

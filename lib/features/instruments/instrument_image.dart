@@ -198,8 +198,10 @@ class SchematicFigure extends StatelessWidget {
                 aspectRatio: 3 / 2,
                 child: Padding(
                   padding: const EdgeInsets.all(8),
+                  // Katta (1200 px) nusxa: telefonda (3x) karta kengligi ~1000
+                  // fizik piksel — 480 px nusxa xira bo'lib qolardi.
                   child: Image.asset(
-                    asset,
+                    assetLarge,
                     fit: BoxFit.contain,
                     semanticLabel: semanticLabel,
                     errorBuilder: (context, _, _) =>

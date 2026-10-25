@@ -104,7 +104,7 @@ void main() {
     expect(
       images,
       contains(
-        const AssetImage('assets/instruments/schematic/hematology5_480.png'),
+        const AssetImage('assets/instruments/schematic/hematology5_1200.png'),
       ),
     );
     // Yo'nalish sahifasining bezak chizmasi model kartasida yo'q.
@@ -159,7 +159,7 @@ void main() {
       expect(
         images,
         contains(
-          AssetImage('assets/instruments/schematic/${schematic}_480.png'),
+          AssetImage('assets/instruments/schematic/${schematic}_1200.png'),
         ),
       );
       expect(
