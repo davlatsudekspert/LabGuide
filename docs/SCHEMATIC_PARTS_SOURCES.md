@@ -13,7 +13,7 @@ topilgan raqam va klinik tashxis yo‘q. Manba ustuni: catalog.json `sources[].i
 (URL bilan) yoki `STANDARD_TEXTBOOK (NEEDS_EXPERT)` — darslik darajasidagi umumiy
 ma’lumot, mutaxassis tasdig‘ini kutadi.
 
-Jami: 32 chizma, 223 qism; 123 tasida (to‘liq yoki qisman) `STANDARD_TEXTBOOK (NEEDS_EXPERT)`.
+Jami: 32 chizma, 221 qism; 123 tasida (to‘liq yoki qisman) `STANDARD_TEXTBOOK (NEEDS_EXPERT)`.
 
 ## `chemistry` — model turi (InstrumentSchematic)
 
@@ -108,7 +108,7 @@ Kartalar: `roche-cobas-u-411`
 | 4 | Display | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 5 | Printer | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 6 | Used strip bin | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| P | Principle | `ro-u411` <https://diagnostics.roche.com/se/en/products/instruments/cobas-u-411-ins-2009.html>; `ro-6500` <https://diagnostics.roche.com/au/en/products/systems/cobas-6500-system-sys-250.html> |
+| P | Principle | `ro-u411` <https://diagnostics.roche.com/se/en/products/instruments/cobas-u-411-ins-2009.html>; `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | R | Result | `ro-u411` <https://diagnostics.roche.com/se/en/products/instruments/cobas-u-411-ins-2009.html>; `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 
 ## `urine_system` — model turi (InstrumentSchematic)
@@ -236,7 +236,7 @@ Kartalar: `a3-hiv-cd4-flow-method`, `a3-imm-flow-cytometer-platform`
 | 3 | Flow cell (hydrodynamic focusing) | `a3-statpearls-flow` <https://www.ncbi.nlm.nih.gov/sites/books/NBK608011/> |
 | 4 | Laser | `a3-statpearls-flow` <https://www.ncbi.nlm.nih.gov/sites/books/NBK608011/> |
 | 5 | Forward-scatter (FSC) detector | `a3-statpearls-flow` <https://www.ncbi.nlm.nih.gov/sites/books/NBK608011/>; `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| 6 | Side-scatter and fluorescence detectors | `a3-statpearls-flow` <https://www.ncbi.nlm.nih.gov/sites/books/NBK608011/> |
+| 6 | Side-scatter and fluorescence detectors | `a3-statpearls-flow` <https://www.ncbi.nlm.nih.gov/sites/books/NBK608011/>; `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 7 | Waste container | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 8 | Computer (dot plots) | `a3-cdc-mmwr-rr2-2003` <https://www.cdc.gov/mmwr/preview/mmwrhtml/rr5202a1.htm> |
 | P | Principle | `a3-statpearls-flow` <https://www.ncbi.nlm.nih.gov/sites/books/NBK608011/>; `a3-cdc-mmwr-rr2-2003` <https://www.cdc.gov/mmwr/preview/mmwrhtml/rr5202a1.htm>; `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
@@ -248,7 +248,7 @@ Kartalar: `hiv-rna-viral-load`, `a1-realtime-pcr-method`, `a3-mol-realtime-pcr-p
 
 | # | qism (en) | manba |
 |---|---|---|
-| 1 | PCR tubes (8-tube strip) | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 1 | PCR tubes (strip) | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 2 | Heated lid | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 3 | Thermal block (Peltier) | `a1-sp-pcr` <https://www.ncbi.nlm.nih.gov/sites/books/NBK589663/>; `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 4 | Excitation light source | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
@@ -281,7 +281,7 @@ Kartalar: `a1-coagulation-analyzer-platform`, `a1-pt-inr-test`
 | 1 | Citrate tube rack | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 2 | Cooled reagent block | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 3 | Pipetting arm | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| 4 | Measuring cuvettes (37 °C) | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 4 | Measuring cuvettes | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 5 | Light source | `a1-sp-pt` <https://www.ncbi.nlm.nih.gov/sites/books/NBK544269/>; `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 6 | Photodetector | `a1-sp-pt` <https://www.ncbi.nlm.nih.gov/sites/books/NBK544269/> |
 | 7 | Display (clotting curve) | `a1-sp-pt` <https://www.ncbi.nlm.nih.gov/sites/books/NBK544269/> |
@@ -296,8 +296,8 @@ Kartalar: `a1-elisa-method`, `a1-elisa-reader-platform`
 |---|---|---|
 | 1 | 96-well microplate | `a1-sp-elisa` <https://www.ncbi.nlm.nih.gov/sites/books/NBK555922/> |
 | 2 | Light source (lamp) | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| 3 | Well being read | `a1-sp-elisa` <https://www.ncbi.nlm.nih.gov/sites/books/NBK555922/> |
-| 4 | Optical filter | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 3 | Optical filter | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 4 | Well being read | `a1-sp-elisa` <https://www.ncbi.nlm.nih.gov/sites/books/NBK555922/> |
 | 5 | Photodetector | `a1-sp-elisa` <https://www.ncbi.nlm.nih.gov/sites/books/NBK555922/> |
 | 6 | Washer needle manifold | `a1-sp-elisa` <https://www.ncbi.nlm.nih.gov/sites/books/NBK555922/> |
 | 7 | Wash buffer container | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
@@ -362,12 +362,10 @@ Kartalar: `a2-test-hba1c`, `a2-platform-hba1c-analyzer`
 |---|---|---|
 | 1 | EDTA tube rack | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 2 | Sampling arm | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| 3 | Buffer (eluent) bottles | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| 4 | Ion-exchange column | `a2-pmc-hba1c-review` <https://pmc.ncbi.nlm.nih.gov/articles/PMC9634344/> |
-| 5 | Photometric detector | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| 6 | Display (chromatogram) | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| 7 | Printer | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| 8 | Waste container | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 3 | Reagent bottles | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 4 | Display | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 5 | Printer | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 6 | Waste container | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | P | Principle | `a2-pmc-hba1c-review` <https://pmc.ncbi.nlm.nih.gov/articles/PMC9634344/>; `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | R | Result | `a2-pmc-hba1c-review` <https://pmc.ncbi.nlm.nih.gov/articles/PMC9634344/> |
 

@@ -31,6 +31,15 @@ Ma’lumot: `assets/instruments/schematic_parts.json` + ARB `schemParts*`;
 manbalar — `docs/SCHEMATIC_PARTS_SOURCES.md`; qorovul —
 `test/guards/schematic_parts_guard_test.dart`.
 
+Ilmiy ko‘rik tuzatishlari (2026-10-25, docs/SCIENTIFIC_REVIEW_TABLE.md):
+HbA1c chizmasi yana usul jihatdan neytral (kolonka va xromatogramma yo‘q —
+quyidagi a2-test-hba1c / a2-platform-hba1c-analyzer qatorlari shunga mos);
+ELISA optik yo‘li lampa → filtr → quduqcha → detektor; gematologiya
+rakalarida faqat binafsha (EDTA turi) qopqoqli probirkalar, biokimyo va
+immunoanaliz rakalarida neytral qopqoqli zardob/plazma probirkalari; panel
+matnlaridan manbasiz raqamlar olib tashlandi (PCR probirkalar soni,
+koagulometrda 37 °C, oqim sitometrida 90°).
+
 Jami: 45 ta ommaviy karta — 35 tasida sxematik chizma, 10 tasi istisno;
 25 ta yangi sinf chizmasi.
 

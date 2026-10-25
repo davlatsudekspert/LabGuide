@@ -597,11 +597,11 @@
         },
         {
           "n": 3,
-          "id": "schemPartsElisaReaderWell"
+          "id": "schemPartsElisaReaderFilter"
         },
         {
           "n": 4,
-          "id": "schemPartsElisaReaderFilter"
+          "id": "schemPartsElisaReaderWell"
         },
         {
           "n": 5,
@@ -741,26 +741,18 @@
         },
         {
           "n": 3,
-          "id": "schemPartsHba1cAnalyzerEluents"
+          "id": "schemPartsHba1cAnalyzerReagents"
         },
         {
           "n": 4,
-          "id": "schemPartsHba1cAnalyzerColumn"
-        },
-        {
-          "n": 5,
-          "id": "schemPartsHba1cAnalyzerDetector"
-        },
-        {
-          "n": 6,
           "id": "schemPartsHba1cAnalyzerDisplay"
         },
         {
-          "n": 7,
+          "n": 5,
           "id": "schemPartsHba1cAnalyzerPrinter"
         },
         {
-          "n": 8,
+          "n": 6,
           "id": "schemPartsHba1cAnalyzerWaste"
         }
       ],

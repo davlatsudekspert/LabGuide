@@ -105,6 +105,13 @@ def vents(x, y, w, n, gap=11, stroke="#CBD4CE"):
 
 # ------------------------------------------------------------ lab containers
 TUBE_CAPS = ["#8E6CC4", "#B6403A", "#E3B93C", "#5B8FD0", "#6FB07F"]
+# Namuna turi bo'yicha (ilmiy ko'rik 2026-10-25, DRAW-TUBES): gematologiya —
+# bir xil binafsha (EDTA turi) qopqoqli butun qon; biokimyo/immunoanaliz —
+# neytral qopqoqli zardob/plazma (och somon rang). Qopqoq rangi haqida
+# matnda da'vo yo'q.
+EDTA_CAP = "#8E6CC4"
+NEUTRAL_CAPS = ["#C3CCC6"]
+SERUM_FILLS = ["#F3E3A8", "#EFDC98", "#F3E3A8", "#EBD68E", "#F1E0A0"]
 
 
 def tube(x, y, cap="#8E6CC4", fill="#B6403A", h=96, w=26, level=0.5):
@@ -283,6 +290,26 @@ def ui_scatter(w, h):
     return s
 
 
+def ui_hist3(w, h):
+    """3 qismli analizator: WBC (uch subpopulyatsiya), RBC (bitta cho'qqi),
+    PLT (o'ngga cho'zilgan) gistogrammalari — shakllar sxematik (DRAW-HEM3)."""
+    s = rect(10, 10, w * 0.4, 9, 4, "#8FC9A0", None)
+    colw = (w - 20) / 3
+    shapes = [
+        lambda t: 0.95 * gauss(t, 0.2, 0.06) + 0.35 * gauss(t, 0.42, 0.07) + 0.6 * gauss(t, 0.7, 0.12),
+        lambda t: 0.95 * gauss(t, 0.5, 0.13 if t < 0.5 else 0.17),
+        lambda t: 0.0 if t <= 0.02 else 0.95 * math.exp(-((math.log(t / 0.2)) ** 2) / (2 * 0.55 ** 2)),
+    ]
+    for i, fn in enumerate(shapes):
+        x0 = 12 + i * colw
+        x1 = x0 + colw - 10
+        y0, y1 = h - 20, 38
+        s += line(x0 + 2, h - 18, x1, h - 18, "#5E8C7E", 2)
+        s += path(curve_path(lambda t, fn=fn: y0 - (y0 - y1) * fn(t), x0 + 2, x1, 120),
+                  stroke=["#C5E8A1", "#D98BA6", "#7FB3C8"][i], sw=3)
+    return s
+
+
 def ui_hist(w, h, n=3):
     s = rect(10, 10, w * 0.4, 9, 4, "#8FC9A0", None)
     colw = (w - 20) / n
@@ -345,7 +372,7 @@ def chemistry():
     s += rect(300, 230, 600, 160, 0, "#D4DDD7", None)
     s += reagent_disk(486, 336, 156, 36, 17)
     s += reaction_ring(744, 318, 104, 26, 13)
-    s += sample_disk(690, 366, 70, 15, 8, 12)
+    s += sample_disk(690, 366, 70, 15, 8, 12, caps=NEUTRAL_CAPS)
     s += probe_arm(612, 270, [(560, 296), (508, 322)], 26)
     s += probe_arm(852, 262, [(790, 292), (730, 316)], 26)
     s += probe_arm(404, 262, [(440, 290)], 14, "#9FB3AA")
@@ -359,7 +386,7 @@ def chemistry():
     s += rect(296, 380, 608, 22, 9, "#DCE4DF", LINE, 3)
     # namuna rakasi uyasi
     s += rect(338, 436, 292, 226, 16, "url(#niche)", "#232B28", 2)
-    s += rack(362, 640, 5, h=96)
+    s += rack(362, 640, 5, caps=NEUTRAL_CAPS, fills=SERUM_FILLS, h=96)
     # o'ng eshik / panel
     s += rect(668, 436, 202, 226, 14, "#F4F7F5", LINE, 3)
     s += vents(698, 548, 142, 6)
@@ -431,7 +458,7 @@ def hematology5():
     # avtomatik yuklagich
     s += path("M360 250 L384 168 Q388 156 400 156 H800 Q812 156 816 168 L840 250 Z", "url(#topP)", LINE, 3)
     s += rect(396, 172, 408, 62, 10, "url(#dark)", None)
-    s += rack(416, 218, 6, caps=TUBE_CAPS, h=34, step=62, plate_w=372)
+    s += rack(416, 218, 6, caps=[EDTA_CAP], h=34, step=62, plate_w=372)
     # displey (skatterogramma)
     s += monitor(380, 288, 430, 220, ui_scatter(410, 200))
     # namuna zond joyi (ochiq rejim)
@@ -474,7 +501,7 @@ def hematology3():
     s += line(436, 212, 560, 211, "#BFC9C2", 3) + line(436, 224, 520, 223, "#BFC9C2", 3)
     s += rect(400, 250, 240, 12, 4, "url(#dark)", None)
     # displey (3 gistogramma)
-    s += monitor(330, 302, 380, 196, ui_hist(360, 176, 3))
+    s += monitor(330, 302, 380, 196, ui_hist3(360, 176))
     # namuna zondi
     s += rect(350, 520, 250, 150, 16, "url(#niche)", "#232B28", 2)
     s += tube(450, 596, None, "#B6403A", h=44, level=0.6)
@@ -521,7 +548,7 @@ def immunoassay():
     s += rect(266, 374, 648, 22, 9, "#DCE4DF", LINE, 3)
     # namuna rakasi uyasi
     s += rect(306, 428, 260, 236, 16, "url(#niche)", "#232B28", 2)
-    s += rack(328, 640, 4, h=96)
+    s += rack(328, 640, 4, caps=NEUTRAL_CAPS, fills=SERUM_FILLS, h=96)
     # detektor modul (yorug'lik belgisi)
     s += rect(600, 428, 118, 112, 14, "#F4F7F5", LINE, 3)
     s += '<g transform="translate(659,484)">' + "".join(
@@ -846,13 +873,6 @@ def ui_gallery(w, h):
             else:  # bakteriyalar (tayoqchalar)
                 for dx, dy, a in [(-9, -5, 20), (6, -7, -30), (-3, 6, 60), (10, 6, 10)]:
                     s += f'<rect x="{cx + dx - 5:g}" y="{cy + dy - 1.8:g}" width="10" height="3.6" rx="1.8" fill="#6E7B74" transform="rotate({a} {cx + dx:g} {cy + dy:g})"/>'
-    return s
-
-
-def ui_hba1c(w, h):
-    """HbA1c ion almashinuv xromatogrammasi: kichik erta cho'qqilar, HbA1c, HbA0."""
-    s = ui_frame(w, h)
-    s += ui_peaks(w, h, [(0.12, 0.12, 0.015), (0.2, 0.18, 0.015), (0.36, 0.34, 0.02), (0.68, 0.95, 0.045)])
     return s
 
 
@@ -1420,9 +1440,9 @@ def elisa_reader():
     s += rect(148, 474, 110, 150, 12, "url(#niche)", "#232B28", 2)
     s += rect(186, 484, 34, 20, 4, "url(#metal)", "#7C8C84", 1.5)
     s += line(203, 504, 203, 600, "#F6E7A8", 3, extra='opacity="0.8"')
-    s += path("M188 530 H218 V 556 Q203 566 188 556 Z", "#F6F8F6", "#AFC3B8", 1.5)
-    s += rect(190, 538, 26, 18, 3, "#F0D050", None)
-    s += rect(184, 572, 38, 8, 2, "#7FB3C8", None)
+    s += rect(184, 514, 38, 8, 2, "#7FB3C8", None)
+    s += path("M188 536 H218 V 562 Q203 572 188 562 Z", "#F6F8F6", "#AFC3B8", 1.5)
+    s += rect(190, 544, 26, 18, 3, "#F0D050", None)
     s += ell(203, 602, 11, 11, "#E3B93C", None, extra='opacity="0.45"') + ell(203, 602, 6, 6, "#F6E7A8")
     s += rect(280, 474, 236, 64, 10, "url(#dark)", None)
     s += rect(292, 488, 120, 8, 3, "#8FC9A0", None) + rect(292, 504, 80, 6, 3, "#5E8C7E", None)
@@ -1600,18 +1620,13 @@ def hba1c_analyzer():
     s += waste_can(186, 610, 90, 92)
     s += rect(360, 280, 480, 422, 24, "url(#bodyH)")
     s += path("M384 280 L404 228 Q408 218 420 218 H780 Q792 218 796 228 L816 280 Z", "url(#topP)", LINE, 3)
-    # kesik oyna: ion almashinuv kolonkasi -> fotometrik detektor (oqim kyuvetasi)
-    s += rect(404, 228, 180, 44, 8, "url(#niche)", "#232B28", 2)
-    s += rect(418, 242, 96, 16, 7, "url(#metal)", "#7C8C84", 1.5)
-    s += rect(412, 244, 8, 12, 2, "#8E9B94", None) + rect(512, 244, 8, 12, 2, "#8E9B94", None)
-    s += line(520, 250, 540, 250, "#C9A15A", 3)
-    s += rect(540, 238, 10, 24, 2, "url(#glass)", "#CFE3EC", 1.5)
-    s += line(546, 250, 556, 250, "#F2D46B", 2)
-    s += rect(556, 238, 18, 24, 3, "url(#metal)", "#7C8C84", 1.5)
+    # O'lchash usuli ataylab ko'rsatilmaydi (karta bir nechta usulni qamraydi:
+    # ion almashinuv, boronat-affin, immunoanaliz, fermentativ, kapillyar
+    # elektroforez) — kolonka/xromatogramma yo'q (ilmiy ko'rik, DRAW-HBA1C).
     s += rect(600, 246, 160, 18, 7, "url(#dark)", None)
     s += rect(614, 214, 132, 42, 3, "#FFFFFF", "#D2DAD5", 2, extra='transform="rotate(-1.5 680 235)"')
     s += line(628, 226, 716, 225, "#BFC9C2", 3)
-    s += monitor(386, 302, 270, 168, ui_hba1c(250, 148))
+    s += monitor(386, 302, 270, 168, ui_bars(250, 148, 5))
     for r in range(3):
         for c in range(3):
             s += rect(680 + c * 46, 312 + r * 42, 36, 32, 8, "#FFFFFF", "#C3CCC6", 2)
