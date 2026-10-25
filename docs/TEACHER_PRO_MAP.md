@@ -88,7 +88,8 @@ bo‘lim ko‘rsatilmaydi); hammaga — “Taklifnoma kodi”.
   `student_teacher_tests_screens.dart` (ro‘yxat, tavsif, yechish, taklifnomani qabul qilish),
   `teacher_pro_common.dart`, `teacher_test_cache.dart`, `teacher_pro_routes.dart` (router — faqat `BuildFlags.proEnabled`).
 - `lib/core/storage/kv_store.dart`: `teacherPro.tests`, `teacherPro.answers` (StoreKeys.all).
-- ARB: 192 ta yangi `tt*` kalit (uz/ru/en).
+- ARB: 192 ta yangi kalit (uz/ru/en): 189 ta `tt*` va reja nomi bor 3 ta `proTt*` (mahsulot siyosati qorovuli: to‘lov/reja
+  so‘zlari faqat `pro*` kalitlarida).
 
 ## 6. Qurilmagan / ochiq qarorlar
 1. **PDF eksport** — ilovada PDF yaratish mexanizmi yo‘q; faqat CSV (xotiraga nusxa). Fayl sifatida ulashish
@@ -100,3 +101,16 @@ bo‘lim ko‘rsatilmaydi); hammaga — “Taklifnoma kodi”.
 5. Talaba tomoni Talaba Pro (`learner`) talab qiladi — Ustoz Pro obunachisining talabalari ham pullik rejaga muhtoj
    bo‘ladi (D-78 katalogi bo‘yicha). Egasi qaror qilishi kerak: shunday qoladimi yoki ustoz testini yechish bepulmi.
 6. Production: migratsiya 0020 ni avval test D1 ga, so‘ng `LG_BILLING_ENABLED` bilan — rahbar/egasi qarori.
+
+## 7. Testlar (2026-10-25, shu tarmoqda, haqiqiy ishga tushirish)
+- Server (`cloudflare/`, repo tashqarisidagi nusxada): `tsc --noEmit` — xato yo‘q; `vitest run` — **25 fayl, 357 test PASS**
+  (yangi: `test/teachertests.test.ts` — 24, `test/auth.test.ts` — +1 hisobni o‘chirish). `paid/srv` dagi
+  `0019_trial_attest_guest.sql` bilan birga (nusxada) — teachertests/groups/tiers 70 PASS.
+- Ilova: `flutter analyze` — xato yo‘q. `test/unit` — 930 PASS (yangi `teacher_tests_test.dart` — 14);
+  `test/widget` — 117 fayl, hammasi PASS (yangi `teacher_pro_test.dart` — 30); `test/guards` + `test/integration` —
+  191 PASS, 1 skip (oldindan bor), **1 FAIL: `repo_registry_guard` “migratsiya raqamlari uzilishsiz” — `[19]`**
+  (0019 `paid/srv` da; shu fayl vaqtincha qo‘yilganda test o‘tdi — birlashtirilgach yo‘qoladi).
+- Ataylab yangilangan eski testlar (D-78: `gated` endi bo‘sh emas): `pro_readiness_d75_test`, `subscription_screen_test`,
+  `pro_flag_off_test` (bo‘sh ro‘yxat holati endi aniq `gatedFeatures: {}`).
+- `python3 tool/l10n/normalize_uz_apostrophes.py --check` — 0.
+
