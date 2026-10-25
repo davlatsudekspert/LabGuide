@@ -54,7 +54,7 @@ void main() {
   setUpAll(loadAppFonts);
 
   group('diagram assets', () {
-    test('18 PNG, 960x640, <=150 KB, registered, listed in provenance', () {
+    test('18 PNG, 1920x1280 (2x of 960x640), <=150 KB, registered, listed in provenance', () {
       final pubspec = File('pubspec.yaml').readAsStringSync();
       expect(pubspec, contains('- assets/diagrams/'));
       final doc = File('docs/DIAGRAMS_PROVENANCE.md').readAsStringSync();
@@ -67,8 +67,8 @@ void main() {
           expect(bytes.length, lessThanOrEqualTo(150 * 1024), reason: path);
           final bd = ByteData.sublistView(Uint8List.fromList(bytes));
           expect(bd.getUint32(0), 0x89504E47, reason: '$path PNG magic');
-          expect(bd.getUint32(16), 960, reason: '$path width');
-          expect(bd.getUint32(20), 640, reason: '$path height');
+          expect(bd.getUint32(16), 1920, reason: '$path width');
+          expect(bd.getUint32(20), 1280, reason: '$path height');
           final digest = sha256.convert(bytes).toString();
           expect(doc, contains(digest), reason: '$path sha256 missing in doc');
           expect(doc, contains(path.split('/').last), reason: path);
