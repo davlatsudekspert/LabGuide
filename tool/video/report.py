@@ -24,7 +24,8 @@ OUT = os.path.join(ROOT, 'build', 'video_out')
 BEGIN, END = '<!-- storyboard:begin -->', '<!-- storyboard:end -->'
 
 sys.path.insert(0, os.path.dirname(__file__))
-from compose import CARD, END as END_CARD, frames_for  # noqa: E402
+from compose import (CARD, CREDIT_TEXT, CREDITS_SEC, END as END_CARD, credits_for,  # noqa: E402
+                     timeline)
 
 
 def cell(s):
@@ -44,9 +45,11 @@ def table(topic):
         rows.append(
             f"| {i} | `{f['id']}`{note} | `{f['route']}` | {cell(f['action'])} | {cell(f['text']['uz']) or '—'} "
             f"| {cell(f['text']['ru'])} | {cell(f['text']['en'])} | {f['sec']:g} |")
+    if any(credits_for(topic, lang) for lang in ['uz', 'ru', 'en']):
+        rows.append(f'| — | mualliflar kartochkasi | — | Uchinchi tomon rasmlari: muallif, litsenziya (+ `<mavzu>_<til>_credits.txt`) '
+                    f'| {CREDIT_TEXT["uz"][0]} | {CREDIT_TEXT["ru"][0]} | {CREDIT_TEXT["en"][0]} | {CREDITS_SEC:g} |')
     rows.append(f'| — | kartochka | — | Yakun: labguide.nfcstore.uz | | | | {END_CARD:g} |')
-    total = {lang: CARD + END_CARD + sum(f['sec'] for f in frames_for(topic, lang))
-             for lang in ['uz', 'ru', 'en']}
+    total = {lang: timeline(topic, lang)[-1][1] for lang in ['uz', 'ru', 'en']}
     rows.append('')
     rows.append('Jami davomiylik (storyboard bo‘yicha): ' +
                 ', '.join(f'{k} — {v:.1f} s' for k, v in total.items()) + '.')
@@ -114,12 +117,16 @@ def outputs(story):
                 f"| {v['codec_name']}, {int(num) / int(den):g} | yo‘q (0 oqim) | {size / 1e6:.2f} MB "
                 f"| `{sha(mp4)}` |")
     lines += ['', f'Jami: {count} ta MP4, {total / 1e6:.1f} MB.', '',
-              '## Subtitr fayllari (SRT / VTT)', '',
+              '## Subtitr va mualliflik fayllari (SRT / VTT / credits.txt)', '',
+              'credits.txt — videoda ko‘rinadigan uchinchi tomon rasmlarining muallifi, litsenziyasi va manba havolasi; '
+              'video e’lon qilinsa, tavsifga shu matn qo‘shiladi.', '',
               '| Fayl | Til | Hajm | sha256 |', '|---|---|---|---|']
     for topic in story['topics']:
         for lang in ['uz', 'ru', 'en']:
-            for ext in ['srt', 'vtt']:
-                p = os.path.join(OUT, f"{topic['id']}_{lang}.{ext}")
+            for ext in ['srt', 'vtt', 'credits.txt']:
+                p = os.path.join(OUT, f"{topic['id']}_{lang}{'_' if ext == 'credits.txt' else '.'}{ext}")
+                if ext == 'credits.txt' and not os.path.exists(p):
+                    continue
                 if os.path.exists(p):
                     lines.append(f"| `{os.path.basename(p)}` | {lang} | {os.path.getsize(p)} B | `{sha(p)}` |")
                 else:

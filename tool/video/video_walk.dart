@@ -86,12 +86,54 @@ class VideoWalk {
       'w': view.physicalSize.width / view.devicePixelRatio,
       'h': view.physicalSize.height / view.devicePixelRatio,
       'tap': null,
+      // Kadrda ko‘rinadigan rasm fayllari (mualliflik/litsenziya uchun:
+      // compose.py shulardan “Rasmlar mualliflari” kartochkasini yasaydi).
+      'assets': visibleAssets(),
     });
     _moved = false;
     await expectLater(
       find.byType(LabGuideApp),
       matchesGoldenFile('$_dir/$id.png'),
     );
+  }
+
+  /// Ekranda (hech bo‘lmasa qisman) ko‘rinib turgan asset rasmlar ro‘yxati.
+  List<String> visibleAssets() {
+    final view = tester.view;
+    final screen = Offset.zero &
+        Size(
+          view.physicalSize.width / view.devicePixelRatio,
+          view.physicalSize.height / view.devicePixelRatio,
+        );
+    String? name(ImageProvider? p) => switch (p) {
+      AssetImage(:final assetName) => assetName,
+      ExactAssetImage(:final assetName) => assetName,
+      ResizeImage(:final imageProvider) => name(imageProvider),
+      _ => null,
+    };
+    final out = <String>{};
+    void add(Element e, ImageProvider? p) {
+      final n = name(p);
+      final box = e.renderObject;
+      if (n == null || box is! RenderBox || !box.hasSize || !box.attached) {
+        return;
+      }
+      final r = box.localToGlobal(Offset.zero) & box.size;
+      if (r.width > 2 && r.height > 2 && r.overlaps(screen)) out.add(n);
+    }
+
+    for (final e in find.byType(Image).evaluate()) {
+      add(e, (e.widget as Image).image);
+    }
+    for (final e in find.byType(DecoratedBox).evaluate()) {
+      final d = (e.widget as DecoratedBox).decoration;
+      if (d is BoxDecoration) add(e, d.image?.image);
+    }
+    for (final e in find.byType(Ink).evaluate()) {
+      final d = (e.widget as Ink).decoration;
+      if (d is BoxDecoration) add(e, d.image?.image);
+    }
+    return out.toList()..sort();
   }
 
   /// [f] ko‘rinmasa — topilguncha suradi (pastga, so‘ng tepaga).

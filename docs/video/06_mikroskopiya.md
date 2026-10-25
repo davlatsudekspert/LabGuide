@@ -42,9 +42,10 @@ Litsenziyali mikrofotolar atlasi va o‘zingizni tekshirish uchun rasmli mashq.
 | 8 | `mic_quiz_q` | `/lab/microscopy/quiz` | A variantni bosish | Rasmga qarang va 4 variantdan birini tanlang | Посмотрите на снимок и выберите 1 из 4 вариантов | Look at the image and pick 1 of 4 options | 3.5 |
 | 9 | `mic_quiz_answer` | `/lab/microscopy/quiz` | Javob | Javob darhol: to‘g‘ri yoki to‘g‘ri javob ko‘rsatiladi | Ответ сразу: «верно» или показан правильный ответ | Instant answer: correct, or the right answer is shown | 4 |
 | 10 | `howto` | `/lab/microscopy` | «Qanday foydalaniladi?» oynasi ochiq | «Qanday foydalaniladi?» — shu qadamlar ilovaning o‘zida | «Как пользоваться?» — эти шаги есть в самом приложении | “How to use?” — the same steps inside the app | 4.5 |
+| — | mualliflar kartochkasi | — | Uchinchi tomon rasmlari: muallif, litsenziya (+ `<mavzu>_<til>_credits.txt`) | Rasmlar: mualliflar va litsenziyalar | Снимки: авторы и лицензии | Images: authors and licenses | 7 |
 | — | kartochka | — | Yakun: labguide.nfcstore.uz | | | | 3 |
 
-Jami davomiylik (storyboard bo‘yicha): uz — 43.0 s, ru — 43.0 s, en — 43.0 s.
+Jami davomiylik (storyboard bo‘yicha): uz — 50.0 s, ru — 50.0 s, en — 50.0 s.
 <!-- storyboard:end -->
 
 ## Maqsadli davomiylik

@@ -53,9 +53,10 @@ Bo‘limlar xaritasi va har bo‘limni ishlatish tartibi.
 | 12 | `bm_hub` | `/lab/bloodmorph` | Bo‘lim | Qon morfologiyasi: eritrotsitlar, trombotsitlar, anemiya | Морфология крови: эритроциты, тромбоциты, анемия | Blood morphology: red cells, platelets, anaemia | 3.5 |
 | 13 | `coag_hub` | `/lab/coagulogram` | Bo‘lim | Koagulogramma: testlar, namuna, natijani o‘qish, DIC bali | Коагулограмма: тесты, проба, чтение результата, балл ДВС | Coagulogram: tests, sample, result reading, DIC score | 3.5 |
 | 14 | `profile` | `/profile` | Profil | Profil: til, birliklar va bo‘lim ko‘rinishi | Профиль: язык, единицы и видимость раздела | Profile: language, units and section visibility | 4 |
+| — | mualliflar kartochkasi | — | Uchinchi tomon rasmlari: muallif, litsenziya (+ `<mavzu>_<til>_credits.txt`) | Rasmlar: mualliflar va litsenziyalar | Снимки: авторы и лицензии | Images: authors and licenses | 7 |
 | — | kartochka | — | Yakun: labguide.nfcstore.uz | | | | 3 |
 
-Jami davomiylik (storyboard bo‘yicha): uz — 56.0 s, ru — 56.0 s, en — 56.0 s.
+Jami davomiylik (storyboard bo‘yicha): uz — 63.0 s, ru — 63.0 s, en — 63.0 s.
 <!-- storyboard:end -->
 
 ## Maqsadli davomiylik
