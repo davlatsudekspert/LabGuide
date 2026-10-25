@@ -1,0 +1,11 @@
+{
+  "lang": "uz",
+  "voice": "uz-UZ-MadinaNeural",
+  "gap_s": 0.4,
+  "lines": [
+    {"id": "intro", "text": "LabGuide ilovasini ochamiz. Tilni tanlaymiz va talaba bo‘limiga kiramiz."},
+    {"id": "analytes", "text": "Tahlillar bo‘limida 119 ta tahlil bor: me’yor, sabablar va manbalar bilan.", "gap_s": 0.6},
+    {"id": "glu", "text": "Glyukoza me’yori 3,9 dan 5,5 mmol/L gacha."},
+    {"id": "outro", "text": "LabGuide — o‘qishda ham, ishda ham yoningizda."}
+  ]
+}

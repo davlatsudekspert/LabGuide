@@ -1,0 +1,22 @@
+{
+  "_note": "STARTER respelling map. Values are plain text that replaces the key before synthesis (whole word, case-insensitive). A value may also be {\"default\": ..., \"azure\": ..., \"piper\": ...}. NOT verified by ear - a native speaker must listen and correct before publishing videos.",
+  "entries": {
+    "PCR": "пэ цэ эр",
+    "ПЦР": "пэ цэ эр",
+    "ДНК": "дэ эн ка",
+    "РНК": "эр эн ка",
+    "HbA1c": "гликированный гемоглобин",
+    "ИФА": "и фэ а",
+    "СРБ": "эс эр бэ",
+    "СОЭ": "эс о э",
+    "ЭКГ": "э ка гэ",
+    "МРТ": "эм эр тэ",
+    "АЛТ": "а эл тэ",
+    "АСТ": "а эс тэ",
+    "ВИЧ": "вэ и че",
+    "LabGuide": "Лэб Гайд",
+    "pH": "пэ аш",
+    "ЛПНП": "эл пэ эн пэ",
+    "ЛПВП": "эл пэ вэ пэ"
+  }
+}

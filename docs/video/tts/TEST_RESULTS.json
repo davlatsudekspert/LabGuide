@@ -1,0 +1,723 @@
+{
+ "note": "Objective measurements only. Naturalness, pleasantness, accent and stress were NOT measured (nobody listened). ASR = faster-whisper int8 CPU, linear-resampled to 16 kHz; WER/CER vs the spoken text after number expansion; ASR errors are partly the ASR's own. Test box: CPU only. Generated WAVs were kept in /tmp and are not in the repo.",
+ "asr_models": {
+  "tiny": "Systran/faster-whisper-tiny (75.5 MB)",
+  "base": "Systran/faster-whisper-base (145 MB)"
+ },
+ "runs": [
+  {
+   "backend": "piper",
+   "voice": "en_US-ljspeech-medium",
+   "lang": "en",
+   "script": "en_lab.json",
+   "asr": {
+    "tiny": {
+     "mean_wer": 0.065,
+     "mean_cer": 0.029,
+     "per_line": [
+      {
+       "id": "en1",
+       "wer": 0.045,
+       "cer": 0.016,
+       "heard": "before running patient samples calibrate the spectrophotometer with a blank and a standard then record the absorbance at five hundred forty nanometers"
+      },
+      {
+       "id": "en2",
+       "wer": 0.056,
+       "cer": 0.018,
+       "heard": "the differential count reports neutrophils lymphocytes monocytes eucinophils and basophils as a percentage of the white blood cells"
+      },
+      {
+       "id": "en3",
+       "wer": 0.095,
+       "cer": 0.053,
+       "heard": "in polymerase chain reaction the sample is heated to ninety five degrees celsius to separate the two d and our strands"
+      }
+     ]
+    },
+    "base": {
+     "mean_wer": 0.15,
+     "mean_cer": 0.094,
+     "per_line": [
+      {
+       "id": "en1",
+       "wer": 0.045,
+       "cer": 0.016,
+       "heard": "before running patient samples calibrate the spectrophotometer with a blank and a standard then record the absorbance at five hundred forty nanometers"
+      },
+      {
+       "id": "en2",
+       "wer": 0.167,
+       "cer": 0.053,
+       "heard": "the differential count reports neutrophils lymphrocytes monocytes eucinophils and the basophils as a percentage of the white blood cells"
+      },
+      {
+       "id": "en3",
+       "wer": 0.238,
+       "cer": 0.213,
+       "heard": "in polymerase chain reaction the sample is heated to ninety five c to separate the two d and of stripes"
+      }
+     ]
+    }
+   },
+   "lines": [
+    {
+     "id": "en1",
+     "duration_s": 9.358,
+     "sample_rate": 22050,
+     "peak_dbfs": -0.0,
+     "rms_dbfs": -20.64,
+     "clipped_ratio": 5e-06,
+     "lufs_integrated": -20.1,
+     "lra": 1.6,
+     "silence_ratio": 0.0985,
+     "lead_silence_s": 0.0,
+     "trail_silence_s": 0.04,
+     "longest_internal_pause_s": 0.36
+    },
+    {
+     "id": "en2",
+     "duration_s": 8.452,
+     "sample_rate": 22050,
+     "peak_dbfs": -0.0,
+     "rms_dbfs": -19.51,
+     "clipped_ratio": 5e-06,
+     "lufs_integrated": -18.7,
+     "lra": 1.9,
+     "silence_ratio": 0.0545,
+     "lead_silence_s": 0.0,
+     "trail_silence_s": 0.06,
+     "longest_internal_pause_s": 0.2
+    },
+    {
+     "id": "en3",
+     "duration_s": 8.324,
+     "sample_rate": 22050,
+     "peak_dbfs": -0.0,
+     "rms_dbfs": -19.09,
+     "clipped_ratio": 5e-06,
+     "lufs_integrated": -17.5,
+     "lra": 1.6,
+     "silence_ratio": 0.1178,
+     "lead_silence_s": 0.0,
+     "trail_silence_s": 0.04,
+     "longest_internal_pause_s": 0.34
+    }
+   ]
+  },
+  {
+   "backend": "kokoro",
+   "voice": "af_heart",
+   "lang": "en",
+   "script": "en_lab.json",
+   "asr": {
+    "tiny": {
+     "mean_wer": 0.05,
+     "mean_cer": 0.018,
+     "per_line": [
+      {
+       "id": "en1",
+       "wer": 0.045,
+       "cer": 0.016,
+       "heard": "before running patient samples calibrate the spectrophotometer with a blank and a standard then record the absorbance at five hundred forty nanometers"
+      },
+      {
+       "id": "en2",
+       "wer": 0.056,
+       "cer": 0.018,
+       "heard": "the differential count reports neutrophils lymphocytes monocytes eacinophils and basophils as a percentage of the white blood cells"
+      },
+      {
+       "id": "en3",
+       "wer": 0.048,
+       "cer": 0.021,
+       "heard": "in polymerase chain reaction the sample is heated to ninety five degrees celsius to separate the two d and a strands"
+      }
+     ]
+    },
+    "base": {
+     "mean_wer": 0.047,
+     "mean_cer": 0.012,
+     "per_line": [
+      {
+       "id": "en1",
+       "wer": 0.045,
+       "cer": 0.016,
+       "heard": "before running patient samples calibrate the spectrophotometer with a blank and a standard then record the absorbance at five hundred forty nanometers"
+      },
+      {
+       "id": "en2",
+       "wer": 0.0,
+       "cer": 0.0,
+       "heard": "the differential count reports neutrophils lymphocytes monocytes eosinophils and basophils as a percentage of the white blood cells"
+      },
+      {
+       "id": "en3",
+       "wer": 0.095,
+       "cer": 0.021,
+       "heard": "in polymerase chain reaction the sample is heated to ninety five degrees celsius to separate the two d and strands"
+      }
+     ]
+    }
+   },
+   "lines": [
+    {
+     "id": "en1",
+     "duration_s": 8.939,
+     "sample_rate": 24000,
+     "peak_dbfs": -5.22,
+     "rms_dbfs": -22.63,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -22.5,
+     "lra": 1.8,
+     "silence_ratio": 0.1525,
+     "lead_silence_s": 0.02,
+     "trail_silence_s": 0.04,
+     "longest_internal_pause_s": 0.48
+    },
+    {
+     "id": "en2",
+     "duration_s": 8.469,
+     "sample_rate": 24000,
+     "peak_dbfs": -4.27,
+     "rms_dbfs": -22.65,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -22.8,
+     "lra": 1.6,
+     "silence_ratio": 0.1726,
+     "lead_silence_s": 0.02,
+     "trail_silence_s": 0.04,
+     "longest_internal_pause_s": 0.36
+    },
+    {
+     "id": "en3",
+     "duration_s": 7.445,
+     "sample_rate": 24000,
+     "peak_dbfs": -5.09,
+     "rms_dbfs": -22.79,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -22.8,
+     "lra": 1.9,
+     "silence_ratio": 0.1398,
+     "lead_silence_s": 0.04,
+     "trail_silence_s": 0.06,
+     "longest_internal_pause_s": 0.38
+    }
+   ]
+  },
+  {
+   "backend": "kokoro",
+   "voice": "af_bella",
+   "lang": "en",
+   "script": "en_lab.json",
+   "asr": {
+    "tiny": {
+     "mean_wer": 0.098,
+     "mean_cer": 0.039,
+     "per_line": [
+      {
+       "id": "en1",
+       "wer": 0.136,
+       "cer": 0.07,
+       "heard": "before running patient samples calibrate the spectrophotometer with a blank and a standard record the absorbents at five hundred forty nanometers"
+      },
+      {
+       "id": "en2",
+       "wer": 0.111,
+       "cer": 0.026,
+       "heard": "the differential count reports neutrophils lymphocytes monocytes eacinophils and bassophils as a percentage of the white blood cells"
+      },
+      {
+       "id": "en3",
+       "wer": 0.048,
+       "cer": 0.021,
+       "heard": "in polymerase chain reaction the sample is heated to ninety five degrees celsius to separate the two d and a strands"
+      }
+     ]
+    },
+    "base": {
+     "mean_wer": 0.031,
+     "mean_cer": 0.012,
+     "per_line": [
+      {
+       "id": "en1",
+       "wer": 0.045,
+       "cer": 0.016,
+       "heard": "before running patient samples calibrate the spectrophotometer with a blank and a standard then record the absorbance at five hundred forty nanometers"
+      },
+      {
+       "id": "en2",
+       "wer": 0.0,
+       "cer": 0.0,
+       "heard": "the differential count reports neutrophils lymphocytes monocytes eosinophils and basophils as a percentage of the white blood cells"
+      },
+      {
+       "id": "en3",
+       "wer": 0.048,
+       "cer": 0.021,
+       "heard": "in polymerase chain reaction the sample is heated to ninety five degrees celsius to separate the two d and a strands"
+      }
+     ]
+    }
+   },
+   "lines": [
+    {
+     "id": "en1",
+     "duration_s": 9.131,
+     "sample_rate": 24000,
+     "peak_dbfs": -4.49,
+     "rms_dbfs": -21.48,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -21.7,
+     "lra": 1.9,
+     "silence_ratio": 0.1338,
+     "lead_silence_s": 0.02,
+     "trail_silence_s": 0.04,
+     "longest_internal_pause_s": 0.48
+    },
+    {
+     "id": "en2",
+     "duration_s": 8.917,
+     "sample_rate": 24000,
+     "peak_dbfs": -2.95,
+     "rms_dbfs": -21.08,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -21.4,
+     "lra": 1.8,
+     "silence_ratio": 0.1843,
+     "lead_silence_s": 0.02,
+     "trail_silence_s": 0.04,
+     "longest_internal_pause_s": 0.4
+    },
+    {
+     "id": "en3",
+     "duration_s": 7.723,
+     "sample_rate": 24000,
+     "peak_dbfs": -5.0,
+     "rms_dbfs": -21.51,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -22.0,
+     "lra": 2.3,
+     "silence_ratio": 0.1295,
+     "lead_silence_s": 0.02,
+     "trail_silence_s": 0.06,
+     "longest_internal_pause_s": 0.4
+    }
+   ]
+  },
+  {
+   "backend": "kokoro",
+   "voice": "bf_emma",
+   "lang": "en",
+   "script": "en_lab.json",
+   "asr": {
+    "tiny": {
+     "mean_wer": 0.118,
+     "mean_cer": 0.067,
+     "per_line": [
+      {
+       "id": "en1",
+       "wer": 0.045,
+       "cer": 0.016,
+       "heard": "before running patient samples calibrate the spectrophotometer with a blank and a standard then record the absorbance at five hundred forty nanometers"
+      },
+      {
+       "id": "en2",
+       "wer": 0.167,
+       "cer": 0.026,
+       "heard": "the differential count reports neutrophils lymphocytes mono sites eocinophils and basophils as a percentage of the white blood cells"
+      },
+      {
+       "id": "en3",
+       "wer": 0.143,
+       "cer": 0.16,
+       "heard": "in polymerase chain reaction the sample is heated to ninety five c to separate the two d and a strands"
+      }
+     ]
+    },
+    "base": {
+     "mean_wer": 0.065,
+     "mean_cer": 0.028,
+     "per_line": [
+      {
+       "id": "en1",
+       "wer": 0.045,
+       "cer": 0.016,
+       "heard": "before running patient samples calibrate the spectrophotometer with a blank and a standard then record the absorbance at five hundred forty nanometers"
+      },
+      {
+       "id": "en2",
+       "wer": 0.056,
+       "cer": 0.026,
+       "heard": "the differential count reports neutrophils lymphocytes monocytes eosinophils and and basophils as a percentage of the white blood cells"
+      },
+      {
+       "id": "en3",
+       "wer": 0.095,
+       "cer": 0.043,
+       "heard": "in polymerase chain reaction the sample is heated to ninety five degrees celsius to separate the two d inner strands"
+      }
+     ]
+    }
+   },
+   "lines": [
+    {
+     "id": "en1",
+     "duration_s": 8.512,
+     "sample_rate": 24000,
+     "peak_dbfs": -2.71,
+     "rms_dbfs": -21.06,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -20.7,
+     "lra": 1.7,
+     "silence_ratio": 0.1435,
+     "lead_silence_s": 0.02,
+     "trail_silence_s": 0.06,
+     "longest_internal_pause_s": 0.54
+    },
+    {
+     "id": "en2",
+     "duration_s": 8.064,
+     "sample_rate": 24000,
+     "peak_dbfs": -3.65,
+     "rms_dbfs": -21.12,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -20.9,
+     "lra": 1.2,
+     "silence_ratio": 0.1737,
+     "lead_silence_s": 0.04,
+     "trail_silence_s": 0.06,
+     "longest_internal_pause_s": 0.28
+    },
+    {
+     "id": "en3",
+     "duration_s": 6.805,
+     "sample_rate": 24000,
+     "peak_dbfs": -3.26,
+     "rms_dbfs": -21.04,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -20.7,
+     "lra": 2.8,
+     "silence_ratio": 0.1206,
+     "lead_silence_s": 0.02,
+     "trail_silence_s": 0.06,
+     "longest_internal_pause_s": 0.42
+    }
+   ]
+  },
+  {
+   "backend": "kokoro",
+   "voice": "am_michael",
+   "lang": "en",
+   "script": "en_lab.json",
+   "asr": {
+    "tiny": {
+     "mean_wer": 0.1,
+     "mean_cer": 0.067,
+     "per_line": [
+      {
+       "id": "en1",
+       "wer": 0.045,
+       "cer": 0.016,
+       "heard": "before running patient samples calibrate the spectrophotometer with a blank and a standard then record the absorbance at five hundred forty nanometers"
+      },
+      {
+       "id": "en2",
+       "wer": 0.111,
+       "cer": 0.026,
+       "heard": "the differential count reports neutrophils lymphocytes monocytes eacinophils and bassophils as a percentage of the white blood cells"
+      },
+      {
+       "id": "en3",
+       "wer": 0.143,
+       "cer": 0.16,
+       "heard": "in polymerase chain reaction the sample is heated to ninety five c to separate the two d and a strands"
+      }
+     ]
+    },
+    "base": {
+     "mean_wer": 0.047,
+     "mean_cer": 0.012,
+     "per_line": [
+      {
+       "id": "en1",
+       "wer": 0.045,
+       "cer": 0.016,
+       "heard": "before running patient samples calibrate the spectrophotometer with a blank and a standard then record the absorbance at five hundred forty nanometers"
+      },
+      {
+       "id": "en2",
+       "wer": 0.0,
+       "cer": 0.0,
+       "heard": "the differential count reports neutrophils lymphocytes monocytes eosinophils and basophils as a percentage of the white blood cells"
+      },
+      {
+       "id": "en3",
+       "wer": 0.095,
+       "cer": 0.021,
+       "heard": "in polymerase chain reaction the sample is heated to ninety five degrees celsius to separate the two d and strands"
+      }
+     ]
+    }
+   },
+   "lines": [
+    {
+     "id": "en1",
+     "duration_s": 9.941,
+     "sample_rate": 24000,
+     "peak_dbfs": -3.37,
+     "rms_dbfs": -24.36,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -24.3,
+     "lra": 2.2,
+     "silence_ratio": 0.1549,
+     "lead_silence_s": 0.02,
+     "trail_silence_s": 0.08,
+     "longest_internal_pause_s": 0.5
+    },
+    {
+     "id": "en2",
+     "duration_s": 9.408,
+     "sample_rate": 24000,
+     "peak_dbfs": -4.93,
+     "rms_dbfs": -24.55,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -24.6,
+     "lra": 1.9,
+     "silence_ratio": 0.1681,
+     "lead_silence_s": 0.04,
+     "trail_silence_s": 0.08,
+     "longest_internal_pause_s": 0.4
+    },
+    {
+     "id": "en3",
+     "duration_s": 8.128,
+     "sample_rate": 24000,
+     "peak_dbfs": -3.63,
+     "rms_dbfs": -24.53,
+     "clipped_ratio": 0.0,
+     "lufs_integrated": -24.6,
+     "lra": 2.9,
+     "silence_ratio": 0.1552,
+     "lead_silence_s": 0.04,
+     "trail_silence_s": 0.06,
+     "longest_internal_pause_s": 0.5
+    }
+   ]
+  },
+  {
+   "backend": "piper",
+   "voice": "ru_RU-denis-medium",
+   "lang": "ru",
+   "script": "ru_lab.json",
+   "asr": {
+    "tiny": {
+     "mean_wer": 0.685,
+     "mean_cer": 0.247,
+     "per_line": [
+      {
+       "id": "ru1",
+       "wer": 0.818,
+       "cer": 0.296,
+       "heard": "перед началом работать от колеблой тиспитрофатом и ты похластую пробить стандартному ракуру"
+      },
+      {
+       "id": "ru2",
+       "wer": 0.6,
+       "cer": 0.329,
+       "heard": "в ликоцитарный форм минитрофила составляет сорок пять всех ликоцидах"
+      },
+      {
+       "id": "ru3",
+       "wer": 0.636,
+       "cer": 0.117,
+       "heard": "полимера зная цепная реакция позволяет нагократно копировать выборные участок дрнк"
+      }
+     ]
+    },
+    "base": {
+     "mean_wer": 0.685,
+     "mean_cer": 0.228,
+     "per_line": [
+      {
+       "id": "ru1",
+       "wer": 0.727,
+       "cer": 0.148,
+       "heard": "перед началом работы от колебруйте с пиктрафатомей ты похолостою пробей стандартному раскроу"
+      },
+      {
+       "id": "ru2",
+       "wer": 0.6,
+       "cer": 0.288,
+       "heard": "в ликоцитарной форму минитрофила составляются сорок пять всех ликоцитров"
+      },
+      {
+       "id": "ru3",
+       "wer": 0.727,
+       "cer": 0.247,
+       "heard": "в элемии разныцетная реакция позволяет многократно копировать выборную частот где нк"
+      }
+     ]
+    }
+   },
+   "lines": [
+    {
+     "id": "ru1",
+     "duration_s": 5.329,
+     "sample_rate": 22050,
+     "peak_dbfs": -0.0,
+     "rms_dbfs": -17.13,
+     "clipped_ratio": 9e-06,
+     "lufs_integrated": -17.4,
+     "lra": 1.0,
+     "silence_ratio": 0.0113,
+     "lead_silence_s": 0.06,
+     "trail_silence_s": 0.0,
+     "longest_internal_pause_s": 0.0
+    },
+    {
+     "id": "ru2",
+     "duration_s": 4.76,
+     "sample_rate": 22050,
+     "peak_dbfs": -0.0,
+     "rms_dbfs": -18.24,
+     "clipped_ratio": 1e-05,
+     "lufs_integrated": -18.3,
+     "lra": 2.2,
+     "silence_ratio": 0.0378,
+     "lead_silence_s": 0.04,
+     "trail_silence_s": 0.12,
+     "longest_internal_pause_s": 0.02
+    },
+    {
+     "id": "ru3",
+     "duration_s": 5.654,
+     "sample_rate": 22050,
+     "peak_dbfs": -0.0,
+     "rms_dbfs": -16.76,
+     "clipped_ratio": 8e-06,
+     "lufs_integrated": -17.1,
+     "lra": 1.7,
+     "silence_ratio": 0.0248,
+     "lead_silence_s": 0.04,
+     "trail_silence_s": 0.1,
+     "longest_internal_pause_s": 0.0
+    }
+   ]
+  },
+  {
+   "backend": "piper",
+   "voice": "ru_RU-denis-medium (control: plain-language sentences)",
+   "lang": "ru",
+   "script": "(ctrl_ru.json)",
+   "asr": {
+    "tiny": {
+     "mean_wer": 0.264,
+     "mean_cer": 0.084,
+     "per_line": [
+      {
+       "id": "c1",
+       "wer": 0.25,
+       "cer": 0.083,
+       "heard": "здравствуйте сегодня мы расскажем как пользоваться рейтим приложения"
+      },
+      {
+       "id": "c2",
+       "wer": 0.4,
+       "cer": 0.148,
+       "heard": "начало выберить и нужный радиов а потом нажмите на кнопку начать"
+      },
+      {
+       "id": "c3",
+       "wer": 0.143,
+       "cer": 0.022,
+       "heard": "в результат появится на экране через несколько секунд"
+      }
+     ]
+    },
+    "base": {
+     "mean_wer": 0.245,
+     "mean_cer": 0.096,
+     "per_line": [
+      {
+       "id": "c1",
+       "wer": 0.25,
+       "cer": 0.083,
+       "heard": "здравствуйте сегодня мы расскажем как пользоваться ритм приложения"
+      },
+      {
+       "id": "c2",
+       "wer": 0.2,
+       "cer": 0.093,
+       "heard": "начало выберите нужный радио а потом нажмите на кнопку начать"
+      },
+      {
+       "id": "c3",
+       "wer": 0.286,
+       "cer": 0.111,
+       "heard": "везет дат появится на экране через несколько секунд"
+      }
+     ]
+    }
+   },
+   "lines": [
+    {
+     "id": "c1",
+     "duration_s": 3.75,
+     "sample_rate": 22050,
+     "peak_dbfs": -0.0,
+     "rms_dbfs": -18.42,
+     "clipped_ratio": 1.2e-05,
+     "lufs_integrated": -18.8,
+     "lra": 1.4,
+     "silence_ratio": 0.016,
+     "lead_silence_s": 0.04,
+     "trail_silence_s": 0.02,
+     "longest_internal_pause_s": 0.0
+    },
+    {
+     "id": "c2",
+     "duration_s": 4.342,
+     "sample_rate": 22050,
+     "peak_dbfs": -0.0,
+     "rms_dbfs": -18.34,
+     "clipped_ratio": 1e-05,
+     "lufs_integrated": -18.5,
+     "lra": 1.9,
+     "silence_ratio": 0.0691,
+     "lead_silence_s": 0.04,
+     "trail_silence_s": 0.14,
+     "longest_internal_pause_s": 0.12
+    },
+    {
+     "id": "c3",
+     "duration_s": 2.984,
+     "sample_rate": 22050,
+     "peak_dbfs": -0.0,
+     "rms_dbfs": -17.55,
+     "clipped_ratio": 1.5e-05,
+     "lufs_integrated": -17.6,
+     "lra": 0.0,
+     "silence_ratio": 0.047,
+     "lead_silence_s": 0.06,
+     "trail_silence_s": 0.08,
+     "longest_internal_pause_s": 0.0
+    }
+   ]
+  }
+ ],
+ "not_run": [
+  {
+   "candidate": "Silero v5_cis_base uzb_saida (Uzbek, MIT)",
+   "why": "needs PyTorch; torch not allowed on this box (disk)"
+  },
+  {
+   "candidate": "Azure Speech F0 uz-UZ-MadinaNeural",
+   "why": "needs the owner's own key; not signed up"
+  },
+  {
+   "candidate": "Uzbek (any engine)",
+   "why": "no free commercially-licensed Uzbek voice could be run here"
+  }
+ ]
+}

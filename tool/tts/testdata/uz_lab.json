@@ -1,0 +1,18 @@
+{
+  "lang": "uz",
+  "gap_s": 0.4,
+  "lines": [
+    {
+      "id": "uz1",
+      "text": "Tahlilni boshlashdan oldin spektrofotometrni kalibrlash va kalibrator bilan tekshirish kerak."
+    },
+    {
+      "id": "uz2",
+      "text": "Leykotsitar formulada neytrofil, limfotsit, monotsit, eozinofil va bazofil hujayralar foizi ko‘rsatiladi."
+    },
+    {
+      "id": "uz3",
+      "text": "Polimeraza zanjirli reaksiya va xromatografiya usullarida namuna konsentratsiyasi aniq o‘lchanadi."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "_note": "STARTER respelling map. Values are plain text that replaces the key before synthesis (whole word, case-insensitive). A value may also be {\"default\": ..., \"azure\": ..., \"piper\": ...}. NOT verified by ear - a native speaker must listen and correct before publishing videos.",
+  "entries": {
+    "PCR": "pe se er",
+    "DNK": "de en ka",
+    "RNK": "er en ka",
+    "DNA": "de en ka",
+    "HbA1c": "ha be a bir se",
+    "ELISA": "elisa",
+    "CRP": "se er pe",
+    "SOE": "es o e",
+    "EKG": "e ka ge",
+    "MRT": "em er te",
+    "ALT": "a el te",
+    "AST": "a es te",
+    "TTG": "te te ge",
+    "HIV": "ha i ve",
+    "LabGuide": "Leb Gayd",
+    "pH": "pe ha",
+    "UZI": "u zi i",
+    "polimeraza zanjirli reaksiya": "polimeraza zanjirli reaksiya",
+    "spektrofotometr": "spektrofotometr",
+    "xromatografiya": "xromatografiya"
+  }
+}

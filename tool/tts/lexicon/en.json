@@ -1,0 +1,22 @@
+{
+  "_note": "STARTER respelling map. Values are plain text that replaces the key before synthesis (whole word, case-insensitive). A value may also be {\"default\": ..., \"azure\": ..., \"piper\": ...}. NOT verified by ear - a native speaker must listen and correct before publishing videos.",
+  "entries": {
+    "PCR": "P C R",
+    "DNA": "D N A",
+    "RNA": "R N A",
+    "HbA1c": "H B A one C",
+    "ELISA": "ee lie za",
+    "CRP": "C R P",
+    "ESR": "E S R",
+    "ECG": "E C G",
+    "MRI": "M R I",
+    "ALT": "A L T",
+    "AST": "A S T",
+    "HIV": "H I V",
+    "pH": "P H",
+    "LDL": "L D L",
+    "HDL": "H D L",
+    "eGFR": "e G F R",
+    "LabGuide": "Lab Guide"
+  }
+}

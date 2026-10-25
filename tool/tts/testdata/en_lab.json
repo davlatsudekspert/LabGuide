@@ -1,0 +1,18 @@
+{
+  "lang": "en",
+  "gap_s": 0.4,
+  "lines": [
+    {
+      "id": "en1",
+      "text": "Before running patient samples, calibrate the spectrophotometer with a blank and a standard, then record the absorbance at 540 nanometres."
+    },
+    {
+      "id": "en2",
+      "text": "The differential count reports neutrophils, lymphocytes, monocytes, eosinophils and basophils as a percentage of the white blood cells."
+    },
+    {
+      "id": "en3",
+      "text": "In polymerase chain reaction, the sample is heated to 95 degrees Celsius to separate the two DNA strands."
+    }
+  ]
+}
