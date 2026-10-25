@@ -669,8 +669,8 @@ DRAW = {
     "chemistry": [
         ("fotometr: halqa markazidagi lampa", "Fotometr: lampa reaksiya halqasi markazida, nur kyuvetalardan o‘tib tashqi detektor blokiga boradi (5-belgi).",
          "Lampa/detektor joylashuvi sinf uchun umumiy tamoyilmi (ko‘p analizatorlarda boshqacha); nur yo‘li to‘g‘ri ko‘rsatilganmi.", "low", [5]),
-        ("namuna rakasi uyasi", "Namunalar old bo‘limdagi rakada; probirkalar turli rangli qopqoqli (binafsha, qizil, sariq, ko‘k, yashil) va to‘liq qon (qizil) bilan chizilgan; halqa yonida raqamsiz kichik disk.",
-         "Biokimyoda odatda zardob/plazma ishlatiladi — to‘liq qon va EDTA/sitrat qopqoqlari chalg‘itmaydimi; raqamsiz disk (STAT/kalibrator?) tushunarlimi.", "medium", [1]),
+        ("namuna rakasi uyasi", "Namunalar old bo‘limdagi rakada; probirkalar neytral (kulrang) qopqoqli, och somon rangli suyuqlik (zardob/plazma) bilan chizilgan; halqa yonida raqamsiz kichik namuna diski (neytral qopqoqlar).",
+         "Zardob/plazma probirkasi tasviri biokimyo uchun maqbulmi (qopqoq rangi da’vo qilinmaydi); raqamsiz disk (STAT/kalibrator?) tushunarlimi.", "medium", [1]),
         ("def chemistry", "ISE moduli chizilmagan, lekin prinsip matnida Na, K, Cl ISE bilan o‘lchanishi aytilgan.",
          "Matn va chizma mosligi: ISE moduli ko‘rsatilmasligi muammo emasmi.", "low", []),
     ],
@@ -685,20 +685,20 @@ DRAW = {
          "Impedans va lazerli oqim kanalining sxematik tuzilishi to‘g‘rimi (teshik, elektrodlar, nur yo‘li).", "medium", [3, 4]),
         ("displey (skatterogramma)", "Displeyda 5 klasterli skatterogramma va bitta gistogramma.",
          "5 klaster 5 qismli differensialni anglatadi — klasterlar joylashuvi o‘quv uchun maqbulmi.", "low", [5]),
-        ("avtomatik yuklagich", "Avtoyuklagichdagi yopiq probirkalar turli rangli qopqoqli (binafsha, qizil, sariq, ko‘k, yashil).",
-         "Umumiy qon tahlili uchun namuna — EDTA (binafsha qopqoq); boshqa rangdagi qopqoqlar noto‘g‘ri probirka tanlashni o‘rgatishi mumkin.", "medium", [1]),
+        ("avtomatik yuklagich", "Avtoyuklagichdagi yopiq probirkalar bir xil binafsha (EDTA turi) qopqoqli, butun qon bilan.",
+         "Umumiy qon tahlili namunasi (EDTA turi) to‘g‘ri ko‘rsatilganmi; qopqoq rangi mamlakat/ishlab chiqaruvchiga qarab farq qilishi izohlanishi kerakmi.", "medium", [1]),
     ],
     "hematology3": [
         ("impedans kamerasi kesigi", "Kesik: teshikli to‘siq va ikki elektrod (impedans kamerasi).",
          "Kulter tamoyili sxemasi to‘g‘rimi.", "low", [4]),
-        ("displey (3 gistogramma)", "Displeyda bir xil shakldagi uchta bitta cho‘qqili gistogramma (WBC, RBC, PLT).",
-         "Haqiqiy 3 qismli WBC gistogrammasida uchta subpopulyatsiya, PLT — o‘ngga cho‘zilgan shakl; bir xil Gauss egri chiziqlari chalg‘itmaydimi.", "low", [2]),
+        ("displey (3 gistogramma)", "Displeyda uch xil sxematik gistogramma: WBC — uch subpopulyatsiya (limfotsitlar, o‘rta hujayralar, granulotsitlar), RBC — bitta cho‘qqi, PLT — o‘ngga cho‘zilgan; panel matnida “shakllar sxematik” deyilgan.",
+         "Gistogramma shakllari (cho‘qqilar nisbati va joylashuvi) o‘quv uchun maqbulmi.", "low", [2]),
     ],
     "immunoassay": [
         ("detektor modul (yorug'lik belgisi)", "Luminometr quyosh-belgi (yorug‘lik chiqishi) bilan alohida modul sifatida (7-belgi).",
          "Hemilyuminessensiya detektori tasviri tushunarlimi.", "low", [7]),
-        ("namuna rakasi uyasi", "Namunalar to‘liq qon (qizil) va turli rangli qopqoqli probirkalar bilan.",
-         "Immunoanaliz odatda zardob/plazmada — to‘liq qon tasviri chalg‘itmaydimi.", "low", [1]),
+        ("namuna rakasi uyasi", "Namunalar neytral (kulrang) qopqoqli, och somon rangli (zardob/plazma) probirkalarda.",
+         "Zardob/plazma probirkasi tasviri immunoanaliz uchun maqbulmi (qopqoq rangi da’vo qilinmaydi).", "low", [1]),
     ],
     "urine_strip": [
         ("o'qish kallagi: LEDlar", "O‘qish kallagida uch xil rangli LED (uch to‘lqin uzunligi) va fotosensor, test-chiziqda 10 maydoncha.",
@@ -758,8 +758,8 @@ DRAW = {
          "Laxta hosil bo‘lganda o‘tgan nur kamayishi (egri chiziq yo‘nalishi) to‘g‘ri ko‘rsatilganmi.", "low", [5, 6, 7]),
     ],
     "elisa_reader": [
-        ("optik yo'l (kesik)", "Kesik optik yo‘l: kod izohi ‘lampa → filtr → quduqcha → detektor’, lekin chizmada lampa (2) → quduqcha (3) → filtr (4) → detektor (5).",
-         "Filtr quduqchadan oldin yoki keyin turishi; izoh va chizma kelishmovchiligi; prinsip matni ‘tanlangan to‘lqin uzunligidagi nur quduqchadan o‘tadi’ deydi.", "medium", [2, 3, 4, 5]),
+        ("optik yo'l (kesik)", "Kesik optik yo‘l: lampa (2) → filtr (3) → quduqcha (4) → detektor (5); kod izohi, chizma va belgilar tartibi bir xil.",
+         "Darslik tartibi (monoxromatik nur quduqchadan o‘tib detektorga tushadi) to‘g‘ri ko‘rsatilganmi; ayrim o‘quvchilarda filtr quduqchadan keyin turishi izohlanishi kerakmi.", "medium", [2, 3, 4, 5]),
     ],
     "bsc_class2": [
         ("havo oqimi: xona havosi", "Havo oqimi strelkalari: xona havosi (sariq) old ochiqlikdan panjaraga; HEPA dan pastga (ko‘k); stol ostidan orqa kanal orqali ventilyatorga; chiqish HEPA orqali tashqariga.",
@@ -775,8 +775,8 @@ DRAW = {
          "Sensor kassetasi tasviri to‘g‘rimi; shpritsni zondga ulash tasviri amaliyotga mosmi.", "low", [1, 2, 3, 4]),
     ],
     "hba1c_analyzer": [
-        ("kesik oyna: ion almashinuv kolonkasi", "Kesik: ion almashinuv kolonkasi → fotometrik detektor (oqim kyuvetasi); displeyda kichik cho‘qqilar va katta HbA0 cho‘qqisi bilan xromatogramma.",
-         "Chizma ion almashinuv HPLC usulini ko‘rsatadi, lekin LAB_CARD_IMAGE_COVERAGE.md ‘usul ataylab ko‘rsatilmagan’ deydi va kartada bir nechta usul bor; xromatogramma cho‘qqilari tartibi to‘g‘rimi.", "medium", [4, 5, 6]),
+        ("O'lchash usuli ataylab ko'rsatilmaydi", "Usul jihatdan neytral chizma: kolonka, detektor kesigi va xromatogramma yo‘q; displeyda umumiy natijalar ro‘yxati; yonida reagent/bufer idishlari.",
+         "Usulni ko‘rsatmaslik (kartada bir nechta usul) va reagent idishlari tasviri chalg‘itmaydimi.", "medium", [3, 4]),
         ("namuna rakasi (binafsha qopqoq", "EDTA (binafsha qopqoq) to‘liq qon probirkalari.", "Probirka turi to‘g‘ri.", "low", [1]),
     ],
     "lab_fridge": [
@@ -1029,12 +1029,12 @@ def schematic_rows():
             evidence_status="NEEDS_EXPERT", reviewer_profile=P["ling_uz"], risk_if_wrong=f"low — {R_TR_LOW}")
 
 
-# Qo‘lda topilgan nomuvofiqliklar (PNG va kod ko‘zdan kechirilgan, 2026-10-25). Tuzatilmaydi — faqat ro‘yxat.
+# Qo‘lda topilgan nomuvofiqliklar (PNG va kod ko‘zdan kechirilgan, 2026-10-25). DRAW-* lar img/fix-drawings da tuzatildi (holat ko‘tarilmaydi — mutaxassis ko‘rigi kerak).
 MANUAL_FINDINGS = [
-    ("DRAW-ELISA", "`elisa_reader` chizmasi: `gen.py` izohi “lampa → filtr → quduqcha → detektor”, lekin chizilgan tartib lampa (2) → quduqcha (3) → filtr (4) → detektor (5). Prinsip matni “tanlangan to‘lqin uzunligidagi nur quduqchadan o‘tadi” deydi. Qaysi tartib ko‘zda tutilgani mutaxassis bilan aniqlansin (SCHEM-elisa_reader-drawing-01)."),
-    ("DRAW-HBA1C", "`hba1c_analyzer`: docs/LAB_CARD_IMAGE_COVERAGE.md (a2-test-hba1c, a2-platform-hba1c-analyzer) “ichki usul ataylab ko‘rsatilmagan” deydi, lekin 2026-10-25 yangilangan chizma (SCHEMATICS_PROVENANCE.md) ion almashinuv kolonkasi, fotometrik detektor va xromatogrammani ko‘rsatadi; `labSchemHba1cAnalyzer` alt-matnida esa kolonka/detektor yo‘q. Karta bir nechta usulni (ion almashinish, borat affinligi, immunoanaliz, ferment) qamraydi (SCHEM-hba1c_analyzer-drawing-01)."),
-    ("DRAW-TUBES", "`hematology5` avtoyuklagichi (`rack(..., caps=TUBE_CAPS)`), `chemistry` va `immunoassay` namuna rakalari turli rangli qopqoqli (binafsha, qizil, sariq, ko‘k, yashil) to‘liq qon probirkalari bilan chizilgan. Umumiy qon tahlili — EDTA (binafsha), biokimyo/immunoanaliz — zardob/plazma. `coag_analyzer` (havorang) va `hba1c_analyzer` (binafsha) to‘g‘ri chizilgani uchun bu nomuvofiqlik ko‘zga tashlanadi."),
-    ("DRAW-HEM3", "`hematology3` displeyida uchta bir xil Gauss shaklidagi gistogramma; haqiqiy 3 qismli WBC gistogrammasida uchta subpopulyatsiya, PLT gistogrammasi o‘ngga cho‘zilgan — soddalashtirish o‘quvchini chalg‘itishi mumkin (SCHEM-hematology3-drawing-02)."),
+    ("DRAW-ELISA", "TUZATILDI (2026-10-25, img/fix-drawings): chizma, kod izohi va belgilar tartibi lampa (2) → filtr (3) → quduqcha (4) → detektor (5); mutaxassis ko‘rigi baribir kerak (SCHEM-elisa_reader-drawing-01)."),
+    ("DRAW-HBA1C", "TUZATILDI (2026-10-25, img/fix-drawings): `hba1c_analyzer` usul jihatdan neytral — ion almashinuv kolonkasi, detektor kesigi va xromatogramma olib tashlandi; qismlar/prinsip/natija matnlari usulni da’vo qilmaydi (kartadagi usullar ro‘yxati keltirilgan), LAB_CARD_IMAGE_COVERAGE.md bilan mos (SCHEM-hba1c_analyzer-drawing-01)."),
+    ("DRAW-TUBES", "TUZATILDI (2026-10-25, img/fix-drawings): `hematology5` avtoyuklagichida faqat binafsha (EDTA turi) qopqoqli butun qon probirkalari; `chemistry` va `immunoassay` rakalarida (va biokimyo namuna diskida) neytral qopqoqli, och somon rangli zardob/plazma probirkalari; panel matnida qopqoq rangi da’vo qilinmaydi."),
+    ("DRAW-HEM3", "TUZATILDI (2026-10-25, img/fix-drawings): `hematology3` displeyida uch xil sxematik gistogramma (WBC — uch subpopulyatsiya, RBC, o‘ngga cho‘zilgan PLT); panel matnida shakllar sxematik ekani aytilgan (SCHEM-hematology3-drawing-02)."),
     ("L10N-REFERENS", "`differential_count.uz.png` va ARB `diffInterpretIntro`/`diffRangesBody` “referens oraliq” deydi; docs/L10N_TERMINOLOGY_DECISIONS.md uz uchun yagona atama “referens interval” (NEEDS_NATIVE_REVIEW) deb qayd etgan."),
     ("L10N-DIF-OIL", "`differential_count` 2-qadam: en “×100 oil”, ru/uz faqat “×100” — immersion moyi haqidagi ma’lumot tushib qolgan."),
     ("L10N-QC-STOP", "`qc_decision`: en “Reject: stop, do not report results”; ru “Отклонить: результаты пациентов не выдавать”, uz “Rad: bemor natijalarini bermang” — “stop/to‘xtating” yo‘q. uz 4-qadam “QC va namunalarni” — en “patient samples” (‘bemor’ yo‘q)."),
