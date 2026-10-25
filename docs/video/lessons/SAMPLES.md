@@ -83,13 +83,13 @@ yo‘l soddalashtirilgan va animatsiya uni “to‘g‘irlamaydi” (nur probirk
 | `gc_ms_uz.mp4` | 96.00 s | 720×1280, 24 | h264 | 0 | 1.90 MB | `17fd1262b8a9a5a8cd383c805666c033811d68408f46dfeb589d2d8ee07e9433` |
 | `gc_ms_uz.srt` | — | — | srt | — | 1832 B | `59add21a5c4fa19450bdbd1ead4cfbaa2359670e14ff02f27be69333a9ae40a3` |
 | `gc_ms_uz.vtt` | — | — | vtt | — | 1840 B | `5b593be74b42de5f0f19a7fc9d4ad6e723ee95d3d3519e6ece1b7c52797b5a20` |
-| `real_time_pcr_en.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.29 MB | `2f5939fc70848507e94e97364f2a1bbb40c9a513a107d0aa3a3c9bddbe212533` |
+| `real_time_pcr_en.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.40 MB | `9090f5506c8eb1007692cd4e5437cfe88b03e0a8a25f1d423bfebbb4f28a814d` |
 | `real_time_pcr_en.srt` | — | — | srt | — | 1710 B | `cc409a380ac358a0231ce7295da57cce564ea318f47032171bd49f2471d14526` |
 | `real_time_pcr_en.vtt` | — | — | vtt | — | 1718 B | `8c5ec730dee1779ffd866f0080a69ea8e5a44bf713f121e6447672727ed9f390` |
-| `real_time_pcr_ru.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.33 MB | `a47563f0addda9c0f75a67dbbd5b44972d83fc40e7454a4400cc1a3ceb18c929` |
+| `real_time_pcr_ru.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.44 MB | `01ddbaca17e9f62b80d04b3a90c37efe68a71ab03eda97891bb4d6e526aec249` |
 | `real_time_pcr_ru.srt` | — | — | srt | — | 2705 B | `7aa49150439d7d0b68fa6b6dc65374168b943221b84980290b096d0e5322f439` |
 | `real_time_pcr_ru.vtt` | — | — | vtt | — | 2713 B | `b5fce1d36c8b393e58428750dfb729b58f9e583e2063b465f98ed59f6d6fdec5` |
-| `real_time_pcr_uz.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.29 MB | `500eb930a5f2df640f274471b4ad3de611755509d8b3ffd3b0122e5ed1145dea` |
+| `real_time_pcr_uz.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.40 MB | `40147cd27bae83bd0b87e4858267b14b6ab471bb451c4883b1196d338b9b562c` |
 | `real_time_pcr_uz.srt` | — | — | srt | — | 1743 B | `a4a5ec270cd246a6494c11efbd0fa3851c2d66757e870425ebbd7d4cb3aa468b` |
 | `real_time_pcr_uz.vtt` | — | — | vtt | — | 1751 B | `7a2cadcdc6b92143263d3a691940dca0bc30a87d5c9f8a1a0d69a400c8a51818` |
 <!-- samples:end -->
