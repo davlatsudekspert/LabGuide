@@ -63,8 +63,10 @@ export const HookLayer: Layer = ({scene, ctx}) => {
   const {frame, fps, cue} = useT(scene);
   const {m, ui} = ctx;
   const vertical = isV(ctx);
-  const upto = ctx.math.tMax * easeIO(frame, 0, Math.round(1.6 * fps));
-  const q = pop(frame, fps, cue(0) + Math.round(1.2 * fps));
+  // First frame already shows a peak with its '?' (hook from t = 0); the
+  // rest of the trace is drawn within the first second.
+  const upto = ctx.math.tMax * (0.42 + 0.58 * easeIO(frame, 0, Math.round(1.0 * fps)));
+  const q = pop(frame, fps, cue(0) + Math.round(0.7 * fps));
   const chrom = (
     <Chromatogram
       ctx={ctx}
