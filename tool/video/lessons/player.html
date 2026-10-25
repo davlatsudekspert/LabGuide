@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<title>LabGuide lesson sample</title>
+<!--
+  Video-dars NAMUNASI uchun kadr pleyeri (docs/video/lessons/SAMPLES.md).
+  render_sample.cjs bu shablonga ilovaning ORIGINAL sxemasini
+  (tool/illustrations/schematic/<kalit>.svg), dars ma'lumotini (sample_*.json)
+  va dars animatsiyasini (anim_*.js) qo'yadi, so'ng har kadr uchun
+  window.renderAt(t) chaqirib skrinshot oladi. Vaqt — faqat t dan
+  (deterministik), real soat ishlatilmaydi.
+  Uslub: tool/video/compose.py bilan bir xil (720x1280, BRAND #17463C,
+  BG #EEF0E9, Inter).
+-->
+<style>
+@font-face { font-family: Inter; font-weight: 400; src: url('{{FONTS}}/Inter-400.ttf'); }
+@font-face { font-family: Inter; font-weight: 500; src: url('{{FONTS}}/Inter-500.ttf'); }
+@font-face { font-family: Inter; font-weight: 600; src: url('{{FONTS}}/Inter-600.ttf'); }
+@font-face { font-family: Inter; font-weight: 700; src: url('{{FONTS}}/Inter-700.ttf'); }
+:root {
+  --bg: #EEF0E9; --brand: #17463C; --brand-soft: #CFE7DA; --ink: #192622; --muted: #566861;
+  --accent: #E88C30; --callout: #1B5E50; --panel: #143C33;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 720px; height: 1280px; overflow: hidden; background: var(--bg);
+  font-family: Inter, Arial, sans-serif; color: var(--ink); }
+#stage { position: absolute; inset: 0; }
+#cap { position: absolute; left: 24px; right: 24px; top: 24px; height: 176px; background: #fff;
+  border-radius: 26px; box-shadow: 0 5px 14px rgba(0,0,0,.13); display: flex; align-items: center;
+  padding: 16px 22px 16px 100px; }
+#cap .num { position: absolute; left: 18px; top: 50%; width: 64px; height: 64px; margin-top: -32px;
+  border-radius: 50%; background: var(--brand); color: #fff; font-weight: 700; font-size: 26px;
+  display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1; }
+#cap .txt { font-weight: 700; line-height: 1.22; }
+#stages { position: absolute; left: 24px; right: 24px; top: 212px; display: flex; gap: 6px; }
+#stages div { flex: 1; height: 50px; border-radius: 14px; background: #DDE3DC; color: var(--muted);
+  font-size: 15px; font-weight: 600; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; line-height: 1.15; }
+#stages div b { font-size: 13px; font-weight: 700; opacity: .8; }
+#stages div.on { background: var(--brand); color: #fff; }
+#stages div.done { background: var(--brand-soft); color: var(--brand); }
+#view { position: absolute; left: 24px; top: 274px; width: 672px; height: 448px; border-radius: 22px;
+  background: #F7F8F4; overflow: hidden; box-shadow: inset 0 0 0 2px #DCE2DB; }
+#view svg { width: 672px; height: 448px; display: block; }
+#chip { position: absolute; left: 24px; right: 24px; top: 734px; height: 60px; border-radius: 18px;
+  background: #fff; display: flex; align-items: center; gap: 14px; padding: 0 18px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.08); transition: none; }
+#chip .n { width: 44px; height: 44px; flex: 0 0 44px; border-radius: 50%; background: var(--callout);
+  color: #fff; font-weight: 700; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+#chip .nm { font-weight: 700; font-size: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#chip .en { font-weight: 500; font-size: 17px; color: var(--muted); white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis; }
+#chip .tag { margin-left: auto; font-size: 13px; font-weight: 700; padding: 5px 10px; border-radius: 10px;
+  white-space: nowrap; }
+#chip .tag.src { background: #E3F1E6; color: #1E6B3A; }
+#chip .tag.tb { background: #FFF1DD; color: #8A5310; }
+#inset { position: absolute; left: 24px; right: 24px; top: 806px; height: 320px; border-radius: 22px;
+  background: var(--panel); overflow: hidden; }
+#inset svg { width: 672px; height: 320px; display: block; }
+#labels { position: absolute; left: 24px; right: 24px; top: 1142px; display: flex; flex-direction: column;
+  gap: 8px; align-items: center; }
+#labels div { font-size: 19px; font-weight: 600; color: var(--brand); border: 2px solid var(--brand);
+  border-radius: 22px; padding: 6px 16px; background: #fff; white-space: nowrap; }
+#labels div.small { font-size: 14px; border: none; background: none; padding: 0; color: var(--muted); font-weight: 500; }
+#card { position: absolute; inset: 0; background: var(--brand); color: #fff; display: none;
+  flex-direction: column; align-items: center; }
+#card img { width: 200px; height: 200px; border-radius: 46px; margin-top: 300px; }
+#card h1 { font-size: 80px; font-weight: 700; margin-top: 70px; }
+#card h2 { font-size: 44px; font-weight: 700; color: var(--brand-soft); margin: 40px 50px 0; text-align: center; line-height: 1.25; }
+#card p { font-size: 28px; font-weight: 500; margin: 26px 56px 0; text-align: center; line-height: 1.35; }
+#card .pills { position: absolute; bottom: 70px; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+#card .pills div { font-size: 22px; font-weight: 600; color: var(--brand-soft); border: 2px solid var(--brand-soft);
+  border-radius: 24px; padding: 8px 20px; }
+#card .pills div.small { border: none; font-size: 17px; font-weight: 500; padding: 0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="cap"><div class="num"></div><div class="txt"></div></div>
+  <div id="stages"></div>
+  <div id="view">{{SVG}}</div>
+  <div id="chip"><div class="n"></div><div><div class="nm"></div><div class="en"></div></div><div class="tag"></div></div>
+  <div id="inset"><svg id="insetsvg" viewBox="0 0 672 320" xmlns="http://www.w3.org/2000/svg"></svg></div>
+  <div id="labels"><div class="l1"></div><div class="l2 small"></div></div>
+</div>
+<div id="card"><img src="{{LOGO}}" alt=""><h1>LabGuide</h1><h2></h2><p></p>
+  <div class="pills"><div class="p1"></div><div class="p2"></div><div class="p3 small"></div></div></div>
+<script>{{SCRIPT}}</script>
+<script>
+const DATA = {{DATA}};
+const LANG = '{{LANG}}';
+const NS = 'http://www.w3.org/2000/svg';
+const UI = {
+  uz: { stages: ['Ko‘rinish', 'Qismlar', 'Namuna', 'Jarayon', 'Signal', 'Natija'],
+        schem: 'Sxematik animatsiya — aniq model emas', silent: 'Ovozsiz namuna (diktorsiz)',
+        review: 'Mutaxassis ko‘rigi kutilmoqda (EXPERT_REVIEW_PENDING)',
+        end: 'Savol va takliflar: ilovada «Yordam va aloqa»', src: 'manbali', tb: 'umumiy tamoyil' },
+  ru: { stages: ['Вид', 'Узлы', 'Образец', 'Процесс', 'Сигнал', 'Результат'],
+        schem: 'Схематическая анимация — не точная модель', silent: 'Образец без звука (без диктора)',
+        review: 'Ожидает экспертной проверки (EXPERT_REVIEW_PENDING)',
+        end: 'Вопросы и предложения: в приложении «Помощь и связь»', src: 'по источнику', tb: 'общий принцип' },
+  en: { stages: ['Look', 'Parts', 'Sample', 'Process', 'Signal', 'Result'],
+        schem: 'Schematic animation — not an exact model', silent: 'Silent sample (no narration)',
+        review: 'Awaiting expert review (EXPERT_REVIEW_PENDING)',
+        end: 'Questions and ideas: “Help & contact” in the app', src: 'sourced', tb: 'general principle' },
+};
+const ui = UI[LANG];
+const $ = (s) => document.querySelector(s);
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs || {}) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const ease = (x) => { x = clamp(x); return x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; };
+const lerp = (a, b, x) => a + (b - a) * x;
+
+// ---- vaqt jadvali
+const INTRO = DATA.intro, OUTRO = DATA.outro;
+let acc = INTRO;
+for (const s of DATA.scenes) { s.t0 = acc; acc += s.dur; s.t1 = acc; }
+const TOTAL = acc + OUTRO;
+window.TOTAL = TOTAL;
+
+// ---- sxema: kamera, overlay, belgilar
+const svg = $('#view svg');
+svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+const framed = svg.querySelector(':scope > g');
+const callouts = svg.querySelector('#callouts');
+const overlay = el('g', { id: 'anim', transform: framed.getAttribute('transform') });
+svg.insertBefore(overlay, callouts);
+const focusLayer = el('g', { id: 'focus' });
+svg.appendChild(focusLayer);
+const CALL = {};
+for (const g of callouts.querySelectorAll('g.callout')) {
+  const n = +g.dataset.n;
+  const big = [...g.querySelectorAll('ellipse')].find((e) => +e.getAttribute('rx') > 20);
+  CALL[n] = { g, x: +big.getAttribute('cx'), y: +big.getAttribute('cy') };
+}
+const ring = el('circle', { r: 40, fill: 'none', stroke: '#E88C30', 'stroke-width': 7 }, focusLayer);
+const ring2 = el('circle', { r: 40, fill: 'none', stroke: '#E88C30', 'stroke-width': 3 }, focusLayer);
+
+// ---- statik matnlar
+const stagesBox = $('#stages');
+ui.stages.forEach((s, i) => {
+  const d = document.createElement('div');
+  d.innerHTML = `<b>${i + 1}</b>${s}`;
+  stagesBox.appendChild(d);
+});
+$('#labels .l1').textContent = ui.schem + ' · ' + ui.silent;
+$('#labels .l2').textContent = ui.review;
+$('#card h2').textContent = DATA.title[LANG];
+
+function fitCaption(text) {
+  const box = $('#cap .txt');
+  box.textContent = text;
+  // 34–30 px da 3 qator, aks holda 28–25 px da 4 qatorgacha (kartochka balandligi 176 px).
+  for (const [size, max] of [[34, 3], [32, 3], [30, 3], [28, 4], [26, 4], [25, 4]]) {
+    box.style.fontSize = size + 'px';
+    if (Math.round(box.getBoundingClientRect().height / (size * 1.22)) <= max) return size;
+  }
+  return 25;
+}
+
+const ctx = { svg, overlay, inset: $('#insetsvg'), el, ease, lerp, clamp, LANG, DATA, CALL, ui };
+window.LESSON.setup(ctx);
+
+function sceneAt(t) {
+  for (let i = 0; i < DATA.scenes.length; i++) if (t < DATA.scenes[i].t1) return i;
+  return DATA.scenes.length - 1;
+}
+function captionOf(s, u) {
+  const caps = s.captions;
+  let c = caps[0];
+  for (const x of caps) if (u >= (x.at || 0)) c = x;
+  return c;
+}
+function focusOf(s, u) {
+  if (s.cycle) {
+    const k = Math.min(s.cycle.length - 1, Math.floor(u / (s.dur / s.cycle.length)));
+    return s.cycle[k];
+  }
+  return s.focus ? s.focus[0] : null;
+}
+let lastCap = null;
+window.renderAt = function (t) {
+  // kartochkalar
+  const card = $('#card');
+  if (t < INTRO || t >= TOTAL - OUTRO) {
+    const end = t >= TOTAL - OUTRO;
+    card.style.display = 'flex';
+    card.style.opacity = 1;
+    $('#card p').textContent = end ? ui.end : DATA.subtitle[LANG];
+    $('#card .p1').textContent = ui.schem;
+    $('#card .p2').textContent = ui.silent;
+    $('#card .p3').textContent = ui.review;
+    if (!end && t > INTRO - 0.4) card.style.opacity = (INTRO - t) / 0.4;
+    if (end && t < TOTAL - OUTRO + 0.4) card.style.opacity = (t - (TOTAL - OUTRO)) / 0.4;
+    if (card.style.opacity > 0.999) return;
+  } else card.style.display = 'none';
+  const tt = clamp(t, INTRO, TOTAL - OUTRO - 1e-6);
+  const i = sceneAt(tt), s = DATA.scenes[i], u = tt - s.t0;
+  // subtitr
+  const c = captionOf(s, u);
+  const key = i + ':' + (c.at || 0);
+  if (key !== lastCap) {
+    $('#cap .num').textContent = String(i + 1);
+    fitCaption(c[LANG]);
+    lastCap = key;
+  }
+  // bosqichlar
+  [...stagesBox.children].forEach((d, k) => {
+    d.className = k + 1 === s.stage ? 'on' : k + 1 < s.stage ? 'done' : '';
+  });
+  // kamera (viewBox)
+  const prev = i > 0 ? DATA.scenes[i - 1].cam : s.cam;
+  const m = ease(u / Math.min(1.2, s.dur / 2));
+  const cx = lerp(prev[0], s.cam[0], m), cy = lerp(prev[1], s.cam[1], m), z = lerp(prev[2], s.cam[2], m);
+  const w = 1200 / z, h = 800 / z;
+  svg.setAttribute('viewBox', `${(cx - w / 2).toFixed(2)} ${(cy - h / 2).toFixed(2)} ${w.toFixed(2)} ${h.toFixed(2)}`);
+  // belgi fokus
+  const f = focusOf(s, u);
+  for (const n in CALL) {
+    const on = s.all || +n === f || (s.focus || []).includes(+n);
+    CALL[n].g.setAttribute('opacity', on ? 1 : 0.28);
+  }
+  if (f && CALL[f] && s.ring !== false) {
+    const p = (u * 1.6) % 1;
+    ring.setAttribute('cx', CALL[f].x); ring.setAttribute('cy', CALL[f].y);
+    ring.setAttribute('r', 34 + 4 * Math.sin(u * 6)); ring.setAttribute('opacity', 1);
+    ring2.setAttribute('cx', CALL[f].x); ring2.setAttribute('cy', CALL[f].y);
+    ring2.setAttribute('r', 36 + 34 * p); ring2.setAttribute('opacity', (1 - p) * 0.9);
+  } else { ring.setAttribute('opacity', 0); ring2.setAttribute('opacity', 0); }
+  // qism chipi
+  const chip = $('#chip');
+  if (f && DATA.parts[f - 1]) {
+    const p = DATA.parts[f - 1];
+    chip.style.visibility = 'visible';
+    chip.querySelector('.n').textContent = f;
+    chip.querySelector('.nm').textContent = p.name[LANG];
+    chip.querySelector('.en').textContent = LANG === 'en' ? p.name.ru : p.name.en;
+    const tag = chip.querySelector('.tag');
+    tag.textContent = p.sourced ? ui.src : ui.tb;
+    tag.className = 'tag ' + (p.sourced ? 'src' : 'tb');
+  } else chip.style.visibility = 'hidden';
+  window.LESSON.frame(tt, i, u, ctx);
+};
+window.READY = document.fonts.ready.then(() => true);
+</script>
+</body>
+</html>
