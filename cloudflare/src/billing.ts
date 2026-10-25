@@ -30,11 +30,13 @@
 import { audit, requireSession } from './auth';
 import type { Ctx } from './context';
 import { iso } from './context';
-import { base64url, safeEqual, sha256Hex } from './crypto';
+import { safeEqual, sha256Hex } from './crypto';
 import { ApiError, badRequest, type Env, json, readJson } from './http';
 import { hit } from './ratelimit';
 import { verifyGooglePushJwt } from './social';
+import { guestPolicy } from './guest';
 import { trialStatus } from './trial';
+import { b64urlDecode, googleServiceToken, parseServiceAccount, signJwt } from './jwtsign';
 import { JwsError, verifyAppleJws } from './x509';
 
 export type Platform = 'app_store' | 'play_store';
@@ -102,7 +104,7 @@ export function canonicalProduct(productId: string, basePlanId?: string | null):
 }
 
 const DEFAULT_BUNDLE = 'uz.labguide.app';
-const MAX_RESTORE = 10;
+export const MAX_RESTORE = 10;
 
 /** Do'kondan tekshirilgan xarid (bitta obuna zanjiri). */
 export interface Verified {
@@ -125,7 +127,19 @@ export interface Verified {
   needsAck?: boolean;
   /** Play: do'kondagi obuna id si (acknowledge yo'li uchun; kanonik id emas). */
   storeProductId?: string;
+  /**
+   * Do'kon davri turi: `trial` — do'kon bepul sinovi (Apple intro offer
+   * FREE_TRIAL / Play free trial bosqichi), `intro` — chegirmali kirish narxi,
+   * `normal`. Huquq bir xil (to'liq), faqat ko'rsatish va ikki-sinov siyosati uchun.
+   */
+  periodType?: PeriodType;
+  /** Avtomatik yangilanadimi (false — bekor qilingan, davr oxirigacha huquq; null — noma'lum). */
+  autoRenew?: boolean | null;
+  /** Keyingi yangilanishda o'tadigan (kanonik) mahsulot — masalan, pastga tushirish. */
+  pendingProductId?: string | null;
 }
+
+export type PeriodType = 'normal' | 'trial' | 'intro';
 
 /**
  * Do'kon xaridini tekshiruvchi (D-75) — injeksiya qilinadi
@@ -157,11 +171,11 @@ export function verifierFor(ctx: Ctx, platform: Platform): StoreVerifier {
   );
 }
 
-function configured(ctx: Ctx, platform: Platform): boolean {
+export function configured(ctx: Ctx, platform: Platform): boolean {
   return verifierFor(ctx, platform).configured(ctx.env);
 }
 
-const notConfigured = () => new ApiError(503, 'store_verifier_not_configured');
+export const notConfigured = () => new ApiError(503, 'store_verifier_not_configured');
 const sandboxRejected = () => new ApiError(403, 'sandbox_not_allowed');
 
 /** Tekshiruvdan keyingi umumiy qoida: production'da sandbox xaridi rad. */
@@ -172,29 +186,6 @@ function acceptEnvironment(ctx: Ctx, v: Verified): Verified {
 const storeUnavailable = () => new ApiError(502, 'store_unavailable');
 
 // ------------------------------------------------------------ JWT/JWS
-const enc = new TextEncoder();
-const b64json = (v: unknown) => base64url(enc.encode(JSON.stringify(v)));
-
-function pemToDer(pem: string): ArrayBuffer {
-  // Secret'da `\n` ketma-ketligi bilan saqlangan bo'lishi ham mumkin.
-  const body = pem
-    .replace(/\\n/g, '\n')
-    .replace(/-----(BEGIN|END)[^-]+-----/g, '')
-    .replace(/\s+/g, '');
-  const bin = atob(body);
-  const out = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
-  return out.buffer;
-}
-
-function b64urlDecode(s: string): string {
-  const pad = s.replace(/-/g, '+').replace(/_/g, '/');
-  const bin = atob(pad + '='.repeat((4 - (pad.length % 4)) % 4));
-  const bytes = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-  return new TextDecoder().decode(bytes);
-}
-
 /**
  * JWS (do'kon imzolagan) yuklamasini o'qiydi. Imzo zanjiri bu yerda
  * tekshirilmaydi: yuklama do'kon API'sidan TLS orqali, bizning kalit bilan
@@ -221,30 +212,6 @@ async function appleJws<T>(ctx: Ctx, jws: unknown): Promise<T> {
   }
 }
 
-async function signJwt(
-  alg: 'ES256' | 'RS256',
-  pem: string,
-  header: Record<string, unknown>,
-  payload: Record<string, unknown>,
-): Promise<string> {
-  const data = `${b64json({ ...header, alg, typ: 'JWT' })}.${b64json(payload)}`;
-  let sig: ArrayBuffer;
-  try {
-    if (alg === 'ES256') {
-      const key = await crypto.subtle.importKey('pkcs8', pemToDer(pem), { name: 'ECDSA', namedCurve: 'P-256' }, false, ['sign']);
-      // WebCrypto ECDSA imzosi — IEEE P1363 (r||s), JWS ham shuni talab qiladi.
-      sig = await crypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, key, enc.encode(data));
-    } else {
-      const key = await crypto.subtle.importKey('pkcs8', pemToDer(pem), { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['sign']);
-      sig = await crypto.subtle.sign('RSASSA-PKCS1-v1_5', key, enc.encode(data));
-    }
-  } catch {
-    // Kalit noto'g'ri formatda — tafsilot javobga chiqmaydi.
-    throw new ApiError(503, 'store_key_invalid');
-  }
-  return `${data}.${base64url(new Uint8Array(sig))}`;
-}
-
 // ------------------------------------------------------------ App Store
 const APPLE_HOSTS = {
   production: 'https://api.storekit.itunes.apple.com',
@@ -265,6 +232,30 @@ interface AppleTransaction {
   environment?: string;
   appAccountToken?: string;
   signedDate?: number;
+  /** 1 — kirish taklifi (introductory), 2 — promo, 3 — offer code, 4 — win-back. */
+  offerType?: number;
+  /** `FREE_TRIAL` | `PAY_AS_YOU_GO` | `PAY_UP_FRONT`. */
+  offerDiscountType?: string;
+  /** Eski verifyReceipt maydoni (JWS'da odatda yo'q) — bo'lsa hisobga olinadi. */
+  isTrialPeriod?: boolean | string;
+}
+
+/** App Store JWSRenewalInfo (signedRenewalInfo). */
+interface AppleRenewal {
+  originalTransactionId?: string;
+  productId?: string;
+  autoRenewProductId?: string;
+  autoRenewStatus?: number;
+  gracePeriodExpiresDate?: number;
+  isInBillingRetryPeriod?: boolean;
+  signedDate?: number;
+}
+
+/** Apple tranzaksiyasidan davr turi. */
+export function applePeriodType(t: AppleTransaction): PeriodType {
+  if (t.isTrialPeriod === true || t.isTrialPeriod === 'true') return 'trial';
+  if (Number(t.offerType) === 1) return t.offerDiscountType === 'FREE_TRIAL' ? 'trial' : 'intro';
+  return 'normal';
 }
 
 async function appleJwt(ctx: Ctx): Promise<string> {
@@ -336,6 +327,7 @@ export async function verifyApple(ctx: Ctx, transactionId: string, expectedProdu
   const subs = await appleGet(ctx, `/inApps/v1/subscriptions/${transactionId}`, jwt);
   let status: Status | null = null;
   let latest = info;
+  let renewal: AppleRenewal | null = null;
   for (const g of (subs.body?.data as any[]) ?? []) {
     if (group && String(g?.subscriptionGroupIdentifier) !== group) continue;
     for (const last of (g?.lastTransactions as any[]) ?? []) {
@@ -343,6 +335,8 @@ export async function verifyApple(ctx: Ctx, transactionId: string, expectedProdu
       status = APPLE_STATUS[Number(last.status)] ?? null;
       const t = await appleJws<AppleTransaction>(ctx, last.signedTransactionInfo);
       if (t.bundleId === bundle && t.productId && BILLING_PRODUCTS[t.productId]) latest = t;
+      // Yangilash ma'lumoti (autoRenewStatus, autoRenewProductId, grace tugashi) ham imzolangan.
+      if (last.signedRenewalInfo) renewal = await appleJws<AppleRenewal>(ctx, last.signedRenewalInfo);
     }
   }
   if (!status) {
@@ -350,13 +344,25 @@ export async function verifyApple(ctx: Ctx, transactionId: string, expectedProdu
     status = latest.expiresDate && latest.expiresDate > ctx.now ? 'active' : 'expired';
   }
   if (latest.revocationDate) status = 'revoked';
+  // Grace davrida tranzaksiya `expiresDate` o'tgan bo'ladi — huquq grace
+  // tugashigacha (gracePeriodExpiresDate) davom etadi (Apple Billing Grace Period).
+  let expiresAt = latest.expiresDate ?? null;
+  if (status === 'grace_period' && renewal?.gracePeriodExpiresDate && (expiresAt == null || renewal.gracePeriodExpiresDate > expiresAt)) {
+    expiresAt = renewal.gracePeriodExpiresDate;
+  }
+  const autoRenew = renewal?.autoRenewStatus == null ? null : Number(renewal.autoRenewStatus) === 1;
+  const next = renewal?.autoRenewProductId;
+  const pendingProductId = autoRenew && next && next !== latest.productId && BILLING_PRODUCTS[next] ? next : null;
   return {
     platform: 'app_store',
+    periodType: applePeriodType(latest),
+    autoRenew,
+    pendingProductId,
     originalId,
     productId: latest.productId!,
     status,
     startedAt: latest.originalPurchaseDate ?? info.originalPurchaseDate ?? latest.purchaseDate ?? null,
-    expiresAt: latest.expiresDate ?? null,
+    expiresAt,
     ownership: latest.inAppOwnershipType === 'FAMILY_SHARED' ? 'family_shared' : 'purchased',
     environment: (latest.environment ?? tx.env).toLowerCase() === 'production' ? 'production' : 'sandbox',
     eventAt: latest.signedDate ?? ctx.now,
@@ -383,53 +389,12 @@ export const AppStoreServerApiVerifier: StoreVerifier = {
 };
 
 // ------------------------------------------------------------ Google Play
-interface ServiceAccount {
-  client_email: string;
-  private_key: string;
-  token_uri?: string;
-}
+const ANDROIDPUBLISHER_SCOPE = 'https://www.googleapis.com/auth/androidpublisher';
 
-let googleToken: { key: string; token: string; exp: number } | null = null;
-
-function serviceAccount(env: Env): ServiceAccount {
-  try {
-    const sa = JSON.parse(env.GOOGLE_PLAY_SERVICE_ACCOUNT!) as ServiceAccount;
-    if (!sa.client_email || !sa.private_key) throw new Error('fields');
-    return sa;
-  } catch {
-    throw new ApiError(503, 'store_key_invalid');
-  }
-}
-
+/** Play Developer API OAuth tokeni (service account JWT → oauth2, src/jwtsign.ts). */
 async function googleAccessToken(ctx: Ctx): Promise<string> {
-  const sa = serviceAccount(ctx.env);
-  if (googleToken && googleToken.key === sa.client_email && googleToken.exp > ctx.now + 60_000) {
-    return googleToken.token;
-  }
-  const aud = sa.token_uri || 'https://oauth2.googleapis.com/token';
-  const now = Math.floor(ctx.now / 1000);
-  const assertion = await signJwt('RS256', sa.private_key, {}, {
-    iss: sa.client_email,
-    scope: 'https://www.googleapis.com/auth/androidpublisher',
-    aud,
-    iat: now,
-    exp: now + 3600,
-  });
-  let res: Response;
-  try {
-    res = await doFetch(ctx)(aud, {
-      method: 'POST',
-      headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      body: `grant_type=${encodeURIComponent('urn:ietf:params:oauth:grant-type:jwt-bearer')}&assertion=${assertion}`,
-    });
-  } catch {
-    throw storeUnavailable();
-  }
-  if (!res.ok) throw new ApiError(503, 'store_auth_failed');
-  const body = (await res.json()) as { access_token?: string; expires_in?: number };
-  if (!body.access_token) throw new ApiError(503, 'store_auth_failed');
-  googleToken = { key: sa.client_email, token: body.access_token, exp: ctx.now + (body.expires_in ?? 3600) * 1000 };
-  return body.access_token;
+  const sa = parseServiceAccount(ctx.env.GOOGLE_PLAY_SERVICE_ACCOUNT, 'store_key_invalid');
+  return googleServiceToken(ctx, sa, ANDROIDPUBLISHER_SCOPE, { keyInvalid: 'store_key_invalid', authFailed: 'store_auth_failed', unavailable: 'store_unavailable' });
 }
 
 const playBase = (env: Env) =>
@@ -477,8 +442,19 @@ export async function verifyGoogle(ctx: Ctx, token: string, expectedProduct?: st
   if (!status) throw badRequest('purchase_not_found');
   const expiresAt = item.expiryTime ? Date.parse(item.expiryTime) : null;
   const startedAt = sub.startTime ? Date.parse(sub.startTime) : null;
+  // Avtomatik yangilash: CANCELED — davr oxirigacha huquq, yangilanmaydi.
+  const autoRenew =
+    state === 'SUBSCRIPTION_STATE_CANCELED' || state === 'SUBSCRIPTION_STATE_EXPIRED'
+      ? false
+      : typeof item.autoRenewingPlan?.autoRenewEnabled === 'boolean'
+        ? item.autoRenewingPlan.autoRenewEnabled
+        : null;
+  const deferred = item.deferredItemReplacement?.productId ? canonicalProduct(String(item.deferredItemReplacement.productId), item.offerDetails?.basePlanId) : null;
   return {
     platform: 'play_store',
+    periodType: playPeriodType(item, sub),
+    autoRenew,
+    pendingProductId: deferred && deferred !== item.canonical ? deferred : null,
     originalId: token,
     productId: item.canonical,
     storeProductId: String(item.productId),
@@ -494,6 +470,19 @@ export async function verifyGoogle(ctx: Ctx, token: string, expectedProduct?: st
     linkedToken: sub.linkedPurchaseToken ?? null,
     needsAck: sub.acknowledgementState === 'ACKNOWLEDGEMENT_STATE_PENDING',
   };
+}
+
+/**
+ * Play line item davr turi. `offerPhase` (freeTrial / introductoryPrice) —
+ * subscriptionsv2 ning yangi maydoni; eski v1 `paymentState = 2` (free trial)
+ * ham qabul qilinadi. Maydon nomlari rasmiy hujjat bo'yicha shu ishda
+ * do'kon javobi bilan sinalmagan (NOT VERIFIED) — bo'lmasa `normal`.
+ */
+export function playPeriodType(item: any, sub: any): PeriodType {
+  const phase = item?.offerPhase ?? {};
+  if (phase.freeTrial != null || Number(sub?.paymentState) === 2) return 'trial';
+  if (phase.introductoryPrice != null) return 'intro';
+  return 'normal';
 }
 
 /** Play: xarid 3 kun ichida tasdiqlanmasa Google pulni qaytaradi — serverda. */
@@ -531,7 +520,7 @@ export const accountHintFor = async (platform: Platform, userId: string) =>
  * Xaridni hisobga yozadi. Boshqa hisobga bog'langan bo'lsa — o'zgartirmaydi
  * va `false` qaytaradi (`owned_by_other`).
  */
-async function claim(ctx: Ctx, userId: string, v: Verified): Promise<boolean> {
+export async function claim(ctx: Ctx, userId: string, v: Verified): Promise<boolean> {
   // Xarid paytida boshqa hisob belgisi qo'yilgan — bu hisob uni ololmaydi.
   if (v.accountHint && v.accountHint !== (await accountHintFor(v.platform, userId))) return false;
   // Play: yangilash/almashtirish — zanjir boshi (asl qator) saqlanadi.
@@ -546,12 +535,13 @@ async function claim(ctx: Ctx, userId: string, v: Verified): Promise<boolean> {
   await ctx.db
     .prepare(
       `INSERT INTO entitlements (platform, original_transaction_id, user_id, product_id, status, started_at,
-         expires_at, ownership, environment, latest_token, event_at, updated_at)
-       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)
+         expires_at, ownership, environment, latest_token, event_at, updated_at, period_type, auto_renew, pending_product_id)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)
        ON CONFLICT (platform, original_transaction_id) DO UPDATE SET
          product_id = excluded.product_id, status = excluded.status, started_at = excluded.started_at,
          expires_at = excluded.expires_at, ownership = excluded.ownership, environment = excluded.environment,
-         latest_token = excluded.latest_token, event_at = excluded.event_at, updated_at = excluded.updated_at
+         latest_token = excluded.latest_token, event_at = excluded.event_at, updated_at = excluded.updated_at,
+         period_type = excluded.period_type, auto_renew = excluded.auto_renew, pending_product_id = excluded.pending_product_id
        WHERE entitlements.user_id = excluded.user_id AND entitlements.event_at <= excluded.event_at`,
     )
     .bind(
@@ -567,13 +557,33 @@ async function claim(ctx: Ctx, userId: string, v: Verified): Promise<boolean> {
       v.latestToken,
       v.eventAt,
       ctx.now,
+      v.periodType ?? 'normal',
+      boolCol(v.autoRenew),
+      v.pendingProductId ?? null,
     )
     .run();
   const row = await ctx.db
     .prepare('SELECT user_id FROM entitlements WHERE platform = ?1 AND original_transaction_id = ?2')
     .bind(v.platform, originalId)
     .first<{ user_id: string }>();
-  return row?.user_id === userId;
+  const ok = row?.user_id === userId;
+  // Mehmon sifatida tekshirilgan xarid hisobga o'tdi — mehmon tokeni endi huquq bermaydi.
+  if (ok) await markGuestLinked(ctx, v, userId, originalId);
+  return ok;
+}
+
+const boolCol = (b: boolean | null | undefined) => (b == null ? null : b ? 1 : 0);
+
+/** Mehmon qatorini (bo'lsa) hisobga bog'langan deb belgilaydi (ikki marta berilmasin). */
+export async function markGuestLinked(ctx: Ctx, v: Verified, userId: string, originalId = v.originalId): Promise<void> {
+  await ctx.db
+    .prepare(
+      `UPDATE store_guest_entitlements SET linked_user_id = ?3, linked_at = ?4, updated_at = ?4
+       WHERE platform = ?1 AND linked_user_id IS NULL
+         AND (original_transaction_id IN (?2, ?5) OR latest_token IN (?6, ?7))`,
+    )
+    .bind(v.platform, originalId, userId, ctx.now, v.originalId, v.latestToken, v.linkedToken ?? v.latestToken)
+    .run();
 }
 
 /** Bildirishnoma: faqat mavjud qatorni (egasi o'zgarmaydi) yangilaydi. */
@@ -581,7 +591,8 @@ async function applyUpdate(ctx: Ctx, v: Verified): Promise<boolean> {
   const r = await ctx.db
     .prepare(
       `UPDATE entitlements SET product_id = ?3, status = ?4, started_at = ?5, expires_at = ?6, ownership = ?7,
-         environment = ?8, latest_token = ?9, event_at = ?10, updated_at = ?11
+         environment = ?8, latest_token = ?9, event_at = ?10, updated_at = ?11,
+         period_type = ?13, auto_renew = ?14, pending_product_id = ?15
        WHERE platform = ?1 AND (original_transaction_id = ?2 OR latest_token = ?12) AND event_at <= ?10`,
     )
     .bind(
@@ -597,9 +608,35 @@ async function applyUpdate(ctx: Ctx, v: Verified): Promise<boolean> {
       v.eventAt,
       ctx.now,
       v.linkedToken ?? v.latestToken,
+      v.periodType ?? 'normal',
+      boolCol(v.autoRenew),
+      v.pendingProductId ?? null,
     )
     .run();
-  return (r.meta.changes ?? 0) > 0;
+  // Mehmon (hisobsiz) xaridi ham o'sha bildirishnoma bilan yangilanadi.
+  const g = await ctx.db
+    .prepare(
+      `UPDATE store_guest_entitlements SET product_id = ?3, status = ?4, started_at = ?5, expires_at = ?6,
+         environment = ?7, latest_token = ?8, event_at = ?9, updated_at = ?10, period_type = ?12, auto_renew = ?13
+       WHERE platform = ?1 AND (original_transaction_id = ?2 OR latest_token = ?11) AND event_at <= ?9`,
+    )
+    .bind(
+      v.platform,
+      v.originalId,
+      v.productId,
+      v.status,
+      v.startedAt,
+      v.expiresAt,
+      v.environment,
+      v.latestToken,
+      v.eventAt,
+      ctx.now,
+      v.linkedToken ?? v.latestToken,
+      v.periodType ?? 'normal',
+      boolCol(v.autoRenew),
+    )
+    .run();
+  return (r.meta.changes ?? 0) + (g.meta.changes ?? 0) > 0;
 }
 
 /** Huquq manbai: do'kon obunasi, admin grant (D-73) yoki bepul sinov (D-74). */
@@ -668,6 +705,9 @@ interface StoreRow {
   ownership: string;
   environment: string;
   updated_at: number;
+  period_type: PeriodType;
+  auto_renew: number | null;
+  pending_product_id: string | null;
 }
 interface GrantRow {
   tier: Plan;
@@ -692,7 +732,8 @@ export async function loadAccess(
   const rows = (
     await ctx.db
       .prepare(
-        `SELECT product_id, platform, status, started_at, expires_at, ownership, environment, updated_at
+        `SELECT product_id, platform, status, started_at, expires_at, ownership, environment, updated_at,
+           period_type, auto_renew, pending_product_id
          FROM entitlements WHERE user_id = ?1 ORDER BY COALESCE(expires_at, 0) DESC`,
       )
       .bind(userId)
@@ -748,6 +789,11 @@ export async function snapshot(ctx: Ctx, userId: string, ownedByOther = false, s
           ownership: r.ownership,
           environment: r.environment,
           updated_at: iso(r.updated_at),
+          plan: BILLING_PRODUCTS[r.product_id]?.plan ?? 'student',
+          // Do'kon sinovi / kirish narxi davri (huquq bir xil) va bekor qilinganmi.
+          period_type: r.period_type ?? 'normal',
+          auto_renew: r.auto_renew == null ? null : r.auto_renew === 1,
+          pending_product_id: r.pending_product_id ?? null,
         })),
         ...grants.map((g) => ({
           product_id: `admin_grant.${g.tier}`,
@@ -807,6 +853,9 @@ export async function status(ctx: Ctx): Promise<Response> {
     play_store: configured(ctx, 'play_store'),
     sandbox: sandboxAllowed(ctx.env),
     trial: trialStatus(ctx),
+    // Apple 5.1.1(v): hisobsiz xarid/tiklash (D-77 addendum) — qaysi rejalar
+    // va qaysi imkoniyat faqat hisob bilan.
+    guest: guestPolicy(),
   });
 }
 
@@ -815,23 +864,30 @@ export async function entitlements(ctx: Ctx): Promise<Response> {
   return snapshot(ctx, s.userId);
 }
 
-function parsePlatform(raw: unknown): Platform {
+export function parsePlatform(raw: unknown): Platform {
   if (raw === 'app_store' || raw === 'play_store') return raw;
   throw badRequest('invalid_platform');
 }
 
-function parseToken(raw: unknown): string {
+export function parseToken(raw: unknown): string {
   if (typeof raw !== 'string' || raw.length < 1 || raw.length > 1024) throw badRequest('invalid_token');
   return raw;
 }
 
-function parseProduct(raw: unknown): string | undefined {
+export function parseProduct(raw: unknown): string | undefined {
   if (raw == null) return undefined;
   if (typeof raw !== 'string' || !BILLING_PRODUCTS[raw]) throw badRequest('unknown_product');
   return raw;
 }
 
-async function verifyOne(ctx: Ctx, platform: Platform, token: string, productId?: string): Promise<Verified> {
+/** Play: huquq beradigan, hali tasdiqlanmagan xaridni serverda tasdiqlash. */
+export async function acknowledgeIfNeeded(ctx: Ctx, v: Verified): Promise<void> {
+  if (v.needsAck && (v.status === 'active' || v.status === 'grace_period')) {
+    await verifierFor(ctx, v.platform).acknowledge?.(ctx, v);
+  }
+}
+
+export async function verifyOne(ctx: Ctx, platform: Platform, token: string, productId?: string): Promise<Verified> {
   return acceptEnvironment(ctx, await verifierFor(ctx, platform).verify(ctx, token, productId));
 }
 
@@ -875,9 +931,7 @@ export async function verify(ctx: Ctx): Promise<Response> {
     }
     verified++;
     if (await claim(ctx, s.userId, v)) {
-      if (v.needsAck && (v.status === 'active' || v.status === 'grace_period')) {
-        await verifierFor(ctx, platform).acknowledge?.(ctx, v);
-      }
+      await acknowledgeIfNeeded(ctx, v);
     } else {
       ownedByOther = true;
     }

@@ -20,8 +20,9 @@ export interface Deps {
   fetch?: typeof fetch;
   /**
    * Bepul sinov uchun qurilma attestatsiyasi tekshiruvchisi (D-74). Standart:
-   * YO'Q → `503 device_attestation_not_configured`. Production (index.ts) da
-   * hech narsa ulanmagan; testlarda — soxta (test/fake_attestation.ts).
+   * YO'Q → `503 trial_unavailable`. Production (index.ts): src/attestation.ts
+   * `platformVerifier()` (Play Integrity / DeviceCheck; secretlarsiz —
+   * sozlanmagan); testlarda — soxta (test/fake_attestation.ts).
    */
   attestation?: DeviceAttestationVerifier;
   /**

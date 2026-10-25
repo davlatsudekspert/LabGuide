@@ -4,6 +4,7 @@ import * as admins from './admins';
 import * as adminConsole from './adminconsole';
 import * as auth from './auth';
 import * as billing from './billing';
+import * as guest from './guest';
 import * as proGrants from './progrants';
 import * as community from './community';
 import * as complaints from './complaints';
@@ -163,6 +164,10 @@ const billingRoutes: Route[] = [
   r('POST', '/v1/billing/verify', billing.verify),
   r('POST', '/v1/billing/apple/notifications', billing.appleNotification),
   r('POST', '/v1/billing/google/rtdn', billing.googleNotification),
+  // Mehmon (hisobsiz) xarid / tiklash / hisobga bog'lash — Apple 5.1.1(v) (D-77 addendum).
+  r('POST', '/v1/billing/guest/verify', guest.verify),
+  r('POST', '/v1/billing/guest/entitlements', guest.entitlements),
+  r('POST', '/v1/billing/guest/link', guest.link),
   // Admin grant (D-73): `/v1/admin(/.*)?` (plannedAdmin) dan OLDIN turadi.
   r('GET', '/v1/admin/pro-grants', proGrants.listGrants),
   r('POST', '/v1/admin/pro-grants', proGrants.createGrant),
@@ -170,6 +175,7 @@ const billingRoutes: Route[] = [
   // Bepul sinov — bir telefonga bir marta (D-74); attestatsiya sozlanmagan — 503.
   r('POST', '/v1/billing/trial/challenge', trial.challenge),
   r('POST', '/v1/billing/trial/start', trial.start),
+  r('GET', '/v1/billing/trial', trial.state),
   // Reja ↔ panel ajratish (D-74): serverdagi daraja va `requireTier` tekshiruvi.
   r('GET', '/v1/pro/access', tiers.access),
   r('GET', '/v1/pro/check/:capability', tiers.check),

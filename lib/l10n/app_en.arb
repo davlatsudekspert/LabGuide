@@ -6656,11 +6656,29 @@
   "howToResultTitle": "What you get",
   "howToWatchVideo": "Watch the video",
   "howToVideoMb": "{mb} MB",
-  "@howToVideoMb": {"placeholders": {"mb": {"type": "String"}}},
+  "@howToVideoMb": {
+    "placeholders": {
+      "mb": {
+        "type": "String"
+      }
+    }
+  },
   "howToVideoNote": "Silent screen recording with subtitles · {duration} · opens in your browser or video player",
-  "@howToVideoNote": {"placeholders": {"duration": {"type": "String"}}},
+  "@howToVideoNote": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "howToVideoStartsAt": "In the video, this section starts at {time}.",
-  "@howToVideoStartsAt": {"placeholders": {"time": {"type": "String"}}},
+  "@howToVideoStartsAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "howToVideoOffline": "The video needs an internet connection. The text guide is right here and works offline.",
   "howToVideoUnavailable": "The video can’t be opened right now. Try again later — the text guide is right here.",
   "howToCalibrationStep1": "“1. Instrument”: choose the model from the catalog or add an instrument that isn’t listed.",
@@ -7178,5 +7196,46 @@
   "proGrantUnitDays": "days",
   "proGrantUnitMonths": "months (30 days)",
   "proGrantErrRange": "Duration must be 1 to {max} days (1 month = 30 days).",
-  "@proGrantErrRange": {"placeholders": {"max": {"type": "int"}}}
+  "@proGrantErrRange": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "proPayGuestBuyNote": "You can buy and restore the Student and Specialist plans without an account. Teacher Pro and Premium include the teacher panel and need an account. If you sign in later, the purchase moves to your account.",
+  "proPayGuestAccountOnly": "This plan includes the teacher panel — sign in to subscribe.",
+  "proPayGuestLinked": "This purchase is linked to a LabGuide account. Sign in to that account to use it.",
+  "proPayIntroPrice": "{intro} for {length}, then {price}",
+  "@proPayIntroPrice": {
+    "placeholders": {
+      "intro": {
+        "type": "String"
+      },
+      "length": {
+        "type": "String"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayStoreOfferNote": "This is an App Store / Google Play offer, separate from the LabGuide free trial. The store decides who is eligible; the subscription renews automatically unless you cancel.",
+  "proSubWillNotRenew": "Auto-renewal is off: access stays until {date}, then the plan ends.",
+  "@proSubWillNotRenew": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubStoreTrial": "Store trial period — unless you cancel, the subscription renews automatically at the store price.",
+  "proSubWillChange": "From the next renewal: {plan} plan.",
+  "@proSubWillChange": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -5,6 +5,7 @@ import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../core/entitlements/billing_catalog.dart';
+import '../../core/entitlements/entitlement_models.dart';
 import '../../core/entitlements/entitlement_service.dart';
 import '../../core/entitlements/feature.dart';
 import '../../core/entitlements/pro_catalog.dart';
@@ -70,6 +71,7 @@ class _PurchaseBody extends StatelessWidget {
             (null, null) => l.proStatusProNoEnd,
             (null, final DateTime e) => l.proStatusPro(formatWhen(e, context)),
           };
+    final pending = BillingCatalog.planOf(active?.pendingProductId ?? '');
     return [
       LgSectionTitle(l.proStatusTitle),
       Align(
@@ -78,6 +80,28 @@ class _PurchaseBody extends StatelessWidget {
       ),
       const SizedBox(height: 8),
       Text(line, style: text.bodyLarge),
+      // Do'kon holati (server do'kon API'sidan o'qigan): sinov davri,
+      // avtomatik yangilash o'chirilgan (davr oxirigacha), keyingi reja.
+      if (active != null && active.isStore) ...[
+        if (active.periodType == StorePeriodType.trial)
+          Text(
+            l.proSubStoreTrial,
+            key: const ValueKey('pay-store-trial'),
+            style: text.bodyMedium,
+          ),
+        if (active.autoRenew == false && end != null)
+          Text(
+            l.proSubWillNotRenew(formatWhen(end, context)),
+            key: const ValueKey('pay-will-not-renew'),
+            style: text.bodyMedium,
+          ),
+        if (pending != null && active.autoRenew != false)
+          Text(
+            l.proSubWillChange(_planTitle(l, pending)),
+            key: const ValueKey('pay-will-change'),
+            style: text.bodyMedium,
+          ),
+      ],
       if (ent.proSource == ProSource.offlineCache && cache != null) ...[
         const SizedBox(height: 4),
         Text(
@@ -168,8 +192,11 @@ class _PurchaseBody extends StatelessWidget {
               : StorePeriodUnit.month,
         );
     final price = l.proPayPricePer(p.displayPrice, _period(l, period));
+    // Do'kon taklifi (StoreOfferPolicy filtridan o'tgan) — shartlar faqat do'kondan.
+    final offer = p.introOffer;
     final trial = p.freeTrial;
     final mine = owned.contains(p.id);
+    final canBuy = ent.canPurchase(p.id);
     return LgPanel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -190,17 +217,40 @@ class _PurchaseBody extends StatelessWidget {
           const SizedBox(height: 4),
           // Har davr uchun to'lanadigan summa — eng ko'zga tashlanadigan matn.
           Text(price, style: text.titleLarge),
-          if (trial != null && !mine) ...[
+          if (offer != null && !mine) ...[
             const SizedBox(height: 4),
             Text(
-              l.proPayTrial(_length(l, trial), price),
+              offer.isFreeTrial
+                  ? l.proPayTrial(_length(l, trial ?? offer.total), price)
+                  : l.proPayIntroPrice(
+                      offer.introPrice!,
+                      _length(l, offer.total),
+                      price,
+                    ),
+              key: ValueKey('pay-offer-${p.id}'),
               style: text.bodyMedium,
             ),
+            if (ent.storeOfferAfterServerTrial)
+              Text(
+                l.proPayStoreOfferNote,
+                key: ValueKey('pay-offer-note-${p.id}'),
+                style: text.bodySmall,
+              ),
           ],
-          // Mehmon xarid qilmaydi (D-76): tugma o'rniga pastda "Hisobga kirish".
-          if (!mine && ent.source.hasSession) ...[
+          // Mehmon (D-77 addendum): faqat server ruxsat bergan (hisobga bog'liq
+          // bo'lmagan) rejalar; ustoz paneli bor reja — hisob bilan.
+          if (!mine && !canBuy && ent.guestRestoreAvailable) ...[
+            const SizedBox(height: 8),
+            Text(
+              l.proPayGuestAccountOnly,
+              key: ValueKey('pay-account-only-${p.id}'),
+              style: text.bodySmall,
+            ),
+          ],
+          if (!mine && canBuy) ...[
             const SizedBox(height: 12),
             LgButton(
+              key: ValueKey('pay-buy-${p.id}'),
               label: trial != null ? l.proPayStartTrial : l.proPaySubscribe,
               busy: ent.busy,
               onPressed: ent.busy
@@ -344,12 +394,21 @@ class _PurchaseBody extends StatelessWidget {
         Text(l.proPayFree, style: text.bodySmall),
         const SizedBox(height: 10),
         Text(l.proPayDisclosure(_store), style: text.bodySmall),
-        // Mehmon (D-76): obuna, tiklash va sinov — faqat hisob bilan.
+        // Mehmon: server mehmon xaridini qo'llasa (D-77 addendum) — qaysi
+        // rejalar hisobsiz; aks holda (D-76) obuna/tiklash faqat hisob bilan.
         if (!ent.source.hasSession) ...[
           const SizedBox(height: 8),
+          if (ent.guestSignInRequired)
+            LgNotice(
+              l.proPayGuestLinked,
+              key: const ValueKey('pay-guest-linked'),
+              kind: NoticeKind.info,
+            ),
           Text(
-            l.proPayGuestNote,
-            key: const ValueKey('pay-guest-note'),
+            ent.guestRestoreAvailable ? l.proPayGuestBuyNote : l.proPayGuestNote,
+            key: ValueKey(
+              ent.guestRestoreAvailable ? 'pay-guest-buy-note' : 'pay-guest-note',
+            ),
             style: text.bodySmall,
           ),
           const SizedBox(height: 8),

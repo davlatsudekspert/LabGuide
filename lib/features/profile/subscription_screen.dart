@@ -5,6 +5,7 @@ import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../core/entitlements/billing_catalog.dart';
+import '../../core/entitlements/entitlement_models.dart';
 import '../../core/entitlements/entitlement_service.dart';
 import '../../core/entitlements/purchase_adapter.dart';
 import '../auth/auth_controller.dart';
@@ -206,6 +207,37 @@ class _SubscriptionBody extends StatelessWidget {
     ];
   }
 
+  /// Do'kon obunasi holati (server do'kon API'sidan): do'kon sinov davri,
+  /// avtomatik yangilash o'chirilgan (davr oxirigacha amal qiladi), keyingi
+  /// yangilanishdagi reja (pastga o'tish).
+  List<Widget> _storeLines(BuildContext context, AppLocalizations l) {
+    final a = ent.activeEntitlement;
+    if (a == null || !a.isStore) return const [];
+    final text = Theme.of(context).textTheme;
+    final end = a.expiresAt;
+    final pending = BillingCatalog.planOf(a.pendingProductId ?? '');
+    return [
+      if (a.periodType == StorePeriodType.trial)
+        Text(
+          l.proSubStoreTrial,
+          key: const ValueKey('sub-store-trial'),
+          style: text.bodyMedium,
+        ),
+      if (a.autoRenew == false && end != null)
+        Text(
+          l.proSubWillNotRenew(formatWhen(end, context)),
+          key: const ValueKey('sub-will-not-renew'),
+          style: text.bodyMedium,
+        ),
+      if (pending != null && a.autoRenew != false)
+        Text(
+          l.proSubWillChange(planTitle(l, pending)),
+          key: const ValueKey('sub-will-change'),
+          style: text.bodyMedium,
+        ),
+    ];
+  }
+
   /// Ilgari Pro bo'lgan, endi yo'q: “Pro tugadi, bepul imkoniyatlar ishlaydi”.
   bool get _ended =>
       ent.activeEntitlement == null && (ent.cached?.items.isNotEmpty ?? false);
@@ -292,6 +324,7 @@ class _SubscriptionBody extends StatelessWidget {
           key: const ValueKey('sub-status'),
           style: text.bodyLarge,
         ),
+        ..._storeLines(context, l),
         if (_ended) ...[
           const SizedBox(height: 4),
           Text(

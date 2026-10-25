@@ -78,6 +78,30 @@ export interface Env {
    */
   TRIAL_PLATFORMS?: string;
   /**
+   * Maxfiy: Play Integrity `decodeIntegrityToken` uchun service account JSON
+   * (scope `playintegrity`). Bo'lmasa `GOOGLE_PLAY_SERVICE_ACCOUNT` ishlatiladi.
+   * Bu ham, sertifikat barmoq izi ham bo'lmasa — Android sinovi `503 trial_unavailable`.
+   */
+  PLAY_INTEGRITY_SERVICE_ACCOUNT?: string;
+  /**
+   * Ilova imzo sertifikati SHA-256 (Play Console → App integrity → App signing
+   * key certificate), hex (`AB:CD:…`) yoki base64url; bir nechta — vergul bilan.
+   * Maxfiy emas, lekin repoda saqlanmaydi (Worker o'zgaruvchisi).
+   */
+  PLAY_INTEGRITY_CERT_SHA256?: string;
+  /** Maxfiy: Apple DeviceCheck kaliti (Developer → Keys → DeviceCheck): Key ID, Team ID, `.p8` matni. */
+  APPLE_DEVICECHECK_KEY_ID?: string;
+  APPLE_DEVICECHECK_TEAM_ID?: string;
+  APPLE_DEVICECHECK_PRIVATE_KEY?: string;
+  /** `development` — DeviceCheck development host (TestFlight emas, Xcode build). Standart — production. */
+  APPLE_DEVICECHECK_ENV?: string;
+  /**
+   * Ixtiyoriy: sinov berilmaydigan email domenlari (vergul bilan, masalan bir
+   * martalik pochta xizmatlari). Standart — bo'sh: repoda tekshirilgan ro'yxat
+   * YO'Q (o'ylab topilmadi); egasi o'zi to'ldiradi.
+   */
+  TRIAL_BLOCKED_EMAIL_DOMAINS?: string;
+  /**
    * Google bilan kirish (src/social.ts): ruxsat etilgan OAuth client ID lar
    * (ID tokendagi `aud`), vergul/bo'shliq bilan. Bo'sh — Google kirishi
    * `503 not_configured`, ilova tugmani ko'rsatmaydi.

@@ -55,7 +55,8 @@ class EntitlementCache {
     required this.receivedAt,
     required this.validUntil,
     required this.items,
-  });
+    DateTime? lastSeen,
+  }) : lastSeen = lastSeen ?? receivedAt;
 
   /// Kim uchun olingan (boshqa hisobga o'tmaydi).
   final String userId;
@@ -70,6 +71,21 @@ class EntitlementCache {
   final DateTime validUntil;
   final List<ServerEntitlement> items;
 
+  /// Qurilma soatining kuzatilgan eng katta qiymati (monoton "yuqori suv
+  /// belgisi"). Soat shu qiymatdan orqaga surilsa kesh huquq bermaydi —
+  /// "7 kunlik oyna ichida soatni orqaga surib oflayn Pro'ni cho'zish"
+  /// yo'li yopiladi. Yangi server javobi bilan qayta o'rnatiladi.
+  final DateTime lastSeen;
+
+  EntitlementCache withLastSeen(DateTime t) => EntitlementCache(
+    userId: userId,
+    serverTime: serverTime,
+    receivedAt: receivedAt,
+    validUntil: validUntil,
+    items: items,
+    lastSeen: t,
+  );
+
   /// Qurilma soati va server soati farqi.
   Duration get clockOffset => serverTime.difference(receivedAt);
 
@@ -78,6 +94,7 @@ class EntitlementCache {
     'server_time': serverTime.toUtc().toIso8601String(),
     'received_at': receivedAt.toUtc().toIso8601String(),
     'valid_until': validUntil.toUtc().toIso8601String(),
+    'last_seen': lastSeen.toUtc().toIso8601String(),
     'items': [for (final e in items) e.toJson()],
   };
 
@@ -86,6 +103,9 @@ class EntitlementCache {
     serverTime: DateTime.parse(j['server_time']! as String),
     receivedAt: DateTime.parse(j['received_at']! as String),
     validUntil: DateTime.parse(j['valid_until']! as String),
+    lastSeen: j['last_seen'] is String
+        ? DateTime.tryParse(j['last_seen']! as String)
+        : null,
     items: [
       for (final e in j['items']! as List)
         ServerEntitlement.fromJson((e as Map).cast<String, Object?>()),

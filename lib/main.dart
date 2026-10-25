@@ -22,6 +22,8 @@ import 'core/entitlements/entitlement_cache.dart';
 import 'core/entitlements/entitlement_service.dart';
 import 'core/entitlements/entitlement_source.dart';
 import 'core/entitlements/feature.dart';
+import 'core/entitlements/guest_entitlements.dart';
+import 'core/entitlements/platform_device_attestor.dart';
 import 'core/entitlements/pro_catalog.dart';
 import 'core/entitlements/purchase_adapter.dart';
 import 'core/entitlements/store_purchase_adapter.dart';
@@ -114,6 +116,7 @@ AppServices createServices({
   EntitlementSource? entitlementSource,
   Set<Feature>? gatedFeatures,
   DeviceAttestor? attestor,
+  GuestDeviceStore? guestStore,
   Random? dailyRandom,
 }) {
   const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
@@ -176,6 +179,7 @@ AppServices createServices({
             gatedFeatures: gatedFeatures,
             allFeaturesOpen: allFeaturesOpen,
             attestor: attestor,
+            guestStore: guestStore,
           )
         : EntitlementService.disabled(),
     toifa: toifa,
@@ -238,6 +242,7 @@ EntitlementService _entitlements({
   Set<Feature>? gatedFeatures,
   bool? allFeaturesOpen,
   DeviceAttestor? attestor,
+  GuestDeviceStore? guestStore,
 }) {
   final EntitlementSource realSource =
       entitlementSource ??
@@ -256,9 +261,17 @@ EntitlementService _entitlements({
             : StorePurchaseAdapter.supported
             ? StorePurchaseAdapter()
             : UnavailablePurchaseAdapter()),
+    // Haqiqiy attestatsiya (Play Integrity / DeviceCheck, platforma kanali);
+    // qo'llamaydigan platformada — sozlanmagan (sinov tugmasi yo'q). Sinov
+    // tugmasi baribir faqat server `trial.<platforma>` = true bo'lsa (D-77).
     attestor:
         attestor ??
-        (fake ? DebugFakeDeviceAttestor() : const UnconfiguredDeviceAttestor()),
+        (fake
+            ? DebugFakeDeviceAttestor()
+            : PlatformDeviceAttestor.forCurrentPlatform() ??
+                  const UnconfiguredDeviceAttestor()),
+    // Mehmon (hisobsiz) xarid/tiklash — server siyosati bersa (D-77 addendum).
+    guestStore: guestStore ?? SecureGuestDeviceStore(store),
     cache: EntitlementCacheStore(
       store,
       entitlementKeys ?? const SecureEntitlementKeyStore(),

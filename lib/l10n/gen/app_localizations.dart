@@ -22845,6 +22845,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Duration must be 1 to {max} days (1 month = 30 days).'**
   String proGrantErrRange(int max);
+
+  /// No description provided for @proPayGuestBuyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You can buy and restore the Student and Specialist plans without an account. Teacher Pro and Premium include the teacher panel and need an account. If you sign in later, the purchase moves to your account.'**
+  String get proPayGuestBuyNote;
+
+  /// No description provided for @proPayGuestAccountOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'This plan includes the teacher panel — sign in to subscribe.'**
+  String get proPayGuestAccountOnly;
+
+  /// No description provided for @proPayGuestLinked.
+  ///
+  /// In en, this message translates to:
+  /// **'This purchase is linked to a LabGuide account. Sign in to that account to use it.'**
+  String get proPayGuestLinked;
+
+  /// No description provided for @proPayIntroPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'{intro} for {length}, then {price}'**
+  String proPayIntroPrice(String intro, String length, String price);
+
+  /// No description provided for @proPayStoreOfferNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This is an App Store / Google Play offer, separate from the LabGuide free trial. The store decides who is eligible; the subscription renews automatically unless you cancel.'**
+  String get proPayStoreOfferNote;
+
+  /// No description provided for @proSubWillNotRenew.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-renewal is off: access stays until {date}, then the plan ends.'**
+  String proSubWillNotRenew(String date);
+
+  /// No description provided for @proSubStoreTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'Store trial period — unless you cancel, the subscription renews automatically at the store price.'**
+  String get proSubStoreTrial;
+
+  /// No description provided for @proSubWillChange.
+  ///
+  /// In en, this message translates to:
+  /// **'From the next renewal: {plan} plan.'**
+  String proSubWillChange(String plan);
 }
 
 class _AppLocalizationsDelegate

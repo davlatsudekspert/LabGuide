@@ -9,6 +9,7 @@ class DeviceAttestation {
     required this.platform,
     required this.token,
     this.keyId,
+    this.deviceId,
   });
 
   /// `ios` yoki `android`.
@@ -21,18 +22,24 @@ class DeviceAttestation {
   /// iOS App Attest kalit id si (bo'lsa).
   final String? keyId;
 
+  /// Ilova darajasidagi qurilma belgisi (D-77 addendum): Android — ANDROID_ID
+  /// (Play Integrity nonce'iga bog'langan), iOS — Keychain'dagi tasodifiy
+  /// UUID. Server faqat HMAC holida saqlaydi.
+  final String? deviceId;
+
   Map<String, Object?> toJson(String nonce) => {
     'platform': platform,
     'token': token,
     'nonce': nonce,
     if (keyId != null) 'key_id': keyId,
+    if (deviceId != null) 'device_id': deviceId,
   };
 }
 
-/// Bepul sinov uchun qurilma attestatsiyasi (ilova tomoni). Haqiqiy
-/// amalga oshirish (iOS DeviceCheck / App Attest, Android Play Integrity)
-/// bu tarmoqda YO'Q: native plaginlar va Apple/Google sozlamalari egasi
-/// tomonidan qilinadi (docs/PRO_TRIAL_ABUSE_NOTES.md).
+/// Bepul sinov uchun qurilma attestatsiyasi (ilova tomoni). Haqiqiy:
+/// `PlatformDeviceAttestor` (platform_device_attestor.dart — Android Play
+/// Integrity, iOS DeviceCheck, platforma kanali orqali). Qurilmada
+/// sinalmagan (NOT VERIFIED); docs/PRO_TRIAL_ABUSE_NOTES.md.
 abstract interface class DeviceAttestor {
   /// Attestatsiya ishlay oladimi. `false` — sinov tugmasi ko'rsatilmaydi.
   bool get available;
@@ -51,4 +58,11 @@ class UnconfiguredDeviceAttestor implements DeviceAttestor {
   @override
   Future<DeviceAttestation> attest(String nonce) async =>
       throw StateError('device_attestation_not_configured');
+}
+
+/// Ishga tushishda asinxron tayyorlanadigan attestator (platforma qo'llashini
+/// so'rash). `EntitlementService.start` chaqiradi; shundan keyin
+/// [DeviceAttestor.available] aniq.
+abstract interface class PreparableAttestor {
+  Future<void> prepare();
 }

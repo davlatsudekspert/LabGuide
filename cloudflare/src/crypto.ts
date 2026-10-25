@@ -82,6 +82,8 @@ export interface Keys {
    * bilan HMAC qilinib saqlanadi (xom qiymat hech qachon yozilmaydi).
    */
   trial: CryptoKey;
+  /** Mehmon do'kon huquqi tokeni (HMAC imzo) va mehmon qurilma belgisi (D-77 addendum). */
+  guest: CryptoKey;
 }
 
 const keyCache = new Map<string, Promise<Keys>>();
@@ -99,6 +101,7 @@ export function deriveKeys(secret: string): Promise<Keys> {
         otp: await hmacKey(await sub('otp')),
         community: await hmacKey(await sub('community')),
         trial: await hmacKey(await sub('trial')),
+        guest: await hmacKey(await sub('guest')),
         totp: await crypto.subtle.importKey('raw', await sub('totp'), 'AES-GCM', false, [
           'encrypt',
           'decrypt',

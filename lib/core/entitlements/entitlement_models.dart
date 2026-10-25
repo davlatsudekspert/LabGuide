@@ -67,6 +67,9 @@ class ServerEntitlement {
     this.token,
     this.source = storeSource,
     this.plan,
+    this.periodType = StorePeriodType.normal,
+    this.autoRenew,
+    this.pendingProductId,
   });
 
   /// Manba: do'kon obunasi.
@@ -77,6 +80,10 @@ class ServerEntitlement {
 
   /// Manba: 7 kunlik bepul sinov (D-74/D-76; `platform == 'trial'`).
   static const trialSource = 'trial';
+
+  /// Manba: mehmon (hisobsiz) do'kon xaridi (D-77 addendum, Apple 5.1.1(v)).
+  /// Faqat hisobga bog'liq bo'lmagan imkoniyatlar ochiladi (`teacher_panel` yo'q).
+  static const guestStoreSource = 'store_guest';
 
   factory ServerEntitlement.fromJson(Map<String, Object?> j) {
     DateTime? date(String k) =>
@@ -97,6 +104,9 @@ class ServerEntitlement {
             _ => storeSource,
           },
       plan: ProPlan.parse(j['plan']),
+      periodType: StorePeriodType.parse(j['period_type']),
+      autoRenew: j['auto_renew'] is bool ? j['auto_renew']! as bool : null,
+      pendingProductId: j['pending_product_id'] as String?,
     );
   }
 
@@ -116,6 +126,19 @@ class ServerEntitlement {
 
   bool get isAdminGrant => source == adminGrantSource;
 
+  /// Do'kon davri: do'kon bepul sinovi / kirish narxi (huquq to'liq).
+  final StorePeriodType periodType;
+
+  /// Avtomatik yangilanadimi (`false` — bekor qilingan, davr oxirigacha
+  /// amal qiladi; `null` — noma'lum).
+  final bool? autoRenew;
+
+  /// Keyingi yangilanishda o'tadigan mahsulot (pastga tushirish).
+  final String? pendingProductId;
+
+  /// Mehmon (hisobsiz) xarid — `teacher_panel` ochilmaydi (faqat hisob bilan).
+  bool get isGuest => source == guestStoreSource;
+
   /// Bepul sinov qatori (pullik obunani hech qachon bosib o'tmaydi).
   bool get isTrial => source == trialSource;
 
@@ -126,8 +149,19 @@ class ServerEntitlement {
   ProPlan? get effectivePlan => plan ?? BillingCatalog.planOf(productId);
 
   /// Ochadigan imkoniyatlar (katalogda yo'q mahsulot — faqat Talaba
-  /// to'plami, server bilan bir xil).
-  ProTier get tier => (effectivePlan ?? ProPlan.student).tier;
+  /// to'plami, server bilan bir xil). Mehmon xaridida faqat-hisob
+  /// imkoniyatlari ([accountOnlyCapabilities]) olib tashlanadi.
+  ProTier get tier {
+    final t = (effectivePlan ?? ProPlan.student).tier;
+    if (!isGuest) return t;
+    return ProTier({
+      for (final c in t.capabilities)
+        if (!accountOnlyCapabilities.contains(c)) c,
+    });
+  }
+
+  /// Faqat hisob bilan ochiladigan imkoniyatlar (server `ACCOUNT_ONLY_CAPABILITIES`).
+  static const accountOnlyCapabilities = {ProCapability.teacherPanel};
 
   /// Faqat qurilmadagi (mehmon) xarid uchun: do'kon tokeni — hisobga
   /// kirilganda serverga yuboriladi. Keshga yozilmaydi.
@@ -155,7 +189,29 @@ class ServerEntitlement {
     'environment': environment,
     'source': source,
     if (plan != null) 'plan': plan!.wire,
+    'period_type': periodType.wire,
+    if (autoRenew != null) 'auto_renew': autoRenew,
+    if (pendingProductId != null) 'pending_product_id': pendingProductId,
   };
+}
+
+/// Do'kon obuna davri turi (server `period_type`).
+enum StorePeriodType {
+  normal,
+
+  /// Do'kon bepul sinovi (Apple intro FREE_TRIAL / Play free trial bosqichi).
+  trial,
+
+  /// Chegirmali kirish narxi.
+  intro;
+
+  static StorePeriodType parse(Object? raw) => switch (raw) {
+    'trial' => trial,
+    'intro' => intro,
+    _ => normal,
+  };
+
+  String get wire => name;
 }
 
 /// `GET /v1/billing/entitlements` / `POST /v1/billing/verify` javobi.
@@ -167,6 +223,8 @@ class EntitlementSnapshot {
     this.ownedByOther = false,
     this.trialUsed = false,
     this.offlineUntil,
+    this.guestTokens = const [],
+    this.signInRequired = false,
   });
 
   factory EntitlementSnapshot.fromJson(Map<String, Object?> j) =>
@@ -181,6 +239,11 @@ class EntitlementSnapshot {
         offlineUntil: j['offline_until'] is String
             ? DateTime.tryParse(j['offline_until']! as String)?.toUtc()
             : null,
+        guestTokens: [
+          for (final t in (j['guest_tokens'] as List?) ?? const [])
+            if (t is String) t,
+        ],
+        signInRequired: j['sign_in_required'] == true,
       );
 
   final DateTime serverTime;
@@ -196,6 +259,13 @@ class EntitlementSnapshot {
   /// min(javob vaqti + 7 kun, amaldagi huquq tugashi). Ilova keshni bundan
   /// keyin huquq sifatida ishlatmaydi. `null` — eski server (faqat lokal 7 kun).
   final DateTime? offlineUntil;
+
+  /// Mehmon javobi (`/v1/billing/guest/*`): do'kon tranzaksiyasi + qurilmaga
+  /// bog'langan imzolangan tokenlar (hisobga kirilganda bog'lash uchun).
+  final List<String> guestTokens;
+
+  /// Mehmon: xarid hisobga bog'langan — huquq uchun hisobga kirish kerak.
+  final bool signInRequired;
 }
 
 enum EntitlementFailure {

@@ -19,6 +19,16 @@
 //     mutaxassis; Premium — ikkalasi ham); aks holda 403 `plan_not_allowed`;
 // (g) muddat huquqni hal qilishda (`source: trial`) hisobga olinadi va
 //     pullik obunani hech qachon bosib o'tmaydi (billing.ts `resolveAccess`).
+//
+// Holat mashinasi (D-77 addendum, faqat SERVER soati): `not_started` →
+// `active` (start, 7 kun) → `expired` (server `now >= expires_at`). Qayta
+// boshlanmaydi: hisob, kanonik email va qurilma bo'yicha unikal yozuv;
+// mijoz yuborgan vaqt maydonlari (started_at, now va h.k.) O'QILMAYDI.
+// Bitta sinov = bitta hisob uchun BITTA reja (foydalanuvchi tanlagani),
+// 7 kun; keyin boshqa reja sinovi ham yo'q (`trial_already_used`).
+//
+// Haqiqiy tekshiruvchilar: src/attestation.ts (Play Integrity, DeviceCheck).
+// Secretlar bo'lmasa — `503 trial_unavailable` (fail closed).
 
 import { audit, emailHash, normalizeEmail, requireSession } from './auth';
 import { loadAccess, PLANS, type Plan, snapshot } from './billing';
@@ -26,7 +36,8 @@ import { userHash } from './community';
 import type { Ctx } from './context';
 import { base64url, hex, hmac, randomBytes, sha256Hex } from './crypto';
 import { ApiError, badRequest, conflict, type Env, forbidden, json, readJson } from './http';
-import { hit } from './ratelimit';
+import { attestTokenHash } from './attestation';
+import { bump, hit, peek } from './ratelimit';
 import { TIER_CAPABILITIES } from './tiers';
 
 /** Sinov uzunligi — HAMMA reja uchun 7 kun (D-76, egasi qarori; D-75 dagi 30 kun bekor). */
@@ -41,6 +52,21 @@ export const CHALLENGE_TTL_SEC = 300;
 export const START_PER_HOUR_USER = 5;
 export const START_PER_HOUR_IP = 30;
 export const CHALLENGE_PER_HOUR_USER = 20;
+/**
+ * "Yangi hisob → darhol sinov" oqimi (ko'p hisob ochib sinov olish): bitta
+ * IP tarmog'idan (IPv4 /24, IPv6 /48) sutkasiga yaratilganiga 24 soat
+ * to'lmagan hisoblar uchun shuncha MUVAFFAQIYATLI sinov. O'zbekistondagi
+ * mobil operatorlar CGNAT ishlatadi (ko'p foydalanuvchi bitta IP da) —
+ * shuning uchun cheklov faqat yangi hisoblarga va muvaffaqiyatli sinovlarga.
+ * ASN bo'yicha cheklov ATAYLAB yo'q: bir nechta milliy operator = bir nechta
+ * ASN, bu halol foydalanuvchilarni to'sib qo'yardi.
+ */
+export const NEW_ACCOUNT_AGE_MS = 24 * 3600_000;
+export const NEW_ACCOUNT_TRIALS_PER_PREFIX_DAY = 3;
+/** Har qanday hisob: bitta IP tarmog'idan sutkasiga muvaffaqiyatli sinovlar. */
+export const TRIALS_PER_PREFIX_DAY = 20;
+/** Attestatsiya tokeni xeshi (takrorni aniqlash) saqlanish muddati. */
+export const ATTEST_TOKEN_RETENTION_MS = 30 * 86400_000;
 const DAY = 86400_000;
 const MAX_ATTESTATION = 16 * 1024;
 
@@ -59,6 +85,12 @@ export interface AttestationInput {
   keyId: string | null;
   /** Server bergan bir martalik nonce (`POST /v1/billing/trial/challenge`). */
   nonce: string;
+  /**
+   * Ilova darajasidagi qurilma belgisi (Android — ANDROID_ID, Play Integrity
+   * nonce'iga bog'langan; iOS — Keychain'dagi tasodifiy UUID). Faqat HMAC
+   * qilinib saqlanadi (`device_key`).
+   */
+  deviceId: string | null;
 }
 
 export type AttestationResult =
@@ -78,13 +110,15 @@ export type AttestationResult =
   | { ok: false; reason: string };
 
 /**
- * Qurilma attestatsiyasini tekshiruvchi (server). Haqiqiy amalga oshirish
- * (Apple App Attest / DeviceCheck, Google Play Integrity) bu tarmoqda YO'Q:
- * ular Apple/Google kalitlari va ilovada native plaginlarni talab qiladi.
+ * Qurilma attestatsiyasini tekshiruvchi (server). Haqiqiy: src/attestation.ts
+ * (Play Integrity, DeviceCheck) — Apple/Google kalitlari (Worker secretlari)
+ * bo'lmasa "sozlanmagan".
  */
 export interface DeviceAttestationVerifier {
-  /** Kalitlar sozlanganmi. `false` → 503 `device_attestation_not_configured`. */
+  /** Kalitlar sozlanganmi (biror platforma uchun). `false` → `503 trial_unavailable`. */
   configured(env: Env): boolean;
+  /** Shu platforma uchun sozlanganmi (berilmasa — [configured]). */
+  configuredFor?(env: Env, platform: AttestationPlatform): boolean;
   verify(ctx: Ctx, input: AttestationInput): Promise<AttestationResult>;
   /** Sinov berilgach platforma bayrog'ini "ishlatilgan" qilish (ixtiyoriy). */
   markUsed?(ctx: Ctx, input: AttestationInput): Promise<void>;
@@ -97,6 +131,11 @@ export const UnconfiguredVerifier: DeviceAttestationVerifier = {
 };
 
 const verifierOf = (ctx: Ctx): DeviceAttestationVerifier => ctx.deps.attestation ?? UnconfiguredVerifier;
+
+const configuredOn = (ctx: Ctx, p: AttestationPlatform): boolean => {
+  const v = verifierOf(ctx);
+  return v.configuredFor ? v.configuredFor(ctx.env, p) : v.configured(ctx.env);
+};
 
 // ------------------------------------------------------ platforma (D-75)
 /**
@@ -123,19 +162,20 @@ export const trialPlatformAllowed = (env: Env, p: AttestationPlatform) => trialP
  * attestatsiyasi sozlangan). Ilova "Sinovni boshlash" tugmasini faqat shu
  * `true` bo'lsa ko'rsatadi.
  */
-export function trialStatus(ctx: Ctx): { android: boolean; ios: boolean; platforms: AttestationPlatform[] } {
-  const att = verifierOf(ctx).configured(ctx.env);
+export function trialStatus(ctx: Ctx): { android: boolean; ios: boolean; platforms: AttestationPlatform[]; days: number } {
   return {
-    android: att && trialPlatformAllowed(ctx.env, 'android'),
-    ios: att && trialPlatformAllowed(ctx.env, 'ios'),
+    android: configuredOn(ctx, 'android') && trialPlatformAllowed(ctx.env, 'android'),
+    ios: configuredOn(ctx, 'ios') && trialPlatformAllowed(ctx.env, 'ios'),
     platforms: trialPlatforms(ctx.env),
+    days: TRIAL_DAYS,
   };
 }
 
 const platformBlocked = () => new ApiError(403, 'trial_not_available_on_platform');
 
+/** Fail closed: attestatsiya sozlanmagan — sinov yo'q (ilova tugmani yashiradi). */
 function notConfigured(): ApiError {
-  return new ApiError(503, 'device_attestation_not_configured');
+  return new ApiError(503, 'trial_unavailable', { reason: 'device_attestation_not_configured' });
 }
 
 // ------------------------------------------------------- kanonik email
@@ -198,6 +238,7 @@ export async function challenge(ctx: Ctx): Promise<Response> {
     if (platform != null) {
       if (platform !== 'ios' && platform !== 'android') throw badRequest('invalid_platform');
       if (!trialPlatformAllowed(ctx.env, platform)) throw platformBlocked();
+      if (!configuredOn(ctx, platform)) throw notConfigured();
     }
   }
   await hit(ctx.db, `trial-ch:${(await sha256Hex(s.userId)).slice(0, 32)}`, CHALLENGE_PER_HOUR_USER, 3600, ctx.now);
@@ -224,7 +265,12 @@ function parseAttestation(raw: unknown): Omit<AttestationInput, 'nonce'> & { non
   if (typeof o.nonce !== 'string' || !/^[A-Za-z0-9_-]{43}$/.test(o.nonce)) throw badRequest('invalid_nonce');
   const keyId = o.key_id == null ? null : String(o.key_id);
   if (keyId != null && keyId.length > 512) throw badRequest('invalid_attestation');
-  return { platform: o.platform, token: o.token, keyId, nonce: o.nonce };
+  let deviceId: string | null = null;
+  if (o.device_id != null) {
+    if (typeof o.device_id !== 'string' || !/^[A-Za-z0-9._:-]{8,128}$/.test(o.device_id)) throw badRequest('invalid_attestation');
+    deviceId = o.device_id;
+  }
+  return { platform: o.platform, token: o.token, keyId, nonce: o.nonce, deviceId };
 }
 
 /**
@@ -253,8 +299,71 @@ async function planAllowed(ctx: Ctx, userId: string, tier: Plan): Promise<boolea
 }
 
 /**
- * POST /v1/billing/trial/start {tier, email, attestation: {platform, token, nonce, key_id?}}.
+ * IP tarmog'i belgisi (IPv4 /24, IPv6 /48) — HMAC, faqat limit kaliti
+ * (xom IP saqlanmaydi). `cf-connecting-ip` ni Cloudflare o'zi qo'yadi.
+ */
+export async function ipPrefixTag(ctx: Ctx): Promise<string> {
+  const ip = (ctx.req.headers.get('cf-connecting-ip') ?? 'unknown').trim().toLowerCase();
+  let prefix = ip;
+  const v4 = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.\d{1,3}$/.exec(ip);
+  if (v4) {
+    prefix = `${v4[1]}.${v4[2]}.${v4[3]}.0/24`;
+  } else if (ip.includes(':')) {
+    // To'liq bo'lmagan (`::`) yozuvni kengaytirib birinchi 3 guruh (/48).
+    const [head, tail = ''] = ip.split('::');
+    const h = head ? head.split(':') : [];
+    const t = tail ? tail.split(':') : [];
+    const groups = ip.includes('::') ? [...h, ...Array(Math.max(0, 8 - h.length - t.length)).fill('0'), ...t] : h;
+    prefix = `${groups.slice(0, 3).map((g) => g.replace(/^0+(?=.)/, '') || '0').join(':')}::/48`;
+  }
+  return hex(await hmac(ctx.keys.ip, `prefix:${prefix}`)).slice(0, 32);
+}
+
+/** Sinov holati (faqat server soati bilan). */
+export type TrialState = 'not_started' | 'active' | 'expired';
+
+export const trialStateOf = (row: { expires_at: number } | null | undefined, now: number): TrialState =>
+  row == null ? 'not_started' : now < row.expires_at ? 'active' : 'expired';
+
+function blockedDomain(env: Env, canon: string): boolean {
+  const domain = canon.slice(canon.lastIndexOf('@') + 1);
+  return (env.TRIAL_BLOCKED_EMAIL_DOMAINS ?? '')
+    .split(/[\s,]+/)
+    .map((d) => d.trim().toLowerCase())
+    .filter(Boolean)
+    .some((d) => domain === d || domain.endsWith(`.${d}`));
+}
+
+/**
+ * GET /v1/billing/trial — hisobning sinov holati (holat mashinasi):
+ * `not_started` | `active` | `expired`; vaqtlar va qolgan muddat SERVER
+ * soatidan. Qurilma/email bo'yicha band ekani bu yerda oshkor qilinmaydi
+ * (faqat start 409 qaytaradi).
+ */
+export async function state(ctx: Ctx): Promise<Response> {
+  const s = await requireSession(ctx);
+  const row = await ctx.db
+    .prepare('SELECT tier, started_at, expires_at FROM pro_trials WHERE user_id = ?1 ORDER BY started_at DESC LIMIT 1')
+    .bind(s.userId)
+    .first<{ tier: Plan; started_at: number; expires_at: number }>();
+  const st = trialStateOf(row, ctx.now);
+  return json({
+    state: st,
+    plan: row?.tier ?? null,
+    started_at: row ? new Date(row.started_at).toISOString() : null,
+    expires_at: row ? new Date(row.expires_at).toISOString() : null,
+    remaining_ms: row && st === 'active' ? row.expires_at - ctx.now : 0,
+    server_time: new Date(ctx.now).toISOString(),
+    days: TRIAL_DAYS,
+    available: trialStatus(ctx),
+  });
+}
+
+/**
+ * POST /v1/billing/trial/start {tier, email, attestation: {platform, token, nonce, device_id?, key_id?}}.
  * Mehmon (sessiyasiz) — 401. Javob: 201 + huquqlar surati (`source: trial`).
+ * Mijoz yuborgan vaqt (masalan `started_at`, `now`) e'tiborsiz — muddat
+ * faqat server soatidan.
  */
 export async function start(ctx: Ctx): Promise<Response> {
   const s = await requireSession(ctx);
@@ -268,16 +377,21 @@ export async function start(ctx: Ctx): Promise<Response> {
   const att = parseAttestation(body.attestation);
   // iOS (standart) — 403, nonce sarflanmaydi, hech narsa yozilmaydi (D-75).
   if (!trialPlatformAllowed(ctx.env, att.platform)) throw platformBlocked();
+  if (!configuredOn(ctx, att.platform)) throw notConfigured();
 
   // Tasdiqlangan email: hisob emaili (OTP yoki provayder `email_verified`
   // bilan yaratilgan `users.email_hash`) bilan bir xil bo'lishi shart.
   const email = normalizeEmail(body.email);
   if (!email) throw badRequest('invalid_email');
   const user = await ctx.db
-    .prepare('SELECT email_hash FROM users WHERE id = ?1')
+    .prepare('SELECT email_hash, created_at FROM users WHERE id = ?1')
     .bind(s.userId)
-    .first<{ email_hash: string }>();
+    .first<{ email_hash: string; created_at: number }>();
   if (!user || user.email_hash !== (await emailHash(ctx, email))) throw forbidden('email_not_verified');
+
+  const canon = canonicalEmail(email);
+  if (!canon) throw badRequest('invalid_email');
+  if (blockedDomain(ctx.env, canon)) throw forbidden('email_domain_not_allowed');
 
   if (!(await planAllowed(ctx, s.userId, tier))) throw forbidden('plan_not_allowed');
 
@@ -286,14 +400,18 @@ export async function start(ctx: Ctx): Promise<Response> {
     throw conflict('already_subscribed');
   }
 
-  const canon = canonicalEmail(email);
-  if (!canon) throw badRequest('invalid_email');
   const emailKey = await trialKey(ctx, 'email', canon);
   const used = await ctx.db
     .prepare('SELECT 1 AS x FROM pro_trials WHERE user_id = ?1 OR email_key = ?2 LIMIT 1')
     .bind(s.userId, emailKey)
     .first();
   if (used) throw conflict('trial_already_used');
+
+  // IP tarmog'i: yangi hisoblar va umumiy muvaffaqiyatli sinovlar (sutka).
+  const prefix = await ipPrefixTag(ctx);
+  const young = ctx.now - user.created_at < NEW_ACCOUNT_AGE_MS;
+  await peek(ctx.db, `trial-prefix:${prefix}`, TRIALS_PER_PREFIX_DAY, 86400, ctx.now);
+  if (young) await peek(ctx.db, `trial-prefix-new:${prefix}`, NEW_ACCOUNT_TRIALS_PER_PREFIX_DAY, 86400, ctx.now);
 
   // Nonce: bir martalik, shu hisobniki, muddati o'tmagan.
   const consumed = await ctx.db
@@ -302,14 +420,29 @@ export async function start(ctx: Ctx): Promise<Response> {
     .first();
   if (!consumed) throw badRequest('invalid_nonce');
 
+  // Attestatsiya tokeni bir marta (DeviceCheck tokeni nonce'ni bog'lamaydi;
+  // Play Integrity'da nonce baribir bog'langan). Faqat xesh saqlanadi.
+  const replay = await ctx.db
+    .prepare('INSERT INTO pro_trial_attest_tokens (token_hash, expires_at) VALUES (?1, ?2) ON CONFLICT DO NOTHING')
+    .bind(await attestTokenHash(att.token), ctx.now + ATTEST_TOKEN_RETENTION_MS)
+    .run();
+  if (!replay.meta.changes) throw forbidden('device_attestation_failed');
+
   let result: AttestationResult;
   try {
     result = await verifier.verify(ctx, att);
   } catch (e) {
+    if (e instanceof ApiError && e.status >= 500) {
+      console.error('attestation verify error', e.code);
+      throw e.code === 'device_attestation_unavailable' ? e : new ApiError(502, 'device_attestation_unavailable');
+    }
     console.error('attestation verify error', e instanceof Error ? e.name : typeof e);
     throw new ApiError(502, 'device_attestation_unavailable');
   }
-  if (!result.ok || !result.subject) throw forbidden('device_attestation_failed');
+  if (!result.ok || !result.subject) {
+    console.error('attestation rejected', result.ok ? 'no_subject' : result.reason);
+    throw forbidden('device_attestation_failed');
+  }
   const deviceKey = await trialKey(ctx, 'device', `${att.platform}:${result.subject}`);
   if (result.alreadyUsed) throw conflict('trial_already_used');
   const onDevice = await ctx.db.prepare('SELECT 1 AS x FROM pro_trials WHERE device_key = ?1').bind(deviceKey).first();
@@ -326,6 +459,8 @@ export async function start(ctx: Ctx): Promise<Response> {
     .run();
   // Parallel so'rov (bir xil hisob/email/qurilma) — unikal indeks to'xtatadi.
   if (!r.meta.changes) throw conflict('trial_already_used');
+  await bump(ctx.db, `trial-prefix:${prefix}`, 86400, ctx.now);
+  if (young) await bump(ctx.db, `trial-prefix-new:${prefix}`, 86400, ctx.now);
   if (verifier.markUsed) {
     try {
       await verifier.markUsed(ctx, att);
@@ -355,5 +490,6 @@ export const trialDeleteStatements = (db: D1Database, userId: string, now: numbe
 /** Kunlik tozalash (faqat bayroq yoqilganda): eskirgan nonce va saqlash muddati o'tgan yozuvlar. */
 export const trialCleanupStatements = (db: D1Database, now: number): D1PreparedStatement[] => [
   db.prepare('DELETE FROM pro_trial_challenges WHERE expires_at < ?1').bind(now),
+  db.prepare('DELETE FROM pro_trial_attest_tokens WHERE expires_at < ?1').bind(now),
   db.prepare('DELETE FROM pro_trials WHERE retain_until < ?1').bind(now),
 ];

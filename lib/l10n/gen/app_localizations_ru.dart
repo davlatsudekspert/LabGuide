@@ -13518,4 +13518,39 @@ class AppLocalizationsRu extends AppLocalizations {
   String proGrantErrRange(int max) {
     return 'Срок — от 1 до $max дней (1 месяц = 30 дней).';
   }
+
+  @override
+  String get proPayGuestBuyNote =>
+      'Планы «Студент» и «Специалист» можно купить и восстановить без аккаунта. «Pro для преподавателя» и «Премиум» включают панель преподавателя — для них нужен аккаунт. Если позже войдёте, покупка перейдёт в ваш аккаунт.';
+
+  @override
+  String get proPayGuestAccountOnly =>
+      'Этот план включает панель преподавателя — войдите, чтобы оформить подписку.';
+
+  @override
+  String get proPayGuestLinked =>
+      'Эта покупка привязана к аккаунту LabGuide. Чтобы пользоваться ею, войдите в этот аккаунт.';
+
+  @override
+  String proPayIntroPrice(String intro, String length, String price) {
+    return '$intro за $length, затем $price';
+  }
+
+  @override
+  String get proPayStoreOfferNote =>
+      'Это предложение App Store / Google Play, отдельное от бесплатного пробного периода LabGuide. Право на предложение определяет магазин; подписка продлевается автоматически, если её не отменить.';
+
+  @override
+  String proSubWillNotRenew(String date) {
+    return 'Автопродление выключено: доступ сохранится до $date, затем план закончится.';
+  }
+
+  @override
+  String get proSubStoreTrial =>
+      'Пробный период магазина — если не отменить, подписка автоматически продлится по цене магазина.';
+
+  @override
+  String proSubWillChange(String plan) {
+    return 'Со следующего продления: план «$plan».';
+  }
 }
