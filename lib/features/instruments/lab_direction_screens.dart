@@ -6,6 +6,7 @@ import '../../app/widgets/links.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import 'instrument_catalog.dart';
+import 'instrument_image.dart' show SchematicFigure;
 import 'instrument_screens.dart' show CatalogGate;
 import 'lab_direction_card.dart';
 
@@ -49,6 +50,35 @@ String _statusLine(AppLocalizations l, LabAuditStatus s) => switch (s) {
   LabAuditStatus.needsReview => l.labDirStatusNeedsReview,
   // NEEDS_SOURCE kartalar ommaga ko'rsatilmaydi; bu yerga yetib kelmaydi.
   LabAuditStatus.needsSource => l.labDirStatusNeedsReview,
+};
+
+/// Apparat sinfi chizmasining lokalizatsiyalangan tavsifi (alt-matn).
+String _schematicLabel(AppLocalizations l, LabSchematic s) => switch (s) {
+  LabSchematic.massSpecGc => l.labSchemGcMs,
+  LabSchematic.massSpecLc => l.labSchemLcMs,
+  LabSchematic.maldiTof => l.labSchemMaldiTof,
+  LabSchematic.microbialIdAst => l.labSchemMicrobialIdAst,
+  LabSchematic.bloodCulture => l.labSchemBloodCulture,
+  LabSchematic.mycobacterialCulture => l.labSchemMycobacterialCulture,
+  LabSchematic.flowCytometer => l.labSchemFlowCytometer,
+  LabSchematic.realTimePcr => l.labSchemRealTimePcr,
+  LabSchematic.cartridgeMolecular => l.labSchemCartridgeMolecular,
+  LabSchematic.coagAnalyzer => l.labSchemCoagAnalyzer,
+  LabSchematic.elisaReader => l.labSchemElisaReader,
+  LabSchematic.bscClass2 => l.labSchemBscClass2,
+  LabSchematic.autoclave => l.labSchemAutoclave,
+  LabSchematic.bloodGasIse => l.labSchemBloodGasIse,
+  LabSchematic.hba1cAnalyzer => l.labSchemHba1cAnalyzer,
+  LabSchematic.labFridge => l.labSchemLabFridge,
+  LabSchematic.fluorescenceMicroscope => l.labSchemFluorescenceMicroscope,
+  LabSchematic.casa => l.labSchemCasa,
+  LabSchematic.gelCardSystem => l.labSchemGelCardSystem,
+  LabSchematic.esrAnalyzer => l.labSchemEsrAnalyzer,
+  LabSchematic.aggregometer => l.labSchemAggregometer,
+  LabSchematic.electrophoresis => l.labSchemElectrophoresis,
+  LabSchematic.osmometer => l.labSchemOsmometer,
+  LabSchematic.tlc => l.labSchemTlc,
+  LabSchematic.analyticalBalance => l.labSchemAnalyticalBalance,
 };
 
 /// Bosh ekrandagi “TB va OIV” bo'limi (kartalar bo'lsa).
@@ -185,6 +215,19 @@ class _LabCard extends StatelessWidget {
           LgNotice(l.labDirPlatformClassNote),
         if (card.sourceCaveat case final c?) LgNotice(c.of(lang)),
         LgNotice(l.labDirDisclaimer),
+        // Apparat SINFI chizmasi (aniq model emas) — model kartasidagi bilan
+        // bir xil vidjet, izoh va kattalashtirish.
+        if (card.schematic case final sch?) ...[
+          const SizedBox(height: 12),
+          SchematicFigure(
+            asset: sch.asset,
+            assetLarge: sch.assetLarge,
+            semanticLabel: l.instSchematicSemantics(_schematicLabel(l, sch)),
+            viewerTitle: card.name.of(lang),
+            figureKey: const ValueKey('lab-card-schematic'),
+            captionKey: const ValueKey('lab-card-schematic-caption'),
+          ),
+        ],
         if (card.instrumentVsTestNote case final n?) ...[
           LgSectionTitle(l.labDirVsTest),
           Text(n.of(lang), style: text.bodyLarge),

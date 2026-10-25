@@ -3411,6 +3411,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
+   "schematic": "cartridge_molecular",
    "linked": [
     "tb-xpert-mtb-rif-tests"
    ],
@@ -3515,6 +3516,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
+   "schematic": "cartridge_molecular",
    "linked": [
     "tb-genexpert-platform"
    ],
@@ -3853,6 +3855,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
+   "schematic": "real_time_pcr",
    "linked": [
     "a3-mol-realtime-pcr-platform"
    ],
@@ -4110,6 +4113,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "real_time_pcr",
    "linked": [
     "a3-mol-realtime-pcr-platform"
    ],
@@ -4202,6 +4206,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "autoclave",
    "linked": [],
    "sources": [
     "a1-cdc-steam"
@@ -4313,6 +4318,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "blood_culture",
    "linked": [],
    "sources": [
     "a1-fda-k173873",
@@ -4399,6 +4405,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
+   "schematic": "coag_analyzer",
    "linked": [
     "a1-pt-inr-test"
    ],
@@ -4501,6 +4508,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "coag_analyzer",
    "linked": [
     "a1-coagulation-analyzer-platform"
    ],
@@ -4593,6 +4601,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "elisa_reader",
    "linked": [
     "a1-elisa-reader-platform"
    ],
@@ -4661,6 +4670,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "elisa_reader",
    "linked": [
     "a1-elisa-method"
    ],
@@ -4761,6 +4771,7 @@
     ]
    },
    "models": [],
+   "schematic": "bsc_class2",
    "linked": [],
    "sources": [
     "a1-who-lbm4-bsc"
@@ -4866,6 +4877,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "blood_gas_ise",
    "linked": [
     "a2-test-arterial-blood-gas-panel"
    ],
@@ -5005,6 +5017,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "blood_gas_ise",
    "linked": [
     "a2-platform-blood-gas-ise-analyzer"
    ],
@@ -5199,6 +5212,7 @@
     ]
    },
    "models": [],
+   "schematic": "lab_fridge",
    "linked": [],
    "sources": [
     "a2-cdc-vaccine-storage",
@@ -5287,6 +5301,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
+   "schematic": "hba1c_analyzer",
    "linked": [
     "a2-platform-hba1c-analyzer"
    ],
@@ -5364,6 +5379,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
+   "schematic": "hba1c_analyzer",
    "linked": [
     "a2-test-hba1c"
    ],
@@ -5446,6 +5462,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
+   "schematic": "fluorescence_microscope",
    "linked": [
     "a2-method-auramine-smear-microscopy-tb"
    ],
@@ -5541,6 +5558,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "fluorescence_microscope",
    "linked": [
     "a2-platform-led-fluorescence-microscope"
    ],
@@ -5827,6 +5845,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "casa",
    "linked": [
     "a2-test-semen-analysis-who6"
    ],
@@ -6011,6 +6030,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
+   "schematic": "gel_card_system",
    "linked": [],
    "sources": [
     "a3-who-bg-module3"
@@ -6131,6 +6151,7 @@
     ]
    },
    "models": [],
+   "schematic": "esr_analyzer",
    "linked": [],
    "sources": [
     "a3-statpearls-esr"
@@ -6219,6 +6240,7 @@
     ]
    },
    "models": [],
+   "schematic": "mass_spec_gc",
    "linked": [],
    "sources": [
     "a3-statpearls-ms"
@@ -6318,6 +6340,7 @@
     ]
    },
    "models": [],
+   "schematic": "mass_spec_lc",
    "linked": [],
    "sources": [
     "a3-statpearls-ms"
@@ -6408,6 +6431,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "analytical_balance",
    "linked": [],
    "sources": [
     "a3-nist-sop14"
@@ -6509,6 +6533,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "aggregometer",
    "linked": [],
    "sources": [
     "a3-statpearls-coag-eval"
@@ -6604,6 +6629,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "tlc",
    "linked": [],
    "sources": [
     "a3-unodc-cocaine-2012"
@@ -6804,6 +6830,7 @@
     ]
    },
    "models": [],
+   "schematic": "electrophoresis",
    "linked": [],
    "sources": [
     "a3-statpearls-electrophoresis"
@@ -6905,6 +6932,7 @@
    ],
    "biosafety": null,
    "models": [],
+   "schematic": "osmometer",
    "linked": [],
    "sources": [
     "a3-statpearls-osmometer"
@@ -6999,6 +7027,7 @@
     ]
    },
    "models": [],
+   "schematic": "mycobacterial_culture",
    "linked": [
     "a3-tb-mgit-culture-dst-method"
    ],
@@ -7101,6 +7130,7 @@
     ]
    },
    "models": [],
+   "schematic": "mycobacterial_culture",
    "linked": [
     "a3-tb-bactec-mgit960-platform"
    ],
@@ -7219,6 +7249,7 @@
     ]
    },
    "models": [],
+   "schematic": "flow_cytometer",
    "linked": [
     "a3-imm-flow-cytometer-platform"
    ],
@@ -7301,6 +7332,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
+   "schematic": "flow_cytometer",
    "linked": [
     "a3-hiv-cd4-flow-method"
    ],
@@ -7418,6 +7450,7 @@
     ]
    },
    "models": [],
+   "schematic": "real_time_pcr",
    "linked": [
     "hiv-rna-viral-load",
     "a1-realtime-pcr-method"
@@ -7527,6 +7560,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
+   "schematic": "microbial_id_ast",
    "linked": [
     "a3-bac-ast-method"
    ],
@@ -7769,6 +7803,7 @@
     ]
    },
    "models": [],
+   "schematic": "maldi_tof",
    "linked": [],
    "sources": [
     "a1-fda-k163536",

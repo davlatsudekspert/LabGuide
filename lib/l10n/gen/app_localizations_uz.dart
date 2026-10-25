@@ -10255,6 +10255,106 @@ class AppLocalizationsUz extends AppLocalizations {
       'Sinf/texnologiya bo‘yicha ma’lumot — aniq model uchun tasdiqlanmagan';
 
   @override
+  String get labSchemGcMs =>
+      'GC-MS apparat sinfi — tashuvchi gaz ballon, avtonamunaoluvchili gaz xromatografi va termostatdagi kapillyar kolonka, ion manbai, kvadrupol mass-analizator, detektor, vakuum nasoslari va ma’lumotlar tizimi';
+
+  @override
+  String get labSchemLcMs =>
+      'LC-MS apparat sinfi — erituvchi idishlari, nasos, avtonamunaoluvchi, kolonka termostati, elektropurkash ion manbai, kvadrupol mass-analizator, detektor, vakuum nasoslari va ma’lumotlar tizimi';
+
+  @override
+  String get labSchemMaldiTof =>
+      'MALDI-TOF mass-spektrometr sinfi — namuna dog‘lari bor nishon plastina, lazer, tezlatuvchi to‘rlar, uchish trubasi, detektor, vakuum nasosi va spektr ekrani';
+
+  @override
+  String get labSchemMicrobialIdAst =>
+      'Avtomatik mikrobiologik identifikatsiya va sezuvchanlik tizimi sinfi — suspenziya probirkalari va test kartalari bor kasseta, optik skanerli inkubator-o‘quvchi, yuklash kamerasi va monitor';
+
+  @override
+  String get labSchemBloodCulture =>
+      'Avtomatik gemokultura tizimi sinfi — qatorlab flakonlar joylangan inkubator shkaf (har flakon tubida sensor va holat chirog‘i) va monitor; yonida aerob va anaerob flakonlar';
+
+  @override
+  String get labSchemMycobacterialCulture =>
+      'Mikobakteriyalar uchun avtomatik suyuq muhit tizimi sinfi — probirkalar tortmalari va holat chiroqlari bor inkubator-o‘quvchi, monitor; yonida tubida fluoressent kislorod sensori bor probirkalar';
+
+  @override
+  String get labSchemFlowCytometer =>
+      'Oqim sitometri sinfi — qobiq suyuqligi va chiqindi idishlari, gidrodinamik fokuslash, lazer, oqim kyuvetasi, to‘g‘ri sochilish detektori, dixroik ko‘zgular ortidagi yon sochilish va fluoressensiya detektorlari, namuna probirkasi va nuqtali diagramma ekrani';
+
+  @override
+  String get labSchemRealTimePcr =>
+      'Real vaqt PCR amplifikatori sinfi — quduqchali termoblok, isitiladigan qopqoq, yorug‘lik manbai, filtr g‘ildiragi va detektorli optik modul, 8 probirkali qator va kuchayish egri chiziqlari ekrani';
+
+  @override
+  String get labSchemCartridgeMolecular =>
+      'Kartrijli yopiq molekulyar platforma sinfi — alohida modulli apparat (bittasi ochiq, ichida kartrij), bir martalik ko‘p kamerali kartrij, namuna idishi va monitor';
+
+  @override
+  String get labSchemCoagAnalyzer =>
+      'Avtomatik koagulometr sinfi — sovutilgan reagent joylari, o‘lchash kyuvetalari, pipetka qo‘li, sitratli probirkalar, optik laxta aniqlash (yorug‘lik manbai, kyuveta, fotodetektor) va ivish egri chizig‘i ekrani';
+
+  @override
+  String get labSchemElisaReader =>
+      'Mikroplanshet (ELISA) o‘quvchisi va yuvish qurilmasi sinfi — rangli 96 quduqchali planshet tashuvchisi bor o‘quvchi, quduqcha orqali detektorga optik yo‘l, ignalar qatori bor yuvish qurilmasi, yuvish eritmasi va chiqindi idishlari';
+
+  @override
+  String get labSchemBscClass2 =>
+      'II sinf biologik xavfsizlik shkafi, yon kesim — xona havosi old ochiqlikdan old panjaraga kiradi, HEPA filtrdan o‘tgan havo ish yuzasi ustidan pastga oqadi, orqa kanal orqali ventilyatorga qaytadi, bir qismi ikkinchi HEPA filtr orqali chiqariladi';
+
+  @override
+  String get labSchemAutoclave =>
+      'Stol usti bug‘li avtoklav sinfi — tagligi va o‘ralgan buyumlari bor kamera, zichlagichli ochiq eshik, bosim va harorat ko‘rsatkichlari, xavfsizlik klapani va suv idishi';
+
+  @override
+  String get labSchemBloodGasIse =>
+      'Qon gazlari va elektrolitlar (ISE) analizatori sinfi — displey, printer, qon gazi shprisi ulangan namuna zondi, o‘lchash kanali bo‘ylab elektrodli sensor kassetasi va reagent paketi';
+
+  @override
+  String get labSchemHba1cAnalyzer =>
+      'Ixcham HbA1c analizatori sinfi — displey, tugmalar, printer, namuna oluvchi qo‘lli EDTA butun qon probirkalari rakasi, reagent idishlari va chiqindi idishi';
+
+  @override
+  String get labSchemLabFridge =>
+      'Harorat monitoringli laboratoriya sovutgich-muzlatgichi sinfi — shtativ va reagentlar bor shisha eshikli sovutgich, muzlatgich bo‘limi, buferli flakondagi datchik va tashqaridagi raqamli ma’lumot yozgich';
+
+  @override
+  String get labSchemFluorescenceMicroscope =>
+      'LED fluoressent mikroskop sinfi — LED epi-yoritgich moduli va filtr surgichi bor tik mikroskop, obyektivlar, preparatli stolik; ichki rasmda qorong‘i fonda yorqin sarg‘ish-yashil tayoqchalar (auramin bilan bo‘yalgan batsillalar shunday ko‘rinadi)';
+
+  @override
+  String get labSchemCasa =>
+      'Kompyuterli sperma tahlili (CASA) sinfi — kamerali va isitiladigan stolikli mikroskop, hisoblash kamerasi, harakatchan spermatozoidlar izlari ko‘rinadigan kompyuter ekraniga kabel';
+
+  @override
+  String get labSchemGelCardSystem =>
+      'Gel (mikrokolonka) karta tizimi sinfi — karta sentrifugasi, inkubator va oltita mikronaychali kattalashtirilgan gel karta: musbatda eritrotsitlar gel ustida yoki ichida qoladi, manfiyda tubida tugma hosil qiladi';
+
+  @override
+  String get labSchemEsrAnalyzer =>
+      'EChT sinfi — tik naychali Westergren shtativi (cho‘kkan eritrotsitlar ustida tiniq plazma) va yopiq probirkali, optik o‘qish chizig‘i bor avtomatik o‘quvchi';
+
+  @override
+  String get labSchemAggregometer =>
+      'Trombotsit agregometri va viskoelastik analizator sinfi — aralashtiriladigan kyuvetali, yorug‘lik manbai va fotodetektorli yorug‘lik o‘tkazuvchi agregometr, agregatsiya egri chiziqlari; kosacha va pinli kanallari bor viskoelastik analizator va laxta trassasi';
+
+  @override
+  String get labSchemElectrophoresis =>
+      'Elektroforez apparati sinfi — simli tok manbai, bufer bo‘limlari, elektrodlar, pilikchalar va bo‘yalgan oqsil fraksiyalari bor tashuvchi muhitli kamera, ko‘tarilgan qopqoq va skan egri chizig‘ini ko‘rsatuvchi densitometr';
+
+  @override
+  String get labSchemOsmometer =>
+      'Muzlash nuqtasi osmometri sinfi — namuna probirkasi joylangan sovutish bloki, namunaga botirilgan termistor zondi, aralashtirgich sim, muzlash egri chizig‘i ko‘rsatilgan displey, tugmalar va kichik probirkalar';
+
+  @override
+  String get labSchemTlc =>
+      'Yupqa qatlam xromatografiyasi jihozlari — qopqoqli shisha kamera, erituvchi va plastina (start chizig‘i, ajralgan dog‘lar, erituvchi fronti); rivojlantirilgan plastina ustida UB lampa: dog‘lar fluoressent fonda qorong‘i ko‘rinadi';
+
+  @override
+  String get labSchemAnalyticalBalance =>
+      'Gravimetrik kalibrlash jihozlari — shamoldan himoya qutili analitik tarozi va tortish idishi, suv quyayotgan pipetka, termometrli suv idishi';
+
+  @override
   String get imgDiagramCalibrationOverviewAlt =>
       'Kalibrlashning umumiy tartibi sxemasi, olti qadam: apparat va usulni aniqlash; reagent, REF va IFU versiyasini tekshirish; mos lotdagi kalibratorni tayyorlash; aniq apparat yo‘riqnomasiga rioya qilish; kalibrlash va mustaqil QC ni baholash; natijani qayd etish, qaror SOP bo‘yicha. Apparat monitori surati emas.';
 

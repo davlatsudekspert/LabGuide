@@ -10391,6 +10391,106 @@ class AppLocalizationsEn extends AppLocalizations {
       'Class/technology reference — not verified for a specific model';
 
   @override
+  String get labSchemGcMs =>
+      'GC-MS instrument class — carrier gas cylinder, gas chromatograph with autosampler and a capillary column in the oven, ion source, quadrupole mass analyser, detector, vacuum pumps and data system';
+
+  @override
+  String get labSchemLcMs =>
+      'LC-MS instrument class — solvent bottles, pump, autosampler, column compartment, electrospray ion source, quadrupole mass analyser, detector, vacuum pumps and data system';
+
+  @override
+  String get labSchemMaldiTof =>
+      'MALDI-TOF mass spectrometer class — target plate with sample spots, laser, acceleration grids, flight tube, detector, vacuum pump and spectrum display';
+
+  @override
+  String get labSchemMicrobialIdAst =>
+      'Automated microbial identification and susceptibility system class — cassette with suspension tubes and test cards, incubator-reader with optical scanner, loading chamber and monitor';
+
+  @override
+  String get labSchemBloodCulture =>
+      'Automated blood culture system class — incubator cabinet with rows of culture bottles (each with a sensor at the bottom and a status light) and a monitor; aerobic and anaerobic bottles beside it';
+
+  @override
+  String get labSchemMycobacterialCulture =>
+      'Automated mycobacterial liquid-culture system class — incubator-reader with drawers of culture tubes and status lights, and a monitor; tubes with a fluorescent oxygen sensor at the bottom beside it';
+
+  @override
+  String get labSchemFlowCytometer =>
+      'Flow cytometer class — sheath fluid and waste containers, hydrodynamic focusing, laser, flow cell, forward-scatter detector, side-scatter and fluorescence detectors behind dichroic mirrors, sample tube and dot-plot display';
+
+  @override
+  String get labSchemRealTimePcr =>
+      'Real-time PCR instrument class — thermal block with wells, heated lid, optical module with light source, filter wheel and detector, 8-tube strip and amplification-curve display';
+
+  @override
+  String get labSchemCartridgeMolecular =>
+      'Cartridge-based closed molecular platform class — instrument with separate modules (one open with a cartridge inside), disposable multi-chamber cartridge, specimen container and monitor';
+
+  @override
+  String get labSchemCoagAnalyzer =>
+      'Automated coagulation analyzer class — cooled reagent positions, measuring cuvettes, pipetting arm, citrate sample tubes, optical clot detection (light source, cuvette, photodetector) and clotting-curve display';
+
+  @override
+  String get labSchemElisaReader =>
+      'Microplate (ELISA) reader and washer class — reader with plate carrier and a coloured 96-well plate, light path through a well to the detector, washer with a needle manifold, wash buffer and waste containers';
+
+  @override
+  String get labSchemBscClass2 =>
+      'Class II biological safety cabinet, side section — room air enters the front opening into the front grille, HEPA-filtered air flows down over the work surface, returns through the rear plenum to the blower, and part is exhausted through a second HEPA filter';
+
+  @override
+  String get labSchemAutoclave =>
+      'Benchtop steam autoclave class — chamber with a loading tray and wrapped items, open door with seal, pressure and temperature gauges, safety valve and water reservoir';
+
+  @override
+  String get labSchemBloodGasIse =>
+      'Blood gas and electrolyte (ISE) analyzer class — display, printer, sample inlet probe with a blood-gas syringe, sensor cassette with electrodes along the measuring channel, and reagent pack';
+
+  @override
+  String get labSchemHba1cAnalyzer =>
+      'Compact HbA1c analyzer class — display, keypad, printer, rack of EDTA whole-blood tubes with a sampling arm, reagent bottles and waste container';
+
+  @override
+  String get labSchemLabFridge =>
+      'Laboratory refrigerator-freezer class with temperature monitoring — glass-door refrigerator with racks and reagents, freezer compartment, probe in a buffered bottle and a digital data logger outside the unit';
+
+  @override
+  String get labSchemFluorescenceMicroscope =>
+      'LED fluorescence microscope class — upright microscope with an LED epi-illumination module and filter slider, objectives, stage with slide; inset: bright yellow-green rods on a dark background (how auramine-stained bacilli appear)';
+
+  @override
+  String get labSchemCasa =>
+      'Computer-aided sperm analysis (CASA) class — microscope with camera and heated stage, chamber slide, cable to a computer display showing tracks of motile spermatozoa';
+
+  @override
+  String get labSchemGelCardSystem =>
+      'Gel (microcolumn) card system class — card centrifuge, incubator and an enlarged gel card with six microtubes: in positive tubes red cells stay at the top of or within the gel, in negative tubes they form a button at the bottom';
+
+  @override
+  String get labSchemEsrAnalyzer =>
+      'ESR class — Westergren stand with upright tubes (clear plasma above settled red cells) and an automated reader with closed tubes and an optical reading bar';
+
+  @override
+  String get labSchemAggregometer =>
+      'Platelet aggregometer and viscoelastic analyzer class — light-transmission aggregometer with stirred cuvettes, light source and photodetector, aggregation curves; viscoelastic analyzer with cup-and-pin channels and a clot trace';
+
+  @override
+  String get labSchemElectrophoresis =>
+      'Electrophoresis apparatus class — power supply with leads, chamber with buffer compartments, electrodes, wicks and a support medium with stained protein bands, lifted cover, and a densitometer showing the scan';
+
+  @override
+  String get labSchemOsmometer =>
+      'Freezing-point osmometer class — cooling block with the sample tube, thermistor probe in the sample, stirring wire, display with the freezing curve, keypad and small sample tubes';
+
+  @override
+  String get labSchemTlc =>
+      'Thin-layer chromatography setup — glass developing tank with lid, solvent and a plate (origin line, separated spots, solvent front); UV lamp over a developed plate: spots appear dark on a fluorescent background';
+
+  @override
+  String get labSchemAnalyticalBalance =>
+      'Gravimetric calibration setup — analytical balance with draft shield and weighing vessel, pipette dispensing water, water beaker with thermometer';
+
+  @override
   String get imgDiagramCalibrationOverviewAlt =>
       'Diagram, general calibration workflow in six steps: confirm instrument and method; verify reagent, REF and IFU revision; prepare a lot-matched calibrator; follow the verified instrument interface; evaluate the calibration and independent QC; record results and release per SOP. Not an instrument screenshot.';
 

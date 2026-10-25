@@ -17890,6 +17890,156 @@ abstract class AppLocalizations {
   /// **'Class/technology reference — not verified for a specific model'**
   String get labDirPlatformClassNote;
 
+  /// No description provided for @labSchemGcMs.
+  ///
+  /// In en, this message translates to:
+  /// **'GC-MS instrument class — carrier gas cylinder, gas chromatograph with autosampler and a capillary column in the oven, ion source, quadrupole mass analyser, detector, vacuum pumps and data system'**
+  String get labSchemGcMs;
+
+  /// No description provided for @labSchemLcMs.
+  ///
+  /// In en, this message translates to:
+  /// **'LC-MS instrument class — solvent bottles, pump, autosampler, column compartment, electrospray ion source, quadrupole mass analyser, detector, vacuum pumps and data system'**
+  String get labSchemLcMs;
+
+  /// No description provided for @labSchemMaldiTof.
+  ///
+  /// In en, this message translates to:
+  /// **'MALDI-TOF mass spectrometer class — target plate with sample spots, laser, acceleration grids, flight tube, detector, vacuum pump and spectrum display'**
+  String get labSchemMaldiTof;
+
+  /// No description provided for @labSchemMicrobialIdAst.
+  ///
+  /// In en, this message translates to:
+  /// **'Automated microbial identification and susceptibility system class — cassette with suspension tubes and test cards, incubator-reader with optical scanner, loading chamber and monitor'**
+  String get labSchemMicrobialIdAst;
+
+  /// No description provided for @labSchemBloodCulture.
+  ///
+  /// In en, this message translates to:
+  /// **'Automated blood culture system class — incubator cabinet with rows of culture bottles (each with a sensor at the bottom and a status light) and a monitor; aerobic and anaerobic bottles beside it'**
+  String get labSchemBloodCulture;
+
+  /// No description provided for @labSchemMycobacterialCulture.
+  ///
+  /// In en, this message translates to:
+  /// **'Automated mycobacterial liquid-culture system class — incubator-reader with drawers of culture tubes and status lights, and a monitor; tubes with a fluorescent oxygen sensor at the bottom beside it'**
+  String get labSchemMycobacterialCulture;
+
+  /// No description provided for @labSchemFlowCytometer.
+  ///
+  /// In en, this message translates to:
+  /// **'Flow cytometer class — sheath fluid and waste containers, hydrodynamic focusing, laser, flow cell, forward-scatter detector, side-scatter and fluorescence detectors behind dichroic mirrors, sample tube and dot-plot display'**
+  String get labSchemFlowCytometer;
+
+  /// No description provided for @labSchemRealTimePcr.
+  ///
+  /// In en, this message translates to:
+  /// **'Real-time PCR instrument class — thermal block with wells, heated lid, optical module with light source, filter wheel and detector, 8-tube strip and amplification-curve display'**
+  String get labSchemRealTimePcr;
+
+  /// No description provided for @labSchemCartridgeMolecular.
+  ///
+  /// In en, this message translates to:
+  /// **'Cartridge-based closed molecular platform class — instrument with separate modules (one open with a cartridge inside), disposable multi-chamber cartridge, specimen container and monitor'**
+  String get labSchemCartridgeMolecular;
+
+  /// No description provided for @labSchemCoagAnalyzer.
+  ///
+  /// In en, this message translates to:
+  /// **'Automated coagulation analyzer class — cooled reagent positions, measuring cuvettes, pipetting arm, citrate sample tubes, optical clot detection (light source, cuvette, photodetector) and clotting-curve display'**
+  String get labSchemCoagAnalyzer;
+
+  /// No description provided for @labSchemElisaReader.
+  ///
+  /// In en, this message translates to:
+  /// **'Microplate (ELISA) reader and washer class — reader with plate carrier and a coloured 96-well plate, light path through a well to the detector, washer with a needle manifold, wash buffer and waste containers'**
+  String get labSchemElisaReader;
+
+  /// No description provided for @labSchemBscClass2.
+  ///
+  /// In en, this message translates to:
+  /// **'Class II biological safety cabinet, side section — room air enters the front opening into the front grille, HEPA-filtered air flows down over the work surface, returns through the rear plenum to the blower, and part is exhausted through a second HEPA filter'**
+  String get labSchemBscClass2;
+
+  /// No description provided for @labSchemAutoclave.
+  ///
+  /// In en, this message translates to:
+  /// **'Benchtop steam autoclave class — chamber with a loading tray and wrapped items, open door with seal, pressure and temperature gauges, safety valve and water reservoir'**
+  String get labSchemAutoclave;
+
+  /// No description provided for @labSchemBloodGasIse.
+  ///
+  /// In en, this message translates to:
+  /// **'Blood gas and electrolyte (ISE) analyzer class — display, printer, sample inlet probe with a blood-gas syringe, sensor cassette with electrodes along the measuring channel, and reagent pack'**
+  String get labSchemBloodGasIse;
+
+  /// No description provided for @labSchemHba1cAnalyzer.
+  ///
+  /// In en, this message translates to:
+  /// **'Compact HbA1c analyzer class — display, keypad, printer, rack of EDTA whole-blood tubes with a sampling arm, reagent bottles and waste container'**
+  String get labSchemHba1cAnalyzer;
+
+  /// No description provided for @labSchemLabFridge.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory refrigerator-freezer class with temperature monitoring — glass-door refrigerator with racks and reagents, freezer compartment, probe in a buffered bottle and a digital data logger outside the unit'**
+  String get labSchemLabFridge;
+
+  /// No description provided for @labSchemFluorescenceMicroscope.
+  ///
+  /// In en, this message translates to:
+  /// **'LED fluorescence microscope class — upright microscope with an LED epi-illumination module and filter slider, objectives, stage with slide; inset: bright yellow-green rods on a dark background (how auramine-stained bacilli appear)'**
+  String get labSchemFluorescenceMicroscope;
+
+  /// No description provided for @labSchemCasa.
+  ///
+  /// In en, this message translates to:
+  /// **'Computer-aided sperm analysis (CASA) class — microscope with camera and heated stage, chamber slide, cable to a computer display showing tracks of motile spermatozoa'**
+  String get labSchemCasa;
+
+  /// No description provided for @labSchemGelCardSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'Gel (microcolumn) card system class — card centrifuge, incubator and an enlarged gel card with six microtubes: in positive tubes red cells stay at the top of or within the gel, in negative tubes they form a button at the bottom'**
+  String get labSchemGelCardSystem;
+
+  /// No description provided for @labSchemEsrAnalyzer.
+  ///
+  /// In en, this message translates to:
+  /// **'ESR class — Westergren stand with upright tubes (clear plasma above settled red cells) and an automated reader with closed tubes and an optical reading bar'**
+  String get labSchemEsrAnalyzer;
+
+  /// No description provided for @labSchemAggregometer.
+  ///
+  /// In en, this message translates to:
+  /// **'Platelet aggregometer and viscoelastic analyzer class — light-transmission aggregometer with stirred cuvettes, light source and photodetector, aggregation curves; viscoelastic analyzer with cup-and-pin channels and a clot trace'**
+  String get labSchemAggregometer;
+
+  /// No description provided for @labSchemElectrophoresis.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrophoresis apparatus class — power supply with leads, chamber with buffer compartments, electrodes, wicks and a support medium with stained protein bands, lifted cover, and a densitometer showing the scan'**
+  String get labSchemElectrophoresis;
+
+  /// No description provided for @labSchemOsmometer.
+  ///
+  /// In en, this message translates to:
+  /// **'Freezing-point osmometer class — cooling block with the sample tube, thermistor probe in the sample, stirring wire, display with the freezing curve, keypad and small sample tubes'**
+  String get labSchemOsmometer;
+
+  /// No description provided for @labSchemTlc.
+  ///
+  /// In en, this message translates to:
+  /// **'Thin-layer chromatography setup — glass developing tank with lid, solvent and a plate (origin line, separated spots, solvent front); UV lamp over a developed plate: spots appear dark on a fluorescent background'**
+  String get labSchemTlc;
+
+  /// No description provided for @labSchemAnalyticalBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Gravimetric calibration setup — analytical balance with draft shield and weighing vessel, pipette dispensing water, water beaker with thermometer'**
+  String get labSchemAnalyticalBalance;
+
   /// No description provided for @imgDiagramCalibrationOverviewAlt.
   ///
   /// In en, this message translates to:

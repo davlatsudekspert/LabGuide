@@ -72,6 +72,54 @@ enum LabCardPriority {
   };
 }
 
+/// Yo'nalish kartasidagi apparat SINFI sxematik chizmasi (LabGuide'ning o'z
+/// original ishi, aniq model emas; docs/LAB_CARD_IMAGE_COVERAGE.md). Fayllar:
+/// `assets/instruments/schematic/<key>_480.png` va `<key>_1200.png`; manba —
+/// `tool/illustrations/schematic/gen.py`. Ro'yxatda yo'q kalit — katalog
+/// yuklanishida [FormatException].
+enum LabSchematic {
+  massSpecGc('mass_spec_gc'),
+  massSpecLc('mass_spec_lc'),
+  maldiTof('maldi_tof'),
+  microbialIdAst('microbial_id_ast'),
+  bloodCulture('blood_culture'),
+  mycobacterialCulture('mycobacterial_culture'),
+  flowCytometer('flow_cytometer'),
+  realTimePcr('real_time_pcr'),
+  cartridgeMolecular('cartridge_molecular'),
+  coagAnalyzer('coag_analyzer'),
+  elisaReader('elisa_reader'),
+  bscClass2('bsc_class2'),
+  autoclave('autoclave'),
+  bloodGasIse('blood_gas_ise'),
+  hba1cAnalyzer('hba1c_analyzer'),
+  labFridge('lab_fridge'),
+  fluorescenceMicroscope('fluorescence_microscope'),
+  casa('casa'),
+  gelCardSystem('gel_card_system'),
+  esrAnalyzer('esr_analyzer'),
+  aggregometer('aggregometer'),
+  electrophoresis('electrophoresis'),
+  osmometer('osmometer'),
+  tlc('tlc'),
+  analyticalBalance('analytical_balance');
+
+  const LabSchematic(this.key);
+
+  final String key;
+
+  /// Karta uchun kichik nusxa (~480 px).
+  String get asset => 'assets/instruments/schematic/${key}_480.png';
+
+  /// To'liq ekran uchun katta nusxa (~1200 px).
+  String get assetLarge => 'assets/instruments/schematic/${key}_1200.png';
+
+  static LabSchematic parse(String raw) => values.firstWhere(
+    (v) => v.key == raw,
+    orElse: () => throw FormatException('unknown lab card schematic: $raw'),
+  );
+}
+
 /// Uch tilli matn + uni asoslagan manba id'lari (kamida bitta).
 @immutable
 class SourcedText {
@@ -92,7 +140,8 @@ class SourcedText {
 
 /// Yangi (ixtiyoriy maydonli) yo'nalish kartasi. Yo'q maydon `null`/bo'sh —
 /// ilova uni “tekshirilmagan” deb ko'rsatadi, hech narsa to'qilmaydi.
-/// Rasm maydoni yo'q: faqat LabGuide'ning o'z sxemasi bo'lishi mumkin.
+/// Foto maydoni yo'q: faqat LabGuide'ning o'z apparat sinfi sxemasi
+/// ([schematic]) bo'lishi mumkin; stub kartada u ham bo'lmaydi.
 @immutable
 class LabDirectionCard {
   const LabDirectionCard({
@@ -117,6 +166,7 @@ class LabDirectionCard {
     this.needsSourceReason,
     this.priority,
     this.sourceCaveat,
+    this.schematic,
   });
 
   factory LabDirectionCard.fromJson(Map<String, Object?> j) {
@@ -161,6 +211,9 @@ class LabDirectionCard {
       sourceCaveat: j['source_caveat'] == null
           ? null
           : LocalizedText.fromJson(j['source_caveat']),
+      schematic: j['schematic'] == null
+          ? null
+          : LabSchematic.parse(j['schematic']! as String),
     );
   }
 
@@ -251,6 +304,11 @@ class LabDirectionCard {
   /// Ixtiyoriy: manba eskirgan/tor bo'lsa kartada ko'rinadigan uch tilli
   /// ogohlantirish (ilovaning o'z izohi, manbaga bog'lanmagan).
   final LocalizedText? sourceCaveat;
+
+  /// Ixtiyoriy: apparat sinfining sxematik chizmasi (platforma kartasida —
+  /// o'zi, test/usul kartasida — u bajariladigan platformaniki). `null` —
+  /// mazmunli apparat yo'q (chizma majburan qo'yilmaydi).
+  final LabSchematic? schematic;
 
   /// NEEDS_SOURCE kartalar hech qachon ommaga ko'rsatilmaydi.
   bool get isPublic => auditStatus != LabAuditStatus.needsSource;

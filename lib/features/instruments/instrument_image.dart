@@ -118,6 +118,60 @@ class _SchematicBlock extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        SchematicFigure(
+          asset: schematic.asset,
+          assetLarge: schematic.assetLarge,
+          semanticLabel: l.instSchematicSemantics(model.kind.of(lang)),
+          viewerTitle: model.model,
+          figureKey: const ValueKey('instrument-schematic'),
+          captionKey: const ValueKey('instrument-schematic-caption'),
+        ),
+        if (hasPage) ...[
+          const SizedBox(height: 4),
+          Text(
+            l.instImageMissingSub,
+            style: text.bodySmall!.copyWith(color: p.sub),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// LabGuide chizgan sxematik tasvir (apparat TURI yoki SINFI, aniq model
+/// emas): ramkadagi kichik nusxa, ko'rinib turuvchi izoh “Sxematik tasvir —
+/// aniq model emas”, bosilsa to'liq ekran ([InstrumentSchematicViewer]).
+/// Model kartasi va yo'nalish (lab) kartasi shu vidjetni qayta ishlatadi.
+class SchematicFigure extends StatelessWidget {
+  const SchematicFigure({
+    super.key,
+    required this.asset,
+    required this.assetLarge,
+    required this.semanticLabel,
+    required this.viewerTitle,
+    this.figureKey,
+    this.captionKey,
+  });
+
+  final String asset;
+  final String assetLarge;
+
+  /// Rasm mazmunining lokalizatsiyalangan tavsifi (ekran o'quvchi uchun).
+  final String semanticLabel;
+
+  /// To'liq ekran sarlavhasi.
+  final String viewerTitle;
+  final Key? figureKey;
+  final Key? captionKey;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final p = LgPalette.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
         Semantics(
           button: true,
           label: l.instSchematicTapToZoom,
@@ -129,13 +183,14 @@ class _SchematicBlock extends StatelessWidget {
             ),
             clipBehavior: Clip.antiAlias,
             child: InkWell(
-              key: const ValueKey('instrument-schematic'),
+              key: figureKey,
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute<void>(
                   fullscreenDialog: true,
                   builder: (_) => InstrumentSchematicViewer(
-                    schematic: schematic,
-                    title: model.model,
+                    asset: assetLarge,
+                    title: viewerTitle,
+                    semanticLabel: semanticLabel,
                   ),
                 ),
               ),
@@ -144,11 +199,9 @@ class _SchematicBlock extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: Image.asset(
-                    schematic.asset,
+                    asset,
                     fit: BoxFit.contain,
-                    semanticLabel: l.instSchematicSemantics(
-                      model.kind.of(lang),
-                    ),
+                    semanticLabel: semanticLabel,
                     errorBuilder: (context, _, _) =>
                         const _MissingMark(compact: true),
                   ),
@@ -159,7 +212,7 @@ class _SchematicBlock extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Row(
-          key: const ValueKey('instrument-schematic-caption'),
+          key: captionKey,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
@@ -182,13 +235,6 @@ class _SchematicBlock extends StatelessWidget {
           l.instSchematicTapToZoom,
           style: text.bodySmall!.copyWith(color: p.sub),
         ),
-        if (hasPage) ...[
-          const SizedBox(height: 4),
-          Text(
-            l.instImageMissingSub,
-            style: text.bodySmall!.copyWith(color: p.sub),
-          ),
-        ],
       ],
     );
   }
@@ -290,20 +336,25 @@ class InstrumentImageViewer extends StatelessWidget {
 class InstrumentSchematicViewer extends StatelessWidget {
   const InstrumentSchematicViewer({
     super.key,
-    required this.schematic,
+    required this.asset,
     required this.title,
+    this.semanticLabel,
   });
 
-  final InstrumentSchematic schematic;
+  /// Katta nusxa (~1200 px).
+  final String asset;
   final String title;
+
+  /// Rasm tavsifi; berilmasa — izoh matni.
+  final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     return _ViewerScaffold(
       title: title,
-      asset: schematic.assetLarge,
-      semanticLabel: l.instSchematicCaption,
+      asset: asset,
+      semanticLabel: semanticLabel ?? l.instSchematicCaption,
       footer: l.instSchematicCaption,
     );
   }
