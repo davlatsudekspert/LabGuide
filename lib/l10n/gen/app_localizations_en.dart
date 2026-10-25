@@ -10487,6 +10487,1843 @@ class AppLocalizationsEn extends AppLocalizations {
       'Gravimetric calibration setup — analytical balance with a glass weighing chamber and weighing vessel, pipette dispensing water, water beaker with thermometer';
 
   @override
+  String get schemPartsPanelTitle => 'Parts and how it works';
+
+  @override
+  String get schemPartsPanelHint =>
+      'Numbered parts, working principle and result';
+
+  @override
+  String get schemPartsPartsTitle => 'Main parts';
+
+  @override
+  String get schemPartsPrincipleTitle => 'Working principle';
+
+  @override
+  String get schemPartsResultTitle => 'Result';
+
+  @override
+  String get schemPartsClassNote =>
+      'Parts are shown for the instrument class at principle level; their layout and design in a specific model may differ.';
+
+  @override
+  String get schemPartsChemistrySamplesName => 'Sample area';
+
+  @override
+  String get schemPartsChemistrySamplesFn =>
+      'Tubes sit in a rack; the probe draws the sample from here.';
+
+  @override
+  String get schemPartsChemistryReagentsName => 'Cooled reagent carousel';
+
+  @override
+  String get schemPartsChemistryReagentsFn =>
+      'Reagent bottles are kept cool; the required one is turned under the probe.';
+
+  @override
+  String get schemPartsChemistryProbesName => 'Sample and reagent probes';
+
+  @override
+  String get schemPartsChemistryProbesFn =>
+      'Aspirate exact volumes of sample and reagent and dispense them into the reaction cuvette.';
+
+  @override
+  String get schemPartsChemistryReactionName => 'Reaction carousel (cuvettes)';
+
+  @override
+  String get schemPartsChemistryReactionFn =>
+      'The mixture in the cuvettes is held at 37 °C; the carousel moves them past the photometer.';
+
+  @override
+  String get schemPartsChemistryPhotometerName => 'Photometer';
+
+  @override
+  String get schemPartsChemistryPhotometerFn =>
+      'Lamp light passes through the cuvette; grating or filter optics measure absorbance at the selected wavelength.';
+
+  @override
+  String get schemPartsChemistryWaterName => 'Purified water container';
+
+  @override
+  String get schemPartsChemistryWaterFn =>
+      'Supplies water for washing probes and cuvettes and for dilution.';
+
+  @override
+  String get schemPartsChemistryWasteName => 'Liquid waste container';
+
+  @override
+  String get schemPartsChemistryWasteFn =>
+      'Collects wash water and used reaction mixtures.';
+
+  @override
+  String get schemPartsChemistryComputerName => 'Computer and software';
+
+  @override
+  String get schemPartsChemistryComputerFn =>
+      'Orders tests, manages calibration, calculates results and issues the report.';
+
+  @override
+  String get schemPartsChemistryPrinciple =>
+      'Probes dispense sample and reagent into a reaction cuvette and the mixture is incubated at 37 °C. The photometer measures absorbance of the light passing through the cuvette at a selected wavelength. Concentration is calculated from calibration; many models also measure Na, K and Cl with an ion-selective electrode (ISE).';
+
+  @override
+  String get schemPartsChemistryResult =>
+      'Analyte concentration for each test (e.g. glucose, enzyme activity, electrolytes): a value calculated from the absorbance change and calibration, plus a report.';
+
+  @override
+  String get schemPartsPhotometerDisplayName => 'Display and keypad';
+
+  @override
+  String get schemPartsPhotometerDisplayFn =>
+      'Select the method, wavelength and standard; the result and curve appear here.';
+
+  @override
+  String get schemPartsPhotometerNeedleName => 'Aspiration needle';
+
+  @override
+  String get schemPartsPhotometerNeedleFn =>
+      'Draws the prepared mixture from the tube into the measuring cell.';
+
+  @override
+  String get schemPartsPhotometerCellName => 'Measuring cell (flow cell)';
+
+  @override
+  String get schemPartsPhotometerCellFn =>
+      'Lamp → interference filter → cuvette → photodetector: absorbance is measured here.';
+
+  @override
+  String get schemPartsPhotometerPrinterName => 'Thermal printer';
+
+  @override
+  String get schemPartsPhotometerPrinterFn => 'Prints the results on paper.';
+
+  @override
+  String get schemPartsPhotometerWasteName => 'Waste container';
+
+  @override
+  String get schemPartsPhotometerWasteFn =>
+      'Measured mixture and wash liquid drain here.';
+
+  @override
+  String get schemPartsPhotometerReagentsName => 'Reagent bottles';
+
+  @override
+  String get schemPartsPhotometerReagentsFn =>
+      'Reagents stand outside the instrument; the operator adds them to the sample by hand.';
+
+  @override
+  String get schemPartsPhotometerPrinciple =>
+      'The operator pipettes sample and reagent by hand and incubates the mixture. The instrument aspirates it into a flow cell (or a square cuvette is inserted); lamp light passes the selected interference filter and a photodetector measures absorbance. Concentration is calculated from a standard or a factor.';
+
+  @override
+  String get schemPartsPhotometerResult =>
+      'The absorbance value and the concentration calculated from it, shown on the display and printed.';
+
+  @override
+  String get schemPartsHematology5AutoloaderName => 'Autoloader with rack';
+
+  @override
+  String get schemPartsHematology5AutoloaderFn =>
+      'Mixes closed tubes and feeds them one by one to the sampler.';
+
+  @override
+  String get schemPartsHematology5ProbeName => 'Sample probe (open mode)';
+
+  @override
+  String get schemPartsHematology5ProbeFn =>
+      'Aspirates a set volume of blood from an open tube held up by hand.';
+
+  @override
+  String get schemPartsHematology5ImpedanceName => 'Impedance chamber';
+
+  @override
+  String get schemPartsHematology5ImpedanceFn =>
+      'Each red cell or platelet passing the aperture gives an electrical pulse: counting and sizing.';
+
+  @override
+  String get schemPartsHematology5LaserName => 'Laser flow cell';
+
+  @override
+  String get schemPartsHematology5LaserFn =>
+      'White cells pass the laser beam one at a time and are classified by scatter (and fluorescence).';
+
+  @override
+  String get schemPartsHematology5DisplayName => 'Display (scattergram)';
+
+  @override
+  String get schemPartsHematology5DisplayFn =>
+      'Shows results, scattergrams and histograms.';
+
+  @override
+  String get schemPartsHematology5ReagentsName => 'Reagents';
+
+  @override
+  String get schemPartsHematology5ReagentsFn =>
+      'Diluent, lysing and staining solutions are fed through tubing.';
+
+  @override
+  String get schemPartsHematology5WasteName => 'Waste container';
+
+  @override
+  String get schemPartsHematology5WasteFn =>
+      'Collects used dilutions and wash solutions.';
+
+  @override
+  String get schemPartsHematology5Principle =>
+      'Blood is aspirated, diluted and split into several channels. Red cells and platelets are counted by impedance: a cell passing a small aperture produces a resistance pulse whose size reflects cell volume. The WBC differential is made by flow cytometry from laser light scatter (in some models with dye fluorescence); haemoglobin is measured photometrically after the red cells are lysed.';
+
+  @override
+  String get schemPartsHematology5Result =>
+      'Complete blood count (CBC) parameters: cell counts and red-cell indices, a 5-part WBC differential, scattergrams and histograms.';
+
+  @override
+  String get schemPartsHematology3PrinterName => 'Thermal printer';
+
+  @override
+  String get schemPartsHematology3PrinterFn => 'Prints results and histograms.';
+
+  @override
+  String get schemPartsHematology3DisplayName => 'Display (3 histograms)';
+
+  @override
+  String get schemPartsHematology3DisplayFn =>
+      'Shows results and WBC, RBC and PLT histograms.';
+
+  @override
+  String get schemPartsHematology3ProbeName => 'Sample probe';
+
+  @override
+  String get schemPartsHematology3ProbeFn =>
+      'Aspirates a small volume of blood from an open tube.';
+
+  @override
+  String get schemPartsHematology3ImpedanceName => 'Impedance chamber';
+
+  @override
+  String get schemPartsHematology3ImpedanceFn =>
+      'A cell passing the aperture gives a pulse: the pulse count is the cell count, the pulse size the cell volume.';
+
+  @override
+  String get schemPartsHematology3ReagentsName => 'Diluent and lysing solution';
+
+  @override
+  String get schemPartsHematology3ReagentsFn =>
+      'For diluting blood and lysing red cells.';
+
+  @override
+  String get schemPartsHematology3WasteName => 'Waste container';
+
+  @override
+  String get schemPartsHematology3WasteFn => 'Collects used liquids.';
+
+  @override
+  String get schemPartsHematology3Principle =>
+      'Blood is diluted; red cells and platelets are counted by impedance (the Coulter principle) and a volume histogram is built. After lysis, white cells are split by volume into three groups; haemoglobin is measured photometrically.';
+
+  @override
+  String get schemPartsHematology3Result =>
+      'CBC with a 3-part WBC differential (lymphocytes, mid-size cells, granulocytes) and three histograms (WBC, RBC, PLT).';
+
+  @override
+  String get schemPartsImmunoassaySamplesName => 'Sample rack';
+
+  @override
+  String get schemPartsImmunoassaySamplesFn =>
+      'Tubes are placed here; the probe draws the sample.';
+
+  @override
+  String get schemPartsImmunoassayReagentsName => 'Cooled reagent packs';
+
+  @override
+  String get schemPartsImmunoassayReagentsFn =>
+      'Microparticles, labelled conjugate and other reagents are kept cool.';
+
+  @override
+  String get schemPartsImmunoassayProbesName => 'Pipetting probes';
+
+  @override
+  String get schemPartsImmunoassayProbesFn =>
+      'Dispense sample and reagents into the reaction cuvette.';
+
+  @override
+  String get schemPartsImmunoassayCuvettesName => 'Cuvette feeder';
+
+  @override
+  String get schemPartsImmunoassayCuvettesFn =>
+      'Supplies single-use reaction cuvettes to the incubator.';
+
+  @override
+  String get schemPartsImmunoassayIncubatorName => 'Incubator ring';
+
+  @override
+  String get schemPartsImmunoassayIncubatorFn =>
+      'Cuvettes are held at a constant temperature while the antigen–antibody reaction proceeds.';
+
+  @override
+  String get schemPartsImmunoassayWashName =>
+      'Wash station (magnetic separation)';
+
+  @override
+  String get schemPartsImmunoassayWashFn =>
+      'A magnet holds the microparticles while unbound material is washed away.';
+
+  @override
+  String get schemPartsImmunoassayLuminometerName => 'Luminometer (detector)';
+
+  @override
+  String get schemPartsImmunoassayLuminometerFn =>
+      'Measures the light emitted by the label by photon counting.';
+
+  @override
+  String get schemPartsImmunoassaySolidwasteName => 'Solid waste drawer';
+
+  @override
+  String get schemPartsImmunoassaySolidwasteFn =>
+      'Collects used cuvettes and tips.';
+
+  @override
+  String get schemPartsImmunoassayLiquidsName => 'System solutions';
+
+  @override
+  String get schemPartsImmunoassayLiquidsFn =>
+      'Containers of wash and system solutions.';
+
+  @override
+  String get schemPartsImmunoassayPrinciple =>
+      'The sample is incubated with reagent in a cuvette: the analyte binds an antibody or antigen on magnetic microparticles. While a magnet holds the particles, unbound material is washed away; then the label (enzyme, acridinium ester or ECL label) emits light. The luminometer counts photons and the signal is converted to concentration with a calibration curve.';
+
+  @override
+  String get schemPartsImmunoassayResult =>
+      'Concentration of analytes such as hormones, tumour and cardiac markers, or a qualitative positive/negative result, calculated from the light signal by calibration.';
+
+  @override
+  String get schemPartsUrineStripSampleName => 'Urine sample and test strip';
+
+  @override
+  String get schemPartsUrineStripSampleFn =>
+      'The strip is briefly dipped in urine and the pads react.';
+
+  @override
+  String get schemPartsUrineStripTrayName => 'Strip tray (transport)';
+
+  @override
+  String get schemPartsUrineStripTrayFn =>
+      'The strip is placed here and moved under the reading head.';
+
+  @override
+  String get schemPartsUrineStripHeadName =>
+      'Reading head (LEDs and photosensor)';
+
+  @override
+  String get schemPartsUrineStripHeadFn =>
+      'Lights the pads at several wavelengths and measures the reflected light.';
+
+  @override
+  String get schemPartsUrineStripDisplayName => 'Display';
+
+  @override
+  String get schemPartsUrineStripDisplayFn =>
+      'Shows results and instrument status.';
+
+  @override
+  String get schemPartsUrineStripPrinterName => 'Printer';
+
+  @override
+  String get schemPartsUrineStripPrinterFn => 'Prints the results.';
+
+  @override
+  String get schemPartsUrineStripBinName => 'Used strip bin';
+
+  @override
+  String get schemPartsUrineStripBinFn => 'Read strips drop in here.';
+
+  @override
+  String get schemPartsUrineStripPrinciple =>
+      'The test strip is dipped in urine; the reagent in each pad changes colour with its analyte. The instrument moves the strip under the reading head: LEDs of different wavelengths light the pads and a photosensor measures the reflected light (reflectance photometry). Colour intensity is converted to a semi-quantitative grade.';
+
+  @override
+  String get schemPartsUrineStripResult =>
+      'A qualitative or semi-quantitative result for each pad (e.g. glucose, protein, blood, leukocytes, nitrite, pH, specific gravity) and a printed report.';
+
+  @override
+  String get schemPartsUrineSystemTransportName => 'Sample transport line';
+
+  @override
+  String get schemPartsUrineSystemTransportFn =>
+      'Moves tube racks past the modules in turn.';
+
+  @override
+  String get schemPartsUrineSystemStripName => 'Chemistry module (test strip)';
+
+  @override
+  String get schemPartsUrineSystemStripFn =>
+      'Reads the strip pads by reflectance and imaging.';
+
+  @override
+  String get schemPartsUrineSystemNeedlesName => 'Sampling needles';
+
+  @override
+  String get schemPartsUrineSystemNeedlesFn =>
+      'Each module draws sample from the tube with its own needle.';
+
+  @override
+  String get schemPartsUrineSystemCameraName =>
+      'Sediment module (microscope and camera)';
+
+  @override
+  String get schemPartsUrineSystemCameraFn =>
+      'Captures digital microscope images of urine particles.';
+
+  @override
+  String get schemPartsUrineSystemDisplayName => 'Display (particle images)';
+
+  @override
+  String get schemPartsUrineSystemDisplayFn =>
+      'Review of classified particle images and results.';
+
+  @override
+  String get schemPartsUrineSystemReagentsName => 'Reagent and wash solution';
+
+  @override
+  String get schemPartsUrineSystemReagentsFn =>
+      'Solutions for washing the modules and for measurement.';
+
+  @override
+  String get schemPartsUrineSystemWasteName => 'Waste container';
+
+  @override
+  String get schemPartsUrineSystemWasteFn => 'Collects used liquids.';
+
+  @override
+  String get schemPartsUrineSystemPrinciple =>
+      'Sample racks travel along the transport line to two modules. The chemistry module reads the strip pads by reflectance. The sediment module takes digital microscope images of the urine; software classifies particles (red cells, white cells, casts, crystals, etc.) and the images can be reviewed on screen.';
+
+  @override
+  String get schemPartsUrineSystemResult =>
+      'Strip chemistry results plus counts or categories of sediment elements (red cells, white cells, casts, crystals, bacteria, etc.) with images for review.';
+
+  @override
+  String get schemPartsMassSpecGcGasName => 'Carrier gas cylinder';
+
+  @override
+  String get schemPartsMassSpecGcGasFn =>
+      'An inert gas (usually helium) carries the sample through the column.';
+
+  @override
+  String get schemPartsMassSpecGcAutosamplerName => 'Autosampler';
+
+  @override
+  String get schemPartsMassSpecGcAutosamplerFn =>
+      'Takes the sample from a vial with a syringe and injects it.';
+
+  @override
+  String get schemPartsMassSpecGcInjectorName => 'Injector (inlet)';
+
+  @override
+  String get schemPartsMassSpecGcInjectorFn =>
+      'Heated inlet: the liquid sample vaporises into the gas stream.';
+
+  @override
+  String get schemPartsMassSpecGcColumnName => 'Oven and capillary column';
+
+  @override
+  String get schemPartsMassSpecGcColumnFn =>
+      'Heated by a temperature programme; compounds separate in the column.';
+
+  @override
+  String get schemPartsMassSpecGcTransferName => 'Heated transfer line';
+
+  @override
+  String get schemPartsMassSpecGcTransferFn =>
+      'Carries separated compounds into the mass spectrometer without condensation.';
+
+  @override
+  String get schemPartsMassSpecGcSourceName => 'Ion source';
+
+  @override
+  String get schemPartsMassSpecGcSourceFn =>
+      'Ionises molecules (in GC-MS usually by electron ionisation), producing fragments.';
+
+  @override
+  String get schemPartsMassSpecGcAnalyserName => 'Mass analyser (quadrupole)';
+
+  @override
+  String get schemPartsMassSpecGcAnalyserFn =>
+      'Electric fields sort ions by m/z and pass them through in turn.';
+
+  @override
+  String get schemPartsMassSpecGcDetectorName =>
+      'Detector (electron multiplier)';
+
+  @override
+  String get schemPartsMassSpecGcDetectorFn =>
+      'Turns arriving ions into an amplified electrical signal.';
+
+  @override
+  String get schemPartsMassSpecGcVacuumName => 'Vacuum pumps';
+
+  @override
+  String get schemPartsMassSpecGcVacuumFn =>
+      'Turbomolecular and roughing pumps keep a high vacuum so ions do not collide with air molecules.';
+
+  @override
+  String get schemPartsMassSpecGcDataName => 'Data system';
+
+  @override
+  String get schemPartsMassSpecGcDataFn =>
+      'Records chromatograms and spectra and compares them with a library.';
+
+  @override
+  String get schemPartsMassSpecGcPrinciple =>
+      'The sample is vaporised in the injector and a carrier gas (usually helium) carries it into a capillary column in the oven. Compounds leave the column at different times according to volatility and interaction with the column (retention time). In the mass spectrometer they are ionised, the ions are sorted by mass-to-charge ratio (m/z) and recorded by the detector.';
+
+  @override
+  String get schemPartsMassSpecGcResult =>
+      'A chromatogram (signal against retention time) and a mass spectrum for each peak (m/z against relative intensity); compounds are identified against a spectral library or standards.';
+
+  @override
+  String get schemPartsMassSpecLcSolventsName => 'Mobile phase bottles';
+
+  @override
+  String get schemPartsMassSpecLcSolventsFn =>
+      'Solvents (e.g. water and an organic solvent) feed the pump.';
+
+  @override
+  String get schemPartsMassSpecLcPumpName => 'High-pressure pump';
+
+  @override
+  String get schemPartsMassSpecLcPumpFn =>
+      'Drives the solvents through the column at a steady flow.';
+
+  @override
+  String get schemPartsMassSpecLcAutosamplerName => 'Autosampler';
+
+  @override
+  String get schemPartsMassSpecLcAutosamplerFn =>
+      'Takes the sample from a vial and injects it into the flow.';
+
+  @override
+  String get schemPartsMassSpecLcColumnName => 'Column (in a thermostat)';
+
+  @override
+  String get schemPartsMassSpecLcColumnFn =>
+      'Compounds separate by their interaction with the column phase.';
+
+  @override
+  String get schemPartsMassSpecLcEsiName => 'Electrospray ion source (ESI)';
+
+  @override
+  String get schemPartsMassSpecLcEsiFn =>
+      'Sprays the column eluate into charged droplets, producing ions.';
+
+  @override
+  String get schemPartsMassSpecLcAnalyserName => 'Mass analyser (quadrupole)';
+
+  @override
+  String get schemPartsMassSpecLcAnalyserFn =>
+      'Electric fields sort ions by m/z and pass them through in turn.';
+
+  @override
+  String get schemPartsMassSpecLcDetectorName =>
+      'Detector (electron multiplier)';
+
+  @override
+  String get schemPartsMassSpecLcDetectorFn =>
+      'Turns arriving ions into an amplified electrical signal.';
+
+  @override
+  String get schemPartsMassSpecLcVacuumName => 'Vacuum pumps';
+
+  @override
+  String get schemPartsMassSpecLcVacuumFn =>
+      'Keep a high vacuum inside the mass analyser.';
+
+  @override
+  String get schemPartsMassSpecLcDataName => 'Data system';
+
+  @override
+  String get schemPartsMassSpecLcDataFn =>
+      'Records chromatograms and spectra and calculates amounts.';
+
+  @override
+  String get schemPartsMassSpecLcPrinciple =>
+      'A pump drives the liquid mobile phase through the column at high pressure and the autosampler injects the sample into the flow. Compounds separate in the column and leave it at different times. In the electrospray (ESI) source the liquid is sprayed into charged droplets and the compounds become gas-phase ions; the ions are sorted by m/z and recorded by the detector.';
+
+  @override
+  String get schemPartsMassSpecLcResult =>
+      'A chromatogram and mass spectra; target compounds (drugs, metabolites, biomarkers) are identified and their concentration is calculated against calibrators.';
+
+  @override
+  String get schemPartsMaldiTofTargetName => 'Target plate';
+
+  @override
+  String get schemPartsMaldiTofTargetFn =>
+      'Holds the sample spots with matrix; the plate is loaded into the vacuum chamber.';
+
+  @override
+  String get schemPartsMaldiTofLaserName => 'Laser';
+
+  @override
+  String get schemPartsMaldiTofLaserFn =>
+      'A short pulse desorbs and ionises proteins together with the matrix.';
+
+  @override
+  String get schemPartsMaldiTofGridsName => 'Accelerating electrodes';
+
+  @override
+  String get schemPartsMaldiTofGridsFn =>
+      'High voltage accelerates the ions into the flight tube.';
+
+  @override
+  String get schemPartsMaldiTofTubeName => 'Flight tube (TOF)';
+
+  @override
+  String get schemPartsMaldiTofTubeFn =>
+      'A vacuum tube where ions fly at different speeds according to m/z.';
+
+  @override
+  String get schemPartsMaldiTofDetectorName => 'Detector';
+
+  @override
+  String get schemPartsMaldiTofDetectorFn =>
+      'Records the arrival time of each ion.';
+
+  @override
+  String get schemPartsMaldiTofVacuumName => 'Vacuum pump';
+
+  @override
+  String get schemPartsMaldiTofVacuumFn =>
+      'Creates the vacuum in the source and tube.';
+
+  @override
+  String get schemPartsMaldiTofDatabaseName => 'Computer and spectral database';
+
+  @override
+  String get schemPartsMaldiTofDatabaseFn =>
+      'Compares the spectrum with reference spectra and gives a probability score.';
+
+  @override
+  String get schemPartsMaldiTofPrinciple =>
+      'A colony is smeared on the target and overlaid with matrix, which crystallises. A laser pulse desorbs and ionises proteins (mainly ribosomal). An electric field accelerates the ions; in the flight tube lighter ions reach the detector before heavier ones, so flight time reflects m/z. The spectrum is compared with reference spectra in the database.';
+
+  @override
+  String get schemPartsMaldiTofResult =>
+      'A mass spectrum (protein fingerprint) and the organism name with a probability score (log score); the result is read together with other clinical and laboratory findings.';
+
+  @override
+  String get schemPartsMicrobialIdAstCardName => 'Test card (64 wells)';
+
+  @override
+  String get schemPartsMicrobialIdAstCardFn =>
+      'Wells hold antimicrobial dilutions (AST) or biochemical substrates (ID).';
+
+  @override
+  String get schemPartsMicrobialIdAstSuspensionName => 'Suspension tube';
+
+  @override
+  String get schemPartsMicrobialIdAstSuspensionFn =>
+      'Bacterial suspension of standard density; the straw of the card dips into it.';
+
+  @override
+  String get schemPartsMicrobialIdAstFillingName => 'Filling chamber';
+
+  @override
+  String get schemPartsMicrobialIdAstFillingFn =>
+      'Vacuum draws the suspension through the straw into the card wells.';
+
+  @override
+  String get schemPartsMicrobialIdAstIncubatorName => 'Incubator';
+
+  @override
+  String get schemPartsMicrobialIdAstIncubatorFn =>
+      'Cards are held at a constant temperature between readings.';
+
+  @override
+  String get schemPartsMicrobialIdAstScannerName => 'Optical scanner';
+
+  @override
+  String get schemPartsMicrobialIdAstScannerFn =>
+      'Measures the light through every well every 15 minutes.';
+
+  @override
+  String get schemPartsMicrobialIdAstSoftwareName => 'Computer and software';
+
+  @override
+  String get schemPartsMicrobialIdAstSoftwareFn =>
+      'Calculates the MIC and interpretive category from growth curves and issues a report.';
+
+  @override
+  String get schemPartsMicrobialIdAstPrinciple =>
+      'A suspension of standard density is made from a pure culture and drawn into the card through its straw under vacuum. AST card wells contain antimicrobials at different dilutions (a miniaturised automated MIC method). An optical scanner measures light through the wells every 15 minutes: growth attenuates the light, and software calculates the MIC from the growth kinetics.';
+
+  @override
+  String get schemPartsMicrobialIdAstResult =>
+      'An MIC value and interpretive category for each antimicrobial (e.g. susceptible or resistant); with an identification card, the organism species.';
+
+  @override
+  String get schemPartsBloodCultureVialsName => 'Blood culture vials';
+
+  @override
+  String get schemPartsBloodCultureVialsFn =>
+      'Aerobic and anaerobic vials with culture medium; the patient’s blood is added.';
+
+  @override
+  String get schemPartsBloodCultureSensorName => 'CO₂ sensor (vial bottom)';
+
+  @override
+  String get schemPartsBloodCultureSensorFn =>
+      'A dye reacts with CO₂ and changes its fluorescence.';
+
+  @override
+  String get schemPartsBloodCultureIncubatorName => 'Incubator cabinet';
+
+  @override
+  String get schemPartsBloodCultureIncubatorFn =>
+      'Vials sit in cells at a constant temperature.';
+
+  @override
+  String get schemPartsBloodCultureReaderName => 'Reading system';
+
+  @override
+  String get schemPartsBloodCultureReaderFn =>
+      'A light source and detector under each cell measure the sensor every ten minutes.';
+
+  @override
+  String get schemPartsBloodCulturePositiveName => 'Positive vial indicator';
+
+  @override
+  String get schemPartsBloodCulturePositiveFn =>
+      'Shows which vial has detected growth.';
+
+  @override
+  String get schemPartsBloodCultureSoftwareName => 'Computer and software';
+
+  @override
+  String get schemPartsBloodCultureSoftwareFn =>
+      'Shows the growth curve and status of each vial.';
+
+  @override
+  String get schemPartsBloodCulturePrinciple =>
+      'Blood-filled vials are placed in the incubator. Growing microorganisms release CO₂; the dye in the sensor at the vial bottom reacts with CO₂ and its fluorescence rises. The instrument reads the sensor every ten minutes; an algorithm flags the vial positive from the rate of CO₂ production and its absolute increase.';
+
+  @override
+  String get schemPartsBloodCultureResult =>
+      'Status of each vial: positive (growth detected) or negative at the end of the protocol, time to positivity and the growth curve. A positive vial goes on to further microbiological work-up.';
+
+  @override
+  String get schemPartsMycobacterialCultureTubeName => 'MGIT tube';
+
+  @override
+  String get schemPartsMycobacterialCultureTubeFn =>
+      'With liquid 7H9 medium and growth supplement (OADC); the specimen is inoculated here.';
+
+  @override
+  String get schemPartsMycobacterialCultureSensorName =>
+      'Fluorescent oxygen sensor';
+
+  @override
+  String get schemPartsMycobacterialCultureSensorFn =>
+      'Fluoresces brightly under UV light as oxygen falls.';
+
+  @override
+  String get schemPartsMycobacterialCultureDrawerName =>
+      'Tube drawer (incubation and reading)';
+
+  @override
+  String get schemPartsMycobacterialCultureDrawerFn =>
+      'Each station incubates a tube and its fluorescence is measured regularly.';
+
+  @override
+  String get schemPartsMycobacterialCultureLightsName => 'Status lights';
+
+  @override
+  String get schemPartsMycobacterialCultureLightsFn =>
+      'Indicate positive or completed tubes.';
+
+  @override
+  String get schemPartsMycobacterialCulturePanelName => 'Instrument display';
+
+  @override
+  String get schemPartsMycobacterialCulturePanelFn =>
+      'Shows drawer status and alerts.';
+
+  @override
+  String get schemPartsMycobacterialCultureSoftwareName =>
+      'Computer (GU curves)';
+
+  @override
+  String get schemPartsMycobacterialCultureSoftwareFn =>
+      'Records growth and DST results; curves of control and drug tubes are compared.';
+
+  @override
+  String get schemPartsMycobacterialCulturePrinciple =>
+      'The MGIT tube holds modified Middlebrook 7H9 liquid medium and an oxygen-quenched fluorescent sensor at the bottom. As mycobacteria grow, dissolved oxygen is used up and the sensor fluoresces more brightly under UV light. The instrument reads each tube automatically and records the intensity as growth units (GU). In drug-susceptibility testing (DST) the GU of a drug tube are compared with those of a control tube.';
+
+  @override
+  String get schemPartsMycobacterialCultureResult =>
+      'A positive or negative culture and a GU curve; in DST the instrument interprets first-line drugs as susceptible or resistant, while for second-line drugs the user interprets the GU values.';
+
+  @override
+  String get schemPartsFlowCytometerSheathName => 'Sheath fluid container';
+
+  @override
+  String get schemPartsFlowCytometerSheathFn =>
+      'Surrounds the sample stream and squeezes it into a thin central core.';
+
+  @override
+  String get schemPartsFlowCytometerSampleName => 'Sample tube and probe';
+
+  @override
+  String get schemPartsFlowCytometerSampleFn =>
+      'The stained cell suspension is drawn up from here.';
+
+  @override
+  String get schemPartsFlowCytometerFlowcellName =>
+      'Flow cell (hydrodynamic focusing)';
+
+  @override
+  String get schemPartsFlowCytometerFlowcellFn =>
+      'Cells pass one by one through the point where the laser crosses.';
+
+  @override
+  String get schemPartsFlowCytometerLaserName => 'Laser';
+
+  @override
+  String get schemPartsFlowCytometerLaserFn =>
+      'Illuminates the cells and excites the fluorochromes.';
+
+  @override
+  String get schemPartsFlowCytometerFscName => 'Forward-scatter (FSC) detector';
+
+  @override
+  String get schemPartsFlowCytometerFscFn =>
+      'Measures light scattered along the beam, which relates to cell size.';
+
+  @override
+  String get schemPartsFlowCytometerSscName =>
+      'Side-scatter and fluorescence detectors';
+
+  @override
+  String get schemPartsFlowCytometerSscFn =>
+      'Light at 90° is split by colour with dichroic mirrors and filters onto separate detectors.';
+
+  @override
+  String get schemPartsFlowCytometerWasteName => 'Waste container';
+
+  @override
+  String get schemPartsFlowCytometerWasteFn =>
+      'Collects the measured sample and sheath fluid.';
+
+  @override
+  String get schemPartsFlowCytometerComputerName => 'Computer (dot plots)';
+
+  @override
+  String get schemPartsFlowCytometerComputerFn =>
+      'Builds dot plots; populations are separated by gating.';
+
+  @override
+  String get schemPartsFlowCytometerPrinciple =>
+      'Cells are usually stained with fluorochrome-labelled antibodies. Sheath fluid hydrodynamically focuses the sample stream so the cells pass in single file through the laser beam. Forward scatter (FSC) reflects cell size, side scatter (SSC) internal complexity and fluorescence the markers; electronics digitise the signals.';
+
+  @override
+  String get schemPartsFlowCytometerResult =>
+      'Dot plots and histograms; the proportion and number of cell populations (e.g. the absolute CD4+ T-cell count using calibrator beads).';
+
+  @override
+  String get schemPartsRealTimePcrTubesName => 'PCR tubes (8-tube strip)';
+
+  @override
+  String get schemPartsRealTimePcrTubesFn =>
+      'Reaction mix and sample; read through the clear caps.';
+
+  @override
+  String get schemPartsRealTimePcrLidName => 'Heated lid';
+
+  @override
+  String get schemPartsRealTimePcrLidFn =>
+      'Prevents condensation on the tube caps.';
+
+  @override
+  String get schemPartsRealTimePcrBlockName => 'Thermal block (Peltier)';
+
+  @override
+  String get schemPartsRealTimePcrBlockFn =>
+      'Rapidly switches between denaturation, annealing and extension temperatures.';
+
+  @override
+  String get schemPartsRealTimePcrSourceName => 'Excitation light source';
+
+  @override
+  String get schemPartsRealTimePcrSourceFn =>
+      'Provides light that excites the dye or probe.';
+
+  @override
+  String get schemPartsRealTimePcrFiltersName => 'Filter wheel';
+
+  @override
+  String get schemPartsRealTimePcrFiltersFn =>
+      'Selects excitation and emission filters for each dye (channel).';
+
+  @override
+  String get schemPartsRealTimePcrDetectorName => 'Detector';
+
+  @override
+  String get schemPartsRealTimePcrDetectorFn =>
+      'Measures fluorescence in every cycle.';
+
+  @override
+  String get schemPartsRealTimePcrSoftwareName =>
+      'Software (amplification curves)';
+
+  @override
+  String get schemPartsRealTimePcrSoftwareFn =>
+      'Plots the curves, sets the threshold and calculates Cq values.';
+
+  @override
+  String get schemPartsRealTimePcrPrinciple =>
+      'The thermal block changes temperature every cycle: heating separates the DNA strands, primers anneal on cooling and a heat-stable polymerase builds new strands, so the target roughly doubles each cycle (RNA is first converted to cDNA by reverse transcriptase). The optical module reads the fluorescence of an intercalating dye or probe every cycle; the signal is proportional to amplicon accumulation.';
+
+  @override
+  String get schemPartsRealTimePcrResult =>
+      'Amplification curves and, for each sample, the Cq (Ct): the cycle at which fluorescence crosses the threshold; a lower Cq means more starting target. In quantitative tests the concentration is calculated against standards (e.g. HIV-1 viral load in copies/mL).';
+
+  @override
+  String get schemPartsCartridgeMolecularCartridgeName =>
+      'Single-use cartridge';
+
+  @override
+  String get schemPartsCartridgeMolecularCartridgeFn =>
+      'A closed cartridge with sample and reagent chambers; all steps run inside it.';
+
+  @override
+  String get schemPartsCartridgeMolecularTubeName => 'Reaction tube';
+
+  @override
+  String get schemPartsCartridgeMolecularTubeFn =>
+      'Amplification and fluorescence detection take place in this part of the cartridge.';
+
+  @override
+  String get schemPartsCartridgeMolecularSpecimenName => 'Specimen container';
+
+  @override
+  String get schemPartsCartridgeMolecularSpecimenFn =>
+      'Holds the specimen, such as sputum, which is mixed with reagent.';
+
+  @override
+  String get schemPartsCartridgeMolecularModuleName => 'Instrument module';
+
+  @override
+  String get schemPartsCartridgeMolecularModuleFn =>
+      'The cartridge goes in here and is processed automatically; modules run independently.';
+
+  @override
+  String get schemPartsCartridgeMolecularSoftwareName =>
+      'Computer and software';
+
+  @override
+  String get schemPartsCartridgeMolecularSoftwareFn =>
+      'Controls the run and reports the interpreted result.';
+
+  @override
+  String get schemPartsCartridgeMolecularPrinciple =>
+      'The sample is mixed with reagent and added to the cartridge, which is placed in a module. The next steps run automatically inside the closed cartridge: sample processing, nucleic acid extraction, amplification (real-time PCR) and detection. The operator never opens the cartridge, which lowers the risk of amplicon contamination.';
+
+  @override
+  String get schemPartsCartridgeMolecularResult =>
+      'For Xpert MTB/RIF: M. tuberculosis complex detected or not detected, and rifampicin resistance detected or not detected, in under 2 hours.';
+
+  @override
+  String get schemPartsCoagAnalyzerSamplesName => 'Citrate tube rack';
+
+  @override
+  String get schemPartsCoagAnalyzerSamplesFn =>
+      'Sodium citrate tubes (light-blue caps); plasma is drawn from here.';
+
+  @override
+  String get schemPartsCoagAnalyzerReagentsName => 'Cooled reagent block';
+
+  @override
+  String get schemPartsCoagAnalyzerReagentsFn =>
+      'Thromboplastin and other reagents are kept cool.';
+
+  @override
+  String get schemPartsCoagAnalyzerArmName => 'Pipetting arm';
+
+  @override
+  String get schemPartsCoagAnalyzerArmFn =>
+      'Dispenses plasma and reagent into the cuvette in exact volumes.';
+
+  @override
+  String get schemPartsCoagAnalyzerCuvettesName => 'Measuring cuvettes (37 °C)';
+
+  @override
+  String get schemPartsCoagAnalyzerCuvettesFn =>
+      'Plasma is warmed; after reagent is added clot formation is followed.';
+
+  @override
+  String get schemPartsCoagAnalyzerLightName => 'Light source';
+
+  @override
+  String get schemPartsCoagAnalyzerLightFn =>
+      'Provides the light that passes through the cuvette.';
+
+  @override
+  String get schemPartsCoagAnalyzerDetectorName => 'Photodetector';
+
+  @override
+  String get schemPartsCoagAnalyzerDetectorFn =>
+      'Records the change in transmitted light as the clot forms.';
+
+  @override
+  String get schemPartsCoagAnalyzerDisplayName => 'Display (clotting curve)';
+
+  @override
+  String get schemPartsCoagAnalyzerDisplayFn =>
+      'Clotting curve, time and calculated INR.';
+
+  @override
+  String get schemPartsCoagAnalyzerPrinciple =>
+      'The probe dispenses citrated plasma into a cuvette and warms it to 37 °C, then reagent is added (for PT, thromboplastin: tissue factor, calcium and phospholipids). As a fibrin clot forms the mixture becomes turbid: optical detection records the change in transmitted light, mechanical detection the stopping of movement. The time to this point is the clotting time.';
+
+  @override
+  String get schemPartsCoagAnalyzerResult =>
+      'Clotting time in seconds and a clotting curve; for PT the INR is calculated from the patient PT, the mean normal PT and the reagent ISI.';
+
+  @override
+  String get schemPartsElisaReaderPlateName => '96-well microplate';
+
+  @override
+  String get schemPartsElisaReaderPlateFn =>
+      'The reaction and colour develop in the wells; the carrier moves the plate into the reader.';
+
+  @override
+  String get schemPartsElisaReaderLampName => 'Light source (lamp)';
+
+  @override
+  String get schemPartsElisaReaderLampFn =>
+      'Provides the light that passes through the well.';
+
+  @override
+  String get schemPartsElisaReaderWellName => 'Well being read';
+
+  @override
+  String get schemPartsElisaReaderWellFn =>
+      'The coloured solution absorbs part of the light.';
+
+  @override
+  String get schemPartsElisaReaderFilterName => 'Optical filter';
+
+  @override
+  String get schemPartsElisaReaderFilterFn =>
+      'Passes only the required wavelength.';
+
+  @override
+  String get schemPartsElisaReaderDetectorName => 'Photodetector';
+
+  @override
+  String get schemPartsElisaReaderDetectorFn =>
+      'Measures the transmitted light, from which absorbance is calculated.';
+
+  @override
+  String get schemPartsElisaReaderWasherName => 'Washer needle manifold';
+
+  @override
+  String get schemPartsElisaReaderWasherFn =>
+      'Dispenses wash buffer into the wells and aspirates it.';
+
+  @override
+  String get schemPartsElisaReaderBufferName => 'Wash buffer container';
+
+  @override
+  String get schemPartsElisaReaderBufferFn => 'Supplies buffer to the washer.';
+
+  @override
+  String get schemPartsElisaReaderWasteName => 'Waste container';
+
+  @override
+  String get schemPartsElisaReaderWasteFn => 'Collects the aspirated liquid.';
+
+  @override
+  String get schemPartsElisaReaderPrinciple =>
+      'The antigen–antibody reaction proceeds in steps in the plate wells; between steps the washer removes unbound material. Finally substrate is added and the enzyme produces colour. The reader passes light of a selected wavelength through each well and measures absorbance (optical density); unknowns are read from a standard curve.';
+
+  @override
+  String get schemPartsElisaReaderResult =>
+      'Optical density (OD) values for each well; a concentration from the standard curve, or a qualitative positive/negative result against a cut-off.';
+
+  @override
+  String get schemPartsBscClass2OpeningName => 'Front opening (inflow)';
+
+  @override
+  String get schemPartsBscClass2OpeningFn =>
+      'Room air is drawn in here, protecting the operator.';
+
+  @override
+  String get schemPartsBscClass2GrilleName => 'Front grille';
+
+  @override
+  String get schemPartsBscClass2GrilleFn =>
+      'Inflow air and air from the front of the work zone go in here; keep it clear.';
+
+  @override
+  String get schemPartsBscClass2WorkzoneName => 'Work zone and surface';
+
+  @override
+  String get schemPartsBscClass2WorkzoneFn =>
+      'Samples are handled here under a downward flow of clean air.';
+
+  @override
+  String get schemPartsBscClass2DownflowName => 'Downflow HEPA filter';
+
+  @override
+  String get schemPartsBscClass2DownflowFn =>
+      'Cleans particles from the air entering the work zone.';
+
+  @override
+  String get schemPartsBscClass2FanName => 'Fan (blower)';
+
+  @override
+  String get schemPartsBscClass2FanFn => 'Moves the air through the plenums.';
+
+  @override
+  String get schemPartsBscClass2ExhaustName => 'Exhaust HEPA filter';
+
+  @override
+  String get schemPartsBscClass2ExhaustFn =>
+      'Cleans the exhausted air, protecting the environment.';
+
+  @override
+  String get schemPartsBscClass2PlenumName => 'Rear plenum';
+
+  @override
+  String get schemPartsBscClass2PlenumFn =>
+      'Returns air from the grille to the fan.';
+
+  @override
+  String get schemPartsBscClass2SashName => 'Sash (front window)';
+
+  @override
+  String get schemPartsBscClass2SashFn =>
+      'Shields the operator’s face and sets the height of the front opening.';
+
+  @override
+  String get schemPartsBscClass2Principle =>
+      'A fan circulates the air. Room air is drawn through the front opening into the front grille, protecting the operator. HEPA-filtered air flows down over the work surface, protecting the work material. Surplus air leaves through the exhaust HEPA filter, protecting the environment.';
+
+  @override
+  String get schemPartsBscClass2Result =>
+      'Not a measuring instrument: the outcome is a safe working environment (protection of the operator, the material and the environment). Performance is confirmed by regular airflow and filter testing and certification.';
+
+  @override
+  String get schemPartsAutoclaveChamberName => 'Pressure chamber';
+
+  @override
+  String get schemPartsAutoclaveChamberFn =>
+      'The load is held in saturated steam under pressure here.';
+
+  @override
+  String get schemPartsAutoclaveDoorName => 'Door with seal and lock';
+
+  @override
+  String get schemPartsAutoclaveDoorFn =>
+      'Seals the chamber and cannot be opened while under pressure.';
+
+  @override
+  String get schemPartsAutoclaveTrayName => 'Loading tray';
+
+  @override
+  String get schemPartsAutoclaveTrayFn =>
+      'Items are arranged so that steam can circulate freely.';
+
+  @override
+  String get schemPartsAutoclavePressureName => 'Pressure gauge';
+
+  @override
+  String get schemPartsAutoclavePressureFn => 'Shows the chamber pressure.';
+
+  @override
+  String get schemPartsAutoclaveThermometerName => 'Thermometer';
+
+  @override
+  String get schemPartsAutoclaveThermometerFn =>
+      'Shows the chamber temperature.';
+
+  @override
+  String get schemPartsAutoclaveValveName => 'Safety valve';
+
+  @override
+  String get schemPartsAutoclaveValveFn =>
+      'Releases steam if the pressure gets too high.';
+
+  @override
+  String get schemPartsAutoclaveWaterName => 'Water reservoir';
+
+  @override
+  String get schemPartsAutoclaveWaterFn =>
+      'Holds the water used to make steam.';
+
+  @override
+  String get schemPartsAutoclavePrinciple =>
+      'Air is removed from the chamber and replaced by saturated steam. Pressure raises the boiling point of water, so the steam reaches high temperatures such as 121 °C or 132 °C. Steam contacts the items and kills microorganisms with heat; the process is controlled by steam quality, pressure, temperature and time. Trapped air prevents steam from reaching the load.';
+
+  @override
+  String get schemPartsAutoclaveResult =>
+      'A sterilised load and a record of the cycle parameters (time, temperature, pressure); effectiveness is checked with chemical and biological indicators.';
+
+  @override
+  String get schemPartsBloodGasIseSyringeName =>
+      'Sample in a heparinised syringe';
+
+  @override
+  String get schemPartsBloodGasIseSyringeFn =>
+      'Arterial or other whole blood is brought without air bubbles.';
+
+  @override
+  String get schemPartsBloodGasIseProbeName => 'Sample inlet probe';
+
+  @override
+  String get schemPartsBloodGasIseProbeFn =>
+      'Draws blood from the syringe into the measuring channel.';
+
+  @override
+  String get schemPartsBloodGasIseSensorsName => 'Sensors (electrodes)';
+
+  @override
+  String get schemPartsBloodGasIseSensorsFn =>
+      'Separate electrodes for pH, pCO₂, pO₂ and electrolytes.';
+
+  @override
+  String get schemPartsBloodGasIseChannelName => 'Measuring channel';
+
+  @override
+  String get schemPartsBloodGasIseChannelFn =>
+      'The sample flows over all sensors; the channel is temperature-controlled.';
+
+  @override
+  String get schemPartsBloodGasIsePackName => 'Reagent pack';
+
+  @override
+  String get schemPartsBloodGasIsePackFn => 'Calibration and wash solutions.';
+
+  @override
+  String get schemPartsBloodGasIseDisplayName => 'Display';
+
+  @override
+  String get schemPartsBloodGasIseDisplayFn =>
+      'Shows measured and calculated values.';
+
+  @override
+  String get schemPartsBloodGasIsePrinterName => 'Printer';
+
+  @override
+  String get schemPartsBloodGasIsePrinterFn => 'Prints the results.';
+
+  @override
+  String get schemPartsBloodGasIsePrinciple =>
+      'Whole blood from a heparinised syringe is drawn through the probe into the measuring channel and over the sensors. pH and pCO₂ are measured by potentiometry and pO₂ by amperometry; Na, K, Cl and ionised Ca by ion-selective electrodes. sO₂ is measured by co-oximetry or calculated; total CO₂, bicarbonate and base excess (BE) are calculated from the measured values.';
+
+  @override
+  String get schemPartsBloodGasIseResult =>
+      'pH, pCO₂, pO₂, sO₂, electrolytes and metabolites (glucose, lactate, etc.) plus calculated bicarbonate and BE: measures of acid–base status and oxygenation.';
+
+  @override
+  String get schemPartsHba1cAnalyzerRackName => 'EDTA tube rack';
+
+  @override
+  String get schemPartsHba1cAnalyzerRackFn =>
+      'Whole-blood tubes with purple caps.';
+
+  @override
+  String get schemPartsHba1cAnalyzerArmName => 'Sampling arm';
+
+  @override
+  String get schemPartsHba1cAnalyzerArmFn =>
+      'Takes blood from the tube, haemolyses it and injects it into the system.';
+
+  @override
+  String get schemPartsHba1cAnalyzerEluentsName => 'Buffer (eluent) bottles';
+
+  @override
+  String get schemPartsHba1cAnalyzerEluentsFn =>
+      'Buffers of different strength wash the fractions off the column in turn.';
+
+  @override
+  String get schemPartsHba1cAnalyzerColumnName => 'Ion-exchange column';
+
+  @override
+  String get schemPartsHba1cAnalyzerColumnFn =>
+      'Separates haemoglobin fractions by charge.';
+
+  @override
+  String get schemPartsHba1cAnalyzerDetectorName => 'Photometric detector';
+
+  @override
+  String get schemPartsHba1cAnalyzerDetectorFn =>
+      'Measures absorbance of the haemoglobin leaving the column.';
+
+  @override
+  String get schemPartsHba1cAnalyzerDisplayName => 'Display (chromatogram)';
+
+  @override
+  String get schemPartsHba1cAnalyzerDisplayFn =>
+      'Shows the chromatogram and the HbA1c result.';
+
+  @override
+  String get schemPartsHba1cAnalyzerPrinterName => 'Printer';
+
+  @override
+  String get schemPartsHba1cAnalyzerPrinterFn => 'Prints the results.';
+
+  @override
+  String get schemPartsHba1cAnalyzerWasteName => 'Waste container';
+
+  @override
+  String get schemPartsHba1cAnalyzerWasteFn =>
+      'Collects used buffer and sample.';
+
+  @override
+  String get schemPartsHba1cAnalyzerPrinciple =>
+      'EDTA whole blood is sampled automatically and haemolysed. In ion-exchange chromatography the haemoglobin fractions leave the column at different times under a buffer gradient and are recorded by a photometric detector; the HbA1c fraction is calculated from peak area in the chromatogram. Other analyzers use boronate affinity chromatography, immunoassay or an enzymatic method.';
+
+  @override
+  String get schemPartsHba1cAnalyzerResult =>
+      'A chromatogram of haemoglobin fractions and HbA1c in NGSP (%) and IFCC (mmol/mol) units; the ion-exchange method can also reveal variants such as HbS, C and D.';
+
+  @override
+  String get schemPartsLabFridgeControllerName => 'Control panel (thermostat)';
+
+  @override
+  String get schemPartsLabFridgeControllerFn =>
+      'Holds the set temperature and shows the current one.';
+
+  @override
+  String get schemPartsLabFridgeFridgeName => 'Refrigerator compartment';
+
+  @override
+  String get schemPartsLabFridgeFridgeFn =>
+      'Samples, reagents and control materials are stored on the shelves.';
+
+  @override
+  String get schemPartsLabFridgeProbeName => 'Probe in a buffered bottle';
+
+  @override
+  String get schemPartsLabFridgeProbeFn =>
+      'Measures product temperature and smooths brief swings when the door opens.';
+
+  @override
+  String get schemPartsLabFridgeLoggerName => 'Digital data logger (DDL)';
+
+  @override
+  String get schemPartsLabFridgeLoggerFn =>
+      'Records the temperature regularly and alarms on excursions.';
+
+  @override
+  String get schemPartsLabFridgeFreezerName => 'Freezer compartment';
+
+  @override
+  String get schemPartsLabFridgeFreezerFn =>
+      'Holds frozen aliquots (e.g. of control material).';
+
+  @override
+  String get schemPartsLabFridgePrinciple =>
+      'The refrigeration unit keeps the compartment within a set range under thermostat control. A probe in a buffered bottle reflects product temperature (brief air-temperature swings are smoothed). A digital data logger (DDL) records the temperature at regular intervals and alarms on out-of-range readings; a backup temperature monitoring device is also recommended.';
+
+  @override
+  String get schemPartsLabFridgeResult =>
+      'A continuous temperature record (min/max, excursions and alarms) documenting that samples and reagents were stored correctly.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeEyepiecesName => 'Eyepieces';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeEyepiecesFn =>
+      'For viewing the image.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeLedName => 'LED illuminator';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeLedFn =>
+      'Supplies excitation light instead of a mercury lamp.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeCubeName => 'Filter cube';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeCubeFn =>
+      'The excitation filter, dichroic mirror and emission filter separate the light.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeObjectiveName => 'Objective';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeObjectiveFn =>
+      'Directs light onto the slide and magnifies the image.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeStageName => 'Stage with smear';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeStageFn =>
+      'The auramine-stained sputum smear sits here.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFocusName => 'Focus knobs';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFocusFn => 'Adjust the sharpness.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFieldName => 'Field of view';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFieldFn =>
+      'Bright yellow-green rods on a dark background: stained bacilli.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopePrinciple =>
+      'The smear is stained with auramine (a fluorochrome), which the mycobacterial cell wall retains. The LED illuminator sends blue excitation light through the filter cube and objective onto the slide. Stained bacilli emit longer-wavelength (yellow-green) light; the emission filter blocks the excitation light, so the bacilli shine on a dark background.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeResult =>
+      'A microscopy report: acid-fast bacilli (bright rods) seen or not seen, with a semi-quantitative grade when present.';
+
+  @override
+  String get schemPartsCasaCameraName => 'Digital camera';
+
+  @override
+  String get schemPartsCasaCameraFn =>
+      'Records the microscope image as a sequence of frames.';
+
+  @override
+  String get schemPartsCasaMicroscopeName => 'Microscope (objective)';
+
+  @override
+  String get schemPartsCasaMicroscopeFn =>
+      'Magnifies the spermatozoa, usually with phase contrast.';
+
+  @override
+  String get schemPartsCasaStageName => 'Heated stage';
+
+  @override
+  String get schemPartsCasaStageFn =>
+      'Keeps the sample temperature stable, as motility depends on temperature.';
+
+  @override
+  String get schemPartsCasaChamberName => 'Counting chamber';
+
+  @override
+  String get schemPartsCasaChamberFn =>
+      'A chamber of fixed depth gives a sample layer of even thickness.';
+
+  @override
+  String get schemPartsCasaSoftwareName => 'Computer and software';
+
+  @override
+  String get schemPartsCasaSoftwareFn =>
+      'Reconstructs the tracks and calculates kinematic parameters.';
+
+  @override
+  String get schemPartsCasaPrinciple =>
+      'Semen is loaded into a counting chamber on the heated stage. The camera records successive frames through the microscope; software finds the sperm heads, reconstructs the track of each motile cell and calculates movement kinematics. Tracks of at least 200 motile cells are analysed.';
+
+  @override
+  String get schemPartsCasaResult =>
+      'Kinematic parameters (e.g. curvilinear, straight-line and average path velocity) and motion types; according to the WHO manual, percentage motility may be unreliable because debris can be mistaken for immotile cells.';
+
+  @override
+  String get schemPartsGelCardSystemCentrifugeName => 'Card centrifuge';
+
+  @override
+  String get schemPartsGelCardSystemCentrifugeFn =>
+      'Spins the cards at a set speed and time.';
+
+  @override
+  String get schemPartsGelCardSystemIncubatorName => 'Incubator';
+
+  @override
+  String get schemPartsGelCardSystemIncubatorFn =>
+      'Incubates the cards for the antiglobulin test.';
+
+  @override
+  String get schemPartsGelCardSystemCardName => 'Gel card';
+
+  @override
+  String get schemPartsGelCardSystemCardFn =>
+      'A plastic card; each microtube holds a gel or glass-bead matrix.';
+
+  @override
+  String get schemPartsGelCardSystemChamberName => 'Reaction chamber';
+
+  @override
+  String get schemPartsGelCardSystemChamberFn =>
+      'Red cells and serum (or reagent) mix here.';
+
+  @override
+  String get schemPartsGelCardSystemGelName => 'Gel column (matrix)';
+
+  @override
+  String get schemPartsGelCardSystemGelFn =>
+      'Traps agglutinates and lets single red cells through; may contain antiglobulin or anti-A, anti-B.';
+
+  @override
+  String get schemPartsGelCardSystemPositiveName => 'Positive reaction';
+
+  @override
+  String get schemPartsGelCardSystemPositiveFn =>
+      'Red cells stay on top of or within the gel.';
+
+  @override
+  String get schemPartsGelCardSystemNegativeName => 'Negative reaction';
+
+  @override
+  String get schemPartsGelCardSystemNegativeFn =>
+      'Red cells form a button at the bottom.';
+
+  @override
+  String get schemPartsGelCardSystemPrinciple =>
+      'Red cell suspension and serum (or reagent) are added to the upper reaction chamber of the microtube and incubated. On centrifugation the red cells are driven into the gel or glass-bead matrix while the serum stays above. Agglutinates (e.g. antibody-coated cells linked by antiglobulin) are trapped in the gel (positive); unagglutinated cells pass to the bottom as a button (negative). The antiglobulin test needs no washing step.';
+
+  @override
+  String get schemPartsGelCardSystemResult =>
+      'A reaction in each microtube: positive (agglutinates on top of or within the gel, graded by strength) or negative (button at the bottom); these give the blood group or the direct antiglobulin test result.';
+
+  @override
+  String get schemPartsEsrAnalyzerStandName => 'Westergren stand';
+
+  @override
+  String get schemPartsEsrAnalyzerStandFn =>
+      'Holds the tubes strictly upright.';
+
+  @override
+  String get schemPartsEsrAnalyzerTubeName => 'Westergren tube';
+
+  @override
+  String get schemPartsEsrAnalyzerTubeFn =>
+      'A graduated standard tube with a 2.5 mm bore.';
+
+  @override
+  String get schemPartsEsrAnalyzerBoundaryName => 'Plasma–red cell boundary';
+
+  @override
+  String get schemPartsEsrAnalyzerBoundaryFn =>
+      'After one hour the distance to this boundary is read in millimetres.';
+
+  @override
+  String get schemPartsEsrAnalyzerReaderName => 'Automated reader';
+
+  @override
+  String get schemPartsEsrAnalyzerReaderFn =>
+      'Measures sedimentation automatically in closed tubes.';
+
+  @override
+  String get schemPartsEsrAnalyzerTubesName => 'Closed tubes';
+
+  @override
+  String get schemPartsEsrAnalyzerTubesFn => 'The sample tube stays closed.';
+
+  @override
+  String get schemPartsEsrAnalyzerSensorsName => 'Optical sensors';
+
+  @override
+  String get schemPartsEsrAnalyzerSensorsFn =>
+      'Detect the boundary between plasma and the red cell column.';
+
+  @override
+  String get schemPartsEsrAnalyzerDisplayName => 'Display';
+
+  @override
+  String get schemPartsEsrAnalyzerDisplayFn => 'Shows the results.';
+
+  @override
+  String get schemPartsEsrAnalyzerPrinciple =>
+      'Anticoagulated blood settles by gravity in a standard upright tube (Westergren, 2.5 mm internal diameter) for one hour; the height of the clear plasma column is read in millimetres. In inflammation raised proteins promote rouleaux formation, so the cells settle faster. Automated readers follow the plasma–red cell boundary in closed tubes with optical sensors.';
+
+  @override
+  String get schemPartsEsrAnalyzerResult =>
+      'The ESR value in mm/h; a non-specific measure read together with other tests.';
+
+  @override
+  String get schemPartsAggregometerChannelsName => 'LTA measuring channels';
+
+  @override
+  String get schemPartsAggregometerChannelsFn =>
+      'Cuvettes are warmed to 37 °C and stirred.';
+
+  @override
+  String get schemPartsAggregometerLightName => 'Light source';
+
+  @override
+  String get schemPartsAggregometerLightFn =>
+      'Provides the light that passes through the cuvette.';
+
+  @override
+  String get schemPartsAggregometerCuvetteName =>
+      'Cuvette (plasma and stir bar)';
+
+  @override
+  String get schemPartsAggregometerCuvetteFn =>
+      'Platelet-rich plasma; the agonist is added here.';
+
+  @override
+  String get schemPartsAggregometerPhotodetectorName => 'Photodetector';
+
+  @override
+  String get schemPartsAggregometerPhotodetectorFn =>
+      'Measures the rise in light transmission during aggregation.';
+
+  @override
+  String get schemPartsAggregometerCurvesName => 'Aggregation curves';
+
+  @override
+  String get schemPartsAggregometerCurvesFn =>
+      'Light transmission over time for each channel.';
+
+  @override
+  String get schemPartsAggregometerCupName => 'Cup with blood';
+
+  @override
+  String get schemPartsAggregometerCupFn =>
+      'Citrated blood is clotted here with calcium and an activator.';
+
+  @override
+  String get schemPartsAggregometerPinName => 'Pin and torsion sensor';
+
+  @override
+  String get schemPartsAggregometerPinFn =>
+      'Fibrin couples the pin to the cup; the transmitted torque is recorded.';
+
+  @override
+  String get schemPartsAggregometerTraceName => 'Viscoelastic trace';
+
+  @override
+  String get schemPartsAggregometerTraceFn =>
+      'A plot of clot formation, strength and lysis.';
+
+  @override
+  String get schemPartsAggregometerPrinciple =>
+      'LTA: platelet-rich plasma is stirred in a cuvette at 37 °C. After an agonist is added, platelets aggregate, the plasma clears and light transmission rises; the photodetector records this as a curve. TEG/ROTEM: citrated blood in a rotating cup is clotted with calcium and an activator; fibrin couples the pin to the cup and the transmitted torque is plotted as a trace.';
+
+  @override
+  String get schemPartsAggregometerResult =>
+      'LTA: an aggregation curve for each agonist (light transmission over time). TEG/ROTEM: a viscoelastic trace showing clot formation, clot strength and fibrinolysis.';
+
+  @override
+  String get schemPartsElectrophoresisPowerName => 'Power supply';
+
+  @override
+  String get schemPartsElectrophoresisPowerFn =>
+      'Applies a constant voltage to the electrodes.';
+
+  @override
+  String get schemPartsElectrophoresisElectrodesName =>
+      'Buffer compartments and electrodes';
+
+  @override
+  String get schemPartsElectrophoresisElectrodesFn =>
+      'The buffer carries the current; the cathode (−) and anode (+) set up the field.';
+
+  @override
+  String get schemPartsElectrophoresisWicksName => 'Wicks';
+
+  @override
+  String get schemPartsElectrophoresisWicksFn =>
+      'Carry buffer to the support medium and complete the circuit.';
+
+  @override
+  String get schemPartsElectrophoresisMediumName =>
+      'Support medium and fractions';
+
+  @override
+  String get schemPartsElectrophoresisMediumFn =>
+      'Molecules separate into zones on agarose or cellulose acetate.';
+
+  @override
+  String get schemPartsElectrophoresisCoverName => 'Cover';
+
+  @override
+  String get schemPartsElectrophoresisCoverFn =>
+      'Reduces evaporation and protects against electric shock.';
+
+  @override
+  String get schemPartsElectrophoresisDensitometerName => 'Densitometer';
+
+  @override
+  String get schemPartsElectrophoresisDensitometerFn =>
+      'Scans the optical density of the stained zones and draws a densitogram.';
+
+  @override
+  String get schemPartsElectrophoresisPrinciple =>
+      'The sample is applied to a buffer-soaked support medium (agarose, cellulose acetate or polyacrylamide). The power supply creates an electric field through the electrodes; charged molecules migrate at different speeds according to charge, size and shape and separate into zones. The zones are then stained and measured by optical density on a densitometer.';
+
+  @override
+  String get schemPartsElectrophoresisResult =>
+      'Stained fractions (e.g. for serum proteins: albumin, alpha-1, alpha-2, beta, gamma) and a densitogram giving the relative share of each fraction; runs are compared with control samples.';
+
+  @override
+  String get schemPartsOsmometerTubesName => 'Sample tubes';
+
+  @override
+  String get schemPartsOsmometerTubesFn => 'A small volume of urine or serum.';
+
+  @override
+  String get schemPartsOsmometerThermistorName => 'Thermistor probe';
+
+  @override
+  String get schemPartsOsmometerThermistorFn =>
+      'Dips into the sample and measures temperature precisely.';
+
+  @override
+  String get schemPartsOsmometerBathName => 'Cooling block (bath)';
+
+  @override
+  String get schemPartsOsmometerBathFn =>
+      'Cools the sample below its freezing point.';
+
+  @override
+  String get schemPartsOsmometerWireName => 'Stirring wire';
+
+  @override
+  String get schemPartsOsmometerWireFn =>
+      'Vibrates to start freezing in the supercooled sample.';
+
+  @override
+  String get schemPartsOsmometerDisplayName => 'Display (freezing curve)';
+
+  @override
+  String get schemPartsOsmometerDisplayFn =>
+      'The temperature curve and the osmolality result.';
+
+  @override
+  String get schemPartsOsmometerPrinciple =>
+      'The sample is supercooled below its freezing point in the cooling block, then vibration of the stirring wire starts freezing. Released latent heat raises the temperature to the freezing point, giving a plateau that the thermistor in a Wheatstone bridge circuit measures. Dissolved particles lower the freezing point: one mole of solute lowers that of water by about 1.86 °C, and osmolality is calculated from this.';
+
+  @override
+  String get schemPartsOsmometerResult =>
+      'Urine or serum osmolality in mOsm/kg (mmol/kg).';
+
+  @override
+  String get schemPartsTlcTankName => 'Developing tank (with lid)';
+
+  @override
+  String get schemPartsTlcTankFn =>
+      'A closed glass tank saturated with solvent vapour.';
+
+  @override
+  String get schemPartsTlcSolventName => 'Mobile phase (solvent)';
+
+  @override
+  String get schemPartsTlcSolventFn =>
+      'Rises up the plate by capillary action.';
+
+  @override
+  String get schemPartsTlcPlateName => 'TLC plate (silica gel GF254)';
+
+  @override
+  String get schemPartsTlcPlateFn =>
+      'A thin silica gel layer with a fluorescent indicator that glows under UV.';
+
+  @override
+  String get schemPartsTlcOriginName => 'Origin line';
+
+  @override
+  String get schemPartsTlcOriginFn =>
+      'Sample and standard spots are applied here.';
+
+  @override
+  String get schemPartsTlcFrontName => 'Solvent front';
+
+  @override
+  String get schemPartsTlcFrontFn =>
+      'The line the solvent reached, marked to calculate Rf.';
+
+  @override
+  String get schemPartsTlcCapillariesName => 'Capillaries';
+
+  @override
+  String get schemPartsTlcCapillariesFn =>
+      'For applying the sample as a small spot.';
+
+  @override
+  String get schemPartsTlcLampName => 'UV lamp (254 nm)';
+
+  @override
+  String get schemPartsTlcLampFn =>
+      'Lights the plate and makes the spots visible.';
+
+  @override
+  String get schemPartsTlcSpotsName => 'Spots under UV';
+
+  @override
+  String get schemPartsTlcSpotsFn =>
+      'Compounds quench the fluorescence and appear as dark spots on a green background.';
+
+  @override
+  String get schemPartsTlcPrinciple =>
+      'Sample and standard spots are applied on the origin line and the plate is placed in the saturated tank with its lower edge in the solvent. As the solvent rises, compounds partition between the silica gel (stationary phase) and the solvent (mobile phase) and travel different distances. The developed plate is viewed under 254 nm UV light or sprayed with visualising reagents.';
+
+  @override
+  String get schemPartsTlcResult =>
+      'Spot positions and Rf values (spot distance / solvent-front distance), compared with a standard to identify the compound.';
+
+  @override
+  String get schemPartsAnalyticalBalancePipetteName =>
+      'Pipette (air displacement)';
+
+  @override
+  String get schemPartsAnalyticalBalancePipetteFn =>
+      'The device being calibrated: it delivers the set volume.';
+
+  @override
+  String get schemPartsAnalyticalBalanceVesselName => 'Weighing vessel';
+
+  @override
+  String get schemPartsAnalyticalBalanceVesselFn =>
+      'Receives the dispensed water for weighing.';
+
+  @override
+  String get schemPartsAnalyticalBalancePanName => 'Weighing pan';
+
+  @override
+  String get schemPartsAnalyticalBalancePanFn => 'Mass is measured here.';
+
+  @override
+  String get schemPartsAnalyticalBalanceEnclosureName => 'Glass enclosure';
+
+  @override
+  String get schemPartsAnalyticalBalanceEnclosureFn =>
+      'Shields the weighing from air currents and dust.';
+
+  @override
+  String get schemPartsAnalyticalBalanceDisplayName => 'Display and keys';
+
+  @override
+  String get schemPartsAnalyticalBalanceDisplayFn =>
+      'Shows the mass; the tare key zeroes the vessel mass.';
+
+  @override
+  String get schemPartsAnalyticalBalanceWaterName => 'Water container';
+
+  @override
+  String get schemPartsAnalyticalBalanceWaterFn =>
+      'Pure (distilled) water equilibrated to room temperature.';
+
+  @override
+  String get schemPartsAnalyticalBalanceThermometerName => 'Thermometer';
+
+  @override
+  String get schemPartsAnalyticalBalanceThermometerFn =>
+      'Measures the water temperature for the density correction.';
+
+  @override
+  String get schemPartsAnalyticalBalancePrinciple =>
+      'The pipette dispenses its set volume of water into the vessel on the balance and the water mass is weighed. Mass is converted to volume with corrections for water density (temperature) and air buoyancy, so water and air temperatures are recorded. The pipette is calibrated on a ‘to deliver’ basis.';
+
+  @override
+  String get schemPartsAnalyticalBalanceResult =>
+      'The calculated volume of each delivery; comparison with the nominal volume gives the accuracy (systematic error) and repeatability.';
+
+  @override
   String get imgDiagramCalibrationOverviewAlt =>
       'Diagram, general calibration workflow in six steps: confirm instrument and method; verify reagent, REF and IFU revision; prepare a lot-matched calibrator; follow the verified instrument interface; evaluate the calibration and independent QC; record results and release per SOP. Not an instrument screenshot.';
 

@@ -18034,6 +18034,3102 @@ abstract class AppLocalizations {
   /// **'Gravimetric calibration setup — analytical balance with a glass weighing chamber and weighing vessel, pipette dispensing water, water beaker with thermometer'**
   String get labSchemAnalyticalBalance;
 
+  /// No description provided for @schemPartsPanelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Parts and how it works'**
+  String get schemPartsPanelTitle;
+
+  /// No description provided for @schemPartsPanelHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Numbered parts, working principle and result'**
+  String get schemPartsPanelHint;
+
+  /// No description provided for @schemPartsPartsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Main parts'**
+  String get schemPartsPartsTitle;
+
+  /// No description provided for @schemPartsPrincipleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Working principle'**
+  String get schemPartsPrincipleTitle;
+
+  /// No description provided for @schemPartsResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Result'**
+  String get schemPartsResultTitle;
+
+  /// No description provided for @schemPartsClassNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Parts are shown for the instrument class at principle level; their layout and design in a specific model may differ.'**
+  String get schemPartsClassNote;
+
+  /// No description provided for @schemPartsChemistrySamplesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample area'**
+  String get schemPartsChemistrySamplesName;
+
+  /// No description provided for @schemPartsChemistrySamplesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Tubes sit in a rack; the probe draws the sample from here.'**
+  String get schemPartsChemistrySamplesFn;
+
+  /// No description provided for @schemPartsChemistryReagentsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cooled reagent carousel'**
+  String get schemPartsChemistryReagentsName;
+
+  /// No description provided for @schemPartsChemistryReagentsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Reagent bottles are kept cool; the required one is turned under the probe.'**
+  String get schemPartsChemistryReagentsFn;
+
+  /// No description provided for @schemPartsChemistryProbesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample and reagent probes'**
+  String get schemPartsChemistryProbesName;
+
+  /// No description provided for @schemPartsChemistryProbesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Aspirate exact volumes of sample and reagent and dispense them into the reaction cuvette.'**
+  String get schemPartsChemistryProbesFn;
+
+  /// No description provided for @schemPartsChemistryReactionName.
+  ///
+  /// In en, this message translates to:
+  /// **'Reaction carousel (cuvettes)'**
+  String get schemPartsChemistryReactionName;
+
+  /// No description provided for @schemPartsChemistryReactionFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The mixture in the cuvettes is held at 37 °C; the carousel moves them past the photometer.'**
+  String get schemPartsChemistryReactionFn;
+
+  /// No description provided for @schemPartsChemistryPhotometerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Photometer'**
+  String get schemPartsChemistryPhotometerName;
+
+  /// No description provided for @schemPartsChemistryPhotometerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Lamp light passes through the cuvette; grating or filter optics measure absorbance at the selected wavelength.'**
+  String get schemPartsChemistryPhotometerFn;
+
+  /// No description provided for @schemPartsChemistryWaterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Purified water container'**
+  String get schemPartsChemistryWaterName;
+
+  /// No description provided for @schemPartsChemistryWaterFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplies water for washing probes and cuvettes and for dilution.'**
+  String get schemPartsChemistryWaterFn;
+
+  /// No description provided for @schemPartsChemistryWasteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Liquid waste container'**
+  String get schemPartsChemistryWasteName;
+
+  /// No description provided for @schemPartsChemistryWasteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Collects wash water and used reaction mixtures.'**
+  String get schemPartsChemistryWasteFn;
+
+  /// No description provided for @schemPartsChemistryComputerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Computer and software'**
+  String get schemPartsChemistryComputerName;
+
+  /// No description provided for @schemPartsChemistryComputerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders tests, manages calibration, calculates results and issues the report.'**
+  String get schemPartsChemistryComputerFn;
+
+  /// No description provided for @schemPartsChemistryPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Probes dispense sample and reagent into a reaction cuvette and the mixture is incubated at 37 °C. The photometer measures absorbance of the light passing through the cuvette at a selected wavelength. Concentration is calculated from calibration; many models also measure Na, K and Cl with an ion-selective electrode (ISE).'**
+  String get schemPartsChemistryPrinciple;
+
+  /// No description provided for @schemPartsChemistryResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyte concentration for each test (e.g. glucose, enzyme activity, electrolytes): a value calculated from the absorbance change and calibration, plus a report.'**
+  String get schemPartsChemistryResult;
+
+  /// No description provided for @schemPartsPhotometerDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display and keypad'**
+  String get schemPartsPhotometerDisplayName;
+
+  /// No description provided for @schemPartsPhotometerDisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the method, wavelength and standard; the result and curve appear here.'**
+  String get schemPartsPhotometerDisplayFn;
+
+  /// No description provided for @schemPartsPhotometerNeedleName.
+  ///
+  /// In en, this message translates to:
+  /// **'Aspiration needle'**
+  String get schemPartsPhotometerNeedleName;
+
+  /// No description provided for @schemPartsPhotometerNeedleFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Draws the prepared mixture from the tube into the measuring cell.'**
+  String get schemPartsPhotometerNeedleFn;
+
+  /// No description provided for @schemPartsPhotometerCellName.
+  ///
+  /// In en, this message translates to:
+  /// **'Measuring cell (flow cell)'**
+  String get schemPartsPhotometerCellName;
+
+  /// No description provided for @schemPartsPhotometerCellFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Lamp → interference filter → cuvette → photodetector: absorbance is measured here.'**
+  String get schemPartsPhotometerCellFn;
+
+  /// No description provided for @schemPartsPhotometerPrinterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermal printer'**
+  String get schemPartsPhotometerPrinterName;
+
+  /// No description provided for @schemPartsPhotometerPrinterFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Prints the results on paper.'**
+  String get schemPartsPhotometerPrinterFn;
+
+  /// No description provided for @schemPartsPhotometerWasteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Waste container'**
+  String get schemPartsPhotometerWasteName;
+
+  /// No description provided for @schemPartsPhotometerWasteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measured mixture and wash liquid drain here.'**
+  String get schemPartsPhotometerWasteFn;
+
+  /// No description provided for @schemPartsPhotometerReagentsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Reagent bottles'**
+  String get schemPartsPhotometerReagentsName;
+
+  /// No description provided for @schemPartsPhotometerReagentsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Reagents stand outside the instrument; the operator adds them to the sample by hand.'**
+  String get schemPartsPhotometerReagentsFn;
+
+  /// No description provided for @schemPartsPhotometerPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The operator pipettes sample and reagent by hand and incubates the mixture. The instrument aspirates it into a flow cell (or a square cuvette is inserted); lamp light passes the selected interference filter and a photodetector measures absorbance. Concentration is calculated from a standard or a factor.'**
+  String get schemPartsPhotometerPrinciple;
+
+  /// No description provided for @schemPartsPhotometerResult.
+  ///
+  /// In en, this message translates to:
+  /// **'The absorbance value and the concentration calculated from it, shown on the display and printed.'**
+  String get schemPartsPhotometerResult;
+
+  /// No description provided for @schemPartsHematology5AutoloaderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Autoloader with rack'**
+  String get schemPartsHematology5AutoloaderName;
+
+  /// No description provided for @schemPartsHematology5AutoloaderFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Mixes closed tubes and feeds them one by one to the sampler.'**
+  String get schemPartsHematology5AutoloaderFn;
+
+  /// No description provided for @schemPartsHematology5ProbeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample probe (open mode)'**
+  String get schemPartsHematology5ProbeName;
+
+  /// No description provided for @schemPartsHematology5ProbeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Aspirates a set volume of blood from an open tube held up by hand.'**
+  String get schemPartsHematology5ProbeFn;
+
+  /// No description provided for @schemPartsHematology5ImpedanceName.
+  ///
+  /// In en, this message translates to:
+  /// **'Impedance chamber'**
+  String get schemPartsHematology5ImpedanceName;
+
+  /// No description provided for @schemPartsHematology5ImpedanceFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Each red cell or platelet passing the aperture gives an electrical pulse: counting and sizing.'**
+  String get schemPartsHematology5ImpedanceFn;
+
+  /// No description provided for @schemPartsHematology5LaserName.
+  ///
+  /// In en, this message translates to:
+  /// **'Laser flow cell'**
+  String get schemPartsHematology5LaserName;
+
+  /// No description provided for @schemPartsHematology5LaserFn.
+  ///
+  /// In en, this message translates to:
+  /// **'White cells pass the laser beam one at a time and are classified by scatter (and fluorescence).'**
+  String get schemPartsHematology5LaserFn;
+
+  /// No description provided for @schemPartsHematology5DisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display (scattergram)'**
+  String get schemPartsHematology5DisplayName;
+
+  /// No description provided for @schemPartsHematology5DisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows results, scattergrams and histograms.'**
+  String get schemPartsHematology5DisplayFn;
+
+  /// No description provided for @schemPartsHematology5ReagentsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Reagents'**
+  String get schemPartsHematology5ReagentsName;
+
+  /// No description provided for @schemPartsHematology5ReagentsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Diluent, lysing and staining solutions are fed through tubing.'**
+  String get schemPartsHematology5ReagentsFn;
+
+  /// No description provided for @schemPartsHematology5WasteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Waste container'**
+  String get schemPartsHematology5WasteName;
+
+  /// No description provided for @schemPartsHematology5WasteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Collects used dilutions and wash solutions.'**
+  String get schemPartsHematology5WasteFn;
+
+  /// No description provided for @schemPartsHematology5Principle.
+  ///
+  /// In en, this message translates to:
+  /// **'Blood is aspirated, diluted and split into several channels. Red cells and platelets are counted by impedance: a cell passing a small aperture produces a resistance pulse whose size reflects cell volume. The WBC differential is made by flow cytometry from laser light scatter (in some models with dye fluorescence); haemoglobin is measured photometrically after the red cells are lysed.'**
+  String get schemPartsHematology5Principle;
+
+  /// No description provided for @schemPartsHematology5Result.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete blood count (CBC) parameters: cell counts and red-cell indices, a 5-part WBC differential, scattergrams and histograms.'**
+  String get schemPartsHematology5Result;
+
+  /// No description provided for @schemPartsHematology3PrinterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermal printer'**
+  String get schemPartsHematology3PrinterName;
+
+  /// No description provided for @schemPartsHematology3PrinterFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Prints results and histograms.'**
+  String get schemPartsHematology3PrinterFn;
+
+  /// No description provided for @schemPartsHematology3DisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display (3 histograms)'**
+  String get schemPartsHematology3DisplayName;
+
+  /// No description provided for @schemPartsHematology3DisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows results and WBC, RBC and PLT histograms.'**
+  String get schemPartsHematology3DisplayFn;
+
+  /// No description provided for @schemPartsHematology3ProbeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample probe'**
+  String get schemPartsHematology3ProbeName;
+
+  /// No description provided for @schemPartsHematology3ProbeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Aspirates a small volume of blood from an open tube.'**
+  String get schemPartsHematology3ProbeFn;
+
+  /// No description provided for @schemPartsHematology3ImpedanceName.
+  ///
+  /// In en, this message translates to:
+  /// **'Impedance chamber'**
+  String get schemPartsHematology3ImpedanceName;
+
+  /// No description provided for @schemPartsHematology3ImpedanceFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A cell passing the aperture gives a pulse: the pulse count is the cell count, the pulse size the cell volume.'**
+  String get schemPartsHematology3ImpedanceFn;
+
+  /// No description provided for @schemPartsHematology3ReagentsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Diluent and lysing solution'**
+  String get schemPartsHematology3ReagentsName;
+
+  /// No description provided for @schemPartsHematology3ReagentsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'For diluting blood and lysing red cells.'**
+  String get schemPartsHematology3ReagentsFn;
+
+  /// No description provided for @schemPartsHematology3WasteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Waste container'**
+  String get schemPartsHematology3WasteName;
+
+  /// No description provided for @schemPartsHematology3WasteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Collects used liquids.'**
+  String get schemPartsHematology3WasteFn;
+
+  /// No description provided for @schemPartsHematology3Principle.
+  ///
+  /// In en, this message translates to:
+  /// **'Blood is diluted; red cells and platelets are counted by impedance (the Coulter principle) and a volume histogram is built. After lysis, white cells are split by volume into three groups; haemoglobin is measured photometrically.'**
+  String get schemPartsHematology3Principle;
+
+  /// No description provided for @schemPartsHematology3Result.
+  ///
+  /// In en, this message translates to:
+  /// **'CBC with a 3-part WBC differential (lymphocytes, mid-size cells, granulocytes) and three histograms (WBC, RBC, PLT).'**
+  String get schemPartsHematology3Result;
+
+  /// No description provided for @schemPartsImmunoassaySamplesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample rack'**
+  String get schemPartsImmunoassaySamplesName;
+
+  /// No description provided for @schemPartsImmunoassaySamplesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Tubes are placed here; the probe draws the sample.'**
+  String get schemPartsImmunoassaySamplesFn;
+
+  /// No description provided for @schemPartsImmunoassayReagentsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cooled reagent packs'**
+  String get schemPartsImmunoassayReagentsName;
+
+  /// No description provided for @schemPartsImmunoassayReagentsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Microparticles, labelled conjugate and other reagents are kept cool.'**
+  String get schemPartsImmunoassayReagentsFn;
+
+  /// No description provided for @schemPartsImmunoassayProbesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Pipetting probes'**
+  String get schemPartsImmunoassayProbesName;
+
+  /// No description provided for @schemPartsImmunoassayProbesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Dispense sample and reagents into the reaction cuvette.'**
+  String get schemPartsImmunoassayProbesFn;
+
+  /// No description provided for @schemPartsImmunoassayCuvettesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cuvette feeder'**
+  String get schemPartsImmunoassayCuvettesName;
+
+  /// No description provided for @schemPartsImmunoassayCuvettesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplies single-use reaction cuvettes to the incubator.'**
+  String get schemPartsImmunoassayCuvettesFn;
+
+  /// No description provided for @schemPartsImmunoassayIncubatorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Incubator ring'**
+  String get schemPartsImmunoassayIncubatorName;
+
+  /// No description provided for @schemPartsImmunoassayIncubatorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Cuvettes are held at a constant temperature while the antigen–antibody reaction proceeds.'**
+  String get schemPartsImmunoassayIncubatorFn;
+
+  /// No description provided for @schemPartsImmunoassayWashName.
+  ///
+  /// In en, this message translates to:
+  /// **'Wash station (magnetic separation)'**
+  String get schemPartsImmunoassayWashName;
+
+  /// No description provided for @schemPartsImmunoassayWashFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A magnet holds the microparticles while unbound material is washed away.'**
+  String get schemPartsImmunoassayWashFn;
+
+  /// No description provided for @schemPartsImmunoassayLuminometerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Luminometer (detector)'**
+  String get schemPartsImmunoassayLuminometerName;
+
+  /// No description provided for @schemPartsImmunoassayLuminometerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures the light emitted by the label by photon counting.'**
+  String get schemPartsImmunoassayLuminometerFn;
+
+  /// No description provided for @schemPartsImmunoassaySolidwasteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Solid waste drawer'**
+  String get schemPartsImmunoassaySolidwasteName;
+
+  /// No description provided for @schemPartsImmunoassaySolidwasteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Collects used cuvettes and tips.'**
+  String get schemPartsImmunoassaySolidwasteFn;
+
+  /// No description provided for @schemPartsImmunoassayLiquidsName.
+  ///
+  /// In en, this message translates to:
+  /// **'System solutions'**
+  String get schemPartsImmunoassayLiquidsName;
+
+  /// No description provided for @schemPartsImmunoassayLiquidsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Containers of wash and system solutions.'**
+  String get schemPartsImmunoassayLiquidsFn;
+
+  /// No description provided for @schemPartsImmunoassayPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The sample is incubated with reagent in a cuvette: the analyte binds an antibody or antigen on magnetic microparticles. While a magnet holds the particles, unbound material is washed away; then the label (enzyme, acridinium ester or ECL label) emits light. The luminometer counts photons and the signal is converted to concentration with a calibration curve.'**
+  String get schemPartsImmunoassayPrinciple;
+
+  /// No description provided for @schemPartsImmunoassayResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Concentration of analytes such as hormones, tumour and cardiac markers, or a qualitative positive/negative result, calculated from the light signal by calibration.'**
+  String get schemPartsImmunoassayResult;
+
+  /// No description provided for @schemPartsUrineStripSampleName.
+  ///
+  /// In en, this message translates to:
+  /// **'Urine sample and test strip'**
+  String get schemPartsUrineStripSampleName;
+
+  /// No description provided for @schemPartsUrineStripSampleFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The strip is briefly dipped in urine and the pads react.'**
+  String get schemPartsUrineStripSampleFn;
+
+  /// No description provided for @schemPartsUrineStripTrayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Strip tray (transport)'**
+  String get schemPartsUrineStripTrayName;
+
+  /// No description provided for @schemPartsUrineStripTrayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The strip is placed here and moved under the reading head.'**
+  String get schemPartsUrineStripTrayFn;
+
+  /// No description provided for @schemPartsUrineStripHeadName.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading head (LEDs and photosensor)'**
+  String get schemPartsUrineStripHeadName;
+
+  /// No description provided for @schemPartsUrineStripHeadFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Lights the pads at several wavelengths and measures the reflected light.'**
+  String get schemPartsUrineStripHeadFn;
+
+  /// No description provided for @schemPartsUrineStripDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display'**
+  String get schemPartsUrineStripDisplayName;
+
+  /// No description provided for @schemPartsUrineStripDisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows results and instrument status.'**
+  String get schemPartsUrineStripDisplayFn;
+
+  /// No description provided for @schemPartsUrineStripPrinterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Printer'**
+  String get schemPartsUrineStripPrinterName;
+
+  /// No description provided for @schemPartsUrineStripPrinterFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Prints the results.'**
+  String get schemPartsUrineStripPrinterFn;
+
+  /// No description provided for @schemPartsUrineStripBinName.
+  ///
+  /// In en, this message translates to:
+  /// **'Used strip bin'**
+  String get schemPartsUrineStripBinName;
+
+  /// No description provided for @schemPartsUrineStripBinFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Read strips drop in here.'**
+  String get schemPartsUrineStripBinFn;
+
+  /// No description provided for @schemPartsUrineStripPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The test strip is dipped in urine; the reagent in each pad changes colour with its analyte. The instrument moves the strip under the reading head: LEDs of different wavelengths light the pads and a photosensor measures the reflected light (reflectance photometry). Colour intensity is converted to a semi-quantitative grade.'**
+  String get schemPartsUrineStripPrinciple;
+
+  /// No description provided for @schemPartsUrineStripResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A qualitative or semi-quantitative result for each pad (e.g. glucose, protein, blood, leukocytes, nitrite, pH, specific gravity) and a printed report.'**
+  String get schemPartsUrineStripResult;
+
+  /// No description provided for @schemPartsUrineSystemTransportName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample transport line'**
+  String get schemPartsUrineSystemTransportName;
+
+  /// No description provided for @schemPartsUrineSystemTransportFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Moves tube racks past the modules in turn.'**
+  String get schemPartsUrineSystemTransportFn;
+
+  /// No description provided for @schemPartsUrineSystemStripName.
+  ///
+  /// In en, this message translates to:
+  /// **'Chemistry module (test strip)'**
+  String get schemPartsUrineSystemStripName;
+
+  /// No description provided for @schemPartsUrineSystemStripFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Reads the strip pads by reflectance and imaging.'**
+  String get schemPartsUrineSystemStripFn;
+
+  /// No description provided for @schemPartsUrineSystemNeedlesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sampling needles'**
+  String get schemPartsUrineSystemNeedlesName;
+
+  /// No description provided for @schemPartsUrineSystemNeedlesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Each module draws sample from the tube with its own needle.'**
+  String get schemPartsUrineSystemNeedlesFn;
+
+  /// No description provided for @schemPartsUrineSystemCameraName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sediment module (microscope and camera)'**
+  String get schemPartsUrineSystemCameraName;
+
+  /// No description provided for @schemPartsUrineSystemCameraFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Captures digital microscope images of urine particles.'**
+  String get schemPartsUrineSystemCameraFn;
+
+  /// No description provided for @schemPartsUrineSystemDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display (particle images)'**
+  String get schemPartsUrineSystemDisplayName;
+
+  /// No description provided for @schemPartsUrineSystemDisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Review of classified particle images and results.'**
+  String get schemPartsUrineSystemDisplayFn;
+
+  /// No description provided for @schemPartsUrineSystemReagentsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Reagent and wash solution'**
+  String get schemPartsUrineSystemReagentsName;
+
+  /// No description provided for @schemPartsUrineSystemReagentsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Solutions for washing the modules and for measurement.'**
+  String get schemPartsUrineSystemReagentsFn;
+
+  /// No description provided for @schemPartsUrineSystemWasteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Waste container'**
+  String get schemPartsUrineSystemWasteName;
+
+  /// No description provided for @schemPartsUrineSystemWasteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Collects used liquids.'**
+  String get schemPartsUrineSystemWasteFn;
+
+  /// No description provided for @schemPartsUrineSystemPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample racks travel along the transport line to two modules. The chemistry module reads the strip pads by reflectance. The sediment module takes digital microscope images of the urine; software classifies particles (red cells, white cells, casts, crystals, etc.) and the images can be reviewed on screen.'**
+  String get schemPartsUrineSystemPrinciple;
+
+  /// No description provided for @schemPartsUrineSystemResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Strip chemistry results plus counts or categories of sediment elements (red cells, white cells, casts, crystals, bacteria, etc.) with images for review.'**
+  String get schemPartsUrineSystemResult;
+
+  /// No description provided for @schemPartsMassSpecGcGasName.
+  ///
+  /// In en, this message translates to:
+  /// **'Carrier gas cylinder'**
+  String get schemPartsMassSpecGcGasName;
+
+  /// No description provided for @schemPartsMassSpecGcGasFn.
+  ///
+  /// In en, this message translates to:
+  /// **'An inert gas (usually helium) carries the sample through the column.'**
+  String get schemPartsMassSpecGcGasFn;
+
+  /// No description provided for @schemPartsMassSpecGcAutosamplerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Autosampler'**
+  String get schemPartsMassSpecGcAutosamplerName;
+
+  /// No description provided for @schemPartsMassSpecGcAutosamplerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Takes the sample from a vial with a syringe and injects it.'**
+  String get schemPartsMassSpecGcAutosamplerFn;
+
+  /// No description provided for @schemPartsMassSpecGcInjectorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Injector (inlet)'**
+  String get schemPartsMassSpecGcInjectorName;
+
+  /// No description provided for @schemPartsMassSpecGcInjectorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Heated inlet: the liquid sample vaporises into the gas stream.'**
+  String get schemPartsMassSpecGcInjectorFn;
+
+  /// No description provided for @schemPartsMassSpecGcColumnName.
+  ///
+  /// In en, this message translates to:
+  /// **'Oven and capillary column'**
+  String get schemPartsMassSpecGcColumnName;
+
+  /// No description provided for @schemPartsMassSpecGcColumnFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Heated by a temperature programme; compounds separate in the column.'**
+  String get schemPartsMassSpecGcColumnFn;
+
+  /// No description provided for @schemPartsMassSpecGcTransferName.
+  ///
+  /// In en, this message translates to:
+  /// **'Heated transfer line'**
+  String get schemPartsMassSpecGcTransferName;
+
+  /// No description provided for @schemPartsMassSpecGcTransferFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Carries separated compounds into the mass spectrometer without condensation.'**
+  String get schemPartsMassSpecGcTransferFn;
+
+  /// No description provided for @schemPartsMassSpecGcSourceName.
+  ///
+  /// In en, this message translates to:
+  /// **'Ion source'**
+  String get schemPartsMassSpecGcSourceName;
+
+  /// No description provided for @schemPartsMassSpecGcSourceFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Ionises molecules (in GC-MS usually by electron ionisation), producing fragments.'**
+  String get schemPartsMassSpecGcSourceFn;
+
+  /// No description provided for @schemPartsMassSpecGcAnalyserName.
+  ///
+  /// In en, this message translates to:
+  /// **'Mass analyser (quadrupole)'**
+  String get schemPartsMassSpecGcAnalyserName;
+
+  /// No description provided for @schemPartsMassSpecGcAnalyserFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Electric fields sort ions by m/z and pass them through in turn.'**
+  String get schemPartsMassSpecGcAnalyserFn;
+
+  /// No description provided for @schemPartsMassSpecGcDetectorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Detector (electron multiplier)'**
+  String get schemPartsMassSpecGcDetectorName;
+
+  /// No description provided for @schemPartsMassSpecGcDetectorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Turns arriving ions into an amplified electrical signal.'**
+  String get schemPartsMassSpecGcDetectorFn;
+
+  /// No description provided for @schemPartsMassSpecGcVacuumName.
+  ///
+  /// In en, this message translates to:
+  /// **'Vacuum pumps'**
+  String get schemPartsMassSpecGcVacuumName;
+
+  /// No description provided for @schemPartsMassSpecGcVacuumFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Turbomolecular and roughing pumps keep a high vacuum so ions do not collide with air molecules.'**
+  String get schemPartsMassSpecGcVacuumFn;
+
+  /// No description provided for @schemPartsMassSpecGcDataName.
+  ///
+  /// In en, this message translates to:
+  /// **'Data system'**
+  String get schemPartsMassSpecGcDataName;
+
+  /// No description provided for @schemPartsMassSpecGcDataFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Records chromatograms and spectra and compares them with a library.'**
+  String get schemPartsMassSpecGcDataFn;
+
+  /// No description provided for @schemPartsMassSpecGcPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The sample is vaporised in the injector and a carrier gas (usually helium) carries it into a capillary column in the oven. Compounds leave the column at different times according to volatility and interaction with the column (retention time). In the mass spectrometer they are ionised, the ions are sorted by mass-to-charge ratio (m/z) and recorded by the detector.'**
+  String get schemPartsMassSpecGcPrinciple;
+
+  /// No description provided for @schemPartsMassSpecGcResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A chromatogram (signal against retention time) and a mass spectrum for each peak (m/z against relative intensity); compounds are identified against a spectral library or standards.'**
+  String get schemPartsMassSpecGcResult;
+
+  /// No description provided for @schemPartsMassSpecLcSolventsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile phase bottles'**
+  String get schemPartsMassSpecLcSolventsName;
+
+  /// No description provided for @schemPartsMassSpecLcSolventsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Solvents (e.g. water and an organic solvent) feed the pump.'**
+  String get schemPartsMassSpecLcSolventsFn;
+
+  /// No description provided for @schemPartsMassSpecLcPumpName.
+  ///
+  /// In en, this message translates to:
+  /// **'High-pressure pump'**
+  String get schemPartsMassSpecLcPumpName;
+
+  /// No description provided for @schemPartsMassSpecLcPumpFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Drives the solvents through the column at a steady flow.'**
+  String get schemPartsMassSpecLcPumpFn;
+
+  /// No description provided for @schemPartsMassSpecLcAutosamplerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Autosampler'**
+  String get schemPartsMassSpecLcAutosamplerName;
+
+  /// No description provided for @schemPartsMassSpecLcAutosamplerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Takes the sample from a vial and injects it into the flow.'**
+  String get schemPartsMassSpecLcAutosamplerFn;
+
+  /// No description provided for @schemPartsMassSpecLcColumnName.
+  ///
+  /// In en, this message translates to:
+  /// **'Column (in a thermostat)'**
+  String get schemPartsMassSpecLcColumnName;
+
+  /// No description provided for @schemPartsMassSpecLcColumnFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Compounds separate by their interaction with the column phase.'**
+  String get schemPartsMassSpecLcColumnFn;
+
+  /// No description provided for @schemPartsMassSpecLcEsiName.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrospray ion source (ESI)'**
+  String get schemPartsMassSpecLcEsiName;
+
+  /// No description provided for @schemPartsMassSpecLcEsiFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sprays the column eluate into charged droplets, producing ions.'**
+  String get schemPartsMassSpecLcEsiFn;
+
+  /// No description provided for @schemPartsMassSpecLcAnalyserName.
+  ///
+  /// In en, this message translates to:
+  /// **'Mass analyser (quadrupole)'**
+  String get schemPartsMassSpecLcAnalyserName;
+
+  /// No description provided for @schemPartsMassSpecLcAnalyserFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Electric fields sort ions by m/z and pass them through in turn.'**
+  String get schemPartsMassSpecLcAnalyserFn;
+
+  /// No description provided for @schemPartsMassSpecLcDetectorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Detector (electron multiplier)'**
+  String get schemPartsMassSpecLcDetectorName;
+
+  /// No description provided for @schemPartsMassSpecLcDetectorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Turns arriving ions into an amplified electrical signal.'**
+  String get schemPartsMassSpecLcDetectorFn;
+
+  /// No description provided for @schemPartsMassSpecLcVacuumName.
+  ///
+  /// In en, this message translates to:
+  /// **'Vacuum pumps'**
+  String get schemPartsMassSpecLcVacuumName;
+
+  /// No description provided for @schemPartsMassSpecLcVacuumFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep a high vacuum inside the mass analyser.'**
+  String get schemPartsMassSpecLcVacuumFn;
+
+  /// No description provided for @schemPartsMassSpecLcDataName.
+  ///
+  /// In en, this message translates to:
+  /// **'Data system'**
+  String get schemPartsMassSpecLcDataName;
+
+  /// No description provided for @schemPartsMassSpecLcDataFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Records chromatograms and spectra and calculates amounts.'**
+  String get schemPartsMassSpecLcDataFn;
+
+  /// No description provided for @schemPartsMassSpecLcPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'A pump drives the liquid mobile phase through the column at high pressure and the autosampler injects the sample into the flow. Compounds separate in the column and leave it at different times. In the electrospray (ESI) source the liquid is sprayed into charged droplets and the compounds become gas-phase ions; the ions are sorted by m/z and recorded by the detector.'**
+  String get schemPartsMassSpecLcPrinciple;
+
+  /// No description provided for @schemPartsMassSpecLcResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A chromatogram and mass spectra; target compounds (drugs, metabolites, biomarkers) are identified and their concentration is calculated against calibrators.'**
+  String get schemPartsMassSpecLcResult;
+
+  /// No description provided for @schemPartsMaldiTofTargetName.
+  ///
+  /// In en, this message translates to:
+  /// **'Target plate'**
+  String get schemPartsMaldiTofTargetName;
+
+  /// No description provided for @schemPartsMaldiTofTargetFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Holds the sample spots with matrix; the plate is loaded into the vacuum chamber.'**
+  String get schemPartsMaldiTofTargetFn;
+
+  /// No description provided for @schemPartsMaldiTofLaserName.
+  ///
+  /// In en, this message translates to:
+  /// **'Laser'**
+  String get schemPartsMaldiTofLaserName;
+
+  /// No description provided for @schemPartsMaldiTofLaserFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A short pulse desorbs and ionises proteins together with the matrix.'**
+  String get schemPartsMaldiTofLaserFn;
+
+  /// No description provided for @schemPartsMaldiTofGridsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Accelerating electrodes'**
+  String get schemPartsMaldiTofGridsName;
+
+  /// No description provided for @schemPartsMaldiTofGridsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'High voltage accelerates the ions into the flight tube.'**
+  String get schemPartsMaldiTofGridsFn;
+
+  /// No description provided for @schemPartsMaldiTofTubeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Flight tube (TOF)'**
+  String get schemPartsMaldiTofTubeName;
+
+  /// No description provided for @schemPartsMaldiTofTubeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A vacuum tube where ions fly at different speeds according to m/z.'**
+  String get schemPartsMaldiTofTubeFn;
+
+  /// No description provided for @schemPartsMaldiTofDetectorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Detector'**
+  String get schemPartsMaldiTofDetectorName;
+
+  /// No description provided for @schemPartsMaldiTofDetectorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Records the arrival time of each ion.'**
+  String get schemPartsMaldiTofDetectorFn;
+
+  /// No description provided for @schemPartsMaldiTofVacuumName.
+  ///
+  /// In en, this message translates to:
+  /// **'Vacuum pump'**
+  String get schemPartsMaldiTofVacuumName;
+
+  /// No description provided for @schemPartsMaldiTofVacuumFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Creates the vacuum in the source and tube.'**
+  String get schemPartsMaldiTofVacuumFn;
+
+  /// No description provided for @schemPartsMaldiTofDatabaseName.
+  ///
+  /// In en, this message translates to:
+  /// **'Computer and spectral database'**
+  String get schemPartsMaldiTofDatabaseName;
+
+  /// No description provided for @schemPartsMaldiTofDatabaseFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Compares the spectrum with reference spectra and gives a probability score.'**
+  String get schemPartsMaldiTofDatabaseFn;
+
+  /// No description provided for @schemPartsMaldiTofPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'A colony is smeared on the target and overlaid with matrix, which crystallises. A laser pulse desorbs and ionises proteins (mainly ribosomal). An electric field accelerates the ions; in the flight tube lighter ions reach the detector before heavier ones, so flight time reflects m/z. The spectrum is compared with reference spectra in the database.'**
+  String get schemPartsMaldiTofPrinciple;
+
+  /// No description provided for @schemPartsMaldiTofResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A mass spectrum (protein fingerprint) and the organism name with a probability score (log score); the result is read together with other clinical and laboratory findings.'**
+  String get schemPartsMaldiTofResult;
+
+  /// No description provided for @schemPartsMicrobialIdAstCardName.
+  ///
+  /// In en, this message translates to:
+  /// **'Test card (64 wells)'**
+  String get schemPartsMicrobialIdAstCardName;
+
+  /// No description provided for @schemPartsMicrobialIdAstCardFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Wells hold antimicrobial dilutions (AST) or biochemical substrates (ID).'**
+  String get schemPartsMicrobialIdAstCardFn;
+
+  /// No description provided for @schemPartsMicrobialIdAstSuspensionName.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspension tube'**
+  String get schemPartsMicrobialIdAstSuspensionName;
+
+  /// No description provided for @schemPartsMicrobialIdAstSuspensionFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Bacterial suspension of standard density; the straw of the card dips into it.'**
+  String get schemPartsMicrobialIdAstSuspensionFn;
+
+  /// No description provided for @schemPartsMicrobialIdAstFillingName.
+  ///
+  /// In en, this message translates to:
+  /// **'Filling chamber'**
+  String get schemPartsMicrobialIdAstFillingName;
+
+  /// No description provided for @schemPartsMicrobialIdAstFillingFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Vacuum draws the suspension through the straw into the card wells.'**
+  String get schemPartsMicrobialIdAstFillingFn;
+
+  /// No description provided for @schemPartsMicrobialIdAstIncubatorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Incubator'**
+  String get schemPartsMicrobialIdAstIncubatorName;
+
+  /// No description provided for @schemPartsMicrobialIdAstIncubatorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards are held at a constant temperature between readings.'**
+  String get schemPartsMicrobialIdAstIncubatorFn;
+
+  /// No description provided for @schemPartsMicrobialIdAstScannerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Optical scanner'**
+  String get schemPartsMicrobialIdAstScannerName;
+
+  /// No description provided for @schemPartsMicrobialIdAstScannerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures the light through every well every 15 minutes.'**
+  String get schemPartsMicrobialIdAstScannerFn;
+
+  /// No description provided for @schemPartsMicrobialIdAstSoftwareName.
+  ///
+  /// In en, this message translates to:
+  /// **'Computer and software'**
+  String get schemPartsMicrobialIdAstSoftwareName;
+
+  /// No description provided for @schemPartsMicrobialIdAstSoftwareFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculates the MIC and interpretive category from growth curves and issues a report.'**
+  String get schemPartsMicrobialIdAstSoftwareFn;
+
+  /// No description provided for @schemPartsMicrobialIdAstPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'A suspension of standard density is made from a pure culture and drawn into the card through its straw under vacuum. AST card wells contain antimicrobials at different dilutions (a miniaturised automated MIC method). An optical scanner measures light through the wells every 15 minutes: growth attenuates the light, and software calculates the MIC from the growth kinetics.'**
+  String get schemPartsMicrobialIdAstPrinciple;
+
+  /// No description provided for @schemPartsMicrobialIdAstResult.
+  ///
+  /// In en, this message translates to:
+  /// **'An MIC value and interpretive category for each antimicrobial (e.g. susceptible or resistant); with an identification card, the organism species.'**
+  String get schemPartsMicrobialIdAstResult;
+
+  /// No description provided for @schemPartsBloodCultureVialsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Blood culture vials'**
+  String get schemPartsBloodCultureVialsName;
+
+  /// No description provided for @schemPartsBloodCultureVialsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Aerobic and anaerobic vials with culture medium; the patient’s blood is added.'**
+  String get schemPartsBloodCultureVialsFn;
+
+  /// No description provided for @schemPartsBloodCultureSensorName.
+  ///
+  /// In en, this message translates to:
+  /// **'CO₂ sensor (vial bottom)'**
+  String get schemPartsBloodCultureSensorName;
+
+  /// No description provided for @schemPartsBloodCultureSensorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A dye reacts with CO₂ and changes its fluorescence.'**
+  String get schemPartsBloodCultureSensorFn;
+
+  /// No description provided for @schemPartsBloodCultureIncubatorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Incubator cabinet'**
+  String get schemPartsBloodCultureIncubatorName;
+
+  /// No description provided for @schemPartsBloodCultureIncubatorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Vials sit in cells at a constant temperature.'**
+  String get schemPartsBloodCultureIncubatorFn;
+
+  /// No description provided for @schemPartsBloodCultureReaderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading system'**
+  String get schemPartsBloodCultureReaderName;
+
+  /// No description provided for @schemPartsBloodCultureReaderFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A light source and detector under each cell measure the sensor every ten minutes.'**
+  String get schemPartsBloodCultureReaderFn;
+
+  /// No description provided for @schemPartsBloodCulturePositiveName.
+  ///
+  /// In en, this message translates to:
+  /// **'Positive vial indicator'**
+  String get schemPartsBloodCulturePositiveName;
+
+  /// No description provided for @schemPartsBloodCulturePositiveFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows which vial has detected growth.'**
+  String get schemPartsBloodCulturePositiveFn;
+
+  /// No description provided for @schemPartsBloodCultureSoftwareName.
+  ///
+  /// In en, this message translates to:
+  /// **'Computer and software'**
+  String get schemPartsBloodCultureSoftwareName;
+
+  /// No description provided for @schemPartsBloodCultureSoftwareFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows the growth curve and status of each vial.'**
+  String get schemPartsBloodCultureSoftwareFn;
+
+  /// No description provided for @schemPartsBloodCulturePrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Blood-filled vials are placed in the incubator. Growing microorganisms release CO₂; the dye in the sensor at the vial bottom reacts with CO₂ and its fluorescence rises. The instrument reads the sensor every ten minutes; an algorithm flags the vial positive from the rate of CO₂ production and its absolute increase.'**
+  String get schemPartsBloodCulturePrinciple;
+
+  /// No description provided for @schemPartsBloodCultureResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Status of each vial: positive (growth detected) or negative at the end of the protocol, time to positivity and the growth curve. A positive vial goes on to further microbiological work-up.'**
+  String get schemPartsBloodCultureResult;
+
+  /// No description provided for @schemPartsMycobacterialCultureTubeName.
+  ///
+  /// In en, this message translates to:
+  /// **'MGIT tube'**
+  String get schemPartsMycobacterialCultureTubeName;
+
+  /// No description provided for @schemPartsMycobacterialCultureTubeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'With liquid 7H9 medium and growth supplement (OADC); the specimen is inoculated here.'**
+  String get schemPartsMycobacterialCultureTubeFn;
+
+  /// No description provided for @schemPartsMycobacterialCultureSensorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Fluorescent oxygen sensor'**
+  String get schemPartsMycobacterialCultureSensorName;
+
+  /// No description provided for @schemPartsMycobacterialCultureSensorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Fluoresces brightly under UV light as oxygen falls.'**
+  String get schemPartsMycobacterialCultureSensorFn;
+
+  /// No description provided for @schemPartsMycobacterialCultureDrawerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Tube drawer (incubation and reading)'**
+  String get schemPartsMycobacterialCultureDrawerName;
+
+  /// No description provided for @schemPartsMycobacterialCultureDrawerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Each station incubates a tube and its fluorescence is measured regularly.'**
+  String get schemPartsMycobacterialCultureDrawerFn;
+
+  /// No description provided for @schemPartsMycobacterialCultureLightsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Status lights'**
+  String get schemPartsMycobacterialCultureLightsName;
+
+  /// No description provided for @schemPartsMycobacterialCultureLightsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Indicate positive or completed tubes.'**
+  String get schemPartsMycobacterialCultureLightsFn;
+
+  /// No description provided for @schemPartsMycobacterialCulturePanelName.
+  ///
+  /// In en, this message translates to:
+  /// **'Instrument display'**
+  String get schemPartsMycobacterialCulturePanelName;
+
+  /// No description provided for @schemPartsMycobacterialCulturePanelFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows drawer status and alerts.'**
+  String get schemPartsMycobacterialCulturePanelFn;
+
+  /// No description provided for @schemPartsMycobacterialCultureSoftwareName.
+  ///
+  /// In en, this message translates to:
+  /// **'Computer (GU curves)'**
+  String get schemPartsMycobacterialCultureSoftwareName;
+
+  /// No description provided for @schemPartsMycobacterialCultureSoftwareFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Records growth and DST results; curves of control and drug tubes are compared.'**
+  String get schemPartsMycobacterialCultureSoftwareFn;
+
+  /// No description provided for @schemPartsMycobacterialCulturePrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The MGIT tube holds modified Middlebrook 7H9 liquid medium and an oxygen-quenched fluorescent sensor at the bottom. As mycobacteria grow, dissolved oxygen is used up and the sensor fluoresces more brightly under UV light. The instrument reads each tube automatically and records the intensity as growth units (GU). In drug-susceptibility testing (DST) the GU of a drug tube are compared with those of a control tube.'**
+  String get schemPartsMycobacterialCulturePrinciple;
+
+  /// No description provided for @schemPartsMycobacterialCultureResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A positive or negative culture and a GU curve; in DST the instrument interprets first-line drugs as susceptible or resistant, while for second-line drugs the user interprets the GU values.'**
+  String get schemPartsMycobacterialCultureResult;
+
+  /// No description provided for @schemPartsFlowCytometerSheathName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheath fluid container'**
+  String get schemPartsFlowCytometerSheathName;
+
+  /// No description provided for @schemPartsFlowCytometerSheathFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Surrounds the sample stream and squeezes it into a thin central core.'**
+  String get schemPartsFlowCytometerSheathFn;
+
+  /// No description provided for @schemPartsFlowCytometerSampleName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample tube and probe'**
+  String get schemPartsFlowCytometerSampleName;
+
+  /// No description provided for @schemPartsFlowCytometerSampleFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The stained cell suspension is drawn up from here.'**
+  String get schemPartsFlowCytometerSampleFn;
+
+  /// No description provided for @schemPartsFlowCytometerFlowcellName.
+  ///
+  /// In en, this message translates to:
+  /// **'Flow cell (hydrodynamic focusing)'**
+  String get schemPartsFlowCytometerFlowcellName;
+
+  /// No description provided for @schemPartsFlowCytometerFlowcellFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Cells pass one by one through the point where the laser crosses.'**
+  String get schemPartsFlowCytometerFlowcellFn;
+
+  /// No description provided for @schemPartsFlowCytometerLaserName.
+  ///
+  /// In en, this message translates to:
+  /// **'Laser'**
+  String get schemPartsFlowCytometerLaserName;
+
+  /// No description provided for @schemPartsFlowCytometerLaserFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Illuminates the cells and excites the fluorochromes.'**
+  String get schemPartsFlowCytometerLaserFn;
+
+  /// No description provided for @schemPartsFlowCytometerFscName.
+  ///
+  /// In en, this message translates to:
+  /// **'Forward-scatter (FSC) detector'**
+  String get schemPartsFlowCytometerFscName;
+
+  /// No description provided for @schemPartsFlowCytometerFscFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures light scattered along the beam, which relates to cell size.'**
+  String get schemPartsFlowCytometerFscFn;
+
+  /// No description provided for @schemPartsFlowCytometerSscName.
+  ///
+  /// In en, this message translates to:
+  /// **'Side-scatter and fluorescence detectors'**
+  String get schemPartsFlowCytometerSscName;
+
+  /// No description provided for @schemPartsFlowCytometerSscFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Light at 90° is split by colour with dichroic mirrors and filters onto separate detectors.'**
+  String get schemPartsFlowCytometerSscFn;
+
+  /// No description provided for @schemPartsFlowCytometerWasteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Waste container'**
+  String get schemPartsFlowCytometerWasteName;
+
+  /// No description provided for @schemPartsFlowCytometerWasteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Collects the measured sample and sheath fluid.'**
+  String get schemPartsFlowCytometerWasteFn;
+
+  /// No description provided for @schemPartsFlowCytometerComputerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Computer (dot plots)'**
+  String get schemPartsFlowCytometerComputerName;
+
+  /// No description provided for @schemPartsFlowCytometerComputerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Builds dot plots; populations are separated by gating.'**
+  String get schemPartsFlowCytometerComputerFn;
+
+  /// No description provided for @schemPartsFlowCytometerPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Cells are usually stained with fluorochrome-labelled antibodies. Sheath fluid hydrodynamically focuses the sample stream so the cells pass in single file through the laser beam. Forward scatter (FSC) reflects cell size, side scatter (SSC) internal complexity and fluorescence the markers; electronics digitise the signals.'**
+  String get schemPartsFlowCytometerPrinciple;
+
+  /// No description provided for @schemPartsFlowCytometerResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Dot plots and histograms; the proportion and number of cell populations (e.g. the absolute CD4+ T-cell count using calibrator beads).'**
+  String get schemPartsFlowCytometerResult;
+
+  /// No description provided for @schemPartsRealTimePcrTubesName.
+  ///
+  /// In en, this message translates to:
+  /// **'PCR tubes (8-tube strip)'**
+  String get schemPartsRealTimePcrTubesName;
+
+  /// No description provided for @schemPartsRealTimePcrTubesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Reaction mix and sample; read through the clear caps.'**
+  String get schemPartsRealTimePcrTubesFn;
+
+  /// No description provided for @schemPartsRealTimePcrLidName.
+  ///
+  /// In en, this message translates to:
+  /// **'Heated lid'**
+  String get schemPartsRealTimePcrLidName;
+
+  /// No description provided for @schemPartsRealTimePcrLidFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevents condensation on the tube caps.'**
+  String get schemPartsRealTimePcrLidFn;
+
+  /// No description provided for @schemPartsRealTimePcrBlockName.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermal block (Peltier)'**
+  String get schemPartsRealTimePcrBlockName;
+
+  /// No description provided for @schemPartsRealTimePcrBlockFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Rapidly switches between denaturation, annealing and extension temperatures.'**
+  String get schemPartsRealTimePcrBlockFn;
+
+  /// No description provided for @schemPartsRealTimePcrSourceName.
+  ///
+  /// In en, this message translates to:
+  /// **'Excitation light source'**
+  String get schemPartsRealTimePcrSourceName;
+
+  /// No description provided for @schemPartsRealTimePcrSourceFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Provides light that excites the dye or probe.'**
+  String get schemPartsRealTimePcrSourceFn;
+
+  /// No description provided for @schemPartsRealTimePcrFiltersName.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter wheel'**
+  String get schemPartsRealTimePcrFiltersName;
+
+  /// No description provided for @schemPartsRealTimePcrFiltersFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Selects excitation and emission filters for each dye (channel).'**
+  String get schemPartsRealTimePcrFiltersFn;
+
+  /// No description provided for @schemPartsRealTimePcrDetectorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Detector'**
+  String get schemPartsRealTimePcrDetectorName;
+
+  /// No description provided for @schemPartsRealTimePcrDetectorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures fluorescence in every cycle.'**
+  String get schemPartsRealTimePcrDetectorFn;
+
+  /// No description provided for @schemPartsRealTimePcrSoftwareName.
+  ///
+  /// In en, this message translates to:
+  /// **'Software (amplification curves)'**
+  String get schemPartsRealTimePcrSoftwareName;
+
+  /// No description provided for @schemPartsRealTimePcrSoftwareFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Plots the curves, sets the threshold and calculates Cq values.'**
+  String get schemPartsRealTimePcrSoftwareFn;
+
+  /// No description provided for @schemPartsRealTimePcrPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The thermal block changes temperature every cycle: heating separates the DNA strands, primers anneal on cooling and a heat-stable polymerase builds new strands, so the target roughly doubles each cycle (RNA is first converted to cDNA by reverse transcriptase). The optical module reads the fluorescence of an intercalating dye or probe every cycle; the signal is proportional to amplicon accumulation.'**
+  String get schemPartsRealTimePcrPrinciple;
+
+  /// No description provided for @schemPartsRealTimePcrResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Amplification curves and, for each sample, the Cq (Ct): the cycle at which fluorescence crosses the threshold; a lower Cq means more starting target. In quantitative tests the concentration is calculated against standards (e.g. HIV-1 viral load in copies/mL).'**
+  String get schemPartsRealTimePcrResult;
+
+  /// No description provided for @schemPartsCartridgeMolecularCartridgeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Single-use cartridge'**
+  String get schemPartsCartridgeMolecularCartridgeName;
+
+  /// No description provided for @schemPartsCartridgeMolecularCartridgeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A closed cartridge with sample and reagent chambers; all steps run inside it.'**
+  String get schemPartsCartridgeMolecularCartridgeFn;
+
+  /// No description provided for @schemPartsCartridgeMolecularTubeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Reaction tube'**
+  String get schemPartsCartridgeMolecularTubeName;
+
+  /// No description provided for @schemPartsCartridgeMolecularTubeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Amplification and fluorescence detection take place in this part of the cartridge.'**
+  String get schemPartsCartridgeMolecularTubeFn;
+
+  /// No description provided for @schemPartsCartridgeMolecularSpecimenName.
+  ///
+  /// In en, this message translates to:
+  /// **'Specimen container'**
+  String get schemPartsCartridgeMolecularSpecimenName;
+
+  /// No description provided for @schemPartsCartridgeMolecularSpecimenFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Holds the specimen, such as sputum, which is mixed with reagent.'**
+  String get schemPartsCartridgeMolecularSpecimenFn;
+
+  /// No description provided for @schemPartsCartridgeMolecularModuleName.
+  ///
+  /// In en, this message translates to:
+  /// **'Instrument module'**
+  String get schemPartsCartridgeMolecularModuleName;
+
+  /// No description provided for @schemPartsCartridgeMolecularModuleFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The cartridge goes in here and is processed automatically; modules run independently.'**
+  String get schemPartsCartridgeMolecularModuleFn;
+
+  /// No description provided for @schemPartsCartridgeMolecularSoftwareName.
+  ///
+  /// In en, this message translates to:
+  /// **'Computer and software'**
+  String get schemPartsCartridgeMolecularSoftwareName;
+
+  /// No description provided for @schemPartsCartridgeMolecularSoftwareFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Controls the run and reports the interpreted result.'**
+  String get schemPartsCartridgeMolecularSoftwareFn;
+
+  /// No description provided for @schemPartsCartridgeMolecularPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The sample is mixed with reagent and added to the cartridge, which is placed in a module. The next steps run automatically inside the closed cartridge: sample processing, nucleic acid extraction, amplification (real-time PCR) and detection. The operator never opens the cartridge, which lowers the risk of amplicon contamination.'**
+  String get schemPartsCartridgeMolecularPrinciple;
+
+  /// No description provided for @schemPartsCartridgeMolecularResult.
+  ///
+  /// In en, this message translates to:
+  /// **'For Xpert MTB/RIF: M. tuberculosis complex detected or not detected, and rifampicin resistance detected or not detected, in under 2 hours.'**
+  String get schemPartsCartridgeMolecularResult;
+
+  /// No description provided for @schemPartsCoagAnalyzerSamplesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Citrate tube rack'**
+  String get schemPartsCoagAnalyzerSamplesName;
+
+  /// No description provided for @schemPartsCoagAnalyzerSamplesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sodium citrate tubes (light-blue caps); plasma is drawn from here.'**
+  String get schemPartsCoagAnalyzerSamplesFn;
+
+  /// No description provided for @schemPartsCoagAnalyzerReagentsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cooled reagent block'**
+  String get schemPartsCoagAnalyzerReagentsName;
+
+  /// No description provided for @schemPartsCoagAnalyzerReagentsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Thromboplastin and other reagents are kept cool.'**
+  String get schemPartsCoagAnalyzerReagentsFn;
+
+  /// No description provided for @schemPartsCoagAnalyzerArmName.
+  ///
+  /// In en, this message translates to:
+  /// **'Pipetting arm'**
+  String get schemPartsCoagAnalyzerArmName;
+
+  /// No description provided for @schemPartsCoagAnalyzerArmFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Dispenses plasma and reagent into the cuvette in exact volumes.'**
+  String get schemPartsCoagAnalyzerArmFn;
+
+  /// No description provided for @schemPartsCoagAnalyzerCuvettesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Measuring cuvettes (37 °C)'**
+  String get schemPartsCoagAnalyzerCuvettesName;
+
+  /// No description provided for @schemPartsCoagAnalyzerCuvettesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Plasma is warmed; after reagent is added clot formation is followed.'**
+  String get schemPartsCoagAnalyzerCuvettesFn;
+
+  /// No description provided for @schemPartsCoagAnalyzerLightName.
+  ///
+  /// In en, this message translates to:
+  /// **'Light source'**
+  String get schemPartsCoagAnalyzerLightName;
+
+  /// No description provided for @schemPartsCoagAnalyzerLightFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Provides the light that passes through the cuvette.'**
+  String get schemPartsCoagAnalyzerLightFn;
+
+  /// No description provided for @schemPartsCoagAnalyzerDetectorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Photodetector'**
+  String get schemPartsCoagAnalyzerDetectorName;
+
+  /// No description provided for @schemPartsCoagAnalyzerDetectorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Records the change in transmitted light as the clot forms.'**
+  String get schemPartsCoagAnalyzerDetectorFn;
+
+  /// No description provided for @schemPartsCoagAnalyzerDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display (clotting curve)'**
+  String get schemPartsCoagAnalyzerDisplayName;
+
+  /// No description provided for @schemPartsCoagAnalyzerDisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Clotting curve, time and calculated INR.'**
+  String get schemPartsCoagAnalyzerDisplayFn;
+
+  /// No description provided for @schemPartsCoagAnalyzerPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The probe dispenses citrated plasma into a cuvette and warms it to 37 °C, then reagent is added (for PT, thromboplastin: tissue factor, calcium and phospholipids). As a fibrin clot forms the mixture becomes turbid: optical detection records the change in transmitted light, mechanical detection the stopping of movement. The time to this point is the clotting time.'**
+  String get schemPartsCoagAnalyzerPrinciple;
+
+  /// No description provided for @schemPartsCoagAnalyzerResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Clotting time in seconds and a clotting curve; for PT the INR is calculated from the patient PT, the mean normal PT and the reagent ISI.'**
+  String get schemPartsCoagAnalyzerResult;
+
+  /// No description provided for @schemPartsElisaReaderPlateName.
+  ///
+  /// In en, this message translates to:
+  /// **'96-well microplate'**
+  String get schemPartsElisaReaderPlateName;
+
+  /// No description provided for @schemPartsElisaReaderPlateFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The reaction and colour develop in the wells; the carrier moves the plate into the reader.'**
+  String get schemPartsElisaReaderPlateFn;
+
+  /// No description provided for @schemPartsElisaReaderLampName.
+  ///
+  /// In en, this message translates to:
+  /// **'Light source (lamp)'**
+  String get schemPartsElisaReaderLampName;
+
+  /// No description provided for @schemPartsElisaReaderLampFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Provides the light that passes through the well.'**
+  String get schemPartsElisaReaderLampFn;
+
+  /// No description provided for @schemPartsElisaReaderWellName.
+  ///
+  /// In en, this message translates to:
+  /// **'Well being read'**
+  String get schemPartsElisaReaderWellName;
+
+  /// No description provided for @schemPartsElisaReaderWellFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The coloured solution absorbs part of the light.'**
+  String get schemPartsElisaReaderWellFn;
+
+  /// No description provided for @schemPartsElisaReaderFilterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Optical filter'**
+  String get schemPartsElisaReaderFilterName;
+
+  /// No description provided for @schemPartsElisaReaderFilterFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Passes only the required wavelength.'**
+  String get schemPartsElisaReaderFilterFn;
+
+  /// No description provided for @schemPartsElisaReaderDetectorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Photodetector'**
+  String get schemPartsElisaReaderDetectorName;
+
+  /// No description provided for @schemPartsElisaReaderDetectorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures the transmitted light, from which absorbance is calculated.'**
+  String get schemPartsElisaReaderDetectorFn;
+
+  /// No description provided for @schemPartsElisaReaderWasherName.
+  ///
+  /// In en, this message translates to:
+  /// **'Washer needle manifold'**
+  String get schemPartsElisaReaderWasherName;
+
+  /// No description provided for @schemPartsElisaReaderWasherFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Dispenses wash buffer into the wells and aspirates it.'**
+  String get schemPartsElisaReaderWasherFn;
+
+  /// No description provided for @schemPartsElisaReaderBufferName.
+  ///
+  /// In en, this message translates to:
+  /// **'Wash buffer container'**
+  String get schemPartsElisaReaderBufferName;
+
+  /// No description provided for @schemPartsElisaReaderBufferFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplies buffer to the washer.'**
+  String get schemPartsElisaReaderBufferFn;
+
+  /// No description provided for @schemPartsElisaReaderWasteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Waste container'**
+  String get schemPartsElisaReaderWasteName;
+
+  /// No description provided for @schemPartsElisaReaderWasteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Collects the aspirated liquid.'**
+  String get schemPartsElisaReaderWasteFn;
+
+  /// No description provided for @schemPartsElisaReaderPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The antigen–antibody reaction proceeds in steps in the plate wells; between steps the washer removes unbound material. Finally substrate is added and the enzyme produces colour. The reader passes light of a selected wavelength through each well and measures absorbance (optical density); unknowns are read from a standard curve.'**
+  String get schemPartsElisaReaderPrinciple;
+
+  /// No description provided for @schemPartsElisaReaderResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Optical density (OD) values for each well; a concentration from the standard curve, or a qualitative positive/negative result against a cut-off.'**
+  String get schemPartsElisaReaderResult;
+
+  /// No description provided for @schemPartsBscClass2OpeningName.
+  ///
+  /// In en, this message translates to:
+  /// **'Front opening (inflow)'**
+  String get schemPartsBscClass2OpeningName;
+
+  /// No description provided for @schemPartsBscClass2OpeningFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Room air is drawn in here, protecting the operator.'**
+  String get schemPartsBscClass2OpeningFn;
+
+  /// No description provided for @schemPartsBscClass2GrilleName.
+  ///
+  /// In en, this message translates to:
+  /// **'Front grille'**
+  String get schemPartsBscClass2GrilleName;
+
+  /// No description provided for @schemPartsBscClass2GrilleFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Inflow air and air from the front of the work zone go in here; keep it clear.'**
+  String get schemPartsBscClass2GrilleFn;
+
+  /// No description provided for @schemPartsBscClass2WorkzoneName.
+  ///
+  /// In en, this message translates to:
+  /// **'Work zone and surface'**
+  String get schemPartsBscClass2WorkzoneName;
+
+  /// No description provided for @schemPartsBscClass2WorkzoneFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Samples are handled here under a downward flow of clean air.'**
+  String get schemPartsBscClass2WorkzoneFn;
+
+  /// No description provided for @schemPartsBscClass2DownflowName.
+  ///
+  /// In en, this message translates to:
+  /// **'Downflow HEPA filter'**
+  String get schemPartsBscClass2DownflowName;
+
+  /// No description provided for @schemPartsBscClass2DownflowFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleans particles from the air entering the work zone.'**
+  String get schemPartsBscClass2DownflowFn;
+
+  /// No description provided for @schemPartsBscClass2FanName.
+  ///
+  /// In en, this message translates to:
+  /// **'Fan (blower)'**
+  String get schemPartsBscClass2FanName;
+
+  /// No description provided for @schemPartsBscClass2FanFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Moves the air through the plenums.'**
+  String get schemPartsBscClass2FanFn;
+
+  /// No description provided for @schemPartsBscClass2ExhaustName.
+  ///
+  /// In en, this message translates to:
+  /// **'Exhaust HEPA filter'**
+  String get schemPartsBscClass2ExhaustName;
+
+  /// No description provided for @schemPartsBscClass2ExhaustFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleans the exhausted air, protecting the environment.'**
+  String get schemPartsBscClass2ExhaustFn;
+
+  /// No description provided for @schemPartsBscClass2PlenumName.
+  ///
+  /// In en, this message translates to:
+  /// **'Rear plenum'**
+  String get schemPartsBscClass2PlenumName;
+
+  /// No description provided for @schemPartsBscClass2PlenumFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Returns air from the grille to the fan.'**
+  String get schemPartsBscClass2PlenumFn;
+
+  /// No description provided for @schemPartsBscClass2SashName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sash (front window)'**
+  String get schemPartsBscClass2SashName;
+
+  /// No description provided for @schemPartsBscClass2SashFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shields the operator’s face and sets the height of the front opening.'**
+  String get schemPartsBscClass2SashFn;
+
+  /// No description provided for @schemPartsBscClass2Principle.
+  ///
+  /// In en, this message translates to:
+  /// **'A fan circulates the air. Room air is drawn through the front opening into the front grille, protecting the operator. HEPA-filtered air flows down over the work surface, protecting the work material. Surplus air leaves through the exhaust HEPA filter, protecting the environment.'**
+  String get schemPartsBscClass2Principle;
+
+  /// No description provided for @schemPartsBscClass2Result.
+  ///
+  /// In en, this message translates to:
+  /// **'Not a measuring instrument: the outcome is a safe working environment (protection of the operator, the material and the environment). Performance is confirmed by regular airflow and filter testing and certification.'**
+  String get schemPartsBscClass2Result;
+
+  /// No description provided for @schemPartsAutoclaveChamberName.
+  ///
+  /// In en, this message translates to:
+  /// **'Pressure chamber'**
+  String get schemPartsAutoclaveChamberName;
+
+  /// No description provided for @schemPartsAutoclaveChamberFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The load is held in saturated steam under pressure here.'**
+  String get schemPartsAutoclaveChamberFn;
+
+  /// No description provided for @schemPartsAutoclaveDoorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Door with seal and lock'**
+  String get schemPartsAutoclaveDoorName;
+
+  /// No description provided for @schemPartsAutoclaveDoorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Seals the chamber and cannot be opened while under pressure.'**
+  String get schemPartsAutoclaveDoorFn;
+
+  /// No description provided for @schemPartsAutoclaveTrayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading tray'**
+  String get schemPartsAutoclaveTrayName;
+
+  /// No description provided for @schemPartsAutoclaveTrayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Items are arranged so that steam can circulate freely.'**
+  String get schemPartsAutoclaveTrayFn;
+
+  /// No description provided for @schemPartsAutoclavePressureName.
+  ///
+  /// In en, this message translates to:
+  /// **'Pressure gauge'**
+  String get schemPartsAutoclavePressureName;
+
+  /// No description provided for @schemPartsAutoclavePressureFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows the chamber pressure.'**
+  String get schemPartsAutoclavePressureFn;
+
+  /// No description provided for @schemPartsAutoclaveThermometerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermometer'**
+  String get schemPartsAutoclaveThermometerName;
+
+  /// No description provided for @schemPartsAutoclaveThermometerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows the chamber temperature.'**
+  String get schemPartsAutoclaveThermometerFn;
+
+  /// No description provided for @schemPartsAutoclaveValveName.
+  ///
+  /// In en, this message translates to:
+  /// **'Safety valve'**
+  String get schemPartsAutoclaveValveName;
+
+  /// No description provided for @schemPartsAutoclaveValveFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Releases steam if the pressure gets too high.'**
+  String get schemPartsAutoclaveValveFn;
+
+  /// No description provided for @schemPartsAutoclaveWaterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Water reservoir'**
+  String get schemPartsAutoclaveWaterName;
+
+  /// No description provided for @schemPartsAutoclaveWaterFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Holds the water used to make steam.'**
+  String get schemPartsAutoclaveWaterFn;
+
+  /// No description provided for @schemPartsAutoclavePrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Air is removed from the chamber and replaced by saturated steam. Pressure raises the boiling point of water, so the steam reaches high temperatures such as 121 °C or 132 °C. Steam contacts the items and kills microorganisms with heat; the process is controlled by steam quality, pressure, temperature and time. Trapped air prevents steam from reaching the load.'**
+  String get schemPartsAutoclavePrinciple;
+
+  /// No description provided for @schemPartsAutoclaveResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A sterilised load and a record of the cycle parameters (time, temperature, pressure); effectiveness is checked with chemical and biological indicators.'**
+  String get schemPartsAutoclaveResult;
+
+  /// No description provided for @schemPartsBloodGasIseSyringeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample in a heparinised syringe'**
+  String get schemPartsBloodGasIseSyringeName;
+
+  /// No description provided for @schemPartsBloodGasIseSyringeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Arterial or other whole blood is brought without air bubbles.'**
+  String get schemPartsBloodGasIseSyringeFn;
+
+  /// No description provided for @schemPartsBloodGasIseProbeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample inlet probe'**
+  String get schemPartsBloodGasIseProbeName;
+
+  /// No description provided for @schemPartsBloodGasIseProbeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Draws blood from the syringe into the measuring channel.'**
+  String get schemPartsBloodGasIseProbeFn;
+
+  /// No description provided for @schemPartsBloodGasIseSensorsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sensors (electrodes)'**
+  String get schemPartsBloodGasIseSensorsName;
+
+  /// No description provided for @schemPartsBloodGasIseSensorsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Separate electrodes for pH, pCO₂, pO₂ and electrolytes.'**
+  String get schemPartsBloodGasIseSensorsFn;
+
+  /// No description provided for @schemPartsBloodGasIseChannelName.
+  ///
+  /// In en, this message translates to:
+  /// **'Measuring channel'**
+  String get schemPartsBloodGasIseChannelName;
+
+  /// No description provided for @schemPartsBloodGasIseChannelFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The sample flows over all sensors; the channel is temperature-controlled.'**
+  String get schemPartsBloodGasIseChannelFn;
+
+  /// No description provided for @schemPartsBloodGasIsePackName.
+  ///
+  /// In en, this message translates to:
+  /// **'Reagent pack'**
+  String get schemPartsBloodGasIsePackName;
+
+  /// No description provided for @schemPartsBloodGasIsePackFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibration and wash solutions.'**
+  String get schemPartsBloodGasIsePackFn;
+
+  /// No description provided for @schemPartsBloodGasIseDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display'**
+  String get schemPartsBloodGasIseDisplayName;
+
+  /// No description provided for @schemPartsBloodGasIseDisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows measured and calculated values.'**
+  String get schemPartsBloodGasIseDisplayFn;
+
+  /// No description provided for @schemPartsBloodGasIsePrinterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Printer'**
+  String get schemPartsBloodGasIsePrinterName;
+
+  /// No description provided for @schemPartsBloodGasIsePrinterFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Prints the results.'**
+  String get schemPartsBloodGasIsePrinterFn;
+
+  /// No description provided for @schemPartsBloodGasIsePrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole blood from a heparinised syringe is drawn through the probe into the measuring channel and over the sensors. pH and pCO₂ are measured by potentiometry and pO₂ by amperometry; Na, K, Cl and ionised Ca by ion-selective electrodes. sO₂ is measured by co-oximetry or calculated; total CO₂, bicarbonate and base excess (BE) are calculated from the measured values.'**
+  String get schemPartsBloodGasIsePrinciple;
+
+  /// No description provided for @schemPartsBloodGasIseResult.
+  ///
+  /// In en, this message translates to:
+  /// **'pH, pCO₂, pO₂, sO₂, electrolytes and metabolites (glucose, lactate, etc.) plus calculated bicarbonate and BE: measures of acid–base status and oxygenation.'**
+  String get schemPartsBloodGasIseResult;
+
+  /// No description provided for @schemPartsHba1cAnalyzerRackName.
+  ///
+  /// In en, this message translates to:
+  /// **'EDTA tube rack'**
+  String get schemPartsHba1cAnalyzerRackName;
+
+  /// No description provided for @schemPartsHba1cAnalyzerRackFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole-blood tubes with purple caps.'**
+  String get schemPartsHba1cAnalyzerRackFn;
+
+  /// No description provided for @schemPartsHba1cAnalyzerArmName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sampling arm'**
+  String get schemPartsHba1cAnalyzerArmName;
+
+  /// No description provided for @schemPartsHba1cAnalyzerArmFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Takes blood from the tube, haemolyses it and injects it into the system.'**
+  String get schemPartsHba1cAnalyzerArmFn;
+
+  /// No description provided for @schemPartsHba1cAnalyzerEluentsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Buffer (eluent) bottles'**
+  String get schemPartsHba1cAnalyzerEluentsName;
+
+  /// No description provided for @schemPartsHba1cAnalyzerEluentsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Buffers of different strength wash the fractions off the column in turn.'**
+  String get schemPartsHba1cAnalyzerEluentsFn;
+
+  /// No description provided for @schemPartsHba1cAnalyzerColumnName.
+  ///
+  /// In en, this message translates to:
+  /// **'Ion-exchange column'**
+  String get schemPartsHba1cAnalyzerColumnName;
+
+  /// No description provided for @schemPartsHba1cAnalyzerColumnFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Separates haemoglobin fractions by charge.'**
+  String get schemPartsHba1cAnalyzerColumnFn;
+
+  /// No description provided for @schemPartsHba1cAnalyzerDetectorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Photometric detector'**
+  String get schemPartsHba1cAnalyzerDetectorName;
+
+  /// No description provided for @schemPartsHba1cAnalyzerDetectorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures absorbance of the haemoglobin leaving the column.'**
+  String get schemPartsHba1cAnalyzerDetectorFn;
+
+  /// No description provided for @schemPartsHba1cAnalyzerDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display (chromatogram)'**
+  String get schemPartsHba1cAnalyzerDisplayName;
+
+  /// No description provided for @schemPartsHba1cAnalyzerDisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows the chromatogram and the HbA1c result.'**
+  String get schemPartsHba1cAnalyzerDisplayFn;
+
+  /// No description provided for @schemPartsHba1cAnalyzerPrinterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Printer'**
+  String get schemPartsHba1cAnalyzerPrinterName;
+
+  /// No description provided for @schemPartsHba1cAnalyzerPrinterFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Prints the results.'**
+  String get schemPartsHba1cAnalyzerPrinterFn;
+
+  /// No description provided for @schemPartsHba1cAnalyzerWasteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Waste container'**
+  String get schemPartsHba1cAnalyzerWasteName;
+
+  /// No description provided for @schemPartsHba1cAnalyzerWasteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Collects used buffer and sample.'**
+  String get schemPartsHba1cAnalyzerWasteFn;
+
+  /// No description provided for @schemPartsHba1cAnalyzerPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'EDTA whole blood is sampled automatically and haemolysed. In ion-exchange chromatography the haemoglobin fractions leave the column at different times under a buffer gradient and are recorded by a photometric detector; the HbA1c fraction is calculated from peak area in the chromatogram. Other analyzers use boronate affinity chromatography, immunoassay or an enzymatic method.'**
+  String get schemPartsHba1cAnalyzerPrinciple;
+
+  /// No description provided for @schemPartsHba1cAnalyzerResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A chromatogram of haemoglobin fractions and HbA1c in NGSP (%) and IFCC (mmol/mol) units; the ion-exchange method can also reveal variants such as HbS, C and D.'**
+  String get schemPartsHba1cAnalyzerResult;
+
+  /// No description provided for @schemPartsLabFridgeControllerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Control panel (thermostat)'**
+  String get schemPartsLabFridgeControllerName;
+
+  /// No description provided for @schemPartsLabFridgeControllerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Holds the set temperature and shows the current one.'**
+  String get schemPartsLabFridgeControllerFn;
+
+  /// No description provided for @schemPartsLabFridgeFridgeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Refrigerator compartment'**
+  String get schemPartsLabFridgeFridgeName;
+
+  /// No description provided for @schemPartsLabFridgeFridgeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Samples, reagents and control materials are stored on the shelves.'**
+  String get schemPartsLabFridgeFridgeFn;
+
+  /// No description provided for @schemPartsLabFridgeProbeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Probe in a buffered bottle'**
+  String get schemPartsLabFridgeProbeName;
+
+  /// No description provided for @schemPartsLabFridgeProbeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures product temperature and smooths brief swings when the door opens.'**
+  String get schemPartsLabFridgeProbeFn;
+
+  /// No description provided for @schemPartsLabFridgeLoggerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital data logger (DDL)'**
+  String get schemPartsLabFridgeLoggerName;
+
+  /// No description provided for @schemPartsLabFridgeLoggerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Records the temperature regularly and alarms on excursions.'**
+  String get schemPartsLabFridgeLoggerFn;
+
+  /// No description provided for @schemPartsLabFridgeFreezerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Freezer compartment'**
+  String get schemPartsLabFridgeFreezerName;
+
+  /// No description provided for @schemPartsLabFridgeFreezerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Holds frozen aliquots (e.g. of control material).'**
+  String get schemPartsLabFridgeFreezerFn;
+
+  /// No description provided for @schemPartsLabFridgePrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The refrigeration unit keeps the compartment within a set range under thermostat control. A probe in a buffered bottle reflects product temperature (brief air-temperature swings are smoothed). A digital data logger (DDL) records the temperature at regular intervals and alarms on out-of-range readings; a backup temperature monitoring device is also recommended.'**
+  String get schemPartsLabFridgePrinciple;
+
+  /// No description provided for @schemPartsLabFridgeResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A continuous temperature record (min/max, excursions and alarms) documenting that samples and reagents were stored correctly.'**
+  String get schemPartsLabFridgeResult;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeEyepiecesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Eyepieces'**
+  String get schemPartsFluorescenceMicroscopeEyepiecesName;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeEyepiecesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'For viewing the image.'**
+  String get schemPartsFluorescenceMicroscopeEyepiecesFn;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeLedName.
+  ///
+  /// In en, this message translates to:
+  /// **'LED illuminator'**
+  String get schemPartsFluorescenceMicroscopeLedName;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeLedFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplies excitation light instead of a mercury lamp.'**
+  String get schemPartsFluorescenceMicroscopeLedFn;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeCubeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter cube'**
+  String get schemPartsFluorescenceMicroscopeCubeName;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeCubeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The excitation filter, dichroic mirror and emission filter separate the light.'**
+  String get schemPartsFluorescenceMicroscopeCubeFn;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeObjectiveName.
+  ///
+  /// In en, this message translates to:
+  /// **'Objective'**
+  String get schemPartsFluorescenceMicroscopeObjectiveName;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeObjectiveFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Directs light onto the slide and magnifies the image.'**
+  String get schemPartsFluorescenceMicroscopeObjectiveFn;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeStageName.
+  ///
+  /// In en, this message translates to:
+  /// **'Stage with smear'**
+  String get schemPartsFluorescenceMicroscopeStageName;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeStageFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The auramine-stained sputum smear sits here.'**
+  String get schemPartsFluorescenceMicroscopeStageFn;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeFocusName.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus knobs'**
+  String get schemPartsFluorescenceMicroscopeFocusName;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeFocusFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust the sharpness.'**
+  String get schemPartsFluorescenceMicroscopeFocusFn;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeFieldName.
+  ///
+  /// In en, this message translates to:
+  /// **'Field of view'**
+  String get schemPartsFluorescenceMicroscopeFieldName;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeFieldFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Bright yellow-green rods on a dark background: stained bacilli.'**
+  String get schemPartsFluorescenceMicroscopeFieldFn;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopePrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The smear is stained with auramine (a fluorochrome), which the mycobacterial cell wall retains. The LED illuminator sends blue excitation light through the filter cube and objective onto the slide. Stained bacilli emit longer-wavelength (yellow-green) light; the emission filter blocks the excitation light, so the bacilli shine on a dark background.'**
+  String get schemPartsFluorescenceMicroscopePrinciple;
+
+  /// No description provided for @schemPartsFluorescenceMicroscopeResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A microscopy report: acid-fast bacilli (bright rods) seen or not seen, with a semi-quantitative grade when present.'**
+  String get schemPartsFluorescenceMicroscopeResult;
+
+  /// No description provided for @schemPartsCasaCameraName.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital camera'**
+  String get schemPartsCasaCameraName;
+
+  /// No description provided for @schemPartsCasaCameraFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Records the microscope image as a sequence of frames.'**
+  String get schemPartsCasaCameraFn;
+
+  /// No description provided for @schemPartsCasaMicroscopeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Microscope (objective)'**
+  String get schemPartsCasaMicroscopeName;
+
+  /// No description provided for @schemPartsCasaMicroscopeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Magnifies the spermatozoa, usually with phase contrast.'**
+  String get schemPartsCasaMicroscopeFn;
+
+  /// No description provided for @schemPartsCasaStageName.
+  ///
+  /// In en, this message translates to:
+  /// **'Heated stage'**
+  String get schemPartsCasaStageName;
+
+  /// No description provided for @schemPartsCasaStageFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Keeps the sample temperature stable, as motility depends on temperature.'**
+  String get schemPartsCasaStageFn;
+
+  /// No description provided for @schemPartsCasaChamberName.
+  ///
+  /// In en, this message translates to:
+  /// **'Counting chamber'**
+  String get schemPartsCasaChamberName;
+
+  /// No description provided for @schemPartsCasaChamberFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A chamber of fixed depth gives a sample layer of even thickness.'**
+  String get schemPartsCasaChamberFn;
+
+  /// No description provided for @schemPartsCasaSoftwareName.
+  ///
+  /// In en, this message translates to:
+  /// **'Computer and software'**
+  String get schemPartsCasaSoftwareName;
+
+  /// No description provided for @schemPartsCasaSoftwareFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Reconstructs the tracks and calculates kinematic parameters.'**
+  String get schemPartsCasaSoftwareFn;
+
+  /// No description provided for @schemPartsCasaPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Semen is loaded into a counting chamber on the heated stage. The camera records successive frames through the microscope; software finds the sperm heads, reconstructs the track of each motile cell and calculates movement kinematics. Tracks of at least 200 motile cells are analysed.'**
+  String get schemPartsCasaPrinciple;
+
+  /// No description provided for @schemPartsCasaResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Kinematic parameters (e.g. curvilinear, straight-line and average path velocity) and motion types; according to the WHO manual, percentage motility may be unreliable because debris can be mistaken for immotile cells.'**
+  String get schemPartsCasaResult;
+
+  /// No description provided for @schemPartsGelCardSystemCentrifugeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Card centrifuge'**
+  String get schemPartsGelCardSystemCentrifugeName;
+
+  /// No description provided for @schemPartsGelCardSystemCentrifugeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Spins the cards at a set speed and time.'**
+  String get schemPartsGelCardSystemCentrifugeFn;
+
+  /// No description provided for @schemPartsGelCardSystemIncubatorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Incubator'**
+  String get schemPartsGelCardSystemIncubatorName;
+
+  /// No description provided for @schemPartsGelCardSystemIncubatorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Incubates the cards for the antiglobulin test.'**
+  String get schemPartsGelCardSystemIncubatorFn;
+
+  /// No description provided for @schemPartsGelCardSystemCardName.
+  ///
+  /// In en, this message translates to:
+  /// **'Gel card'**
+  String get schemPartsGelCardSystemCardName;
+
+  /// No description provided for @schemPartsGelCardSystemCardFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A plastic card; each microtube holds a gel or glass-bead matrix.'**
+  String get schemPartsGelCardSystemCardFn;
+
+  /// No description provided for @schemPartsGelCardSystemChamberName.
+  ///
+  /// In en, this message translates to:
+  /// **'Reaction chamber'**
+  String get schemPartsGelCardSystemChamberName;
+
+  /// No description provided for @schemPartsGelCardSystemChamberFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Red cells and serum (or reagent) mix here.'**
+  String get schemPartsGelCardSystemChamberFn;
+
+  /// No description provided for @schemPartsGelCardSystemGelName.
+  ///
+  /// In en, this message translates to:
+  /// **'Gel column (matrix)'**
+  String get schemPartsGelCardSystemGelName;
+
+  /// No description provided for @schemPartsGelCardSystemGelFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Traps agglutinates and lets single red cells through; may contain antiglobulin or anti-A, anti-B.'**
+  String get schemPartsGelCardSystemGelFn;
+
+  /// No description provided for @schemPartsGelCardSystemPositiveName.
+  ///
+  /// In en, this message translates to:
+  /// **'Positive reaction'**
+  String get schemPartsGelCardSystemPositiveName;
+
+  /// No description provided for @schemPartsGelCardSystemPositiveFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Red cells stay on top of or within the gel.'**
+  String get schemPartsGelCardSystemPositiveFn;
+
+  /// No description provided for @schemPartsGelCardSystemNegativeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Negative reaction'**
+  String get schemPartsGelCardSystemNegativeName;
+
+  /// No description provided for @schemPartsGelCardSystemNegativeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Red cells form a button at the bottom.'**
+  String get schemPartsGelCardSystemNegativeFn;
+
+  /// No description provided for @schemPartsGelCardSystemPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Red cell suspension and serum (or reagent) are added to the upper reaction chamber of the microtube and incubated. On centrifugation the red cells are driven into the gel or glass-bead matrix while the serum stays above. Agglutinates (e.g. antibody-coated cells linked by antiglobulin) are trapped in the gel (positive); unagglutinated cells pass to the bottom as a button (negative). The antiglobulin test needs no washing step.'**
+  String get schemPartsGelCardSystemPrinciple;
+
+  /// No description provided for @schemPartsGelCardSystemResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A reaction in each microtube: positive (agglutinates on top of or within the gel, graded by strength) or negative (button at the bottom); these give the blood group or the direct antiglobulin test result.'**
+  String get schemPartsGelCardSystemResult;
+
+  /// No description provided for @schemPartsEsrAnalyzerStandName.
+  ///
+  /// In en, this message translates to:
+  /// **'Westergren stand'**
+  String get schemPartsEsrAnalyzerStandName;
+
+  /// No description provided for @schemPartsEsrAnalyzerStandFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Holds the tubes strictly upright.'**
+  String get schemPartsEsrAnalyzerStandFn;
+
+  /// No description provided for @schemPartsEsrAnalyzerTubeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Westergren tube'**
+  String get schemPartsEsrAnalyzerTubeName;
+
+  /// No description provided for @schemPartsEsrAnalyzerTubeFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A graduated standard tube with a 2.5 mm bore.'**
+  String get schemPartsEsrAnalyzerTubeFn;
+
+  /// No description provided for @schemPartsEsrAnalyzerBoundaryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Plasma–red cell boundary'**
+  String get schemPartsEsrAnalyzerBoundaryName;
+
+  /// No description provided for @schemPartsEsrAnalyzerBoundaryFn.
+  ///
+  /// In en, this message translates to:
+  /// **'After one hour the distance to this boundary is read in millimetres.'**
+  String get schemPartsEsrAnalyzerBoundaryFn;
+
+  /// No description provided for @schemPartsEsrAnalyzerReaderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Automated reader'**
+  String get schemPartsEsrAnalyzerReaderName;
+
+  /// No description provided for @schemPartsEsrAnalyzerReaderFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures sedimentation automatically in closed tubes.'**
+  String get schemPartsEsrAnalyzerReaderFn;
+
+  /// No description provided for @schemPartsEsrAnalyzerTubesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed tubes'**
+  String get schemPartsEsrAnalyzerTubesName;
+
+  /// No description provided for @schemPartsEsrAnalyzerTubesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The sample tube stays closed.'**
+  String get schemPartsEsrAnalyzerTubesFn;
+
+  /// No description provided for @schemPartsEsrAnalyzerSensorsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Optical sensors'**
+  String get schemPartsEsrAnalyzerSensorsName;
+
+  /// No description provided for @schemPartsEsrAnalyzerSensorsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Detect the boundary between plasma and the red cell column.'**
+  String get schemPartsEsrAnalyzerSensorsFn;
+
+  /// No description provided for @schemPartsEsrAnalyzerDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display'**
+  String get schemPartsEsrAnalyzerDisplayName;
+
+  /// No description provided for @schemPartsEsrAnalyzerDisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows the results.'**
+  String get schemPartsEsrAnalyzerDisplayFn;
+
+  /// No description provided for @schemPartsEsrAnalyzerPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Anticoagulated blood settles by gravity in a standard upright tube (Westergren, 2.5 mm internal diameter) for one hour; the height of the clear plasma column is read in millimetres. In inflammation raised proteins promote rouleaux formation, so the cells settle faster. Automated readers follow the plasma–red cell boundary in closed tubes with optical sensors.'**
+  String get schemPartsEsrAnalyzerPrinciple;
+
+  /// No description provided for @schemPartsEsrAnalyzerResult.
+  ///
+  /// In en, this message translates to:
+  /// **'The ESR value in mm/h; a non-specific measure read together with other tests.'**
+  String get schemPartsEsrAnalyzerResult;
+
+  /// No description provided for @schemPartsAggregometerChannelsName.
+  ///
+  /// In en, this message translates to:
+  /// **'LTA measuring channels'**
+  String get schemPartsAggregometerChannelsName;
+
+  /// No description provided for @schemPartsAggregometerChannelsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Cuvettes are warmed to 37 °C and stirred.'**
+  String get schemPartsAggregometerChannelsFn;
+
+  /// No description provided for @schemPartsAggregometerLightName.
+  ///
+  /// In en, this message translates to:
+  /// **'Light source'**
+  String get schemPartsAggregometerLightName;
+
+  /// No description provided for @schemPartsAggregometerLightFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Provides the light that passes through the cuvette.'**
+  String get schemPartsAggregometerLightFn;
+
+  /// No description provided for @schemPartsAggregometerCuvetteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cuvette (plasma and stir bar)'**
+  String get schemPartsAggregometerCuvetteName;
+
+  /// No description provided for @schemPartsAggregometerCuvetteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Platelet-rich plasma; the agonist is added here.'**
+  String get schemPartsAggregometerCuvetteFn;
+
+  /// No description provided for @schemPartsAggregometerPhotodetectorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Photodetector'**
+  String get schemPartsAggregometerPhotodetectorName;
+
+  /// No description provided for @schemPartsAggregometerPhotodetectorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures the rise in light transmission during aggregation.'**
+  String get schemPartsAggregometerPhotodetectorFn;
+
+  /// No description provided for @schemPartsAggregometerCurvesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Aggregation curves'**
+  String get schemPartsAggregometerCurvesName;
+
+  /// No description provided for @schemPartsAggregometerCurvesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Light transmission over time for each channel.'**
+  String get schemPartsAggregometerCurvesFn;
+
+  /// No description provided for @schemPartsAggregometerCupName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cup with blood'**
+  String get schemPartsAggregometerCupName;
+
+  /// No description provided for @schemPartsAggregometerCupFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Citrated blood is clotted here with calcium and an activator.'**
+  String get schemPartsAggregometerCupFn;
+
+  /// No description provided for @schemPartsAggregometerPinName.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin and torsion sensor'**
+  String get schemPartsAggregometerPinName;
+
+  /// No description provided for @schemPartsAggregometerPinFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Fibrin couples the pin to the cup; the transmitted torque is recorded.'**
+  String get schemPartsAggregometerPinFn;
+
+  /// No description provided for @schemPartsAggregometerTraceName.
+  ///
+  /// In en, this message translates to:
+  /// **'Viscoelastic trace'**
+  String get schemPartsAggregometerTraceName;
+
+  /// No description provided for @schemPartsAggregometerTraceFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A plot of clot formation, strength and lysis.'**
+  String get schemPartsAggregometerTraceFn;
+
+  /// No description provided for @schemPartsAggregometerPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'LTA: platelet-rich plasma is stirred in a cuvette at 37 °C. After an agonist is added, platelets aggregate, the plasma clears and light transmission rises; the photodetector records this as a curve. TEG/ROTEM: citrated blood in a rotating cup is clotted with calcium and an activator; fibrin couples the pin to the cup and the transmitted torque is plotted as a trace.'**
+  String get schemPartsAggregometerPrinciple;
+
+  /// No description provided for @schemPartsAggregometerResult.
+  ///
+  /// In en, this message translates to:
+  /// **'LTA: an aggregation curve for each agonist (light transmission over time). TEG/ROTEM: a viscoelastic trace showing clot formation, clot strength and fibrinolysis.'**
+  String get schemPartsAggregometerResult;
+
+  /// No description provided for @schemPartsElectrophoresisPowerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Power supply'**
+  String get schemPartsElectrophoresisPowerName;
+
+  /// No description provided for @schemPartsElectrophoresisPowerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Applies a constant voltage to the electrodes.'**
+  String get schemPartsElectrophoresisPowerFn;
+
+  /// No description provided for @schemPartsElectrophoresisElectrodesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Buffer compartments and electrodes'**
+  String get schemPartsElectrophoresisElectrodesName;
+
+  /// No description provided for @schemPartsElectrophoresisElectrodesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The buffer carries the current; the cathode (−) and anode (+) set up the field.'**
+  String get schemPartsElectrophoresisElectrodesFn;
+
+  /// No description provided for @schemPartsElectrophoresisWicksName.
+  ///
+  /// In en, this message translates to:
+  /// **'Wicks'**
+  String get schemPartsElectrophoresisWicksName;
+
+  /// No description provided for @schemPartsElectrophoresisWicksFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Carry buffer to the support medium and complete the circuit.'**
+  String get schemPartsElectrophoresisWicksFn;
+
+  /// No description provided for @schemPartsElectrophoresisMediumName.
+  ///
+  /// In en, this message translates to:
+  /// **'Support medium and fractions'**
+  String get schemPartsElectrophoresisMediumName;
+
+  /// No description provided for @schemPartsElectrophoresisMediumFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Molecules separate into zones on agarose or cellulose acetate.'**
+  String get schemPartsElectrophoresisMediumFn;
+
+  /// No description provided for @schemPartsElectrophoresisCoverName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover'**
+  String get schemPartsElectrophoresisCoverName;
+
+  /// No description provided for @schemPartsElectrophoresisCoverFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Reduces evaporation and protects against electric shock.'**
+  String get schemPartsElectrophoresisCoverFn;
+
+  /// No description provided for @schemPartsElectrophoresisDensitometerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Densitometer'**
+  String get schemPartsElectrophoresisDensitometerName;
+
+  /// No description provided for @schemPartsElectrophoresisDensitometerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Scans the optical density of the stained zones and draws a densitogram.'**
+  String get schemPartsElectrophoresisDensitometerFn;
+
+  /// No description provided for @schemPartsElectrophoresisPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The sample is applied to a buffer-soaked support medium (agarose, cellulose acetate or polyacrylamide). The power supply creates an electric field through the electrodes; charged molecules migrate at different speeds according to charge, size and shape and separate into zones. The zones are then stained and measured by optical density on a densitometer.'**
+  String get schemPartsElectrophoresisPrinciple;
+
+  /// No description provided for @schemPartsElectrophoresisResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Stained fractions (e.g. for serum proteins: albumin, alpha-1, alpha-2, beta, gamma) and a densitogram giving the relative share of each fraction; runs are compared with control samples.'**
+  String get schemPartsElectrophoresisResult;
+
+  /// No description provided for @schemPartsOsmometerTubesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample tubes'**
+  String get schemPartsOsmometerTubesName;
+
+  /// No description provided for @schemPartsOsmometerTubesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A small volume of urine or serum.'**
+  String get schemPartsOsmometerTubesFn;
+
+  /// No description provided for @schemPartsOsmometerThermistorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermistor probe'**
+  String get schemPartsOsmometerThermistorName;
+
+  /// No description provided for @schemPartsOsmometerThermistorFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Dips into the sample and measures temperature precisely.'**
+  String get schemPartsOsmometerThermistorFn;
+
+  /// No description provided for @schemPartsOsmometerBathName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cooling block (bath)'**
+  String get schemPartsOsmometerBathName;
+
+  /// No description provided for @schemPartsOsmometerBathFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Cools the sample below its freezing point.'**
+  String get schemPartsOsmometerBathFn;
+
+  /// No description provided for @schemPartsOsmometerWireName.
+  ///
+  /// In en, this message translates to:
+  /// **'Stirring wire'**
+  String get schemPartsOsmometerWireName;
+
+  /// No description provided for @schemPartsOsmometerWireFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Vibrates to start freezing in the supercooled sample.'**
+  String get schemPartsOsmometerWireFn;
+
+  /// No description provided for @schemPartsOsmometerDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display (freezing curve)'**
+  String get schemPartsOsmometerDisplayName;
+
+  /// No description provided for @schemPartsOsmometerDisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The temperature curve and the osmolality result.'**
+  String get schemPartsOsmometerDisplayFn;
+
+  /// No description provided for @schemPartsOsmometerPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The sample is supercooled below its freezing point in the cooling block, then vibration of the stirring wire starts freezing. Released latent heat raises the temperature to the freezing point, giving a plateau that the thermistor in a Wheatstone bridge circuit measures. Dissolved particles lower the freezing point: one mole of solute lowers that of water by about 1.86 °C, and osmolality is calculated from this.'**
+  String get schemPartsOsmometerPrinciple;
+
+  /// No description provided for @schemPartsOsmometerResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Urine or serum osmolality in mOsm/kg (mmol/kg).'**
+  String get schemPartsOsmometerResult;
+
+  /// No description provided for @schemPartsTlcTankName.
+  ///
+  /// In en, this message translates to:
+  /// **'Developing tank (with lid)'**
+  String get schemPartsTlcTankName;
+
+  /// No description provided for @schemPartsTlcTankFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A closed glass tank saturated with solvent vapour.'**
+  String get schemPartsTlcTankFn;
+
+  /// No description provided for @schemPartsTlcSolventName.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile phase (solvent)'**
+  String get schemPartsTlcSolventName;
+
+  /// No description provided for @schemPartsTlcSolventFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Rises up the plate by capillary action.'**
+  String get schemPartsTlcSolventFn;
+
+  /// No description provided for @schemPartsTlcPlateName.
+  ///
+  /// In en, this message translates to:
+  /// **'TLC plate (silica gel GF254)'**
+  String get schemPartsTlcPlateName;
+
+  /// No description provided for @schemPartsTlcPlateFn.
+  ///
+  /// In en, this message translates to:
+  /// **'A thin silica gel layer with a fluorescent indicator that glows under UV.'**
+  String get schemPartsTlcPlateFn;
+
+  /// No description provided for @schemPartsTlcOriginName.
+  ///
+  /// In en, this message translates to:
+  /// **'Origin line'**
+  String get schemPartsTlcOriginName;
+
+  /// No description provided for @schemPartsTlcOriginFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample and standard spots are applied here.'**
+  String get schemPartsTlcOriginFn;
+
+  /// No description provided for @schemPartsTlcFrontName.
+  ///
+  /// In en, this message translates to:
+  /// **'Solvent front'**
+  String get schemPartsTlcFrontName;
+
+  /// No description provided for @schemPartsTlcFrontFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The line the solvent reached, marked to calculate Rf.'**
+  String get schemPartsTlcFrontFn;
+
+  /// No description provided for @schemPartsTlcCapillariesName.
+  ///
+  /// In en, this message translates to:
+  /// **'Capillaries'**
+  String get schemPartsTlcCapillariesName;
+
+  /// No description provided for @schemPartsTlcCapillariesFn.
+  ///
+  /// In en, this message translates to:
+  /// **'For applying the sample as a small spot.'**
+  String get schemPartsTlcCapillariesFn;
+
+  /// No description provided for @schemPartsTlcLampName.
+  ///
+  /// In en, this message translates to:
+  /// **'UV lamp (254 nm)'**
+  String get schemPartsTlcLampName;
+
+  /// No description provided for @schemPartsTlcLampFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Lights the plate and makes the spots visible.'**
+  String get schemPartsTlcLampFn;
+
+  /// No description provided for @schemPartsTlcSpotsName.
+  ///
+  /// In en, this message translates to:
+  /// **'Spots under UV'**
+  String get schemPartsTlcSpotsName;
+
+  /// No description provided for @schemPartsTlcSpotsFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Compounds quench the fluorescence and appear as dark spots on a green background.'**
+  String get schemPartsTlcSpotsFn;
+
+  /// No description provided for @schemPartsTlcPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample and standard spots are applied on the origin line and the plate is placed in the saturated tank with its lower edge in the solvent. As the solvent rises, compounds partition between the silica gel (stationary phase) and the solvent (mobile phase) and travel different distances. The developed plate is viewed under 254 nm UV light or sprayed with visualising reagents.'**
+  String get schemPartsTlcPrinciple;
+
+  /// No description provided for @schemPartsTlcResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Spot positions and Rf values (spot distance / solvent-front distance), compared with a standard to identify the compound.'**
+  String get schemPartsTlcResult;
+
+  /// No description provided for @schemPartsAnalyticalBalancePipetteName.
+  ///
+  /// In en, this message translates to:
+  /// **'Pipette (air displacement)'**
+  String get schemPartsAnalyticalBalancePipetteName;
+
+  /// No description provided for @schemPartsAnalyticalBalancePipetteFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The device being calibrated: it delivers the set volume.'**
+  String get schemPartsAnalyticalBalancePipetteFn;
+
+  /// No description provided for @schemPartsAnalyticalBalanceVesselName.
+  ///
+  /// In en, this message translates to:
+  /// **'Weighing vessel'**
+  String get schemPartsAnalyticalBalanceVesselName;
+
+  /// No description provided for @schemPartsAnalyticalBalanceVesselFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Receives the dispensed water for weighing.'**
+  String get schemPartsAnalyticalBalanceVesselFn;
+
+  /// No description provided for @schemPartsAnalyticalBalancePanName.
+  ///
+  /// In en, this message translates to:
+  /// **'Weighing pan'**
+  String get schemPartsAnalyticalBalancePanName;
+
+  /// No description provided for @schemPartsAnalyticalBalancePanFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Mass is measured here.'**
+  String get schemPartsAnalyticalBalancePanFn;
+
+  /// No description provided for @schemPartsAnalyticalBalanceEnclosureName.
+  ///
+  /// In en, this message translates to:
+  /// **'Glass enclosure'**
+  String get schemPartsAnalyticalBalanceEnclosureName;
+
+  /// No description provided for @schemPartsAnalyticalBalanceEnclosureFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shields the weighing from air currents and dust.'**
+  String get schemPartsAnalyticalBalanceEnclosureFn;
+
+  /// No description provided for @schemPartsAnalyticalBalanceDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Display and keys'**
+  String get schemPartsAnalyticalBalanceDisplayName;
+
+  /// No description provided for @schemPartsAnalyticalBalanceDisplayFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows the mass; the tare key zeroes the vessel mass.'**
+  String get schemPartsAnalyticalBalanceDisplayFn;
+
+  /// No description provided for @schemPartsAnalyticalBalanceWaterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Water container'**
+  String get schemPartsAnalyticalBalanceWaterName;
+
+  /// No description provided for @schemPartsAnalyticalBalanceWaterFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Pure (distilled) water equilibrated to room temperature.'**
+  String get schemPartsAnalyticalBalanceWaterFn;
+
+  /// No description provided for @schemPartsAnalyticalBalanceThermometerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Thermometer'**
+  String get schemPartsAnalyticalBalanceThermometerName;
+
+  /// No description provided for @schemPartsAnalyticalBalanceThermometerFn.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures the water temperature for the density correction.'**
+  String get schemPartsAnalyticalBalanceThermometerFn;
+
+  /// No description provided for @schemPartsAnalyticalBalancePrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'The pipette dispenses its set volume of water into the vessel on the balance and the water mass is weighed. Mass is converted to volume with corrections for water density (temperature) and air buoyancy, so water and air temperatures are recorded. The pipette is calibrated on a ‘to deliver’ basis.'**
+  String get schemPartsAnalyticalBalancePrinciple;
+
+  /// No description provided for @schemPartsAnalyticalBalanceResult.
+  ///
+  /// In en, this message translates to:
+  /// **'The calculated volume of each delivery; comparison with the nominal volume gives the accuracy (systematic error) and repeatability.'**
+  String get schemPartsAnalyticalBalanceResult;
+
   /// No description provided for @imgDiagramCalibrationOverviewAlt.
   ///
   /// In en, this message translates to:

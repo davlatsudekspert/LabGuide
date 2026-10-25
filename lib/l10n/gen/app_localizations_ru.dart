@@ -10526,6 +10526,1867 @@ class AppLocalizationsRu extends AppLocalizations {
       'Оснащение для гравиметрической калибровки — аналитические весы с ветрозащитой и сосудом для взвешивания, пипетка, дозирующая воду, стакан с водой и термометр';
 
   @override
+  String get schemPartsPanelTitle => 'Узлы и принцип работы';
+
+  @override
+  String get schemPartsPanelHint =>
+      'Узлы по номерам на рисунке, принцип и результат';
+
+  @override
+  String get schemPartsPartsTitle => 'Основные узлы';
+
+  @override
+  String get schemPartsPrincipleTitle => 'Принцип работы';
+
+  @override
+  String get schemPartsResultTitle => 'Результат';
+
+  @override
+  String get schemPartsClassNote =>
+      'Узлы показаны для класса приборов на уровне принципа; в конкретной модели расположение и устройство могут отличаться.';
+
+  @override
+  String get schemPartsChemistrySamplesName => 'Позиции образцов';
+
+  @override
+  String get schemPartsChemistrySamplesFn =>
+      'Пробирки стоят в штативе; зонд забирает образец отсюда.';
+
+  @override
+  String get schemPartsChemistryReagentsName =>
+      'Охлаждаемая карусель реагентов';
+
+  @override
+  String get schemPartsChemistryReagentsFn =>
+      'Флаконы реагентов хранятся охлаждёнными; нужный реагент подводится под зонд.';
+
+  @override
+  String get schemPartsChemistryProbesName => 'Зонды образца и реагента';
+
+  @override
+  String get schemPartsChemistryProbesFn =>
+      'Забирают точные объёмы образца и реагента и вносят их в реакционную кювету.';
+
+  @override
+  String get schemPartsChemistryReactionName => 'Реакционная карусель (кюветы)';
+
+  @override
+  String get schemPartsChemistryReactionFn =>
+      'Смесь в кюветах термостатируется при 37 °C; карусель проводит кюветы через фотометр.';
+
+  @override
+  String get schemPartsChemistryPhotometerName => 'Фотометр';
+
+  @override
+  String get schemPartsChemistryPhotometerFn =>
+      'Свет лампы проходит через кювету; оптика с решёткой или фильтрами измеряет поглощение на выбранной длине волны.';
+
+  @override
+  String get schemPartsChemistryWaterName => 'Ёмкость очищенной воды';
+
+  @override
+  String get schemPartsChemistryWaterFn =>
+      'Подаёт воду для промывки зондов и кювет и для разведения.';
+
+  @override
+  String get schemPartsChemistryWasteName => 'Ёмкость жидких отходов';
+
+  @override
+  String get schemPartsChemistryWasteFn =>
+      'Сюда собираются промывная вода и отработанные реакционные смеси.';
+
+  @override
+  String get schemPartsChemistryComputerName => 'Компьютер и программа';
+
+  @override
+  String get schemPartsChemistryComputerFn =>
+      'Назначает тесты, ведёт калибровку, рассчитывает результаты и выдаёт отчёт.';
+
+  @override
+  String get schemPartsChemistryPrinciple =>
+      'Зонды вносят образец и реагент в реакционную кювету, смесь инкубируется при 37 °C. Фотометр измеряет поглощение света, прошедшего через кювету, на выбранной длине волны. Концентрацию рассчитывают по калибровке; во многих моделях Na, K, Cl измеряют ион-селективным электродом (ИСЭ).';
+
+  @override
+  String get schemPartsChemistryResult =>
+      'Концентрация аналита по каждому тесту (например, глюкоза, активность ферментов, электролиты): значение, рассчитанное по изменению поглощения и калибровке, и отчёт.';
+
+  @override
+  String get schemPartsPhotometerDisplayName => 'Дисплей и клавиатура';
+
+  @override
+  String get schemPartsPhotometerDisplayFn =>
+      'Выбор метода, длины волны и стандарта; здесь видны результат и кривая.';
+
+  @override
+  String get schemPartsPhotometerNeedleName => 'Аспирационная игла';
+
+  @override
+  String get schemPartsPhotometerNeedleFn =>
+      'Засасывает готовую смесь из пробирки в измерительную кювету.';
+
+  @override
+  String get schemPartsPhotometerCellName =>
+      'Измерительная ячейка (проточная кювета)';
+
+  @override
+  String get schemPartsPhotometerCellFn =>
+      'Лампа → интерференционный фильтр → кювета → фотодетектор: здесь измеряется поглощение.';
+
+  @override
+  String get schemPartsPhotometerPrinterName => 'Термопринтер';
+
+  @override
+  String get schemPartsPhotometerPrinterFn => 'Печатает результаты на бумаге.';
+
+  @override
+  String get schemPartsPhotometerWasteName => 'Ёмкость для отходов';
+
+  @override
+  String get schemPartsPhotometerWasteFn =>
+      'Сюда сливаются измеренная смесь и промывочная жидкость.';
+
+  @override
+  String get schemPartsPhotometerReagentsName => 'Флаконы реагентов';
+
+  @override
+  String get schemPartsPhotometerReagentsFn =>
+      'Реагенты стоят вне прибора; оператор добавляет их к образцу вручную.';
+
+  @override
+  String get schemPartsPhotometerPrinciple =>
+      'Оператор вручную дозирует образец и реагент и инкубирует смесь. Прибор засасывает её иглой в проточную кювету (или ставится квадратная кювета); свет лампы проходит через выбранный интерференционный фильтр, фотодетектор измеряет поглощение. Концентрацию рассчитывают по стандарту или фактору.';
+
+  @override
+  String get schemPartsPhotometerResult =>
+      'Значение поглощения и рассчитанная по нему концентрация; результат выводится на дисплей и печатается.';
+
+  @override
+  String get schemPartsHematology5AutoloaderName => 'Автозагрузчик со штативом';
+
+  @override
+  String get schemPartsHematology5AutoloaderFn =>
+      'Перемешивает закрытые пробирки и по очереди подаёт их к пробоотборнику.';
+
+  @override
+  String get schemPartsHematology5ProbeName => 'Пробоотборник (открытый режим)';
+
+  @override
+  String get schemPartsHematology5ProbeFn =>
+      'Забирает заданный объём крови из открытой пробирки, поднесённой вручную.';
+
+  @override
+  String get schemPartsHematology5ImpedanceName => 'Импедансная камера';
+
+  @override
+  String get schemPartsHematology5ImpedanceFn =>
+      'Каждый эритроцит и тромбоцит, проходя через апертуру, даёт электрический импульс: подсчёт и объём.';
+
+  @override
+  String get schemPartsHematology5LaserName => 'Проточная ячейка с лазером';
+
+  @override
+  String get schemPartsHematology5LaserFn =>
+      'Лейкоциты по одному проходят через лазерный луч и классифицируются по рассеянию (и флуоресценции).';
+
+  @override
+  String get schemPartsHematology5DisplayName => 'Дисплей (скаттерграмма)';
+
+  @override
+  String get schemPartsHematology5DisplayFn =>
+      'Показывает результаты, скаттерграммы и гистограммы.';
+
+  @override
+  String get schemPartsHematology5ReagentsName => 'Реагенты';
+
+  @override
+  String get schemPartsHematology5ReagentsFn =>
+      'Разбавитель, лизирующие и красящие растворы подаются по шлангам.';
+
+  @override
+  String get schemPartsHematology5WasteName => 'Ёмкость для отходов';
+
+  @override
+  String get schemPartsHematology5WasteFn =>
+      'Собирает отработанные разведения и промывочные растворы.';
+
+  @override
+  String get schemPartsHematology5Principle =>
+      'Кровь аспирируется, разводится и распределяется по нескольким каналам. Эритроциты и тромбоциты считаются импедансным методом: при прохождении клетки через узкую апертуру возникает импульс сопротивления, его величина отражает объём клетки. Лейкоцитарная формула определяется методом проточной цитометрии по рассеянию лазерного луча (в ряде моделей с флуоресценцией красителя); гемоглобин измеряется фотометрически после лизиса эритроцитов.';
+
+  @override
+  String get schemPartsHematology5Result =>
+      'Параметры общего анализа крови: количество клеток и эритроцитарные индексы, 5-частная лейкоцитарная формула, скаттерграммы и гистограммы.';
+
+  @override
+  String get schemPartsHematology3PrinterName => 'Термопринтер';
+
+  @override
+  String get schemPartsHematology3PrinterFn =>
+      'Печатает результаты и гистограммы.';
+
+  @override
+  String get schemPartsHematology3DisplayName => 'Дисплей (3 гистограммы)';
+
+  @override
+  String get schemPartsHematology3DisplayFn =>
+      'Показывает результаты и гистограммы WBC, RBC и PLT.';
+
+  @override
+  String get schemPartsHematology3ProbeName => 'Пробоотборник';
+
+  @override
+  String get schemPartsHematology3ProbeFn =>
+      'Забирает малый объём крови из открытой пробирки.';
+
+  @override
+  String get schemPartsHematology3ImpedanceName => 'Импедансная камера';
+
+  @override
+  String get schemPartsHematology3ImpedanceFn =>
+      'При прохождении клетки через апертуру возникает импульс: число импульсов — число клеток, амплитуда — объём.';
+
+  @override
+  String get schemPartsHematology3ReagentsName =>
+      'Разбавитель и лизирующий раствор';
+
+  @override
+  String get schemPartsHematology3ReagentsFn =>
+      'Для разведения крови и лизиса эритроцитов.';
+
+  @override
+  String get schemPartsHematology3WasteName => 'Ёмкость для отходов';
+
+  @override
+  String get schemPartsHematology3WasteFn =>
+      'Сюда собираются отработанные жидкости.';
+
+  @override
+  String get schemPartsHematology3Principle =>
+      'Кровь разводится; эритроциты и тромбоциты считаются импедансным методом (Коултера), строится гистограмма по объёму. Лейкоциты после лизиса делятся по объёму на три группы; гемоглобин измеряется фотометрически.';
+
+  @override
+  String get schemPartsHematology3Result =>
+      'ОАК и 3-частная лейкоцитарная формула (лимфоциты, средние клетки, гранулоциты), три гистограммы (WBC, RBC, PLT).';
+
+  @override
+  String get schemPartsImmunoassaySamplesName => 'Штатив с образцами';
+
+  @override
+  String get schemPartsImmunoassaySamplesFn =>
+      'Здесь стоят пробирки; зонд забирает образец.';
+
+  @override
+  String get schemPartsImmunoassayReagentsName =>
+      'Охлаждаемые реагентные упаковки';
+
+  @override
+  String get schemPartsImmunoassayReagentsFn =>
+      'Микрочастицы, меченый конъюгат и другие реагенты хранятся охлаждёнными.';
+
+  @override
+  String get schemPartsImmunoassayProbesName => 'Пипетирующие зонды';
+
+  @override
+  String get schemPartsImmunoassayProbesFn =>
+      'Вносят образец и реагенты в реакционную кювету.';
+
+  @override
+  String get schemPartsImmunoassayCuvettesName => 'Бункер кювет';
+
+  @override
+  String get schemPartsImmunoassayCuvettesFn =>
+      'Подаёт одноразовые реакционные кюветы в инкубатор.';
+
+  @override
+  String get schemPartsImmunoassayIncubatorName => 'Кольцо инкубатора';
+
+  @override
+  String get schemPartsImmunoassayIncubatorFn =>
+      'Кюветы выдерживаются при постоянной температуре, идёт реакция антиген–антитело.';
+
+  @override
+  String get schemPartsImmunoassayWashName =>
+      'Станция промывки (магнитная сепарация)';
+
+  @override
+  String get schemPartsImmunoassayWashFn =>
+      'Магнит удерживает микрочастицы, несвязанные вещества отмываются.';
+
+  @override
+  String get schemPartsImmunoassayLuminometerName => 'Люминометр (детектор)';
+
+  @override
+  String get schemPartsImmunoassayLuminometerFn =>
+      'Измеряет свет, испускаемый меткой, методом счёта фотонов.';
+
+  @override
+  String get schemPartsImmunoassaySolidwasteName => 'Ящик твёрдых отходов';
+
+  @override
+  String get schemPartsImmunoassaySolidwasteFn =>
+      'Собираются использованные кюветы и наконечники.';
+
+  @override
+  String get schemPartsImmunoassayLiquidsName => 'Системные растворы';
+
+  @override
+  String get schemPartsImmunoassayLiquidsFn =>
+      'Ёмкости с промывочным и системными растворами.';
+
+  @override
+  String get schemPartsImmunoassayPrinciple =>
+      'Образец инкубируется с реагентом в кювете: аналит связывается с антителом или антигеном на магнитных микрочастицах. Пока магнит удерживает частицы, несвязанные вещества отмываются; затем метка (фермент, акридиниевый эфир или ЭХЛ-метка) испускает свет. Люминометр считает фотоны, сигнал переводится в концентрацию по калибровочной кривой.';
+
+  @override
+  String get schemPartsImmunoassayResult =>
+      'Концентрация аналитов (гормоны, онкомаркеры, кардиомаркеры и др.) или качественный результат (положительно/отрицательно), рассчитанные по световому сигналу и калибровке.';
+
+  @override
+  String get schemPartsUrineStripSampleName => 'Проба мочи и тест-полоска';
+
+  @override
+  String get schemPartsUrineStripSampleFn =>
+      'Полоску кратко погружают в мочу; зоны вступают в реакцию.';
+
+  @override
+  String get schemPartsUrineStripTrayName => 'Лоток для полосок (транспорт)';
+
+  @override
+  String get schemPartsUrineStripTrayFn =>
+      'Полоску кладут сюда, и она подаётся под считывающую головку.';
+
+  @override
+  String get schemPartsUrineStripHeadName =>
+      'Считывающая головка (светодиоды и фотосенсор)';
+
+  @override
+  String get schemPartsUrineStripHeadFn =>
+      'Освещает зоны светом нескольких длин волн и измеряет отражённый свет.';
+
+  @override
+  String get schemPartsUrineStripDisplayName => 'Дисплей';
+
+  @override
+  String get schemPartsUrineStripDisplayFn =>
+      'Показывает результаты и состояние прибора.';
+
+  @override
+  String get schemPartsUrineStripPrinterName => 'Принтер';
+
+  @override
+  String get schemPartsUrineStripPrinterFn => 'Печатает результаты.';
+
+  @override
+  String get schemPartsUrineStripBinName =>
+      'Контейнер для использованных полосок';
+
+  @override
+  String get schemPartsUrineStripBinFn =>
+      'Сюда сбрасываются прочитанные полоски.';
+
+  @override
+  String get schemPartsUrineStripPrinciple =>
+      'Тест-полоску погружают в мочу; реагент каждой зоны даёт окраску со своим веществом. Прибор проводит полоску под считывающей головкой: светодиоды разных длин волн освещают зоны, фотосенсор измеряет отражённый свет (рефлектометрия). Интенсивность окраски переводится в полуколичественную градацию.';
+
+  @override
+  String get schemPartsUrineStripResult =>
+      'Качественный или полуколичественный результат по каждой зоне (например, глюкоза, белок, кровь, лейкоциты, нитриты, pH, удельный вес) и печатный отчёт.';
+
+  @override
+  String get schemPartsUrineSystemTransportName => 'Транспортная линия';
+
+  @override
+  String get schemPartsUrineSystemTransportFn =>
+      'Проводит штативы с пробирками мимо модулей по очереди.';
+
+  @override
+  String get schemPartsUrineSystemStripName =>
+      'Химический модуль (тест-полоска)';
+
+  @override
+  String get schemPartsUrineSystemStripFn =>
+      'Считывает зоны полоски рефлектометрически и по изображению.';
+
+  @override
+  String get schemPartsUrineSystemNeedlesName => 'Пробоотборные иглы';
+
+  @override
+  String get schemPartsUrineSystemNeedlesFn =>
+      'Каждый модуль забирает пробу из пробирки своей иглой.';
+
+  @override
+  String get schemPartsUrineSystemCameraName =>
+      'Модуль осадка (микроскоп и камера)';
+
+  @override
+  String get schemPartsUrineSystemCameraFn =>
+      'Получает цифровые микроскопические изображения частиц мочи.';
+
+  @override
+  String get schemPartsUrineSystemDisplayName => 'Дисплей (изображения частиц)';
+
+  @override
+  String get schemPartsUrineSystemDisplayFn =>
+      'Просмотр классифицированных изображений частиц и результатов.';
+
+  @override
+  String get schemPartsUrineSystemReagentsName =>
+      'Реагент и промывочный раствор';
+
+  @override
+  String get schemPartsUrineSystemReagentsFn =>
+      'Растворы для промывки модулей и измерения.';
+
+  @override
+  String get schemPartsUrineSystemWasteName => 'Ёмкость для отходов';
+
+  @override
+  String get schemPartsUrineSystemWasteFn => 'Собирает отработанные жидкости.';
+
+  @override
+  String get schemPartsUrineSystemPrinciple =>
+      'Штативы с пробами по транспортной линии идут к двум модулям. Химический модуль считывает зоны тест-полоски рефлектометрически. Модуль осадка получает цифровые микроскопические изображения мочи; программа классифицирует частицы (эритроциты, лейкоциты, цилиндры, кристаллы и др.), изображения можно просмотреть на экране.';
+
+  @override
+  String get schemPartsUrineSystemResult =>
+      'Результаты химического анализа полоской и количество или категории элементов осадка (эритроциты, лейкоциты, цилиндры, кристаллы, бактерии и др.) с изображениями для просмотра.';
+
+  @override
+  String get schemPartsMassSpecGcGasName => 'Баллон с газом-носителем';
+
+  @override
+  String get schemPartsMassSpecGcGasFn =>
+      'Инертный газ (обычно гелий) переносит пробу по колонке.';
+
+  @override
+  String get schemPartsMassSpecGcAutosamplerName => 'Автосэмплер';
+
+  @override
+  String get schemPartsMassSpecGcAutosamplerFn =>
+      'Отбирает пробу из флакона шприцем и вводит её в инжектор.';
+
+  @override
+  String get schemPartsMassSpecGcInjectorName => 'Инжектор (испаритель)';
+
+  @override
+  String get schemPartsMassSpecGcInjectorFn =>
+      'Нагреваемый ввод: жидкая проба испаряется и попадает в поток газа.';
+
+  @override
+  String get schemPartsMassSpecGcColumnName =>
+      'Термостат и капиллярная колонка';
+
+  @override
+  String get schemPartsMassSpecGcColumnFn =>
+      'Нагревается по температурной программе; вещества разделяются в колонке.';
+
+  @override
+  String get schemPartsMassSpecGcTransferName => 'Обогреваемая линия переноса';
+
+  @override
+  String get schemPartsMassSpecGcTransferFn =>
+      'Переносит разделённые вещества в масс-спектрометр без конденсации.';
+
+  @override
+  String get schemPartsMassSpecGcSourceName => 'Ионный источник';
+
+  @override
+  String get schemPartsMassSpecGcSourceFn =>
+      'Ионизирует молекулы (в ГХ-МС чаще электронным ударом) с образованием фрагментов.';
+
+  @override
+  String get schemPartsMassSpecGcAnalyserName => 'Масс-анализатор (квадруполь)';
+
+  @override
+  String get schemPartsMassSpecGcAnalyserFn =>
+      'Электрическое поле разделяет ионы по m/z и пропускает их по очереди.';
+
+  @override
+  String get schemPartsMassSpecGcDetectorName =>
+      'Детектор (электронный умножитель)';
+
+  @override
+  String get schemPartsMassSpecGcDetectorFn =>
+      'Превращает приходящие ионы в усиленный электрический сигнал.';
+
+  @override
+  String get schemPartsMassSpecGcVacuumName => 'Вакуумные насосы';
+
+  @override
+  String get schemPartsMassSpecGcVacuumFn =>
+      'Турбомолекулярный и форвакуумный насосы создают высокий вакуум, чтобы ионы не сталкивались с молекулами воздуха.';
+
+  @override
+  String get schemPartsMassSpecGcDataName => 'Система обработки данных';
+
+  @override
+  String get schemPartsMassSpecGcDataFn =>
+      'Записывает хроматограммы и спектры, сравнивает с библиотекой.';
+
+  @override
+  String get schemPartsMassSpecGcPrinciple =>
+      'Проба испаряется в инжекторе, газ-носитель (обычно гелий) переносит её в капиллярную колонку в термостате. Вещества выходят из колонки в разное время в зависимости от летучести и взаимодействия с колонкой (время удерживания). В масс-спектрометре они ионизируются, ионы разделяются по отношению массы к заряду (m/z) и регистрируются детектором.';
+
+  @override
+  String get schemPartsMassSpecGcResult =>
+      'Хроматограмма (сигнал по времени удерживания) и масс-спектр каждого пика (m/z — относительная интенсивность); вещества идентифицируют сравнением с библиотекой спектров или стандартами.';
+
+  @override
+  String get schemPartsMassSpecLcSolventsName => 'Ёмкости подвижной фазы';
+
+  @override
+  String get schemPartsMassSpecLcSolventsFn =>
+      'Растворители (например, вода и органический растворитель) подаются в насос.';
+
+  @override
+  String get schemPartsMassSpecLcPumpName => 'Насос высокого давления';
+
+  @override
+  String get schemPartsMassSpecLcPumpFn =>
+      'Прокачивает растворители через колонку стабильным потоком.';
+
+  @override
+  String get schemPartsMassSpecLcAutosamplerName => 'Автосэмплер';
+
+  @override
+  String get schemPartsMassSpecLcAutosamplerFn =>
+      'Отбирает пробу из флакона и вводит её в поток.';
+
+  @override
+  String get schemPartsMassSpecLcColumnName => 'Колонка (в термостате)';
+
+  @override
+  String get schemPartsMassSpecLcColumnFn =>
+      'Вещества разделяются по взаимодействию с фазой колонки.';
+
+  @override
+  String get schemPartsMassSpecLcEsiName => 'Источник электрораспыления (ESI)';
+
+  @override
+  String get schemPartsMassSpecLcEsiFn =>
+      'Распыляет элюат в заряженные капли, образуя ионы.';
+
+  @override
+  String get schemPartsMassSpecLcAnalyserName => 'Масс-анализатор (квадруполь)';
+
+  @override
+  String get schemPartsMassSpecLcAnalyserFn =>
+      'Электрическое поле разделяет ионы по m/z и пропускает их по очереди.';
+
+  @override
+  String get schemPartsMassSpecLcDetectorName =>
+      'Детектор (электронный умножитель)';
+
+  @override
+  String get schemPartsMassSpecLcDetectorFn =>
+      'Превращает приходящие ионы в усиленный электрический сигнал.';
+
+  @override
+  String get schemPartsMassSpecLcVacuumName => 'Вакуумные насосы';
+
+  @override
+  String get schemPartsMassSpecLcVacuumFn =>
+      'Поддерживают высокий вакуум в масс-анализаторе.';
+
+  @override
+  String get schemPartsMassSpecLcDataName => 'Система обработки данных';
+
+  @override
+  String get schemPartsMassSpecLcDataFn =>
+      'Записывает хроматограммы и спектры, рассчитывает количество.';
+
+  @override
+  String get schemPartsMassSpecLcPrinciple =>
+      'Насос под высоким давлением прокачивает жидкую подвижную фазу через колонку, автосэмплер вводит пробу в поток. Вещества разделяются в колонке и выходят в разное время. В источнике электрораспыления (ESI) жидкость распыляется в заряженные капли, вещества переходят в газофазные ионы; ионы разделяются по m/z и регистрируются детектором.';
+
+  @override
+  String get schemPartsMassSpecLcResult =>
+      'Хроматограмма и масс-спектры; целевые вещества (лекарства, метаболиты, биомаркеры) идентифицируются, их концентрация рассчитывается по калибраторам.';
+
+  @override
+  String get schemPartsMaldiTofTargetName => 'Мишень';
+
+  @override
+  String get schemPartsMaldiTofTargetFn =>
+      'Здесь пятна образца с матрицей; мишень вводится в вакуумную камеру.';
+
+  @override
+  String get schemPartsMaldiTofLaserName => 'Лазер';
+
+  @override
+  String get schemPartsMaldiTofLaserFn =>
+      'Короткий импульс испаряет и ионизирует белки вместе с матрицей.';
+
+  @override
+  String get schemPartsMaldiTofGridsName => 'Ускоряющие электроды';
+
+  @override
+  String get schemPartsMaldiTofGridsFn =>
+      'Высокое напряжение ускоряет ионы и направляет их во времяпролётную трубу.';
+
+  @override
+  String get schemPartsMaldiTofTubeName => 'Времяпролётная труба (TOF)';
+
+  @override
+  String get schemPartsMaldiTofTubeFn =>
+      'Вакуумная труба: ионы летят с разной скоростью в зависимости от m/z.';
+
+  @override
+  String get schemPartsMaldiTofDetectorName => 'Детектор';
+
+  @override
+  String get schemPartsMaldiTofDetectorFn =>
+      'Регистрирует время прихода каждого иона.';
+
+  @override
+  String get schemPartsMaldiTofVacuumName => 'Вакуумный насос';
+
+  @override
+  String get schemPartsMaldiTofVacuumFn =>
+      'Создаёт вакуум в источнике и трубе.';
+
+  @override
+  String get schemPartsMaldiTofDatabaseName => 'Компьютер и база спектров';
+
+  @override
+  String get schemPartsMaldiTofDatabaseFn =>
+      'Сравнивает спектр с эталонными и выдаёт оценку вероятности.';
+
+  @override
+  String get schemPartsMaldiTofPrinciple =>
+      'Колонию наносят на мишень и покрывают матрицей, которая кристаллизуется. Импульс лазера испаряет и ионизирует белки (в основном рибосомальные). Электрическое поле ускоряет ионы; во времяпролётной трубе лёгкие ионы достигают детектора раньше тяжёлых — время пролёта отражает m/z. Спектр сравнивается с эталонными спектрами базы данных.';
+
+  @override
+  String get schemPartsMaldiTofResult =>
+      'Масс-спектр (белковый «отпечаток») и название микроорганизма с оценкой вероятности (log score); результат интерпретируют вместе с другими клиническими и лабораторными данными.';
+
+  @override
+  String get schemPartsMicrobialIdAstCardName => 'Тест-карта (64 лунки)';
+
+  @override
+  String get schemPartsMicrobialIdAstCardFn =>
+      'В лунках разведения антибиотиков (AST) или биохимические субстраты (ID).';
+
+  @override
+  String get schemPartsMicrobialIdAstSuspensionName => 'Пробирка с суспензией';
+
+  @override
+  String get schemPartsMicrobialIdAstSuspensionFn =>
+      'Бактериальная суспензия стандартной плотности; соломинка карты опущена в неё.';
+
+  @override
+  String get schemPartsMicrobialIdAstFillingName => 'Камера заполнения';
+
+  @override
+  String get schemPartsMicrobialIdAstFillingFn =>
+      'Вакуум затягивает суспензию через соломинку в лунки карты.';
+
+  @override
+  String get schemPartsMicrobialIdAstIncubatorName => 'Инкубатор';
+
+  @override
+  String get schemPartsMicrobialIdAstIncubatorFn =>
+      'Карты выдерживаются при постоянной температуре между считываниями.';
+
+  @override
+  String get schemPartsMicrobialIdAstScannerName => 'Оптический сканер';
+
+  @override
+  String get schemPartsMicrobialIdAstScannerFn =>
+      'Каждые 15 минут измеряет свет, прошедший через каждую лунку.';
+
+  @override
+  String get schemPartsMicrobialIdAstSoftwareName => 'Компьютер и программа';
+
+  @override
+  String get schemPartsMicrobialIdAstSoftwareFn =>
+      'По кривым роста рассчитывает МПК и категорию интерпретации, выдаёт отчёт.';
+
+  @override
+  String get schemPartsMicrobialIdAstPrinciple =>
+      'Из чистой культуры готовят суспензию стандартной плотности, карта заполняется ею через соломинку под вакуумом. В лунках AST-карты антибиотики в разных разведениях (миниатюрный автоматический вариант метода МПК). Оптический сканер каждые 15 минут измеряет свет, прошедший через лунки: рост ослабляет свет; программа рассчитывает МПК по динамике роста.';
+
+  @override
+  String get schemPartsMicrobialIdAstResult =>
+      'Значение МПК и категория интерпретации для каждого антибиотика (например, чувствителен или устойчив); на карте идентификации — вид микроорганизма.';
+
+  @override
+  String get schemPartsBloodCultureVialsName => 'Флаконы для гемокультуры';
+
+  @override
+  String get schemPartsBloodCultureVialsFn =>
+      'Аэробные и анаэробные флаконы с питательной средой; в них вносят кровь пациента.';
+
+  @override
+  String get schemPartsBloodCultureSensorName => 'Датчик CO₂ (на дне флакона)';
+
+  @override
+  String get schemPartsBloodCultureSensorFn =>
+      'Краситель реагирует с CO₂ и меняет флуоресценцию.';
+
+  @override
+  String get schemPartsBloodCultureIncubatorName => 'Шкаф-инкубатор';
+
+  @override
+  String get schemPartsBloodCultureIncubatorFn =>
+      'Флаконы находятся в ячейках при постоянной температуре.';
+
+  @override
+  String get schemPartsBloodCultureReaderName => 'Система считывания';
+
+  @override
+  String get schemPartsBloodCultureReaderFn =>
+      'Источник света и детектор под каждой ячейкой измеряют датчик каждые десять минут.';
+
+  @override
+  String get schemPartsBloodCulturePositiveName =>
+      'Индикатор положительного флакона';
+
+  @override
+  String get schemPartsBloodCulturePositiveFn =>
+      'Указывает флакон, в котором обнаружен рост.';
+
+  @override
+  String get schemPartsBloodCultureSoftwareName => 'Компьютер и программа';
+
+  @override
+  String get schemPartsBloodCultureSoftwareFn =>
+      'Показывает кривую роста и статус каждого флакона.';
+
+  @override
+  String get schemPartsBloodCulturePrinciple =>
+      'Флаконы с кровью помещают в инкубатор. При росте микроорганизмов выделяется CO₂; краситель датчика на дне флакона реагирует с CO₂, флуоресценция растёт. Прибор считывает датчик каждые десять минут; алгоритм помечает флакон положительным по скорости образования CO₂ и его абсолютному приросту.';
+
+  @override
+  String get schemPartsBloodCultureResult =>
+      'Статус каждого флакона: положительный (рост обнаружен) или отрицательный по окончании протокола, время до положительности и кривая роста. Положительный флакон передают на дальнейшее микробиологическое исследование.';
+
+  @override
+  String get schemPartsMycobacterialCultureTubeName => 'Пробирка MGIT';
+
+  @override
+  String get schemPartsMycobacterialCultureTubeFn =>
+      'С жидкой средой 7H9 и ростовой добавкой (OADC); сюда засевают образец.';
+
+  @override
+  String get schemPartsMycobacterialCultureSensorName =>
+      'Флуоресцентный датчик кислорода';
+
+  @override
+  String get schemPartsMycobacterialCultureSensorFn =>
+      'При снижении кислорода ярко флуоресцирует в УФ-свете.';
+
+  @override
+  String get schemPartsMycobacterialCultureDrawerName =>
+      'Ящик для пробирок (инкубация и считывание)';
+
+  @override
+  String get schemPartsMycobacterialCultureDrawerFn =>
+      'В каждой ячейке пробирка инкубируется, флуоресценция регулярно измеряется.';
+
+  @override
+  String get schemPartsMycobacterialCultureLightsName => 'Индикаторы состояния';
+
+  @override
+  String get schemPartsMycobacterialCultureLightsFn =>
+      'Указывают положительные или завершённые пробирки.';
+
+  @override
+  String get schemPartsMycobacterialCulturePanelName => 'Дисплей прибора';
+
+  @override
+  String get schemPartsMycobacterialCulturePanelFn =>
+      'Показывает состояние ящиков и предупреждения.';
+
+  @override
+  String get schemPartsMycobacterialCultureSoftwareName =>
+      'Компьютер (кривые GU)';
+
+  @override
+  String get schemPartsMycobacterialCultureSoftwareFn =>
+      'Записывает рост и результаты ТЛЧ; сравниваются кривые контрольной и опытной пробирок.';
+
+  @override
+  String get schemPartsMycobacterialCulturePrinciple =>
+      'В пробирке MGIT модифицированная жидкая среда Миддлбрука 7H9 и флуоресцентный датчик кислорода на дне. При росте микобактерий растворённый кислород расходуется, и датчик ярче флуоресцирует в УФ-свете. Прибор автоматически считывает каждую пробирку и записывает интенсивность в единицах роста (GU). При определении лекарственной чувствительности (ТЛЧ) GU пробирки с препаратом сравнивают с контрольной.';
+
+  @override
+  String get schemPartsMycobacterialCultureResult =>
+      'Положительная или отрицательная культура и кривая GU; при ТЛЧ для препаратов первого ряда прибор даёт интерпретацию «чувствителен/устойчив», для второго ряда значения GU интерпретирует пользователь.';
+
+  @override
+  String get schemPartsFlowCytometerSheathName => 'Ёмкость обжимающей жидкости';
+
+  @override
+  String get schemPartsFlowCytometerSheathFn =>
+      'Окружает поток пробы и сжимает его в тонкую центральную струю.';
+
+  @override
+  String get schemPartsFlowCytometerSampleName => 'Пробирка с образцом и зонд';
+
+  @override
+  String get schemPartsFlowCytometerSampleFn =>
+      'Отсюда засасывается окрашенная суспензия клеток.';
+
+  @override
+  String get schemPartsFlowCytometerFlowcellName =>
+      'Проточная ячейка (гидродинамическая фокусировка)';
+
+  @override
+  String get schemPartsFlowCytometerFlowcellFn =>
+      'Клетки по одной проходят точку пересечения с лазерным лучом.';
+
+  @override
+  String get schemPartsFlowCytometerLaserName => 'Лазер';
+
+  @override
+  String get schemPartsFlowCytometerLaserFn =>
+      'Освещает клетки и возбуждает флуорохромы.';
+
+  @override
+  String get schemPartsFlowCytometerFscName =>
+      'Детектор прямого рассеяния (FSC)';
+
+  @override
+  String get schemPartsFlowCytometerFscFn =>
+      'Измеряет рассеяние по ходу луча — оно зависит от размера клетки.';
+
+  @override
+  String get schemPartsFlowCytometerSscName =>
+      'Детекторы бокового рассеяния и флуоресценции';
+
+  @override
+  String get schemPartsFlowCytometerSscFn =>
+      'Свет под 90° разделяется по цвету дихроичными зеркалами и фильтрами на отдельные детекторы.';
+
+  @override
+  String get schemPartsFlowCytometerWasteName => 'Ёмкость для отходов';
+
+  @override
+  String get schemPartsFlowCytometerWasteFn =>
+      'Собирает измеренную пробу и обжимающую жидкость.';
+
+  @override
+  String get schemPartsFlowCytometerComputerName =>
+      'Компьютер (точечные диаграммы)';
+
+  @override
+  String get schemPartsFlowCytometerComputerFn =>
+      'Строит точечные диаграммы; популяции выделяются гейтированием.';
+
+  @override
+  String get schemPartsFlowCytometerPrinciple =>
+      'Клетки обычно окрашивают антителами, мечеными флуорохромами. Обжимающая жидкость гидродинамически фокусирует поток пробы и выстраивает клетки в ряд; каждая клетка пересекает лазерный луч. Прямое рассеяние (FSC) отражает размер клетки, боковое (SSC) — внутреннюю структуру, флуоресценция — метки; электроника оцифровывает сигналы.';
+
+  @override
+  String get schemPartsFlowCytometerResult =>
+      'Точечные диаграммы и гистограммы; доля и число клеточных популяций (например, абсолютное число CD4+ T-клеток с калибровочными частицами).';
+
+  @override
+  String get schemPartsRealTimePcrTubesName => 'ПЦР-пробирки (стрип из 8)';
+
+  @override
+  String get schemPartsRealTimePcrTubesFn =>
+      'Реакционная смесь и образец; считываются через прозрачные крышки.';
+
+  @override
+  String get schemPartsRealTimePcrLidName => 'Нагреваемая крышка';
+
+  @override
+  String get schemPartsRealTimePcrLidFn =>
+      'Предотвращает конденсацию на крышках пробирок.';
+
+  @override
+  String get schemPartsRealTimePcrBlockName => 'Термоблок (Пельтье)';
+
+  @override
+  String get schemPartsRealTimePcrBlockFn =>
+      'Быстро меняет температуры денатурации, отжига праймеров и синтеза.';
+
+  @override
+  String get schemPartsRealTimePcrSourceName => 'Источник возбуждающего света';
+
+  @override
+  String get schemPartsRealTimePcrSourceFn =>
+      'Даёт свет, возбуждающий краситель или зонд.';
+
+  @override
+  String get schemPartsRealTimePcrFiltersName => 'Колесо фильтров';
+
+  @override
+  String get schemPartsRealTimePcrFiltersFn =>
+      'Выбирает фильтры возбуждения и эмиссии для каждого красителя (канала).';
+
+  @override
+  String get schemPartsRealTimePcrDetectorName => 'Детектор';
+
+  @override
+  String get schemPartsRealTimePcrDetectorFn =>
+      'Измеряет флуоресценцию в каждом цикле.';
+
+  @override
+  String get schemPartsRealTimePcrSoftwareName =>
+      'Программа (кривые амплификации)';
+
+  @override
+  String get schemPartsRealTimePcrSoftwareFn =>
+      'Строит кривые, задаёт порог и рассчитывает Cq.';
+
+  @override
+  String get schemPartsRealTimePcrPrinciple =>
+      'Термоблок в каждом цикле меняет температуру: нагрев разделяет цепи ДНК, при охлаждении присоединяются праймеры, термостабильная полимераза достраивает новые цепи — мишень примерно удваивается за цикл (РНК предварительно переводят в кДНК обратной транскриптазой). Оптический модуль в каждом цикле измеряет флуоресценцию интеркалирующего красителя или зонда; сигнал пропорционален накоплению ампликона.';
+
+  @override
+  String get schemPartsRealTimePcrResult =>
+      'Кривые амплификации и для каждой пробы Cq (Ct) — цикл, на котором флуоресценция пересекает порог; чем ниже Cq, тем больше исходной мишени. В количественных тестах концентрацию рассчитывают по стандартам (например, вирусная нагрузка ВИЧ-1, копий/мл).';
+
+  @override
+  String get schemPartsCartridgeMolecularCartridgeName =>
+      'Одноразовый картридж';
+
+  @override
+  String get schemPartsCartridgeMolecularCartridgeFn =>
+      'Закрытый картридж с камерами для образца и реагентов; все этапы проходят внутри.';
+
+  @override
+  String get schemPartsCartridgeMolecularTubeName => 'Реакционная трубка';
+
+  @override
+  String get schemPartsCartridgeMolecularTubeFn =>
+      'В этой части картриджа идут амплификация и флуоресцентная детекция.';
+
+  @override
+  String get schemPartsCartridgeMolecularSpecimenName =>
+      'Контейнер для образца';
+
+  @override
+  String get schemPartsCartridgeMolecularSpecimenFn =>
+      'Сюда собирают образец, например мокроту, и смешивают с реагентом.';
+
+  @override
+  String get schemPartsCartridgeMolecularModuleName => 'Модуль прибора';
+
+  @override
+  String get schemPartsCartridgeMolecularModuleFn =>
+      'Сюда ставят картридж, он обрабатывается автоматически; модули работают независимо.';
+
+  @override
+  String get schemPartsCartridgeMolecularSoftwareName =>
+      'Компьютер и программа';
+
+  @override
+  String get schemPartsCartridgeMolecularSoftwareFn =>
+      'Управляет процессом и выдаёт интерпретированный результат.';
+
+  @override
+  String get schemPartsCartridgeMolecularPrinciple =>
+      'Образец смешивают с реагентом и вносят в картридж, картридж ставят в модуль. Дальнейшие этапы автоматически проходят внутри закрытого картриджа: обработка образца, выделение нуклеиновой кислоты, амплификация (ПЦР в реальном времени) и детекция. Оператор не вскрывает картридж, что снижает риск загрязнения ампликонами.';
+
+  @override
+  String get schemPartsCartridgeMolecularResult =>
+      'Для Xpert MTB/RIF: комплекс M. tuberculosis обнаружен или не обнаружен, устойчивость к рифампицину обнаружена или не обнаружена — менее чем за 2 часа.';
+
+  @override
+  String get schemPartsCoagAnalyzerSamplesName =>
+      'Штатив с цитратными пробирками';
+
+  @override
+  String get schemPartsCoagAnalyzerSamplesFn =>
+      'Пробирки с цитратом натрия (голубая крышка); отсюда забирается плазма.';
+
+  @override
+  String get schemPartsCoagAnalyzerReagentsName => 'Охлаждаемый блок реагентов';
+
+  @override
+  String get schemPartsCoagAnalyzerReagentsFn =>
+      'Тромбопластин и другие реагенты хранятся охлаждёнными.';
+
+  @override
+  String get schemPartsCoagAnalyzerArmName => 'Пипетирующая рука';
+
+  @override
+  String get schemPartsCoagAnalyzerArmFn =>
+      'Вносит плазму и реагент в кювету в точных объёмах.';
+
+  @override
+  String get schemPartsCoagAnalyzerCuvettesName =>
+      'Измерительные кюветы (37 °C)';
+
+  @override
+  String get schemPartsCoagAnalyzerCuvettesFn =>
+      'Плазма прогревается; после добавления реагента отслеживается образование сгустка.';
+
+  @override
+  String get schemPartsCoagAnalyzerLightName => 'Источник света';
+
+  @override
+  String get schemPartsCoagAnalyzerLightFn =>
+      'Даёт свет, проходящий через кювету.';
+
+  @override
+  String get schemPartsCoagAnalyzerDetectorName => 'Фотодетектор';
+
+  @override
+  String get schemPartsCoagAnalyzerDetectorFn =>
+      'Регистрирует изменение прошедшего света при образовании сгустка.';
+
+  @override
+  String get schemPartsCoagAnalyzerDisplayName =>
+      'Дисплей (кривая свёртывания)';
+
+  @override
+  String get schemPartsCoagAnalyzerDisplayFn =>
+      'Кривая свёртывания, время и рассчитанное МНО.';
+
+  @override
+  String get schemPartsCoagAnalyzerPrinciple =>
+      'Зонд вносит цитратную плазму в кювету и прогревает её до 37 °C, затем добавляется реагент (для ПВ — тромбопластин: тканевый фактор, кальций и фосфолипиды). При образовании фибринового сгустка смесь мутнеет: оптический метод регистрирует изменение прошедшего света, механический — остановку движения. Время до этого момента — время свёртывания.';
+
+  @override
+  String get schemPartsCoagAnalyzerResult =>
+      'Время свёртывания в секундах и кривая свёртывания; для ПВ рассчитывается МНО по ПВ пациента, среднему нормальному ПВ и МИЧ реагента.';
+
+  @override
+  String get schemPartsElisaReaderPlateName => '96-луночный микропланшет';
+
+  @override
+  String get schemPartsElisaReaderPlateFn =>
+      'В лунках идут реакция и окраска; держатель вводит планшет в ридер.';
+
+  @override
+  String get schemPartsElisaReaderLampName => 'Источник света (лампа)';
+
+  @override
+  String get schemPartsElisaReaderLampFn =>
+      'Даёт свет, проходящий через лунку.';
+
+  @override
+  String get schemPartsElisaReaderWellName => 'Измеряемая лунка';
+
+  @override
+  String get schemPartsElisaReaderWellFn =>
+      'Окрашенный раствор поглощает часть света.';
+
+  @override
+  String get schemPartsElisaReaderFilterName => 'Оптический фильтр';
+
+  @override
+  String get schemPartsElisaReaderFilterFn =>
+      'Пропускает только нужную длину волны.';
+
+  @override
+  String get schemPartsElisaReaderDetectorName => 'Фотодетектор';
+
+  @override
+  String get schemPartsElisaReaderDetectorFn =>
+      'Измеряет прошедший свет; по нему рассчитывается поглощение.';
+
+  @override
+  String get schemPartsElisaReaderWasherName => 'Гребёнка игл вошера';
+
+  @override
+  String get schemPartsElisaReaderWasherFn =>
+      'Наливает в лунки промывочный раствор и отсасывает его.';
+
+  @override
+  String get schemPartsElisaReaderBufferName => 'Ёмкость промывочного буфера';
+
+  @override
+  String get schemPartsElisaReaderBufferFn => 'Подаёт буфер в вошер.';
+
+  @override
+  String get schemPartsElisaReaderWasteName => 'Ёмкость для отходов';
+
+  @override
+  String get schemPartsElisaReaderWasteFn => 'Собирает отсосанную жидкость.';
+
+  @override
+  String get schemPartsElisaReaderPrinciple =>
+      'В лунках планшета поэтапно идёт реакция антиген–антитело; между этапами вошер отмывает несвязанные вещества. В конце добавляют субстрат, и фермент даёт окраску. Ридер пропускает через каждую лунку свет выбранной длины волны и измеряет поглощение (оптическую плотность); неизвестные пробы рассчитывают по стандартной кривой.';
+
+  @override
+  String get schemPartsElisaReaderResult =>
+      'Оптическая плотность (OD) каждой лунки; концентрация по стандартной кривой или качественный результат (положительно/отрицательно) относительно порогового значения (cut-off).';
+
+  @override
+  String get schemPartsBscClass2OpeningName =>
+      'Переднее окно (входящий воздух)';
+
+  @override
+  String get schemPartsBscClass2OpeningFn =>
+      'Сюда засасывается воздух помещения — защита оператора.';
+
+  @override
+  String get schemPartsBscClass2GrilleName => 'Передняя решётка';
+
+  @override
+  String get schemPartsBscClass2GrilleFn =>
+      'Сюда уходят входящий воздух и воздух передней части рабочей зоны; её нельзя загораживать.';
+
+  @override
+  String get schemPartsBscClass2WorkzoneName => 'Рабочая зона и поверхность';
+
+  @override
+  String get schemPartsBscClass2WorkzoneFn =>
+      'Здесь работают с образцами; сверху опускается чистый воздух.';
+
+  @override
+  String get schemPartsBscClass2DownflowName =>
+      'HEPA-фильтр нисходящего потока';
+
+  @override
+  String get schemPartsBscClass2DownflowFn =>
+      'Очищает от частиц воздух, поступающий в рабочую зону.';
+
+  @override
+  String get schemPartsBscClass2FanName => 'Вентилятор';
+
+  @override
+  String get schemPartsBscClass2FanFn => 'Перемещает воздух по каналам.';
+
+  @override
+  String get schemPartsBscClass2ExhaustName => 'Выходной HEPA-фильтр';
+
+  @override
+  String get schemPartsBscClass2ExhaustFn =>
+      'Очищает удаляемый воздух — защита окружающей среды.';
+
+  @override
+  String get schemPartsBscClass2PlenumName => 'Задний воздушный канал';
+
+  @override
+  String get schemPartsBscClass2PlenumFn =>
+      'Возвращает воздух от решётки к вентилятору.';
+
+  @override
+  String get schemPartsBscClass2SashName => 'Переднее стекло';
+
+  @override
+  String get schemPartsBscClass2SashFn =>
+      'Защищает лицо оператора и задаёт высоту переднего проёма.';
+
+  @override
+  String get schemPartsBscClass2Principle =>
+      'Вентилятор обеспечивает циркуляцию воздуха. Воздух помещения засасывается через переднее окно в переднюю решётку — защита оператора. Воздух после HEPA-фильтра опускается над рабочей поверхностью — защита материала. Избыток воздуха удаляется через выходной HEPA-фильтр — защита окружающей среды.';
+
+  @override
+  String get schemPartsBscClass2Result =>
+      'Это не измерительный прибор: результат — безопасная рабочая среда (защита оператора, материала и окружающей среды). Эффективность подтверждают регулярной проверкой воздушных потоков и фильтров и сертификацией.';
+
+  @override
+  String get schemPartsAutoclaveChamberName => 'Камера под давлением';
+
+  @override
+  String get schemPartsAutoclaveChamberFn =>
+      'Здесь загрузка выдерживается в насыщенном паре под давлением.';
+
+  @override
+  String get schemPartsAutoclaveDoorName => 'Дверца с уплотнителем и замком';
+
+  @override
+  String get schemPartsAutoclaveDoorFn =>
+      'Герметично закрывает камеру; не открывается под давлением.';
+
+  @override
+  String get schemPartsAutoclaveTrayName => 'Лоток для загрузки';
+
+  @override
+  String get schemPartsAutoclaveTrayFn =>
+      'Изделия укладывают так, чтобы пар свободно проходил.';
+
+  @override
+  String get schemPartsAutoclavePressureName => 'Манометр';
+
+  @override
+  String get schemPartsAutoclavePressureFn => 'Показывает давление в камере.';
+
+  @override
+  String get schemPartsAutoclaveThermometerName => 'Термометр';
+
+  @override
+  String get schemPartsAutoclaveThermometerFn =>
+      'Показывает температуру в камере.';
+
+  @override
+  String get schemPartsAutoclaveValveName => 'Предохранительный клапан';
+
+  @override
+  String get schemPartsAutoclaveValveFn =>
+      'Сбрасывает пар при превышении давления.';
+
+  @override
+  String get schemPartsAutoclaveWaterName => 'Резервуар для воды';
+
+  @override
+  String get schemPartsAutoclaveWaterFn =>
+      'Сюда заливают воду для получения пара.';
+
+  @override
+  String get schemPartsAutoclavePrinciple =>
+      'Воздух из камеры удаляется и замещается насыщенным паром. Давление повышает температуру кипения воды, поэтому пар достигает высоких температур, например 121 °C или 132 °C. Пар контактирует с изделиями и убивает микроорганизмы теплом; процесс определяют качество пара, давление, температура и время. Оставшийся воздух мешает контакту пара с загрузкой.';
+
+  @override
+  String get schemPartsAutoclaveResult =>
+      'Стерилизованная загрузка и запись параметров цикла (время, температура, давление); эффективность проверяют химическими и биологическими индикаторами.';
+
+  @override
+  String get schemPartsBloodGasIseSyringeName =>
+      'Образец в гепаринизированном шприце';
+
+  @override
+  String get schemPartsBloodGasIseSyringeFn =>
+      'Артериальная или другая цельная кровь доставляется без пузырьков воздуха.';
+
+  @override
+  String get schemPartsBloodGasIseProbeName => 'Зонд ввода пробы';
+
+  @override
+  String get schemPartsBloodGasIseProbeFn =>
+      'Засасывает кровь из шприца в измерительный канал.';
+
+  @override
+  String get schemPartsBloodGasIseSensorsName => 'Сенсоры (электроды)';
+
+  @override
+  String get schemPartsBloodGasIseSensorsFn =>
+      'Отдельные электроды для pH, pCO₂, pO₂ и электролитов.';
+
+  @override
+  String get schemPartsBloodGasIseChannelName => 'Измерительный канал';
+
+  @override
+  String get schemPartsBloodGasIseChannelFn =>
+      'Проба проходит над всеми сенсорами; канал термостатирован.';
+
+  @override
+  String get schemPartsBloodGasIsePackName => 'Пакет реагентов';
+
+  @override
+  String get schemPartsBloodGasIsePackFn =>
+      'Калибровочные и промывочные растворы.';
+
+  @override
+  String get schemPartsBloodGasIseDisplayName => 'Дисплей';
+
+  @override
+  String get schemPartsBloodGasIseDisplayFn =>
+      'Показывает измеренные и расчётные величины.';
+
+  @override
+  String get schemPartsBloodGasIsePrinterName => 'Принтер';
+
+  @override
+  String get schemPartsBloodGasIsePrinterFn => 'Печатает результаты.';
+
+  @override
+  String get schemPartsBloodGasIsePrinciple =>
+      'Цельная кровь из гепаринизированного шприца через зонд засасывается в измерительный канал и проходит над сенсорами. pH и pCO₂ измеряются потенциометрически, pO₂ — амперометрически; Na, K, Cl и ионизированный Ca — ион-селективными электродами. sO₂ измеряется кооксиметрией или рассчитывается; общий CO₂, бикарбонат и избыток оснований (BE) рассчитываются из измеренных величин.';
+
+  @override
+  String get schemPartsBloodGasIseResult =>
+      'pH, pCO₂, pO₂, sO₂, электролиты и метаболиты (глюкоза, лактат и др.), а также расчётные бикарбонат и BE — показатели кислотно-основного состояния и оксигенации.';
+
+  @override
+  String get schemPartsHba1cAnalyzerRackName => 'Штатив с пробирками ЭДТА';
+
+  @override
+  String get schemPartsHba1cAnalyzerRackFn =>
+      'Пробирки с цельной кровью (фиолетовая крышка).';
+
+  @override
+  String get schemPartsHba1cAnalyzerArmName => 'Пробоотборная рука';
+
+  @override
+  String get schemPartsHba1cAnalyzerArmFn =>
+      'Забирает кровь из пробирки, гемолизирует и вводит в систему.';
+
+  @override
+  String get schemPartsHba1cAnalyzerEluentsName => 'Флаконы буферов (элюентов)';
+
+  @override
+  String get schemPartsHba1cAnalyzerEluentsFn =>
+      'Буферы разной силы поочерёдно вымывают фракции из колонки.';
+
+  @override
+  String get schemPartsHba1cAnalyzerColumnName => 'Ионообменная колонка';
+
+  @override
+  String get schemPartsHba1cAnalyzerColumnFn =>
+      'Разделяет фракции гемоглобина по заряду.';
+
+  @override
+  String get schemPartsHba1cAnalyzerDetectorName => 'Фотометрический детектор';
+
+  @override
+  String get schemPartsHba1cAnalyzerDetectorFn =>
+      'Измеряет поглощение гемоглобина на выходе колонки.';
+
+  @override
+  String get schemPartsHba1cAnalyzerDisplayName => 'Дисплей (хроматограмма)';
+
+  @override
+  String get schemPartsHba1cAnalyzerDisplayFn =>
+      'Показывает хроматограмму и результат HbA1c.';
+
+  @override
+  String get schemPartsHba1cAnalyzerPrinterName => 'Принтер';
+
+  @override
+  String get schemPartsHba1cAnalyzerPrinterFn => 'Печатает результаты.';
+
+  @override
+  String get schemPartsHba1cAnalyzerWasteName => 'Ёмкость для отходов';
+
+  @override
+  String get schemPartsHba1cAnalyzerWasteFn =>
+      'Собирает отработанные буфер и пробу.';
+
+  @override
+  String get schemPartsHba1cAnalyzerPrinciple =>
+      'Цельная кровь с ЭДТА отбирается автоматически и гемолизируется. При ионообменной хроматографии фракции гемоглобина под действием градиента буферов выходят из колонки в разное время и регистрируются фотометрическим детектором; доля HbA1c рассчитывается по площади пика хроматограммы. Другие анализаторы используют боронат-аффинную хроматографию, иммуноанализ или ферментативный метод.';
+
+  @override
+  String get schemPartsHba1cAnalyzerResult =>
+      'Хроматограмма фракций гемоглобина и HbA1c в единицах NGSP (%) и IFCC (ммоль/моль); ионообменный метод может выявлять и варианты HbS, C, D.';
+
+  @override
+  String get schemPartsLabFridgeControllerName =>
+      'Панель управления (термостат)';
+
+  @override
+  String get schemPartsLabFridgeControllerFn =>
+      'Поддерживает заданную температуру и показывает текущую.';
+
+  @override
+  String get schemPartsLabFridgeFridgeName => 'Холодильная камера';
+
+  @override
+  String get schemPartsLabFridgeFridgeFn =>
+      'На полках хранятся образцы, реагенты и контрольные материалы.';
+
+  @override
+  String get schemPartsLabFridgeProbeName => 'Датчик в буферном флаконе';
+
+  @override
+  String get schemPartsLabFridgeProbeFn =>
+      'Измеряет температуру продукта и сглаживает кратковременные колебания при открытии дверцы.';
+
+  @override
+  String get schemPartsLabFridgeLoggerName =>
+      'Цифровой регистратор данных (DDL)';
+
+  @override
+  String get schemPartsLabFridgeLoggerFn =>
+      'Регулярно записывает температуру и подаёт сигнал при отклонениях.';
+
+  @override
+  String get schemPartsLabFridgeFreezerName => 'Морозильная камера';
+
+  @override
+  String get schemPartsLabFridgeFreezerFn =>
+      'Хранятся замороженные аликвоты (например, контрольного материала).';
+
+  @override
+  String get schemPartsLabFridgePrinciple =>
+      'Холодильный агрегат поддерживает температуру в заданном диапазоне, ею управляет термостат. Датчик в буферном флаконе отражает температуру продукта (кратковременные колебания температуры воздуха сглаживаются). Цифровой регистратор данных (DDL) регулярно записывает температуру и подаёт сигнал при выходе за пределы; рекомендуется и резервное устройство контроля температуры.';
+
+  @override
+  String get schemPartsLabFridgeResult =>
+      'Непрерывная запись температуры (мин./макс., отклонения и сигналы тревоги) — документ о правильном хранении образцов и реагентов.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeEyepiecesName => 'Окуляры';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeEyepiecesFn =>
+      'Для наблюдения изображения.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeLedName => 'LED-осветитель';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeLedFn =>
+      'Даёт возбуждающий свет вместо ртутной лампы.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeCubeName => 'Фильтровый куб';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeCubeFn =>
+      'Возбуждающий фильтр, дихроичное зеркало и эмиссионный фильтр разделяют свет.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeObjectiveName => 'Объектив';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeObjectiveFn =>
+      'Направляет свет на препарат и увеличивает изображение.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeStageName => 'Столик с препаратом';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeStageFn =>
+      'Сюда кладут мазок мокроты, окрашенный аурамином.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFocusName => 'Винты фокусировки';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFocusFn => 'Настраивают резкость.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFieldName => 'Поле зрения';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFieldFn =>
+      'Ярко-жёлто-зелёные палочки на тёмном фоне — окрашенные бациллы.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopePrinciple =>
+      'Мазок окрашивают аурамином (флуорохромом); стенка микобактерий удерживает краситель. LED-осветитель направляет возбуждающий синий свет через фильтровый куб и объектив на препарат. Окрашенные бациллы испускают более длинноволновый (жёлто-зелёный) свет; эмиссионный фильтр задерживает возбуждающий свет, поэтому бациллы ярко светятся на тёмном фоне.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeResult =>
+      'Заключение микроскопии: кислотоустойчивые бациллы (светящиеся палочки) обнаружены или не обнаружены, при обнаружении — полуколичественная градация.';
+
+  @override
+  String get schemPartsCasaCameraName => 'Цифровая камера';
+
+  @override
+  String get schemPartsCasaCameraFn =>
+      'Записывает изображение микроскопа как последовательность кадров.';
+
+  @override
+  String get schemPartsCasaMicroscopeName => 'Микроскоп (объектив)';
+
+  @override
+  String get schemPartsCasaMicroscopeFn =>
+      'Увеличивает сперматозоиды, обычно с фазовым контрастом.';
+
+  @override
+  String get schemPartsCasaStageName => 'Подогреваемый столик';
+
+  @override
+  String get schemPartsCasaStageFn =>
+      'Поддерживает постоянную температуру пробы — подвижность зависит от температуры.';
+
+  @override
+  String get schemPartsCasaChamberName => 'Счётная камера';
+
+  @override
+  String get schemPartsCasaChamberFn =>
+      'Камера заданной глубины даёт слой пробы одинаковой толщины.';
+
+  @override
+  String get schemPartsCasaSoftwareName => 'Компьютер и программа';
+
+  @override
+  String get schemPartsCasaSoftwareFn =>
+      'Восстанавливает треки и рассчитывает кинематические показатели.';
+
+  @override
+  String get schemPartsCasaPrinciple =>
+      'Пробу спермы вносят в счётную камеру на подогреваемом столике. Камера через микроскоп снимает последовательные кадры; программа находит головки, восстанавливает трек каждого подвижного сперматозоида и рассчитывает кинематику движения. Анализируют треки не менее 200 подвижных клеток.';
+
+  @override
+  String get schemPartsCasaResult =>
+      'Кинематические показатели (например, криволинейная, прямолинейная и средняя скорость по траектории) и типы движения; по руководству ВОЗ процент подвижных может быть ненадёжным — частицы детрита можно принять за неподвижные клетки.';
+
+  @override
+  String get schemPartsGelCardSystemCentrifugeName => 'Центрифуга для карт';
+
+  @override
+  String get schemPartsGelCardSystemCentrifugeFn =>
+      'Вращает карты с заданной скоростью и временем.';
+
+  @override
+  String get schemPartsGelCardSystemIncubatorName => 'Инкубатор';
+
+  @override
+  String get schemPartsGelCardSystemIncubatorFn =>
+      'Инкубирует карты для антиглобулинового теста.';
+
+  @override
+  String get schemPartsGelCardSystemCardName => 'Гелевая карта';
+
+  @override
+  String get schemPartsGelCardSystemCardFn =>
+      'Пластиковая карта: в каждой микропробирке гелевая или стеклянная матрица.';
+
+  @override
+  String get schemPartsGelCardSystemChamberName => 'Реакционная камера';
+
+  @override
+  String get schemPartsGelCardSystemChamberFn =>
+      'Здесь смешиваются эритроциты и сыворотка (или реагент).';
+
+  @override
+  String get schemPartsGelCardSystemGelName => 'Гелевая колонка (матрица)';
+
+  @override
+  String get schemPartsGelCardSystemGelFn =>
+      'Задерживает агглютинаты и пропускает отдельные эритроциты; может содержать антиглобулин или анти-A, анти-B.';
+
+  @override
+  String get schemPartsGelCardSystemPositiveName => 'Положительная реакция';
+
+  @override
+  String get schemPartsGelCardSystemPositiveFn =>
+      'Эритроциты остаются на поверхности или в толще геля.';
+
+  @override
+  String get schemPartsGelCardSystemNegativeName => 'Отрицательная реакция';
+
+  @override
+  String get schemPartsGelCardSystemNegativeFn =>
+      'Эритроциты образуют осадок на дне.';
+
+  @override
+  String get schemPartsGelCardSystemPrinciple =>
+      'В верхнюю реакционную камеру микропробирки вносят суспензию эритроцитов и сыворотку (или реагент) и инкубируют. При центрифугировании эритроциты проходят в гелевую или стеклянную матрицу, сыворотка остаётся сверху. Агглютинаты (например, клетки, покрытые антителом и связанные антиглобулином) задерживаются в геле — положительно; неагглютинированные клетки опускаются на дно и образуют осадок — отрицательно. Для антиглобулинового теста отмывка не нужна.';
+
+  @override
+  String get schemPartsGelCardSystemResult =>
+      'Реакция в каждой микропробирке: положительная (агглютинаты на поверхности или в толще геля, оценивается степень) или отрицательная (осадок на дне); по ним делают вывод о группе крови или о прямой антиглобулиновой пробе.';
+
+  @override
+  String get schemPartsEsrAnalyzerStandName => 'Штатив Вестергрена';
+
+  @override
+  String get schemPartsEsrAnalyzerStandFn =>
+      'Удерживает трубки строго вертикально.';
+
+  @override
+  String get schemPartsEsrAnalyzerTubeName => 'Трубка Вестергрена';
+
+  @override
+  String get schemPartsEsrAnalyzerTubeFn =>
+      'Градуированная стандартная трубка с внутренним диаметром 2,5 мм.';
+
+  @override
+  String get schemPartsEsrAnalyzerBoundaryName => 'Граница плазма–эритроциты';
+
+  @override
+  String get schemPartsEsrAnalyzerBoundaryFn =>
+      'Через час расстояние до этой границы считывают в миллиметрах.';
+
+  @override
+  String get schemPartsEsrAnalyzerReaderName => 'Автоматический анализатор';
+
+  @override
+  String get schemPartsEsrAnalyzerReaderFn =>
+      'Автоматически измеряет оседание в закрытых пробирках.';
+
+  @override
+  String get schemPartsEsrAnalyzerTubesName => 'Закрытые пробирки';
+
+  @override
+  String get schemPartsEsrAnalyzerTubesFn =>
+      'Пробирка с образцом не вскрывается.';
+
+  @override
+  String get schemPartsEsrAnalyzerSensorsName => 'Оптические датчики';
+
+  @override
+  String get schemPartsEsrAnalyzerSensorsFn =>
+      'Определяют границу плазмы и столба эритроцитов.';
+
+  @override
+  String get schemPartsEsrAnalyzerDisplayName => 'Дисплей';
+
+  @override
+  String get schemPartsEsrAnalyzerDisplayFn => 'Показывает результаты.';
+
+  @override
+  String get schemPartsEsrAnalyzerPrinciple =>
+      'Кровь с антикоагулянтом оседает под действием силы тяжести в стандартной вертикальной трубке (Вестергрен, внутренний диаметр 2,5 мм) в течение часа; высоту столба прозрачной плазмы считывают в миллиметрах. При воспалении повышение белков усиливает образование «монетных столбиков», и оседание ускоряется. Автоматические анализаторы отслеживают границу плазма–эритроциты в закрытых пробирках оптическими датчиками.';
+
+  @override
+  String get schemPartsEsrAnalyzerResult =>
+      'Значение СОЭ в мм/ч; неспецифический показатель, оценивается вместе с другими исследованиями.';
+
+  @override
+  String get schemPartsAggregometerChannelsName => 'Измерительные каналы LTA';
+
+  @override
+  String get schemPartsAggregometerChannelsFn =>
+      'Кюветы прогреваются до 37 °C и перемешиваются.';
+
+  @override
+  String get schemPartsAggregometerLightName => 'Источник света';
+
+  @override
+  String get schemPartsAggregometerLightFn =>
+      'Даёт свет, проходящий через кювету.';
+
+  @override
+  String get schemPartsAggregometerCuvetteName =>
+      'Кювета (плазма и магнитная мешалка)';
+
+  @override
+  String get schemPartsAggregometerCuvetteFn =>
+      'Богатая тромбоцитами плазма; сюда добавляют агонист.';
+
+  @override
+  String get schemPartsAggregometerPhotodetectorName => 'Фотодетектор';
+
+  @override
+  String get schemPartsAggregometerPhotodetectorFn =>
+      'Измеряет рост светопропускания при агрегации.';
+
+  @override
+  String get schemPartsAggregometerCurvesName => 'Кривые агрегации';
+
+  @override
+  String get schemPartsAggregometerCurvesFn =>
+      'Светопропускание во времени для каждого канала.';
+
+  @override
+  String get schemPartsAggregometerCupName => 'Чашка с кровью';
+
+  @override
+  String get schemPartsAggregometerCupFn =>
+      'Здесь цитратная кровь свёртывается с кальцием и активатором.';
+
+  @override
+  String get schemPartsAggregometerPinName => 'Штифт и датчик кручения';
+
+  @override
+  String get schemPartsAggregometerPinFn =>
+      'Фибрин связывает штифт с чашкой; регистрируется передаваемый момент.';
+
+  @override
+  String get schemPartsAggregometerTraceName => 'Вязкоэластическая кривая';
+
+  @override
+  String get schemPartsAggregometerTraceFn =>
+      'График образования, прочности и лизиса сгустка.';
+
+  @override
+  String get schemPartsAggregometerPrinciple =>
+      'LTA: богатая тромбоцитами плазма перемешивается в кювете при 37 °C. После добавления агониста тромбоциты агрегируют, плазма просветляется и светопропускание растёт — фотодетектор записывает кривую. TEG/ROTEM: цитратная кровь во вращающейся чашке свёртывается с кальцием и активатором; фибрин связывает штифт с чашкой, передаваемый крутящий момент записывается в виде кривой.';
+
+  @override
+  String get schemPartsAggregometerResult =>
+      'LTA: кривая агрегации для каждого агониста (светопропускание во времени). TEG/ROTEM: вязкоэластическая кривая, отражающая образование и прочность сгустка и фибринолиз.';
+
+  @override
+  String get schemPartsElectrophoresisPowerName => 'Источник питания';
+
+  @override
+  String get schemPartsElectrophoresisPowerFn =>
+      'Подаёт постоянное напряжение на электроды.';
+
+  @override
+  String get schemPartsElectrophoresisElectrodesName =>
+      'Буферные отсеки и электроды';
+
+  @override
+  String get schemPartsElectrophoresisElectrodesFn =>
+      'Буфер проводит ток; катод (−) и анод (+) создают электрическое поле.';
+
+  @override
+  String get schemPartsElectrophoresisWicksName => 'Фитили';
+
+  @override
+  String get schemPartsElectrophoresisWicksFn =>
+      'Подводят буфер к носителю и замыкают электрическую цепь.';
+
+  @override
+  String get schemPartsElectrophoresisMediumName => 'Носитель и фракции';
+
+  @override
+  String get schemPartsElectrophoresisMediumFn =>
+      'На агарозе или ацетате целлюлозы молекулы разделяются на зоны.';
+
+  @override
+  String get schemPartsElectrophoresisCoverName => 'Крышка';
+
+  @override
+  String get schemPartsElectrophoresisCoverFn =>
+      'Уменьшает испарение и защищает от поражения током.';
+
+  @override
+  String get schemPartsElectrophoresisDensitometerName => 'Денситометр';
+
+  @override
+  String get schemPartsElectrophoresisDensitometerFn =>
+      'Сканирует оптическую плотность окрашенных зон и строит денситограмму.';
+
+  @override
+  String get schemPartsElectrophoresisPrinciple =>
+      'Пробу наносят на смоченный буфером носитель (агароза, ацетат целлюлозы или полиакриламид). Источник питания через электроды создаёт электрическое поле; заряженные молекулы движутся с разной скоростью в зависимости от заряда, размера и формы и разделяются на зоны. Затем зоны окрашивают и измеряют по оптической плотности на денситометре.';
+
+  @override
+  String get schemPartsElectrophoresisResult =>
+      'Окрашенные фракции (например, для белков сыворотки — альбумин, альфа-1, альфа-2, бета, гамма) и денситограмма с относительной долей каждой фракции; образец сравнивают с контрольными.';
+
+  @override
+  String get schemPartsOsmometerTubesName => 'Пробирки с образцом';
+
+  @override
+  String get schemPartsOsmometerTubesFn => 'Малый объём мочи или сыворотки.';
+
+  @override
+  String get schemPartsOsmometerThermistorName => 'Термисторный зонд';
+
+  @override
+  String get schemPartsOsmometerThermistorFn =>
+      'Погружается в пробу и точно измеряет температуру.';
+
+  @override
+  String get schemPartsOsmometerBathName => 'Охлаждающий блок (баня)';
+
+  @override
+  String get schemPartsOsmometerBathFn =>
+      'Охлаждает пробу ниже точки замерзания.';
+
+  @override
+  String get schemPartsOsmometerWireName => 'Проволока-мешалка';
+
+  @override
+  String get schemPartsOsmometerWireFn =>
+      'Вибрацией запускает кристаллизацию переохлаждённой пробы.';
+
+  @override
+  String get schemPartsOsmometerDisplayName => 'Дисплей (кривая замерзания)';
+
+  @override
+  String get schemPartsOsmometerDisplayFn =>
+      'Кривая температуры и результат осмоляльности.';
+
+  @override
+  String get schemPartsOsmometerPrinciple =>
+      'Проба в охлаждающем блоке переохлаждается ниже точки замерзания, затем вибрация проволоки-мешалки запускает кристаллизацию. Выделившаяся скрытая теплота поднимает температуру до точки замерзания, образуется плато; его измеряет термистор в схеме моста Уитстона. Растворённые частицы понижают точку замерзания: 1 моль вещества понижает её у воды примерно на 1,86 °C — отсюда рассчитывается осмоляльность.';
+
+  @override
+  String get schemPartsOsmometerResult =>
+      'Осмоляльность мочи или сыворотки, мОсм/кг (ммоль/кг).';
+
+  @override
+  String get schemPartsTlcTankName => 'Камера для проявления (с крышкой)';
+
+  @override
+  String get schemPartsTlcTankFn =>
+      'Закрытая стеклянная камера, насыщенная парами растворителя.';
+
+  @override
+  String get schemPartsTlcSolventName => 'Подвижная фаза (растворитель)';
+
+  @override
+  String get schemPartsTlcSolventFn =>
+      'Поднимается по пластинке за счёт капиллярных сил.';
+
+  @override
+  String get schemPartsTlcPlateName => 'Пластинка ТСХ (силикагель GF254)';
+
+  @override
+  String get schemPartsTlcPlateFn =>
+      'Тонкий слой силикагеля; флуоресцентный индикатор светится в УФ-свете.';
+
+  @override
+  String get schemPartsTlcOriginName => 'Линия старта';
+
+  @override
+  String get schemPartsTlcOriginFn =>
+      'На неё наносят пятна образца и стандарта.';
+
+  @override
+  String get schemPartsTlcFrontName => 'Фронт растворителя';
+
+  @override
+  String get schemPartsTlcFrontFn =>
+      'Линия, до которой дошёл растворитель; её отмечают для расчёта Rf.';
+
+  @override
+  String get schemPartsTlcCapillariesName => 'Капилляры';
+
+  @override
+  String get schemPartsTlcCapillariesFn =>
+      'Для нанесения пробы маленьким пятном.';
+
+  @override
+  String get schemPartsTlcLampName => 'УФ-лампа (254 нм)';
+
+  @override
+  String get schemPartsTlcLampFn =>
+      'Освещает пластинку и делает пятна видимыми.';
+
+  @override
+  String get schemPartsTlcSpotsName => 'Пятна в УФ-свете';
+
+  @override
+  String get schemPartsTlcSpotsFn =>
+      'Вещества гасят флуоресценцию и видны тёмными пятнами на зелёном фоне.';
+
+  @override
+  String get schemPartsTlcPrinciple =>
+      'Пятна пробы и стандарта наносят на линию старта, пластинку ставят в насыщенную камеру так, чтобы нижний край касался растворителя. Пока растворитель поднимается, вещества распределяются между силикагелем (неподвижная фаза) и растворителем (подвижная фаза) и проходят разное расстояние. Проявленную пластинку просматривают в УФ-свете 254 нм или опрыскивают реагентами-проявителями.';
+
+  @override
+  String get schemPartsTlcResult =>
+      'Положение пятен и значения Rf (путь пятна / путь фронта растворителя); для идентификации вещества их сравнивают со стандартом.';
+
+  @override
+  String get schemPartsAnalyticalBalancePipetteName =>
+      'Пипетка (воздушного вытеснения)';
+
+  @override
+  String get schemPartsAnalyticalBalancePipetteFn =>
+      'Калибруемый дозатор: выдаёт заданный объём.';
+
+  @override
+  String get schemPartsAnalyticalBalanceVesselName => 'Сосуд для взвешивания';
+
+  @override
+  String get schemPartsAnalyticalBalanceVesselFn =>
+      'Сюда поступает дозированная вода и взвешивается.';
+
+  @override
+  String get schemPartsAnalyticalBalancePanName => 'Чашка весов';
+
+  @override
+  String get schemPartsAnalyticalBalancePanFn => 'На ней измеряется масса.';
+
+  @override
+  String get schemPartsAnalyticalBalanceEnclosureName =>
+      'Стеклянный ветрозащитный кожух';
+
+  @override
+  String get schemPartsAnalyticalBalanceEnclosureFn =>
+      'Уменьшает влияние потоков воздуха и пыли на взвешивание.';
+
+  @override
+  String get schemPartsAnalyticalBalanceDisplayName => 'Дисплей и клавиши';
+
+  @override
+  String get schemPartsAnalyticalBalanceDisplayFn =>
+      'Показывает массу; клавиша тары обнуляет массу сосуда.';
+
+  @override
+  String get schemPartsAnalyticalBalanceWaterName => 'Ёмкость с водой';
+
+  @override
+  String get schemPartsAnalyticalBalanceWaterFn =>
+      'Чистая (дистиллированная) вода, уравновешенная по температуре с помещением.';
+
+  @override
+  String get schemPartsAnalyticalBalanceThermometerName => 'Термометр';
+
+  @override
+  String get schemPartsAnalyticalBalanceThermometerFn =>
+      'Измеряет температуру воды для поправки на плотность.';
+
+  @override
+  String get schemPartsAnalyticalBalancePrinciple =>
+      'Пипетка дозирует заданный объём воды в сосуд на весах, массу воды взвешивают. Массу переводят в объём с поправками на плотность воды (по температуре) и выталкивающую силу воздуха, поэтому регистрируют температуру воды и воздуха. Пипетку калибруют «на выливание».';
+
+  @override
+  String get schemPartsAnalyticalBalanceResult =>
+      'Рассчитанный объём каждой дозы; сравнение с номинальным объёмом даёт оценку точности (систематической погрешности) и воспроизводимости.';
+
+  @override
   String get imgDiagramCalibrationOverviewAlt =>
       'Схема общего порядка калибровки в шесть шагов: уточнить прибор и метод; проверить реагент, REF и версию IFU; подготовить калибратор с нужным лотом; следовать инструкции конкретного прибора; оценить калибровку и независимый КК; записать результат, решение по СОП. Это не снимок экрана прибора.';
 
