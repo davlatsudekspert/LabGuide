@@ -10,7 +10,10 @@
 //     (lib/), atlas/katalog JSON'larida va pubspec'da UCHRAMAYDI; assets/
 //     ichida shu nomli fayl yo'q.
 //  4. docs/image_staging pubspec assets'iga kirmagan.
-//  5. Mutaxassislik paketlari (CSV) 31 ta elementni aniq bir martadan qamraydi.
+//  5. Mikroskopiya atlasiga FAQAT yorug‘lik mikrofotosi o‘ta oladi: SEM, apparat
+//     fotosi va grafik/diagramma `atlas_eligible: false` va hech qachon
+//     imzo bilan ham atlasga chiqmaydi.
+//  6. Mutaxassislik paketlari (CSV) 31 ta elementni aniq bir martadan qamraydi.
 import 'dart:convert';
 import 'dart:io';
 
@@ -32,6 +35,26 @@ void main() {
       expect(it['expert_specialty'], isA<String>(), reason: '$id');
       expect(it['image_kind'], isA<String>(), reason: '$id');
       expect(it['release_status'], isNotNull, reason: '$id');
+    }
+  });
+
+  test('atlasga faqat yorug‘lik mikrofotosi o‘ta oladi', () {
+    for (final it in items) {
+      final id = it['id'];
+      final light = it['image_kind'] == 'yorug‘lik mikrofotosi';
+      expect(
+        it['atlas_eligible'],
+        light,
+        reason: '$id: atlas_eligible tur bilan mos',
+      );
+      if (!light) {
+        expect(it['release_status'], 'HOLD_EXPERT', reason: '$id');
+        expect(
+          it['expert_signoff'],
+          isNull,
+          reason: '$id: mikrofoto emas — imzo bilan ham atlasga chiqmaydi',
+        );
+      }
     }
   });
 

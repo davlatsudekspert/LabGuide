@@ -49,7 +49,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-026",
@@ -95,7 +96,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-027",
@@ -145,7 +147,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-028",
@@ -191,7 +194,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-029",
@@ -237,7 +241,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-030",
@@ -285,7 +290,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-031",
@@ -331,7 +337,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-032",
@@ -377,7 +384,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-033",
@@ -423,7 +431,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-034",
@@ -469,7 +478,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-035",
@@ -515,7 +525,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-036",
@@ -563,7 +574,8 @@
    "expert_profile": "gematolog / klinik laborator-morfolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-037",
@@ -611,7 +623,8 @@
    "expert_profile": "parazitolog / klinik laborator",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-038",
@@ -657,7 +670,8 @@
    "expert_profile": "parazitolog / klinik laborator",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-039",
@@ -703,7 +717,8 @@
    "expert_profile": "parazitolog / klinik laborator",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-040",
@@ -749,7 +764,8 @@
    "expert_profile": "parazitolog / klinik laborator",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-041",
@@ -795,7 +811,8 @@
    "expert_profile": "parazitolog / klinik laborator",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-042",
@@ -841,7 +858,8 @@
    "expert_profile": "parazitolog / klinik laborator",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-043",
@@ -887,7 +905,8 @@
    "expert_profile": "androlog / reproduktiv laborator",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-044",
@@ -933,7 +952,8 @@
    "expert_profile": "androlog / reproduktiv laborator",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-045",
@@ -984,7 +1004,8 @@
    "expert_profile": "androlog / reproduktiv laborator",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-046",
@@ -1035,7 +1056,8 @@
    "expert_profile": "androlog / reproduktiv laborator",
    "image_kind": "elektron mikrofoto (SEM)",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": false
   },
   {
    "id": "LG26X-047",
@@ -1083,7 +1105,8 @@
    "expert_profile": "sitolog (Trichomonas: parazitolog bilan birga)",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-048",
@@ -1129,7 +1152,8 @@
    "expert_profile": "sitolog (Trichomonas: parazitolog bilan birga)",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-049",
@@ -1175,7 +1199,8 @@
    "expert_profile": "sitolog (Trichomonas: parazitolog bilan birga)",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-050",
@@ -1221,7 +1246,8 @@
    "expert_profile": "sitolog (Trichomonas: parazitolog bilan birga)",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-051",
@@ -1269,7 +1295,8 @@
    "expert_profile": "mikolog / mikrobiolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-052",
@@ -1317,7 +1344,8 @@
    "expert_profile": "laboratoriya jihozlari eksperti + huquqshunos (ishlab chiqaruvchi mahsuloti rasmi)",
    "image_kind": "apparat fotosi (ishlab chiqaruvchi mahsuloti)",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": false
   },
   {
    "id": "LG26X-053",
@@ -1365,7 +1393,8 @@
    "expert_profile": "laboratoriya jihozlari eksperti + huquqshunos (ishlab chiqaruvchi mahsuloti rasmi)",
    "image_kind": "apparat fotosi (ishlab chiqaruvchi mahsuloti)",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": false
   },
   {
    "id": "LG26X-054",
@@ -1417,7 +1446,8 @@
    "expert_profile": "gistolog",
    "image_kind": "yorug‘lik mikrofotosi",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": true
   },
   {
    "id": "LG26X-055",
@@ -1466,7 +1496,8 @@
    "expert_profile": "gistolog",
    "image_kind": "grafik/diagramma (foto emas)",
    "expert_signoff": null,
-   "release_status": "HOLD_EXPERT"
+   "release_status": "HOLD_EXPERT",
+   "atlas_eligible": false
   }
  ],
  "rejected_items": [],
