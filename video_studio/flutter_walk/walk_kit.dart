@@ -179,8 +179,11 @@ class Walk {
       await tester.pumpAndSettle();
     }
     final y = tester.getCenter(f.first).dy;
-    await tester.drag(scrollable, Offset(0, -(y - at)));
-    await tester.pumpAndSettle();
+    // A drag shorter than the touch slop is a TAP (it opened a list row once).
+    if ((y - at).abs() > 24) {
+      await tester.drag(scrollable, Offset(0, -(y - at)));
+      await tester.pumpAndSettle();
+    }
   }
 
   /// Text field identified by its label text (LgField: label above the field).

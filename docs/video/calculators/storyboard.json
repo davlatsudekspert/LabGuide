@@ -1,0 +1,283 @@
+{
+  "id": "calculators",
+  "version": 1,
+  "status": "EXPERT_REVIEW_PENDING",
+  "title": {
+    "en": "Laboratory calculators in LabGuide",
+    "ru": "Лабораторные калькуляторы в LabGuide",
+    "uz": "LabGuide’dagi laboratoriya kalkulyatorlari"
+  },
+  "fps": 30,
+  "formats": {
+    "vertical": {
+      "width": 1080,
+      "height": 1920
+    },
+    "horizontal": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "timing": {
+    "_doc": "Same rules as the flagships; with the English voice the timing manifest public/audio/en/calculators.timing.json replaces the estimate for EVERY language edition.",
+    "leadSec": 0.25,
+    "tailSec": 0.35,
+    "gapSec": 0.2,
+    "minLineSec": 1.6,
+    "cps": {
+      "en": 16,
+      "ru": 15,
+      "uz": 14
+    },
+    "cueMax": {
+      "en": {
+        "L04": 45
+      },
+      "ru": {
+        "L02": 40,
+        "L04": 40
+      },
+      "uz": {
+        "L04": 45,
+        "L10": 45
+      }
+    }
+  },
+  "data": {
+    "_doc": "ILLUSTRATIVE INPUTS typed into the app's own calculators by the walk (video_studio/flutter_walk/calculators_walk_test.dart) - not a patient. The app computes every result on the filmed screens; the hook shows the app's own eGFR formula text (lib/features/tools/calc_info.dart) without a result.",
+    "egfr": {
+      "creatinine": 88,
+      "creatinineUnit": "µmol/L",
+      "age": 45,
+      "sex": "male",
+      "childAge": 12
+    },
+    "unitCheck": {
+      "sodium": 140,
+      "glucose": 90,
+      "urea": 5
+    },
+    "paths": {},
+    "dilution": {
+      "c1": 10,
+      "c2": 2,
+      "v2": 100
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "lines": [
+        "L01",
+        "L02"
+      ],
+      "minSec": 5.0
+    },
+    {
+      "id": "app_list",
+      "layer": "phone",
+      "lines": [
+        "L03",
+        "L04"
+      ],
+      "minSec": 7.0,
+      "props": {
+        "step": "01",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "l_lab",
+            "w": 1,
+            "mark": "row",
+            "tap": true,
+            "callout": "coLab",
+            "cue": 0
+          },
+          {
+            "frame": "c_list",
+            "w": 1,
+            "mark": "section",
+            "callout": "coClinical",
+            "cue": 1
+          },
+          {
+            "frame": "c_list2",
+            "w": 1,
+            "mark": "manual",
+            "callout": "coManual",
+            "cue": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "app_howto",
+      "layer": "phone",
+      "lines": [
+        "L05"
+      ],
+      "minSec": 4.5,
+      "props": {
+        "step": "02",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "c_howto",
+            "w": 1,
+            "mark": "steps",
+            "callout": "coHowto"
+          }
+        ]
+      }
+    },
+    {
+      "id": "app_egfr",
+      "layer": "phone",
+      "lines": [
+        "L06",
+        "L07",
+        "L08"
+      ],
+      "minSec": 9.0,
+      "props": {
+        "step": "03",
+        "subZone": "left",
+        "badge": "illustrativeCalc",
+        "shots": [
+          {
+            "frame": "e_empty",
+            "w": 1,
+            "mark": "first",
+            "callout": "coEmpty",
+            "cue": 0
+          },
+          {
+            "frame": "e_sex",
+            "w": 1,
+            "mark": "error",
+            "callout": "coSex",
+            "tone": "warn",
+            "cue": 1
+          },
+          {
+            "frame": "e_result",
+            "w": 1,
+            "mark": "result",
+            "crop": "result",
+            "callout": "coResult",
+            "cue": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "app_refs",
+      "layer": "phone",
+      "lines": [
+        "L09"
+      ],
+      "minSec": 5.0,
+      "props": {
+        "step": "04",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "e_formula",
+            "w": 1,
+            "mark": "refs",
+            "crop": "refs",
+            "callout": "coRefs"
+          }
+        ]
+      }
+    },
+    {
+      "id": "app_checks",
+      "layer": "phone",
+      "lines": [
+        "L10",
+        "L11"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "step": "05",
+        "subZone": "left",
+        "badge": "illustrativeCalc",
+        "shots": [
+          {
+            "frame": "e_child",
+            "w": 1,
+            "mark": "error",
+            "callout": "coChild",
+            "tone": "warn",
+            "cue": 0
+          },
+          {
+            "frame": "o_unit",
+            "w": 1,
+            "mark": "check",
+            "callout": "coUnit",
+            "tone": "warn",
+            "cue": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "app_units",
+      "layer": "phone",
+      "lines": [
+        "L12"
+      ],
+      "minSec": 5.0,
+      "props": {
+        "step": "06",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "p_units",
+            "w": 1,
+            "mark": "units",
+            "crop": "units",
+            "callout": "coUnits"
+          }
+        ]
+      }
+    },
+    {
+      "id": "app_bench",
+      "layer": "phone",
+      "lines": [
+        "L13"
+      ],
+      "minSec": 5.0,
+      "props": {
+        "step": "07",
+        "subZone": "left",
+        "badge": "illustrativeCalc",
+        "shots": [
+          {
+            "frame": "d_result",
+            "w": 1,
+            "mark": "result",
+            "callout": "coBench"
+          }
+        ]
+      }
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "lines": [
+        "L14",
+        "L15"
+      ],
+      "minSec": 6.0
+    }
+  ],
+  "thumbnail": {
+    "headlineKey": "thumbHeadline",
+    "subKey": "thumbSub"
+  }
+}

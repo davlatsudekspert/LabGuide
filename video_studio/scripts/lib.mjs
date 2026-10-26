@@ -10,6 +10,7 @@ import {qcMath, qcVars} from '../src/lib/qc.js';
 import {gcmsMath, gcmsVars} from '../src/lib/gcms.js';
 import {qpcrMath, qpcrVars} from '../src/lib/qpcr.js';
 import {osmoMath, osmoVars} from '../src/lib/osmometry.js';
+import {calcMath, calcVars} from '../src/lib/calculators.js';
 import {buildCues, toSrt, toVtt} from '../src/lib/subtitles.js';
 import {calibrationVars, resolveLines} from '../src/lib/text.js';
 import {layoutScenes, normalizeTiming, placeholderTiming} from '../src/lib/timing.js';
@@ -32,6 +33,7 @@ const VIDEO_MATH = {
   gcms: {compute: (sb) => gcmsMath(sb.data), vars: gcmsVars},
   qpcr: {compute: (sb) => qpcrMath(sb.data), vars: qpcrVars},
   osmometry: {compute: (sb) => osmoMath(sb.data), vars: osmoVars},
+  calculators: {compute: (sb) => calcMath(sb.data), vars: calcVars},
 };
 
 export function parseArgs(argv) {
