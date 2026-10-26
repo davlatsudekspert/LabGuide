@@ -27,7 +27,7 @@
 // * RTDN: https://developer.android.com/google/play/billing/rtdn-reference
 //   (messageId bo'yicha takrorni tashlash, holatni doim subscriptionsv2.get dan o'qish).
 
-import { audit, requireSession } from './auth';
+import { audit, isSuperAdmin, requireSession } from './auth';
 import type { Ctx } from './context';
 import { iso } from './context';
 import { safeEqual, sha256Hex } from './crypto';
@@ -751,6 +751,11 @@ export async function loadAccess(
       .bind(userId)
       .all<GrantRow>()
   ).results;
+  // Egasi (super admin, ADMIN_EMAILS): muddatsiz Premium — D-78 qo'shimcha (2026-10-26). Do'kon
+  // xaridi yo'q, qator yozilmaydi (secretdan ro'yxatdan chiqarilsa darhol yo'qoladi).
+  if (await isSuperAdmin(ctx, userId)) {
+    grants.unshift({ tier: 'premium', starts_at: ctx.now, expires_at: null, updated_at: ctx.now });
+  }
   // Bepul sinov (D-74): hisobga bitta; muddati o'tgani ham tarix sifatida qaytadi.
   const trials = (
     await ctx.db

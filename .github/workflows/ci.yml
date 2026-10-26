@@ -62,6 +62,10 @@ on:
         description: "FAQAT testflight / play_internal: pullik qatlam (Talaba/Ustoz/Mutaxassis/Premium) interfeysini TESTERLARGA KO'RSATISH uchun LG_PRO_ENABLED + LG_ALL_FEATURES_OPEN yoqiladi (hamma imkoniyat ochiq, do'kon xaridi va billing serveri YO'Q). Do'kon/reliz buildlarida doim o'chiq."
         type: boolean
         default: false
+      billing_preview:
+        description: "FAQAT deploy_api: pullik server yo'llarini (admin Pro berish, ustoz testlari, huquqlar) YOQISH — Worker secretiga bayroq yoziladi. Do'kon tekshiruvi (Apple/Google kalitlari) yo'q: xarid 503, sinov fail-closed. Bepul ilova yo'llariga ta'sir qilmaydi."
+        type: boolean
+        default: false
       apple_setup:
         description: "testflight uchun: bundle ID va App Store profilini API orqali yaratish (yo'q bo'lsa)"
         type: boolean
@@ -338,6 +342,13 @@ jobs:
           else
             echo "- APPLE_SIGNIN_*: berilmagan — Apple bilan kirish o'chiq" >> "$GITHUB_STEP_SUMMARY"
           fi
+      - name: Pullik server yo'llari (billing_preview)
+        if: steps.ready.outputs.ready == 'true' && inputs.billing_preview
+        run: |
+          set -euo pipefail
+          # Qiymat stdin orqali; wrangler.toml [vars] ga YOZILMAYDI (qorovul).
+          printf '%s' 'true' | npx wrangler secret put LG_BILLING_ENABLED > /dev/null
+          echo "- LG_BILLING_ENABLED: yoqildi (billing_preview; do'kon kalitlari yo'q — xarid 503, sinov fail-closed)" >> "$GITHUB_STEP_SUMMARY"
       - name: Tekshiruv (health)
         if: steps.ready.outputs.ready == 'true'
         run: |

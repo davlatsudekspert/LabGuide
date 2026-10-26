@@ -240,3 +240,27 @@ describe('bepul ustoz paneli o‘zgarmadi', () => {
     expect(g.status).toBe(201);
   });
 });
+
+describe('egasi (super admin): muddatsiz Premium (D-78 qo‘shimcha)', () => {
+  it('ADMIN_EMAILS dagi hisob — Premium (admin_grant, muddatsiz); boshqa hisob — yo‘q; ro‘yxatdan chiqsa darhol yo‘qoladi', async () => {
+    const s = makeServer({ ADMIN_EMAILS: 'boss@example.test' } as never);
+    const boss = await s.signIn('boss@example.test');
+    const acc = await s.call('GET', '/v1/pro/access', { token: boss.token });
+    expect(acc.data).toMatchObject({
+      plan: 'premium',
+      source: 'admin_grant',
+      expires_at: null,
+      capabilities: ['learner', 'teacher_panel', 'lab'],
+    });
+    expect((await check(s, boss.token, 'lab')).status).toBe(200);
+    const snap = await s.call('GET', '/v1/billing/entitlements', { token: boss.token });
+    expect(snap.data.items).toContainEqual(
+      expect.objectContaining({ source: 'admin_grant', plan: 'premium', status: 'active', expires_at: null }),
+    );
+    const other = await s.signIn(uniqueEmail('plain'));
+    expect((await check(s, other.token, 'learner')).data.error).toBe('plan_required');
+    // Ro'yxatdan chiqarilgan email — Premium yo'q.
+    s.env.ADMIN_EMAILS = 'someone.else@example.test';
+    expect((await check(s, boss.token, 'learner')).data.error).toBe('plan_required');
+  });
+});

@@ -1764,3 +1764,12 @@ Premium interfeysini ko'radi, hamma imkoniyat OCHIQ). push/PR/`build`/`deploy_*`
 (`repo_registry_guard_test`). Cheklov: do'kon xaridi va billing serveri yo'q (mahsulotlar/narxlar tasdiqlanmagan, Cloudflare
 deploy ruxsat kutadi) — xarid tugmalari "mavjud emas" holatida; Ustoz Pro serveri (0020 migratsiya) deploy qilinmaguncha
 o'qituvchi testlari server qismi ishlamaydi. Do'konga yuboriladigan (bepul) build o'zgarmaydi.
+
+**D-78 qo'shimcha 2 (2026-10-26) — Cloudflare test deploy (egasi ruxsati) va egasi Premium.** Egasi yozma ruxsat berdi
+(Cloudflare deploy; "bir marta tayyor qilib" — takroriy deploy yo'q). Ish tartibi: `deploy_api` + `billing_preview=true`
+(Worker secreti `LG_BILLING_ENABLED`, wrangler.toml'ga yozilmaydi) → migratsiyalar 0014–0020 (faqat yangi jadvallar; bo'sh
+`entitlements` qayta quriladi, mavjud foydalanuvchi ma'lumotlariga tegilmaydi) → keyin bitta `play_internal` va bitta
+`testflight` (`pro_preview=true`). Do'kon kalitlari (Apple/Google) YO'Q: xarid `503 store_verifier_not_configured`, bepul
+sinov fail-closed `503 trial_unavailable`; admin Pro berish, ustoz testlari va huquqlar ishlaydi. Egasi (ADMIN_EMAILS,
+standart davlatsudekspert@gmail.com): `loadAccess` muddatsiz **Premium** (admin_grant) qo'shadi — jadvalga yozilmaydi,
+ro'yxatdan chiqarilsa darhol yo'qoladi (`tiers.test.ts`). Bepul ilova yo'llari o'zgarmaydi. Real do'kon xaridi sinalmagan.
