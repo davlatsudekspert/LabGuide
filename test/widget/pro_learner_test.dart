@@ -226,7 +226,7 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('export-csv')));
       await tester.pumpAndSettle();
       final csv = files.lastCsv()!;
-      expect(csv, startsWith('finished_at,bank,title,mode'));
+      expect(csv, startsWith('finished_at,source,title,mode'));
       expect('\n'.allMatches(csv), hasLength(5), reason: 'sarlavha + 4');
       expect(files.shared.single, hasLength(2));
       expect(find.text(uz.proExportShared), findsOneWidget);

@@ -4249,7 +4249,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'The translation is auxiliary; scoring follows the official Uzbek text.';
 
   @override
-  String get toifaLoadError => 'Could not open the question bank';
+  String get toifaLoadError => 'Could not open the questions';
 
   @override
   String get toifaYourCategory => 'Your category';
@@ -4281,7 +4281,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String toifaTestRowSub(int count, int bank) {
-    return '$count random questions · $bank in the bank';
+    return '$count random questions · $bank in total';
   }
 
   @override
@@ -4362,7 +4362,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String toifaFormatStep1(int count, int bank) {
-    return '$count random questions out of $bank in the bank.';
+    return '$count random questions out of $bank in total.';
   }
 
   @override
@@ -5485,7 +5485,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get examSourceMissing =>
-      'This exam’s question bank isn’t available in the app';
+      'This exam’s questions aren’t available in the app';
 
   @override
   String get examMultiHint => 'Several correct answers — select all';
@@ -5642,7 +5642,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classesNoAssignmentsTeacher =>
-      'No assignments yet. Pick topics and a number of questions from the bank to set one.';
+      'No assignments yet. Pick topics and a number of questions to set one.';
 
   @override
   String get classesNoAssignmentsStudent => 'No assignments yet';
@@ -12881,7 +12881,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proPayFeatToifa =>
-      'The full qualification exam bank: official test and practice by topic';
+      'All qualification exam questions: official test and practice by topic';
 
   @override
   String get proPayFeatWeak => 'Weak-topic analysis in your results';
@@ -13820,7 +13820,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'The result is graded against the pass mark; the report shows time per question and a topic breakdown.';
 
   @override
-  String get proSimBank => 'Question bank';
+  String get proSimBank => 'Question source';
 
   @override
   String get proSimBankPack => 'Topic questions';
@@ -13869,7 +13869,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proResultsEntrySub =>
-      'Trend across all banks, topics and weak spots; PDF / CSV export';
+      'Trend across all sources, topics and weak spots; PDF / CSV export';
 
   @override
   String get proResultsEmpty => 'No results yet — take your first test.';
@@ -14072,7 +14072,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ttSourceQuiz => 'Practice questions';
 
   @override
-  String get ttSourceToifa => 'Category exam bank';
+  String get ttSourceToifa => 'Assessment questions';
 
   @override
   String get ttSourceDeck => 'Topic test';

@@ -182,6 +182,9 @@ void main() {
     final store = MemoryKeyValueStore();
     final start = DateTime(2026, 10, 9, 9);
     var s = await makeServices(tester, store: store, language: AppLanguage.en);
+    // O'rganish ro'yxatida toifa kartasi (D-79) faol imtihon kartasini
+    // ko'rinishdan siqib chiqarmasligi uchun — toifa yashirilgan.
+    await s.settings.setAttestationRegion(AttestationRegion.none);
     s.exams.now = () => start;
     await pumpApp(tester, s, size: _tall);
     final exam = await _startExam(tester, s, en, count: 5, minutes: 20);

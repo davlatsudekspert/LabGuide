@@ -150,7 +150,7 @@
     "Elektr — Shikastlangan rozetka/uskuna belgilanib ishdan chiqariladi; nam qo‘l bilan ulash taqiqlanadi; ta’mirda tokdan ajratish",
     "Yong‘in — Yonuvchi erituvchilar minimal miqdorda, maxsus shkafda; ochiq olov nazoratsiz qoldirilmaydi; yo‘laklar ochiq"
    ],
-   "note": "Toifa og‘zaki savoli kdl-o-006 rejasi asosida. Har bir xodim avariya jihozlari joyini bilishi kerak: o‘t o‘chirgich, signal, chiqish yo‘llari, avariya dushi/ko‘z yuvgich, birinchi yordam qutisi.",
+   "note": "Bilim va malakani baholash og‘zaki savoli kdl-o-006 rejasi asosida. Har bir xodim avariya jihozlari joyini bilishi kerak: o‘t o‘chirgich, signal, chiqish yo‘llari, avariya dushi/ko‘z yuvgich, birinchi yordam qutisi.",
    "image": "assets/lectures/d001/12.jpg"
   },
   {
@@ -338,14 +338,14 @@
    "image": "assets/lectures/d001/28.jpg"
   },
   {
-   "title": "Nazorat savollari (toifa — og‘zaki)",
+   "title": "Nazorat savollari (bilim va malakani baholash — og‘zaki)",
    "bullets": [
     "kdl-o-006 — Umumiy xavfsizlik, elektr va yong‘in xavfsizligi",
     "kdl-o-007 — Biologik xavfsizlik: xavfni baholash, BSL, SHHV, chiqindilar",
     "kdl-o-037 — Tibbiy etika va deontologiya, konfidensiallik",
-    "Ilovada — O‘rganish → Toifa → Og‘zaki savollar: javob rejasi bilan"
+    "Ilovada — O‘rganish → Bilim va malakani baholash → Og‘zaki savollar: javob rejasi bilan"
    ],
-   "note": "Savollar LabGuide toifa bankidan (rasmiy savollar). Javob rejalari ilovada mavjud.",
+   "note": "Savollar LabGuide bilim va malakani baholash savollaridan (rasmiy savollar). Javob rejalari ilovada mavjud.",
    "image": "assets/lectures/d001/29.jpg"
   },
   {
@@ -359,7 +359,7 @@
     "ISO 15189:2022. Medical laboratories — Requirements for quality and competence.",
     "Plebani M. Errors in clinical laboratories or errors in laboratory medicine? Clin Chem Lab Med. 2006;44(6):750–759.",
     "O‘zR SSV, 2022-yil 24-mart, 88-son buyruq — tibbiyot xodimlari odob-axloq kodeksi (matni: lex.uz).",
-    "LabGuide toifa banki: kdl-o-006, kdl-o-007, kdl-o-037. Belgilar: Material Icons (Apache 2.0)."
+    "LabGuide bilim va malakani baholash savollari: kdl-o-006, kdl-o-007, kdl-o-037. Belgilar: Material Icons (Apache 2.0)."
    ],
    "note": "Ustoz mazmunni ko‘rib chiqib, mahalliy tartiblarni (muassasa SOP, ekspozitsiyadan keyingi protokol, chiqindi sinflari) qo‘shishi kerak.",
    "image": "assets/lectures/d001/30.jpg"

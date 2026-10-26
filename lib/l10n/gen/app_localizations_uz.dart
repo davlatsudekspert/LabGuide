@@ -4203,7 +4203,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Tarjima yordamchi; baholash rasmiy o‘zbekcha matn bo‘yicha.';
 
   @override
-  String get toifaLoadError => 'Savollar bankini ochib bo‘lmadi';
+  String get toifaLoadError => 'Savollarni ochib bo‘lmadi';
 
   @override
   String get toifaYourCategory => 'Kategoriyangiz';
@@ -4235,7 +4235,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String toifaTestRowSub(int count, int bank) {
-    return '$count ta tasodifiy savol · bankda $bank ta';
+    return '$count ta tasodifiy savol · jami $bank ta';
   }
 
   @override
@@ -4316,7 +4316,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String toifaFormatStep1(int count, int bank) {
-    return 'Bankdagi $bank ta savoldan tasodifiy $count tasi.';
+    return 'Jami $bank ta savoldan tasodifiy $count tasi.';
   }
 
   @override
@@ -5411,8 +5411,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get examNoSource => 'Bu savolga manba ko‘rsatilmagan.';
 
   @override
-  String get examSourceMissing =>
-      'Bu imtihonning savollar banki ilovada topilmadi';
+  String get examSourceMissing => 'Bu imtihonning savollari ilovada topilmadi';
 
   @override
   String get examMultiHint => 'Bir nechta to‘g‘ri javob — hammasini belgilang';
@@ -5556,7 +5555,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get classesNoAssignmentsTeacher =>
-      'Hali topshiriq yo‘q. Savol bankidan mavzu va sonni tanlab topshiriq bering.';
+      'Hali topshiriq yo‘q. Savollardan mavzu va sonni tanlab topshiriq bering.';
 
   @override
   String get classesNoAssignmentsStudent => 'Hozircha topshiriq yo‘q';
@@ -12760,7 +12759,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proPayFeatToifa =>
-      'To‘liq savollar banki: rasmiy test va mavzular bo‘yicha mashq';
+      'To‘liq savollar: rasmiy test va mavzular bo‘yicha mashq';
 
   @override
   String get proPayFeatWeak => 'Zaif mavzular tahlili natijada';
@@ -13677,14 +13676,14 @@ class AppLocalizationsUz extends AppLocalizations {
       'Natija o‘tish chegarasi bilan baholanadi; hisobotda har savolga sarflangan vaqt va mavzular tahlili bor.';
 
   @override
-  String get proSimBank => 'Savollar banki';
+  String get proSimBank => 'Savollar manbasi';
 
   @override
   String get proSimBankPack => 'Mavzular bo‘yicha savollar';
 
   @override
   String proSimPool(int count, int topics) {
-    return 'Bankda $count ta savol, $topics ta mavzu';
+    return 'Jami $count ta savol, $topics ta mavzu';
   }
 
   @override
@@ -13726,7 +13725,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proResultsEntrySub =>
-      'Barcha banklar bo‘yicha trend, mavzular va zaif joylar; PDF / CSV eksport';
+      'Barcha manbalar bo‘yicha trend, mavzular va zaif joylar; PDF / CSV eksport';
 
   @override
   String get proResultsEmpty =>
@@ -13920,7 +13919,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get ttSourceQuiz => 'Mashq savollari';
 
   @override
-  String get ttSourceToifa => 'Baholash banki';
+  String get ttSourceToifa => 'Baholash savollari';
 
   @override
   String get ttSourceDeck => 'Mavzu testi';

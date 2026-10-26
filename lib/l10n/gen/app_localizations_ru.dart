@@ -4271,7 +4271,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Перевод вспомогательный; оценка — по официальному узбекскому тексту.';
 
   @override
-  String get toifaLoadError => 'Не удалось открыть банк вопросов';
+  String get toifaLoadError => 'Не удалось открыть вопросы';
 
   @override
   String get toifaYourCategory => 'Ваша категория';
@@ -4303,7 +4303,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String toifaTestRowSub(int count, int bank) {
-    return '$count случайных вопросов · в банке $bank';
+    return '$count случайных вопросов · всего $bank';
   }
 
   @override
@@ -4384,7 +4384,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String toifaFormatStep1(int count, int bank) {
-    return 'Случайные $count из $bank вопросов банка.';
+    return 'Случайные $count из $bank вопросов.';
   }
 
   @override
@@ -5519,7 +5519,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get examSourceMissing =>
-      'Банк вопросов этого экзамена не найден в приложении';
+      'Вопросы этого экзамена не найдены в приложении';
 
   @override
   String get examMultiHint => 'Несколько верных ответов — отметьте все';
@@ -5671,7 +5671,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get classesNoAssignmentsTeacher =>
-      'Заданий пока нет. Выберите темы и число вопросов из банка и дайте задание.';
+      'Заданий пока нет. Выберите темы и число вопросов и дайте задание.';
 
   @override
   String get classesNoAssignmentsStudent => 'Пока заданий нет';
@@ -12946,7 +12946,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get proPayFeatToifa =>
-      'Полный банк аттестационных вопросов: официальный тест и практика по темам';
+      'Все аттестационные вопросы: официальный тест и практика по темам';
 
   @override
   String get proPayFeatWeak => 'Разбор слабых тем в результатах';
@@ -13897,14 +13897,14 @@ class AppLocalizationsRu extends AppLocalizations {
       'Результат оценивается по проходному баллу; в отчёте — время на каждый вопрос и разбор по темам.';
 
   @override
-  String get proSimBank => 'Банк вопросов';
+  String get proSimBank => 'Источник вопросов';
 
   @override
   String get proSimBankPack => 'Вопросы по темам';
 
   @override
   String proSimPool(int count, int topics) {
-    return 'В банке вопросов: $count, тем: $topics';
+    return 'Всего вопросов: $count, тем: $topics';
   }
 
   @override
@@ -13946,7 +13946,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get proResultsEntrySub =>
-      'Динамика по всем банкам, темы и слабые места; экспорт в PDF / CSV';
+      'Динамика по всем источникам, темы и слабые места; экспорт в PDF / CSV';
 
   @override
   String get proResultsEmpty => 'Результатов пока нет — пройдите первый тест.';
@@ -14155,7 +14155,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get ttSourceQuiz => 'Вопросы для практики';
 
   @override
-  String get ttSourceToifa => 'Банк аттестационного экзамена';
+  String get ttSourceToifa => 'Вопросы проверки знаний';
 
   @override
   String get ttSourceDeck => 'Тест по теме';
