@@ -1,0 +1,446 @@
+{
+ "id": "reel_labs",
+ "fps": 30,
+ "totalSec": 39.2,
+ "cues": [
+  {
+   "id": "hook_a",
+   "start": 0,
+   "end": 2.2,
+   "hook": true,
+   "uz": "Leykoformulani hali ham qog‘ozda sanayapsizmi?",
+   "ru": "Лейкоформулу всё ещё считаете на бумаге?",
+   "en": "Still counting the differential on paper?"
+  },
+  {
+   "id": "hook_b",
+   "start": 2.2,
+   "end": 3.8,
+   "uz": "Ilovada qanday ko‘rinadi:",
+   "ru": "Как это выглядит в приложении:",
+   "en": "How it looks in the app:"
+  },
+  {
+   "id": "leu_1",
+   "start": 3.8,
+   "end": 6.2,
+   "uz": "Leykoformula bo‘limi",
+   "ru": "Раздел «Лейкоформула»",
+   "en": "Differential count section"
+  },
+  {
+   "id": "leu_2",
+   "start": 6.2,
+   "end": 9.2,
+   "uz": "Bosing — hisob +1",
+   "ru": "Нажатие — счёт +1",
+   "en": "Tap — the count goes +1"
+  },
+  {
+   "id": "leu_3",
+   "start": 9.2,
+   "end": 11.8,
+   "uz": "Natija: soni va foiz jadvali",
+   "ru": "Результат: таблица, число и %",
+   "en": "Result: count and % table"
+  },
+  {
+   "id": "cal_1",
+   "start": 11.8,
+   "end": 14.2,
+   "uz": "Apparat, analit, reagent",
+   "ru": "Прибор, аналит, реагент",
+   "en": "Instrument, analyte, reagent"
+  },
+  {
+   "id": "cal_2",
+   "start": 14.2,
+   "end": 16.8,
+   "uz": "Lot va kalibrator darajalari",
+   "ru": "Лот и уровни калибратора",
+   "en": "Lot and calibrator levels"
+  },
+  {
+   "id": "cal_3",
+   "start": 16.8,
+   "end": 19.4,
+   "uz": "Yozuv jurnalga saqlanadi",
+   "ru": "Запись сохраняется в журнале",
+   "en": "The record is saved to the log"
+  },
+  {
+   "id": "cyt_1",
+   "start": 19.4,
+   "end": 21.8,
+   "uz": "Sitologiya bo‘limi",
+   "ru": "Раздел «Цитология»",
+   "en": "Cytology section"
+  },
+  {
+   "id": "cyt_2",
+   "start": 21.8,
+   "end": 24.2,
+   "uz": "Hujayralar ro‘yxati",
+   "ru": "Список клеток",
+   "en": "List of cells"
+  },
+  {
+   "id": "cyt_3",
+   "start": 24.2,
+   "end": 26.6,
+   "uz": "Raqamli belgilar bilan sxema",
+   "ru": "Схема с нумерованными метками",
+   "en": "Diagram with numbered labels"
+  },
+  {
+   "id": "tst_1",
+   "start": 26.6,
+   "end": 29.2,
+   "uz": "Bilim va malakani baholash",
+   "ru": "Оценка знаний и навыков",
+   "en": "Knowledge and skills assessment"
+  },
+  {
+   "id": "tst_2",
+   "start": 29.2,
+   "end": 31.6,
+   "uz": "Imtihon: savollar va vaqt",
+   "ru": "Экзамен: вопросы и время",
+   "en": "Exam: questions and time"
+  },
+  {
+   "id": "tst_3",
+   "start": 31.6,
+   "end": 34.8,
+   "uz": "Javob bering — natijani ko‘ring",
+   "ru": "Отвечайте — и смотрите результат",
+   "en": "Answer, then see the result"
+  },
+  {
+   "id": "end",
+   "start": 34.8,
+   "end": 39.2,
+   "big": true,
+   "uz": "Tez kunda",
+   "ru": "Скоро",
+   "en": "Coming soon"
+  }
+ ],
+ "sections": [
+  {
+   "id": "leu",
+   "start": 3.8,
+   "end": 11.8,
+   "accent": "mint",
+   "n": 1,
+   "pill": "Leykoformula"
+  },
+  {
+   "id": "cal",
+   "start": 11.8,
+   "end": 19.4,
+   "accent": "amber",
+   "n": 2,
+   "pill": "Kalibrlash"
+  },
+  {
+   "id": "cyt",
+   "start": 19.4,
+   "end": 26.6,
+   "accent": "coral",
+   "n": 3,
+   "pill": "Sitologiya"
+  },
+  {
+   "id": "tst",
+   "start": 26.6,
+   "end": 34.8,
+   "accent": "beam",
+   "n": 4,
+   "pill": "Test"
+  }
+ ],
+ "shots": [
+  {
+   "start": 3.8,
+   "end": 6.2,
+   "set": "leukocyte",
+   "frame": "d_lab",
+   "mark": [
+    24,
+    246,
+    342,
+    94
+   ],
+   "tap": [
+    195,
+    293
+   ],
+   "zoom": 1,
+   "focus": [
+    195,
+    300
+   ]
+  },
+  {
+   "start": 6.2,
+   "end": 6.8,
+   "set": "leukocyte",
+   "frame": "d_count0",
+   "mark": [
+    24,
+    350,
+    167,
+    104
+   ]
+  },
+  {
+   "start": 6.8,
+   "end": 7.3,
+   "set": "leukocyte",
+   "frame": "d_tap1",
+   "mark": [
+    24,
+    350,
+    167,
+    112
+   ],
+   "tap": [
+    107.5,
+    402
+   ]
+  },
+  {
+   "start": 7.3,
+   "end": 7.8,
+   "set": "leukocyte",
+   "frame": "d_tap2",
+   "mark": [
+    24,
+    470,
+    167,
+    112
+   ],
+   "tap": [
+    107.5,
+    526
+   ]
+  },
+  {
+   "start": 7.8,
+   "end": 8.3,
+   "set": "leukocyte",
+   "frame": "d_tap3",
+   "mark": [
+    24,
+    350,
+    167,
+    112
+   ],
+   "tap": [
+    107.5,
+    406
+   ]
+  },
+  {
+   "start": 8.3,
+   "end": 8.75,
+   "set": "leukocyte",
+   "frame": "d_tap4",
+   "mark": [
+    199,
+    470,
+    167,
+    112
+   ],
+   "tap": [
+    282.5,
+    526
+   ]
+  },
+  {
+   "start": 8.75,
+   "end": 9.2,
+   "set": "leukocyte",
+   "frame": "d_tap5",
+   "mark": [
+    24,
+    590,
+    167,
+    112
+   ],
+   "tap": [
+    107.5,
+    646
+   ]
+  },
+  {
+   "start": 9.2,
+   "end": 11.8,
+   "set": "leukocyte",
+   "frame": "d_result",
+   "mark": [
+    24,
+    243,
+    342,
+    322
+   ]
+  },
+  {
+   "start": 11.8,
+   "end": 14.2,
+   "set": "calibration",
+   "frame": "cal_path",
+   "mark": [
+    24,
+    106,
+    342,
+    270
+   ]
+  },
+  {
+   "start": 14.2,
+   "end": 15.5,
+   "set": "calibration",
+   "frame": "cal_record",
+   "mark": [
+    24,
+    215,
+    342,
+    70
+   ]
+  },
+  {
+   "start": 15.5,
+   "end": 16.8,
+   "set": "calibration",
+   "frame": "cal_record",
+   "mark": [
+    24,
+    376,
+    342,
+    100
+   ]
+  },
+  {
+   "start": 16.8,
+   "end": 17.9,
+   "set": "calibration",
+   "frame": "cal_saved",
+   "mark": [
+    24,
+    610,
+    342,
+    60
+   ]
+  },
+  {
+   "start": 17.9,
+   "end": 19.4,
+   "set": "calibration",
+   "frame": "cal_log",
+   "mark": [
+    24,
+    215,
+    342,
+    70
+   ],
+   "tap": [
+    195,
+    250
+   ]
+  },
+  {
+   "start": 19.4,
+   "end": 21.8,
+   "set": "reel",
+   "frame": "cy_home",
+   "mark": [
+    40,
+    588,
+    310,
+    58
+   ],
+   "tap": [
+    195,
+    617
+   ]
+  },
+  {
+   "start": 21.8,
+   "end": 24.2,
+   "set": "reel",
+   "frame": "cy_cells",
+   "mark": [
+    24,
+    196,
+    342,
+    100
+   ],
+   "tap": [
+    195,
+    246
+   ]
+  },
+  {
+   "start": 24.2,
+   "end": 26.6,
+   "set": "reel",
+   "frame": "cy_cell",
+   "mark": [
+    60,
+    240,
+    300,
+    320
+   ]
+  },
+  {
+   "start": 26.6,
+   "end": 29.2,
+   "set": "overview",
+   "frame": "assess_hub",
+   "mark": [
+    14,
+    108,
+    300,
+    92
+   ]
+  },
+  {
+   "start": 29.2,
+   "end": 31.6,
+   "set": "overview",
+   "frame": "exam_setup",
+   "mark": [
+    24,
+    205,
+    342,
+    250
+   ]
+  },
+  {
+   "start": 31.6,
+   "end": 32.9,
+   "set": "overview",
+   "frame": "exam_run",
+   "mark": [
+    24,
+    295,
+    342,
+    200
+   ]
+  },
+  {
+   "start": 32.9,
+   "end": 34.8,
+   "set": "overview",
+   "frame": "exam_result",
+   "mark": [
+    24,
+    200,
+    342,
+    375
+   ]
+  }
+ ]
+}

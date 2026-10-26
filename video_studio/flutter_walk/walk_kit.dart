@@ -18,7 +18,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app.dart';
 import 'package:material_ui/material_ui.dart';
 
-const outRoot = '/home/user/wt-video/video_studio/public/frames';
+final outRoot = Platform.environment['FRAMES_OUT'] ?? '/home/user/wt-video/video_studio/public/frames';
 
 /// Words that must never be on screen (manufacturers, analysers, kit makers,
 /// publishers used as brands). Bibliographic sources stay in the app, off

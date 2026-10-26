@@ -1,0 +1,59 @@
+1
+00:00:00,000 --> 00:00:02,200
+Still counting the differential on paper?
+
+2
+00:00:02,200 --> 00:00:03,800
+How it looks in the app:
+
+3
+00:00:03,800 --> 00:00:06,200
+Differential count section
+
+4
+00:00:06,200 --> 00:00:09,200
+Tap — the count goes +1
+
+5
+00:00:09,200 --> 00:00:11,800
+Result: count and % table
+
+6
+00:00:11,800 --> 00:00:14,200
+Instrument, analyte, reagent
+
+7
+00:00:14,200 --> 00:00:16,800
+Lot and calibrator levels
+
+8
+00:00:16,800 --> 00:00:19,400
+The record is saved to the log
+
+9
+00:00:19,400 --> 00:00:21,800
+Cytology section
+
+10
+00:00:21,800 --> 00:00:24,200
+List of cells
+
+11
+00:00:24,200 --> 00:00:26,600
+Diagram with numbered labels
+
+12
+00:00:26,600 --> 00:00:29,200
+Knowledge and skills assessment
+
+13
+00:00:29,200 --> 00:00:31,600
+Exam: questions and time
+
+14
+00:00:31,600 --> 00:00:34,800
+Answer, then see the result
+
+15
+00:00:34,800 --> 00:00:39,200
+Coming soon
