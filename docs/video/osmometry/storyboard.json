@@ -1,0 +1,290 @@
+{
+  "id": "osmometry",
+  "version": 1,
+  "status": "EXPERT_REVIEW_PENDING",
+  "title": {
+    "en": "Osmometry: freezing point and osmolality",
+    "ru": "Осмометрия: точка замерзания и осмоляльность",
+    "uz": "Osmometriya: muzlash nuqtasi va osmolyallik"
+  },
+  "fps": 30,
+  "formats": {
+    "vertical": {
+      "width": 1080,
+      "height": 1920
+    },
+    "horizontal": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "timing": {
+    "_doc": "Same rules as the flagships; with the English voice the timing manifest public/audio/en/osmometry.timing.json replaces the estimate for EVERY language edition.",
+    "leadSec": 0.25,
+    "tailSec": 0.35,
+    "gapSec": 0.2,
+    "minLineSec": 1.6,
+    "cps": {
+      "en": 16,
+      "ru": 15,
+      "uz": 14
+    },
+    "cueMax": {
+      "en": {
+        "L13": 45
+      },
+      "ru": {
+        "L02": 48,
+        "L04": 48,
+        "L07": 48,
+        "L08": 48,
+        "L09": 48
+      },
+      "uz": {
+        "L08": 48,
+        "L09": 48,
+        "L06": 48
+      }
+    },
+    "_cueMaxDoc": "Per-language line ids whose cues are split shorter (subcheck/subrows found > 2 rows on the vertical plate)."
+  },
+  "data": {
+    "_doc": "ILLUSTRATIVE FREEZING CURVES - not a real instrument, sample or patient result. Temperature in arbitrary units, pure water's freezing point at 0; no numbers on the axes (lesson 24). Model and constants: video_studio/src/lib/osmometry.js; independent check video_studio/scripts/crosscheck_osmometry.py. The calculator values are ILLUSTRATIVE INPUTS typed into the app's own calculator in the walk (the app computes the result on screen).",
+    "curve": {
+      "t0": 1.0,
+      "tb": -2.0,
+      "tau": 2.2,
+      "tauR": 0.12,
+      "plateau": 3.0,
+      "k": 0.02,
+      "tMax": 12,
+      "water": 0
+    },
+    "samples": [
+      {
+        "id": "A",
+        "tf": -0.35,
+        "tsup": -1.05,
+        "color": "mint"
+      },
+      {
+        "id": "B",
+        "tf": -0.75,
+        "tsup": -1.45,
+        "color": "amber"
+      }
+    ],
+    "calc": {
+      "sodium": 140,
+      "glucose": 5,
+      "urea": 5,
+      "measured": 300
+    },
+    "paths": {}
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "lines": [
+        "L01",
+        "L02"
+      ],
+      "minSec": 4.5
+    },
+    {
+      "id": "tour",
+      "layer": "tour",
+      "lines": [
+        "L03"
+      ],
+      "minSec": 6.0,
+      "props": {
+        "schematic": "osmometer",
+        "step": "01",
+        "kicker": "kickerTour",
+        "badge": "schematicNote",
+        "parts": [
+          {
+            "n": 1,
+            "name": "p1"
+          },
+          {
+            "n": 2,
+            "name": "p2"
+          },
+          {
+            "n": 3,
+            "name": "p3"
+          },
+          {
+            "n": 4,
+            "name": "p4"
+          },
+          {
+            "n": 5,
+            "name": "p5"
+          }
+        ],
+        "cols": 1,
+        "legendTop": 1080
+      }
+    },
+    {
+      "id": "freeze",
+      "layer": "freeze",
+      "lines": [
+        "L04",
+        "L05",
+        "L06"
+      ],
+      "minSec": 10.0,
+      "props": {
+        "step": "02"
+      }
+    },
+    {
+      "id": "result",
+      "layer": "result",
+      "lines": [
+        "L07",
+        "L08"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "step": "03"
+      }
+    },
+    {
+      "id": "app_card",
+      "layer": "phone",
+      "lines": [
+        "L09",
+        "L10"
+      ],
+      "minSec": 9.0,
+      "props": {
+        "step": "04",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "o_dir",
+            "w": 0.8,
+            "mark": "card",
+            "tap": true,
+            "callout": "coDir",
+            "cue": 0,
+            "crop": "card"
+          },
+          {
+            "frame": "o_card",
+            "w": 1.1,
+            "mark": "schematic",
+            "callout": "coCard",
+            "cue": 0
+          },
+          {
+            "frame": "o_parts",
+            "w": 1,
+            "mark": "parts",
+            "callout": "coParts",
+            "cue": 1
+          },
+          {
+            "frame": "o_specimens",
+            "w": 1,
+            "mark": "field",
+            "crop": "field",
+            "callout": "coSpecimens",
+            "cue": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "app_limits",
+      "layer": "phone",
+      "lines": [
+        "L11",
+        "L12"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "step": "05",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "o_limits",
+            "w": 1,
+            "mark": "field",
+            "crop": "field",
+            "callout": "coLimits",
+            "tone": "warn",
+            "cue": 0
+          },
+          {
+            "frame": "o_errors",
+            "w": 1,
+            "mark": "field",
+            "crop": "field",
+            "callout": "coErrors",
+            "tone": "warn",
+            "cue": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "app_calc",
+      "layer": "phone",
+      "lines": [
+        "L13",
+        "L14"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "step": "06",
+        "subZone": "left",
+        "badge": "illustrativeCalc",
+        "shots": [
+          {
+            "frame": "c_list",
+            "w": 0.7,
+            "mark": "row",
+            "tap": true,
+            "callout": "coCalcList",
+            "cue": 0
+          },
+          {
+            "frame": "c_form",
+            "w": 1,
+            "mark": "fields",
+            "callout": "coCalcForm",
+            "cue": 0
+          },
+          {
+            "frame": "c_result",
+            "w": 1.3,
+            "mark": "result",
+            "crop": "result",
+            "callout": "coCalcResult",
+            "cue": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "lines": [
+        "L15",
+        "L16"
+      ],
+      "minSec": 6.5
+    }
+  ],
+  "thumbnail": {
+    "headlineKey": "thumbHeadline",
+    "subKey": "thumbSub"
+  }
+}

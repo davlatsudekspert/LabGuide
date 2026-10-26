@@ -2,7 +2,8 @@
 // flutter_walk test) in a neutral phone, each with a measured highlight
 // (`mark`), an optional tap ripple and a callout. Generalised from the
 // calibration flagship's phone layer: the step number comes from
-// scene.props.step; texts from ui[callout], ui.kickerApp, ui.realScreens.
+// scene.props.step; texts from ui[callout], ui.kickerApp, ui.realScreens
+// (or ui[scene.props.badge], e.g. "Real app screens · illustrative values").
 // Shots with `cue` follow the narration line of that index.
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
@@ -138,7 +139,7 @@ export const PhoneShotsLayer: Layer = ({scene, ctx, prev}) => {
   );
   return (
     <AbsoluteFill>
-      <SceneHeader format={ctx.format} step={step} kicker={ui.kickerApp} badge={{text: ui.realScreens, tone: 'mint'}} badgeBelow />
+      <SceneHeader format={ctx.format} step={step} kicker={ui.kickerApp} badge={{text: ui[(scene.props?.badge as string) ?? 'realScreens'] ?? ui.realScreens, tone: 'mint'}} badgeBelow />
       {vertical ? (
         <>
           <div style={{position: 'absolute', left: m.gutter, right: m.gutter, top: 290, display: 'flex', flexDirection: 'column', gap: 16}}>

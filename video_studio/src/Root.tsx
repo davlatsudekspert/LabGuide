@@ -12,8 +12,9 @@ import {photometryVideo} from './videos/photometry';
 import {qcVideo} from './videos/qc';
 import {gcmsVideo} from './videos/gcms';
 import {qpcrVideo} from './videos/qpcr';
+import {osmometryVideo} from './videos/osmometry';
 
-export const videos: VideoDef[] = [calibrationVideo, leukocyteVideo, photometryVideo, qcVideo, gcmsVideo, qpcrVideo];
+export const videos: VideoDef[] = [calibrationVideo, leukocyteVideo, photometryVideo, qcVideo, gcmsVideo, qpcrVideo, osmometryVideo];
 
 const defaults: VideoProps = {lang: 'en', timing: null, appFrames: null, subtitles: true};
 

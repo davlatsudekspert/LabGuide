@@ -9,6 +9,7 @@ import {photometryMath, photometryVars} from '../src/lib/photometry.js';
 import {qcMath, qcVars} from '../src/lib/qc.js';
 import {gcmsMath, gcmsVars} from '../src/lib/gcms.js';
 import {qpcrMath, qpcrVars} from '../src/lib/qpcr.js';
+import {osmoMath, osmoVars} from '../src/lib/osmometry.js';
 import {buildCues, toSrt, toVtt} from '../src/lib/subtitles.js';
 import {calibrationVars, resolveLines} from '../src/lib/text.js';
 import {layoutScenes, normalizeTiming, placeholderTiming} from '../src/lib/timing.js';
@@ -30,6 +31,7 @@ const VIDEO_MATH = {
   qc: {compute: (sb) => qcMath(sb.data), vars: qcVars},
   gcms: {compute: (sb) => gcmsMath(sb.data), vars: gcmsVars},
   qpcr: {compute: (sb) => qpcrMath(sb.data), vars: qpcrVars},
+  osmometry: {compute: (sb) => osmoMath(sb.data), vars: osmoVars},
 };
 
 export function parseArgs(argv) {

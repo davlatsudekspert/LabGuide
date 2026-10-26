@@ -1,0 +1,107 @@
+{
+  "videoId": "osmometry",
+  "lang": "en",
+  "source": "synthetic narration: tool/tts/synth.py backend=kokoro",
+  "totalSec": 78.2,
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 3.557
+    },
+    {
+      "id": "L02",
+      "start": 3.757,
+      "end": 8.536
+    },
+    {
+      "id": "L03",
+      "start": 9.136,
+      "end": 16.197
+    },
+    {
+      "id": "L04",
+      "start": 16.797,
+      "end": 20.552
+    },
+    {
+      "id": "L05",
+      "start": 20.752,
+      "end": 23.419
+    },
+    {
+      "id": "L06",
+      "start": 23.619,
+      "end": 27.395
+    },
+    {
+      "id": "L07",
+      "start": 27.995,
+      "end": 31.878
+    },
+    {
+      "id": "L08",
+      "start": 32.078,
+      "end": 39.182
+    },
+    {
+      "id": "L09",
+      "start": 39.782,
+      "end": 45.67
+    },
+    {
+      "id": "L10",
+      "start": 45.87,
+      "end": 49.731
+    },
+    {
+      "id": "L11",
+      "start": 50.331,
+      "end": 57.158
+    },
+    {
+      "id": "L12",
+      "start": 57.358,
+      "end": 61.006
+    },
+    {
+      "id": "L13",
+      "start": 61.606,
+      "end": 67.153
+    },
+    {
+      "id": "L14",
+      "start": 67.353,
+      "end": 70.425
+    },
+    {
+      "id": "L15",
+      "start": 71.025,
+      "end": 73.99
+    },
+    {
+      "id": "L16",
+      "start": 74.19,
+      "end": 77.838
+    }
+  ],
+  "loudness": {
+    "target": {
+      "I": -16,
+      "TP": -2.4,
+      "LRA": 11
+    },
+    "before": {
+      "I": -22.64,
+      "TP": -3.79,
+      "LRA": 2.5
+    },
+    "after": {
+      "I": -16.13,
+      "TP": -2.4,
+      "LRA": 2.1
+    }
+  },
+  "voice": "Kokoro-82M v1.0 int8 ONNX, voice af_heart (Apache-2.0)",
+  "listeningReview": "PENDING — nobody has listened to this voice yet"
+}
