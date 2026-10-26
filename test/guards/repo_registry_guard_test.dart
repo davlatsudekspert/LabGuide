@@ -218,6 +218,37 @@ void main() {
       }
     });
 
+    test('pullik qatlam bayrog‘i (D-77): faqat pro_preview + testflight/'
+        'play_internal da yoqiladi, har buildda uzatiladi', () {
+      const cond =
+          "(inputs.pro_preview && (inputs.mode == 'testflight' || inputs.mode == 'play_internal'))";
+      for (final k in ['LG_PRO_ENABLED', 'LG_ALL_FEATURES_OPEN']) {
+        expect(
+          yml,
+          contains("  $k: \${{ $cond && 'true' || 'false' }}\n"),
+          reason: k,
+        );
+        // Boshqa hech qayerda `true` qilib o'rnatilmaydi (GITHUB_ENV ham).
+        expect(RegExp('$k\\s*=\\s*["\']?true').hasMatch(yml), isFalse);
+      }
+      expect(
+        RegExp(
+          r'pro_preview:[\s\S]*?type: boolean\s+default: false',
+        ).hasMatch(yml),
+        isTrue,
+        reason: 'pro_preview standarti false',
+      );
+      for (final b in _flutterBuildCommands(yml)) {
+        expect(b, contains(r'--dart-define=LG_PRO_ENABLED="$LG_PRO_ENABLED"'));
+        expect(
+          b,
+          contains(
+            r'--dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"',
+          ),
+        );
+      }
+    });
+
     test('Sign in with Apple: entitlement qarori va IPA tekshiruvi', () {
       expect(
         yml,

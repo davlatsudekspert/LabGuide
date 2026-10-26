@@ -58,6 +58,10 @@ on:
         type: choice
         options: [internal, alpha]
         default: internal
+      pro_preview:
+        description: "FAQAT testflight / play_internal: pullik qatlam (Talaba/Ustoz/Mutaxassis/Premium) interfeysini TESTERLARGA KO'RSATISH uchun LG_PRO_ENABLED + LG_ALL_FEATURES_OPEN yoqiladi (hamma imkoniyat ochiq, do'kon xaridi va billing serveri YO'Q). Do'kon/reliz buildlarida doim o'chiq."
+        type: boolean
+        default: false
       apple_setup:
         description: "testflight uchun: bundle ID va App Store profilini API orqali yaratish (yo'q bo'lsa)"
         type: boolean
@@ -91,6 +95,11 @@ env:
   # hech bir buildda yoqilmaydi, reklama UI kompilyatsiyadan chiqariladi. Server
   # tomoni (hamkorlar) Cloudflare'ga ko'chirilgach qayta ko'riladi (docs/PARTNERS.md).
   LG_PARTNER_ADS: 'false'
+  # Pullik qatlam (D-77/D-78): standart O'CHIQ. Faqat qo'lda ishga tushirilgan
+  # testflight / play_internal da `pro_preview` belgilansa yoqiladi (tester
+  # ko'rishi uchun; hamma imkoniyat ochiq). push/PR/build/deploy — doim 'false'.
+  LG_PRO_ENABLED: ${{ (inputs.pro_preview && (inputs.mode == 'testflight' || inputs.mode == 'play_internal')) && 'true' || 'false' }}
+  LG_ALL_FEATURES_OPEN: ${{ (inputs.pro_preview && (inputs.mode == 'testflight' || inputs.mode == 'play_internal')) && 'true' || 'false' }}
   # Google / Apple bilan kirish (D-56, docs/AUTH_SOCIAL_LOGIN.md). OAuth client
   # ID lar sir emas (ochiq identifikator): repo variables. Bo'sh bo'lsa
   # tegishli tugma ilovada ko'rinmaydi. LG_APPLE_SIGNIN=true FAQAT egasi
@@ -457,12 +466,14 @@ jobs:
             --build-number="${{ github.run_number }}" \
             --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
             --dart-define=LG_PARTNER_ADS="$LG_PARTNER_ADS" \
+            --dart-define=LG_PRO_ENABLED="$LG_PRO_ENABLED" --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
             --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
             --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN"
           if [ "${ANDROID_SIGNED:-false}" = true ]; then
             flutter build appbundle --release --build-number="${{ github.run_number }}" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
               --dart-define=LG_PARTNER_ADS="$LG_PARTNER_ADS" \
+              --dart-define=LG_PRO_ENABLED="$LG_PRO_ENABLED" --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
               --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
               --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN"
           fi
@@ -636,6 +647,7 @@ jobs:
             --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
             --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
             --dart-define=LG_PARTNER_ADS="$LG_PARTNER_ADS" \
+            --dart-define=LG_PRO_ENABLED="$LG_PRO_ENABLED" --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
             --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
             --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN=false
           APP=build/ios/iphoneos/Runner.app
@@ -1052,6 +1064,7 @@ jobs:
               --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
               --dart-define=LG_PARTNER_ADS="$LG_PARTNER_ADS" \
+              --dart-define=LG_PRO_ENABLED="$LG_PRO_ENABLED" --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
               --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
               --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN" \
               --export-options-plist="$SIGN_DIR/ExportOptions.plist"
@@ -1062,6 +1075,7 @@ jobs:
               --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
               --dart-define=LG_PARTNER_ADS="$LG_PARTNER_ADS" \
+              --dart-define=LG_PRO_ENABLED="$LG_PRO_ENABLED" --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
               --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
               --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN"
             xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner \

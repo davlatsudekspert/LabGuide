@@ -1756,3 +1756,11 @@ mehmon va muddati o'tgan holatda to'lov oynasiga olib bormaydi (yo'l darajasidag
 haqiqatan yiqildi). `pro_flag_default_guard_test`: eski yopish kodlari (`plannedLabGate`, `labGate(`, `historyView(`)
 yo'q, gate chaqiruvlari faqat ro'yxatdagi Pro kirish nuqtalarida, har `gated` funksiyaning kirish nuqtasi bor.
 D-77 qorovuli: `gated` bo'sh bo'lishi shart emas (D-78) — faqat katalogdan; bayroq o'chiq buildda hamma ochiq.
+
+**D-78 qo'shimcha (2026-10-26) — `pro_preview` (tester ko'rishi uchun).** Egasi test buildda pullik bo'limlarni ko'rmadi:
+bayroqlar standart O'CHIQ (D-77). ci.yml ga qo'lda ishga tushiriladigan `pro_preview` (standart false) kiritildi: faqat
+`testflight` / `play_internal` rejimida `LG_PRO_ENABLED` va `LG_ALL_FEATURES_OPEN` = true (tester Talaba/Ustoz/Mutaxassis/
+Premium interfeysini ko'radi, hamma imkoniyat OCHIQ). push/PR/`build`/`deploy_*` va do'kon buildlarida doim false
+(`repo_registry_guard_test`). Cheklov: do'kon xaridi va billing serveri yo'q (mahsulotlar/narxlar tasdiqlanmagan, Cloudflare
+deploy ruxsat kutadi) — xarid tugmalari "mavjud emas" holatida; Ustoz Pro serveri (0020 migratsiya) deploy qilinmaguncha
+o'qituvchi testlari server qismi ishlamaydi. Do'konga yuboriladigan (bepul) build o'zgarmaydi.
