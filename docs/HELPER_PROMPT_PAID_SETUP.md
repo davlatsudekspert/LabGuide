@@ -37,6 +37,21 @@ Avval o‘qi: `docs/PAID_OWNER_HELPER_CHECKLIST.md`, `docs/PAID_SANDBOX_RUNBOOK.
 8. `docs/PAID_SANDBOX_RUNBOOK.md` §2 matritsasi bo‘yicha sandbox sinov: sotib olish, tiklash, bekor qilish, muddat
    tugashi, mehmon va akkauntli, 7 kunlik sinov. Har qatorga PASS / FAIL / NOT RUN yoz.
 
+## MUHIM: tartib — pullik versiyani do‘konga hozir YUBORMA
+- Hozir ilovaning BEPUL versiyasi App Store va Google Play tekshiruvida. Bir vaqtda bitta versiya tekshiruvda
+  bo‘ladi: pullik versiyani yuborish bepul versiyaning tekshiruvini buzadi yoki almashtiradi. Egasi buni ruxsat bermagan.
+- Sen faqat tayyorlaysan: mahsulotlar, kalitlar, sandbox/ichki test. Tekshiruvga yuborish (Submit for Review) va
+  Production — TAQIQ, egasi bepul versiya javobi kelgach va alohida ruxsat bergach.
+- Bepul versiya tasdiqlangach pullik versiya “1.1 yangilanishi” sifatida chiqadi. Yuborishdan oldin tayyor bo‘lishi shart:
+  1. 8 mahsulot yaratilgan, narxlar egasi tasdiqlagan.
+  2. Apple: “Paid Apps” shartnomasi, bank va soliq ma’lumotlari to‘ldirilgan (faqat egasi qila oladi — to‘lmagan bo‘lsa egasiga
+     ayt). Aks holda obuna sotib bo‘lmaydi.
+  3. Haqiqiy do‘kon sandbox sinovi o‘tgan (sotib olish, tiklash, bekor qilish, 7 kunlik sinov) — natijalar PASS/FAIL/NOT RUN.
+  4. Maxfiylik siyosati va shartlar sahifalari, App Privacy va Play Data Safety formalari obunaga mos yangilangan; Apple
+     tekshiruvi uchun obuna ekrani skrinshoti va sinov akkaunti tayyor.
+  5. Huquqshunos ko‘rigi, mutaxassis ko‘rigi (ilmiy kontent) va RU/UZ ona tili tekshiruvi egasi tomonidan tasdiqlangan.
+- `main` ga merge va Production — faqat egasining alohida yozma ruxsati bilan.
+
 ## Qilma (egasining alohida ruxsatisiz)
 - `main` ga merge, Production reliz, bepul versiyani o‘zgartirish yoki rad etish.
 - Pullik xizmat/API sotib olish, reklama kampaniyasi, pullik GitHub Actions/macOS build.
