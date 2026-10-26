@@ -6,8 +6,8 @@
 
 | | |
 |---|---|
-| Video | **NOT READY** — video not rendered yet |
-| Copy status | **DRAFT** — written before the video existed; re-check every sentence against the final `lines.en.json` and `CLAIMS_AND_EVIDENCE.md`, then set `verified=True` in topics.py |
+| Video | **READY** — all 18 rendered files present · listed in READY.txt |
+| Copy status | verified against the rendered video, its lines and CLAIMS_AND_EVIDENCE.md |
 | Tier | free (everything described exists in the free app today) |
 | Review status | EXPERT_REVIEW_PENDING (science), NEEDS_NATIVE_REVIEW (RU/UZ) |
 | App path | Lab → Calculators · Лаб. → Калькуляторы · Lab → Kalkulyatorlar |
@@ -21,7 +21,9 @@
 * **G4** — Remotion licence check: free for individuals, non-profits and for-profit companies of up to 3 people; a larger company needs a Company licence (`video_studio/node_modules/remotion/LICENSE.md`).
 * **G5** — App availability: the free store build is the only one that exists publicly; the video must match the build the owner links to. Store approval status is the owner's to confirm.
 * **G6** — Owner approval of every text in this kit and of the date. Nothing is published by us.
-* *Topic note* — Free today. Do not state a number of calculators unless the video does and the count was re-checked in the build being advertised (the inventory counted 17 on 2026-10-25).
+* *Topic note* — Free today. Copy checked against lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of the rendered video (64.0 s). The video is an eGFR walkthrough plus a unit check, a dilution tool and the units setting: anion gap and corrected calcium are NOT in the video, so the copy no longer names them.
+* *Topic note* — "Seventeen" is the number of rows in the calculators list (inventory count 2026-10-25; K4): one row (colour index) explains why the app recommends MCH/MCHC instead of calculating. Re-check the count in the build being advertised.
+* *Topic note* — RU uses «рСКФ» as in the video; «СКФ» stays as a search keyword and in older tags.
 
 Placeholders in the texts below (`[[LINK_APP_STORE]]`, `[[LINK_PLAY]]`, `[[LINK_BIO]]`) are the owner's to fill; we never invent a link, a store listing or an availability date. No price and no product id appears anywhere.
 
@@ -29,31 +31,40 @@ Placeholders in the texts below (`[[LINK_APP_STORE]]`, `[[LINK_PLAY]]`, `[[LINK_
 
 | Lang | Title | Chars |
 |---|---|---|
-| EN | Lab Calculators in LabGuide: eGFR, Anion Gap, Dilution and More | 63 |
-| RU | Калькуляторы LabGuide: СКФ, анионный интервал, разведение и другие | 66 |
-| UZ | LabGuide kalkulyatorlari: eGFR, anion oralig‘i va suyultirish | 61 |
+| EN | Lab Calculators in LabGuide: eGFR, Input Checks and Dilution | 60 |
+| RU | Калькуляторы LabGuide: рСКФ, проверки ввода и разведение | 56 |
+| UZ | LabGuide kalkulyatorlari: eGFR, kiritish tekshiruvlari, suyultirish | 67 |
 
 ## 2. YouTube description (the first two lines are the hook shown before “more”)
 
-### 2.1 English (main) — 1865 characters (limit 5000)
+### 2.1 English (main) — 2757 characters (limit 5000)
 
 ```text
-Enter the values, get the result — with the formula, the limits and the source shown.
-A quick tour of the calculators in LabGuide.
+Creatinine 88, age 45, male: what is the eGFR?
+By hand it is a long formula — and one unit slip changes the answer. A tour of LabGuide’s calculators in about a minute.
 
 In this video:
-• Where the calculators live in LabGuide and how to open one.
-• Entering values, choosing SI or conventional units, and reading the result next to its formula, limitations and source.
-• Examples such as eGFR, anion gap, corrected calcium, dilution and the bench calculators (illustrative inputs).
+• The question: creatinine 88 µmol/L, age 45, male — what is the eGFR? The app’s own CKD-EPI 2021 formula text, and why units matter (creatinine in mg/dL: µmol/L ÷ 88.4).
+• Where the calculators are — Lab → Calculators — seventeen of them: clinical formulas, manual methods and laboratory tools; “How to use?” shows the steps in the app.
+• An eGFR walkthrough on real app screens (illustrative inputs): the fields start empty, a missing sex is asked for before calculating, the result shows its KDIGO category and the values you entered, and below it the formula, its limitations and the sources.
+• Input checks: under 18 eGFR is refused because the equation was built on adults; a glucose of 90 in mmol/L gets a unit check.
+• SI or conventional units, chosen once in Profile; bench tools such as dilution, C₁V₁ = C₂V₂, from your own numbers.
+
+Chapters
+0:00 eGFR by hand, and where the calculators are
+0:17 “How to use?” and the eGFR form
+0:33 Formula, limitations, sources and input checks
+0:47 Units in Profile and the dilution tool
 
 What LabGuide does today:
-• Calculators compute only from the values you enter; each shows its formula, limitations and source.
-• Units: SI (mmol/L, µmol/L) or conventional (mg/dL), chosen in Profile.
-• LabGuide does not interpret results, make a diagnosis or suggest drug doses. Works offline and without an account.
+• Calculators compute only from the values you enter (the fields start empty); each shows its formula, limitations and sources.
+• Units: SI or conventional, chosen once in Profile.
+• It calculates — you interpret: a learning and checking aid; it does not diagnose, and your laboratory’s reference intervals decide.
 
 Good to know:
-• All inputs in the video are illustrative, not patient data.
-• A calculated value is only as good as the inputs and the formula’s limits; reference intervals come from your laboratory.
+• All inputs in the video are illustrative, not patient data; every result on screen is computed by the app.
+• The video does not interpret any result (for example, what a KDIGO category means for a patient).
+• The list has 17 rows; one of them explains rather than calculates.
 
 LabGuide is a clinical-laboratory companion app for lab professionals and students (English, Russian, Uzbek). It is a learning and reference tool: it does not diagnose or interpret patient results. Works offline and without an account.
 Get the app: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -69,28 +80,37 @@ Credits
 • Illustrations, schematics, animation and app screens: LabGuide (own work). No third-party photographs, stock footage, music or logos.
 • Made with Remotion and FFmpeg.
 
-#LabGuide #eGFR #AnionGap
+#LabGuide #eGFR #Creatinine
 ```
 
-### 2.2 Русский — 2020 characters (limit 5000)
+### 2.2 Русский — 2874 characters (limit 5000)
 
 ```text
-Введите значения — получите результат, с формулой, ограничениями и источником.
-Быстрый обзор калькуляторов LabGuide.
+Креатинин 88, возраст 45, мужчина: какая рСКФ?
+Вручную — длинная формула, и одна ошибка в единицах меняет ответ. Обзор калькуляторов LabGuide — примерно за минуту.
 
 В этом видео:
-• Где в LabGuide находятся калькуляторы и как открыть нужный.
-• Ввод значений, выбор единиц СИ или традиционных и чтение результата рядом с формулой, ограничениями и источником.
-• Примеры: СКФ, анионный интервал, скорректированный кальций, разведение и лабораторные калькуляторы (иллюстративные данные).
+• Вопрос: креатинин 88 мкмоль/л, возраст 45, мужчина — какая рСКФ? Формула в том виде, как её показывает приложение (CKD-EPI 2021), и почему важны единицы (креатинин в мг/дл: мкмоль/л ÷ 88,4).
+• Где находятся калькуляторы — Лаб. → Калькуляторы — их семнадцать: клинические формулы, ручные методы и лабораторные инструменты; «Как пользоваться?» показывает шаги в приложении.
+• Разбор рСКФ на реальных экранах приложения (примерные значения): поля пустые, если не выбран пол, приложение спрашивает до расчёта, результат — с категорией KDIGO и введёнными значениями, ниже — формула, ограничения и источники.
+• Проверки ввода: до 18 лет рСКФ не считается, потому что уравнение создано на взрослых; глюкоза 90 в ммоль/л вызывает проверку единиц.
+• Единицы СИ или обычные — выбираются один раз в профиле; лабораторные инструменты, например разведение, C₁V₁ = C₂V₂, по вашим числам.
+
+Главы
+0:00 рСКФ вручную и где находятся калькуляторы
+0:17 «Как пользоваться?» и форма рСКФ
+0:33 Формула, ограничения, источники и проверки ввода
+0:47 Единицы в профиле и разведение
 
 Что LabGuide делает сегодня:
-• Калькуляторы считают только по введённым вами значениям; у каждого есть формула, ограничения и источник.
-• Единицы: СИ (ммоль/л, мкмоль/л) или традиционные (мг/дл) — выбираются в Профиле.
-• LabGuide не интерпретирует результаты, не ставит диагноз и не предлагает дозы препаратов. Работает без интернета и без аккаунта.
+• Калькуляторы считают только по введённым вами значениям (поля пустые); у каждого есть формула, ограничения и источники.
+• Единицы: СИ или обычные — выбираются один раз в профиле.
+• Он считает — толкуете вы: вспомогательный расчёт для обучения и проверки; диагноз он не ставит, решают референтные интервалы вашей лаборатории.
 
 Важно знать:
-• Все вводимые в видео значения иллюстративные, это не данные пациентов.
-• Расчётное значение настолько хорошо, насколько хороши входные данные и пределы применимости формулы; референтные интервалы — из вашей лаборатории.
+• Все вводимые в видео значения иллюстративные, это не данные пациентов; каждый результат на экране считает приложение.
+• Видео не интерпретирует ни один результат (например, что категория KDIGO значит для пациента).
+• В списке 17 строк; одна из них объясняет, а не считает.
 
 LabGuide — приложение-помощник для клинической лаборатории: для лаборантов и студентов (русский, узбекский, английский). Это учебный и справочный инструмент: он не ставит диагноз и не интерпретирует результаты пациентов. Работает без интернета и без аккаунта.
 Приложение: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -106,28 +126,37 @@ LabGuide — приложение-помощник для клинической
 • Иллюстрации, схемы, анимация и экраны приложения: LabGuide (собственная работа). Без сторонних фотографий, стоковых видео, музыки и логотипов.
 • Сделано с помощью Remotion и FFmpeg.
 
-#LabGuide #СКФ #анионныйинтервал
+#LabGuide #рСКФ #креатинин
 ```
 
-### 2.3 O‘zbekcha (Latin) — 2029 characters (limit 5000)
+### 2.3 O‘zbekcha (Latin) — 2940 characters (limit 5000)
 
 ```text
-Qiymatlarni kiriting — natijani oling, formula, cheklovlar va manba bilan.
-LabGuide kalkulyatorlariga tezkor sayohat.
+Kreatinin 88, yosh 45, erkak: eGFR qancha?
+Qo‘lda — uzun formula, birlikdagi bitta xato javobni o‘zgartiradi. LabGuide kalkulyatorlari — taxminan bir daqiqada.
 
 Bu videoda:
-• LabGuide’da kalkulyatorlar qayerda va qanday ochiladi.
-• Qiymatlarni kiritish, SI yoki an’anaviy birliklarni tanlash va natijani formula, cheklovlar va manba yonida o‘qish.
-• Misollar: eGFR, anion oralig‘i, tuzatilgan kalsiy, suyultirish va laboratoriya kalkulyatorlari (namunaviy kiritishlar).
+• Savol: kreatinin 88 µmol/L, yosh 45, erkak — eGFR qancha? Formula ilova ko‘rsatganidek (CKD-EPI 2021) va nega birliklar muhim (kreatinin mg/dL da: µmol/L ÷ 88,4).
+• Kalkulyatorlar qayerda — Lab → Kalkulyatorlar — ular o‘n yettita: klinik formulalar, qo‘lda usullar va laboratoriya vositalari; «Qanday foydalaniladi?» qadamlarni ilovaning o‘zida ko‘rsatadi.
+• eGFR ni ilovaning haqiqiy ekranlarida ko‘rib chiqish (namunaviy qiymatlar): maydonlar bo‘sh, jins tanlanmasa hisoblashdan oldin so‘raydi, natija KDIGO toifasi va kiritilgan qiymatlar bilan, pastda — formula, cheklovlar va manbalar.
+• Kiritish tekshiruvlari: 18 yoshdan kichikka eGFR hisoblanmaydi, chunki tenglama kattalarda tuzilgan; mmol/L da kiritilgan glyukoza 90 birlik tekshiruvini chiqaradi.
+• SI yoki an’anaviy birliklar — profilda bir marta tanlanadi; laboratoriya vositalari, masalan suyultirish, C₁V₁ = C₂V₂, o‘z sonlaringizdan.
+
+Boblar
+0:00 eGFR qo‘lda va kalkulyatorlar qayerda
+0:17 «Qanday foydalaniladi?» va eGFR shakli
+0:33 Formula, cheklovlar, manbalar va kiritish tekshiruvlari
+0:47 Profildagi birliklar va suyultirish
 
 LabGuide bugun nima qiladi:
-• Kalkulyatorlar faqat siz kiritgan qiymatlardan hisoblaydi; har birida formula, cheklovlar va manba bor.
-• Birliklar: SI (mmol/L, µmol/L) yoki an’anaviy (mg/dL) — Profilda tanlanadi.
-• LabGuide natijalarni talqin qilmaydi, tashxis qo‘ymaydi va dori dozasini taklif qilmaydi. Internetsiz va hisobsiz ishlaydi.
+• Kalkulyatorlar faqat siz kiritgan qiymatlardan hisoblaydi (maydonlar bo‘sh); har birida formula, cheklovlar va manbalar bor.
+• Birliklar: SI yoki an’anaviy — profilda bir marta tanlanadi.
+• U hisoblaydi — talqin sizniki: o‘rganish va tekshirish vositasi; tashxis qo‘ymaydi, laboratoriyangizning me’yor oraliqlari hal qiladi.
 
 Bilish foydali:
-• Videodagi barcha kiritishlar namunaviy, bemor ma’lumoti emas.
-• Hisoblangan qiymat kiritilgan ma’lumot va formula chegaralari qanchalik yaxshi bo‘lsa, shunchalik ishonchli; me’yor oraliqlari laboratoriyangizdan olinadi.
+• Videodagi barcha kiritishlar namunaviy, bemor ma’lumoti emas; ekrandagi har bir natijani ilova hisoblaydi.
+• Video hech bir natijani talqin qilmaydi (masalan, KDIGO toifasi bemor uchun nimani anglatishini).
+• Ro‘yxatda 17 qator bor; ulardan biri hisoblamaydi, tushuntiradi.
 
 LabGuide — klinik laboratoriya uchun yordamchi ilova: laborantlar va talabalar uchun (o‘zbek, rus, ingliz tillarida). Bu o‘quv va ma’lumotnoma vositasi: u tashxis qo‘ymaydi va bemor natijalarini talqin qilmaydi. Internetsiz va hisobsiz ishlaydi.
 Ilova: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -143,31 +172,38 @@ Mualliflar va litsenziyalar
 • Rasmlar, sxemalar, animatsiya va ilova ekranlari: LabGuide (o‘z ishi). Uchinchi tomon fotosuratlari, stok videolar, musiqa va logotiplar yo‘q.
 • Remotion va FFmpeg yordamida yaratilgan.
 
-#LabGuide #eGFR #anionoraligi
+#LabGuide #eGFR #kreatinin
 ```
 
 Upload settings: audio language English; add the edition's SRT as a caption track (the same words are also burned into the picture: leave captions off by default); category Education; not made for kids; answer the platform's synthetic-voice question honestly (NEEDS_OWNER_CHECK for the current wording).
 
 ## 3. Chapters / timestamps
 
-Not available yet: no storyboard yet (storyboard.json). They are filled in automatically when `docs/video/calculators/storyboard.json` and the timing manifest exist (re-run `python3 tool/publish/build_kit.py`); automatic titles must be edited.
+Computed from `docs/video/calculators/storyboard.json` and the English narration timing (total 64.0 s). The same timestamps serve all three editions.
+
+| Time | EN | RU | UZ |
+|---|---|---|---|
+| 0:00 | eGFR by hand, and where the calculators are | рСКФ вручную и где находятся калькуляторы | eGFR qo‘lda va kalkulyatorlar qayerda |
+| 0:17 | “How to use?” and the eGFR form | «Как пользоваться?» и форма рСКФ | «Qanday foydalaniladi?» va eGFR shakli |
+| 0:33 | Formula, limitations, sources and input checks | Формула, ограничения, источники и проверки ввода | Formula, cheklovlar, manbalar va kiritish tekshiruvlari |
+| 0:47 | Units in Profile and the dilution tool | Единицы в профиле и разведение | Profildagi birliklar va suyultirish |
 
 ## 4. Keywords / tags (YouTube tags field, ≤ 500 characters per edition)
 
-* **EN** (161 chars): lab calculators, clinical calculators, eGFR calculator, anion gap, corrected calcium, dilution calculator, unit converter, SI units, clinical chemistry, LabGuide
-* **RU** (287 chars): лабораторные калькуляторы, клинические калькуляторы, СКФ, анионный интервал, скорректированный кальций, разведение, лаборант, lab calculators, clinical calculators, eGFR calculator, anion gap, corrected calcium, dilution calculator, unit converter, SI units, clinical chemistry, LabGuide
-* **UZ** (278 chars): laboratoriya kalkulyatorlari, klinik kalkulyatorlar, eGFR, anion oralig‘i, tuzatilgan kalsiy, suyultirish, laborant, lab calculators, clinical calculators, eGFR calculator, anion gap, corrected calcium, dilution calculator, unit converter, SI units, clinical chemistry, LabGuide
+* **EN** (148 chars): lab calculators, clinical calculators, eGFR calculator, CKD-EPI 2021, KDIGO, dilution calculator, unit check, SI units, clinical chemistry, LabGuide
+* **RU** (234 chars): лабораторные калькуляторы, клинические калькуляторы, рСКФ, СКФ, CKD-EPI 2021, KDIGO, разведение, лаборант, lab calculators, clinical calculators, eGFR calculator, dilution calculator, unit check, SI units, clinical chemistry, LabGuide
+* **UZ** (230 chars): laboratoriya kalkulyatorlari, klinik kalkulyatorlar, eGFR, CKD-EPI 2021, KDIGO, suyultirish, laborant, lab calculators, clinical calculators, eGFR calculator, dilution calculator, unit check, SI units, clinical chemistry, LabGuide
 
 ## 5. Instagram caption (≤ 2200 characters including hashtags; hook first)
 
-### 5.1 English — 643 + hashtags 221 = 866 characters
+### 5.1 English — 748 + hashtags 221 = 971 characters
 
 ```text
-Enter the values, get the result — with the formula, the limits and the source shown.
+Creatinine 88, age 45, male: what is the eGFR?
 
-A quick tour of the calculators in LabGuide: from eGFR and anion gap to dilution and the bench calculators, in SI or conventional units, offline.
+A tour of LabGuide’s calculators in about a minute: eGFR from creatinine, age and sex on real app screens — empty fields, input checks, the KDIGO category, the formula, limitations and sources — then SI or conventional units and bench tools like dilution (illustrative inputs).
 
-They compute only from what you enter and don’t interpret results. Find them in Lab → Calculators.
+It calculates — you interpret. A learning and checking aid; it doesn’t diagnose. Find it in Lab → Calculators.
 
 Illustrative data — not patient results.
 Educational use, not medical advice.
@@ -177,14 +213,14 @@ Expert review pending: this content has not yet been reviewed by a laboratory sp
 Link in bio: [[LINK_BIO]]. Save this and share it with a colleague.
 ```
 
-### 5.2 Русский — 687 + hashtags 237 = 926 characters
+### 5.2 Русский — 802 + hashtags 218 = 1022 characters
 
 ```text
-Введите значения — получите результат, с формулой, ограничениями и источником.
+Креатинин 88, возраст 45, мужчина: какая рСКФ?
 
-Быстрый обзор калькуляторов LabGuide: от СКФ и анионного интервала до разведения и лабораторных калькуляторов, в единицах СИ или традиционных, без интернета.
+Обзор калькуляторов LabGuide примерно за минуту: рСКФ по креатинину, возрасту и полу на реальных экранах — пустые поля, проверки ввода, категория KDIGO, формула, ограничения и источники — затем единицы СИ или обычные и лабораторные инструменты вроде разведения (примерные значения).
 
-Они считают только по введённым данным и не интерпретируют результаты. Раздел: Лаб. → Калькуляторы.
+Он считает — толкуете вы. Вспомогательный расчёт для обучения и проверки; диагноз не ставит. Раздел: Лаб. → Калькуляторы.
 
 Иллюстративные данные — не результаты пациентов.
 Только для обучения; не является медицинской рекомендацией.
@@ -194,14 +230,14 @@ Link in bio: [[LINK_BIO]]. Save this and share it with a colleague.
 Ссылка в профиле: [[LINK_BIO]]. Сохраните и перешлите коллеге.
 ```
 
-### 5.3 O‘zbekcha — 719 + hashtags 222 = 943 characters
+### 5.3 O‘zbekcha — 849 + hashtags 206 = 1057 characters
 
 ```text
-Qiymatlarni kiriting — natijani oling, formula, cheklovlar va manba bilan.
+Kreatinin 88, yosh 45, erkak: eGFR qancha?
 
-LabGuide kalkulyatorlariga tezkor sayohat: eGFR va anion oralig‘idan suyultirish va laboratoriya kalkulyatorlarigacha, SI yoki an’anaviy birliklarda, internetsiz.
+LabGuide kalkulyatorlariga taxminan bir daqiqalik sayohat: kreatinin, yosh va jinsdan eGFR ilovaning haqiqiy ekranlarida — bo‘sh maydonlar, kiritish tekshiruvlari, KDIGO toifasi, formula, cheklovlar va manbalar — so‘ng SI yoki an’anaviy birliklar va suyultirish kabi laboratoriya vositalari (namunaviy qiymatlar).
 
-Ular faqat siz kiritganlardan hisoblaydi va natijalarni talqin qilmaydi. Bo‘lim: Lab → Kalkulyatorlar.
+U hisoblaydi — talqin sizniki. O‘rganish va tekshirish vositasi; tashxis qo‘ymaydi. Bo‘lim: Lab → Kalkulyatorlar.
 
 Namunaviy ma’lumotlar — bemor natijalari emas.
 Faqat o‘quv maqsadida; tibbiy maslahat emas.
@@ -213,29 +249,29 @@ Havola profilda: [[LINK_BIO]]. Saqlab qo‘ying va hamkasbingizga yuboring.
 
 ## 6. Hashtags (15–25 per language; paste at the end of the caption or as the first comment)
 
-* **EN** (16): #LabGuide #MedicalLaboratory #ClinicalLaboratory #LabTech #MedLabScience #LabEducation #MedicalStudent #HealthcareEducation #LaboratoryMedicine #eGFR #AnionGap #LabCalculator #ClinicalChemistry #Dilution #SIUnits #LabMath
-* **RU** (16): #LabGuide #лаборатория #клиническаялаборатория #КДЛ #лабораторнаядиагностика #лаборант #студентмедик #медицинскоеобразование #медицинскаялаборатория #СКФ #анионныйинтервал #калькулятор #биохимия #разведение #единицыСИ #лабораторныйрасчёт
-* **UZ** (16): #LabGuide #laboratoriya #klinikalaboratoriya #laborant #laboratoriyadiagnostikasi #tibbiyot #tibbiyottalimi #talaba #tibbiyotkolleji #eGFR #anionoraligi #kalkulyator #biokimyo #suyultirish #SIbirliklari #laboratoriyahisobi
-* YouTube (first three, shown above the title): EN #LabGuide #eGFR #AnionGap · RU #LabGuide #СКФ #анионныйинтервал · UZ #LabGuide #eGFR #anionoraligi
+* **EN** (16): #LabGuide #MedicalLaboratory #ClinicalLaboratory #LabTech #MedLabScience #LabEducation #MedicalStudent #HealthcareEducation #LaboratoryMedicine #eGFR #Creatinine #LabCalculator #ClinicalChemistry #Dilution #SIUnits #KDIGO
+* **RU** (16): #LabGuide #лаборатория #клиническаялаборатория #КДЛ #лабораторнаядиагностика #лаборант #студентмедик #медицинскоеобразование #медицинскаялаборатория #рСКФ #креатинин #калькулятор #биохимия #разведение #единицыСИ #KDIGO
+* **UZ** (16): #LabGuide #laboratoriya #klinikalaboratoriya #laborant #laboratoriyadiagnostikasi #tibbiyot #tibbiyottalimi #talaba #tibbiyotkolleji #eGFR #kreatinin #kalkulyator #biokimyo #suyultirish #SIbirliklari #KDIGO
+* YouTube (first three, shown above the title): EN #LabGuide #eGFR #Creatinine · RU #LabGuide #рСКФ #креатинин · UZ #LabGuide #eGFR #kreatinin
 
 ## 7. Pinned comment
 
 **EN**
 
 ```text
-Notes: all inputs in this video are illustrative, not patient data. Calculators do not interpret results; reference intervals come from your laboratory. Narration is English synthetic speech. The content is awaiting expert review — corrections are welcome. Which calculator is missing for you?
+Notes: all inputs in this video are illustrative, not patient data, and every result shown is computed by the app. Calculators do not interpret results; your laboratory’s reference intervals decide. Narration is English synthetic speech. The content is awaiting expert review — corrections are welcome. Which calculator is missing for you?
 ```
 
 **RU**
 
 ```text
-Заметки: все вводимые в видео значения иллюстративные, это не данные пациентов. Калькуляторы не интерпретируют результаты; референтные интервалы берут из вашей лаборатории. Озвучка — синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются. Какого калькулятора вам не хватает?
+Заметки: все вводимые в видео значения иллюстративные, это не данные пациентов, а каждый показанный результат считает приложение. Калькуляторы не интерпретируют результаты; решают референтные интервалы вашей лаборатории. Озвучка — синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются. Какого калькулятора вам не хватает?
 ```
 
 **UZ**
 
 ```text
-Eslatma: videodagi barcha kiritishlar namunaviy, bemor ma’lumoti emas. Kalkulyatorlar natijalarni talqin qilmaydi; me’yor oraliqlari laboratoriyangizdan olinadi. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda. Sizga qaysi kalkulyator yetishmaydi?
+Eslatma: videodagi barcha kiritishlar namunaviy, bemor ma’lumoti emas, ko‘rsatilgan har bir natijani ilova hisoblaydi. Kalkulyatorlar natijalarni talqin qilmaydi; laboratoriyangizning me’yor oraliqlari hal qiladi. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda. Sizga qaysi kalkulyator yetishmaydi?
 ```
 
 ## 8. Credits
@@ -279,9 +315,9 @@ Internal licence notes (not for the public text):
 
 All under `video_studio/out/calculators/<lang>/`. Alt text (thumbnail and cover show the same content):
 
-* **EN**: LabGuide logo and the title “Lab Calculators in LabGuide”, with a schematic or app visual and the notice “Illustrative data — not patient results”. (Draft alt text: compare with the rendered thumbnail before use.)
-* **RU**: Логотип LabGuide и заголовок «Калькуляторы LabGuide», схематичное или экранное изображение и пометка «Иллюстративные данные — не результаты пациентов». (Черновик альтернативного текста: сверьте с готовой обложкой.)
-* **UZ**: LabGuide logotipi va «LabGuide kalkulyatorlari» sarlavhasi, sxematik yoki ilova tasviri hamda «Namunaviy ma’lumotlar — bemor natijalari emas» belgisi. (Alt-matn qoralamasi: foydalanishdan oldin tayyor muqova bilan solishtiring.)
+* **EN**: LabGuide logo, the title “Lab calculators” with the subtitle “Formula, limits, source”, a card with the app’s eGFR formula (CKD-EPI 2021), a phone screen showing an eGFR result with its KDIGO category, the entered values, the formula and its limitations, and the notice “Real app screens · illustrative values”.
+* **RU**: Логотип LabGuide, заголовок «Калькуляторы» с подзаголовком «Формула, ограничения, источник», карточка с формулой рСКФ из приложения (CKD-EPI 2021), экран телефона с результатом рСКФ, категорией KDIGO, введёнными значениями, формулой и ограничениями и пометка «Реальные экраны · примерные значения».
+* **UZ**: LabGuide logotipi, «Kalkulyatorlar» sarlavhasi va «Formula, cheklov, manba» sarlavha osti, ilovadagi eGFR formulasi kartasi (CKD-EPI 2021), eGFR natijasi, KDIGO toifasi, kiritilgan qiymatlar, formula va cheklovlar ko‘rsatilgan telefon ekrani hamda «Haqiqiy ekranlar · namunaviy qiymatlar» belgisi.
 
 ## 10. End screen / CTA suggestion
 
@@ -303,8 +339,9 @@ All under `video_studio/out/calculators/<lang>/`. Alt text (thumbnail and cover 
 
 ## 12. Evidence the public text rests on
 
-* docs/video/calculators/CLAIMS_AND_EVIDENCE.md (when it exists)
+* docs/video/calculators/CLAIMS_AND_EVIDENCE.md
+* docs/video/calculators/DESCRIPTION.md
+* docs/video/calculators/QA.md
 * docs/video/04_kalkulyatorlar.md
 * docs/VIDEO_FEATURE_INVENTORY.md §1 (calculators)
-* docs/store/APP_STORE.md §4 (description)
 

@@ -6,11 +6,11 @@
 
 | | |
 |---|---|
-| Video | **NOT READY** — video not rendered yet |
-| Copy status | **DRAFT** — written before the video existed; re-check every sentence against the final `lines.en.json` and `CLAIMS_AND_EVIDENCE.md`, then set `verified=True` in topics.py |
+| Video | **READY** — all 18 rendered files present · listed in READY.txt |
+| Copy status | verified against the rendered video, its lines and CLAIMS_AND_EVIDENCE.md |
 | Tier | free (everything described exists in the free app today) |
 | Review status | EXPERT_REVIEW_PENDING (science), NEEDS_NATIVE_REVIEW (RU/UZ) |
-| App path | Lab → Instruments → Osmometer · Лаб. → Приборы → Осмометр · Lab → Apparatlar → Osmometr |
+| App path | Lab → Instruments and methods → Clinical biochemistry → Osmometer · Лаб. → Приборы и методики → Клиническая биохимия → Осмометр · Lab → Apparatlar va metodikalar → Klinik biokimyo → Osmometr |
 | Language editions | en / ru / uz — each a separate video: English synthetic narration in all three; subtitles and on-screen text in the edition's language |
 
 ## 0. Gates before this topic may be published
@@ -21,7 +21,8 @@
 * **G4** — Remotion licence check: free for individuals, non-profits and for-profit companies of up to 3 people; a larger company needs a Company licence (`video_studio/node_modules/remotion/LICENSE.md`).
 * **G5** — App availability: the free store build is the only one that exists publicly; the video must match the build the owner links to. Store approval status is the owner's to confirm.
 * **G6** — Owner approval of every text in this kit and of the date. Nothing is published by us.
-* *Topic note* — Drafted from lesson 24, the lab-card facts and the calculator list. If the final video does not show the osmolality calculator, delete the second app bullet and the last IG line. The app's lab card is itself flagged NEEDS_REVIEW (expert_reviewed=false, docs/lab_cards_status.json) and says so: do not call it "verified" or "reviewed".
+* *Topic note* — Copy checked against lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of the rendered video (78.2 s). The video shows the osmolality calculator, so its bullet stays. Open expert items: O6 (principle-level wording supercooling → stirring wire → plateau, NEEDS_EXPERT) and every STANDARD_TEXTBOOK row.
+* *Topic note* — Deliberately not said (kept out of the copy too): the 1.86 °C per osmol/kg constant, reference intervals, any meaning of a normal or abnormal gap, sample volume. The app's lab card is itself flagged NEEDS_REVIEW (expert_reviewed=false, docs/lab_cards_status.json) and says so: do not call it "verified" or "reviewed".
 
 Placeholders in the texts below (`[[LINK_APP_STORE]]`, `[[LINK_PLAY]]`, `[[LINK_BIO]]`) are the owner's to fill; we never invent a link, a store listing or an availability date. No price and no product id appears anywhere.
 
@@ -35,24 +36,37 @@ Placeholders in the texts below (`[[LINK_APP_STORE]]`, `[[LINK_PLAY]]`, `[[LINK_
 
 ## 2. YouTube description (the first two lines are the hook shown before “more”)
 
-### 2.1 English (main) — 1851 characters (limit 5000)
+### 2.1 English (main) — 3235 characters (limit 5000)
 
 ```text
-Dissolved particles lower the freezing point — and that is how a freezing-point osmometer measures osmolality.
-Supercooling, freezing and the plateau, on a schematic.
+Two samples freeze — and one plateau sits lower. Why?
+Dissolved particles lower the freezing point — that is what an osmometer measures. On a schematic, in under 80 seconds.
 
 In this video:
-• The five numbered parts of a freezing-point osmometer (schematic).
-• Supercooling, the start of freezing and the plateau, and why osmolality is measured.
-• Factors that can distort the result, as listed in the sources.
+• A freezing-point osmometer on a schematic with five numbered parts: sample tubes, a thermistor probe, a cooling block, a stirring wire and a display.
+• The freezing curve: the cooling block supercools the sample below its freezing point, the stirring wire vibrates and freezing starts, and released heat lifts the temperature to a plateau — the freezing point.
+• More particles, a deeper depression — and from it the osmolality. Osmolality is per kilogram of water (mOsm/kg); osmolarity is per litre of solution.
+• Real LabGuide screens: Lab → Instruments and methods → Clinical biochemistry → Osmometer — the same schematic and parts plus specimens, each with its source; what distorts the reading (particles, air bubbles, evaporated or viscous samples, high alcohol or acetone) and carry-over from an uncleaned container.
+• The Calculated osmolality calculator (Lab → Calculators): from sodium, glucose and urea; add the measured value and it shows the osmolal gap (illustrative inputs).
+
+Chapters
+0:00 Why one plateau sits lower, and the osmometer’s parts
+0:17 The freezing curve
+0:28 From depression to osmolality: per kg, per litre
+0:40 In LabGuide: the osmometer card
+0:50 What distorts the reading
+1:01 Calculated osmolality and the osmolal gap
 
 What LabGuide does today:
-• LabGuide has an osmometer reference card in the instrument directions with an original schematic illustration (not an exact model).
-• Its calculators include osmolality: it computes only from the values you enter and shows the formula, the limitations and the source. It does not measure anything.
+• LabGuide has an osmometer reference card (Lab → Instruments and methods → Clinical biochemistry): the schematic with numbered parts, specimens with their source, limitations, and preanalytic and analytic errors.
+• Lab → Calculators → Calculated osmolality works from sodium, glucose and urea; with a measured value added it shows the osmolal gap.
+• Measured or calculated — know which number you read.
 
 Good to know:
-• Schematic illustration — not an exact instrument model.
-• A calculated osmolality is not a measured osmolality. Interpretation belongs to the clinician and your laboratory’s reference intervals.
+• Schematic — not an exact model; the curves are illustrative (no numbers on the axes), not a real sample or result.
+• A reference card and a learning calculator: your laboratory’s SOP and reference intervals decide. A calculated osmolality is not a measured osmolality.
+• Calculator values on screen are illustrative; the video does not interpret the gap or any value.
+• The card in the app is itself marked as not yet expert-reviewed.
 
 LabGuide is a clinical-laboratory companion app for lab professionals and students (English, Russian, Uzbek). It is a learning and reference tool: it does not diagnose or interpret patient results. Works offline and without an account.
 Get the app: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -71,24 +85,37 @@ Credits
 #LabGuide #Osmometry #Osmolality
 ```
 
-### 2.2 Русский — 1869 characters (limit 5000)
+### 2.2 Русский — 3239 characters (limit 5000)
 
 ```text
-Растворённые частицы понижают точку замерзания — так криоскопический осмометр измеряет осмоляльность.
-Переохлаждение, замерзание и плато — на схеме.
+Две пробы замерзают — одно плато ниже. Почему?
+Растворённые частицы понижают точку замерзания — это и измеряет осмометр. На схеме, меньше чем за 80 секунд.
 
 В этом видео:
-• Пять пронумерованных частей криоскопического осмометра (схема).
-• Переохлаждение, начало замерзания и плато, и зачем измеряют осмоляльность.
-• Факторы, которые могут исказить результат, — по источникам.
+• Криоскопический осмометр на схеме с пятью пронумерованными частями: пробирки, термисторный зонд, охлаждающий блок, мешалка и дисплей.
+• Кривая замерзания: охлаждающий блок переохлаждает пробу ниже точки замерзания, мешалка вибрирует — начинается кристаллизация, выделившееся тепло поднимает температуру до плато — точки замерзания.
+• Больше частиц — глубже понижение, а по нему — осмоляльность. Осмоляльность — на килограмм воды (мОсм/кг), осмолярность — на литр раствора.
+• Реальные экраны LabGuide: Лаб. → Приборы и методики → Клиническая биохимия → Осмометр — та же схема и узлы, плюс образцы, у каждого источник; что искажает результат (частицы, пузырьки, испарившиеся или вязкие пробы, спирты и ацетон) и перенос пробы из неочищенной ёмкости.
+• Калькулятор «Расчётная осмоляльность» (Лаб. → Калькуляторы): из натрия, глюкозы и мочевины; добавьте измеренное значение — он покажет осмоляльный зазор (примерные значения).
+
+Главы
+0:00 Почему одно плато ниже, и части осмометра
+0:17 Кривая замерзания
+0:28 От понижения к осмоляльности: на кг и на литр
+0:40 В LabGuide: карточка осмометра
+0:50 Что искажает результат
+1:01 Расчётная осмоляльность и осмоляльный зазор
 
 Что LabGuide делает сегодня:
-• В LabGuide есть справочная карточка осмометра в направлениях приборов с оригинальным схематичным рисунком (не конкретная модель).
-• Среди калькуляторов есть осмоляльность: он считает только по введённым вами значениям и показывает формулу, ограничения и источник. Ничего не измеряет.
+• В LabGuide есть справочная карточка осмометра (Лаб. → Приборы и методики → Клиническая биохимия): схема с пронумерованными частями, образцы с источником, ограничения, а также преаналитические и аналитические ошибки.
+• Лаб. → Калькуляторы → Расчётная осмоляльность считает из натрия, глюкозы и мочевины; с добавленным измеренным значением показывает осмоляльный зазор.
+• Измерено или рассчитано — знайте, что вы читаете.
 
 Важно знать:
-• Схема — не конкретная модель прибора.
-• Расчётная осмоляльность — не измеренная осмоляльность. Интерпретация — за врачом и референтными интервалами вашей лаборатории.
+• Схема — не точная модель; кривые иллюстративные (без чисел на осях), это не реальная проба и не результат.
+• Справочная карточка и учебный калькулятор: решают СОП и референтные интервалы вашей лаборатории. Расчётная осмоляльность — не измеренная осмоляльность.
+• Значения калькулятора на экране примерные; видео не интерпретирует ни зазор, ни другие значения.
+• Сама карточка в приложении помечена как ещё не проверенная экспертом.
 
 LabGuide — приложение-помощник для клинической лаборатории: для лаборантов и студентов (русский, узбекский, английский). Это учебный и справочный инструмент: он не ставит диагноз и не интерпретирует результаты пациентов. Работает без интернета и без аккаунта.
 Приложение: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -107,24 +134,37 @@ LabGuide — приложение-помощник для клинической
 #LabGuide #осмометрия #осмоляльность
 ```
 
-### 2.3 O‘zbekcha (Latin) — 1907 characters (limit 5000)
+### 2.3 O‘zbekcha (Latin) — 3286 characters (limit 5000)
 
 ```text
-Erigan zarralar muzlash nuqtasini pasaytiradi — muzlash nuqtasi osmometri osmolyallikni shunday o‘lchaydi.
-O‘ta sovutish, muzlash va plato — sxemada.
+Ikki namuna muzlaydi — bir plato pastroq. Nega?
+Erigan zarrachalar muzlash nuqtasini pasaytiradi — osmometr shuni o‘lchaydi. Sxemada, 80 soniyadan kamroq vaqtda.
 
 Bu videoda:
-• Muzlash nuqtasi osmometrining beshta raqamlangan qismi (sxema).
-• O‘ta sovutish, muzlashning boshlanishi va plato hamda osmolyallik nega o‘lchanadi.
-• Natijani buzishi mumkin bo‘lgan omillar — manbalar bo‘yicha.
+• Muzlash nuqtasi osmometri beshta raqamlangan qismli sxemada: probirkalar, termistor zondi, sovutish bloki, sim va displey.
+• Muzlash egri chizig‘i: sovutish bloki namunani muzlash nuqtasidan past o‘ta sovitadi, sim tebranadi — muzlash boshlanadi, ajralgan issiqlik haroratni platoga ko‘taradi: muzlash nuqtasi.
+• Zarracha ko‘p — pasayish chuqurroq, undan esa osmolyallik. Osmolyallik — suv kg iga (mOsm/kg), osmolyarlik — eritma litriga.
+• LabGuide’ning haqiqiy ekranlari: Lab → Apparatlar va metodikalar → Klinik biokimyo → Osmometr — o‘sha sxema va qismlar, namunalar ham, har biri manbali; natijani nima buzadi (zarrachalar, pufakchalar, bug‘langan yoki yopishqoq namuna, spirt va aseton) va tozalanmagan idishdan keyingi namunaga o‘tish.
+• «Hisoblangan osmolyallik» kalkulyatori (Lab → Kalkulyatorlar): natriy, glyukoza va mochevinadan; o‘lchangan qiymatni qo‘shsangiz — osmolyal farqni ko‘rsatadi (namunaviy qiymatlar).
+
+Boblar
+0:00 Nega bir plato pastroq va osmometr qismlari
+0:17 Muzlash egri chizig‘i
+0:28 Pasayishdan osmolyallikka: kg ga va litrga
+0:40 LabGuide’da: osmometr kartasi
+0:50 Natijani nima buzadi
+1:01 Hisoblangan osmolyallik va osmolyal farq
 
 LabGuide bugun nima qiladi:
-• LabGuide’da apparat yo‘nalishlarida osmometr bo‘yicha ma’lumotnoma kartasi bor, original sxematik rasm bilan (aniq model emas).
-• Kalkulyatorlari orasida osmolyallik bor: u faqat siz kiritgan qiymatlardan hisoblaydi, formula, cheklovlar va manbani ko‘rsatadi. Hech narsani o‘lchamaydi.
+• LabGuide’da osmometr bo‘yicha ma’lumotnoma kartasi bor (Lab → Apparatlar va metodikalar → Klinik biokimyo): raqamlangan qismli sxema, manbali namunalar, cheklovlar hamda preanalitik va analitik xatolar.
+• Lab → Kalkulyatorlar → Hisoblangan osmolyallik natriy, glyukoza va mochevinadan hisoblaydi; o‘lchangan qiymat qo‘shilsa, osmolyal farqni ko‘rsatadi.
+• O‘lchangan yoki hisoblangan — qaysini o‘qiyotganingizni biling.
 
 Bilish foydali:
-• Sxematik tasvir — aniq apparat modeli emas.
-• Hisoblangan osmolyallik o‘lchangan osmolyallik emas. Talqin — shifokor va laboratoriyangizning me’yor oraliqlari ishi.
+• Sxema — aniq model emas; egri chiziqlar namunaviy (o‘qlarda sonlar yo‘q), haqiqiy namuna yoki natija emas.
+• Ma’lumotnoma karta va o‘quv kalkulyatori: laboratoriyangiz SOP’i va me’yor oraliqlari hal qiladi. Hisoblangan osmolyallik o‘lchangan osmolyallik emas.
+• Ekrandagi kalkulyator qiymatlari namunaviy; video farqni ham, boshqa qiymatni ham talqin qilmaydi.
+• Ilovadagi kartaning o‘zi hali mutaxassis tomonidan tekshirilmagan deb belgilangan.
 
 LabGuide — klinik laboratoriya uchun yordamchi ilova: laborantlar va talabalar uchun (o‘zbek, rus, ingliz tillarida). Bu o‘quv va ma’lumotnoma vositasi: u tashxis qo‘ymaydi va bemor natijalarini talqin qilmaydi. Internetsiz va hisobsiz ishlaydi.
 Ilova: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -147,24 +187,33 @@ Upload settings: audio language English; add the edition's SRT as a caption trac
 
 ## 3. Chapters / timestamps
 
-Not available yet: no storyboard yet (storyboard.json). They are filled in automatically when `docs/video/osmometry/storyboard.json` and the timing manifest exist (re-run `python3 tool/publish/build_kit.py`); automatic titles must be edited.
+Computed from `docs/video/osmometry/storyboard.json` and the English narration timing (total 78.2 s). The same timestamps serve all three editions.
+
+| Time | EN | RU | UZ |
+|---|---|---|---|
+| 0:00 | Why one plateau sits lower, and the osmometer’s parts | Почему одно плато ниже, и части осмометра | Nega bir plato pastroq va osmometr qismlari |
+| 0:17 | The freezing curve | Кривая замерзания | Muzlash egri chizig‘i |
+| 0:28 | From depression to osmolality: per kg, per litre | От понижения к осмоляльности: на кг и на литр | Pasayishdan osmolyallikka: kg ga va litrga |
+| 0:40 | In LabGuide: the osmometer card | В LabGuide: карточка осмометра | LabGuide’da: osmometr kartasi |
+| 0:50 | What distorts the reading | Что искажает результат | Natijani nima buzadi |
+| 1:01 | Calculated osmolality and the osmolal gap | Расчётная осмоляльность и осмоляльный зазор | Hisoblangan osmolyallik va osmolyal farq |
 
 ## 4. Keywords / tags (YouTube tags field, ≤ 500 characters per edition)
 
-* **EN** (127 chars): osmometry, osmometer, osmolality, freezing point depression, supercooling, clinical chemistry, laboratory instruments, LabGuide
-* **RU** (239 chars): осмометрия, осмометр, осмоляльность, криоскопия, понижение точки замерзания, клиническая лаборатория, лаборант, osmometry, osmometer, osmolality, freezing point depression, supercooling, clinical chemistry, laboratory instruments, LabGuide
-* **UZ** (221 chars): osmometriya, osmometr, osmolyallik, muzlash nuqtasi pasayishi, klinik laboratoriya, laborant, osmometry, osmometer, osmolality, freezing point depression, supercooling, clinical chemistry, laboratory instruments, LabGuide
+* **EN** (163 chars): osmometry, osmometer, osmolality, freezing point depression, supercooling, osmolal gap, calculated osmolality, clinical chemistry, laboratory instruments, LabGuide
+* **RU** (294 chars): осмометрия, осмометр, осмоляльность, криоскопия, понижение точки замерзания, осмоляльный зазор, клиническая лаборатория, лаборант, osmometry, osmometer, osmolality, freezing point depression, supercooling, osmolal gap, calculated osmolality, clinical chemistry, laboratory instruments, LabGuide
+* **UZ** (272 chars): osmometriya, osmometr, osmolyallik, muzlash nuqtasi pasayishi, osmolyal farq, klinik laboratoriya, laborant, osmometry, osmometer, osmolality, freezing point depression, supercooling, osmolal gap, calculated osmolality, clinical chemistry, laboratory instruments, LabGuide
 
 ## 5. Instagram caption (≤ 2200 characters including hashtags; hook first)
 
-### 5.1 English — 633 + hashtags 244 = 879 characters
+### 5.1 English — 730 + hashtags 244 = 976 characters
 
 ```text
-Dissolved particles lower the freezing point — that is how a freezing-point osmometer measures osmolality.
+Two samples freeze — and one plateau sits lower. Why?
 
-A schematic walk-through: supercooling, freezing, the plateau, and what can distort the result.
+A schematic walk-through in under 80 seconds: the five parts of a freezing-point osmometer, supercooling, the stirring wire, the plateau, osmolality per kilogram of water versus osmolarity per litre — and what distorts the reading.
 
-Osmometer reference card and an osmolality calculator in LabGuide (calculated from your inputs; it measures nothing).
+Osmometer reference card and the Calculated osmolality calculator in LabGuide. Measured or calculated — know which number you read.
 
 Illustrative data — not patient results.
 Educational use, not medical advice.
@@ -174,14 +223,14 @@ Expert review pending: this content has not yet been reviewed by a laboratory sp
 Link in bio: [[LINK_BIO]]. Save this and share it with a colleague.
 ```
 
-### 5.2 Русский — 643 + hashtags 247 = 892 characters
+### 5.2 Русский — 717 + hashtags 247 = 966 characters
 
 ```text
-Растворённые частицы понижают точку замерзания — так криоскопический осмометр измеряет осмоляльность.
+Две пробы замерзают — одно плато ниже. Почему?
 
-Схематичный разбор: переохлаждение, замерзание, плато и что может исказить результат.
+Схематичный разбор меньше чем за 80 секунд: пять частей криоскопического осмометра, переохлаждение, мешалка, плато, осмоляльность на килограмм воды и осмолярность на литр — и что искажает результат.
 
-Карточка осмометра и калькулятор осмоляльности в LabGuide (считает по вашим данным; ничего не измеряет).
+Карточка осмометра и калькулятор «Расчётная осмоляльность» в LabGuide. Измерено или рассчитано — знайте, что вы читаете.
 
 Иллюстративные данные — не результаты пациентов.
 Только для обучения; не является медицинской рекомендацией.
@@ -191,14 +240,14 @@ Link in bio: [[LINK_BIO]]. Save this and share it with a colleague.
 Ссылка в профиле: [[LINK_BIO]]. Сохраните и перешлите коллеге.
 ```
 
-### 5.3 O‘zbekcha — 663 + hashtags 240 = 905 characters
+### 5.3 O‘zbekcha — 757 + hashtags 240 = 999 characters
 
 ```text
-Erigan zarralar muzlash nuqtasini pasaytiradi — osmometr osmolyallikni shunday o‘lchaydi.
+Ikki namuna muzlaydi — bir plato pastroq. Nega?
 
-Sxemali tahlil: o‘ta sovutish, muzlash, plato va natijani nima buzishi mumkin.
+Sxemali tahlil 80 soniyadan kamroq vaqtda: muzlash nuqtasi osmometrining beshta qismi, o‘ta sovitish, sim, plato, suv kilogrammiga osmolyallik va litrga osmolyarlik — hamda natijani nima buzadi.
 
-LabGuide’da osmometr kartasi va osmolyallik kalkulyatori (siz kiritganlardan hisoblaydi; hech narsani o‘lchamaydi).
+LabGuide’da osmometr kartasi va «Hisoblangan osmolyallik» kalkulyatori. O‘lchangan yoki hisoblangan — qaysini o‘qiyotganingizni biling.
 
 Namunaviy ma’lumotlar — bemor natijalari emas.
 Faqat o‘quv maqsadida; tibbiy maslahat emas.
@@ -220,19 +269,19 @@ Havola profilda: [[LINK_BIO]]. Saqlab qo‘ying va hamkasbingizga yuboring.
 **EN**
 
 ```text
-Notes: this is a schematic general-principle video, not a method protocol. A calculated osmolality is not a measured one, and neither is interpreted here. Narration is English synthetic speech. The content is awaiting expert review — corrections are welcome.
+Notes: this is a schematic general-principle video, not a method protocol. Curves and calculator inputs are illustrative. A calculated osmolality is not a measured one, and the video interprets neither; your laboratory’s SOP and reference intervals decide. Narration is English synthetic speech. The content is awaiting expert review — corrections are welcome.
 ```
 
 **RU**
 
 ```text
-Заметки: это схематичное видео об общем принципе, а не протокол метода. Расчётная осмоляльность — не измеренная, и ни одна из них здесь не интерпретируется. Озвучка — синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются.
+Заметки: это схематичное видео об общем принципе, а не протокол метода. Кривые и вводимые в калькулятор значения иллюстративные. Расчётная осмоляльность — не измеренная, и видео не интерпретирует ни ту, ни другую; решают СОП и референтные интервалы вашей лаборатории. Озвучка — синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются.
 ```
 
 **UZ**
 
 ```text
-Eslatma: bu umumiy tamoyil haqidagi sxematik video, metod protokoli emas. Hisoblangan osmolyallik o‘lchangan emas va bu yerda ikkalasi ham talqin qilinmaydi. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun rahmat.
+Eslatma: bu umumiy tamoyil haqidagi sxematik video, metod protokoli emas. Egri chiziqlar va kalkulyatorga kiritilgan qiymatlar namunaviy. Hisoblangan osmolyallik o‘lchangan emas va video ikkalasini ham talqin qilmaydi; laboratoriyangiz SOP’i va me’yor oraliqlari hal qiladi. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun rahmat.
 ```
 
 ## 8. Credits
@@ -276,9 +325,9 @@ Internal licence notes (not for the public text):
 
 All under `video_studio/out/osmometry/<lang>/`. Alt text (thumbnail and cover show the same content):
 
-* **EN**: LabGuide logo and the title “Osmometry Explained”, with a schematic or app visual and the notice “Illustrative data — not patient results”. (Draft alt text: compare with the rendered thumbnail before use.)
-* **RU**: Логотип LabGuide и заголовок «Осмометрия», схематичное или экранное изображение и пометка «Иллюстративные данные — не результаты пациентов». (Черновик альтернативного текста: сверьте с готовой обложкой.)
-* **UZ**: LabGuide logotipi va «Osmometriya» sarlavhasi, sxematik yoki ilova tasviri hamda «Namunaviy ma’lumotlar — bemor natijalari emas» belgisi. (Alt-matn qoralamasi: foydalanishdan oldin tayyor muqova bilan solishtiring.)
+* **EN**: LabGuide logo, the title “Osmometry” with the subtitle “Freezing point → osmolality”, a temperature-versus-time chart with two freezing curves A and B whose plateaus sit below a dashed “pure water” line, a small schematic of a freezing-point osmometer with five numbered parts, and the notice “Illustrative curves — not a real sample or result”.
+* **RU**: Логотип LabGuide, заголовок «Осмометрия» с подзаголовком «Точка замерзания → осмоляльность», график температуры от времени с двумя кривыми замерзания A и B, плато которых лежат ниже пунктирной линии «чистая вода», небольшая схема криоскопического осмометра с пятью пронумерованными частями и пометка «Иллюстративные кривые — не реальная проба».
+* **UZ**: LabGuide logotipi, «Osmometriya» sarlavhasi va «Muzlash nuqtasi → osmolyallik» sarlavha osti, harorat–vaqt grafigida A va B ikkita muzlash egri chizig‘i — ularning platolari «toza suv» punktir chizig‘idan pastda — beshta raqamlangan qismli muzlash nuqtasi osmometrining kichik sxemasi hamda «Namunaviy egri chiziqlar — haqiqiy namuna emas» belgisi.
 
 ## 10. End screen / CTA suggestion
 
@@ -300,7 +349,9 @@ All under `video_studio/out/osmometry/<lang>/`. Alt text (thumbnail and cover sh
 
 ## 12. Evidence the public text rests on
 
-* docs/video/osmometry/CLAIMS_AND_EVIDENCE.md (when it exists)
+* docs/video/osmometry/CLAIMS_AND_EVIDENCE.md
+* docs/video/osmometry/DESCRIPTION.md
+* docs/video/osmometry/QA.md
 * docs/video/lessons/24_osmometer.md
 * assets/instruments/catalog.json lab card a3-bio-osmometer
 * docs/VIDEO_FEATURE_INVENTORY.md §1 (calculators: osmolality)

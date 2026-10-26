@@ -385,7 +385,7 @@ TOPICS = [
     ),
     # ------------------------------------------------------------------ 3. photometry (the lead's name: spectrophotometry)
     dict(
-        id="photometry", order=3, tier="free", verified=False,
+        id="photometry", order=3, tier="free", verified=True,
         path=T("Learn → Lecture mode → Practical protocols", "Обучение → Режим лекции → Практические протоколы",
                "O‘rganish → Ma’ruza rejimi → Amaliy protokollar"),
         title=T(
@@ -406,31 +406,40 @@ TOPICS = [
                 "How a photometer works: one wavelength through the cuvette, A = log₁₀(I₀/I); at A = 1 only ten percent "
                 "of the light gets through, at A = 2 one percent.",
                 "The Beer–Lambert law: within a range absorbance rises in proportion to concentration; past the "
-                "linearity limit the curve bends and readings fall short.",
+                "linearity limit the curve bends and readings fall short (an illustrated curve; the real limit comes "
+                "from the reagent IFU).",
                 "Three cuvettes: the blank sets zero, then the standard, then the sample; concentration = A sample ÷ "
                 "A standard × the standard’s concentration (illustrative numbers).",
-                "Above the limit: dilute, measure again, multiply by the dilution factor.",
-                "Real LabGuide screens: the photometry-basics protocol in Lecture mode.",
+                "Above the limit: dilute, measure again, multiply by the dilution factor (illustrative numbers).",
+                "Real LabGuide screens: Learn → Lecture mode → Practical protocols, the photometry-basics protocol "
+                "(blank, standard and sample step by step, the calculation, and the rule for results above the "
+                "linearity limit).",
             ],
             "ru": [
                 "Как работает фотометр: свет одной длины волны через кювету, A = log₁₀(I₀/I); при A = 1 проходит "
                 "лишь 10 % света, при A = 2 — 1 %.",
                 "Закон Бугера–Ламберта–Бера: в пределах диапазона оптическая плотность растёт пропорционально "
-                "концентрации; выше границы линейности кривая изгибается и показание занижено.",
+                "концентрации; выше границы линейности кривая изгибается и показание занижено (иллюстрация; "
+                "реальную границу задаёт IFU реагента).",
                 "Три кюветы: бланк задаёт ноль, затем стандарт и проба; концентрация = A пробы ÷ A стандарта × "
                 "концентрация стандарта (иллюстративные числа).",
-                "Выше границы: разведите, повторите измерение, умножьте на степень разведения.",
-                "Реальные экраны LabGuide: протокол по основам фотометрии в режиме лекции.",
+                "Выше границы: разведите, повторите измерение, умножьте на степень разведения (иллюстративные числа).",
+                "Реальные экраны LabGuide: Обучение → Режим лекции → Практические протоколы — протокол по основам "
+                "фотометрии (бланк, стандарт и проба по шагам, расчёт и правило для результата выше границы "
+                "линейности).",
             ],
             "uz": [
                 "Fotometr qanday ishlaydi: kyuvetadan bir to‘lqin uzunlikdagi nur, A = log₁₀(I₀/I); A = 1 da nurning "
                 "faqat 10 % i o‘tadi, A = 2 da — 1 % i.",
                 "Buger–Lambert–Ber qonuni: ma’lum oraliqda optik zichlik konsentratsiyaga mutanosib; chiziqlilik "
-                "chegarasidan oshsa egri chiziq bukiladi va natija past chiqadi.",
+                "chegarasidan oshsa egri chiziq bukiladi va natija past chiqadi (rasm; haqiqiy chegara reagent "
+                "IFU’sidan olinadi).",
                 "Uch kyuveta: blank nolni qo‘yadi, so‘ng standart va namuna; konsentratsiya = A namuna ÷ A standart × "
                 "standart konsentratsiyasi (namunaviy sonlar).",
-                "Chegaradan oshsa: suyultiring, qayta o‘lchang, suyultirish koeffitsientiga ko‘paytiring.",
-                "LabGuide’ning haqiqiy ekranlari: ma’ruza rejimidagi fotometriya asoslari protokoli.",
+                "Chegaradan oshsa: suyultiring, qayta o‘lchang, suyultirish darajasiga ko‘paytiring (namunaviy sonlar).",
+                "LabGuide’ning haqiqiy ekranlari: O‘rganish → Ma’ruza rejimi → Amaliy protokollar — fotometriya "
+                "asoslari protokoli (blank, standart va namuna bosqichma-bosqich, hisoblash va chiziqlilik "
+                "chegarasidan oshgan natija qoidasi).",
             ],
         },
         app={
@@ -439,63 +448,70 @@ TOPICS = [
                 "blank, standard and sample step by step, the calculation, and the rule for results above the "
                 "linearity limit.",
                 "It is a teaching protocol: the reagent IFU and your lab’s SOP always take precedence.",
-                "LabGuide does not measure anything and does not interpret results.",
             ],
             "ru": [
                 "В режиме лекции LabGuide (Обучение → Режим лекции → Практические протоколы) есть протокол по основам "
                 "фотометрии: бланк, стандарт и проба по шагам, расчёт и правило для результата выше границы линейности.",
                 "Это учебный протокол: IFU реагента и СОП вашей лаборатории всегда главнее.",
-                "LabGuide ничего не измеряет и не интерпретирует результаты.",
             ],
             "uz": [
                 "LabGuide ma’ruza rejimida (O‘rganish → Ma’ruza rejimi → Amaliy protokollar) fotometriya asoslari "
                 "protokoli bor: blank, standart va namuna bosqichma-bosqich, hisoblash va chiziqlilik chegarasidan "
                 "oshgan natija qoidasi.",
                 "Bu o‘quv protokoli: reagent IFU’si va laboratoriyangiz SOP’i doim ustun.",
-                "LabGuide hech narsani o‘lchamaydi va natijalarni talqin qilmaydi.",
             ],
         },
         limits={
-            "en": ["Wavelength, blank and linearity limits always come from your reagent’s IFU; the numbers in the video "
-                   "are illustrative.",
-                   "The single-standard calculation is one worked example, not the method for every assay."],
-            "ru": ["Длина волны, бланк и границы линейности всегда берутся из IFU вашего реагента; числа в видео "
-                   "иллюстративные.",
-                   "Расчёт по одному стандарту — один разобранный пример, а не метод для любого анализа."],
-            "uz": ["To‘lqin uzunligi, blank va chiziqlilik chegaralari doim reagent IFU’sidan olinadi; videodagi "
-                   "sonlar namunaviy.",
-                   "Bitta standart bo‘yicha hisoblash — bitta ishlangan misol, har qanday tahlil uchun metod emas."],
+            "en": ["Wavelength, blank and limits always come from your reagent’s IFU; the numbers in the video are "
+                   "illustrative (arbitrary units).",
+                   "The single-standard calculation is one worked example, not the method for every assay; many "
+                   "methods use a factor or a multi-point calibration.",
+                   "The bend above the linearity limit is drawn as an illustration; how a real method behaves above "
+                   "its limit depends on the method."],
+            "ru": ["Длина волны, бланк и границы всегда берутся из IFU вашего реагента; числа в видео "
+                   "иллюстративные (условные единицы).",
+                   "Расчёт по одному стандарту — один разобранный пример, а не метод для любого анализа; во многих "
+                   "методах используют фактор или многоточечную калибровку.",
+                   "Изгиб выше границы линейности нарисован как иллюстрация; как ведёт себя реальный метод выше своей "
+                   "границы, зависит от метода."],
+            "uz": ["To‘lqin uzunligi, blank va chegaralar doim reagent IFU’sidan olinadi; videodagi sonlar namunaviy "
+                   "(shartli birliklar).",
+                   "Bitta standart bo‘yicha hisoblash — bitta ishlangan misol, har qanday tahlil uchun metod emas; "
+                   "ko‘p metodlarda faktor yoki ko‘p nuqtali kalibrlash qo‘llanadi.",
+                   "Chiziqlilik chegarasidan keyingi bukilish rasm sifatida chizilgan; haqiqiy metod o‘z chegarasidan "
+                   "oshganda qanday bo‘lishi metodga bog‘liq."],
         },
         ig={
             "en": ["Absorbance far above your standard — can you trust that number?",
-                   "Photometry basics in a minute: how a photometer measures absorbance, the Beer–Lambert law and the "
-                   "linearity limit, blank → standard → sample, and what to do above the limit (illustrative numbers).",
+                   "Photometry basics in about 70 seconds: how a photometer measures absorbance, the Beer–Lambert law "
+                   "and the linearity limit, blank → standard → sample, and what to do above the limit (illustrative "
+                   "numbers).",
                    "LabGuide’s Lecture mode has a protocol on it: Learn → Lecture mode → Practical protocols. "
                    "A teaching protocol: your reagent IFU and SOP always take precedence."],
             "ru": ["Оптическая плотность намного выше стандарта — можно ли верить этому числу?",
-                   "Основы фотометрии за минуту: как фотометр измеряет оптическую плотность, закон "
+                   "Основы фотометрии примерно за 70 секунд: как фотометр измеряет оптическую плотность, закон "
                    "Бугера–Ламберта–Бера и граница линейности, бланк → стандарт → проба и что делать выше границы "
                    "(иллюстративные числа).",
                    "В режиме лекции LabGuide есть протокол: Обучение → Режим лекции → Практические протоколы. "
                    "Учебный протокол: IFU реагента и СОП всегда главнее."],
             "uz": ["Optik zichlik standartdan ancha yuqori — bu raqamga ishonsa bo‘ladimi?",
-                   "Bir daqiqada fotometriya asoslari: fotometr optik zichlikni qanday o‘lchaydi, Buger–Lambert–Ber "
-                   "qonuni va chiziqlilik chegarasi, blank → standart → namuna va chegaradan oshsa nima qilish "
-                   "(namunaviy sonlar).",
+                   "Taxminan 70 soniyada fotometriya asoslari: fotometr optik zichlikni qanday o‘lchaydi, "
+                   "Buger–Lambert–Ber qonuni va chiziqlilik chegarasi, blank → standart → namuna va chegaradan oshsa "
+                   "nima qilish (namunaviy sonlar).",
                    "LabGuide ma’ruza rejimida protokol bor: O‘rganish → Ma’ruza rejimi → Amaliy protokollar. "
                    "O‘quv protokoli: reagent IFU’si va SOP doim ustun."],
         },
         pinned={
             "en": ("Notes: all numbers in this video are illustrative, not patient results. Wavelength, blank and "
-                   "linearity limits always come from your reagent’s IFU and your lab’s SOP. Narration is English "
+                   "limits always come from your reagent’s IFU and your lab’s SOP. Narration is English "
                    "synthetic speech. The content is awaiting expert review — corrections are welcome. "
                    "Do you use a single standard or a calibration curve in your lab?"),
             "ru": ("Заметки: все числа в видео иллюстративные, это не результаты пациентов. Длина волны, бланк и "
-                   "границы линейности всегда берутся из IFU вашего реагента и СОП вашей лаборатории. Озвучка — "
+                   "границы всегда берутся из IFU вашего реагента и СОП вашей лаборатории. Озвучка — "
                    "синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются. "
                    "Что у вас в лаборатории — один стандарт или калибровочная кривая?"),
             "uz": ("Eslatma: videodagi barcha sonlar namunaviy, bemor natijasi emas. To‘lqin uzunligi, blank va "
-                   "chiziqlilik chegaralari doim reagent IFU’si va laboratoriyangiz SOP’idan olinadi. Diktor ovozi — "
+                   "chegaralar doim reagent IFU’si va laboratoriyangiz SOP’idan olinadi. Diktor ovozi — "
                    "sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun rahmat. "
                    "Laboratoriyangizda bitta standartmi yoki kalibrlash egri chizig‘imi?"),
         },
@@ -515,28 +531,43 @@ TOPICS = [
             "uz": ["#fotometriya", "#spektrofotometriya", "#optikzichlik", "#biokimyo", "#kyuveta",
                    "#laboratoriyaapparatlari", "#laboratoriyatahlili"],
         },
-        thumb_alt=None,
+        thumb_alt={
+            "en": "LabGuide logo, the title “Photometry” with the subtitle “Blank, standard, sample — and the limit.”, "
+                  "a light path from a lamp through a filter and a cuvette to a detector, three cuvettes labelled "
+                  "Blank (A 0.000), Standard (A 0.412) and Sample (A 0.309), and the notice “Illustrative data — not a "
+                  "patient result”.",
+            "ru": "Логотип LabGuide, заголовок «Фотометрия» с подзаголовком «Бланк, стандарт, проба — и граница.», "
+                  "ход света от лампы через фильтр и кювету к детектору, три кюветы с подписями «Бланк», «Стандарт» и "
+                  "«Проба» и примерными значениями оптической плотности и пометка «Примерные данные — не результат "
+                  "пациента».",
+            "uz": "LabGuide logotipi, «Fotometriya» sarlavhasi va «Blank, standart, namuna — va chegara.» sarlavha "
+                  "osti, lampadan filtr va kyuveta orqali detektorgacha nur yo‘li, «Blank», «Standart» va «Namuna» "
+                  "yozuvli uchta kyuveta namunaviy optik zichlik qiymatlari bilan hamda «Namunaviy ma’lumot — bemor "
+                  "natijasi emas» belgisi.",
+        },
         chapters=[
             ("hook", T("The measurement: light in, light out", "Измерение: свет на входе и на выходе",
                        "O‘lchash: kirgan va chiqqan nur")),
-            ("ladder", T("Beer–Lambert law and the linearity limit", "Закон Бугера–Ламберта–Бера и граница линейности",
-                         "Buger–Lambert–Ber qonuni va chiziqlilik chegarasi")),
+            ("ladder", T("Absorbance scale, Beer–Lambert law, linearity limit",
+                         "Шкала A, закон Бугера–Ламберта–Бера, граница линейности",
+                         "A shkalasi, Buger–Lambert–Ber qonuni, chiziqlilik chegarasi")),
             ("bss", T("Blank, standard, sample — and dilution", "Бланк, стандарт, проба — и разведение",
                       "Blank, standart, namuna — va suyultirish")),
             ("app_intro", T("In LabGuide: the photometry protocol", "В LabGuide: протокол по фотометрии",
                             "LabGuide’da: fotometriya protokoli")),
         ],
         sources=[],
-        evidence=["docs/video/photometry/CLAIMS_AND_EVIDENCE.md (when it exists)",
-                  "docs/video/photometry/lines.en.json and storyboard.json (the copy follows them as of 2026-10-25)",
+        evidence=["docs/video/photometry/CLAIMS_AND_EVIDENCE.md", "docs/video/photometry/DESCRIPTION.md",
+                  "docs/video/photometry/QA.md",
                   "assets/lectures/decks/fotometriya-asoslari-biokimyo.{uz,ru,en}.json (the protocol, kind: protocol)",
                   "docs/VIDEO_FEATURE_INVENTORY.md §3 (Lecture mode)"],
         next=["calibration", "qc"],
         paid=None,
         internal=["The lead's name for this topic was `spectrophotometry`; the studio id is `photometry` "
                   "(docs/video/photometry/). `spectrophotometry` is kept as an alias.",
-                  "Copy aligned with lines.en.json of the video IN PRODUCTION (no render, no claims table yet): re-check "
-                  "every sentence against the final lines and CLAIMS_AND_EVIDENCE.md, then set verified=True.",
+                  "Copy checked against lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of the rendered "
+                  "video (69.6 s). Open expert items from the claims table: E5 (the illustrated bend / \"readings "
+                  "fall short\" as a general statement) and E6 (single-standard calculation as the only model shown).",
                   "Terminology differs from the calibration video: «оптическая плотность» / «optik zichlik» here, "
                   "«поглощение» / «yutilish» there: the native reviewer picks one (G3).",
                   "The app path is Lecture mode, not Lab → Instruments: the protocol is a lecture deck of kind "
@@ -544,108 +575,155 @@ TOPICS = [
     ),
     # ------------------------------------------------------------------ 4. qc
     dict(
-        id="qc", order=4, tier="free", verified=False,
-        path=T("Lab → Quality control (QC)", "Лаб. → Контроль качества (QC)", "Lab → Sifat nazorati (QC)"),
+        id="qc", order=4, tier="free", verified=True,
+        path=T("Lab → Quality control", "Лаб. → Контроль качества", "Lab → Sifat nazorati"),
         title=T(
             "Levey–Jennings Charts and Westgard Rules in LabGuide QC",
             "Контроль качества: Леви–Дженнингс и правила Вестгарда в LabGuide",
             "Sifat nazorati: Levey–Jennings va Westgard qoidalari LabGuide’da",
         ),
         hook={
-            "en": ("Is today’s QC run in control? Enter the control results and see it on a Levey–Jennings chart.",
-                   "LabGuide checks each run against the Westgard rules — warning or rejection — on your device."),
-            "ru": ("Контроль качества сегодня в норме? Введите результаты — и увидите их на карте Леви–Дженнингса.",
-                   "LabGuide проверяет каждую серию по правилам Вестгарда — предупреждение или отклонение — на вашем устройстве."),
-            "uz": ("Bugungi sifat nazorati me’yordami? Nazorat natijalarini kiriting — Levey–Jennings grafigida ko‘rasiz.",
-                   "LabGuide har seriyani Westgard qoidalari bo‘yicha tekshiradi — ogohlantirish yoki rad etish — qurilmangizda."),
+            "en": ("This morning’s control: 2.3 SD above the mean. Stop the run — or report the patients?",
+                   "In about 80 seconds: a Levey–Jennings chart, the Westgard rules and how LabGuide records QC runs."),
+            "ru": ("Контроль сегодня утром: +2,3 SD от среднего. Остановить серию — или выдать результаты?",
+                   "Примерно за 80 секунд: карта Леви–Дженнингса, правила Вестгарда и то, как LabGuide записывает серии QC."),
+            "uz": ("Bugun ertalabki nazorat: o‘rtachadan +2,3 SD. To‘xtatasizmi — yoki natija berasizmi?",
+                   "Taxminan 80 soniyada: Levey–Jennings grafigi, Westgard qoidalari va LabGuide QC seriyalarini qanday qayd etishi."),
         },
         shows={
             "en": [
-                "Creating a control set: test, unit, target source, and a target mean and SD for each level.",
-                "Entering run results and reading the Levey–Jennings chart: in control, warning, rejected.",
-                "The QC guides: what to do when QC is rejected, external quality assessment (EQA) and critical values.",
+                "A Levey–Jennings chart: each control result plotted against its target mean and SD; targets come from "
+                "your own control data (about twenty values to start).",
+                "z-scores: how many SDs a result sits from the mean; one value beyond 2 SD is the 1-2s rule — a "
+                "warning, not a rejection — to inspect with the other rules.",
+                "The Westgard rules: 1-3s and R-4s point to random error; 2-2s, 4-1s and 10x to systematic error (a "
+                "shift). A worked example: four values in a row beyond 1 SD (4-1s) — reject the run and find the cause.",
+                "Real LabGuide screens (illustrative control data): entering each level’s target mean and SD and where "
+                "they came from, recording runs, the chart drawn by the app, the broken rule named, a rejected run "
+                "kept in the history but left out of later rules and statistics, runs copied as a CSV table, and the "
+                "guides on EQA, rejected samples and critical values.",
             ],
             "ru": [
-                "Создание набора контролей: тест, единицы, источник целевых значений, целевое среднее и SD для каждого уровня.",
-                "Ввод результатов серии и чтение карты Леви–Дженнингса: в пределах, предупреждение, отклонено.",
-                "Памятки по КК: что делать при отклонении КК, внешняя оценка качества (EQA) и критические значения.",
+                "Карта Леви–Дженнингса: каждый результат контроля относительно целевого среднего и SD; цели берут из "
+                "собственных данных контроля вашей лаборатории (сначала около 20 значений).",
+                "z — на сколько SD результат отстоит от среднего; одно значение за 2 SD — правило 1-2s: "
+                "предупреждение, а не отклонение; сначала проверьте другими правилами.",
+                "Правила Вестгарда: 1-3s и R-4s указывают на случайную ошибку, 2-2s, 4-1s и 10x — на систематическую "
+                "(сдвиг). Разобран пример: четыре значения подряд за 1 SD (4-1s) — серию отклонить и найти причину.",
+                "Реальные экраны LabGuide (иллюстративные данные контроля): ввод для каждого уровня целевого среднего, "
+                "SD и их источника, запись серий, карта, которую строит приложение, название нарушенного правила, "
+                "отклонённая серия — в истории, но вне дальнейших правил и статистики, копирование серий таблицей "
+                "CSV и памятки по EQA, отклонённым пробам и критическим значениям.",
             ],
             "uz": [
-                "Nazorat to‘plamini yaratish: test, birlik, maqsad manbai, har daraja uchun maqsadli o‘rtacha va SD.",
-                "Seriya natijalarini kiritish va Levey–Jennings grafigini o‘qish: nazoratda, ogohlantirish, rad etilgan.",
-                "QC yo‘riqnomalari: QC rad etilsa nima qilish, tashqi sifat baholash (EQA) va kritik qiymatlar.",
+                "Levey–Jennings grafigi: har nazorat natijasi maqsadli o‘rtacha va SD bilan solishtiriladi; maqsadlar "
+                "laboratoriyangizning o‘z nazorat ma’lumotidan olinadi (boshida taxminan 20 qiymat).",
+                "z-qiymat: natija o‘rtachadan necha SD uzoqda; 2 SD dan tashqari bitta qiymat — 1-2s qoidasi: "
+                "ogohlantirish, rad emas; avval boshqa qoidalar bilan tekshiring.",
+                "Westgard qoidalari: 1-3s va R-4s tasodifiy xatoga, 2-2s, 4-1s va 10x tizimli xatoga (siljishga) "
+                "ishora qiladi. Misol: ketma-ket to‘rt qiymat 1 SD dan tashqarida (4-1s) — seriyani rad eting va "
+                "sababini toping.",
+                "LabGuide’ning haqiqiy ekranlari (namunaviy nazorat ma’lumotlari): har daraja uchun maqsadli o‘rtacha, "
+                "SD va ularning manbasini kiritish, seriyalarni yozish, ilova chizadigan grafik, buzilgan qoidaning "
+                "nomi, rad etilgan seriya tarixda qoladi, lekin keyingi qoidalar va statistikaga kirmaydi, seriyalarni "
+                "CSV jadval sifatida nusxalash va EQA, rad etilgan namunalar va kritik qiymatlar yo‘riqnomalari.",
             ],
         },
         app={
             "en": [
-                "You enter the target mean and SD for each level; the app does not invent target values.",
-                "Each saved run is evaluated against the Westgard rules and marked on the chart.",
-                "Data stay on your device; you can copy a text backup and copy results as CSV.",
+                "You enter each level’s target mean and SD and where they came from; the app draws the "
+                "Levey–Jennings chart from the runs you record.",
+                "Westgard rules are checked on every run, and the broken rule is named.",
+                "A rejected run stays in the history but is not used in later rules or statistics (this is how the "
+                "app works, not the only QC practice).",
+                "Runs can be copied as a CSV table; data stays on this device.",
                 "The EQA and critical-value guides are explanations only: LabGuide is not connected to any EQA scheme "
                 "and does not submit results.",
             ],
             "ru": [
-                "Целевое среднее и SD для каждого уровня вводите вы; приложение не придумывает целевые значения.",
-                "Каждая сохранённая серия оценивается по правилам Вестгарда и отмечается на графике.",
-                "Данные остаются на вашем устройстве; можно скопировать резервную копию текстом и результаты в виде CSV.",
+                "Для каждого уровня вы вводите целевое среднее, SD и их источник; карту Леви–Дженнингса по записанным "
+                "сериям строит приложение.",
+                "Правила Вестгарда проверяются в каждой серии, нарушенное правило названо.",
+                "Отклонённая серия остаётся в истории, но не используется в дальнейших правилах и статистике (так "
+                "работает приложение; это не единственная практика КК).",
+                "Серии можно скопировать таблицей CSV; данные остаются только на этом устройстве.",
                 "Памятки по EQA и критическим значениям — только пояснения: LabGuide не подключён ни к одной "
                 "программе EQA и не отправляет результаты.",
             ],
             "uz": [
-                "Har daraja uchun maqsadli o‘rtacha va SD ni siz kiritasiz; ilova maqsadli qiymatlarni to‘qimaydi.",
-                "Har saqlangan seriya Westgard qoidalari bo‘yicha baholanadi va grafikda belgilanadi.",
-                "Ma’lumotlar qurilmangizda qoladi; zaxira nusxani matn sifatida, natijalarni CSV sifatida nusxalash mumkin.",
+                "Har daraja uchun maqsadli o‘rtacha, SD va ularning manbasini siz kiritasiz; yozilgan seriyalar "
+                "bo‘yicha Levey–Jennings grafigini ilova chizadi.",
+                "Westgard qoidalari har seriyada tekshiriladi, buzilgan qoida nomlanadi.",
+                "Rad etilgan seriya tarixda qoladi, lekin keyingi qoidalar va statistikada ishlatilmaydi (ilova "
+                "shunday ishlaydi; bu yagona QC amaliyoti emas).",
+                "Seriyalarni CSV jadval sifatida nusxalash mumkin; ma’lumot faqat shu qurilmada qoladi.",
                 "EQA va kritik qiymat yo‘riqnomalari faqat tushuntirish: LabGuide hech bir EQA dasturiga ulanmagan "
                 "va natija yubormaydi.",
             ],
         },
         limits={
-            "en": ["Targets, limits and the action after a rejected run come from your laboratory’s QC procedure and the "
-                   "reagent IFU. The chart is a tool, not a clinical decision.",
-                   "Illustrative control values only — not real control results."],
-            "ru": ["Целевые значения, пределы и действия после отклонённой серии определяет процедура КК вашей "
-                   "лаборатории и IFU реагента. График — инструмент, а не клиническое решение.",
-                   "Значения контролей иллюстративные — это не реальные результаты контролей."],
-            "uz": ["Maqsadli qiymatlar, chegaralar va rad etilgan seriyadan keyingi harakat laboratoriyangizning QC "
-                   "tartibi va reagent IFU’sidan olinadi. Grafik — vosita, klinik qaror emas.",
-                   "Nazorat qiymatlari faqat namunaviy — haqiqiy nazorat natijalari emas."],
+            "en": ["A checking aid — not a substitute for your laboratory’s QC procedure; targets, limits and what to do "
+                   "after a rejected run come from that procedure.",
+                   "Illustrative control data — not a real lot and not real control results.",
+                   "The rules are shown as LabGuide implements them (1-2s as a warning, all rejection rules checked on "
+                   "every run); your laboratory’s procedure may differ."],
+            "ru": ["Помощник для проверки — не заменяет процедуру QC вашей лаборатории; целевые значения, пределы и "
+                   "действия после отклонённой серии определяет эта процедура.",
+                   "Иллюстративные данные контроля — не реальный лот и не реальные результаты контролей.",
+                   "Правила показаны так, как их реализует LabGuide (1-2s — предупреждение, все правила отклонения "
+                   "проверяются в каждой серии); процедура вашей лаборатории может отличаться."],
+            "uz": ["Tekshirish yordamchisi — laboratoriyangiz QC tartibining o‘rnini bosmaydi; maqsadli qiymatlar, "
+                   "chegaralar va rad etilgan seriyadan keyingi harakatni shu tartib belgilaydi.",
+                   "Namunaviy nazorat ma’lumotlari — haqiqiy lot ham, haqiqiy nazorat natijalari ham emas.",
+                   "Qoidalar LabGuide amalga oshirganidek ko‘rsatilgan (1-2s — ogohlantirish, barcha rad qoidalari har "
+                   "seriyada tekshiriladi); laboratoriyangiz tartibi farq qilishi mumkin."],
         },
         ig={
-            "en": ["Is today’s QC run in control? Enter the control results and see it on a Levey–Jennings chart.",
-                   "LabGuide evaluates every run against the Westgard rules — warning or rejection — marks it on the "
-                   "chart and keeps the data on your device. Targets are the ones you enter (illustrative values in "
-                   "the video).",
-                   "Find it in Lab → Quality control (QC). The EQA guide is an explainer only."],
-            "ru": ["Контроль качества сегодня в норме? Введите результаты — и увидите их на карте Леви–Дженнингса.",
-                   "LabGuide оценивает каждую серию по правилам Вестгарда — предупреждение или отклонение — отмечает "
-                   "её на графике и хранит данные на вашем устройстве. Целевые значения — те, что вводите вы "
-                   "(в видео — иллюстративные).",
-                   "Раздел: Лаб. → Контроль качества (QC). Памятка по EQA — только пояснение."],
-            "uz": ["Bugungi sifat nazorati me’yordami? Nazorat natijalarini kiriting — Levey–Jennings grafigida ko‘rasiz.",
-                   "LabGuide har seriyani Westgard qoidalari bo‘yicha baholaydi — ogohlantirish yoki rad etish — "
-                   "grafikda belgilaydi va ma’lumotni qurilmangizda saqlaydi. Maqsadli qiymatlar — siz kiritganlar "
-                   "(videoda namunaviy).",
-                   "Bo‘lim: Lab → Sifat nazorati (QC). EQA yo‘riqnomasi faqat tushuntirish."],
+            "en": ["This morning’s control: 2.3 SD above the mean. Stop the run — or report the patients?",
+                   "In about 80 seconds: a Levey–Jennings chart, z-scores, the Westgard rules (1-2s is a warning; 1-3s "
+                   "and R-4s point to random error; 2-2s, 4-1s and 10x to systematic error) and how LabGuide records "
+                   "QC runs — targets you enter with their source, the broken rule named, rejected runs kept in the "
+                   "history but out of later rules, runs copied as a CSV table, data on this device.",
+                   "A checking aid — not a substitute for your lab’s QC procedure. Find it in Lab → Quality control. "
+                   "Control data in the video are illustrative."],
+            "ru": ["Контроль сегодня утром: +2,3 SD от среднего. Остановить серию — или выдать результаты?",
+                   "Примерно за 80 секунд: карта Леви–Дженнингса, z, правила Вестгарда (1-2s — предупреждение; 1-3s и "
+                   "R-4s — случайная ошибка; 2-2s, 4-1s и 10x — систематическая) и то, как LabGuide записывает серии "
+                   "QC — цели, которые вводите вы, с источником, название нарушенного правила, отклонённые серии в "
+                   "истории, но вне дальнейших правил, копирование таблицей CSV, данные на устройстве.",
+                   "Помощник для проверки — не заменяет процедуру QC вашей лаборатории. Раздел: Лаб. → Контроль "
+                   "качества. Данные контроля в видео иллюстративные."],
+            "uz": ["Bugun ertalabki nazorat: o‘rtachadan +2,3 SD. To‘xtatasizmi — yoki natija berasizmi?",
+                   "Taxminan 80 soniyada: Levey–Jennings grafigi, z-qiymat, Westgard qoidalari (1-2s — ogohlantirish; "
+                   "1-3s va R-4s — tasodifiy xato; 2-2s, 4-1s va 10x — tizimli xato) va LabGuide QC seriyalarini "
+                   "qanday qayd etishi — siz manbasi bilan kiritadigan maqsadlar, buzilgan qoida nomi, tarixda "
+                   "qoladigan, lekin keyingi qoidalarga kirmaydigan rad etilgan seriyalar, CSV jadval nusxasi, "
+                   "ma’lumot qurilmada.",
+                   "Tekshirish yordamchisi — laboratoriyangiz QC tartibining o‘rnini bosmaydi. Bo‘lim: Lab → Sifat "
+                   "nazorati. Videodagi nazorat ma’lumotlari namunaviy."],
         },
         pinned={
-            "en": ("Notes: control values in this video are illustrative, not real QC results. Targets, limits and the "
-                   "action after a rejected run come from your lab’s QC procedure and the reagent IFU. The EQA guide in "
-                   "the app is an explanation only. Narration is English synthetic speech. The content is awaiting "
-                   "expert review — corrections are welcome. Which Westgard rules does your lab use?"),
-            "ru": ("Заметки: значения контролей в видео иллюстративные, это не реальные результаты КК. Целевые "
-                   "значения, пределы и действия после отклонённой серии определяет процедура КК вашей лаборатории "
-                   "и IFU реагента. Памятка по EQA в приложении — только пояснение. Озвучка — синтезированная "
+            "en": ("Notes: control data in this video are illustrative, not a real lot or real QC results. Targets, "
+                   "limits and what to do after a rejected run come from your lab’s QC procedure; LabGuide’s handling "
+                   "of rejected runs is the app’s behaviour, not the only QC practice. The EQA guide in the app is an "
+                   "explanation only. Narration is English synthetic speech. The content is awaiting expert review — "
+                   "corrections are welcome. Which Westgard rules does your lab use?"),
+            "ru": ("Заметки: данные контроля в видео иллюстративные, это не реальный лот и не реальные результаты КК. "
+                   "Целевые значения, пределы и действия после отклонённой серии определяет процедура КК вашей "
+                   "лаборатории; обработка отклонённых серий в LabGuide — поведение приложения, а не единственная "
+                   "практика КК. Памятка по EQA в приложении — только пояснение. Озвучка — синтезированная "
                    "английская речь. Материал ждёт экспертной проверки, поправки приветствуются. "
                    "Какие правила Вестгарда применяет ваша лаборатория?"),
-            "uz": ("Eslatma: videodagi nazorat qiymatlari namunaviy, haqiqiy QC natijalari emas. Maqsadli qiymatlar, "
-                   "chegaralar va rad etilgan seriyadan keyingi harakat laboratoriyangiz QC tartibi va reagent "
-                   "IFU’sidan olinadi. Ilovadagi EQA yo‘riqnomasi faqat tushuntirish. Diktor ovozi — sun’iy "
-                   "inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda. Laboratoriyangiz qaysi Westgard "
-                   "qoidalarini qo‘llaydi?"),
+            "uz": ("Eslatma: videodagi nazorat ma’lumotlari namunaviy, haqiqiy lot ham, haqiqiy QC natijalari ham emas. "
+                   "Maqsadli qiymatlar, chegaralar va rad etilgan seriyadan keyingi harakatni laboratoriyangiz QC "
+                   "tartibi belgilaydi; LabGuide’da rad etilgan seriyaning ishlanishi — ilovaning xatti-harakati, "
+                   "yagona QC amaliyoti emas. Ilovadagi EQA yo‘riqnomasi faqat tushuntirish. Diktor ovozi — sun’iy "
+                   "inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun rahmat. "
+                   "Laboratoriyangiz qaysi Westgard qoidalarini qo‘llaydi?"),
         },
         keywords={
             "en": ["quality control", "Levey-Jennings chart", "Westgard rules", "internal quality control",
-                   "laboratory QC", "QC rules", "1-3s", "2-2s", "clinical chemistry", "LabGuide"],
+                   "laboratory QC", "QC rules", "z-score", "1-3s", "2-2s", "clinical chemistry", "LabGuide"],
             "ru": ["контроль качества", "карта Леви-Дженнингса", "правила Вестгарда", "внутрилабораторный контроль",
                    "КК", "лаборант", "клиническая лаборатория"],
             "uz": ["sifat nazorati", "Levey-Jennings grafigi", "Westgard qoidalari", "ichki nazorat", "QC",
@@ -659,105 +737,181 @@ TOPICS = [
             "uz": ["#sifatnazorati", "#Westgard", "#LeveyJennings", "#QC", "#ichkinazorat", "#biokimyo",
                    "#laboratoriyaboshqaruvi"],
         },
-        thumb_alt=None,
-        chapters=None,
+        thumb_alt={
+            "en": "LabGuide logo, the title “QC rules” with the subtitle “Levey–Jennings + Westgard”, the legend "
+                  "“accepted, warning, rejected” (circle, triangle, square), a Levey–Jennings chart with two series of "
+                  "control points between the −3s and +3s lines — one warning point beyond +2s and several rejected "
+                  "points — and the notice “Illustrative control data — not a real lot”.",
+            "ru": "Логотип LabGuide, заголовок «Правила QC» с подзаголовком «Леви–Дженнингс + Вестгард», условные "
+                  "обозначения принятых, предупреждающих и отклонённых точек (круг, треугольник, квадрат), карта "
+                  "Леви–Дженнингса с двумя рядами точек контроля между линиями −3s и +3s — одна точка-предупреждение "
+                  "выше +2s и несколько отклонённых — и пометка «Примерные данные контроля — не реальный лот».",
+            "uz": "LabGuide logotipi, «QC qoidalari» sarlavhasi va «Levey–Jennings + Westgard» sarlavha osti, qabul "
+                  "qilingan, ogohlantirish va rad etilgan nuqtalar belgilari (doira, uchburchak, kvadrat), −3s va +3s "
+                  "chiziqlari orasida ikki qator nazorat nuqtali Levey–Jennings grafigi — +2s dan yuqorida bitta "
+                  "ogohlantirish nuqtasi va bir nechta rad etilgan nuqta — hamda «Namunaviy nazorat ma’lumotlari — "
+                  "haqiqiy lot emas» belgisi.",
+        },
+        chapters=[
+            ("hook", T("The chart: a control 2.3 SD above the mean", "Карта: контроль на 2,3 SD выше среднего",
+                       "Grafik: o‘rtachadan 2,3 SD yuqori nazorat")),
+            ("zscore", T("z-scores and the 1-2s warning", "z и предупреждение 1-2s",
+                         "z-qiymat va 1-2s ogohlantirishi")),
+            ("random", T("Random and systematic error: the Westgard rules",
+                         "Случайная и систематическая ошибка: правила Вестгарда",
+                         "Tasodifiy va tizimli xato: Westgard qoidalari")),
+            ("app_set", T("In LabGuide: targets, runs, rules, rejected runs",
+                          "В LabGuide: цели, серии, правила, отклонённые серии",
+                          "LabGuide’da: maqsadlar, seriyalar, qoidalar, rad etilgan seriyalar")),
+            ("app_more", T("CSV copy and the QC guides", "Таблица CSV и памятки по КК",
+                           "CSV jadval va QC yo‘riqnomalari")),
+        ],
         sources=[],
-        evidence=["docs/video/qc/CLAIMS_AND_EVIDENCE.md (when it exists)", "docs/video/02_sifat_nazorati.md",
+        evidence=["docs/video/qc/CLAIMS_AND_EVIDENCE.md", "docs/video/qc/DESCRIPTION.md", "docs/video/qc/QA.md",
                   "docs/VIDEO_FEATURE_INVENTORY.md §1 (QC rows)", "test/widget/qc_flow_test.dart",
                   "test/unit/qc_rules_test.dart"],
         next=["calibration", "calculators"],
         paid=None,
         internal=["Free today: sets, runs, Levey–Jennings, Westgard, CSV copy, JSON backup. A QC summary report as "
-                  "CSV/PDF file is a Specialist Pro feature (D-78, flag off): do not mention it unless the video does.",
-                  "Which Westgard rules the app applies must match the video (app text lists 1-2s, 1-3s, 2-2s, R-4s, "
-                  "4-1s, 10x): re-check against the final script."],
+                  "CSV/PDF file is a Specialist Pro feature (D-78, flag off): the video does not mention it (nor the "
+                  "text backup), so neither does the copy.",
+                  "Copy checked against lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of the rendered "
+                  "video (79.7 s). Rules named in the video: 1-2s, 1-3s, R-4s, 2-2s, 4-1s, 10x. Open expert items: E3 "
+                  "(the short rule-card paraphrases); the app's stricter-than-1981 handling of 1-2s and its exclusion "
+                  "of rejected runs are described as app behaviour, not as the only Westgard practice."],
     ),
     # ------------------------------------------------------------------ 5. gc_ms
     dict(
-        id="gc_ms", order=5, tier="free", verified=False,
-        path=T("Lab → Instruments → Toxicology → GC-MS", "Лаб. → Приборы → Токсикология → ГХ-МС",
-               "Lab → Apparatlar → Toksikologiya → GC-MS"),
+        id="gcms", order=5, tier="free", verified=True,
+        path=T("Lab → Instruments and methods → Toxicology → GC-MS",
+               "Лаб. → Приборы и методики → Токсикология → ГХ-МС",
+               "Lab → Apparatlar va metodikalar → Toksikologiya → GC-MS"),
         title=T(
             "GC-MS Explained: From Injector to Mass Spectrum (Schematic)",
             "ГХ-МС простыми словами: от инжектора до масс-спектра (схема)",
             "GC-MS tushuntirish: injektordan mass-spektrgacha (sxema)",
         ),
         hook={
-            "en": ("A sample goes in as a vapour and comes out as a chromatogram and a mass spectrum.",
-                   "What happens in between, step by step, on a schematic."),
-            "ru": ("Образец попадает в прибор паром, а выходит хроматограммой и масс-спектром.",
-                   "Что происходит между этим, шаг за шагом, на схеме."),
-            "uz": ("Namuna bug‘ sifatida kiradi, xromatogramma va mass-spektr sifatida chiqadi.",
-                   "Oradagi jarayon — sxemada, qadamma-qadam."),
+            "en": ("Three peaks in one unknown sample. Which compound is which?",
+                   "GC-MS separates them first, then reads their fragments — on a schematic, in under 90 seconds."),
+            "ru": ("Три пика в неизвестной пробе. Какое вещество где?",
+                   "ГХ-МС сначала разделяет их, потом читает их фрагменты — на схеме, меньше чем за 90 секунд."),
+            "uz": ("Noma’lum namunada uch cho‘qqi. Qaysi biri qaysi modda?",
+                   "GC-MS avval ularni ajratadi, so‘ng bo‘laklarini o‘qiydi — sxemada, 90 soniyadan kamroq vaqtda."),
         },
         shows={
-            "en": ["The two blocks of a GC-MS: the gas chromatograph and the mass spectrometer, with numbered parts "
-                   "(schematic).",
-                   "How a sample is introduced, why it must be volatile, and how separation in the column differs from "
-                   "separation by m/z.",
-                   "The two outputs: a chromatogram and a mass spectrum."],
-            "ru": ["Два блока ГХ-МС: газовый хроматограф и масс-спектрометр, с пронумерованными частями (схема).",
-                   "Как вводят образец, почему он должен быть летучим и чем разделение в колонке отличается от "
-                   "разделения по m/z.",
-                   "Два результата: хроматограмма и масс-спектр."],
-            "uz": ["GC-MS ning ikki bloki: gaz xromatografi va mass-spektrometr, raqamlangan qismlar bilan (sxema).",
-                   "Namuna qanday kiritiladi, nega u uchuvchan bo‘lishi kerak va kolonkadagi ajralish m/z bo‘yicha "
-                   "ajralishdan nimasi bilan farq qiladi.",
-                   "Ikki natija: xromatogramma va mass-spektr."],
+            "en": ["The gas chromatograph on a schematic with numbered parts: carrier gas, autosampler, heated "
+                   "injector, an oven with a capillary column, and a heated transfer line.",
+                   "Compounds leave the column at different times (retention time); for GC the analyte must be "
+                   "volatile, sometimes after derivatization.",
+                   "The mass spectrometer: ion source, quadrupole, detector, vacuum pumps and data system. Molecules "
+                   "are ionised and break into fragment ions; the quadrupole sorts the ions by m/z and passes them in "
+                   "turn.",
+                   "The result: a chromatogram over retention time and a mass spectrum for every peak; compounds are "
+                   "identified against a spectral library or standards; without quality control, peaks that don’t "
+                   "belong to the sample can appear.",
+                   "Real LabGuide screens: Lab → Instruments and methods → Toxicology → the GC-MS card — the same "
+                   "schematic and parts, then principle and tasks, each with its source; QC notes and biosafety "
+                   "(hot parts, glasses, coat and gloves)."],
+            "ru": ["Газовый хроматограф на схеме с пронумерованными частями: газ-носитель, автосэмплер, нагреваемый "
+                   "инжектор, термостат с капиллярной колонкой и нагреваемая линия переноса.",
+                   "Вещества выходят из колонки в разное время (время удерживания); для ГХ аналит должен быть "
+                   "летучим, иногда после дериватизации.",
+                   "Масс-спектрометр: источник ионов, квадруполь, детектор, вакуумные насосы и система данных. "
+                   "Молекулы ионизируются и распадаются на ионы-фрагменты; квадруполь разделяет ионы по m/z и "
+                   "пропускает их по очереди.",
+                   "Итог: хроматограмма по времени удерживания и масс-спектр каждого пика; вещество находят по "
+                   "библиотеке спектров или стандартам; без контроля качества в спектре могут появиться чужие пики.",
+                   "Реальные экраны LabGuide: Лаб. → Приборы и методики → Токсикология → карточка ГХ-МС — та же схема "
+                   "и детали, затем принцип и задачи, у каждого источник; контроль качества и биобезопасность "
+                   "(горячие части, очки, халат, перчатки)."],
+            "uz": ["Gaz xromatografi raqamlangan qismli sxemada: tashuvchi gaz, avtonamunaoluvchi, isitiladigan "
+                   "injektor, kapillyar kolonkali termostat va isitiladigan uzatish liniyasi.",
+                   "Moddalar kolonkadan turli vaqtda chiqadi (ushlanish vaqti); GC uchun modda uchuvchan bo‘lishi "
+                   "kerak, ba’zan derivatizatsiya bilan.",
+                   "Mass-spektrometr: ion manbai, kvadrupol, detektor, vakuum nasoslari va ma’lumotlar tizimi. "
+                   "Molekulalar ionlanadi va ion-bo‘laklarga ajraladi; kvadrupol ionlarni m/z bo‘yicha saralab, "
+                   "navbat bilan o‘tkazadi.",
+                   "Natija: ushlanish vaqti bo‘yicha xromatogramma va har cho‘qqining mass-spektri; modda spektrlar "
+                   "kutubxonasi yoki standartlar bilan aniqlanadi; QC bo‘lmasa, spektrda begona cho‘qqilar chiqishi "
+                   "mumkin.",
+                   "LabGuide’ning haqiqiy ekranlari: Lab → Apparatlar va metodikalar → Toksikologiya → GC-MS kartasi — "
+                   "o‘sha sxema va qismlar, so‘ng tamoyil va vazifalar, har biri manbali; sifat nazorati va biologik "
+                   "xavfsizlik (issiq qismlar, ko‘zoynak, xalat, qo‘lqop)."],
         },
         app={
-            "en": ["LabGuide has a reference card for GC-MS in the instrument directions (toxicology) with an original "
-                   "schematic illustration (not an exact model).",
-                   "It is a reference: LabGuide gives no method, no interpretation of results and no drug-testing guidance."],
-            "ru": ["В LabGuide есть справочная карточка ГХ-МС в направлениях приборов (токсикология) с оригинальным "
-                   "схематичным рисунком (не конкретная модель).",
-                   "Это справка: LabGuide не даёт методики, не интерпретирует результаты и не даёт указаний по "
-                   "тестированию на наркотические вещества."],
-            "uz": ["LabGuide’da apparat yo‘nalishlarida (toksikologiya) GC-MS bo‘yicha ma’lumotnoma kartasi bor, "
-                   "original sxematik rasm bilan (aniq model emas).",
-                   "Bu ma’lumotnoma: LabGuide metodika bermaydi, natijalarni talqin qilmaydi va giyohvandlik "
-                   "moddalarini tekshirish bo‘yicha ko‘rsatma bermaydi."],
+            "en": ["LabGuide has a GC-MS reference card in Lab → Instruments and methods → Toxicology: the schematic "
+                   "with numbered parts, then principle and tasks, each with its source.",
+                   "The card also has QC notes and biosafety notes: hot parts, glasses, coat and gloves.",
+                   "A reference card: methods and limits come from your laboratory and its SOPs."],
+            "ru": ["В LabGuide есть справочная карточка ГХ-МС (Лаб. → Приборы и методики → Токсикология): схема с "
+                   "пронумерованными частями, затем принцип и задачи, у каждого источник.",
+                   "На карточке — также заметки о контроле качества и биобезопасности: горячие части, очки, халат, "
+                   "перчатки.",
+                   "Справочная карточка: методики и границы определяют лаборатория и её СОП."],
+            "uz": ["LabGuide’da GC-MS bo‘yicha ma’lumotnoma kartasi bor (Lab → Apparatlar va metodikalar → "
+                   "Toksikologiya): raqamlangan qismli sxema, so‘ng tamoyil va vazifalar, har biri manbali.",
+                   "Kartada sifat nazorati va biologik xavfsizlik eslatmalari ham bor: issiq qismlar, ko‘zoynak, "
+                   "xalat, qo‘lqop.",
+                   "Ma’lumotnoma kartasi: usul va chegaralarni laboratoriya va uning SOP’i belgilaydi."],
         },
         limits={
-            "en": ["Schematic illustration — not an exact instrument model; real systems differ by manufacturer.",
-                   "The chromatogram and spectrum shown are examples, not real results."],
-            "ru": ["Схема — не конкретная модель прибора; реальные системы различаются по производителям.",
-                   "Показанные хроматограмма и спектр — примеры, а не реальные результаты."],
-            "uz": ["Sxematik tasvir — aniq apparat modeli emas; haqiqiy tizimlar ishlab chiqaruvchiga qarab farq qiladi.",
-                   "Ko‘rsatilgan xromatogramma va spektr — misollar, haqiqiy natijalar emas."],
+            "en": ["Schematic — not an exact model.",
+                   "The chromatogram and spectra are illustrative schematic panels — no real compound, no numbers on "
+                   "the axes.",
+                   "The card in the app is itself marked as not yet expert-reviewed, and this video’s content is "
+                   "awaiting expert review."],
+            "ru": ["Схема — не точная модель.",
+                   "Хроматограмма и спектры — схематичные иллюстрации: не реальное вещество, без чисел на осях.",
+                   "Сама карточка в приложении помечена как ещё не проверенная экспертом, а материал этого видео ждёт "
+                   "экспертной проверки."],
+            "uz": ["Sxema — aniq model emas.",
+                   "Xromatogramma va spektrlar — sxematik panellar: haqiqiy modda emas, o‘qlarda sonlar yo‘q.",
+                   "Ilovadagi kartaning o‘zi hali mutaxassis tomonidan tekshirilmagan deb belgilangan, bu videoning "
+                   "mazmuni ham mutaxassis ko‘rigini kutmoqda."],
         },
         ig={
-            "en": ["A sample goes in as a vapour and comes out as a chromatogram and a mass spectrum.",
-                   "A schematic walk-through of GC-MS: injector, column, ion source, analyzer, detector — and the "
-                   "difference between separation by retention time and by m/z.",
-                   "Reference card in LabGuide’s instrument directions (toxicology). Schematic — not an exact model."],
-            "ru": ["Образец попадает в прибор паром, а выходит хроматограммой и масс-спектром.",
-                   "Схематичный разбор ГХ-МС: инжектор, колонка, источник ионов, анализатор, детектор — и чем "
-                   "разделение по времени удерживания отличается от разделения по m/z.",
-                   "Справочная карточка в направлениях приборов LabGuide (токсикология). Схема — не конкретная модель."],
-            "uz": ["Namuna bug‘ sifatida kiradi, xromatogramma va mass-spektr sifatida chiqadi.",
-                   "GC-MS ning sxemali tahlili: injektor, kolonka, ion manbai, analizator, detektor — va ushlanish "
-                   "vaqti bo‘yicha ajralish bilan m/z bo‘yicha ajralish farqi.",
-                   "LabGuide apparat yo‘nalishlaridagi ma’lumotnoma kartasi (toksikologiya). Sxema — aniq model emas."],
+            "en": ["Three peaks in one unknown sample. Which compound is which?",
+                   "A schematic walk-through of GC-MS in under 90 seconds: carrier gas, autosampler, injector, oven "
+                   "and column, transfer line, ion source, quadrupole, detector, vacuum pumps and data system — "
+                   "retention time in the column, sorting by m/z in the quadrupole, and identification against a "
+                   "spectral library or standards.",
+                   "Reference card in LabGuide: Lab → Instruments and methods → Toxicology → GC-MS. Schematic — not an "
+                   "exact model."],
+            "ru": ["Три пика в неизвестной пробе. Какое вещество где?",
+                   "Схематичный разбор ГХ-МС меньше чем за 90 секунд: газ-носитель, автосэмплер, инжектор, термостат "
+                   "с колонкой, линия переноса, источник ионов, квадруполь, детектор, вакуумные насосы и система "
+                   "данных — время удерживания в колонке, разделение по m/z в квадруполе и определение по библиотеке "
+                   "спектров или стандартам.",
+                   "Справочная карточка в LabGuide: Лаб. → Приборы и методики → Токсикология → ГХ-МС. Схема — не "
+                   "точная модель."],
+            "uz": ["Noma’lum namunada uch cho‘qqi. Qaysi biri qaysi modda?",
+                   "GC-MS ning sxemali tahlili 90 soniyadan kamroq vaqtda: tashuvchi gaz, avtonamunaoluvchi, "
+                   "injektor, kolonkali termostat, uzatish liniyasi, ion manbai, kvadrupol, detektor, vakuum "
+                   "nasoslari va ma’lumotlar tizimi — kolonkadagi ushlanish vaqti, kvadrupolda m/z bo‘yicha saralash "
+                   "va spektrlar kutubxonasi yoki standartlar bilan aniqlash.",
+                   "LabGuide’dagi ma’lumotnoma kartasi: Lab → Apparatlar va metodikalar → Toksikologiya → GC-MS. "
+                   "Sxema — aniq model emas."],
         },
         pinned={
-            "en": ("Notes: this is a schematic general-principle video; real instruments and methods differ. The "
-                   "chromatogram and spectrum are examples, not results. Narration is English synthetic speech. The "
-                   "content is awaiting expert review — corrections are welcome."),
-            "ru": ("Заметки: это схематичное видео об общем принципе; реальные приборы и методики различаются. "
-                   "Хроматограмма и спектр — примеры, а не результаты. Озвучка — синтезированная английская речь. "
-                   "Материал ждёт экспертной проверки, поправки приветствуются."),
-            "uz": ("Eslatma: bu umumiy tamoyil haqidagi sxematik video; haqiqiy apparatlar va metodikalar farq qiladi. "
-                   "Xromatogramma va spektr — misollar, natijalar emas. Diktor ovozi — sun’iy inglizcha nutq. "
-                   "Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun rahmat."),
+            "en": ("Notes: this is a schematic general-principle video; the chromatogram and spectra are illustrative "
+                   "panels, no real compound. Methods and limits come from your laboratory and its SOPs. Narration is "
+                   "English synthetic speech. The content is awaiting expert review — corrections are welcome."),
+            "ru": ("Заметки: это схематичное видео об общем принципе; хроматограмма и спектры — иллюстративные "
+                   "панели, не реальное вещество. Методики и границы определяют ваша лаборатория и её СОП. Озвучка — "
+                   "синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются."),
+            "uz": ("Eslatma: bu umumiy tamoyil haqidagi sxematik video; xromatogramma va spektrlar — namunaviy "
+                   "panellar, haqiqiy modda emas. Usul va chegaralarni laboratoriyangiz va uning SOP’i belgilaydi. "
+                   "Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun "
+                   "rahmat."),
         },
         keywords={
             "en": ["GC-MS", "gas chromatography mass spectrometry", "mass spectrometer", "chromatogram", "mass spectrum",
-                   "retention time", "toxicology laboratory", "analytical chemistry", "LabGuide"],
+                   "retention time", "quadrupole", "toxicology laboratory", "analytical chemistry", "LabGuide"],
             "ru": ["ГХ-МС", "хромато-масс-спектрометрия", "масс-спектрометр", "хроматограмма", "масс-спектр",
-                   "токсикология", "лаборант"],
+                   "квадруполь", "токсикология", "лаборант"],
             "uz": ["GC-MS", "xromato-mass-spektrometriya", "mass-spektrometr", "xromatogramma", "mass-spektr",
-                   "toksikologiya", "laborant"],
+                   "kvadrupol", "toksikologiya", "laborant"],
         },
         hashtags_topic={
             "en": ["#GCMS", "#MassSpectrometry", "#Chromatography", "#Toxicology", "#AnalyticalChemistry",
@@ -767,97 +921,169 @@ TOPICS = [
             "uz": ["#GCMS", "#massspektrometriya", "#xromatografiya", "#toksikologiya", "#analitikkimyo",
                    "#laboratoriyaapparatlari", "#massspektr"],
         },
-        thumb_alt=None,
-        chapters=None,
-        sources=[],
-        evidence=["docs/video/gc_ms/CLAIMS_AND_EVIDENCE.md (when it exists)", "docs/video/lessons/01_gc_ms.md",
-                  "assets/instruments/catalog.json lab card a3-tox-gc-ms"],
-        next=["real_time_pcr", "photometry"],
+        thumb_alt={
+            "en": "LabGuide logo, the title “GC-MS” with the subtitle “From peak to identity”, a schematic of a gas "
+                  "chromatograph–mass spectrometer with ten numbered parts, a chromatogram over retention time with "
+                  "three labelled peaks A, B and C, and the notice “Illustrative schematic panels — no real compound”.",
+            "ru": "Логотип LabGuide, заголовок «ГХ-МС» с подзаголовком «От пика к веществу», схема газового "
+                  "хромато-масс-спектрометра с десятью пронумерованными частями, хроматограмма по времени "
+                  "удерживания с тремя помеченными пиками A, B и C и пометка «Схематичные панели — не реальное "
+                  "вещество».",
+            "uz": "LabGuide logotipi, «GC-MS» sarlavhasi va «Cho‘qqidan moddagacha» sarlavha osti, gaz "
+                  "xromato-mass-spektrometrining o‘nta raqamlangan qismli sxemasi, ushlanish vaqti bo‘yicha A, B va C "
+                  "belgili uchta cho‘qqili xromatogramma hamda «Sxematik panellar — haqiqiy modda emas» belgisi.",
+        },
+        chapters=[
+            ("hook", T("Three peaks and the gas chromatograph", "Три пика и газовый хроматограф",
+                       "Uch cho‘qqi va gaz xromatografi")),
+            ("separate", T("Retention time, volatility, the mass spectrometer",
+                           "Время удерживания, летучесть, масс-спектрометр",
+                           "Ushlanish vaqti, uchuvchanlik, mass-spektrometr")),
+            ("quad", T("Ions and the quadrupole (m/z)", "Ионы и квадруполь (m/z)", "Ionlar va kvadrupol (m/z)")),
+            ("result", T("The result: chromatogram, spectrum, identity, QC",
+                         "Итог: хроматограмма, спектр, вещество, контроль качества",
+                         "Natija: xromatogramma, spektr, modda, sifat nazorati")),
+            ("app_card", T("In LabGuide: the GC-MS card", "В LabGuide: карточка ГХ-МС", "LabGuide’da: GC-MS kartasi")),
+        ],
+        sources=["NCBI Bookshelf, “Mass Spectrometer” (Garg, Zubair), the source cited by the app card; last update "
+                 "2024-11-22."],
+        evidence=["docs/video/gcms/CLAIMS_AND_EVIDENCE.md", "docs/video/gcms/DESCRIPTION.md", "docs/video/gcms/QA.md",
+                  "docs/video/lessons/01_gc_ms.md", "assets/instruments/catalog.json lab card a3-tox-gc-ms"],
+        next=["qpcr", "photometry"],
         paid=None,
-        internal=["Drafted from lesson 01 and the lab-card facts. Re-check against the final lines.en.json; keep every "
-                  "statement tagged SOURCED or \"general principle\" as in the claims table. The app's lab card is itself flagged NEEDS_REVIEW (expert_reviewed=false, docs/lab_cards_status.json) and says so: do not call it \"verified\" or \"reviewed\"."],
+        internal=["Copy checked against lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of the rendered "
+                  "video (82.9 s). Open expert items: every STANDARD_TEXTBOOK row of the claims table; E4 (vacuum "
+                  "pumps are only named, never explained).",
+                  "The app's lab card is itself flagged NEEDS_REVIEW (expert_reviewed=false, docs/lab_cards_status.json) "
+                  "and says so: do not call it \"verified\" or \"reviewed\". The video makes no drug-testing or "
+                  "method statement, so neither does the copy."],
     ),
     # ------------------------------------------------------------------ 6. real_time_pcr
     dict(
-        id="real_time_pcr", order=6, tier="free", verified=False,
-        path=T("Lab → Instruments → Real-time PCR", "Лаб. → Приборы → ПЦР в реальном времени",
-               "Lab → Apparatlar → Real vaqt PCR"),
+        id="qpcr", order=6, tier="free", verified=True,
+        path=T("Lab → Instruments and methods → Molecular diagnostics → Real-time PCR",
+               "Лаб. → Приборы и методики → Молекулярная диагностика → ПЦР в реальном времени",
+               "Lab → Apparatlar va metodikalar → Molekulyar diagnostika → Real vaqt PCR"),
         title=T(
             "Real-Time PCR Explained: Thermal Cycler, Fluorescence, Cq",
             "ПЦР в реальном времени: термоциклер, флуоресценция, Cq",
             "Real vaqt PCR: termosiklator, fluoressensiya va Cq",
         ),
         hook={
-            "en": ("Each PCR cycle copies the target — and a real-time instrument reads the fluorescence every cycle.",
-                   "A schematic walk-through of the thermal cycler, the amplification curve and Cq."),
-            "ru": ("Каждый цикл ПЦР копирует мишень, а прибор в реальном времени считывает флуоресценцию в каждом цикле.",
-                   "Схематичный разбор термоциклера, кривой амплификации и Cq."),
-            "uz": ("PCR ning har sikli nishonni nusxalaydi, real vaqt asbobi esa har siklda fluoressensiyani o‘qiydi.",
-                   "Termosiklator, kuchayish egri chizig‘i va Cq ning sxemali tahlili."),
+            "en": ("Sample A crosses the line at cycle 22, sample B at 31. Which one had more target to begin with?",
+                   "Real-time PCR on a schematic: the thermal cycler, the amplification curve and Cq — in under 75 seconds."),
+            "ru": ("Проба A пересекает линию на 22-м цикле, проба B — на 31-м. В какой было больше мишени?",
+                   "ПЦР в реальном времени на схеме: термоциклер, кривая амплификации и Cq — меньше чем за 75 секунд."),
+            "uz": ("A namuna chiziqni 22-siklda, B namuna 31-siklda kesib o‘tadi. Qaysi birida boshida nishon ko‘proq edi?",
+                   "Real vaqt PCR sxemada: termosiklator, kuchayish egri chizig‘i va Cq — 75 soniyadan kamroq vaqtda."),
         },
         shows={
-            "en": ["The parts of a real-time PCR instrument and the fluorescence signal path (schematic).",
-                   "One cycle in three steps: strand separation, primer binding, synthesis — and the target multiplying.",
-                   "The amplification curve, the threshold and Cq."],
-            "ru": ["Части прибора для ПЦР в реальном времени и путь флуоресцентного сигнала (схема).",
-                   "Один цикл в три шага: разделение цепей, посадка праймеров, синтез — и умножение мишени.",
-                   "Кривая амплификации, порог и Cq."],
-            "uz": ["Real vaqt PCR asbobining qismlari va fluoressent signal yo‘li (sxema).",
-                   "Bitta sikl uch bosqichda: zanjirlarning ajralishi, praymer birikishi, sintez — va nishonning ko‘payishi.",
-                   "Kuchayish egri chizig‘i, chegara va Cq."],
+            "en": ["One PCR cycle: heat separates the strands, on cooling primers bind and a polymerase builds new "
+                   "strands — so the target roughly doubles every cycle (general principle).",
+                   "The thermal cycler on a schematic with numbered parts: tube strip, heated lid, and a Peltier block "
+                   "that switches temperatures.",
+                   "The optical path: excitation source, excitation filter, the tube, emission filter and detector.",
+                   "The amplification curve: fluorescence grows with the product; Cq is the cycle where it crosses the "
+                   "threshold — the lower the Cq, the more starting target.",
+                   "Two cautions: trace contamination can give false results, and no amplification does not prove a "
+                   "negative.",
+                   "Real LabGuide screens: Lab → Instruments and methods → Molecular diagnostics → Real-time PCR — the "
+                   "schematic, its numbered parts and the principle, each with its sources, then limitations and "
+                   "contamination control."],
+            "ru": ["Один цикл ПЦР: нагрев разделяет цепи, при охлаждении садятся праймеры, полимераза строит новые "
+                   "цепи — поэтому мишень почти удваивается за цикл (общий принцип).",
+                   "Термоциклер на схеме с пронумерованными частями: стрип, нагреваемая крышка и термоблок Пельтье, "
+                   "который переключает температуры.",
+                   "Оптический путь: источник возбуждения, фильтр возбуждения, пробирка, эмиссионный фильтр и "
+                   "детектор.",
+                   "Кривая амплификации: флуоресценция растёт с продуктом; Cq — цикл пересечения порога: ниже Cq — "
+                   "больше мишени в начале.",
+                   "Две оговорки: следовое загрязнение может дать ложный результат, а отсутствие амплификации ещё не "
+                   "доказывает отрицательный результат.",
+                   "Реальные экраны LabGuide: Лаб. → Приборы и методики → Молекулярная диагностика → ПЦР в реальном "
+                   "времени — схема, её пронумерованные части и принцип, у каждого источники, затем ограничения и "
+                   "защита от загрязнения."],
+            "uz": ["PCR ning bitta sikli: qizdirish zanjirlarni ajratadi, sovutishda praymerlar birikadi, polimeraza "
+                   "yangi zanjir quradi — shuning uchun nishon har siklda qariyb ikki barobar ko‘payadi (umumiy "
+                   "tamoyil).",
+                   "Termosiklator raqamlangan qismli sxemada: probirkalar qatori, isitiladigan qopqoq va "
+                   "haroratlarni almashtiradigan Peltye termobloki.",
+                   "Optik yo‘l: qo‘zg‘atuvchi nur manbai, qo‘zg‘atish filtri, probirka, nurlanish filtri va detektor.",
+                   "Kuchayish egri chizig‘i: signal mahsulot bilan o‘sadi; Cq — chegara kesib o‘tilgan sikl: Cq qancha "
+                   "past bo‘lsa, boshida nishon shuncha ko‘p.",
+                   "Ikki ogohlantirish: ozgina ifloslanish soxta natija berishi mumkin, kuchayish yo‘qligi esa "
+                   "manfiylikni isbotlamaydi.",
+                   "LabGuide’ning haqiqiy ekranlari: Lab → Apparatlar va metodikalar → Molekulyar diagnostika → Real "
+                   "vaqt PCR — sxema, uning raqamlangan qismlari va tamoyil, har biri manbalari bilan, so‘ng "
+                   "cheklovlar va ifloslanishdan himoya."],
         },
         app={
-            "en": ["LabGuide has reference cards for real-time PCR (the platform and the method) in the instrument "
-                   "directions, with an original schematic illustration (not an exact model).",
-                   "They are reference material: no lab protocol, no result interpretation and no clinical advice."],
-            "ru": ["В LabGuide есть справочные карточки по ПЦР в реальном времени (платформа и метод) в направлениях "
-                   "приборов, с оригинальным схематичным рисунком (не конкретная модель).",
-                   "Это справочный материал: не протокол лаборатории, не интерпретация результатов и не "
-                   "клиническая рекомендация."],
-            "uz": ["LabGuide’da apparat yo‘nalishlarida real vaqt PCR bo‘yicha ma’lumotnoma kartalari (platforma va "
-                   "metod) bor, original sxematik rasm bilan (aniq model emas).",
-                   "Bu ma’lumotnoma: laboratoriya protokoli, natijalarni talqin qilish yoki klinik maslahat emas."],
+            "en": ["LabGuide has a Real-time PCR reference card in Lab → Instruments and methods → Molecular "
+                   "diagnostics: the schematic with numbered parts and the principle, each with its sources.",
+                   "The card also covers limitations and contamination control.",
+                   "Reference cards: the assay IFU and your laboratory SOP decide."],
+            "ru": ["В LabGuide есть справочная карточка «ПЦР в реальном времени» (Лаб. → Приборы и методики → "
+                   "Молекулярная диагностика): схема с пронумерованными частями и принцип, у каждого источники.",
+                   "На карточке — также ограничения и защита от загрязнения.",
+                   "Справочные карточки: решают IFU теста и СОП лаборатории."],
+            "uz": ["LabGuide’da Molekulyar diagnostika bo‘limida (Lab → Apparatlar va metodikalar) Real vaqt PCR "
+                   "bo‘yicha ma’lumotnoma kartasi bor — ilovada bu atama ba’zi kartalarda «PZR» deb ham yoziladi: "
+                   "raqamlangan qismli sxema va tamoyil, har biri manbalari bilan.",
+                   "Kartada cheklovlar va ifloslanishdan himoya ham bor.",
+                   "Ma’lumotnoma kartalari: test IFU’si va laboratoriya SOP’i hal qiladi."],
         },
         limits={
-            "en": ["Schematic illustration — not an exact instrument model; real systems differ by manufacturer.",
-                   "Curves shown are examples, not real results; thresholds and interpretation follow the assay IFU "
-                   "and your SOP."],
-            "ru": ["Схема — не конкретная модель прибора; реальные системы различаются по производителям.",
-                   "Показанные кривые — примеры, а не реальные результаты; пороги и интерпретацию определяют "
-                   "IFU набора и ваша СОП."],
-            "uz": ["Sxematik tasvir — aniq apparat modeli emas; haqiqiy tizimlar ishlab chiqaruvchiga qarab farq qiladi.",
-                   "Ko‘rsatilgan egri chiziqlar — misollar, haqiqiy natijalar emas; chegaralar va talqin to‘plam "
-                   "IFU’si va SOP’ingizga bog‘liq."],
+            "en": ["Schematic — not an exact model; the curves are illustrative, not a real assay or result.",
+                   "The assay IFU and your laboratory SOP decide thresholds and interpretation.",
+                   "A general-principle video, not an assay protocol; the card in the app is itself marked as not yet "
+                   "expert-reviewed."],
+            "ru": ["Схема — не точная модель; кривые иллюстративные, это не реальный тест и не результат.",
+                   "Пороги и интерпретацию определяют IFU теста и СОП вашей лаборатории.",
+                   "Видео об общем принципе, а не протокол анализа; сама карточка в приложении помечена как ещё не "
+                   "проверенная экспертом."],
+            "uz": ["Sxema — aniq model emas; egri chiziqlar namunaviy, haqiqiy test yoki natija emas.",
+                   "Chegaralar va talqinni test IFU’si va laboratoriyangiz SOP’i belgilaydi.",
+                   "Umumiy tamoyil haqidagi video, tahlil protokoli emas; ilovadagi kartaning o‘zi hali mutaxassis "
+                   "tomonidan tekshirilmagan deb belgilangan."],
         },
         ig={
-            "en": ["Each PCR cycle copies the target — and a real-time instrument reads the fluorescence every cycle.",
-                   "A schematic walk-through: the thermal cycler, one cycle in three steps, the amplification curve, "
-                   "the threshold and Cq.",
-                   "Reference cards in LabGuide’s instrument directions. Schematic — not an exact model."],
-            "ru": ["Каждый цикл ПЦР копирует мишень, а прибор в реальном времени считывает флуоресценцию в каждом цикле.",
-                   "Схематичный разбор: термоциклер, один цикл в три шага, кривая амплификации, порог и Cq.",
-                   "Справочные карточки в направлениях приборов LabGuide. Схема — не конкретная модель."],
-            "uz": ["PCR ning har sikli nishonni nusxalaydi, real vaqt asbobi esa har siklda fluoressensiyani o‘qiydi.",
-                   "Sxemali tahlil: termosiklator, uch bosqichli bitta sikl, kuchayish egri chizig‘i, chegara va Cq.",
-                   "LabGuide apparat yo‘nalishlaridagi ma’lumotnoma kartalari. Sxema — aniq model emas."],
+            "en": ["Sample A crosses the line at cycle 22, sample B at 31. Which one had more target to begin with?",
+                   "A schematic walk-through of real-time PCR in under 75 seconds: one cycle, the thermal cycler, the "
+                   "optical path from the excitation source to the detector, the amplification curve, the threshold "
+                   "and Cq — plus two cautions: trace contamination and no amplification.",
+                   "Reference card in LabGuide: Lab → Instruments and methods → Molecular diagnostics → Real-time PCR. "
+                   "Schematic — not an exact model."],
+            "ru": ["Проба A пересекает линию на 22-м цикле, проба B — на 31-м. В какой было больше мишени?",
+                   "Схематичный разбор ПЦР в реальном времени меньше чем за 75 секунд: один цикл, термоциклер, "
+                   "оптический путь от источника возбуждения до детектора, кривая амплификации, порог и Cq — и две "
+                   "оговорки: следовое загрязнение и отсутствие амплификации.",
+                   "Справочная карточка в LabGuide: Лаб. → Приборы и методики → Молекулярная диагностика → ПЦР в "
+                   "реальном времени. Схема — не точная модель."],
+            "uz": ["A namuna chiziqni 22-siklda, B namuna 31-siklda kesib o‘tadi. Qaysi birida boshida nishon ko‘proq edi?",
+                   "Real vaqt PCR ning sxemali tahlili 75 soniyadan kamroq vaqtda: bitta sikl, termosiklator, "
+                   "qo‘zg‘atuvchi nur manbaidan detektorgacha optik yo‘l, kuchayish egri chizig‘i, chegara va Cq — "
+                   "hamda ikki ogohlantirish: ozgina ifloslanish va kuchayish yo‘qligi.",
+                   "LabGuide’dagi ma’lumotnoma kartasi: Lab → Apparatlar va metodikalar → Molekulyar diagnostika → "
+                   "Real vaqt PCR. Sxema — aniq model emas."],
         },
         pinned={
-            "en": ("Notes: this is a schematic general-principle video, not an assay protocol. Curves are examples, not "
-                   "results; thresholds and interpretation follow the assay IFU and your lab’s SOP. Narration is English "
-                   "synthetic speech. The content is awaiting expert review — corrections are welcome."),
-            "ru": ("Заметки: это схематичное видео об общем принципе, а не протокол анализа. Кривые — примеры, а не "
-                   "результаты; пороги и интерпретацию определяют IFU набора и СОП вашей лаборатории. Озвучка — "
+            "en": ("Notes: this is a schematic general-principle video, not an assay protocol. Curves are illustrative, "
+                   "not results; the assay IFU and your lab’s SOP decide thresholds and interpretation. Narration is "
+                   "English synthetic speech. The content is awaiting expert review — corrections are welcome."),
+            "ru": ("Заметки: это схематичное видео об общем принципе, а не протокол анализа. Кривые иллюстративные, "
+                   "а не результаты; пороги и интерпретацию определяют IFU теста и СОП вашей лаборатории. Озвучка — "
                    "синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются."),
-            "uz": ("Eslatma: bu umumiy tamoyil haqidagi sxematik video, tahlil protokoli emas. Egri chiziqlar — "
-                   "misollar, natijalar emas; chegaralar va talqin to‘plam IFU’si va laboratoriyangiz SOP’iga "
-                   "bog‘liq. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda."),
+            "uz": ("Eslatma: bu umumiy tamoyil haqidagi sxematik video, tahlil protokoli emas. Egri chiziqlar "
+                   "namunaviy, natijalar emas; chegaralar va talqinni test IFU’si va laboratoriyangiz SOP’i "
+                   "belgilaydi. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda — "
+                   "tuzatishlar uchun rahmat."),
         },
         keywords={
             "en": ["real-time PCR", "qPCR", "thermal cycler", "amplification curve", "Cq", "fluorescence detection",
                    "molecular diagnostics laboratory", "PCR explained", "LabGuide"],
             "ru": ["ПЦР в реальном времени", "qПЦР", "термоциклер", "кривая амплификации", "Cq", "флуоресценция",
                    "молекулярная диагностика", "лаборант"],
-            "uz": ["real vaqt PCR", "qPCR", "termosiklator", "kuchayish egri chizig‘i", "Cq", "fluoressensiya",
+            "uz": ["real vaqt PCR", "PZR", "qPCR", "termosiklator", "kuchayish egri chizig‘i", "Cq", "fluoressensiya",
                    "molekulyar diagnostika", "laborant"],
         },
         hashtags_topic={
@@ -868,102 +1094,189 @@ TOPICS = [
             "uz": ["#PCR", "#realvaqtPCR", "#qPCR", "#molekulyarbiologiya", "#molekulyardiagnostika",
                    "#termosiklator", "#Cq"],
         },
-        thumb_alt=None,
-        chapters=None,
+        thumb_alt={
+            "en": "LabGuide logo, the title “Real-time PCR” with the subtitle “Curves, threshold, Cq”, an amplification "
+                  "chart in which curves A and B cross a dashed threshold at Cq 22.0 and Cq 31.2, next to a flat "
+                  "no-template control, a small schematic of a real-time PCR instrument with numbered parts, and the "
+                  "notice “Illustrative curves — not a real assay or result”.",
+            "ru": "Логотип LabGuide, заголовок «ПЦР в реальном времени» с подзаголовком «Кривые, порог, Cq», график "
+                  "амплификации: кривые A и B пересекают пунктирный порог на разных циклах (значения Cq подписаны), "
+                  "рядом плоская линия контроля без матрицы, небольшая схема прибора для ПЦР в реальном времени с "
+                  "пронумерованными частями и пометка «Иллюстративные кривые — не реальный тест или результат».",
+            "uz": "LabGuide logotipi, «Real vaqt PCR» sarlavhasi va «Egri chiziq, chegara, Cq» sarlavha osti, "
+                  "kuchayish grafigi: A va B egri chiziqlari punktir chegarani turli sikllarda kesib o‘tadi (Cq "
+                  "qiymatlari yozilgan), yonida shablonsiz nazoratning tekis chizig‘i, raqamlangan qismli real vaqt "
+                  "PCR asbobining kichik sxemasi hamda «Namunaviy egri chiziqlar — haqiqiy test yoki natija emas» "
+                  "belgisi.",
+        },
+        chapters=[
+            ("hook", T("Two samples and one PCR cycle", "Две пробы и один цикл ПЦР", "Ikki namuna va bitta PCR sikli")),
+            ("cycler", T("The thermal cycler and the optical path", "Термоциклер и оптический путь",
+                         "Termosiklator va optik yo‘l")),
+            ("curves", T("Amplification curve, Cq and two cautions", "Кривая амплификации, Cq и две оговорки",
+                         "Kuchayish egri chizig‘i, Cq va ikki ogohlantirish")),
+            ("app_card", T("In LabGuide: the Real-time PCR card", "В LabGuide: карточка «ПЦР в реальном времени»",
+                           "LabGuide’da: Real vaqt PCR kartasi")),
+        ],
         sources=[],
-        evidence=["docs/video/real_time_pcr/CLAIMS_AND_EVIDENCE.md (when it exists)",
+        evidence=["docs/video/qpcr/CLAIMS_AND_EVIDENCE.md", "docs/video/qpcr/DESCRIPTION.md", "docs/video/qpcr/QA.md",
                   "docs/video/lessons/04_real_time_pcr.md",
-                  "assets/instruments/catalog.json lab cards a3-mol-realtime-pcr-platform, a1-realtime-pcr-method"],
-        next=["gc_ms", "osmometry"],
+                  "assets/instruments/catalog.json lab cards a1-realtime-pcr-method (filmed), "
+                  "a3-mol-realtime-pcr-platform (not filmed)"],
+        next=["gcms", "osmometry"],
         paid=None,
-        internal=["Drafted from lesson 04 and the lab-card facts. Re-check against the final lines.en.json. Do not "
-                  "mention any specific assay (e.g. HIV viral load) unless the video shows it. The app's lab card is itself flagged NEEDS_REVIEW (expert_reviewed=false, docs/lab_cards_status.json) and says so: do not call it \"verified\" or \"reviewed\"."],
+        internal=["Copy checked against lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of the rendered "
+                  "video (73.4 s). Only the method card (a1-realtime-pcr-method) is filmed; the platform card is not, "
+                  "so the copy speaks of one Real-time PCR card. Open expert items: every STANDARD_TEXTBOOK row; R4 "
+                  "(excitation filter wording).",
+                  "UZ naming: the video says «Real vaqt PCR»; the app's cards say «PZR» in places (the UZ text names "
+                  "both once, and «PZR» is also a UZ tag). The owner or a native reviewer aligns them (G3); the video "
+                  "is not changed.",
+                  "Do not mention any specific assay (e.g. HIV viral load): the video shows none. The app's lab card is "
+                  "itself flagged NEEDS_REVIEW (expert_reviewed=false, docs/lab_cards_status.json) and says so: do "
+                  "not call it \"verified\" or \"reviewed\"."],
     ),
     # ------------------------------------------------------------------ 7. osmometry
     dict(
-        id="osmometry", order=7, tier="free", verified=False,
-        path=T("Lab → Instruments → Osmometer", "Лаб. → Приборы → Осмометр", "Lab → Apparatlar → Osmometr"),
+        id="osmometry", order=7, tier="free", verified=True,
+        path=T("Lab → Instruments and methods → Clinical biochemistry → Osmometer",
+               "Лаб. → Приборы и методики → Клиническая биохимия → Осмометр",
+               "Lab → Apparatlar va metodikalar → Klinik biokimyo → Osmometr"),
         title=T(
             "Osmometry Explained: Freezing-Point Osmometer and Osmolality",
             "Осмометрия: криоскопический осмометр и осмоляльность",
             "Osmometriya: muzlash nuqtasi osmometri va osmolyallik",
         ),
         hook={
-            "en": ("Dissolved particles lower the freezing point — and that is how a freezing-point osmometer measures osmolality.",
-                   "Supercooling, freezing and the plateau, on a schematic."),
-            "ru": ("Растворённые частицы понижают точку замерзания — так криоскопический осмометр измеряет осмоляльность.",
-                   "Переохлаждение, замерзание и плато — на схеме."),
-            "uz": ("Erigan zarralar muzlash nuqtasini pasaytiradi — muzlash nuqtasi osmometri osmolyallikni shunday o‘lchaydi.",
-                   "O‘ta sovutish, muzlash va plato — sxemada."),
+            "en": ("Two samples freeze — and one plateau sits lower. Why?",
+                   "Dissolved particles lower the freezing point — that is what an osmometer measures. On a schematic, in under 80 seconds."),
+            "ru": ("Две пробы замерзают — одно плато ниже. Почему?",
+                   "Растворённые частицы понижают точку замерзания — это и измеряет осмометр. На схеме, меньше чем за 80 секунд."),
+            "uz": ("Ikki namuna muzlaydi — bir plato pastroq. Nega?",
+                   "Erigan zarrachalar muzlash nuqtasini pasaytiradi — osmometr shuni o‘lchaydi. Sxemada, 80 soniyadan kamroq vaqtda."),
         },
         shows={
-            "en": ["The five numbered parts of a freezing-point osmometer (schematic).",
-                   "Supercooling, the start of freezing and the plateau, and why osmolality is measured.",
-                   "Factors that can distort the result, as listed in the sources."],
-            "ru": ["Пять пронумерованных частей криоскопического осмометра (схема).",
-                   "Переохлаждение, начало замерзания и плато, и зачем измеряют осмоляльность.",
-                   "Факторы, которые могут исказить результат, — по источникам."],
-            "uz": ["Muzlash nuqtasi osmometrining beshta raqamlangan qismi (sxema).",
-                   "O‘ta sovutish, muzlashning boshlanishi va plato hamda osmolyallik nega o‘lchanadi.",
-                   "Natijani buzishi mumkin bo‘lgan omillar — manbalar bo‘yicha."],
+            "en": ["A freezing-point osmometer on a schematic with five numbered parts: sample tubes, a thermistor "
+                   "probe, a cooling block, a stirring wire and a display.",
+                   "The freezing curve: the cooling block supercools the sample below its freezing point, the "
+                   "stirring wire vibrates and freezing starts, and released heat lifts the temperature to a plateau "
+                   "— the freezing point.",
+                   "More particles, a deeper depression — and from it the osmolality. Osmolality is per kilogram of "
+                   "water (mOsm/kg); osmolarity is per litre of solution.",
+                   "Real LabGuide screens: Lab → Instruments and methods → Clinical biochemistry → Osmometer — the "
+                   "same schematic and parts plus specimens, each with its source; what distorts the reading "
+                   "(particles, air bubbles, evaporated or viscous samples, high alcohol or acetone) and carry-over "
+                   "from an uncleaned container.",
+                   "The Calculated osmolality calculator (Lab → Calculators): from sodium, glucose and urea; add the "
+                   "measured value and it shows the osmolal gap (illustrative inputs)."],
+            "ru": ["Криоскопический осмометр на схеме с пятью пронумерованными частями: пробирки, термисторный зонд, "
+                   "охлаждающий блок, мешалка и дисплей.",
+                   "Кривая замерзания: охлаждающий блок переохлаждает пробу ниже точки замерзания, мешалка "
+                   "вибрирует — начинается кристаллизация, выделившееся тепло поднимает температуру до плато — "
+                   "точки замерзания.",
+                   "Больше частиц — глубже понижение, а по нему — осмоляльность. Осмоляльность — на килограмм воды "
+                   "(мОсм/кг), осмолярность — на литр раствора.",
+                   "Реальные экраны LabGuide: Лаб. → Приборы и методики → Клиническая биохимия → Осмометр — та же "
+                   "схема и узлы, плюс образцы, у каждого источник; что искажает результат (частицы, пузырьки, "
+                   "испарившиеся или вязкие пробы, спирты и ацетон) и перенос пробы из неочищенной ёмкости.",
+                   "Калькулятор «Расчётная осмоляльность» (Лаб. → Калькуляторы): из натрия, глюкозы и мочевины; "
+                   "добавьте измеренное значение — он покажет осмоляльный зазор (примерные значения)."],
+            "uz": ["Muzlash nuqtasi osmometri beshta raqamlangan qismli sxemada: probirkalar, termistor zondi, "
+                   "sovutish bloki, sim va displey.",
+                   "Muzlash egri chizig‘i: sovutish bloki namunani muzlash nuqtasidan past o‘ta sovitadi, sim "
+                   "tebranadi — muzlash boshlanadi, ajralgan issiqlik haroratni platoga ko‘taradi: muzlash nuqtasi.",
+                   "Zarracha ko‘p — pasayish chuqurroq, undan esa osmolyallik. Osmolyallik — suv kg iga (mOsm/kg), "
+                   "osmolyarlik — eritma litriga.",
+                   "LabGuide’ning haqiqiy ekranlari: Lab → Apparatlar va metodikalar → Klinik biokimyo → Osmometr — "
+                   "o‘sha sxema va qismlar, namunalar ham, har biri manbali; natijani nima buzadi (zarrachalar, "
+                   "pufakchalar, bug‘langan yoki yopishqoq namuna, spirt va aseton) va tozalanmagan idishdan keyingi "
+                   "namunaga o‘tish.",
+                   "«Hisoblangan osmolyallik» kalkulyatori (Lab → Kalkulyatorlar): natriy, glyukoza va mochevinadan; "
+                   "o‘lchangan qiymatni qo‘shsangiz — osmolyal farqni ko‘rsatadi (namunaviy qiymatlar)."],
         },
         app={
-            "en": ["LabGuide has an osmometer reference card in the instrument directions with an original schematic "
-                   "illustration (not an exact model).",
-                   "Its calculators include osmolality: it computes only from the values you enter and shows the "
-                   "formula, the limitations and the source. It does not measure anything."],
-            "ru": ["В LabGuide есть справочная карточка осмометра в направлениях приборов с оригинальным "
-                   "схематичным рисунком (не конкретная модель).",
-                   "Среди калькуляторов есть осмоляльность: он считает только по введённым вами значениям и "
-                   "показывает формулу, ограничения и источник. Ничего не измеряет."],
-            "uz": ["LabGuide’da apparat yo‘nalishlarida osmometr bo‘yicha ma’lumotnoma kartasi bor, original "
-                   "sxematik rasm bilan (aniq model emas).",
-                   "Kalkulyatorlari orasida osmolyallik bor: u faqat siz kiritgan qiymatlardan hisoblaydi, formula, "
-                   "cheklovlar va manbani ko‘rsatadi. Hech narsani o‘lchamaydi."],
+            "en": ["LabGuide has an osmometer reference card (Lab → Instruments and methods → Clinical biochemistry): "
+                   "the schematic with numbered parts, specimens with their source, limitations, and preanalytic and "
+                   "analytic errors.",
+                   "Lab → Calculators → Calculated osmolality works from sodium, glucose and urea; with a measured "
+                   "value added it shows the osmolal gap.",
+                   "Measured or calculated — know which number you read."],
+            "ru": ["В LabGuide есть справочная карточка осмометра (Лаб. → Приборы и методики → Клиническая "
+                   "биохимия): схема с пронумерованными частями, образцы с источником, ограничения, а также "
+                   "преаналитические и аналитические ошибки.",
+                   "Лаб. → Калькуляторы → Расчётная осмоляльность считает из натрия, глюкозы и мочевины; с "
+                   "добавленным измеренным значением показывает осмоляльный зазор.",
+                   "Измерено или рассчитано — знайте, что вы читаете."],
+            "uz": ["LabGuide’da osmometr bo‘yicha ma’lumotnoma kartasi bor (Lab → Apparatlar va metodikalar → Klinik "
+                   "biokimyo): raqamlangan qismli sxema, manbali namunalar, cheklovlar hamda preanalitik va "
+                   "analitik xatolar.",
+                   "Lab → Kalkulyatorlar → Hisoblangan osmolyallik natriy, glyukoza va mochevinadan hisoblaydi; "
+                   "o‘lchangan qiymat qo‘shilsa, osmolyal farqni ko‘rsatadi.",
+                   "O‘lchangan yoki hisoblangan — qaysini o‘qiyotganingizni biling."],
         },
         limits={
-            "en": ["Schematic illustration — not an exact instrument model.",
-                   "A calculated osmolality is not a measured osmolality. Interpretation belongs to the clinician and "
-                   "your laboratory’s reference intervals."],
-            "ru": ["Схема — не конкретная модель прибора.",
-                   "Расчётная осмоляльность — не измеренная осмоляльность. Интерпретация — за врачом и референтными "
-                   "интервалами вашей лаборатории."],
-            "uz": ["Sxematik tasvir — aniq apparat modeli emas.",
-                   "Hisoblangan osmolyallik o‘lchangan osmolyallik emas. Talqin — shifokor va laboratoriyangizning "
-                   "me’yor oraliqlari ishi."],
+            "en": ["Schematic — not an exact model; the curves are illustrative (no numbers on the axes), not a real "
+                   "sample or result.",
+                   "A reference card and a learning calculator: your laboratory’s SOP and reference intervals decide. "
+                   "A calculated osmolality is not a measured osmolality.",
+                   "Calculator values on screen are illustrative; the video does not interpret the gap or any value.",
+                   "The card in the app is itself marked as not yet expert-reviewed."],
+            "ru": ["Схема — не точная модель; кривые иллюстративные (без чисел на осях), это не реальная проба и не "
+                   "результат.",
+                   "Справочная карточка и учебный калькулятор: решают СОП и референтные интервалы вашей лаборатории. "
+                   "Расчётная осмоляльность — не измеренная осмоляльность.",
+                   "Значения калькулятора на экране примерные; видео не интерпретирует ни зазор, ни другие значения.",
+                   "Сама карточка в приложении помечена как ещё не проверенная экспертом."],
+            "uz": ["Sxema — aniq model emas; egri chiziqlar namunaviy (o‘qlarda sonlar yo‘q), haqiqiy namuna yoki "
+                   "natija emas.",
+                   "Ma’lumotnoma karta va o‘quv kalkulyatori: laboratoriyangiz SOP’i va me’yor oraliqlari hal qiladi. "
+                   "Hisoblangan osmolyallik o‘lchangan osmolyallik emas.",
+                   "Ekrandagi kalkulyator qiymatlari namunaviy; video farqni ham, boshqa qiymatni ham talqin "
+                   "qilmaydi.",
+                   "Ilovadagi kartaning o‘zi hali mutaxassis tomonidan tekshirilmagan deb belgilangan."],
         },
         ig={
-            "en": ["Dissolved particles lower the freezing point — that is how a freezing-point osmometer measures osmolality.",
-                   "A schematic walk-through: supercooling, freezing, the plateau, and what can distort the result.",
-                   "Osmometer reference card and an osmolality calculator in LabGuide (calculated from your inputs; "
-                   "it measures nothing)."],
-            "ru": ["Растворённые частицы понижают точку замерзания — так криоскопический осмометр измеряет осмоляльность.",
-                   "Схематичный разбор: переохлаждение, замерзание, плато и что может исказить результат.",
-                   "Карточка осмометра и калькулятор осмоляльности в LabGuide (считает по вашим данным; ничего "
-                   "не измеряет)."],
-            "uz": ["Erigan zarralar muzlash nuqtasini pasaytiradi — osmometr osmolyallikni shunday o‘lchaydi.",
-                   "Sxemali tahlil: o‘ta sovutish, muzlash, plato va natijani nima buzishi mumkin.",
-                   "LabGuide’da osmometr kartasi va osmolyallik kalkulyatori (siz kiritganlardan hisoblaydi; "
-                   "hech narsani o‘lchamaydi)."],
+            "en": ["Two samples freeze — and one plateau sits lower. Why?",
+                   "A schematic walk-through in under 80 seconds: the five parts of a freezing-point osmometer, "
+                   "supercooling, the stirring wire, the plateau, osmolality per kilogram of water versus osmolarity "
+                   "per litre — and what distorts the reading.",
+                   "Osmometer reference card and the Calculated osmolality calculator in LabGuide. Measured or "
+                   "calculated — know which number you read."],
+            "ru": ["Две пробы замерзают — одно плато ниже. Почему?",
+                   "Схематичный разбор меньше чем за 80 секунд: пять частей криоскопического осмометра, "
+                   "переохлаждение, мешалка, плато, осмоляльность на килограмм воды и осмолярность на литр — и что "
+                   "искажает результат.",
+                   "Карточка осмометра и калькулятор «Расчётная осмоляльность» в LabGuide. Измерено или рассчитано — "
+                   "знайте, что вы читаете."],
+            "uz": ["Ikki namuna muzlaydi — bir plato pastroq. Nega?",
+                   "Sxemali tahlil 80 soniyadan kamroq vaqtda: muzlash nuqtasi osmometrining beshta qismi, o‘ta "
+                   "sovitish, sim, plato, suv kilogrammiga osmolyallik va litrga osmolyarlik — hamda natijani nima "
+                   "buzadi.",
+                   "LabGuide’da osmometr kartasi va «Hisoblangan osmolyallik» kalkulyatori. O‘lchangan yoki "
+                   "hisoblangan — qaysini o‘qiyotganingizni biling."],
         },
         pinned={
-            "en": ("Notes: this is a schematic general-principle video, not a method protocol. A calculated osmolality "
-                   "is not a measured one, and neither is interpreted here. Narration is English synthetic speech. The "
-                   "content is awaiting expert review — corrections are welcome."),
-            "ru": ("Заметки: это схематичное видео об общем принципе, а не протокол метода. Расчётная осмоляльность — "
-                   "не измеренная, и ни одна из них здесь не интерпретируется. Озвучка — синтезированная английская "
-                   "речь. Материал ждёт экспертной проверки, поправки приветствуются."),
-            "uz": ("Eslatma: bu umumiy tamoyil haqidagi sxematik video, metod protokoli emas. Hisoblangan osmolyallik "
-                   "o‘lchangan emas va bu yerda ikkalasi ham talqin qilinmaydi. Diktor ovozi — sun’iy inglizcha "
-                   "nutq. Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun rahmat."),
+            "en": ("Notes: this is a schematic general-principle video, not a method protocol. Curves and calculator "
+                   "inputs are illustrative. A calculated osmolality is not a measured one, and the video interprets "
+                   "neither; your laboratory’s SOP and reference intervals decide. Narration is English synthetic "
+                   "speech. The content is awaiting expert review — corrections are welcome."),
+            "ru": ("Заметки: это схематичное видео об общем принципе, а не протокол метода. Кривые и вводимые в "
+                   "калькулятор значения иллюстративные. Расчётная осмоляльность — не измеренная, и видео не "
+                   "интерпретирует ни ту, ни другую; решают СОП и референтные интервалы вашей лаборатории. Озвучка — "
+                   "синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются."),
+            "uz": ("Eslatma: bu umumiy tamoyil haqidagi sxematik video, metod protokoli emas. Egri chiziqlar va "
+                   "kalkulyatorga kiritilgan qiymatlar namunaviy. Hisoblangan osmolyallik o‘lchangan emas va video "
+                   "ikkalasini ham talqin qilmaydi; laboratoriyangiz SOP’i va me’yor oraliqlari hal qiladi. Diktor "
+                   "ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun "
+                   "rahmat."),
         },
         keywords={
             "en": ["osmometry", "osmometer", "osmolality", "freezing point depression", "supercooling",
-                   "clinical chemistry", "laboratory instruments", "LabGuide"],
+                   "osmolal gap", "calculated osmolality", "clinical chemistry", "laboratory instruments", "LabGuide"],
             "ru": ["осмометрия", "осмометр", "осмоляльность", "криоскопия", "понижение точки замерзания",
-                   "клиническая лаборатория", "лаборант"],
-            "uz": ["osmometriya", "osmometr", "osmolyallik", "muzlash nuqtasi pasayishi", "klinik laboratoriya",
-                   "laborant"],
+                   "осмоляльный зазор", "клиническая лаборатория", "лаборант"],
+            "uz": ["osmometriya", "osmometr", "osmolyallik", "muzlash nuqtasi pasayishi", "osmolyal farq",
+                   "klinik laboratoriya", "laborant"],
         },
         hashtags_topic={
             "en": ["#Osmometry", "#Osmolality", "#Osmometer", "#ClinicalChemistry", "#FreezingPoint",
@@ -973,126 +1286,224 @@ TOPICS = [
             "uz": ["#osmometriya", "#osmolyallik", "#osmometr", "#biokimyo", "#muzlashnuqtasi",
                    "#laboratoriyaapparatlari", "#laboratoriyatahlili"],
         },
-        thumb_alt=None,
-        chapters=None,
+        thumb_alt={
+            "en": "LabGuide logo, the title “Osmometry” with the subtitle “Freezing point → osmolality”, a "
+                  "temperature-versus-time chart with two freezing curves A and B whose plateaus sit below a dashed "
+                  "“pure water” line, a small schematic of a freezing-point osmometer with five numbered parts, and "
+                  "the notice “Illustrative curves — not a real sample or result”.",
+            "ru": "Логотип LabGuide, заголовок «Осмометрия» с подзаголовком «Точка замерзания → осмоляльность», "
+                  "график температуры от времени с двумя кривыми замерзания A и B, плато которых лежат ниже "
+                  "пунктирной линии «чистая вода», небольшая схема криоскопического осмометра с пятью "
+                  "пронумерованными частями и пометка «Иллюстративные кривые — не реальная проба».",
+            "uz": "LabGuide logotipi, «Osmometriya» sarlavhasi va «Muzlash nuqtasi → osmolyallik» sarlavha osti, "
+                  "harorat–vaqt grafigida A va B ikkita muzlash egri chizig‘i — ularning platolari «toza suv» "
+                  "punktir chizig‘idan pastda — beshta raqamlangan qismli muzlash nuqtasi osmometrining kichik "
+                  "sxemasi hamda «Namunaviy egri chiziqlar — haqiqiy namuna emas» belgisi.",
+        },
+        chapters=[
+            ("hook", T("Why one plateau sits lower, and the osmometer’s parts",
+                       "Почему одно плато ниже, и части осмометра",
+                       "Nega bir plato pastroq va osmometr qismlari")),
+            ("freeze", T("The freezing curve", "Кривая замерзания", "Muzlash egri chizig‘i")),
+            ("result", T("From depression to osmolality: per kg, per litre",
+                         "От понижения к осмоляльности: на кг и на литр",
+                         "Pasayishdan osmolyallikka: kg ga va litrga")),
+            ("app_card", T("In LabGuide: the osmometer card", "В LabGuide: карточка осмометра",
+                           "LabGuide’da: osmometr kartasi")),
+            ("app_limits", T("What distorts the reading", "Что искажает результат", "Natijani nima buzadi")),
+            ("app_calc", T("Calculated osmolality and the osmolal gap", "Расчётная осмоляльность и осмоляльный зазор",
+                           "Hisoblangan osmolyallik va osmolyal farq")),
+        ],
         sources=[],
-        evidence=["docs/video/osmometry/CLAIMS_AND_EVIDENCE.md (when it exists)",
+        evidence=["docs/video/osmometry/CLAIMS_AND_EVIDENCE.md", "docs/video/osmometry/DESCRIPTION.md",
+                  "docs/video/osmometry/QA.md",
                   "docs/video/lessons/24_osmometer.md", "assets/instruments/catalog.json lab card a3-bio-osmometer",
                   "docs/VIDEO_FEATURE_INVENTORY.md §1 (calculators: osmolality)"],
         next=["calculators", "photometry"],
         paid=None,
-        internal=["Drafted from lesson 24, the lab-card facts and the calculator list. If the final video does not show "
-                  "the osmolality calculator, delete the second app bullet and the last IG line. The app's lab card is itself flagged NEEDS_REVIEW (expert_reviewed=false, docs/lab_cards_status.json) and says so: do not call it \"verified\" or \"reviewed\"."],
+        internal=["Copy checked against lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of the rendered "
+                  "video (78.2 s). The video shows the osmolality calculator, so its bullet stays. Open expert items: "
+                  "O6 (principle-level wording supercooling → stirring wire → plateau, NEEDS_EXPERT) and every "
+                  "STANDARD_TEXTBOOK row.",
+                  "Deliberately not said (kept out of the copy too): the 1.86 °C per osmol/kg constant, reference "
+                  "intervals, any meaning of a normal or abnormal gap, sample volume. The app's lab card is itself "
+                  "flagged NEEDS_REVIEW (expert_reviewed=false, docs/lab_cards_status.json) and says so: do not call "
+                  "it \"verified\" or \"reviewed\"."],
     ),
     # ------------------------------------------------------------------ 8. calculators
     dict(
-        id="calculators", order=8, tier="free", verified=False,
+        id="calculators", order=8, tier="free", verified=True,
         path=T("Lab → Calculators", "Лаб. → Калькуляторы", "Lab → Kalkulyatorlar"),
         title=T(
-            "Lab Calculators in LabGuide: eGFR, Anion Gap, Dilution and More",
-            "Калькуляторы LabGuide: СКФ, анионный интервал, разведение и другие",
-            "LabGuide kalkulyatorlari: eGFR, anion oralig‘i va suyultirish",
+            "Lab Calculators in LabGuide: eGFR, Input Checks and Dilution",
+            "Калькуляторы LabGuide: рСКФ, проверки ввода и разведение",
+            "LabGuide kalkulyatorlari: eGFR, kiritish tekshiruvlari, suyultirish",
         ),
         hook={
-            "en": ("Enter the values, get the result — with the formula, the limits and the source shown.",
-                   "A quick tour of the calculators in LabGuide."),
-            "ru": ("Введите значения — получите результат, с формулой, ограничениями и источником.",
-                   "Быстрый обзор калькуляторов LabGuide."),
-            "uz": ("Qiymatlarni kiriting — natijani oling, formula, cheklovlar va manba bilan.",
-                   "LabGuide kalkulyatorlariga tezkor sayohat."),
+            "en": ("Creatinine 88, age 45, male: what is the eGFR?",
+                   "By hand it is a long formula — and one unit slip changes the answer. A tour of LabGuide’s calculators in about a minute."),
+            "ru": ("Креатинин 88, возраст 45, мужчина: какая рСКФ?",
+                   "Вручную — длинная формула, и одна ошибка в единицах меняет ответ. Обзор калькуляторов LabGuide — примерно за минуту."),
+            "uz": ("Kreatinin 88, yosh 45, erkak: eGFR qancha?",
+                   "Qo‘lda — uzun formula, birlikdagi bitta xato javobni o‘zgartiradi. LabGuide kalkulyatorlari — taxminan bir daqiqada."),
         },
         shows={
-            "en": ["Where the calculators live in LabGuide and how to open one.",
-                   "Entering values, choosing SI or conventional units, and reading the result next to its formula, "
-                   "limitations and source.",
-                   "Examples such as eGFR, anion gap, corrected calcium, dilution and the bench calculators (illustrative inputs)."],
-            "ru": ["Где в LabGuide находятся калькуляторы и как открыть нужный.",
-                   "Ввод значений, выбор единиц СИ или традиционных и чтение результата рядом с формулой, "
-                   "ограничениями и источником.",
-                   "Примеры: СКФ, анионный интервал, скорректированный кальций, разведение и лабораторные "
-                   "калькуляторы (иллюстративные данные)."],
-            "uz": ["LabGuide’da kalkulyatorlar qayerda va qanday ochiladi.",
-                   "Qiymatlarni kiritish, SI yoki an’anaviy birliklarni tanlash va natijani formula, cheklovlar va "
-                   "manba yonida o‘qish.",
-                   "Misollar: eGFR, anion oralig‘i, tuzatilgan kalsiy, suyultirish va laboratoriya kalkulyatorlari "
-                   "(namunaviy kiritishlar)."],
+            "en": ["The question: creatinine 88 µmol/L, age 45, male — what is the eGFR? The app’s own CKD-EPI 2021 "
+                   "formula text, and why units matter (creatinine in mg/dL: µmol/L ÷ 88.4).",
+                   "Where the calculators are — Lab → Calculators — seventeen of them: clinical formulas, manual "
+                   "methods and laboratory tools; “How to use?” shows the steps in the app.",
+                   "An eGFR walkthrough on real app screens (illustrative inputs): the fields start empty, a missing "
+                   "sex is asked for before calculating, the result shows its KDIGO category and the values you "
+                   "entered, and below it the formula, its limitations and the sources.",
+                   "Input checks: under 18 eGFR is refused because the equation was built on adults; a glucose of 90 "
+                   "in mmol/L gets a unit check.",
+                   "SI or conventional units, chosen once in Profile; bench tools such as dilution, C₁V₁ = C₂V₂, from "
+                   "your own numbers."],
+            "ru": ["Вопрос: креатинин 88 мкмоль/л, возраст 45, мужчина — какая рСКФ? Формула в том виде, как её "
+                   "показывает приложение (CKD-EPI 2021), и почему важны единицы (креатинин в мг/дл: мкмоль/л ÷ 88,4).",
+                   "Где находятся калькуляторы — Лаб. → Калькуляторы — их семнадцать: клинические формулы, ручные "
+                   "методы и лабораторные инструменты; «Как пользоваться?» показывает шаги в приложении.",
+                   "Разбор рСКФ на реальных экранах приложения (примерные значения): поля пустые, если не выбран "
+                   "пол, приложение спрашивает до расчёта, результат — с категорией KDIGO и введёнными "
+                   "значениями, ниже — формула, ограничения и источники.",
+                   "Проверки ввода: до 18 лет рСКФ не считается, потому что уравнение создано на взрослых; глюкоза "
+                   "90 в ммоль/л вызывает проверку единиц.",
+                   "Единицы СИ или обычные — выбираются один раз в профиле; лабораторные инструменты, например "
+                   "разведение, C₁V₁ = C₂V₂, по вашим числам."],
+            "uz": ["Savol: kreatinin 88 µmol/L, yosh 45, erkak — eGFR qancha? Formula ilova ko‘rsatganidek "
+                   "(CKD-EPI 2021) va nega birliklar muhim (kreatinin mg/dL da: µmol/L ÷ 88,4).",
+                   "Kalkulyatorlar qayerda — Lab → Kalkulyatorlar — ular o‘n yettita: klinik formulalar, qo‘lda "
+                   "usullar va laboratoriya vositalari; «Qanday foydalaniladi?» qadamlarni ilovaning o‘zida "
+                   "ko‘rsatadi.",
+                   "eGFR ni ilovaning haqiqiy ekranlarida ko‘rib chiqish (namunaviy qiymatlar): maydonlar bo‘sh, "
+                   "jins tanlanmasa hisoblashdan oldin so‘raydi, natija KDIGO toifasi va kiritilgan qiymatlar bilan, "
+                   "pastda — formula, cheklovlar va manbalar.",
+                   "Kiritish tekshiruvlari: 18 yoshdan kichikka eGFR hisoblanmaydi, chunki tenglama kattalarda "
+                   "tuzilgan; mmol/L da kiritilgan glyukoza 90 birlik tekshiruvini chiqaradi.",
+                   "SI yoki an’anaviy birliklar — profilda bir marta tanlanadi; laboratoriya vositalari, masalan "
+                   "suyultirish, C₁V₁ = C₂V₂, o‘z sonlaringizdan."],
         },
         app={
-            "en": ["Calculators compute only from the values you enter; each shows its formula, limitations and source.",
-                   "Units: SI (mmol/L, µmol/L) or conventional (mg/dL), chosen in Profile.",
-                   "LabGuide does not interpret results, make a diagnosis or suggest drug doses. Works offline and "
-                   "without an account."],
-            "ru": ["Калькуляторы считают только по введённым вами значениям; у каждого есть формула, ограничения и источник.",
-                   "Единицы: СИ (ммоль/л, мкмоль/л) или традиционные (мг/дл) — выбираются в Профиле.",
-                   "LabGuide не интерпретирует результаты, не ставит диагноз и не предлагает дозы препаратов. "
-                   "Работает без интернета и без аккаунта."],
-            "uz": ["Kalkulyatorlar faqat siz kiritgan qiymatlardan hisoblaydi; har birida formula, cheklovlar va manba bor.",
-                   "Birliklar: SI (mmol/L, µmol/L) yoki an’anaviy (mg/dL) — Profilda tanlanadi.",
-                   "LabGuide natijalarni talqin qilmaydi, tashxis qo‘ymaydi va dori dozasini taklif qilmaydi. "
-                   "Internetsiz va hisobsiz ishlaydi."],
+            "en": ["Calculators compute only from the values you enter (the fields start empty); each shows its "
+                   "formula, limitations and sources.",
+                   "Units: SI or conventional, chosen once in Profile.",
+                   "It calculates — you interpret: a learning and checking aid; it does not diagnose, and your "
+                   "laboratory’s reference intervals decide."],
+            "ru": ["Калькуляторы считают только по введённым вами значениям (поля пустые); у каждого есть формула, "
+                   "ограничения и источники.",
+                   "Единицы: СИ или обычные — выбираются один раз в профиле.",
+                   "Он считает — толкуете вы: вспомогательный расчёт для обучения и проверки; диагноз он не ставит, "
+                   "решают референтные интервалы вашей лаборатории."],
+            "uz": ["Kalkulyatorlar faqat siz kiritgan qiymatlardan hisoblaydi (maydonlar bo‘sh); har birida formula, "
+                   "cheklovlar va manbalar bor.",
+                   "Birliklar: SI yoki an’anaviy — profilda bir marta tanlanadi.",
+                   "U hisoblaydi — talqin sizniki: o‘rganish va tekshirish vositasi; tashxis qo‘ymaydi, "
+                   "laboratoriyangizning me’yor oraliqlari hal qiladi."],
         },
         limits={
-            "en": ["All inputs in the video are illustrative, not patient data.",
-                   "A calculated value is only as good as the inputs and the formula’s limits; reference intervals come "
-                   "from your laboratory."],
-            "ru": ["Все вводимые в видео значения иллюстративные, это не данные пациентов.",
-                   "Расчётное значение настолько хорошо, насколько хороши входные данные и пределы применимости "
-                   "формулы; референтные интервалы — из вашей лаборатории."],
-            "uz": ["Videodagi barcha kiritishlar namunaviy, bemor ma’lumoti emas.",
-                   "Hisoblangan qiymat kiritilgan ma’lumot va formula chegaralari qanchalik yaxshi bo‘lsa, shunchalik "
-                   "ishonchli; me’yor oraliqlari laboratoriyangizdan olinadi."],
+            "en": ["All inputs in the video are illustrative, not patient data; every result on screen is computed by "
+                   "the app.",
+                   "The video does not interpret any result (for example, what a KDIGO category means for a patient).",
+                   "The list has 17 rows; one of them explains rather than calculates."],
+            "ru": ["Все вводимые в видео значения иллюстративные, это не данные пациентов; каждый результат на экране "
+                   "считает приложение.",
+                   "Видео не интерпретирует ни один результат (например, что категория KDIGO значит для пациента).",
+                   "В списке 17 строк; одна из них объясняет, а не считает."],
+            "uz": ["Videodagi barcha kiritishlar namunaviy, bemor ma’lumoti emas; ekrandagi har bir natijani ilova "
+                   "hisoblaydi.",
+                   "Video hech bir natijani talqin qilmaydi (masalan, KDIGO toifasi bemor uchun nimani anglatishini).",
+                   "Ro‘yxatda 17 qator bor; ulardan biri hisoblamaydi, tushuntiradi."],
         },
         ig={
-            "en": ["Enter the values, get the result — with the formula, the limits and the source shown.",
-                   "A quick tour of the calculators in LabGuide: from eGFR and anion gap to dilution and the bench "
-                   "calculators, in SI or conventional units, offline.",
-                   "They compute only from what you enter and don’t interpret results. Find them in Lab → Calculators."],
-            "ru": ["Введите значения — получите результат, с формулой, ограничениями и источником.",
-                   "Быстрый обзор калькуляторов LabGuide: от СКФ и анионного интервала до разведения и лабораторных "
-                   "калькуляторов, в единицах СИ или традиционных, без интернета.",
-                   "Они считают только по введённым данным и не интерпретируют результаты. Раздел: Лаб. → Калькуляторы."],
-            "uz": ["Qiymatlarni kiriting — natijani oling, formula, cheklovlar va manba bilan.",
-                   "LabGuide kalkulyatorlariga tezkor sayohat: eGFR va anion oralig‘idan suyultirish va laboratoriya "
-                   "kalkulyatorlarigacha, SI yoki an’anaviy birliklarda, internetsiz.",
-                   "Ular faqat siz kiritganlardan hisoblaydi va natijalarni talqin qilmaydi. Bo‘lim: Lab → Kalkulyatorlar."],
+            "en": ["Creatinine 88, age 45, male: what is the eGFR?",
+                   "A tour of LabGuide’s calculators in about a minute: eGFR from creatinine, age and sex on real app "
+                   "screens — empty fields, input checks, the KDIGO category, the formula, limitations and sources — "
+                   "then SI or conventional units and bench tools like dilution (illustrative inputs).",
+                   "It calculates — you interpret. A learning and checking aid; it doesn’t diagnose. Find it in "
+                   "Lab → Calculators."],
+            "ru": ["Креатинин 88, возраст 45, мужчина: какая рСКФ?",
+                   "Обзор калькуляторов LabGuide примерно за минуту: рСКФ по креатинину, возрасту и полу на реальных "
+                   "экранах — пустые поля, проверки ввода, категория KDIGO, формула, ограничения и источники — затем "
+                   "единицы СИ или обычные и лабораторные инструменты вроде разведения (примерные значения).",
+                   "Он считает — толкуете вы. Вспомогательный расчёт для обучения и проверки; диагноз не ставит. "
+                   "Раздел: Лаб. → Калькуляторы."],
+            "uz": ["Kreatinin 88, yosh 45, erkak: eGFR qancha?",
+                   "LabGuide kalkulyatorlariga taxminan bir daqiqalik sayohat: kreatinin, yosh va jinsdan eGFR "
+                   "ilovaning haqiqiy ekranlarida — bo‘sh maydonlar, kiritish tekshiruvlari, KDIGO toifasi, formula, "
+                   "cheklovlar va manbalar — so‘ng SI yoki an’anaviy birliklar va suyultirish kabi laboratoriya "
+                   "vositalari (namunaviy qiymatlar).",
+                   "U hisoblaydi — talqin sizniki. O‘rganish va tekshirish vositasi; tashxis qo‘ymaydi. Bo‘lim: "
+                   "Lab → Kalkulyatorlar."],
         },
         pinned={
-            "en": ("Notes: all inputs in this video are illustrative, not patient data. Calculators do not interpret "
-                   "results; reference intervals come from your laboratory. Narration is English synthetic speech. The "
-                   "content is awaiting expert review — corrections are welcome. Which calculator is missing for you?"),
-            "ru": ("Заметки: все вводимые в видео значения иллюстративные, это не данные пациентов. Калькуляторы не "
-                   "интерпретируют результаты; референтные интервалы берут из вашей лаборатории. Озвучка — "
-                   "синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются. "
-                   "Какого калькулятора вам не хватает?"),
-            "uz": ("Eslatma: videodagi barcha kiritishlar namunaviy, bemor ma’lumoti emas. Kalkulyatorlar natijalarni "
-                   "talqin qilmaydi; me’yor oraliqlari laboratoriyangizdan olinadi. Diktor ovozi — sun’iy inglizcha "
-                   "nutq. Material mutaxassis ko‘rigini kutmoqda. Sizga qaysi kalkulyator yetishmaydi?"),
+            "en": ("Notes: all inputs in this video are illustrative, not patient data, and every result shown is "
+                   "computed by the app. Calculators do not interpret results; your laboratory’s reference intervals "
+                   "decide. Narration is English synthetic speech. The content is awaiting expert review — "
+                   "corrections are welcome. Which calculator is missing for you?"),
+            "ru": ("Заметки: все вводимые в видео значения иллюстративные, это не данные пациентов, а каждый "
+                   "показанный результат считает приложение. Калькуляторы не интерпретируют результаты; решают "
+                   "референтные интервалы вашей лаборатории. Озвучка — синтезированная английская речь. Материал "
+                   "ждёт экспертной проверки, поправки приветствуются. Какого калькулятора вам не хватает?"),
+            "uz": ("Eslatma: videodagi barcha kiritishlar namunaviy, bemor ma’lumoti emas, ko‘rsatilgan har bir "
+                   "natijani ilova hisoblaydi. Kalkulyatorlar natijalarni talqin qilmaydi; laboratoriyangizning "
+                   "me’yor oraliqlari hal qiladi. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis "
+                   "ko‘rigini kutmoqda. Sizga qaysi kalkulyator yetishmaydi?"),
         },
         keywords={
-            "en": ["lab calculators", "clinical calculators", "eGFR calculator", "anion gap", "corrected calcium",
-                   "dilution calculator", "unit converter", "SI units", "clinical chemistry", "LabGuide"],
-            "ru": ["лабораторные калькуляторы", "клинические калькуляторы", "СКФ", "анионный интервал",
-                   "скорректированный кальций", "разведение", "лаборант"],
-            "uz": ["laboratoriya kalkulyatorlari", "klinik kalkulyatorlar", "eGFR", "anion oralig‘i",
-                   "tuzatilgan kalsiy", "suyultirish", "laborant"],
+            "en": ["lab calculators", "clinical calculators", "eGFR calculator", "CKD-EPI 2021", "KDIGO",
+                   "dilution calculator", "unit check", "SI units", "clinical chemistry", "LabGuide"],
+            "ru": ["лабораторные калькуляторы", "клинические калькуляторы", "рСКФ", "СКФ", "CKD-EPI 2021", "KDIGO",
+                   "разведение", "лаборант"],
+            "uz": ["laboratoriya kalkulyatorlari", "klinik kalkulyatorlar", "eGFR", "CKD-EPI 2021", "KDIGO",
+                   "suyultirish", "laborant"],
         },
         hashtags_topic={
-            "en": ["#eGFR", "#AnionGap", "#LabCalculator", "#ClinicalChemistry", "#Dilution", "#SIUnits",
-                   "#LabMath"],
-            "ru": ["#СКФ", "#анионныйинтервал", "#калькулятор", "#биохимия", "#разведение", "#единицыСИ",
-                   "#лабораторныйрасчёт"],
-            "uz": ["#eGFR", "#anionoraligi", "#kalkulyator", "#biokimyo", "#suyultirish", "#SIbirliklari",
-                   "#laboratoriyahisobi"],
+            "en": ["#eGFR", "#Creatinine", "#LabCalculator", "#ClinicalChemistry", "#Dilution", "#SIUnits",
+                   "#KDIGO"],
+            "ru": ["#рСКФ", "#креатинин", "#калькулятор", "#биохимия", "#разведение", "#единицыСИ",
+                   "#KDIGO"],
+            "uz": ["#eGFR", "#kreatinin", "#kalkulyator", "#biokimyo", "#suyultirish", "#SIbirliklari",
+                   "#KDIGO"],
         },
-        thumb_alt=None,
-        chapters=None,
+        thumb_alt={
+            "en": "LabGuide logo, the title “Lab calculators” with the subtitle “Formula, limits, source”, a card with "
+                  "the app’s eGFR formula (CKD-EPI 2021), a phone screen showing an eGFR result with its KDIGO "
+                  "category, the entered values, the formula and its limitations, and the notice “Real app screens · "
+                  "illustrative values”.",
+            "ru": "Логотип LabGuide, заголовок «Калькуляторы» с подзаголовком «Формула, ограничения, источник», "
+                  "карточка с формулой рСКФ из приложения (CKD-EPI 2021), экран телефона с результатом рСКФ, "
+                  "категорией KDIGO, введёнными значениями, формулой и ограничениями и пометка «Реальные экраны · "
+                  "примерные значения».",
+            "uz": "LabGuide logotipi, «Kalkulyatorlar» sarlavhasi va «Formula, cheklov, manba» sarlavha osti, "
+                  "ilovadagi eGFR formulasi kartasi (CKD-EPI 2021), eGFR natijasi, KDIGO toifasi, kiritilgan "
+                  "qiymatlar, formula va cheklovlar ko‘rsatilgan telefon ekrani hamda «Haqiqiy ekranlar · namunaviy "
+                  "qiymatlar» belgisi.",
+        },
+        chapters=[
+            ("hook", T("eGFR by hand, and where the calculators are", "рСКФ вручную и где находятся калькуляторы",
+                       "eGFR qo‘lda va kalkulyatorlar qayerda")),
+            ("app_howto", T("“How to use?” and the eGFR form", "«Как пользоваться?» и форма рСКФ",
+                            "«Qanday foydalaniladi?» va eGFR shakli")),
+            ("app_refs", T("Formula, limitations, sources and input checks",
+                           "Формула, ограничения, источники и проверки ввода",
+                           "Formula, cheklovlar, manbalar va kiritish tekshiruvlari")),
+            ("app_units", T("Units in Profile and the dilution tool", "Единицы в профиле и разведение",
+                            "Profildagi birliklar va suyultirish")),
+        ],
         sources=[],
-        evidence=["docs/video/calculators/CLAIMS_AND_EVIDENCE.md (when it exists)", "docs/video/04_kalkulyatorlar.md",
-                  "docs/VIDEO_FEATURE_INVENTORY.md §1 (calculators)", "docs/store/APP_STORE.md §4 (description)"],
+        evidence=["docs/video/calculators/CLAIMS_AND_EVIDENCE.md", "docs/video/calculators/DESCRIPTION.md",
+                  "docs/video/calculators/QA.md", "docs/video/04_kalkulyatorlar.md",
+                  "docs/VIDEO_FEATURE_INVENTORY.md §1 (calculators)"],
         next=["osmometry", "leukocyte"],
         paid=None,
-        internal=["Free today. Do not state a number of calculators unless the video does and the count was re-checked "
-                  "in the build being advertised (the inventory counted 17 on 2026-10-25)."],
+        internal=["Free today. Copy checked against lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of "
+                  "the rendered video (64.0 s). The video is an eGFR walkthrough plus a unit check, a dilution tool "
+                  "and the units setting: anion gap and corrected calcium are NOT in the video, so the copy no longer "
+                  "names them.",
+                  "\"Seventeen\" is the number of rows in the calculators list (inventory count 2026-10-25; K4): one "
+                  "row (colour index) explains why the app recommends MCH/MCHC instead of calculating. Re-check the "
+                  "count in the build being advertised.",
+                  "RU uses «рСКФ» as in the video; «СКФ» stays as a search keyword and in older tags."],
     ),
     # ------------------------------------------------------------------ 9. exam_simulation (paid)
     dict(

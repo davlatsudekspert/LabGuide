@@ -5,7 +5,7 @@
 > **PROPOSAL — needs the owner's approval. Nothing is published, uploaded or scheduled by us.**
 > **Unreviewed-science rule:** every video is EXPERT_REVIEW_PENDING. The owner decides when (and whether) to publish, after the expert review and the other gates below. Weeks are relative: week 1 starts when the owner approves the first topic. A slot whose topic has an open gate is skipped and the next ready topic moves up.
 
-Status below = state of the rendered files when this file was generated (2026-10-25).
+Status below = state of the rendered files when this file was generated (2026-10-26).
 
 ## 1. Cadence
 
@@ -26,12 +26,12 @@ Lower-intensity option: one slot per week (the 11 topics then take 11 weeks); or
 |---|---|---|---|---|---|---|
 | 1 | A | `calibration` — How Photometric Calibration Works — and How LabGuide Logs It | free | **READY** | G1–G6 | Flagship 1. Rendered. |
 | 1 | B | `leukocyte` — Leukocyte Differential Count: Cell Types and a Tally in LabGuide | free | **READY** | G1–G6 | Flagship 2. Rendered. |
-| 2 | A | `qc` — Levey–Jennings Charts and Westgard Rules in LabGuide QC | free | **NOT READY** | G1–G6 | Pairs with calibration (both are 'documenting quality'). |
-| 2 | B | `photometry` — Photometry Basics: Blank, Standard, Sample and the Linearity Limit | free | **NOT READY** | G1–G6 | Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol. |
-| 3 | A | `calculators` — Lab Calculators in LabGuide: eGFR, Anion Gap, Dilution and More | free | **NOT READY** | G1–G6 | Broad, practical; good for sharing. |
-| 3 | B | `osmometry` — Osmometry Explained: Freezing-Point Osmometer and Osmolality | free | **NOT READY** | G1–G6 | Schematic topic; links to the osmolality calculator. |
-| 4 | A | `gc_ms` — GC-MS Explained: From Injector to Mass Spectrum (Schematic) | free | **NOT READY** | G1–G6 | Schematic topic (toxicology direction). |
-| 4 | B | `real_time_pcr` — Real-Time PCR Explained: Thermal Cycler, Fluorescence, Cq | free | **NOT READY** | G1–G6 | Schematic topic (molecular direction). |
+| 2 | A | `qc` — Levey–Jennings Charts and Westgard Rules in LabGuide QC | free | **READY** | G1–G6 | Pairs with calibration (both are 'documenting quality'). |
+| 2 | B | `photometry` — Photometry Basics: Blank, Standard, Sample and the Linearity Limit | free | **READY** | G1–G6 | Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol. |
+| 3 | A | `calculators` — Lab Calculators in LabGuide: eGFR, Input Checks and Dilution | free | **READY** | G1–G6 | Broad, practical; good for sharing. |
+| 3 | B | `osmometry` — Osmometry Explained: Freezing-Point Osmometer and Osmolality | free | **READY** | G1–G6 | Schematic topic; links to the osmolality calculator. |
+| 4 | A | `gcms` — GC-MS Explained: From Injector to Mass Spectrum (Schematic) | free | **READY** | G1–G6 | Schematic topic (toxicology direction). |
+| 4 | B | `qpcr` — Real-Time PCR Explained: Thermal Cycler, Fluorescence, Cq | free | **READY** | G1–G6 | Schematic topic (molecular direction). |
 | 5 | A | `exam_simulation` — Exam-Style Practice in LabGuide: Timed, Balanced, No Going Back | paid | **NOT READY** | G1–G6 + GP | PAID topic: only when the paid build is live (gate GP). |
 | 5 | B | `teacher_pro` — Teacher Pro in LabGuide: Build a Test, Assign It, Review Results | paid | **NOT READY** | G1–G6 + GP | PAID topic: only when the paid build and server are live (gate GP). |
 | 6 | A | `premium_overview` — LabGuide Plans: What Stays Free, What Pro and Premium Add | paid | **NOT READY** | G1–G6 + GP | PAID topic: last, only when the paid build is live (gate GP). |
@@ -55,42 +55,42 @@ Gates: **G1** expert science review; **G2** listening review of the voice; **G3*
 | 1 | Fri | Instagram | `leukocyte` | uz | 9:16 Reel, 1080×1920 | `leukocyte_uz_vertical.mp4` | READY |
 | 1 | Sat | Instagram | `leukocyte` | ru | 9:16 Reel, 1080×1920 | `leukocyte_ru_vertical.mp4` | READY |
 | 1 | Sun | Instagram | `leukocyte` | en | 9:16 Reel, 1080×1920 | `leukocyte_en_vertical.mp4` | READY |
-| 2 | Mon | YouTube | `qc` | uz | 16:9 long-form, 1920×1080 | `qc_uz_horizontal.mp4` | NOT READY |
-| 2 | Mon | YouTube | `qc` | ru | 16:9 long-form, 1920×1080 | `qc_ru_horizontal.mp4` | NOT READY |
-| 2 | Mon | YouTube | `qc` | en | 16:9 long-form, 1920×1080 | `qc_en_horizontal.mp4` | NOT READY |
-| 2 | Tue | Instagram | `qc` | uz | 9:16 Reel, 1080×1920 | `qc_uz_vertical.mp4` | NOT READY |
-| 2 | Wed | Instagram | `qc` | ru | 9:16 Reel, 1080×1920 | `qc_ru_vertical.mp4` | NOT READY |
-| 2 | Wed | Instagram | `qc` | en | 9:16 Reel, 1080×1920 | `qc_en_vertical.mp4` | NOT READY |
-| 2 | Thu | YouTube | `photometry` | uz | 16:9 long-form, 1920×1080 | `photometry_uz_horizontal.mp4` | NOT READY |
-| 2 | Thu | YouTube | `photometry` | ru | 16:9 long-form, 1920×1080 | `photometry_ru_horizontal.mp4` | NOT READY |
-| 2 | Thu | YouTube | `photometry` | en | 16:9 long-form, 1920×1080 | `photometry_en_horizontal.mp4` | NOT READY |
-| 2 | Fri | Instagram | `photometry` | uz | 9:16 Reel, 1080×1920 | `photometry_uz_vertical.mp4` | NOT READY |
-| 2 | Sat | Instagram | `photometry` | ru | 9:16 Reel, 1080×1920 | `photometry_ru_vertical.mp4` | NOT READY |
-| 2 | Sun | Instagram | `photometry` | en | 9:16 Reel, 1080×1920 | `photometry_en_vertical.mp4` | NOT READY |
-| 3 | Mon | YouTube | `calculators` | uz | 16:9 long-form, 1920×1080 | `calculators_uz_horizontal.mp4` | NOT READY |
-| 3 | Mon | YouTube | `calculators` | ru | 16:9 long-form, 1920×1080 | `calculators_ru_horizontal.mp4` | NOT READY |
-| 3 | Mon | YouTube | `calculators` | en | 16:9 long-form, 1920×1080 | `calculators_en_horizontal.mp4` | NOT READY |
-| 3 | Tue | Instagram | `calculators` | uz | 9:16 Reel, 1080×1920 | `calculators_uz_vertical.mp4` | NOT READY |
-| 3 | Wed | Instagram | `calculators` | ru | 9:16 Reel, 1080×1920 | `calculators_ru_vertical.mp4` | NOT READY |
-| 3 | Wed | Instagram | `calculators` | en | 9:16 Reel, 1080×1920 | `calculators_en_vertical.mp4` | NOT READY |
-| 3 | Thu | YouTube | `osmometry` | uz | 16:9 long-form, 1920×1080 | `osmometry_uz_horizontal.mp4` | NOT READY |
-| 3 | Thu | YouTube | `osmometry` | ru | 16:9 long-form, 1920×1080 | `osmometry_ru_horizontal.mp4` | NOT READY |
-| 3 | Thu | YouTube | `osmometry` | en | 16:9 long-form, 1920×1080 | `osmometry_en_horizontal.mp4` | NOT READY |
-| 3 | Fri | Instagram | `osmometry` | uz | 9:16 Reel, 1080×1920 | `osmometry_uz_vertical.mp4` | NOT READY |
-| 3 | Sat | Instagram | `osmometry` | ru | 9:16 Reel, 1080×1920 | `osmometry_ru_vertical.mp4` | NOT READY |
-| 3 | Sun | Instagram | `osmometry` | en | 9:16 Reel, 1080×1920 | `osmometry_en_vertical.mp4` | NOT READY |
-| 4 | Mon | YouTube | `gc_ms` | uz | 16:9 long-form, 1920×1080 | `gc_ms_uz_horizontal.mp4` | NOT READY |
-| 4 | Mon | YouTube | `gc_ms` | ru | 16:9 long-form, 1920×1080 | `gc_ms_ru_horizontal.mp4` | NOT READY |
-| 4 | Mon | YouTube | `gc_ms` | en | 16:9 long-form, 1920×1080 | `gc_ms_en_horizontal.mp4` | NOT READY |
-| 4 | Tue | Instagram | `gc_ms` | uz | 9:16 Reel, 1080×1920 | `gc_ms_uz_vertical.mp4` | NOT READY |
-| 4 | Wed | Instagram | `gc_ms` | ru | 9:16 Reel, 1080×1920 | `gc_ms_ru_vertical.mp4` | NOT READY |
-| 4 | Wed | Instagram | `gc_ms` | en | 9:16 Reel, 1080×1920 | `gc_ms_en_vertical.mp4` | NOT READY |
-| 4 | Thu | YouTube | `real_time_pcr` | uz | 16:9 long-form, 1920×1080 | `real_time_pcr_uz_horizontal.mp4` | NOT READY |
-| 4 | Thu | YouTube | `real_time_pcr` | ru | 16:9 long-form, 1920×1080 | `real_time_pcr_ru_horizontal.mp4` | NOT READY |
-| 4 | Thu | YouTube | `real_time_pcr` | en | 16:9 long-form, 1920×1080 | `real_time_pcr_en_horizontal.mp4` | NOT READY |
-| 4 | Fri | Instagram | `real_time_pcr` | uz | 9:16 Reel, 1080×1920 | `real_time_pcr_uz_vertical.mp4` | NOT READY |
-| 4 | Sat | Instagram | `real_time_pcr` | ru | 9:16 Reel, 1080×1920 | `real_time_pcr_ru_vertical.mp4` | NOT READY |
-| 4 | Sun | Instagram | `real_time_pcr` | en | 9:16 Reel, 1080×1920 | `real_time_pcr_en_vertical.mp4` | NOT READY |
+| 2 | Mon | YouTube | `qc` | uz | 16:9 long-form, 1920×1080 | `qc_uz_horizontal.mp4` | READY |
+| 2 | Mon | YouTube | `qc` | ru | 16:9 long-form, 1920×1080 | `qc_ru_horizontal.mp4` | READY |
+| 2 | Mon | YouTube | `qc` | en | 16:9 long-form, 1920×1080 | `qc_en_horizontal.mp4` | READY |
+| 2 | Tue | Instagram | `qc` | uz | 9:16 Reel, 1080×1920 | `qc_uz_vertical.mp4` | READY |
+| 2 | Wed | Instagram | `qc` | ru | 9:16 Reel, 1080×1920 | `qc_ru_vertical.mp4` | READY |
+| 2 | Wed | Instagram | `qc` | en | 9:16 Reel, 1080×1920 | `qc_en_vertical.mp4` | READY |
+| 2 | Thu | YouTube | `photometry` | uz | 16:9 long-form, 1920×1080 | `photometry_uz_horizontal.mp4` | READY |
+| 2 | Thu | YouTube | `photometry` | ru | 16:9 long-form, 1920×1080 | `photometry_ru_horizontal.mp4` | READY |
+| 2 | Thu | YouTube | `photometry` | en | 16:9 long-form, 1920×1080 | `photometry_en_horizontal.mp4` | READY |
+| 2 | Fri | Instagram | `photometry` | uz | 9:16 Reel, 1080×1920 | `photometry_uz_vertical.mp4` | READY |
+| 2 | Sat | Instagram | `photometry` | ru | 9:16 Reel, 1080×1920 | `photometry_ru_vertical.mp4` | READY |
+| 2 | Sun | Instagram | `photometry` | en | 9:16 Reel, 1080×1920 | `photometry_en_vertical.mp4` | READY |
+| 3 | Mon | YouTube | `calculators` | uz | 16:9 long-form, 1920×1080 | `calculators_uz_horizontal.mp4` | READY |
+| 3 | Mon | YouTube | `calculators` | ru | 16:9 long-form, 1920×1080 | `calculators_ru_horizontal.mp4` | READY |
+| 3 | Mon | YouTube | `calculators` | en | 16:9 long-form, 1920×1080 | `calculators_en_horizontal.mp4` | READY |
+| 3 | Tue | Instagram | `calculators` | uz | 9:16 Reel, 1080×1920 | `calculators_uz_vertical.mp4` | READY |
+| 3 | Wed | Instagram | `calculators` | ru | 9:16 Reel, 1080×1920 | `calculators_ru_vertical.mp4` | READY |
+| 3 | Wed | Instagram | `calculators` | en | 9:16 Reel, 1080×1920 | `calculators_en_vertical.mp4` | READY |
+| 3 | Thu | YouTube | `osmometry` | uz | 16:9 long-form, 1920×1080 | `osmometry_uz_horizontal.mp4` | READY |
+| 3 | Thu | YouTube | `osmometry` | ru | 16:9 long-form, 1920×1080 | `osmometry_ru_horizontal.mp4` | READY |
+| 3 | Thu | YouTube | `osmometry` | en | 16:9 long-form, 1920×1080 | `osmometry_en_horizontal.mp4` | READY |
+| 3 | Fri | Instagram | `osmometry` | uz | 9:16 Reel, 1080×1920 | `osmometry_uz_vertical.mp4` | READY |
+| 3 | Sat | Instagram | `osmometry` | ru | 9:16 Reel, 1080×1920 | `osmometry_ru_vertical.mp4` | READY |
+| 3 | Sun | Instagram | `osmometry` | en | 9:16 Reel, 1080×1920 | `osmometry_en_vertical.mp4` | READY |
+| 4 | Mon | YouTube | `gcms` | uz | 16:9 long-form, 1920×1080 | `gcms_uz_horizontal.mp4` | READY |
+| 4 | Mon | YouTube | `gcms` | ru | 16:9 long-form, 1920×1080 | `gcms_ru_horizontal.mp4` | READY |
+| 4 | Mon | YouTube | `gcms` | en | 16:9 long-form, 1920×1080 | `gcms_en_horizontal.mp4` | READY |
+| 4 | Tue | Instagram | `gcms` | uz | 9:16 Reel, 1080×1920 | `gcms_uz_vertical.mp4` | READY |
+| 4 | Wed | Instagram | `gcms` | ru | 9:16 Reel, 1080×1920 | `gcms_ru_vertical.mp4` | READY |
+| 4 | Wed | Instagram | `gcms` | en | 9:16 Reel, 1080×1920 | `gcms_en_vertical.mp4` | READY |
+| 4 | Thu | YouTube | `qpcr` | uz | 16:9 long-form, 1920×1080 | `qpcr_uz_horizontal.mp4` | READY |
+| 4 | Thu | YouTube | `qpcr` | ru | 16:9 long-form, 1920×1080 | `qpcr_ru_horizontal.mp4` | READY |
+| 4 | Thu | YouTube | `qpcr` | en | 16:9 long-form, 1920×1080 | `qpcr_en_horizontal.mp4` | READY |
+| 4 | Fri | Instagram | `qpcr` | uz | 9:16 Reel, 1080×1920 | `qpcr_uz_vertical.mp4` | READY |
+| 4 | Sat | Instagram | `qpcr` | ru | 9:16 Reel, 1080×1920 | `qpcr_ru_vertical.mp4` | READY |
+| 4 | Sun | Instagram | `qpcr` | en | 9:16 Reel, 1080×1920 | `qpcr_en_vertical.mp4` | READY |
 | 5 | Mon | YouTube | `exam_simulation` | uz | 16:9 long-form, 1920×1080 | `exam_simulation_uz_horizontal.mp4` | NOT READY |
 | 5 | Mon | YouTube | `exam_simulation` | ru | 16:9 long-form, 1920×1080 | `exam_simulation_ru_horizontal.mp4` | NOT READY |
 | 5 | Mon | YouTube | `exam_simulation` | en | 16:9 long-form, 1920×1080 | `exam_simulation_en_horizontal.mp4` | NOT READY |

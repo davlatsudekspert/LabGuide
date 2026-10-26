@@ -6,8 +6,8 @@
 
 | | |
 |---|---|
-| Video | **NOT READY** — video not rendered yet |
-| Copy status | **DRAFT** — written before the video existed; re-check every sentence against the final `lines.en.json` and `CLAIMS_AND_EVIDENCE.md`, then set `verified=True` in topics.py |
+| Video | **READY** — all 18 rendered files present · listed in READY.txt |
+| Copy status | verified against the rendered video, its lines and CLAIMS_AND_EVIDENCE.md |
 | Tier | free (everything described exists in the free app today) |
 | Review status | EXPERT_REVIEW_PENDING (science), NEEDS_NATIVE_REVIEW (RU/UZ) |
 | App path | Learn → Lecture mode → Practical protocols · Обучение → Режим лекции → Практические протоколы · O‘rganish → Ma’ruza rejimi → Amaliy protokollar |
@@ -22,7 +22,7 @@
 * **G5** — App availability: the free store build is the only one that exists publicly; the video must match the build the owner links to. Store approval status is the owner's to confirm.
 * **G6** — Owner approval of every text in this kit and of the date. Nothing is published by us.
 * *Topic note* — The lead's name for this topic was `spectrophotometry`; the studio id is `photometry` (docs/video/photometry/). `spectrophotometry` is kept as an alias.
-* *Topic note* — Copy aligned with lines.en.json of the video IN PRODUCTION (no render, no claims table yet): re-check every sentence against the final lines and CLAIMS_AND_EVIDENCE.md, then set verified=True.
+* *Topic note* — Copy checked against lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of the rendered video (69.6 s). Open expert items from the claims table: E5 (the illustrated bend / "readings fall short" as a general statement) and E6 (single-standard calculation as the only model shown).
 * *Topic note* — Terminology differs from the calibration video: «оптическая плотность» / «optik zichlik» here, «поглощение» / «yutilish» there: the native reviewer picks one (G3).
 * *Topic note* — The app path is Lecture mode, not Lab → Instruments: the protocol is a lecture deck of kind protocol (uz/ru/en); confirm the deck is in the advertised build.
 
@@ -38,7 +38,7 @@ Placeholders in the texts below (`[[LINK_APP_STORE]]`, `[[LINK_PLAY]]`, `[[LINK_
 
 ## 2. YouTube description (the first two lines are the hook shown before “more”)
 
-### 2.1 English (main) — 2499 characters (limit 5000)
+### 2.1 English (main) — 2864 characters (limit 5000)
 
 ```text
 Absorbance far above your standard — can you trust that number?
@@ -46,25 +46,25 @@ Photometry basics: blank, standard, sample and the linearity limit.
 
 In this video:
 • How a photometer works: one wavelength through the cuvette, A = log₁₀(I₀/I); at A = 1 only ten percent of the light gets through, at A = 2 one percent.
-• The Beer–Lambert law: within a range absorbance rises in proportion to concentration; past the linearity limit the curve bends and readings fall short.
+• The Beer–Lambert law: within a range absorbance rises in proportion to concentration; past the linearity limit the curve bends and readings fall short (an illustrated curve; the real limit comes from the reagent IFU).
 • Three cuvettes: the blank sets zero, then the standard, then the sample; concentration = A sample ÷ A standard × the standard’s concentration (illustrative numbers).
-• Above the limit: dilute, measure again, multiply by the dilution factor.
-• Real LabGuide screens: the photometry-basics protocol in Lecture mode.
+• Above the limit: dilute, measure again, multiply by the dilution factor (illustrative numbers).
+• Real LabGuide screens: Learn → Lecture mode → Practical protocols, the photometry-basics protocol (blank, standard and sample step by step, the calculation, and the rule for results above the linearity limit).
 
 Chapters
 0:00 The measurement: light in, light out
-0:16 Beer–Lambert law and the linearity limit
+0:16 Absorbance scale, Beer–Lambert law, linearity limit
 0:31 Blank, standard, sample — and dilution
 0:47 In LabGuide: the photometry protocol
 
 What LabGuide does today:
 • LabGuide’s Lecture mode (Learn → Lecture mode → Practical protocols) has a protocol on photometry basics: blank, standard and sample step by step, the calculation, and the rule for results above the linearity limit.
 • It is a teaching protocol: the reagent IFU and your lab’s SOP always take precedence.
-• LabGuide does not measure anything and does not interpret results.
 
 Good to know:
-• Wavelength, blank and linearity limits always come from your reagent’s IFU; the numbers in the video are illustrative.
-• The single-standard calculation is one worked example, not the method for every assay.
+• Wavelength, blank and limits always come from your reagent’s IFU; the numbers in the video are illustrative (arbitrary units).
+• The single-standard calculation is one worked example, not the method for every assay; many methods use a factor or a multi-point calibration.
+• The bend above the linearity limit is drawn as an illustration; how a real method behaves above its limit depends on the method.
 
 LabGuide is a clinical-laboratory companion app for lab professionals and students (English, Russian, Uzbek). It is a learning and reference tool: it does not diagnose or interpret patient results. Works offline and without an account.
 Get the app: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -83,7 +83,7 @@ Credits
 #LabGuide #Photometry #Spectrophotometry
 ```
 
-### 2.2 Русский — 2535 characters (limit 5000)
+### 2.2 Русский — 2885 characters (limit 5000)
 
 ```text
 Оптическая плотность намного выше стандарта — можно ли верить этому числу?
@@ -91,25 +91,25 @@ Credits
 
 В этом видео:
 • Как работает фотометр: свет одной длины волны через кювету, A = log₁₀(I₀/I); при A = 1 проходит лишь 10 % света, при A = 2 — 1 %.
-• Закон Бугера–Ламберта–Бера: в пределах диапазона оптическая плотность растёт пропорционально концентрации; выше границы линейности кривая изгибается и показание занижено.
+• Закон Бугера–Ламберта–Бера: в пределах диапазона оптическая плотность растёт пропорционально концентрации; выше границы линейности кривая изгибается и показание занижено (иллюстрация; реальную границу задаёт IFU реагента).
 • Три кюветы: бланк задаёт ноль, затем стандарт и проба; концентрация = A пробы ÷ A стандарта × концентрация стандарта (иллюстративные числа).
-• Выше границы: разведите, повторите измерение, умножьте на степень разведения.
-• Реальные экраны LabGuide: протокол по основам фотометрии в режиме лекции.
+• Выше границы: разведите, повторите измерение, умножьте на степень разведения (иллюстративные числа).
+• Реальные экраны LabGuide: Обучение → Режим лекции → Практические протоколы — протокол по основам фотометрии (бланк, стандарт и проба по шагам, расчёт и правило для результата выше границы линейности).
 
 Главы
 0:00 Измерение: свет на входе и на выходе
-0:16 Закон Бугера–Ламберта–Бера и граница линейности
+0:16 Шкала A, закон Бугера–Ламберта–Бера, граница линейности
 0:31 Бланк, стандарт, проба — и разведение
 0:47 В LabGuide: протокол по фотометрии
 
 Что LabGuide делает сегодня:
 • В режиме лекции LabGuide (Обучение → Режим лекции → Практические протоколы) есть протокол по основам фотометрии: бланк, стандарт и проба по шагам, расчёт и правило для результата выше границы линейности.
 • Это учебный протокол: IFU реагента и СОП вашей лаборатории всегда главнее.
-• LabGuide ничего не измеряет и не интерпретирует результаты.
 
 Важно знать:
-• Длина волны, бланк и границы линейности всегда берутся из IFU вашего реагента; числа в видео иллюстративные.
-• Расчёт по одному стандарту — один разобранный пример, а не метод для любого анализа.
+• Длина волны, бланк и границы всегда берутся из IFU вашего реагента; числа в видео иллюстративные (условные единицы).
+• Расчёт по одному стандарту — один разобранный пример, а не метод для любого анализа; во многих методах используют фактор или многоточечную калибровку.
+• Изгиб выше границы линейности нарисован как иллюстрация; как ведёт себя реальный метод выше своей границы, зависит от метода.
 
 LabGuide — приложение-помощник для клинической лаборатории: для лаборантов и студентов (русский, узбекский, английский). Это учебный и справочный инструмент: он не ставит диагноз и не интерпретирует результаты пациентов. Работает без интернета и без аккаунта.
 Приложение: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -128,7 +128,7 @@ LabGuide — приложение-помощник для клинической
 #LabGuide #фотометрия #спектрофотометрия
 ```
 
-### 2.3 O‘zbekcha (Latin) — 2626 characters (limit 5000)
+### 2.3 O‘zbekcha (Latin) — 2983 characters (limit 5000)
 
 ```text
 Optik zichlik standartdan ancha yuqori — bu raqamga ishonsa bo‘ladimi?
@@ -136,25 +136,25 @@ Fotometriya asoslari: blank, standart, namuna va chiziqlilik chegarasi.
 
 Bu videoda:
 • Fotometr qanday ishlaydi: kyuvetadan bir to‘lqin uzunlikdagi nur, A = log₁₀(I₀/I); A = 1 da nurning faqat 10 % i o‘tadi, A = 2 da — 1 % i.
-• Buger–Lambert–Ber qonuni: ma’lum oraliqda optik zichlik konsentratsiyaga mutanosib; chiziqlilik chegarasidan oshsa egri chiziq bukiladi va natija past chiqadi.
+• Buger–Lambert–Ber qonuni: ma’lum oraliqda optik zichlik konsentratsiyaga mutanosib; chiziqlilik chegarasidan oshsa egri chiziq bukiladi va natija past chiqadi (rasm; haqiqiy chegara reagent IFU’sidan olinadi).
 • Uch kyuveta: blank nolni qo‘yadi, so‘ng standart va namuna; konsentratsiya = A namuna ÷ A standart × standart konsentratsiyasi (namunaviy sonlar).
-• Chegaradan oshsa: suyultiring, qayta o‘lchang, suyultirish koeffitsientiga ko‘paytiring.
-• LabGuide’ning haqiqiy ekranlari: ma’ruza rejimidagi fotometriya asoslari protokoli.
+• Chegaradan oshsa: suyultiring, qayta o‘lchang, suyultirish darajasiga ko‘paytiring (namunaviy sonlar).
+• LabGuide’ning haqiqiy ekranlari: O‘rganish → Ma’ruza rejimi → Amaliy protokollar — fotometriya asoslari protokoli (blank, standart va namuna bosqichma-bosqich, hisoblash va chiziqlilik chegarasidan oshgan natija qoidasi).
 
 Boblar
 0:00 O‘lchash: kirgan va chiqqan nur
-0:16 Buger–Lambert–Ber qonuni va chiziqlilik chegarasi
+0:16 A shkalasi, Buger–Lambert–Ber qonuni, chiziqlilik chegarasi
 0:31 Blank, standart, namuna — va suyultirish
 0:47 LabGuide’da: fotometriya protokoli
 
 LabGuide bugun nima qiladi:
 • LabGuide ma’ruza rejimida (O‘rganish → Ma’ruza rejimi → Amaliy protokollar) fotometriya asoslari protokoli bor: blank, standart va namuna bosqichma-bosqich, hisoblash va chiziqlilik chegarasidan oshgan natija qoidasi.
 • Bu o‘quv protokoli: reagent IFU’si va laboratoriyangiz SOP’i doim ustun.
-• LabGuide hech narsani o‘lchamaydi va natijalarni talqin qilmaydi.
 
 Bilish foydali:
-• To‘lqin uzunligi, blank va chiziqlilik chegaralari doim reagent IFU’sidan olinadi; videodagi sonlar namunaviy.
-• Bitta standart bo‘yicha hisoblash — bitta ishlangan misol, har qanday tahlil uchun metod emas.
+• To‘lqin uzunligi, blank va chegaralar doim reagent IFU’sidan olinadi; videodagi sonlar namunaviy (shartli birliklar).
+• Bitta standart bo‘yicha hisoblash — bitta ishlangan misol, har qanday tahlil uchun metod emas; ko‘p metodlarda faktor yoki ko‘p nuqtali kalibrlash qo‘llanadi.
+• Chiziqlilik chegarasidan keyingi bukilish rasm sifatida chizilgan; haqiqiy metod o‘z chegarasidan oshganda qanday bo‘lishi metodga bog‘liq.
 
 LabGuide — klinik laboratoriya uchun yordamchi ilova: laborantlar va talabalar uchun (o‘zbek, rus, ingliz tillarida). Bu o‘quv va ma’lumotnoma vositasi: u tashxis qo‘ymaydi va bemor natijalarini talqin qilmaydi. Internetsiz va hisobsiz ishlaydi.
 Ilova: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -182,7 +182,7 @@ Computed from `docs/video/photometry/storyboard.json` and the English narration 
 | Time | EN | RU | UZ |
 |---|---|---|---|
 | 0:00 | The measurement: light in, light out | Измерение: свет на входе и на выходе | O‘lchash: kirgan va chiqqan nur |
-| 0:16 | Beer–Lambert law and the linearity limit | Закон Бугера–Ламберта–Бера и граница линейности | Buger–Lambert–Ber qonuni va chiziqlilik chegarasi |
+| 0:16 | Absorbance scale, Beer–Lambert law, linearity limit | Шкала A, закон Бугера–Ламберта–Бера, граница линейности | A shkalasi, Buger–Lambert–Ber qonuni, chiziqlilik chegarasi |
 | 0:31 | Blank, standard, sample — and dilution | Бланк, стандарт, проба — и разведение | Blank, standart, namuna — va suyultirish |
 | 0:47 | In LabGuide: the photometry protocol | В LabGuide: протокол по фотометрии | LabGuide’da: fotometriya protokoli |
 
@@ -194,12 +194,12 @@ Computed from `docs/video/photometry/storyboard.json` and the English narration 
 
 ## 5. Instagram caption (≤ 2200 characters including hashtags; hook first)
 
-### 5.1 English — 733 + hashtags 251 = 986 characters
+### 5.1 English — 741 + hashtags 251 = 994 characters
 
 ```text
 Absorbance far above your standard — can you trust that number?
 
-Photometry basics in a minute: how a photometer measures absorbance, the Beer–Lambert law and the linearity limit, blank → standard → sample, and what to do above the limit (illustrative numbers).
+Photometry basics in about 70 seconds: how a photometer measures absorbance, the Beer–Lambert law and the linearity limit, blank → standard → sample, and what to do above the limit (illustrative numbers).
 
 LabGuide’s Lecture mode has a protocol on it: Learn → Lecture mode → Practical protocols. A teaching protocol: your reagent IFU and SOP always take precedence.
 
@@ -211,12 +211,12 @@ Expert review pending: this content has not yet been reviewed by a laboratory sp
 Link in bio: [[LINK_BIO]]. Save this and share it with a colleague.
 ```
 
-### 5.2 Русский — 765 + hashtags 258 = 1025 characters
+### 5.2 Русский — 777 + hashtags 258 = 1037 characters
 
 ```text
 Оптическая плотность намного выше стандарта — можно ли верить этому числу?
 
-Основы фотометрии за минуту: как фотометр измеряет оптическую плотность, закон Бугера–Ламберта–Бера и граница линейности, бланк → стандарт → проба и что делать выше границы (иллюстративные числа).
+Основы фотометрии примерно за 70 секунд: как фотометр измеряет оптическую плотность, закон Бугера–Ламберта–Бера и граница линейности, бланк → стандарт → проба и что делать выше границы (иллюстративные числа).
 
 В режиме лекции LabGuide есть протокол: Обучение → Режим лекции → Практические протоколы. Учебный протокол: IFU реагента и СОП всегда главнее.
 
@@ -228,12 +228,12 @@ Link in bio: [[LINK_BIO]]. Save this and share it with a colleague.
 Ссылка в профиле: [[LINK_BIO]]. Сохраните и перешлите коллеге.
 ```
 
-### 5.3 O‘zbekcha — 796 + hashtags 244 = 1042 characters
+### 5.3 O‘zbekcha — 804 + hashtags 244 = 1050 characters
 
 ```text
 Optik zichlik standartdan ancha yuqori — bu raqamga ishonsa bo‘ladimi?
 
-Bir daqiqada fotometriya asoslari: fotometr optik zichlikni qanday o‘lchaydi, Buger–Lambert–Ber qonuni va chiziqlilik chegarasi, blank → standart → namuna va chegaradan oshsa nima qilish (namunaviy sonlar).
+Taxminan 70 soniyada fotometriya asoslari: fotometr optik zichlikni qanday o‘lchaydi, Buger–Lambert–Ber qonuni va chiziqlilik chegarasi, blank → standart → namuna va chegaradan oshsa nima qilish (namunaviy sonlar).
 
 LabGuide ma’ruza rejimida protokol bor: O‘rganish → Ma’ruza rejimi → Amaliy protokollar. O‘quv protokoli: reagent IFU’si va SOP doim ustun.
 
@@ -257,19 +257,19 @@ Havola profilda: [[LINK_BIO]]. Saqlab qo‘ying va hamkasbingizga yuboring.
 **EN**
 
 ```text
-Notes: all numbers in this video are illustrative, not patient results. Wavelength, blank and linearity limits always come from your reagent’s IFU and your lab’s SOP. Narration is English synthetic speech. The content is awaiting expert review — corrections are welcome. Do you use a single standard or a calibration curve in your lab?
+Notes: all numbers in this video are illustrative, not patient results. Wavelength, blank and limits always come from your reagent’s IFU and your lab’s SOP. Narration is English synthetic speech. The content is awaiting expert review — corrections are welcome. Do you use a single standard or a calibration curve in your lab?
 ```
 
 **RU**
 
 ```text
-Заметки: все числа в видео иллюстративные, это не результаты пациентов. Длина волны, бланк и границы линейности всегда берутся из IFU вашего реагента и СОП вашей лаборатории. Озвучка — синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются. Что у вас в лаборатории — один стандарт или калибровочная кривая?
+Заметки: все числа в видео иллюстративные, это не результаты пациентов. Длина волны, бланк и границы всегда берутся из IFU вашего реагента и СОП вашей лаборатории. Озвучка — синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются. Что у вас в лаборатории — один стандарт или калибровочная кривая?
 ```
 
 **UZ**
 
 ```text
-Eslatma: videodagi barcha sonlar namunaviy, bemor natijasi emas. To‘lqin uzunligi, blank va chiziqlilik chegaralari doim reagent IFU’si va laboratoriyangiz SOP’idan olinadi. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun rahmat. Laboratoriyangizda bitta standartmi yoki kalibrlash egri chizig‘imi?
+Eslatma: videodagi barcha sonlar namunaviy, bemor natijasi emas. To‘lqin uzunligi, blank va chegaralar doim reagent IFU’si va laboratoriyangiz SOP’idan olinadi. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun rahmat. Laboratoriyangizda bitta standartmi yoki kalibrlash egri chizig‘imi?
 ```
 
 ## 8. Credits
@@ -313,9 +313,9 @@ Internal licence notes (not for the public text):
 
 All under `video_studio/out/photometry/<lang>/`. Alt text (thumbnail and cover show the same content):
 
-* **EN**: LabGuide logo and the title “Photometry”, with a schematic or app visual and the notice “Illustrative data — not a patient result”. (Draft alt text: compare with the rendered thumbnail before use.)
-* **RU**: Логотип LabGuide и заголовок «Фотометрия», схематичное или экранное изображение и пометка «Примерные данные — не результат пациента». (Черновик альтернативного текста: сверьте с готовой обложкой.)
-* **UZ**: LabGuide logotipi va «Fotometriya» sarlavhasi, sxematik yoki ilova tasviri hamda «Namunaviy ma’lumot — bemor natijasi emas» belgisi. (Alt-matn qoralamasi: foydalanishdan oldin tayyor muqova bilan solishtiring.)
+* **EN**: LabGuide logo, the title “Photometry” with the subtitle “Blank, standard, sample — and the limit.”, a light path from a lamp through a filter and a cuvette to a detector, three cuvettes labelled Blank (A 0.000), Standard (A 0.412) and Sample (A 0.309), and the notice “Illustrative data — not a patient result”.
+* **RU**: Логотип LabGuide, заголовок «Фотометрия» с подзаголовком «Бланк, стандарт, проба — и граница.», ход света от лампы через фильтр и кювету к детектору, три кюветы с подписями «Бланк», «Стандарт» и «Проба» и примерными значениями оптической плотности и пометка «Примерные данные — не результат пациента».
+* **UZ**: LabGuide logotipi, «Fotometriya» sarlavhasi va «Blank, standart, namuna — va chegara.» sarlavha osti, lampadan filtr va kyuveta orqali detektorgacha nur yo‘li, «Blank», «Standart» va «Namuna» yozuvli uchta kyuveta namunaviy optik zichlik qiymatlari bilan hamda «Namunaviy ma’lumot — bemor natijasi emas» belgisi.
 
 ## 10. End screen / CTA suggestion
 
@@ -337,8 +337,9 @@ All under `video_studio/out/photometry/<lang>/`. Alt text (thumbnail and cover s
 
 ## 12. Evidence the public text rests on
 
-* docs/video/photometry/CLAIMS_AND_EVIDENCE.md (when it exists)
-* docs/video/photometry/lines.en.json and storyboard.json (the copy follows them as of 2026-10-25)
+* docs/video/photometry/CLAIMS_AND_EVIDENCE.md
+* docs/video/photometry/DESCRIPTION.md
+* docs/video/photometry/QA.md
 * assets/lectures/decks/fotometriya-asoslari-biokimyo.{uz,ru,en}.json (the protocol, kind: protocol)
 * docs/VIDEO_FEATURE_INVENTORY.md §3 (Lecture mode)
 

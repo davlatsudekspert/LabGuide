@@ -21,7 +21,7 @@ from common import (DISCLOSURES, HASHTAGS_MAX, HASHTAGS_MIN, IG_CAPTION_MAX, LAN
                     PUBLISH_DOCS, REPO, YT_TAGS_MAX, YT_TITLE_MAX)
 from topics import BY_ID, IDS, TOPICS  # noqa: E402
 
-REQUIRED_IDS = ["calibration", "leukocyte", "photometry", "qc", "gc_ms", "real_time_pcr", "osmometry",
+REQUIRED_IDS = ["calibration", "leukocyte", "photometry", "qc", "gcms", "qpcr", "osmometry",
                 "calculators", "exam_simulation", "teacher_pro", "premium_overview"]
 
 
@@ -114,8 +114,12 @@ class TopicTextTests(unittest.TestCase):
         (d / "READY.txt").write_text("spectrophotometry\n", encoding="utf-8")
         self.assertEqual(kit.read_ready_ids(d), {"photometry"})
 
-    def test_only_two_topics_marked_verified(self):
-        self.assertEqual([t["id"] for t in TOPICS if t["verified"]], ["calibration", "leukocyte"])
+    def test_verified_topics(self):
+        # verified = every sentence checked against the rendered video; the three paid topics are still drafts
+        self.assertEqual([t["id"] for t in TOPICS if t["verified"]],
+                         ["calibration", "leukocyte", "photometry", "qc", "gcms", "qpcr", "osmometry", "calculators"])
+        self.assertEqual([t["id"] for t in TOPICS if not t["verified"]],
+                         ["exam_simulation", "teacher_pro", "premium_overview"])
 
     def test_no_overclaiming_words(self):
         bad = re.compile(r"\b(guarantee|guaranteed|certified|clinically (validated|proven)|FDA|CE[- ]marked|"
@@ -223,8 +227,8 @@ class StatusTests(unittest.TestCase):
         d = Path(tempfile.mkdtemp())
         self.addCleanup(shutil.rmtree, d, True)
         self.assertIsNone(kit.read_ready_ids(d))
-        (d / "READY.txt").write_text("qc\n# comment\n\ngc_ms # done\n", encoding="utf-8")
-        self.assertEqual(kit.read_ready_ids(d), {"qc", "gc_ms"})
+        (d / "READY.txt").write_text("qc\n# comment\n\ngcms # done\n", encoding="utf-8")
+        self.assertEqual(kit.read_ready_ids(d), {"qc", "gcms"})
 
 
 class ScheduleTests(unittest.TestCase):

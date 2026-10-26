@@ -6,11 +6,11 @@
 
 | | |
 |---|---|
-| Video | **NOT READY** — video not rendered yet |
-| Copy status | **DRAFT** — written before the video existed; re-check every sentence against the final `lines.en.json` and `CLAIMS_AND_EVIDENCE.md`, then set `verified=True` in topics.py |
+| Video | **READY** — all 18 rendered files present · listed in READY.txt |
+| Copy status | verified against the rendered video, its lines and CLAIMS_AND_EVIDENCE.md |
 | Tier | free (everything described exists in the free app today) |
 | Review status | EXPERT_REVIEW_PENDING (science), NEEDS_NATIVE_REVIEW (RU/UZ) |
-| App path | Lab → Quality control (QC) · Лаб. → Контроль качества (QC) · Lab → Sifat nazorati (QC) |
+| App path | Lab → Quality control · Лаб. → Контроль качества · Lab → Sifat nazorati |
 | Language editions | en / ru / uz — each a separate video: English synthetic narration in all three; subtitles and on-screen text in the edition's language |
 
 ## 0. Gates before this topic may be published
@@ -21,8 +21,8 @@
 * **G4** — Remotion licence check: free for individuals, non-profits and for-profit companies of up to 3 people; a larger company needs a Company licence (`video_studio/node_modules/remotion/LICENSE.md`).
 * **G5** — App availability: the free store build is the only one that exists publicly; the video must match the build the owner links to. Store approval status is the owner's to confirm.
 * **G6** — Owner approval of every text in this kit and of the date. Nothing is published by us.
-* *Topic note* — Free today: sets, runs, Levey–Jennings, Westgard, CSV copy, JSON backup. A QC summary report as CSV/PDF file is a Specialist Pro feature (D-78, flag off): do not mention it unless the video does.
-* *Topic note* — Which Westgard rules the app applies must match the video (app text lists 1-2s, 1-3s, 2-2s, R-4s, 4-1s, 10x): re-check against the final script.
+* *Topic note* — Free today: sets, runs, Levey–Jennings, Westgard, CSV copy, JSON backup. A QC summary report as CSV/PDF file is a Specialist Pro feature (D-78, flag off): the video does not mention it (nor the text backup), so neither does the copy.
+* *Topic note* — Copy checked against lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of the rendered video (79.7 s). Rules named in the video: 1-2s, 1-3s, R-4s, 2-2s, 4-1s, 10x. Open expert items: E3 (the short rule-card paraphrases); the app's stricter-than-1981 handling of 1-2s and its exclusion of rejected runs are described as app behaviour, not as the only Westgard practice.
 
 Placeholders in the texts below (`[[LINK_APP_STORE]]`, `[[LINK_PLAY]]`, `[[LINK_BIO]]`) are the owner's to fill; we never invent a link, a store listing or an availability date. No price and no product id appears anywhere.
 
@@ -36,26 +36,36 @@ Placeholders in the texts below (`[[LINK_APP_STORE]]`, `[[LINK_PLAY]]`, `[[LINK_
 
 ## 2. YouTube description (the first two lines are the hook shown before “more”)
 
-### 2.1 English (main) — 2055 characters (limit 5000)
+### 2.1 English (main) — 3179 characters (limit 5000)
 
 ```text
-Is today’s QC run in control? Enter the control results and see it on a Levey–Jennings chart.
-LabGuide checks each run against the Westgard rules — warning or rejection — on your device.
+This morning’s control: 2.3 SD above the mean. Stop the run — or report the patients?
+In about 80 seconds: a Levey–Jennings chart, the Westgard rules and how LabGuide records QC runs.
 
 In this video:
-• Creating a control set: test, unit, target source, and a target mean and SD for each level.
-• Entering run results and reading the Levey–Jennings chart: in control, warning, rejected.
-• The QC guides: what to do when QC is rejected, external quality assessment (EQA) and critical values.
+• A Levey–Jennings chart: each control result plotted against its target mean and SD; targets come from your own control data (about twenty values to start).
+• z-scores: how many SDs a result sits from the mean; one value beyond 2 SD is the 1-2s rule — a warning, not a rejection — to inspect with the other rules.
+• The Westgard rules: 1-3s and R-4s point to random error; 2-2s, 4-1s and 10x to systematic error (a shift). A worked example: four values in a row beyond 1 SD (4-1s) — reject the run and find the cause.
+• Real LabGuide screens (illustrative control data): entering each level’s target mean and SD and where they came from, recording runs, the chart drawn by the app, the broken rule named, a rejected run kept in the history but left out of later rules and statistics, runs copied as a CSV table, and the guides on EQA, rejected samples and critical values.
+
+Chapters
+0:00 The chart: a control 2.3 SD above the mean
+0:17 z-scores and the 1-2s warning
+0:30 Random and systematic error: the Westgard rules
+0:49 In LabGuide: targets, runs, rules, rejected runs
+1:08 CSV copy and the QC guides
 
 What LabGuide does today:
-• You enter the target mean and SD for each level; the app does not invent target values.
-• Each saved run is evaluated against the Westgard rules and marked on the chart.
-• Data stay on your device; you can copy a text backup and copy results as CSV.
+• You enter each level’s target mean and SD and where they came from; the app draws the Levey–Jennings chart from the runs you record.
+• Westgard rules are checked on every run, and the broken rule is named.
+• A rejected run stays in the history but is not used in later rules or statistics (this is how the app works, not the only QC practice).
+• Runs can be copied as a CSV table; data stays on this device.
 • The EQA and critical-value guides are explanations only: LabGuide is not connected to any EQA scheme and does not submit results.
 
 Good to know:
-• Targets, limits and the action after a rejected run come from your laboratory’s QC procedure and the reagent IFU. The chart is a tool, not a clinical decision.
-• Illustrative control values only — not real control results.
+• A checking aid — not a substitute for your laboratory’s QC procedure; targets, limits and what to do after a rejected run come from that procedure.
+• Illustrative control data — not a real lot and not real control results.
+• The rules are shown as LabGuide implements them (1-2s as a warning, all rejection rules checked on every run); your laboratory’s procedure may differ.
 
 LabGuide is a clinical-laboratory companion app for lab professionals and students (English, Russian, Uzbek). It is a learning and reference tool: it does not diagnose or interpret patient results. Works offline and without an account.
 Get the app: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -74,26 +84,36 @@ Credits
 #LabGuide #QualityControl #Westgard
 ```
 
-### 2.2 Русский — 2244 characters (limit 5000)
+### 2.2 Русский — 3377 characters (limit 5000)
 
 ```text
-Контроль качества сегодня в норме? Введите результаты — и увидите их на карте Леви–Дженнингса.
-LabGuide проверяет каждую серию по правилам Вестгарда — предупреждение или отклонение — на вашем устройстве.
+Контроль сегодня утром: +2,3 SD от среднего. Остановить серию — или выдать результаты?
+Примерно за 80 секунд: карта Леви–Дженнингса, правила Вестгарда и то, как LabGuide записывает серии QC.
 
 В этом видео:
-• Создание набора контролей: тест, единицы, источник целевых значений, целевое среднее и SD для каждого уровня.
-• Ввод результатов серии и чтение карты Леви–Дженнингса: в пределах, предупреждение, отклонено.
-• Памятки по КК: что делать при отклонении КК, внешняя оценка качества (EQA) и критические значения.
+• Карта Леви–Дженнингса: каждый результат контроля относительно целевого среднего и SD; цели берут из собственных данных контроля вашей лаборатории (сначала около 20 значений).
+• z — на сколько SD результат отстоит от среднего; одно значение за 2 SD — правило 1-2s: предупреждение, а не отклонение; сначала проверьте другими правилами.
+• Правила Вестгарда: 1-3s и R-4s указывают на случайную ошибку, 2-2s, 4-1s и 10x — на систематическую (сдвиг). Разобран пример: четыре значения подряд за 1 SD (4-1s) — серию отклонить и найти причину.
+• Реальные экраны LabGuide (иллюстративные данные контроля): ввод для каждого уровня целевого среднего, SD и их источника, запись серий, карта, которую строит приложение, название нарушенного правила, отклонённая серия — в истории, но вне дальнейших правил и статистики, копирование серий таблицей CSV и памятки по EQA, отклонённым пробам и критическим значениям.
+
+Главы
+0:00 Карта: контроль на 2,3 SD выше среднего
+0:17 z и предупреждение 1-2s
+0:30 Случайная и систематическая ошибка: правила Вестгарда
+0:49 В LabGuide: цели, серии, правила, отклонённые серии
+1:08 Таблица CSV и памятки по КК
 
 Что LabGuide делает сегодня:
-• Целевое среднее и SD для каждого уровня вводите вы; приложение не придумывает целевые значения.
-• Каждая сохранённая серия оценивается по правилам Вестгарда и отмечается на графике.
-• Данные остаются на вашем устройстве; можно скопировать резервную копию текстом и результаты в виде CSV.
+• Для каждого уровня вы вводите целевое среднее, SD и их источник; карту Леви–Дженнингса по записанным сериям строит приложение.
+• Правила Вестгарда проверяются в каждой серии, нарушенное правило названо.
+• Отклонённая серия остаётся в истории, но не используется в дальнейших правилах и статистике (так работает приложение; это не единственная практика КК).
+• Серии можно скопировать таблицей CSV; данные остаются только на этом устройстве.
 • Памятки по EQA и критическим значениям — только пояснения: LabGuide не подключён ни к одной программе EQA и не отправляет результаты.
 
 Важно знать:
-• Целевые значения, пределы и действия после отклонённой серии определяет процедура КК вашей лаборатории и IFU реагента. График — инструмент, а не клиническое решение.
-• Значения контролей иллюстративные — это не реальные результаты контролей.
+• Помощник для проверки — не заменяет процедуру QC вашей лаборатории; целевые значения, пределы и действия после отклонённой серии определяет эта процедура.
+• Иллюстративные данные контроля — не реальный лот и не реальные результаты контролей.
+• Правила показаны так, как их реализует LabGuide (1-2s — предупреждение, все правила отклонения проверяются в каждой серии); процедура вашей лаборатории может отличаться.
 
 LabGuide — приложение-помощник для клинической лаборатории: для лаборантов и студентов (русский, узбекский, английский). Это учебный и справочный инструмент: он не ставит диагноз и не интерпретирует результаты пациентов. Работает без интернета и без аккаунта.
 Приложение: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -112,26 +132,36 @@ LabGuide — приложение-помощник для клинической
 #LabGuide #контрользачества #Вестгард
 ```
 
-### 2.3 O‘zbekcha (Latin) — 2265 characters (limit 5000)
+### 2.3 O‘zbekcha (Latin) — 3506 characters (limit 5000)
 
 ```text
-Bugungi sifat nazorati me’yordami? Nazorat natijalarini kiriting — Levey–Jennings grafigida ko‘rasiz.
-LabGuide har seriyani Westgard qoidalari bo‘yicha tekshiradi — ogohlantirish yoki rad etish — qurilmangizda.
+Bugun ertalabki nazorat: o‘rtachadan +2,3 SD. To‘xtatasizmi — yoki natija berasizmi?
+Taxminan 80 soniyada: Levey–Jennings grafigi, Westgard qoidalari va LabGuide QC seriyalarini qanday qayd etishi.
 
 Bu videoda:
-• Nazorat to‘plamini yaratish: test, birlik, maqsad manbai, har daraja uchun maqsadli o‘rtacha va SD.
-• Seriya natijalarini kiritish va Levey–Jennings grafigini o‘qish: nazoratda, ogohlantirish, rad etilgan.
-• QC yo‘riqnomalari: QC rad etilsa nima qilish, tashqi sifat baholash (EQA) va kritik qiymatlar.
+• Levey–Jennings grafigi: har nazorat natijasi maqsadli o‘rtacha va SD bilan solishtiriladi; maqsadlar laboratoriyangizning o‘z nazorat ma’lumotidan olinadi (boshida taxminan 20 qiymat).
+• z-qiymat: natija o‘rtachadan necha SD uzoqda; 2 SD dan tashqari bitta qiymat — 1-2s qoidasi: ogohlantirish, rad emas; avval boshqa qoidalar bilan tekshiring.
+• Westgard qoidalari: 1-3s va R-4s tasodifiy xatoga, 2-2s, 4-1s va 10x tizimli xatoga (siljishga) ishora qiladi. Misol: ketma-ket to‘rt qiymat 1 SD dan tashqarida (4-1s) — seriyani rad eting va sababini toping.
+• LabGuide’ning haqiqiy ekranlari (namunaviy nazorat ma’lumotlari): har daraja uchun maqsadli o‘rtacha, SD va ularning manbasini kiritish, seriyalarni yozish, ilova chizadigan grafik, buzilgan qoidaning nomi, rad etilgan seriya tarixda qoladi, lekin keyingi qoidalar va statistikaga kirmaydi, seriyalarni CSV jadval sifatida nusxalash va EQA, rad etilgan namunalar va kritik qiymatlar yo‘riqnomalari.
+
+Boblar
+0:00 Grafik: o‘rtachadan 2,3 SD yuqori nazorat
+0:17 z-qiymat va 1-2s ogohlantirishi
+0:30 Tasodifiy va tizimli xato: Westgard qoidalari
+0:49 LabGuide’da: maqsadlar, seriyalar, qoidalar, rad etilgan seriyalar
+1:08 CSV jadval va QC yo‘riqnomalari
 
 LabGuide bugun nima qiladi:
-• Har daraja uchun maqsadli o‘rtacha va SD ni siz kiritasiz; ilova maqsadli qiymatlarni to‘qimaydi.
-• Har saqlangan seriya Westgard qoidalari bo‘yicha baholanadi va grafikda belgilanadi.
-• Ma’lumotlar qurilmangizda qoladi; zaxira nusxani matn sifatida, natijalarni CSV sifatida nusxalash mumkin.
+• Har daraja uchun maqsadli o‘rtacha, SD va ularning manbasini siz kiritasiz; yozilgan seriyalar bo‘yicha Levey–Jennings grafigini ilova chizadi.
+• Westgard qoidalari har seriyada tekshiriladi, buzilgan qoida nomlanadi.
+• Rad etilgan seriya tarixda qoladi, lekin keyingi qoidalar va statistikada ishlatilmaydi (ilova shunday ishlaydi; bu yagona QC amaliyoti emas).
+• Seriyalarni CSV jadval sifatida nusxalash mumkin; ma’lumot faqat shu qurilmada qoladi.
 • EQA va kritik qiymat yo‘riqnomalari faqat tushuntirish: LabGuide hech bir EQA dasturiga ulanmagan va natija yubormaydi.
 
 Bilish foydali:
-• Maqsadli qiymatlar, chegaralar va rad etilgan seriyadan keyingi harakat laboratoriyangizning QC tartibi va reagent IFU’sidan olinadi. Grafik — vosita, klinik qaror emas.
-• Nazorat qiymatlari faqat namunaviy — haqiqiy nazorat natijalari emas.
+• Tekshirish yordamchisi — laboratoriyangiz QC tartibining o‘rnini bosmaydi; maqsadli qiymatlar, chegaralar va rad etilgan seriyadan keyingi harakatni shu tartib belgilaydi.
+• Namunaviy nazorat ma’lumotlari — haqiqiy lot ham, haqiqiy nazorat natijalari ham emas.
+• Qoidalar LabGuide amalga oshirganidek ko‘rsatilgan (1-2s — ogohlantirish, barcha rad qoidalari har seriyada tekshiriladi); laboratoriyangiz tartibi farq qilishi mumkin.
 
 LabGuide — klinik laboratoriya uchun yordamchi ilova: laborantlar va talabalar uchun (o‘zbek, rus, ingliz tillarida). Bu o‘quv va ma’lumotnoma vositasi: u tashxis qo‘ymaydi va bemor natijalarini talqin qilmaydi. Internetsiz va hisobsiz ishlaydi.
 Ilova: [[LINK_APP_STORE]] · [[LINK_PLAY]]
@@ -154,24 +184,32 @@ Upload settings: audio language English; add the edition's SRT as a caption trac
 
 ## 3. Chapters / timestamps
 
-Not available yet: no storyboard yet (storyboard.json). They are filled in automatically when `docs/video/qc/storyboard.json` and the timing manifest exist (re-run `python3 tool/publish/build_kit.py`); automatic titles must be edited.
+Computed from `docs/video/qc/storyboard.json` and the English narration timing (total 79.7 s). The same timestamps serve all three editions.
+
+| Time | EN | RU | UZ |
+|---|---|---|---|
+| 0:00 | The chart: a control 2.3 SD above the mean | Карта: контроль на 2,3 SD выше среднего | Grafik: o‘rtachadan 2,3 SD yuqori nazorat |
+| 0:17 | z-scores and the 1-2s warning | z и предупреждение 1-2s | z-qiymat va 1-2s ogohlantirishi |
+| 0:30 | Random and systematic error: the Westgard rules | Случайная и систематическая ошибка: правила Вестгарда | Tasodifiy va tizimli xato: Westgard qoidalari |
+| 0:49 | In LabGuide: targets, runs, rules, rejected runs | В LabGuide: цели, серии, правила, отклонённые серии | LabGuide’da: maqsadlar, seriyalar, qoidalar, rad etilgan seriyalar |
+| 1:08 | CSV copy and the QC guides | Таблица CSV и памятки по КК | CSV jadval va QC yo‘riqnomalari |
 
 ## 4. Keywords / tags (YouTube tags field, ≤ 500 characters per edition)
 
-* **EN** (146 chars): quality control, Levey-Jennings chart, Westgard rules, internal quality control, laboratory QC, QC rules, 1-3s, 2-2s, clinical chemistry, LabGuide
-* **RU** (275 chars): контроль качества, карта Леви-Дженнингса, правила Вестгарда, внутрилабораторный контроль, КК, лаборант, клиническая лаборатория, quality control, Levey-Jennings chart, Westgard rules, internal quality control, laboratory QC, QC rules, 1-3s, 2-2s, clinical chemistry, LabGuide
-* **UZ** (256 chars): sifat nazorati, Levey-Jennings grafigi, Westgard qoidalari, ichki nazorat, QC, laborant, klinik laboratoriya, quality control, Levey-Jennings chart, Westgard rules, internal quality control, laboratory QC, QC rules, 1-3s, 2-2s, clinical chemistry, LabGuide
+* **EN** (155 chars): quality control, Levey-Jennings chart, Westgard rules, internal quality control, laboratory QC, QC rules, z-score, 1-3s, 2-2s, clinical chemistry, LabGuide
+* **RU** (284 chars): контроль качества, карта Леви-Дженнингса, правила Вестгарда, внутрилабораторный контроль, КК, лаборант, клиническая лаборатория, quality control, Levey-Jennings chart, Westgard rules, internal quality control, laboratory QC, QC rules, z-score, 1-3s, 2-2s, clinical chemistry, LabGuide
+* **UZ** (265 chars): sifat nazorati, Levey-Jennings grafigi, Westgard qoidalari, ichki nazorat, QC, laborant, klinik laboratoriya, quality control, Levey-Jennings chart, Westgard rules, internal quality control, laboratory QC, QC rules, z-score, 1-3s, 2-2s, clinical chemistry, LabGuide
 
 ## 5. Instagram caption (≤ 2200 characters including hashtags; hook first)
 
-### 5.1 English — 686 + hashtags 234 = 922 characters
+### 5.1 English — 912 + hashtags 234 = 1148 characters
 
 ```text
-Is today’s QC run in control? Enter the control results and see it on a Levey–Jennings chart.
+This morning’s control: 2.3 SD above the mean. Stop the run — or report the patients?
 
-LabGuide evaluates every run against the Westgard rules — warning or rejection — marks it on the chart and keeps the data on your device. Targets are the ones you enter (illustrative values in the video).
+In about 80 seconds: a Levey–Jennings chart, z-scores, the Westgard rules (1-2s is a warning; 1-3s and R-4s point to random error; 2-2s, 4-1s and 10x to systematic error) and how LabGuide records QC runs — targets you enter with their source, the broken rule named, rejected runs kept in the history but out of later rules, runs copied as a CSV table, data on this device.
 
-Find it in Lab → Quality control (QC). The EQA guide is an explainer only.
+A checking aid — not a substitute for your lab’s QC procedure. Find it in Lab → Quality control. Control data in the video are illustrative.
 
 Illustrative data — not patient results.
 Educational use, not medical advice.
@@ -181,14 +219,14 @@ Expert review pending: this content has not yet been reviewed by a laboratory sp
 Link in bio: [[LINK_BIO]]. Save this and share it with a colleague.
 ```
 
-### 5.2 Русский — 733 + hashtags 248 = 983 characters
+### 5.2 Русский — 952 + hashtags 248 = 1202 characters
 
 ```text
-Контроль качества сегодня в норме? Введите результаты — и увидите их на карте Леви–Дженнингса.
+Контроль сегодня утром: +2,3 SD от среднего. Остановить серию — или выдать результаты?
 
-LabGuide оценивает каждую серию по правилам Вестгарда — предупреждение или отклонение — отмечает её на графике и хранит данные на вашем устройстве. Целевые значения — те, что вводите вы (в видео — иллюстративные).
+Примерно за 80 секунд: карта Леви–Дженнингса, z, правила Вестгарда (1-2s — предупреждение; 1-3s и R-4s — случайная ошибка; 2-2s, 4-1s и 10x — систематическая) и то, как LabGuide записывает серии QC — цели, которые вводите вы, с источником, название нарушенного правила, отклонённые серии в истории, но вне дальнейших правил, копирование таблицей CSV, данные на устройстве.
 
-Раздел: Лаб. → Контроль качества (QC). Памятка по EQA — только пояснение.
+Помощник для проверки — не заменяет процедуру QC вашей лаборатории. Раздел: Лаб. → Контроль качества. Данные контроля в видео иллюстративные.
 
 Иллюстративные данные — не результаты пациентов.
 Только для обучения; не является медицинской рекомендацией.
@@ -198,14 +236,14 @@ LabGuide оценивает каждую серию по правилам Вес
 Ссылка в профиле: [[LINK_BIO]]. Сохраните и перешлите коллеге.
 ```
 
-### 5.3 O‘zbekcha — 761 + hashtags 224 = 987 characters
+### 5.3 O‘zbekcha — 1003 + hashtags 224 = 1229 characters
 
 ```text
-Bugungi sifat nazorati me’yordami? Nazorat natijalarini kiriting — Levey–Jennings grafigida ko‘rasiz.
+Bugun ertalabki nazorat: o‘rtachadan +2,3 SD. To‘xtatasizmi — yoki natija berasizmi?
 
-LabGuide har seriyani Westgard qoidalari bo‘yicha baholaydi — ogohlantirish yoki rad etish — grafikda belgilaydi va ma’lumotni qurilmangizda saqlaydi. Maqsadli qiymatlar — siz kiritganlar (videoda namunaviy).
+Taxminan 80 soniyada: Levey–Jennings grafigi, z-qiymat, Westgard qoidalari (1-2s — ogohlantirish; 1-3s va R-4s — tasodifiy xato; 2-2s, 4-1s va 10x — tizimli xato) va LabGuide QC seriyalarini qanday qayd etishi — siz manbasi bilan kiritadigan maqsadlar, buzilgan qoida nomi, tarixda qoladigan, lekin keyingi qoidalarga kirmaydigan rad etilgan seriyalar, CSV jadval nusxasi, ma’lumot qurilmada.
 
-Bo‘lim: Lab → Sifat nazorati (QC). EQA yo‘riqnomasi faqat tushuntirish.
+Tekshirish yordamchisi — laboratoriyangiz QC tartibining o‘rnini bosmaydi. Bo‘lim: Lab → Sifat nazorati. Videodagi nazorat ma’lumotlari namunaviy.
 
 Namunaviy ma’lumotlar — bemor natijalari emas.
 Faqat o‘quv maqsadida; tibbiy maslahat emas.
@@ -227,19 +265,19 @@ Havola profilda: [[LINK_BIO]]. Saqlab qo‘ying va hamkasbingizga yuboring.
 **EN**
 
 ```text
-Notes: control values in this video are illustrative, not real QC results. Targets, limits and the action after a rejected run come from your lab’s QC procedure and the reagent IFU. The EQA guide in the app is an explanation only. Narration is English synthetic speech. The content is awaiting expert review — corrections are welcome. Which Westgard rules does your lab use?
+Notes: control data in this video are illustrative, not a real lot or real QC results. Targets, limits and what to do after a rejected run come from your lab’s QC procedure; LabGuide’s handling of rejected runs is the app’s behaviour, not the only QC practice. The EQA guide in the app is an explanation only. Narration is English synthetic speech. The content is awaiting expert review — corrections are welcome. Which Westgard rules does your lab use?
 ```
 
 **RU**
 
 ```text
-Заметки: значения контролей в видео иллюстративные, это не реальные результаты КК. Целевые значения, пределы и действия после отклонённой серии определяет процедура КК вашей лаборатории и IFU реагента. Памятка по EQA в приложении — только пояснение. Озвучка — синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются. Какие правила Вестгарда применяет ваша лаборатория?
+Заметки: данные контроля в видео иллюстративные, это не реальный лот и не реальные результаты КК. Целевые значения, пределы и действия после отклонённой серии определяет процедура КК вашей лаборатории; обработка отклонённых серий в LabGuide — поведение приложения, а не единственная практика КК. Памятка по EQA в приложении — только пояснение. Озвучка — синтезированная английская речь. Материал ждёт экспертной проверки, поправки приветствуются. Какие правила Вестгарда применяет ваша лаборатория?
 ```
 
 **UZ**
 
 ```text
-Eslatma: videodagi nazorat qiymatlari namunaviy, haqiqiy QC natijalari emas. Maqsadli qiymatlar, chegaralar va rad etilgan seriyadan keyingi harakat laboratoriyangiz QC tartibi va reagent IFU’sidan olinadi. Ilovadagi EQA yo‘riqnomasi faqat tushuntirish. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda. Laboratoriyangiz qaysi Westgard qoidalarini qo‘llaydi?
+Eslatma: videodagi nazorat ma’lumotlari namunaviy, haqiqiy lot ham, haqiqiy QC natijalari ham emas. Maqsadli qiymatlar, chegaralar va rad etilgan seriyadan keyingi harakatni laboratoriyangiz QC tartibi belgilaydi; LabGuide’da rad etilgan seriyaning ishlanishi — ilovaning xatti-harakati, yagona QC amaliyoti emas. Ilovadagi EQA yo‘riqnomasi faqat tushuntirish. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda — tuzatishlar uchun rahmat. Laboratoriyangiz qaysi Westgard qoidalarini qo‘llaydi?
 ```
 
 ## 8. Credits
@@ -283,9 +321,9 @@ Internal licence notes (not for the public text):
 
 All under `video_studio/out/qc/<lang>/`. Alt text (thumbnail and cover show the same content):
 
-* **EN**: LabGuide logo and the title “Levey–Jennings Charts and Westgard Rules in LabGuide QC”, with a schematic or app visual and the notice “Illustrative data — not patient results”. (Draft alt text: compare with the rendered thumbnail before use.)
-* **RU**: Логотип LabGuide и заголовок «Контроль качества», схематичное или экранное изображение и пометка «Иллюстративные данные — не результаты пациентов». (Черновик альтернативного текста: сверьте с готовой обложкой.)
-* **UZ**: LabGuide logotipi va «Sifat nazorati» sarlavhasi, sxematik yoki ilova tasviri hamda «Namunaviy ma’lumotlar — bemor natijalari emas» belgisi. (Alt-matn qoralamasi: foydalanishdan oldin tayyor muqova bilan solishtiring.)
+* **EN**: LabGuide logo, the title “QC rules” with the subtitle “Levey–Jennings + Westgard”, the legend “accepted, warning, rejected” (circle, triangle, square), a Levey–Jennings chart with two series of control points between the −3s and +3s lines — one warning point beyond +2s and several rejected points — and the notice “Illustrative control data — not a real lot”.
+* **RU**: Логотип LabGuide, заголовок «Правила QC» с подзаголовком «Леви–Дженнингс + Вестгард», условные обозначения принятых, предупреждающих и отклонённых точек (круг, треугольник, квадрат), карта Леви–Дженнингса с двумя рядами точек контроля между линиями −3s и +3s — одна точка-предупреждение выше +2s и несколько отклонённых — и пометка «Примерные данные контроля — не реальный лот».
+* **UZ**: LabGuide logotipi, «QC qoidalari» sarlavhasi va «Levey–Jennings + Westgard» sarlavha osti, qabul qilingan, ogohlantirish va rad etilgan nuqtalar belgilari (doira, uchburchak, kvadrat), −3s va +3s chiziqlari orasida ikki qator nazorat nuqtali Levey–Jennings grafigi — +2s dan yuqorida bitta ogohlantirish nuqtasi va bir nechta rad etilgan nuqta — hamda «Namunaviy nazorat ma’lumotlari — haqiqiy lot emas» belgisi.
 
 ## 10. End screen / CTA suggestion
 
@@ -307,8 +345,9 @@ All under `video_studio/out/qc/<lang>/`. Alt text (thumbnail and cover show the 
 
 ## 12. Evidence the public text rests on
 
-* docs/video/qc/CLAIMS_AND_EVIDENCE.md (when it exists)
-* docs/video/02_sifat_nazorati.md
+* docs/video/qc/CLAIMS_AND_EVIDENCE.md
+* docs/video/qc/DESCRIPTION.md
+* docs/video/qc/QA.md
 * docs/VIDEO_FEATURE_INVENTORY.md §1 (QC rows)
 * test/widget/qc_flow_test.dart
 * test/unit/qc_rules_test.dart
