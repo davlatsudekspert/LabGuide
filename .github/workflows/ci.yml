@@ -46,7 +46,7 @@ on:
       mode:
         description: "build — imzosiz tekshiruv; testflight — imzo + TestFlight'ga yuklash; play_internal — imzoli AAB + Google Play ichki test; deploy_api — Cloudflare server; deploy_site — labguide.nfcstore.uz sayti (site/)"
         type: choice
-        options: [build, testflight, play_internal, deploy_api, play_listing, deploy_site]
+        options: [build, testflight, play_internal, deploy_api, play_listing, deploy_site, store_check]
         default: build
       play_status:
         description: "play_internal uchun reliz holati: draft (yangi/qoralama ilova uchun shart) yoki completed"
@@ -120,7 +120,7 @@ env:
 
 jobs:
   tests:
-    if: inputs.mode != 'deploy_api' && inputs.mode != 'play_listing' && inputs.mode != 'deploy_site'
+    if: inputs.mode != 'deploy_api' && inputs.mode != 'play_listing' && inputs.mode != 'deploy_site' && inputs.mode != 'store_check'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -161,7 +161,7 @@ jobs:
   # Supabase migratsiyalari va RLS qabul testlari lokal PostgreSQL'da
   # (2 oddiy hisob + admin; statistika, murojaatlar, ruxsatlar, guruhlar).
   backend:
-    if: inputs.mode != 'deploy_api' && inputs.mode != 'play_listing' && inputs.mode != 'deploy_site'
+    if: inputs.mode != 'deploy_api' && inputs.mode != 'play_listing' && inputs.mode != 'deploy_site' && inputs.mode != 'store_check'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -174,7 +174,7 @@ jobs:
 
   # Cloudflare Worker (cloudflare/): tiplar va vitest (workerd + lokal D1).
   worker:
-    if: inputs.mode != 'play_listing' && inputs.mode != 'deploy_site'
+    if: inputs.mode != 'play_listing' && inputs.mode != 'deploy_site' && inputs.mode != 'store_check'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
@@ -392,6 +392,26 @@ jobs:
             echo "- Ilovani ulash: repo variable \`LG_API_URL\` = shu URL (keyingi build'da)."
           } >> "$GITHUB_STEP_SUMMARY"
 
+  # store_check: do'kon holatini FAQAT O'QISH (tool/store/store_check.py) — hech narsa o'zgarmaydi.
+  store_check:
+    if: inputs.mode == 'store_check'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pyjwt==2.9.0 cryptography google-api-python-client==2.151.0 google-auth==2.35.0
+      - name: Do'kon holati (faqat o'qish)
+        env:
+          API_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          API_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          API_PRIVATE_KEY: ${{ secrets.ASC_KEY_P8_BASE64 }}
+          ASC_APP_ID: '6820790275'
+          PLAY_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+        run: python3 tool/store/store_check.py
+
   # deploy_site: site/ → Cloudflare Worker (static assets) "tiny-grass-e36a",
   # labguide.nfcstore.uz shu workerga ulangan (custom domain dashboardda, tegilmaydi).
   # Deploydan keyin sahifalar tekshiriladi; biror sahifa ochilmasa — avvalgi
@@ -454,7 +474,7 @@ jobs:
 
   android:
     needs: tests
-    if: inputs.mode != 'deploy_api'
+    if: inputs.mode != 'deploy_api' && inputs.mode != 'store_check'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
