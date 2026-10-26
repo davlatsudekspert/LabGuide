@@ -7,6 +7,7 @@
 > Batafsil: `PAID_SANDBOX_RUNBOOK.md`, `PAID_BACKEND_DEPLOY_CHECKLIST.md`.
 
 ## 0. Qaror kerak (egasi)
+- [x] Apple va Google: bank/soliq va pullik ilovalar shartnomasi to‘ldirilgan, qabul qilingan (egasi aytdi 2026-10-26; konsolda “Active” holatini tekshirish kerak).
 - [ ] Narx nuqtalari: ilovadagi bazaviy narxlar (USD) `ProPricing`da: Talaba 1.49 / 9.99, Ustoz 2.49 / 24.99,
       Mutaxassis 3.49 / 34.99, Premium 4.99 / 49.99 (oy / yil). UZS va boshqa valyuta narxlarini do‘konda tanlaysiz.
 - [ ] Bepul sinov: 7 kun, do‘kon “introductory offer” sifatida (rozilikka qarshi pul yechilmaydi).

@@ -47,8 +47,8 @@ Avval o‘qi: `docs/PAID_OWNER_HELPER_CHECKLIST.md`, `docs/PAID_SANDBOX_RUNBOOK.
   Production — TAQIQ, egasi bepul versiya javobi kelgach va alohida ruxsat bergach.
 - Bepul versiya tasdiqlangach pullik versiya “1.1 yangilanishi” sifatida chiqadi. Yuborishdan oldin tayyor bo‘lishi shart:
   1. 8 mahsulot yaratilgan, narxlar egasi tasdiqlagan.
-  2. Apple: “Paid Apps” shartnomasi, bank va soliq ma’lumotlari to‘ldirilgan (faqat egasi qila oladi — to‘lmagan bo‘lsa egasiga
-     ayt). Aks holda obuna sotib bo‘lmaydi.
+  2. Apple “Paid Apps” shartnomasi, bank va soliq: egasi aytdi — Apple va Google ikkalasida ham to‘ldirilgan va qabul
+     qilingan (2026-10-26, egasining so‘zi; sen ASC/Play Console’da holatini “Active” deb tasdiqlab ol).
   3. Haqiqiy do‘kon sandbox sinovi o‘tgan (sotib olish, tiklash, bekor qilish, 7 kunlik sinov) — natijalar PASS/FAIL/NOT RUN.
   4. Maxfiylik siyosati va shartlar sahifalari, App Privacy va Play Data Safety formalari obunaga mos yangilangan; Apple
      tekshiruvi uchun obuna ekrani skrinshoti va sinov akkaunti tayyor.
