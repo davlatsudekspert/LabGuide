@@ -4407,6 +4407,20 @@
   "lectureNotesShow": "Show teacher notes",
   "lectureNotesHide": "Hide teacher notes",
   "lectureTeacherNote": "Teacher note",
+  "lectureAutoModeAuto": "Auto",
+  "lectureAutoModeManual": "Manual",
+  "lectureAutoPause": "Pause",
+  "lectureAutoResume": "Resume",
+  "lectureAutoSeconds": "{n, plural, =1{1 second} other{{n} seconds}}",
+  "@lectureAutoSeconds": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "lectureAutoToggleLabel": "Automatic slide advance",
+  "lectureAutoSpeedTitle": "Advance speed",
   "cmTitle": "Community · Q&A",
   "cmHomeSub": "Questions answered by verified lab specialists",
   "cmAsk": "Ask a question",

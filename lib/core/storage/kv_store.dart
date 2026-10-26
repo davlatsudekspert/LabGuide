@@ -117,6 +117,12 @@ abstract final class StoreKeys {
   /// har safar so'raladi) — faqat shu qurilmada.
   static const lectureOrientation = 'lecture.orientation';
 
+  /// Ma'ruza: slaydlarni avtomatik varaqlash tanlovi (`auto`; yo'q — qo'lda)
+  /// va tezligi soniyada (`15` / `30` / `60`; yo'q — 30) — faqat shu
+  /// qurilmada.
+  static const lectureAutoMode = 'lecture.autoMode';
+  static const lectureAutoSeconds = 'lecture.autoSeconds';
+
   /// Bosh sahifadagi “Davom ettirish”: oxirgi ochilgan taqdimot, mavzu testi
   /// yoki bo'lim (`kind:id`) — faqat shu qurilmada (D-69 Q3).
   static const homeResume = 'home.resume';
@@ -182,6 +188,8 @@ abstract final class StoreKeys {
     classroomLocal,
     topicTests,
     lectureOrientation,
+    lectureAutoMode,
+    lectureAutoSeconds,
     homeResume,
     pendingInvite,
     teacherTestsCache,

@@ -367,7 +367,11 @@ class PresenterView extends StatefulWidget {
     required this.onGo,
     required this.onExit,
     required this.onToggleAnswer,
+    this.autoControl,
   });
+
+  /// Yuqoridagi «Avto / Qo'lda» boshqaruvi (pleyer beradi).
+  final Widget? autoControl;
 
   final List<LectureSlide> slides;
   final int index;
@@ -554,14 +558,22 @@ class _PresenterViewState extends State<PresenterView> {
         child: LayoutBuilder(
           builder: (context, box) {
             final wide = box.maxWidth > box.maxHeight && box.maxWidth >= 600;
-            final close = Align(
-              alignment: Alignment.centerLeft,
-              child: IconButton(
-                key: const ValueKey('lecture-presenter-exit'),
-                tooltip: l.lectureFullscreenExit,
-                icon: const Icon(Icons.close_rounded),
-                onPressed: widget.onExit,
-              ),
+            final close = Row(
+              children: [
+                IconButton(
+                  key: const ValueKey('lecture-presenter-exit'),
+                  tooltip: l.lectureFullscreenExit,
+                  icon: const Icon(Icons.close_rounded),
+                  onPressed: widget.onExit,
+                ),
+                if (widget.autoControl != null)
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: widget.autoControl,
+                    ),
+                  ),
+              ],
             );
             if (wide) {
               return Padding(

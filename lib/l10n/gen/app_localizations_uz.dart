@@ -7445,6 +7445,29 @@ class AppLocalizationsUz extends AppLocalizations {
   String get lectureTeacherNote => 'Ustoz uchun izoh';
 
   @override
+  String get lectureAutoModeAuto => 'Avto';
+
+  @override
+  String get lectureAutoModeManual => 'Qo‘lda';
+
+  @override
+  String get lectureAutoPause => 'Pauza';
+
+  @override
+  String get lectureAutoResume => 'Davom etish';
+
+  @override
+  String lectureAutoSeconds(int n) {
+    return '$n soniya';
+  }
+
+  @override
+  String get lectureAutoToggleLabel => 'Slaydlarni avtomatik varaqlash';
+
+  @override
+  String get lectureAutoSpeedTitle => 'Varaqlash tezligi';
+
+  @override
   String get cmTitle => 'Hamjamiyat · Savol-javob';
 
   @override

@@ -16,6 +16,7 @@ import 'lecture_catalog.dart';
 import 'lecture_decks.dart';
 import 'lecture_library.dart';
 import 'lecture_slide.dart';
+import 'lecture_autoplay.dart';
 import 'lecture_canvas.dart';
 import 'lecture_present.dart';
 import 'topic_questions.dart';
@@ -306,7 +307,8 @@ class LectureScreen extends StatefulWidget {
   State<LectureScreen> createState() => _LectureScreenState();
 }
 
-class _LectureScreenState extends State<LectureScreen> {
+class _LectureScreenState extends State<LectureScreen>
+    with WidgetsBindingObserver {
   int _index = 0;
   bool _notes = false;
 
@@ -321,6 +323,26 @@ class _LectureScreenState extends State<LectureScreen> {
   bool _immersive = false;
   bool _chrome = true;
   Timer? _chromeTimer;
+
+  // «Avto / Qo'lda» varaqlash. [_auto] — shu ochilishdagi rejim (tanlov
+  // qurilmada saqlanadi, lekin deck oxirida o'chirilsa saqlangan tanlov
+  // o'zgarmaydi); [_autoPaused] — vaqtincha to'xtatilgan; [_autoTimer] —
+  // bir martalik taymer, har slayd o'zgarishi/davom etishda qayta
+  // o'rnatiladi, dispose'da bekor qilinadi.
+  //
+  // Ekran uyg'oq tutish: bu ekran avvaldan butun umri davomida ekranni
+  // uyg'oq ushlaydi (initState/dispose) — «Qo'lda» uchun shu o'zgarmagan.
+  // Avto ishlaganda ham u yoqiq (aniq qayta yoqiladi). Avto to'xtaganda
+  // uni o'chirmaymiz (aks holda «Qo'lda» xatti-harakati o'zgarardi);
+  // ilova fonga o'tganda Avto bo'lgan bo'lsa — o'chiriladi, qaytganda
+  // qayta yoqiladi va Avto pauzada qoladi.
+  bool _auto = false;
+  bool _autoPaused = false;
+  int _autoSeconds = LectureAutoPrefs.defaultSeconds;
+  Timer? _autoTimer;
+  int _autoCount = 0;
+  bool _armQueued = false;
+  bool _awakeReleased = false;
 
   // Katalog decki (deckId bilan ochilganda).
   bool _catalogStarted = false;
@@ -392,7 +414,11 @@ class _LectureScreenState extends State<LectureScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     unawaited(DiffDevice.screenAwake.set(on: true));
+    final prefs = context.services.store;
+    _auto = LectureAutoPrefs.readAuto(prefs);
+    _autoSeconds = LectureAutoPrefs.readSeconds(prefs);
     // Mavzu testi tugmasi uchun katalog (ro'yxat ochilmagan bo'lsa).
     final bundle = context.services.curriculum.bundle ?? rootBundle;
     if (widget.generated == null && DeckCatalog.peek(bundle) == null) {
@@ -437,6 +463,9 @@ class _LectureScreenState extends State<LectureScreen> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _autoTimer?.cancel();
+    _autoTimer = null;
     unawaited(DiffDevice.screenAwake.set(on: false));
     _chromeTimer?.cancel();
     // Ekran holati va tizim panellari har doim qaytariladi (orqaga, yopish).
@@ -445,9 +474,139 @@ class _LectureScreenState extends State<LectureScreen> {
     super.dispose();
   }
 
+  /// Qo'lda varaqlash. Avto ishlab turgan bo'lsa — pauzaga qo'yadi (pauzada
+  /// bo'lsa pauzada qoladi).
   void _go(int delta, int count) {
     final next = (_index + delta).clamp(0, count - 1);
-    if (next != _index) setState(() => _index = next);
+    if (next == _index) return;
+    setState(() {
+      _index = next;
+      if (_auto && !_autoPaused) {
+        _autoPaused = true;
+        _cancelAutoTimer();
+      }
+    });
+  }
+
+  void _cancelAutoTimer() {
+    _autoTimer?.cancel();
+    _autoTimer = null;
+  }
+
+  /// Hisobni boshidan boshlaydi (slayd o'zgargach, davom etganda, tezlik
+  /// o'zgargach). Oxirgi slaydda — Avto o'chadi (boshiga qaytmaydi).
+  void _armAuto() {
+    _cancelAutoTimer();
+    if (!_auto || _autoPaused || _autoCount == 0) return;
+    if (_index.clamp(0, _autoCount - 1) >= _autoCount - 1) {
+      _stopAuto();
+      return;
+    }
+    _autoTimer = Timer(Duration(seconds: _autoSeconds), _autoTick);
+  }
+
+  void _autoTick() {
+    _autoTimer = null;
+    if (!mounted || !_auto || _autoPaused) return;
+    // Ustida boshqa oyna (menyu, dialog, test sahifasi) ochiq — foydalanuvchi
+    // band: o'tmaymiz, pauzaga qo'yamiz.
+    if (!(ModalRoute.of(context)?.isCurrent ?? true)) {
+      _pauseAuto();
+      return;
+    }
+    final next = _index.clamp(0, _autoCount - 1) + 1;
+    if (next >= _autoCount) {
+      _stopAuto();
+      return;
+    }
+    setState(() => _index = next);
+    _armAuto();
+  }
+
+  /// Avto shu ochilish uchun o'chadi; saqlangan tanlov o'zgarmaydi.
+  void _stopAuto() {
+    _cancelAutoTimer();
+    if (_auto || _autoPaused) {
+      setState(() {
+        _auto = false;
+        _autoPaused = false;
+      });
+    }
+  }
+
+  void _pauseAuto() {
+    if (!_auto || _autoPaused) return;
+    _cancelAutoTimer();
+    setState(() => _autoPaused = true);
+  }
+
+  void _resumeAuto() {
+    if (!_auto || !_autoPaused) return;
+    setState(() => _autoPaused = false);
+    _armAuto();
+  }
+
+  /// Avto yoqilganda ekranga bosish — pauza / davom etish (navigatsiya emas).
+  void _autoTap() {
+    _autoPaused ? _resumeAuto() : _pauseAuto();
+    _refocus();
+  }
+
+  /// Boshqaruv tugmasi almashganda (pauza <-> davom) fokus yo'qolmasin —
+  /// klaviatura ← → ishlashda davom etsin.
+  void _refocus() {
+    if (mounted) _focus.requestFocus();
+  }
+
+  void _toggleAuto() {
+    final on = !_auto;
+    setState(() {
+      _auto = on;
+      _autoPaused = false;
+    });
+    unawaited(LectureAutoPrefs.writeAuto(context.services.store, on: on));
+    if (on) unawaited(DiffDevice.screenAwake.set(on: true));
+    _armAuto();
+    _refocus();
+  }
+
+  void _setAutoSeconds(int seconds) {
+    if (!LectureAutoPrefs.speeds.contains(seconds)) return;
+    setState(() => _autoSeconds = seconds);
+    unawaited(LectureAutoPrefs.writeSeconds(context.services.store, seconds));
+    _armAuto();
+  }
+
+  Widget _autoBar({bool compact = false, bool onDark = false}) =>
+      LectureAutoBar(
+        auto: _auto,
+        paused: _autoPaused,
+        seconds: _autoSeconds,
+        onToggle: _toggleAuto,
+        onSeconds: _setAutoSeconds,
+        onPauseToggle: _autoTap,
+        compact: compact,
+        onDark: onDark,
+      );
+
+  /// Ilova fonga o'tganda (yoki to'xtatilganda) Avto pauzaga qo'yiladi va
+  /// taymer bekor qilinadi; qaytganda pauzada qoladi (foydalanuvchi o'zi
+  /// davom ettiradi).
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      if (_awakeReleased) {
+        _awakeReleased = false;
+        unawaited(DiffDevice.screenAwake.set(on: true));
+      }
+      return;
+    }
+    if (!_auto) return;
+    _pauseAuto();
+    if (!_awakeReleased) {
+      _awakeReleased = true;
+      unawaited(DiffDevice.screenAwake.set(on: false));
+    }
   }
 
   void _toggleAnswer(int i) => setState(
@@ -641,6 +800,15 @@ class _LectureScreenState extends State<LectureScreen> {
     String? title,
   ) {
     final size = MediaQuery.sizeOf(context);
+    _autoCount = slides.length;
+    if (_auto && !_autoPaused && _autoTimer == null && !_armQueued) {
+      // Saqlangan «Avto» bilan ochilganda — birinchi chizilgandan keyin.
+      _armQueued = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _armQueued = false;
+        if (mounted && _autoTimer == null) _armAuto();
+      });
+    }
     final Widget body = switch (_view) {
       _View.present => _presentation(context, slides, i, title),
       _View.presenter => PresenterView(
@@ -651,6 +819,7 @@ class _LectureScreenState extends State<LectureScreen> {
         onGo: (d) => _go(d, slides.length),
         onExit: () => unawaited(_leave()),
         onToggleAnswer: () => _toggleAnswer(i),
+        autoControl: _autoBar(),
       ),
       _View.normal when size.width >= _wideWidth => _wide(
         context,
@@ -698,6 +867,8 @@ class _LectureScreenState extends State<LectureScreen> {
       key: const ValueKey('lecture-slide-card'),
       behavior: HitTestBehavior.opaque,
       onHorizontalDragEnd: (d) => _swipe(d, slides.length),
+      // Avto yoqilganda bosish — pauza / davom etish; o'chiqda — avvalgidek.
+      onTap: _auto ? _autoTap : null,
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -742,29 +913,39 @@ class _LectureScreenState extends State<LectureScreen> {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
     final testDeck = _testDeck();
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 4, 12, 0),
-      child: Row(
-        children: [
-          IconButton(
-            tooltip: l.lectureClose,
-            icon: const Icon(Icons.close_rounded),
-            onPressed: () => context.pop(),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(8, 4, 12, 0),
+          child: Row(
+            children: [
+              IconButton(
+                tooltip: l.lectureClose,
+                icon: const Icon(Icons.close_rounded),
+                onPressed: () => context.pop(),
+              ),
+              const Spacer(),
+              if (testDeck != null) DeckTestMenu(deck: testDeck),
+              if (slides[i].teacherNote != null) _notesButton(context),
+              _moreMenu(context),
+              const SizedBox(width: 4),
+              Semantics(
+                liveRegion: true,
+                child: Text(
+                  l.lectureCounter(i + 1, slides.length),
+                  style: text.labelLarge,
+                ),
+              ),
+            ],
           ),
-          const Spacer(),
-          if (testDeck != null) DeckTestMenu(deck: testDeck),
-          if (slides[i].teacherNote != null) _notesButton(context),
-          _moreMenu(context),
-          const SizedBox(width: 4),
-          Semantics(
-            liveRegion: true,
-            child: Text(
-              l.lectureCounter(i + 1, slides.length),
-              style: text.labelLarge,
-            ),
-          ),
-        ],
-      ),
+        ),
+        // «Avto / Qo'lda» — ko'rish ekranining yuqorisida.
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+          child: Align(alignment: Alignment.centerLeft, child: _autoBar()),
+        ),
+      ],
     );
   }
 
@@ -1103,6 +1284,8 @@ class _LectureScreenState extends State<LectureScreen> {
                 behavior: HitTestBehavior.opaque,
                 onHorizontalDragEnd: (d) => _swipe(d, slides.length),
                 onTapUp: (d) {
+                  // Avto yoqilganda bosish — pauza / davom etish.
+                  if (_auto) return _autoTap();
                   final w = MediaQuery.sizeOf(context).width;
                   if (d.localPosition.dx > w * 0.65) _go(1, slides.length);
                   if (d.localPosition.dx < w * 0.35) _go(-1, slides.length);
@@ -1129,6 +1312,16 @@ class _LectureScreenState extends State<LectureScreen> {
                 Icons.close_rounded,
                 l.lectureClose,
                 () => context.pop(),
+              ),
+            ),
+            // «Avto / Qo'lda»: yuqorida, yopish va o'ng tugmalar orasida.
+            Positioned(
+              top: 4,
+              left: 56,
+              right: 300,
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: _autoBar(compact: true),
               ),
             ),
             Positioned(
@@ -1276,10 +1469,14 @@ class _LectureScreenState extends State<LectureScreen> {
   ) {
     final l = AppLocalizations.of(context);
     final slide = slides[i];
+    // «Harakatni kamaytirish» yoqiq bo'lsa — tugmalar so'nishi animatsiyasiz.
+    final fade = MediaQuery.disableAnimationsOf(context)
+        ? Duration.zero
+        : const Duration(milliseconds: 250);
     Widget small(IconData icon, String tip, VoidCallback onTap, Key key) =>
         AnimatedOpacity(
           opacity: _chrome ? 1 : 0,
-          duration: const Duration(milliseconds: 250),
+          duration: fade,
           child: IconButton(
             key: key,
             tooltip: tip,
@@ -1304,6 +1501,12 @@ class _LectureScreenState extends State<LectureScreen> {
               behavior: HitTestBehavior.opaque,
               onHorizontalDragEnd: (d) => _swipe(d, slides.length),
               onTapUp: (d) {
+                // Avto yoqilganda bosish — pauza / davom etish (o'tmaydi).
+                if (_auto) {
+                  _autoTap();
+                  _showChrome();
+                  return;
+                }
                 final w = MediaQuery.sizeOf(context).width;
                 _go(d.localPosition.dx >= w / 2 ? 1 : -1, slides.length);
                 _showChrome();
@@ -1328,6 +1531,24 @@ class _LectureScreenState extends State<LectureScreen> {
               l.lectureFullscreenExit,
               () => unawaited(_leave()),
               const ValueKey('lecture-fullscreen-exit'),
+            ),
+          ),
+          // Avto boshqaruvi; pauza belgisi doim ko'rinadi.
+          Positioned(
+            top: 8,
+            left: 64,
+            right: 8,
+            child: Align(
+              alignment: Alignment.topLeft,
+              // Yashirin paytda bosish slayd uchun (ko'rinmas tugma ushlamaydi).
+              child: IgnorePointer(
+                ignoring: !_chrome && !_autoPaused,
+                child: AnimatedOpacity(
+                  opacity: _chrome || _autoPaused ? 1 : 0,
+                  duration: fade,
+                  child: _autoBar(compact: true, onDark: true),
+                ),
+              ),
             ),
           ),
           if (slide.template == SlideTemplate.qa)
