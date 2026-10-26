@@ -13030,6 +13030,48 @@ abstract class AppLocalizations {
   /// **'Teacher note'**
   String get lectureTeacherNote;
 
+  /// No description provided for @lectureAutoModeAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto'**
+  String get lectureAutoModeAuto;
+
+  /// No description provided for @lectureAutoModeManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual'**
+  String get lectureAutoModeManual;
+
+  /// No description provided for @lectureAutoPause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get lectureAutoPause;
+
+  /// No description provided for @lectureAutoResume.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get lectureAutoResume;
+
+  /// No description provided for @lectureAutoSeconds.
+  ///
+  /// In en, this message translates to:
+  /// **'{n, plural, =1{1 second} other{{n} seconds}}'**
+  String lectureAutoSeconds(int n);
+
+  /// No description provided for @lectureAutoToggleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic slide advance'**
+  String get lectureAutoToggleLabel;
+
+  /// No description provided for @lectureAutoSpeedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Advance speed'**
+  String get lectureAutoSpeedTitle;
+
   /// No description provided for @cmTitle.
   ///
   /// In en, this message translates to:

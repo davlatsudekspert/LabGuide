@@ -7567,6 +7567,37 @@ class AppLocalizationsRu extends AppLocalizations {
   String get lectureTeacherNote => 'Заметка для преподавателя';
 
   @override
+  String get lectureAutoModeAuto => 'Авто';
+
+  @override
+  String get lectureAutoModeManual => 'Вручную';
+
+  @override
+  String get lectureAutoPause => 'Пауза';
+
+  @override
+  String get lectureAutoResume => 'Продолжить';
+
+  @override
+  String lectureAutoSeconds(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n секунды',
+      many: '$n секунд',
+      few: '$n секунды',
+      one: '$n секунда',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get lectureAutoToggleLabel => 'Автоматическое листание слайдов';
+
+  @override
+  String get lectureAutoSpeedTitle => 'Скорость листания';
+
+  @override
   String get cmTitle => 'Сообщество · Вопросы и ответы';
 
   @override

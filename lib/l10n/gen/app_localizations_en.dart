@@ -7551,6 +7551,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lectureTeacherNote => 'Teacher note';
 
   @override
+  String get lectureAutoModeAuto => 'Auto';
+
+  @override
+  String get lectureAutoModeManual => 'Manual';
+
+  @override
+  String get lectureAutoPause => 'Pause';
+
+  @override
+  String get lectureAutoResume => 'Resume';
+
+  @override
+  String lectureAutoSeconds(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n seconds',
+      one: '1 second',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get lectureAutoToggleLabel => 'Automatic slide advance';
+
+  @override
+  String get lectureAutoSpeedTitle => 'Advance speed';
+
+  @override
   String get cmTitle => 'Community · Q&A';
 
   @override
