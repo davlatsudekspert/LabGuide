@@ -117,12 +117,15 @@ class Walk {
     Map<String, Finder> marks = const {},
     bool settle = true,
     bool texts = false,
+    // Only for frames whose publisher/source line is dimmed out by a named
+    // crop mark in the video (the crop must end above that line).
+    bool brandOk = false,
   }) async {
     if (settle) {
       FocusManager.instance.primaryFocus?.unfocus();
       await precache();
     }
-    brandCheck(id);
+    if (!brandOk) brandCheck(id);
     final rects = <String, List<double>>{};
     for (final e in marks.entries) {
       final r = rectOf(e.value);

@@ -1,68 +1,73 @@
 week,slot,day,platform,topic_id,language_edition,format,file,gates,video_status_at_build,proposal_status,note
-1,A,Mon,YouTube,calibration,uz,"16:9 long-form, 1920×1080",calibration_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
-1,A,Mon,YouTube,calibration,ru,"16:9 long-form, 1920×1080",calibration_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
-1,A,Mon,YouTube,calibration,en,"16:9 long-form, 1920×1080",calibration_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
-1,A,Tue,Instagram,calibration,uz,"9:16 Reel, 1080×1920",calibration_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
-1,A,Wed,Instagram,calibration,ru,"9:16 Reel, 1080×1920",calibration_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
-1,A,Wed,Instagram,calibration,en,"9:16 Reel, 1080×1920",calibration_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
-1,B,Thu,YouTube,leukocyte,uz,"16:9 long-form, 1920×1080",leukocyte_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
-1,B,Thu,YouTube,leukocyte,ru,"16:9 long-form, 1920×1080",leukocyte_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
-1,B,Thu,YouTube,leukocyte,en,"16:9 long-form, 1920×1080",leukocyte_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
-1,B,Fri,Instagram,leukocyte,uz,"9:16 Reel, 1080×1920",leukocyte_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
-1,B,Sat,Instagram,leukocyte,ru,"9:16 Reel, 1080×1920",leukocyte_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
-1,B,Sun,Instagram,leukocyte,en,"9:16 Reel, 1080×1920",leukocyte_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
-2,A,Mon,YouTube,qc,uz,"16:9 long-form, 1920×1080",qc_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
-2,A,Mon,YouTube,qc,ru,"16:9 long-form, 1920×1080",qc_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
-2,A,Mon,YouTube,qc,en,"16:9 long-form, 1920×1080",qc_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
-2,A,Tue,Instagram,qc,uz,"9:16 Reel, 1080×1920",qc_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
-2,A,Wed,Instagram,qc,ru,"9:16 Reel, 1080×1920",qc_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
-2,A,Wed,Instagram,qc,en,"9:16 Reel, 1080×1920",qc_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
-2,B,Thu,YouTube,photometry,uz,"16:9 long-form, 1920×1080",photometry_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
-2,B,Thu,YouTube,photometry,ru,"16:9 long-form, 1920×1080",photometry_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
-2,B,Thu,YouTube,photometry,en,"16:9 long-form, 1920×1080",photometry_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
-2,B,Fri,Instagram,photometry,uz,"9:16 Reel, 1080×1920",photometry_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
-2,B,Sat,Instagram,photometry,ru,"9:16 Reel, 1080×1920",photometry_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
-2,B,Sun,Instagram,photometry,en,"9:16 Reel, 1080×1920",photometry_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
-3,A,Mon,YouTube,calculators,uz,"16:9 long-form, 1920×1080",calculators_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
-3,A,Mon,YouTube,calculators,ru,"16:9 long-form, 1920×1080",calculators_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
-3,A,Mon,YouTube,calculators,en,"16:9 long-form, 1920×1080",calculators_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
-3,A,Tue,Instagram,calculators,uz,"9:16 Reel, 1080×1920",calculators_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
-3,A,Wed,Instagram,calculators,ru,"9:16 Reel, 1080×1920",calculators_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
-3,A,Wed,Instagram,calculators,en,"9:16 Reel, 1080×1920",calculators_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
-3,B,Thu,YouTube,osmometry,uz,"16:9 long-form, 1920×1080",osmometry_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
-3,B,Thu,YouTube,osmometry,ru,"16:9 long-form, 1920×1080",osmometry_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
-3,B,Thu,YouTube,osmometry,en,"16:9 long-form, 1920×1080",osmometry_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
-3,B,Fri,Instagram,osmometry,uz,"9:16 Reel, 1080×1920",osmometry_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
-3,B,Sat,Instagram,osmometry,ru,"9:16 Reel, 1080×1920",osmometry_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
-3,B,Sun,Instagram,osmometry,en,"9:16 Reel, 1080×1920",osmometry_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
-4,A,Mon,YouTube,gcms,uz,"16:9 long-form, 1920×1080",gcms_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
-4,A,Mon,YouTube,gcms,ru,"16:9 long-form, 1920×1080",gcms_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
-4,A,Mon,YouTube,gcms,en,"16:9 long-form, 1920×1080",gcms_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
-4,A,Tue,Instagram,gcms,uz,"9:16 Reel, 1080×1920",gcms_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
-4,A,Wed,Instagram,gcms,ru,"9:16 Reel, 1080×1920",gcms_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
-4,A,Wed,Instagram,gcms,en,"9:16 Reel, 1080×1920",gcms_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
-4,B,Thu,YouTube,qpcr,uz,"16:9 long-form, 1920×1080",qpcr_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
-4,B,Thu,YouTube,qpcr,ru,"16:9 long-form, 1920×1080",qpcr_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
-4,B,Thu,YouTube,qpcr,en,"16:9 long-form, 1920×1080",qpcr_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
-4,B,Fri,Instagram,qpcr,uz,"9:16 Reel, 1080×1920",qpcr_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
-4,B,Sat,Instagram,qpcr,ru,"9:16 Reel, 1080×1920",qpcr_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
-4,B,Sun,Instagram,qpcr,en,"9:16 Reel, 1080×1920",qpcr_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
-5,A,Mon,YouTube,exam_simulation,uz,"16:9 long-form, 1920×1080",exam_simulation_uz_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
-5,A,Mon,YouTube,exam_simulation,ru,"16:9 long-form, 1920×1080",exam_simulation_ru_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
-5,A,Mon,YouTube,exam_simulation,en,"16:9 long-form, 1920×1080",exam_simulation_en_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
-5,A,Tue,Instagram,exam_simulation,uz,"9:16 Reel, 1080×1920",exam_simulation_uz_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
-5,A,Wed,Instagram,exam_simulation,ru,"9:16 Reel, 1080×1920",exam_simulation_ru_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
-5,A,Wed,Instagram,exam_simulation,en,"9:16 Reel, 1080×1920",exam_simulation_en_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
-5,B,Thu,YouTube,teacher_pro,uz,"16:9 long-form, 1920×1080",teacher_pro_uz_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
-5,B,Thu,YouTube,teacher_pro,ru,"16:9 long-form, 1920×1080",teacher_pro_ru_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
-5,B,Thu,YouTube,teacher_pro,en,"16:9 long-form, 1920×1080",teacher_pro_en_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
-5,B,Fri,Instagram,teacher_pro,uz,"9:16 Reel, 1080×1920",teacher_pro_uz_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
-5,B,Sat,Instagram,teacher_pro,ru,"9:16 Reel, 1080×1920",teacher_pro_ru_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
-5,B,Sun,Instagram,teacher_pro,en,"9:16 Reel, 1080×1920",teacher_pro_en_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
-6,A,Mon,YouTube,premium_overview,uz,"16:9 long-form, 1920×1080",premium_overview_uz_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
-6,A,Mon,YouTube,premium_overview,ru,"16:9 long-form, 1920×1080",premium_overview_ru_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
-6,A,Mon,YouTube,premium_overview,en,"16:9 long-form, 1920×1080",premium_overview_en_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
-6,A,Tue,Instagram,premium_overview,uz,"9:16 Reel, 1080×1920",premium_overview_uz_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
-6,A,Wed,Instagram,premium_overview,ru,"9:16 Reel, 1080×1920",premium_overview_ru_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
-6,A,Wed,Instagram,premium_overview,en,"9:16 Reel, 1080×1920",premium_overview_en_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
-6,B,Mon–Sun,—,—,—,—,—,—,—,PROPOSAL,"Buffer: fixes from comments, re-share the best-performing post, answer questions. No new video."
+1,A,Mon,YouTube,overview,uz,"16:9 long-form, 1920×1080",overview_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Channel intro: what LabGuide is and why each role uses it. Rendered.
+1,A,Mon,YouTube,overview,ru,"16:9 long-form, 1920×1080",overview_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Channel intro: what LabGuide is and why each role uses it. Rendered.
+1,A,Mon,YouTube,overview,en,"16:9 long-form, 1920×1080",overview_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Channel intro: what LabGuide is and why each role uses it. Rendered.
+1,A,Tue,Instagram,overview,uz,"9:16 Reel, 1080×1920",overview_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Channel intro: what LabGuide is and why each role uses it. Rendered.
+1,A,Wed,Instagram,overview,ru,"9:16 Reel, 1080×1920",overview_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Channel intro: what LabGuide is and why each role uses it. Rendered.
+1,A,Wed,Instagram,overview,en,"9:16 Reel, 1080×1920",overview_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Channel intro: what LabGuide is and why each role uses it. Rendered.
+1,B,Thu,YouTube,calibration,uz,"16:9 long-form, 1920×1080",calibration_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
+1,B,Thu,YouTube,calibration,ru,"16:9 long-form, 1920×1080",calibration_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
+1,B,Thu,YouTube,calibration,en,"16:9 long-form, 1920×1080",calibration_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
+1,B,Fri,Instagram,calibration,uz,"9:16 Reel, 1080×1920",calibration_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
+1,B,Sat,Instagram,calibration,ru,"9:16 Reel, 1080×1920",calibration_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
+1,B,Sun,Instagram,calibration,en,"9:16 Reel, 1080×1920",calibration_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 1. Rendered.
+2,A,Mon,YouTube,leukocyte,uz,"16:9 long-form, 1920×1080",leukocyte_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
+2,A,Mon,YouTube,leukocyte,ru,"16:9 long-form, 1920×1080",leukocyte_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
+2,A,Mon,YouTube,leukocyte,en,"16:9 long-form, 1920×1080",leukocyte_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
+2,A,Tue,Instagram,leukocyte,uz,"9:16 Reel, 1080×1920",leukocyte_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
+2,A,Wed,Instagram,leukocyte,ru,"9:16 Reel, 1080×1920",leukocyte_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
+2,A,Wed,Instagram,leukocyte,en,"9:16 Reel, 1080×1920",leukocyte_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Flagship 2. Rendered.
+2,B,Thu,YouTube,qc,uz,"16:9 long-form, 1920×1080",qc_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
+2,B,Thu,YouTube,qc,ru,"16:9 long-form, 1920×1080",qc_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
+2,B,Thu,YouTube,qc,en,"16:9 long-form, 1920×1080",qc_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
+2,B,Fri,Instagram,qc,uz,"9:16 Reel, 1080×1920",qc_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
+2,B,Sat,Instagram,qc,ru,"9:16 Reel, 1080×1920",qc_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
+2,B,Sun,Instagram,qc,en,"9:16 Reel, 1080×1920",qc_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Pairs with calibration (both are 'documenting quality').
+3,A,Mon,YouTube,photometry,uz,"16:9 long-form, 1920×1080",photometry_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
+3,A,Mon,YouTube,photometry,ru,"16:9 long-form, 1920×1080",photometry_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
+3,A,Mon,YouTube,photometry,en,"16:9 long-form, 1920×1080",photometry_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
+3,A,Tue,Instagram,photometry,uz,"9:16 Reel, 1080×1920",photometry_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
+3,A,Wed,Instagram,photometry,ru,"9:16 Reel, 1080×1920",photometry_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
+3,A,Wed,Instagram,photometry,en,"9:16 Reel, 1080×1920",photometry_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."
+3,B,Thu,YouTube,calculators,uz,"16:9 long-form, 1920×1080",calculators_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
+3,B,Thu,YouTube,calculators,ru,"16:9 long-form, 1920×1080",calculators_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
+3,B,Thu,YouTube,calculators,en,"16:9 long-form, 1920×1080",calculators_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
+3,B,Fri,Instagram,calculators,uz,"9:16 Reel, 1080×1920",calculators_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
+3,B,Sat,Instagram,calculators,ru,"9:16 Reel, 1080×1920",calculators_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
+3,B,Sun,Instagram,calculators,en,"9:16 Reel, 1080×1920",calculators_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,"Broad, practical; good for sharing."
+4,A,Mon,YouTube,osmometry,uz,"16:9 long-form, 1920×1080",osmometry_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
+4,A,Mon,YouTube,osmometry,ru,"16:9 long-form, 1920×1080",osmometry_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
+4,A,Mon,YouTube,osmometry,en,"16:9 long-form, 1920×1080",osmometry_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
+4,A,Tue,Instagram,osmometry,uz,"9:16 Reel, 1080×1920",osmometry_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
+4,A,Wed,Instagram,osmometry,ru,"9:16 Reel, 1080×1920",osmometry_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
+4,A,Wed,Instagram,osmometry,en,"9:16 Reel, 1080×1920",osmometry_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic; links to the osmolality calculator.
+4,B,Thu,YouTube,gcms,uz,"16:9 long-form, 1920×1080",gcms_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
+4,B,Thu,YouTube,gcms,ru,"16:9 long-form, 1920×1080",gcms_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
+4,B,Thu,YouTube,gcms,en,"16:9 long-form, 1920×1080",gcms_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
+4,B,Fri,Instagram,gcms,uz,"9:16 Reel, 1080×1920",gcms_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
+4,B,Sat,Instagram,gcms,ru,"9:16 Reel, 1080×1920",gcms_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
+4,B,Sun,Instagram,gcms,en,"9:16 Reel, 1080×1920",gcms_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (toxicology direction).
+5,A,Mon,YouTube,qpcr,uz,"16:9 long-form, 1920×1080",qpcr_uz_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
+5,A,Mon,YouTube,qpcr,ru,"16:9 long-form, 1920×1080",qpcr_ru_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
+5,A,Mon,YouTube,qpcr,en,"16:9 long-form, 1920×1080",qpcr_en_horizontal.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
+5,A,Tue,Instagram,qpcr,uz,"9:16 Reel, 1080×1920",qpcr_uz_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
+5,A,Wed,Instagram,qpcr,ru,"9:16 Reel, 1080×1920",qpcr_ru_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
+5,A,Wed,Instagram,qpcr,en,"9:16 Reel, 1080×1920",qpcr_en_vertical.mp4,G1–G6,READY,PROPOSAL — needs owner approval,Schematic topic (molecular direction).
+5,B,Thu,YouTube,exam_simulation,uz,"16:9 long-form, 1920×1080",exam_simulation_uz_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
+5,B,Thu,YouTube,exam_simulation,ru,"16:9 long-form, 1920×1080",exam_simulation_ru_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
+5,B,Thu,YouTube,exam_simulation,en,"16:9 long-form, 1920×1080",exam_simulation_en_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
+5,B,Fri,Instagram,exam_simulation,uz,"9:16 Reel, 1080×1920",exam_simulation_uz_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
+5,B,Sat,Instagram,exam_simulation,ru,"9:16 Reel, 1080×1920",exam_simulation_ru_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
+5,B,Sun,Instagram,exam_simulation,en,"9:16 Reel, 1080×1920",exam_simulation_en_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build is live (gate GP).
+6,A,Mon,YouTube,teacher_pro,uz,"16:9 long-form, 1920×1080",teacher_pro_uz_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
+6,A,Mon,YouTube,teacher_pro,ru,"16:9 long-form, 1920×1080",teacher_pro_ru_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
+6,A,Mon,YouTube,teacher_pro,en,"16:9 long-form, 1920×1080",teacher_pro_en_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
+6,A,Tue,Instagram,teacher_pro,uz,"9:16 Reel, 1080×1920",teacher_pro_uz_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
+6,A,Wed,Instagram,teacher_pro,ru,"9:16 Reel, 1080×1920",teacher_pro_ru_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
+6,A,Wed,Instagram,teacher_pro,en,"9:16 Reel, 1080×1920",teacher_pro_en_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,PAID topic: only when the paid build and server are live (gate GP).
+6,B,Thu,YouTube,premium_overview,uz,"16:9 long-form, 1920×1080",premium_overview_uz_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
+6,B,Thu,YouTube,premium_overview,ru,"16:9 long-form, 1920×1080",premium_overview_ru_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
+6,B,Thu,YouTube,premium_overview,en,"16:9 long-form, 1920×1080",premium_overview_en_horizontal.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
+6,B,Fri,Instagram,premium_overview,uz,"9:16 Reel, 1080×1920",premium_overview_uz_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
+6,B,Sat,Instagram,premium_overview,ru,"9:16 Reel, 1080×1920",premium_overview_ru_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."
+6,B,Sun,Instagram,premium_overview,en,"9:16 Reel, 1080×1920",premium_overview_en_vertical.mp4,G1–G6+GP,NOT READY,PROPOSAL — needs owner approval,"PAID topic: last, only when the paid build is live (gate GP)."

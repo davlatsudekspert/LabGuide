@@ -34,6 +34,176 @@ LEU_CHAPTERS = [
 ]
 
 TOPICS = [
+    # ------------------------------------------------------------------ 0. overview
+    dict(
+        id="overview", order=0, tier="free", verified=True,
+        path=T("Home → your role", "Главный экран → ваша роль", "Bosh sahifa → rolingiz"),
+        title=T(
+            "LabGuide for the Lab Specialist, the Teacher and the Student",
+            "LabGuide для специалиста лаборатории, преподавателя и студента",
+            "LabGuide: mutaxassis, ustoz va talaba uchun",
+        ),
+        hook={
+            "en": ("Reference ranges in a PDF. Formulas in a chat. A calculator in another app.",
+                   "One app for the lab specialist, the teacher and the student — in Uzbek, Russian and English. A two-minute tour."),
+            "ru": ("Референтные интервалы — в PDF. Формулы — в чате. Калькулятор — в другом приложении.",
+                   "Одно приложение для специалиста лаборатории, преподавателя и студента — на узбекском, русском и английском. Обзор за две минуты."),
+            "uz": ("Me’yor oraliqlari — PDF’da. Formulalar — chatda. Kalkulyator — boshqa ilovada.",
+                   "Mutaxassis, ustoz va talaba uchun bitta ilova — o‘zbek, rus va ingliz tillarida. Ikki daqiqalik sayohat."),
+        },
+        shows={
+            "en": ["What LabGuide is: a laboratory reference and learning app in Uzbek, Russian and English. Core "
+                   "content works offline and without an account, and the app’s own privacy text says no ads, "
+                   "analytics or tracking. The home screen follows the role you choose.",
+                   "For the laboratory specialist: test cards with units, guideline thresholds and a cited source for "
+                   "each claim; calculators that work only from your own values; Levey–Jennings quality control with "
+                   "Westgard rules; a calibration record; a differential counter; the instrument catalog and the "
+                   "atlases; in Uzbekistan, practice for the category assessment; records that stay on your phone.",
+                   "For the teacher: lecture slides and practical protocols for a big screen, offline too; a class that "
+                   "students join with a QR or a short code (sign-in needed); a lecture test where questions can "
+                   "differ per student; results by student and the hardest questions.",
+                   "For the student: learning from slides by topic, five new questions a day, topic quizzes with every "
+                   "answer explained, timed practice exams that work offline with a mistakes review, and a test from "
+                   "your teacher on the home screen."],
+            "ru": ["Что такое LabGuide: справочное и учебное приложение для лаборатории на узбекском, русском и "
+                   "английском. Основное содержимое работает без интернета и без аккаунта, а в собственной политике "
+                   "приложения — без рекламы, аналитики и отслеживания. Главный экран подстраивается под выбранную роль.",
+                   "Специалисту лаборатории: карточки анализов с единицами, порогами из руководств и источником у "
+                   "каждого утверждения; калькуляторы, которые считают только по вашим значениям; контроль качества "
+                   "Леви–Дженнингса с правилами Вестгарда; запись калибровки; счётчик лейкоформулы; каталог приборов и "
+                   "атласы; в Узбекистане — подготовка к проверке знаний на категорию; записи остаются на вашем телефоне.",
+                   "Преподавателю: слайды лекций и практические протоколы для большого экрана, в том числе без "
+                   "интернета; группа, в которую студенты входят по QR или короткому коду (нужен вход в аккаунт); "
+                   "тест по лекции, где вопросы у студентов могут различаться; результаты по студентам и самые "
+                   "трудные вопросы.",
+                   "Студенту: учёба по слайдам и темам, пять новых вопросов в день, тесты по темам с объяснением "
+                   "каждого ответа, экзамены с таймером без интернета с разбором ошибок и тест от преподавателя на "
+                   "главном экране."],
+            "uz": ["LabGuide nima: o‘zbek, rus va ingliz tillarida laboratoriya ma’lumotnomasi va o‘quv ilovasi. "
+                   "Asosiy qismi internetsiz va hisobsiz ishlaydi, ilovaning o‘z maxfiylik matnida esa reklama, "
+                   "analitika va kuzatuv yo‘q. Bosh sahifa tanlagan rolingizga moslashadi.",
+                   "Laboratoriya mutaxassisi uchun: birliklar, qo‘llanma chegaralari va har da’vo manbasi bilan tahlil "
+                   "kartalari; faqat sizning qiymatlaringizdan hisoblaydigan kalkulyatorlar; Westgard qoidalari bilan "
+                   "Levey–Jennings sifat nazorati; kalibrlash yozuvi; leykoformula sanagichi; apparatlar katalogi va "
+                   "atlaslar; O‘zbekistonda — bilim va malakani baholashga tayyorlanish; yozuvlar telefoningizda qoladi.",
+                   "Ustoz uchun: katta ekran uchun ma’ruza slaydlari va amaliy protokollar, internetsiz ham; talabalar "
+                   "QR yoki qisqa kod bilan qo‘shiladigan guruh (akkauntga kirish kerak); savollar talabaga qarab "
+                   "farq qilishi mumkin bo‘lgan ma’ruza testi; talabalar bo‘yicha natijalar va eng qiyin savollar.",
+                   "Talaba uchun: mavzu bo‘yicha slaydlardan o‘rganish, kuniga beshta yangi savol, har javobi "
+                   "izohlangan mavzu testlari, internetsiz ishlaydigan vaqtli mashq imtihonlari va xatolar tahlili "
+                   "hamda ustozning testi bosh sahifada."],
+        },
+        app={
+            "en": ["Role changes the home screen and its shortcuts; the knowledge base is the same for every role.",
+                   "Classes need an account and a connection; the rest of the core content works without one.",
+                   "The category-assessment practice appears for the specialist and teacher roles, for Uzbek-language "
+                   "or Uzbekistan-region users, not for the student role."],
+            "ru": ["Роль меняет главный экран и быстрые действия; база знаний одна для всех ролей.",
+                   "Для групп нужны аккаунт и подключение; остальное основное содержимое работает без них.",
+                   "Подготовка к проверке знаний на категорию показывается ролям специалиста и преподавателя, "
+                   "пользователям с узбекским языком или регионом Узбекистан, но не роли студента."],
+            "uz": ["Rol bosh sahifa va tezkor amallarni o‘zgartiradi; bilim bazasi barcha rollar uchun bitta.",
+                   "Guruhlar uchun akkaunt va ulanish kerak; qolgan asosiy qism ularsiz ishlaydi.",
+                   "Bilim va malakani baholashga tayyorlanish mutaxassis va ustoz rollarida, o‘zbek tili yoki "
+                   "O‘zbekiston mintaqasidagi foydalanuvchilarga ko‘rinadi, talaba roliga emas."],
+        },
+        limits={
+            "en": ["Class screens (class code, QR, test, results, the student’s home) use demo data from the app’s own "
+                   "test server; control, calibration and count values are illustrative.",
+                   "The video does not interpret any value and shows no reference intervals: the app gives guideline "
+                   "thresholds on some cards and says your laboratory’s intervals decide.",
+                   "Test-card thresholds and all other app content are under expert review.",
+                   "No numbers are claimed for how much content the app holds."],
+            "ru": ["Экраны группы (код группы, QR, тест, результаты, главный экран студента) используют демо-данные "
+                   "тестового сервера приложения; значения контроля, калибровки и подсчёта — примерные.",
+                   "Видео не интерпретирует значения и не показывает референтные интервалы: на части карточек "
+                   "приложение даёт пороги из руководств и говорит, что решают интервалы вашей лаборатории.",
+                   "Пороги на карточках анализов и весь остальной материал приложения ждут экспертной проверки.",
+                   "Никаких цифр об объёме содержимого приложения не заявляется."],
+            "uz": ["Guruh ekranlari (guruh kodi, QR, test, natijalar, talabaning bosh sahifasi) ilovaning o‘z test "
+                   "serveridagi demo ma’lumotdan foydalanadi; nazorat, kalibrlash va sanash qiymatlari namunaviy.",
+                   "Video hech bir qiymatni talqin qilmaydi va me’yor oraliqlarini ko‘rsatmaydi: ilova ayrim "
+                   "kartalarda qo‘llanma chegaralarini beradi va laboratoriyangiz oraliqlari hal qilishini aytadi.",
+                   "Tahlil kartalaridagi chegaralar va ilovaning barcha boshqa materiali mutaxassis ko‘rigini kutmoqda.",
+                   "Ilovadagi material hajmi haqida hech qanday raqam da’vo qilinmaydi."],
+        },
+        ig={
+            "en": ["Reference ranges in a PDF. Formulas in a chat. A calculator in another app.",
+                   "One app for the lab specialist, the teacher and the student, in Uzbek, Russian and English: cited "
+                   "test cards, calculators, Levey–Jennings QC, a differential counter — then lecture slides, classes "
+                   "and tests with per-student questions — then daily questions, quizzes and practice exams.",
+                   "A reference and learning aid — it does not diagnose. Which part do you use first?"],
+            "ru": ["Референтные интервалы — в PDF. Формулы — в чате. Калькулятор — в другом приложении.",
+                   "Одно приложение для специалиста лаборатории, преподавателя и студента на узбекском, русском и "
+                   "английском: карточки анализов с источниками, калькуляторы, контроль качества Леви–Дженнингса, "
+                   "счётчик лейкоформулы — затем слайды лекций, группы и тесты с разными вопросами — затем вопросы дня, "
+                   "тесты и пробные экзамены.",
+                   "Справочное и учебное пособие — диагноз не ставит. С какой части начнёте вы?"],
+            "uz": ["Me’yor oraliqlari — PDF’da. Formulalar — chatda. Kalkulyator — boshqa ilovada.",
+                   "Mutaxassis, ustoz va talaba uchun bitta ilova — o‘zbek, rus va ingliz tillarida: manbali tahlil "
+                   "kartalari, kalkulyatorlar, Levey–Jennings sifat nazorati, leykoformula sanagichi — so‘ng ma’ruza "
+                   "slaydlari, guruhlar va har talabaga boshqa savolli testlar — so‘ng kunlik savollar, testlar va "
+                   "mashq imtihonlari.",
+                   "Ma’lumotnoma va o‘quv vositasi — tashxis qo‘ymaydi. Avval qaysi qismidan foydalanasiz?"],
+        },
+        pinned={
+            "en": ("Notes: app screens are real; class screens use demo data; control, calibration and count values are "
+                   "illustrative. LabGuide does not diagnose, and your laboratory’s reference intervals decide. "
+                   "Narration is English synthetic speech. The content is awaiting expert review — corrections are "
+                   "welcome. Which role are you, and what should we show next?"),
+            "ru": ("Заметки: экраны приложения — реальные; экраны группы — на демо-данных; значения контроля, "
+                   "калибровки и подсчёта — примерные. LabGuide не ставит диагноз, решают референтные интервалы вашей "
+                   "лаборатории. Озвучка — синтезированная английская речь. Материал ждёт экспертной проверки, "
+                   "поправки приветствуются. Вы в какой роли и что показать дальше?"),
+            "uz": ("Eslatma: ilova ekranlari haqiqiy; guruh ekranlari demo ma’lumotda; nazorat, kalibrlash va sanash "
+                   "qiymatlari namunaviy. LabGuide tashxis qo‘ymaydi, laboratoriyangizning me’yor oraliqlari hal "
+                   "qiladi. Diktor ovozi — sun’iy inglizcha nutq. Material mutaxassis ko‘rigini kutmoqda. Siz qaysi "
+                   "roldasiz va keyin nimani ko‘rsatamiz?"),
+        },
+        keywords={
+            "en": ["LabGuide", "lab specialist app", "medical laboratory app", "laboratory reference", "Levey-Jennings",
+                   "Westgard rules", "lecture slides", "class mode", "practice quiz", "medical student", "Uzbek",
+                   "Russian"],
+            "ru": ["LabGuide", "приложение для лаборатории", "лабораторная диагностика", "контроль качества",
+                   "правила Вестгарда", "лекции", "тесты для студентов", "преподаватель", "лаборант"],
+            "uz": ["LabGuide", "laboratoriya ilovasi", "laborant", "sifat nazorati", "Westgard qoidalari",
+                   "ma’ruza slaydlari", "talaba testlari", "ustoz"],
+        },
+        hashtags_topic={
+            "en": ["#LabSpecialist", "#MedicalTeacher", "#StudyApp", "#LevyJennings", "#Westgard",
+                   "#PracticeQuiz"],
+            "ru": ["#специалистлаборатории", "#преподаватель", "#приложениедляучёбы", "#ЛевиДженнингс",
+                   "#Вестгард", "#тесты"],
+            "uz": ["#mutaxassis", "#ustoz", "#oquvilovasi", "#LeveyJennings", "#Westgard", "#testlar"],
+        },
+        thumb_alt={
+            "en": "LabGuide logo, the title “One app, three roles” with the three roles Specialist, Teacher and Student, "
+                  "three phone screens (the role home screens of the app) and the notice “Real app screens”.",
+            "ru": "Логотип LabGuide, заголовок «Одно приложение, три роли» с ролями «Специалист», «Преподаватель» и "
+                  "«Студент», три экрана телефона (главные экраны приложения для этих ролей) и пометка «Реальные экраны».",
+            "uz": "LabGuide logotipi, «Bitta ilova, uch rol» sarlavhasi va «Mutaxassis», «Ustoz», «Talaba» rollari, "
+                  "uchta telefon ekrani (ilovaning shu rollar uchun bosh sahifalari) hamda «Haqiqiy ekranlar» belgisi.",
+        },
+        chapters=[
+            ("hook", T("Scattered lab knowledge", "Разрозненные знания лаборатории", "Tarqoq laboratoriya bilimi")),
+            ("what", T("What LabGuide is, and your role", "Что такое LabGuide и ваша роль", "LabGuide nima va rolingiz")),
+            ("spec_a", T("For the laboratory specialist", "Специалисту лаборатории", "Laboratoriya mutaxassisi uchun")),
+            ("teach_a", T("For the teacher", "Преподавателю", "Ustoz uchun")),
+            ("stud_a", T("For the student", "Студенту", "Talaba uchun")),
+        ],
+        sources=[],
+        evidence=["docs/video/overview/CLAIMS_AND_EVIDENCE.md", "docs/video/overview/DESCRIPTION.md",
+                  "docs/video/overview/QA.md", "docs/video/overview/lines.en.json"],
+        next=["qc", "calculators"],
+        paid=None,
+        internal=["Free today. Copy checked against the final lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of "
+                  "the rendered video (113.7 s).",
+                  "The category-assessment practice is narrated under the SPECIALIST, not the student: the app hides it "
+                  "for the student and physician roles (toifa_bank.dart).",
+                  "Class screens were filmed with the app's widget-test fake server: demo data, and the real class "
+                  "server's deployment state was not verified.",
+                  "No numbers about content size are used on purpose."],
+    ),
     # ------------------------------------------------------------------ 1. calibration
     dict(
         id="calibration", order=1, tier="free", verified=True,

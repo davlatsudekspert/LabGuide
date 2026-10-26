@@ -21,7 +21,7 @@ from common import (DISCLOSURES, HASHTAGS_MAX, HASHTAGS_MIN, IG_CAPTION_MAX, LAN
                     PUBLISH_DOCS, REPO, YT_TAGS_MAX, YT_TITLE_MAX)
 from topics import BY_ID, IDS, TOPICS  # noqa: E402
 
-REQUIRED_IDS = ["calibration", "leukocyte", "photometry", "qc", "gcms", "qpcr", "osmometry",
+REQUIRED_IDS = ["overview", "calibration", "leukocyte", "photometry", "qc", "gcms", "qpcr", "osmometry",
                 "calculators", "exam_simulation", "teacher_pro", "premium_overview"]
 
 
@@ -117,7 +117,7 @@ class TopicTextTests(unittest.TestCase):
     def test_verified_topics(self):
         # verified = every sentence checked against the rendered video; the three paid topics are still drafts
         self.assertEqual([t["id"] for t in TOPICS if t["verified"]],
-                         ["calibration", "leukocyte", "photometry", "qc", "gcms", "qpcr", "osmometry", "calculators"])
+                         ["overview", "calibration", "leukocyte", "photometry", "qc", "gcms", "qpcr", "osmometry", "calculators"])
         self.assertEqual([t["id"] for t in TOPICS if not t["verified"]],
                          ["exam_simulation", "teacher_pro", "premium_overview"])
 
@@ -258,9 +258,12 @@ class ScheduleTests(unittest.TestCase):
         rows = [r for r in schedule.rows(self.STATUSES) if r["topic_id"] in ("exam_simulation", "teacher_pro",
                                                                               "premium_overview")]
         self.assertTrue(all("GP" in r["gates"] for r in rows))
-        free_weeks = {r["week"] for r in schedule.rows(self.STATUSES)
-                      if r["topic_id"] not in ("—", "exam_simulation", "teacher_pro", "premium_overview")}
-        self.assertLess(max(free_weeks), min(r["week"] for r in rows))
+        # Order in the plan (week, then slot A before B): every free topic comes before every paid one.
+        order = [r["topic_id"] for r in schedule.rows(self.STATUSES) if r["topic_id"] != "—"]
+        paid_ids = ("exam_simulation", "teacher_pro", "premium_overview")
+        first_paid = min(i for i, tid in enumerate(order) if tid in paid_ids)
+        last_free = max(i for i, tid in enumerate(order) if tid not in paid_ids)
+        self.assertLess(last_free, first_paid)
 
     def test_csv_parses_and_has_no_calendar_dates(self):
         text = schedule.render_csv(self.STATUSES)

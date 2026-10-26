@@ -1,0 +1,459 @@
+{
+  "id": "overview",
+  "version": 1,
+  "status": "EXPERT_REVIEW_PENDING",
+  "title": {
+    "en": "LabGuide: why the specialist, the teacher and the student use it",
+    "ru": "LabGuide: зачем он специалисту, преподавателю и студенту",
+    "uz": "LabGuide: mutaxassis, ustoz va talaba uchun nima uchun"
+  },
+  "fps": 30,
+  "formats": {
+    "vertical": {
+      "width": 1080,
+      "height": 1920
+    },
+    "horizontal": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "timing": {
+    "_doc": "Same rules as the other topic videos; with the English voice the manifest public/audio/en/overview.timing.json replaces the estimate for EVERY language edition.",
+    "leadSec": 0.25,
+    "tailSec": 0.4,
+    "gapSec": 0.2,
+    "minLineSec": 1.6,
+    "cps": {
+      "en": 16,
+      "ru": 15,
+      "uz": 14
+    },
+    "cueMax": {
+      "en": {
+        "L12": 50
+      },
+      "ru": {
+        "L03": 50,
+        "L19": 45,
+        "L20": 45
+      },
+      "uz": {
+        "L12": 45,
+        "L14": 45,
+        "L18": 45
+      }
+    }
+  },
+  "data": {
+    "_doc": "No computed numbers in this video. App frames come from video_studio/flutter_walk/overview_walk_test.dart (ov_a: no server; ov_b: the app's own widget-test fake class server, DEMO class data) and from frames of earlier topic videos listed in `reuse` (merged by scripts/overview_frames.py). Frame ids are unique across all sources.",
+    "reuse": [
+      [
+        "calculators",
+        "e_result"
+      ],
+      [
+        "calculators",
+        "c_list"
+      ],
+      [
+        "qc",
+        "qc_chart2"
+      ],
+      [
+        "qc",
+        "qc_reject_r4s"
+      ],
+      [
+        "calibration",
+        "cal_record"
+      ],
+      [
+        "leukocyte",
+        "d_half"
+      ],
+      [
+        "leukocyte",
+        "d_result"
+      ],
+      [
+        "leukocyte",
+        "d_history"
+      ],
+      [
+        "photometry",
+        "list"
+      ],
+      [
+        "photometry",
+        "fs_blank"
+      ]
+    ],
+    "paths": {}
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "lines": [
+        "L01",
+        "L02"
+      ],
+      "minSec": 8.0
+    },
+    {
+      "id": "what",
+      "layer": "what",
+      "lines": [
+        "L03",
+        "L04"
+      ],
+      "minSec": 11.0,
+      "props": {
+        "subZone": "left"
+      }
+    },
+    {
+      "id": "roles",
+      "layer": "roles",
+      "lines": [
+        "L05"
+      ],
+      "minSec": 4.5
+    },
+    {
+      "id": "spec_a",
+      "layer": "role",
+      "lines": [
+        "L06",
+        "L07"
+      ],
+      "minSec": 10.0,
+      "props": {
+        "role": "specialist",
+        "step": "01",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "home_lab",
+            "cue": 0,
+            "callout": "coBench",
+            "w": 1
+          },
+          {
+            "frame": "ref_glance",
+            "cue": 1,
+            "callout": "coRef",
+            "chips": [
+              "chUnits",
+              "chSource"
+            ],
+            "w": 1
+          },
+          {
+            "frame": "ref_limits",
+            "cue": 1,
+            "callout": "coThresh",
+            "chips": [
+              "chThresholds",
+              "chSource"
+            ],
+            "w": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "spec_b",
+      "layer": "role",
+      "lines": [
+        "L08",
+        "L09"
+      ],
+      "minSec": 10.0,
+      "props": {
+        "role": "specialist",
+        "step": "01",
+        "subZone": "left",
+        "badge": "realSample",
+        "shots": [
+          {
+            "frame": "e_result",
+            "cue": 0,
+            "callout": "coCalc",
+            "chips": [
+              "chFormula",
+              "chLimits"
+            ],
+            "w": 1,
+            "mark": "result"
+          },
+          {
+            "frame": "qc_chart2",
+            "cue": 1,
+            "callout": "coQc",
+            "mark": "chart",
+            "w": 1
+          },
+          {
+            "frame": "qc_reject_r4s",
+            "cue": 1,
+            "callout": "coQcRule",
+            "tone": "warn",
+            "mark": "rule",
+            "w": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "spec_c",
+      "layer": "role",
+      "lines": [
+        "L10",
+        "L11"
+      ],
+      "minSec": 11.0,
+      "props": {
+        "role": "specialist",
+        "step": "01",
+        "subZone": "left",
+        "badge": "realSample",
+        "shots": [
+          {
+            "frame": "cal_record",
+            "cue": 0,
+            "callout": "coCal",
+            "w": 1
+          },
+          {
+            "frame": "d_half",
+            "cue": 0,
+            "callout": "coDiff",
+            "w": 1
+          },
+          {
+            "frame": "d_result",
+            "cue": 0,
+            "callout": "coDiffRes",
+            "mark": "table",
+            "w": 1
+          },
+          {
+            "frame": "inst_list",
+            "cue": 1,
+            "callout": "coInst",
+            "w": 1
+          },
+          {
+            "frame": "lab_home",
+            "cue": 1,
+            "callout": "coAtlas",
+            "w": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "spec_d",
+      "layer": "role",
+      "lines": [
+        "L12",
+        "L13"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "role": "specialist",
+        "step": "01",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "toifa_hub",
+            "cue": 0,
+            "callout": "coToifa",
+            "chips": [
+              "chUz"
+            ],
+            "w": 1
+          },
+          {
+            "frame": "d_history",
+            "cue": 1,
+            "callout": "coLocal",
+            "w": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "teach_a",
+      "layer": "role",
+      "lines": [
+        "L14"
+      ],
+      "minSec": 7.0,
+      "props": {
+        "role": "teacher",
+        "step": "02",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "home_teacher",
+            "cue": 0,
+            "callout": "coTeachHome",
+            "w": 1
+          },
+          {
+            "frame": "list",
+            "cue": 0,
+            "callout": "coLectures",
+            "mark": "filter",
+            "w": 1
+          },
+          {
+            "frame": "fs_blank",
+            "cue": 0,
+            "callout": "coSlide",
+            "w": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "teach_b",
+      "layer": "role",
+      "lines": [
+        "L15",
+        "L16",
+        "L17"
+      ],
+      "minSec": 13.0,
+      "props": {
+        "role": "teacher",
+        "step": "02",
+        "subZone": "left",
+        "badge": "realDemo",
+        "shots": [
+          {
+            "frame": "t_group",
+            "cue": 0,
+            "callout": "coClass",
+            "chips": [
+              "chSignIn"
+            ],
+            "w": 1
+          },
+          {
+            "frame": "t_assign",
+            "cue": 1,
+            "callout": "coAssign",
+            "mark": "variant",
+            "w": 1
+          },
+          {
+            "frame": "t_students",
+            "cue": 2,
+            "callout": "coResults",
+            "w": 1
+          },
+          {
+            "frame": "t_byq",
+            "cue": 2,
+            "callout": "coHardest",
+            "w": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "stud_a",
+      "layer": "role",
+      "lines": [
+        "L18",
+        "L19"
+      ],
+      "minSec": 10.0,
+      "props": {
+        "role": "student",
+        "step": "03",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "home_student",
+            "cue": 0,
+            "callout": "coStudHome",
+            "w": 1
+          },
+          {
+            "frame": "learn_student",
+            "cue": 0,
+            "callout": "coLearn",
+            "w": 1
+          },
+          {
+            "frame": "daily",
+            "cue": 1,
+            "callout": "coDaily",
+            "w": 1
+          },
+          {
+            "frame": "quiz_a",
+            "cue": 1,
+            "callout": "coQuiz",
+            "crop": "crop",
+            "w": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "stud_b",
+      "layer": "role",
+      "lines": [
+        "L20",
+        "L21"
+      ],
+      "minSec": 9.0,
+      "props": {
+        "role": "student",
+        "step": "03",
+        "subZone": "left",
+        "badge": "realDemo",
+        "shots": [
+          {
+            "frame": "exam_setup",
+            "cue": 0,
+            "callout": "coExam",
+            "w": 1
+          },
+          {
+            "frame": "exam_result",
+            "cue": 0,
+            "callout": "coExamRes",
+            "w": 1
+          },
+          {
+            "frame": "s_assigned",
+            "cue": 1,
+            "callout": "coAssigned",
+            "mark": "card",
+            "w": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "lines": [
+        "L22",
+        "L23"
+      ],
+      "minSec": 8.0
+    }
+  ],
+  "thumbnail": {
+    "headlineKey": "thumbHeadline",
+    "subKey": "thumbSub"
+  }
+}

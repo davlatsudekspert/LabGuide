@@ -12,18 +12,18 @@ from topics import BY_ID
 
 # (week, slot, topic id or None, note)
 PLAN = [
-    (1, "A", "calibration", "Flagship 1. Rendered."),
-    (1, "B", "leukocyte", "Flagship 2. Rendered."),
-    (2, "A", "qc", "Pairs with calibration (both are 'documenting quality')."),
-    (2, "B", "photometry", "Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."),
-    (3, "A", "calculators", "Broad, practical; good for sharing."),
-    (3, "B", "osmometry", "Schematic topic; links to the osmolality calculator."),
-    (4, "A", "gcms", "Schematic topic (toxicology direction)."),
-    (4, "B", "qpcr", "Schematic topic (molecular direction)."),
-    (5, "A", "exam_simulation", "PAID topic: only when the paid build is live (gate GP)."),
-    (5, "B", "teacher_pro", "PAID topic: only when the paid build and server are live (gate GP)."),
-    (6, "A", "premium_overview", "PAID topic: last, only when the paid build is live (gate GP)."),
-    (6, "B", None, "Buffer: fixes from comments, re-share the best-performing post, answer questions. No new video."),
+    (1, "A", "overview", "Channel intro: what LabGuide is and why each role uses it. Rendered."),
+    (1, "B", "calibration", "Flagship 1. Rendered."),
+    (2, "A", "leukocyte", "Flagship 2. Rendered."),
+    (2, "B", "qc", "Pairs with calibration (both are 'documenting quality')."),
+    (3, "A", "photometry", "Background for calibration (blank, standard, sample, linearity limit); built on the app's Lecture-mode protocol."),
+    (3, "B", "calculators", "Broad, practical; good for sharing."),
+    (4, "A", "osmometry", "Schematic topic; links to the osmolality calculator."),
+    (4, "B", "gcms", "Schematic topic (toxicology direction)."),
+    (5, "A", "qpcr", "Schematic topic (molecular direction)."),
+    (5, "B", "exam_simulation", "PAID topic: only when the paid build is live (gate GP)."),
+    (6, "A", "teacher_pro", "PAID topic: only when the paid build and server are live (gate GP)."),
+    (6, "B", "premium_overview", "PAID topic: last, only when the paid build is live (gate GP)."),
 ]
 
 # Slot A: Mon YouTube x3, Tue IG uz, Wed IG ru, Wed IG en.  Slot B: Thu YouTube x3, Fri IG uz, Sat IG ru, Sun IG en.
@@ -149,7 +149,7 @@ def render_md(statuses, date_label):
     ap("Time of day: the owner decides after looking at the channel's own analytics (none exist yet; we make no "
        "assumption about the audience's time zone).")
     ap("")
-    ap("Lower-intensity option: one slot per week (the 11 topics then take 11 weeks); or one language edition per "
+    ap("Lower-intensity option: one slot per week (the 12 topics then take 12 weeks); or one language edition per "
        "platform first (UZ), the others a week later. Optional: the vertical file can also go to YouTube Shorts "
        "(check the platform's current length limit first: NEEDS_OWNER_CHECK).")
     ap("")

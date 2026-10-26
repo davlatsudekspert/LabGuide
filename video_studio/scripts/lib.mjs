@@ -34,6 +34,8 @@ const VIDEO_MATH = {
   qpcr: {compute: (sb) => qpcrMath(sb.data), vars: qpcrVars},
   osmometry: {compute: (sb) => osmoMath(sb.data), vars: osmoVars},
   calculators: {compute: (sb) => calcMath(sb.data), vars: calcVars},
+  // Overview: no computed numbers (storyboard.data holds only frame sources).
+  overview: {compute: () => ({}), vars: () => ({})},
 };
 
 export function parseArgs(argv) {
