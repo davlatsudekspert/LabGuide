@@ -100,7 +100,7 @@ const StepPill: React.FC<{frame: number}> = ({frame}) => {
   const t = pop(local, FPS, 0, 170);
   const a = accentColor[s.accent];
   return (
-    <div style={{position: 'absolute', left: 0, right: 0, top: 196, display: 'flex', justifyContent: 'center', opacity: Math.min(1, t * 1.5), transform: `translateY(${(1 - t) * -50}px) scale(${0.92 + 0.08 * t})`}}>
+    <div style={{position: 'absolute', left: 0, right: 0, top: 222, zIndex: 5, display: 'flex', justifyContent: 'center', opacity: Math.min(1, t * 1.5), transform: `translateY(${(1 - t) * -50}px) scale(${0.92 + 0.08 * t})`}}>
       <div style={{display: 'flex', alignItems: 'center', gap: 20, padding: '12px 34px 12px 14px', borderRadius: 999, background: 'rgba(6,20,16,0.82)', border: `2px solid ${a}`, boxShadow: `0 0 50px ${a}55`}}>
         <div style={{width: 62, height: 62, borderRadius: 999, background: a, color: '#06130F', ...txt(40, 800, '#06130F'), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>{s.n}</div>
         <div style={txt(48, 700, color.ink)}>{s.pill}</div>
@@ -115,8 +115,26 @@ const StepPill: React.FC<{frame: number}> = ({frame}) => {
 };
 
 // ------------------------------------------------------------ phone stage
-const PH_W = 520;
-const PH_TOP = 282;
+// The phone is ~93% of the canvas width. Only a window of it is visible
+// (CONT_TOP .. CONT_TOP+CONT_H, the lower part hides behind the caption
+// plate); the phone scrolls vertically per shot so the highlighted real UI
+// sits in the middle of the window. Highlight rects stay in app pixels, so
+// they move with the phone and stay aligned.
+const PH_W = 1000;
+const BEZEL = PH_W * 0.035;
+const SC = (PH_W - 2 * BEZEL) / 390; // canvas px per app px
+const PH_H = (PH_W - 2 * BEZEL) * (844 / 390) + 2 * BEZEL;
+const CONT_TOP = 296;
+const CONT_H = 1264;
+
+// Minimal scroll: only as far as needed to bring the bottom of the highlighted
+// area above the caption plate (keeps the screen's own title/context visible).
+const offsetOf = (shot: Shot): number => {
+  const r = ((shot as {anchor?: number[]}).anchor ?? shot.mark) as number[] | undefined;
+  if (!r) return 0;
+  const off = CONT_TOP + BEZEL + (r[1] + r[3] + 8) * SC - 1290;
+  return Math.max(0, Math.min(off, PH_H - CONT_H));
+};
 
 const PhoneStage: React.FC<{frame: number}> = ({frame}) => {
   const si = shots.findIndex((s) => frame >= f(s.start) && frame < f(s.end));
@@ -126,33 +144,33 @@ const PhoneStage: React.FC<{frame: number}> = ({frame}) => {
   const secStart = f(sec.start);
   const prev = si > 0 && f(shots[si - 1].end) > secStart ? shots[si - 1] : null;
   const local = frame - f(shot.start);
-  const len = f(shot.end) - f(shot.start);
   const enter = pop(frame - secStart, FPS, 0, 120);
   const a = accentColor[sec.accent];
   const meta = (s: Shot) => `frames/uz/${s.set}/${s.frame}.png`;
   const mark = shot.mark ? {rect: shot.mark as [number, number, number, number], t: ease(local, 5, 10), tone: (sec.accent === 'amber' ? 'amber' : 'mint') as 'amber' | 'mint'} : null;
   const tap = shot.tap ? {at: shot.tap as [number, number], t: ease(local, 4, 12)} : null;
-  const zoom = 1 + 0.07 * easeIO(local, 0, len);
-  const focus: [number, number] = shot.mark ? [shot.mark[0] + shot.mark[2] / 2, shot.mark[1] + shot.mark[3] / 2] : [195, 422];
-  const bob = Math.sin(frame / 40) * 5;
+  const off = prev ? offsetOf(prev) + (offsetOf(shot) - offsetOf(prev)) * easeIO(local, 0, 10) : offsetOf(shot);
+  const fade = Math.min(1, off / 80) * 30;
   return (
     <>
-      <div style={{position: 'absolute', left: W / 2 - 520, top: PH_TOP + 60, width: 1040, height: 900, borderRadius: 999, background: `radial-gradient(closest-side, ${a}30, transparent 70%)`}} />
-      {/* glossy lab objects behind the phone (depth) */}
-      <div style={{position: 'absolute', left: -30, top: 880 + bob * 2, opacity: 0.85, transform: 'rotate(-6deg) scale(0.9)'}}><TubeRack h={230} /></div>
-      <div style={{position: 'absolute', left: 835, top: 760 - bob * 2, opacity: 0.9, transform: 'rotate(5deg)'}}><Beaker w={190} /></div>
+      <div style={{position: 'absolute', left: W / 2 - 560, top: 420, width: 1120, height: 1000, borderRadius: 999, background: `radial-gradient(closest-side, ${a}30, transparent 70%)`}} />
       <div
         style={{
           position: 'absolute',
           left: (W - PH_W) / 2,
-          top: PH_TOP + bob,
-          transform: `perspective(2000px) rotateY(${(1 - enter) * -38}deg) translateX(${(1 - enter) * 160}px) scale(${0.9 + 0.1 * enter})`,
+          top: CONT_TOP,
+          width: PH_W,
+          height: CONT_H,
+          overflow: 'hidden',
+          transform: `perspective(2400px) rotateY(${(1 - enter) * -28}deg) translateX(${(1 - enter) * 110}px) scale(${0.94 + 0.06 * enter})`,
           opacity: Math.min(1, 0.25 + enter * 1.2),
-          WebkitMaskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)',
-          maskImage: 'linear-gradient(to bottom, black 88%, transparent 100%)',
+          WebkitMaskImage: `linear-gradient(to bottom, transparent 0px, black ${fade}px)`,
+          maskImage: `linear-gradient(to bottom, transparent 0px, black ${fade}px)`,
         }}
       >
-        <PhoneFrame appW={390} appH={844} src={meta(shot)} prevSrc={prev ? meta(prev) : null} mix={prev ? ease(local, 0, 7) : 1} width={PH_W} zoom={zoom} focus={focus} mark={mark} tap={tap} />
+        <div style={{position: 'absolute', left: 0, top: -off}}>
+          <PhoneFrame appW={390} appH={844} src={meta(shot)} prevSrc={prev ? meta(prev) : null} mix={prev ? ease(local, 0, 7) : 1} width={PH_W} mark={mark} tap={tap} />
+        </div>
       </div>
     </>
   );
@@ -195,10 +213,10 @@ const SHEETS = [
 ];
 
 const HookScene: React.FC<{frame: number}> = ({frame}) => {
-  const pw = 400;
+  const pw = 460;
   const ph = phoneHeight(pw);
   const cx = W / 2;
-  const cy = 1050;
+  const cy = 1065;
   const pullStart = f(2.2);
   const pull = easeIO(frame, pullStart, 30);
   const landStart = pullStart + 22;

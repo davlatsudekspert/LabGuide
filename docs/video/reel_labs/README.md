@@ -1,6 +1,7 @@
 # LabGuide Instagram reel (labs) — trilingual
 
 One vertical reel, 1080x1920, 39.2 s, 30 fps, h264 + silent AAC track. NO narration, NO music (add music inside Instagram).
+App scenes: the real phone is 1000 px wide (93% of the canvas); a window y 296–1560 is visible, the phone scrolls per shot (minimal scroll) so the highlighted UI sits above the caption plate; the lower part of the phone hides behind the plate. Step chip at y 222. Right-edge app UI in the lower part may sit under Instagram's own buttons (not verified on device).
 Burned-in captions: Uzbek (top, largest), Russian, English stacked in the lower third, inside Instagram safe margins
 (plate x 120–960, bottom 340 px free; text sizes uz 52 / ru 42 / en 36 px; end card 112/72/60). Hook is a question, not a claim.
 
