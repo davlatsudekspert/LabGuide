@@ -18,7 +18,19 @@ def say(s=''):
 
 def asc_token():
     import jwt
-    key = base64.b64decode(os.environ['API_PRIVATE_KEY']).decode()
+    raw = os.environ['API_PRIVATE_KEY']
+    if 'BEGIN PRIVATE KEY' in raw:
+        key = raw
+    else:
+        body = ''.join(raw.split())
+        try:
+            dec = base64.b64decode(body).decode()
+        except Exception:  # noqa: BLE001
+            dec = ''
+        if 'BEGIN PRIVATE KEY' in dec:
+            key = dec
+        else:  # xom base64 tanasi (PEM sarlavhasiz)
+            key = '-----BEGIN PRIVATE KEY-----\n' + '\n'.join(body[i:i + 64] for i in range(0, len(body), 64)) + '\n-----END PRIVATE KEY-----\n'
     now = int(time.time())
     return jwt.encode({'iss': os.environ['API_ISSUER_ID'], 'iat': now, 'exp': now + 600, 'aud': 'appstoreconnect-v1'},
                       key, algorithm='ES256', headers={'kid': os.environ['API_KEY_ID'], 'typ': 'JWT'})
