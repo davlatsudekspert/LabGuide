@@ -301,6 +301,22 @@ jobs:
           APPLE_SIGNIN_PRIVATE_KEY: ${{ secrets.APPLE_SIGNIN_PRIVATE_KEY }}
           APPLE_SIGNIN_CLIENT_ID: ${{ secrets.APPLE_SIGNIN_CLIENT_ID }}
           APPLE_SIGNIN_SERVICE_ID: ${{ secrets.APPLE_SIGNIN_SERVICE_ID }}
+          # Pullik tizim do'kon kalitlari (docs/PAID_OWNER_HELPER_CHECKLIST.md). Ixtiyoriy:
+          # berilmagan bo'lsa o'rnatilmaydi (xarid 503, sinov fail-closed).
+          APPLE_IAP_KEY_ID: ${{ secrets.APPLE_IAP_KEY_ID }}
+          APPLE_IAP_ISSUER_ID: ${{ secrets.APPLE_IAP_ISSUER_ID }}
+          APPLE_IAP_PRIVATE_KEY: ${{ secrets.APPLE_IAP_PRIVATE_KEY }}
+          APPLE_DEVICECHECK_KEY_ID: ${{ secrets.APPLE_DEVICECHECK_KEY_ID }}
+          APPLE_DEVICECHECK_TEAM_ID: ${{ secrets.APPLE_DEVICECHECK_TEAM_ID }}
+          APPLE_DEVICECHECK_PRIVATE_KEY: ${{ secrets.APPLE_DEVICECHECK_PRIVATE_KEY }}
+          GOOGLE_PLAY_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
+          PLAY_INTEGRITY_SERVICE_ACCOUNT: ${{ secrets.PLAY_INTEGRITY_SERVICE_ACCOUNT }}
+          PLAY_INTEGRITY_CERT_SHA256: ${{ secrets.PLAY_INTEGRITY_CERT_SHA256 }}
+          PLAY_RTDN_AUDIENCE: ${{ secrets.PLAY_RTDN_AUDIENCE }}
+          PLAY_RTDN_SERVICE_ACCOUNT: ${{ secrets.PLAY_RTDN_SERVICE_ACCOUNT }}
+          PLAY_RTDN_TOKEN: ${{ secrets.PLAY_RTDN_TOKEN }}
+          TRIAL_PLATFORMS: ${{ secrets.TRIAL_PLATFORMS }}
+          LG_BILLING_SANDBOX: ${{ secrets.LG_BILLING_SANDBOX }}
         run: |
           set -euo pipefail
           put() {
@@ -342,6 +358,13 @@ jobs:
           else
             echo "- APPLE_SIGNIN_*: berilmagan — Apple bilan kirish o'chiq" >> "$GITHUB_STEP_SUMMARY"
           fi
+          # Do'kon tekshiruvi kalitlari (faqat nomlar jurnalga; qiymat chiqmaydi).
+          for k in APPLE_IAP_KEY_ID APPLE_IAP_ISSUER_ID APPLE_IAP_PRIVATE_KEY \
+                   APPLE_DEVICECHECK_KEY_ID APPLE_DEVICECHECK_TEAM_ID APPLE_DEVICECHECK_PRIVATE_KEY \
+                   GOOGLE_PLAY_SERVICE_ACCOUNT PLAY_INTEGRITY_SERVICE_ACCOUNT PLAY_INTEGRITY_CERT_SHA256 \
+                   PLAY_RTDN_AUDIENCE PLAY_RTDN_SERVICE_ACCOUNT PLAY_RTDN_TOKEN TRIAL_PLATFORMS LG_BILLING_SANDBOX; do
+            if [ -n "${!k}" ]; then put "$k"; else echo "- secret $k: berilmagan (pullik tizim, ixtiyoriy)" >> "$GITHUB_STEP_SUMMARY"; fi
+          done
       - name: Pullik server yo'llari (billing_preview)
         if: steps.ready.outputs.ready == 'true' && inputs.billing_preview
         run: |
