@@ -49,14 +49,6 @@
     "_doc": "No computed numbers in this video. App frames come from video_studio/flutter_walk/overview_walk_test.dart (ov_a: no server; ov_b: the app's own widget-test fake class server, DEMO class data) and from frames of earlier topic videos listed in `reuse` (merged by scripts/overview_frames.py). Frame ids are unique across all sources.",
     "reuse": [
       [
-        "calculators",
-        "e_result"
-      ],
-      [
-        "calculators",
-        "c_list"
-      ],
-      [
         "qc",
         "qc_chart2"
       ],
@@ -87,6 +79,10 @@
       [
         "photometry",
         "fs_blank"
+      ],
+      [
+        "osmometry",
+        "c_result"
       ]
     ],
     "paths": {}
@@ -178,7 +174,7 @@
         "badge": "realSample",
         "shots": [
           {
-            "frame": "e_result",
+            "frame": "c_result",
             "cue": 0,
             "callout": "coCalc",
             "chips": [
@@ -270,10 +266,7 @@
           {
             "frame": "toifa_hub",
             "cue": 0,
-            "callout": "coToifa",
-            "chips": [
-              "chUz"
-            ],
+            "callout": "coAssess",
             "w": 1
           },
           {

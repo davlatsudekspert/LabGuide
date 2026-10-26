@@ -13,6 +13,7 @@ import {shotWindows, Shot} from '../../components/PhoneShots';
 import {color, font} from '../../design/theme';
 import type {Layer, VideoCtx} from '../../framework/types';
 import {CtaLayer} from '../calibration/layers';
+import {Beaker, Flask, Icon3D, Phone3D, phoneHeight, Scope, TubeRack} from './hero3d';
 
 export type Role = 'specialist' | 'teacher' | 'student';
 export const accentOf: Record<Role, string> = {specialist: color.mint, teacher: color.amber, student: color.beam};
@@ -97,27 +98,25 @@ const Calc: React.FC<{w: number; display: string}> = ({w, display}) => (
 
 type HookItem = {kind: 'doc' | 'bubble' | 'calc'; label?: boolean; x: number; y: number; rot: number; w: number; text?: string; hue?: number; mine?: boolean};
 
-// Positions are fractions of the canvas; the headline owns the middle band and
-// the subtitle plate the bottom, so objects live around them.
+// Scattered "knowledge" (fractions of the canvas). The headline owns the left
+// (horizontal) / the top (vertical); the subtitle plate the bottom; the 3D phone
+// the right (horizontal) / the middle (vertical).
 const HOOK_H: HookItem[] = [
-  {kind: 'doc', x: 0.1, y: 0.2, rot: -14, w: 250, hue: 150, label: true},
-  {kind: 'doc', x: 0.86, y: 0.16, rot: 11, w: 250, hue: 40},
-  {kind: 'doc', x: 0.92, y: 0.62, rot: -8, w: 210, hue: 200},
-  {kind: 'doc', x: 0.06, y: 0.64, rot: 9, w: 220, hue: 20},
-  {kind: 'bubble', x: 0.27, y: 0.78, rot: -6, w: 330, text: 'hkChat1'},
-  {kind: 'bubble', x: 0.7, y: 0.8, rot: 5, w: 340, text: 'hkChat2', mine: true},
-  {kind: 'calc', x: 0.5, y: 0.2, rot: -4, w: 190},
-  {kind: 'doc', x: 0.26, y: 0.1, rot: 17, w: 170, hue: 260},
-  {kind: 'doc', x: 0.72, y: 0.1, rot: -19, w: 180, hue: 100},
+  {kind: 'doc', x: 0.47, y: 0.2, rot: -14, w: 230, hue: 150, label: true},
+  {kind: 'doc', x: 0.6, y: 0.11, rot: 11, w: 200, hue: 40},
+  {kind: 'doc', x: 0.44, y: 0.44, rot: 9, w: 190, hue: 20},
+  {kind: 'doc', x: 0.57, y: 0.5, rot: -17, w: 170, hue: 260},
+  {kind: 'calc', x: 0.3, y: 0.76, rot: -4, w: 170},
+  {kind: 'bubble', x: 0.37, y: 0.63, rot: -6, w: 320, text: 'hkChat1'},
+  {kind: 'bubble', x: 0.55, y: 0.72, rot: 5, w: 330, text: 'hkChat2', mine: true},
 ];
 const HOOK_V: HookItem[] = [
-  {kind: 'doc', x: 0.2, y: 0.11, rot: -13, w: 300, hue: 150},
-  {kind: 'doc', x: 0.82, y: 0.12, rot: 12, w: 290, hue: 40},
-  {kind: 'doc', x: 0.88, y: 0.43, rot: -9, w: 250, hue: 200},
-  {kind: 'doc', x: 0.17, y: 0.45, rot: 10, w: 280, hue: 20, label: true},
-  {kind: 'bubble', x: 0.31, y: 0.62, rot: -5, w: 430, text: 'hkChat1'},
-  {kind: 'bubble', x: 0.64, y: 0.7, rot: 4, w: 440, text: 'hkChat2', mine: true},
-  {kind: 'calc', x: 0.85, y: 0.56, rot: -3, w: 210},
+  {kind: 'doc', x: 0.13, y: 0.3, rot: -13, w: 250, hue: 150, label: true},
+  {kind: 'doc', x: 0.88, y: 0.29, rot: 12, w: 240, hue: 40},
+  {kind: 'doc', x: 0.1, y: 0.47, rot: 10, w: 210, hue: 20},
+  {kind: 'calc', x: 0.89, y: 0.46, rot: -3, w: 180},
+  {kind: 'bubble', x: 0.2, y: 0.62, rot: -5, w: 340, text: 'hkChat1'},
+  {kind: 'bubble', x: 0.8, y: 0.66, rot: 4, w: 350, text: 'hkChat2', mine: true},
 ];
 
 export const HookLayer: Layer = ({scene, ctx}) => {
@@ -125,48 +124,102 @@ export const HookLayer: Layer = ({scene, ctx}) => {
   const {m, ui} = ctx;
   const vertical = isV(ctx);
   const items = vertical ? HOOK_V : HOOK_H;
-  const dim = ease(frame, cue(1), 14);
-  const gather = easeIO(frame, dur - 22, 20);
-  const q = pop(frame, fps, 3, 170);
-  const more = ease(frame, cue(1) + 4, 14);
+  const W = m.w;
+  const H = m.h;
+  const phoneW = vertical ? 430 : 380;
+  const ph = phoneHeight(phoneW);
+  const cx = vertical ? W / 2 : 1360;
+  const cy = vertical ? 950 : 520;
+  const cue1 = cue(1);
+  // Timeline (30 fps): files fly in at once; L02 dims them; from ~6.8 s they are
+  // pulled into the phone; the app icon lands on it at ~8 s; glint; cut.
+  const pullStart = Math.max(cue1 + 22, dur - 92);
+  const pull = easeIO(frame, pullStart, 38);
+  const dim = ease(frame, cue1, 14);
+  const enterPhone = pop(frame, fps, -6, 100);
+  const landStart = pullStart + 30;
+  const landed = frame >= landStart + 14;
+  const rotY = (34 * Math.sin(frame / 58 + 0.5) - 10) * (1 - 0.75 * ease(frame, landStart, 24)) + (1 - enterPhone) * -50;
+  const phoneFloat = Math.sin(frame / 38) * 9;
+  const par = rotY / 30; // parallax input
+  const head = 1 - ease(frame, pullStart - 8, 12);
+  const more = ease(frame, cue1 + 4, 14) * head;
+  const wordmark = ease(frame, landStart + 18, 14);
+  const iconS = pop(frame, fps, landStart, 80);
+  const iconSize = vertical ? 190 : 170;
+  const iconTy = cy - ph * 0.27;
+  const ring = easeIO(frame, landStart + 12, 22);
+  const glint = frame >= landStart + 16 ? Math.min(1, (frame - landStart - 16) / 26) : null;
+  const src = `frames/${ctx.lang}/${ctx.videoId}/home_lab.png`;
+  // Glossy laboratory objects at different depths (z: 0 far .. 1 near).
+  const props: {el: React.ReactNode; x: number; y: number; z: number; rot: number}[] = vertical
+    ? [
+        {el: <Scope w={640} />, x: 0.5, y: 0.5, z: 0.1, rot: 0},
+        {el: <TubeRack h={190} />, x: 0.16, y: 0.71, z: 0.85, rot: -5},
+        {el: <Beaker w={150} />, x: 0.9, y: 0.77, z: 0.8, rot: 4},
+        {el: <Flask w={100} />, x: 0.07, y: 0.19, z: 0.3, rot: -10},
+      ]
+    : [
+        {el: <Scope w={420} />, x: 0.57, y: 0.42, z: 0.1, rot: 0},
+        {el: <TubeRack h={230} />, x: 0.09, y: 0.79, z: 0.85, rot: -5},
+        {el: <Beaker w={170} />, x: 0.19, y: 0.79, z: 0.7, rot: 4},
+        {el: <Flask w={130} />, x: 0.9, y: 0.1, z: 0.3, rot: 10},
+      ];
   return (
-    <AbsoluteFill>
-      {items.map((it, i) => {
-        // Fly in from the nearest edge, then drift; at the end they gather.
-        const t0 = Math.floor(i * 2.2);
-        const enter = pop(frame, fps, t0, 120);
-        const fromX = it.x < 0.5 ? -m.w * 0.5 : m.w * 1.5;
-        const fromY = it.y < 0.5 ? -m.h * 0.3 : m.h * 1.3;
-        const px = it.x * m.w;
-        const py = it.y * m.h;
-        const bob = Math.sin(frame / 22 + i * 1.7) * 14;
-        const sway = Math.sin(frame / 31 + i) * 2.2;
-        const x = (fromX + (px - fromX) * enter) * (1 - gather) + (m.w / 2) * gather;
-        const y = (fromY + (py - fromY) * enter + bob) * (1 - gather) + (m.h * 0.42) * gather;
-        const scale = (0.6 + 0.4 * enter) * (1 - 0.8 * gather);
-        const opacity = (1 - 0.55 * dim) * (1 - gather);
+    <AbsoluteFill style={{perspective: 1600}}>
+      {/* soft light bloom behind the phone */}
+      <div style={{position: 'absolute', left: cx - 560, top: cy - 560, width: 1120, height: 1120, borderRadius: 999, background: `radial-gradient(closest-side, ${color.brandBright}55, transparent 70%)`}} />
+      {props.map((p, i) => {
+        const e = pop(frame, fps, -4 + i * 3, 90);
+        const blur = (1 - p.z) * 5;
+        const x = p.x * W + par * (p.z - 0.4) * 90;
+        const y = p.y * H + Math.sin(frame / (34 + i * 7) + i) * (6 + (1 - p.z) * 6) + (1 - e) * 220;
         return (
-          <div key={i} style={{position: 'absolute', left: x, top: y, transform: `translate(-50%,-50%) rotate(${it.rot + sway + (1 - enter) * 40}deg) scale(${scale})`, opacity, filter: `blur(${dim * 1.5}px)`}}>
-            {it.kind === 'doc' ? (
-              <Doc w={it.w} hue={it.hue ?? 150} seed={i} label={it.label ? ui.hkFile : undefined} />
-            ) : it.kind === 'bubble' ? (
-              <Bubble w={it.w} text={ui[it.text ?? '']} mine={it.mine} />
-            ) : (
-              <Calc w={it.w} display={ui.hkCalc} />
-            )}
+          <div key={i} style={{position: 'absolute', left: x, top: y, transform: `translate(-50%,-50%) rotate(${p.rot}deg) scale(${0.75 + 0.25 * e + p.z * 0.1})`, opacity: (0.45 + 0.55 * p.z) * e * (1 - 0.35 * dim), filter: `blur(${blur}px)`}}>
+            {p.el}
           </div>
         );
       })}
+      {items.map((it, i) => {
+        const t0 = Math.floor(i * 1.6) - 8; // already mid-flight at frame 0
+        const enter = pop(frame, fps, t0, 120);
+        const fromX = it.x < 0.5 ? -W * 0.4 : W * 1.4;
+        const fromY = it.y < 0.5 ? -H * 0.3 : H * 1.3;
+        const px = it.x * W;
+        const py = it.y * H;
+        const bob = Math.sin(frame / 22 + i * 1.7) * 14;
+        const sway = Math.sin(frame / 31 + i) * 2.2;
+        const bx = fromX + (px - fromX) * enter;
+        const by = fromY + (py - fromY) * enter + bob;
+        const x = bx + (cx - bx) * pull;
+        const y = by + (cy - by) * pull;
+        const scale = (0.6 + 0.4 * enter) * (1 - 0.82 * pull);
+        const opacity = (1 - 0.5 * dim) * (1 - Math.max(0, (pull - 0.7) / 0.3));
+        const tiltX = 22 * (1 - enter) + Math.sin(frame / 40 + i) * 7;
+        const tiltY = Math.cos(frame / 47 + i * 2) * 14 + par * 10;
+        return (
+          <div key={i} style={{position: 'absolute', zIndex: 5, left: x, top: y, transform: `translate(-50%,-50%) rotate(${it.rot + sway + (1 - enter) * 40 + pull * 120}deg) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(${scale})`, opacity, filter: `blur(${dim * 1.2}px)`}}>
+            {it.kind === 'doc' ? <Doc w={it.w} hue={it.hue ?? 150} seed={i} label={it.label ? ui.hkFile : undefined} /> : it.kind === 'bubble' ? <Bubble w={it.w} text={ui[it.text ?? '']} mine={it.mine} /> : <Calc w={it.w} display={ui.hkCalc} />}
+          </div>
+        );
+      })}
+      {/* the 3D phone with a real app screen */}
+      <div style={{position: 'absolute', zIndex: 2, left: cx - phoneW / 2, top: cy - ph / 2 + phoneFloat, transform: `scale(${0.86 + 0.14 * enterPhone})`, opacity: Math.min(1, 0.3 + enterPhone)}}>
+        <Phone3D src={src} width={phoneW} rotY={rotY} rotX={6 - 4 * ease(frame, landStart, 24)} sweep={((frame + 40) % 110) / 110} glow={0.28 + 0.3 * pull} />
+      </div>
+      {/* headline */}
       <div
         style={{
           position: 'absolute',
+          zIndex: 10,
           left: m.gutter,
-          right: m.gutter,
-          top: vertical ? 430 : 330,
-          textAlign: 'center',
-          opacity: 1 - gather,
-          transform: `scale(${0.85 + 0.15 * q})`,
-          ...txt(vertical ? 118 : 108, 700, color.ink),
+          right: vertical ? m.gutter : W - 980,
+          top: vertical ? 170 : 300,
+          textAlign: vertical ? 'center' : 'left',
+          opacity: head,
+          transform: `scale(${0.88 + 0.12 * pop(frame, fps, 2, 170)})`,
+          transformOrigin: vertical ? 'center' : 'left center',
+          ...txt(vertical ? 116 : 112, 700, color.ink),
           letterSpacing: -3,
           lineHeight: 1.02,
           textWrap: 'balance' as never,
@@ -175,8 +228,16 @@ export const HookLayer: Layer = ({scene, ctx}) => {
       >
         {ui.hookQ}
       </div>
-      <div style={{position: 'absolute', left: 0, right: 0, top: vertical ? 700 : 520, display: 'flex', justifyContent: 'center', opacity: more * (1 - gather)}}>
-        <Pill text={ui.hkMore} size={vertical ? 40 : 34} tone="amber" />
+      <div style={{position: 'absolute', zIndex: 10, left: vertical ? 0 : m.gutter, right: vertical ? 0 : undefined, top: vertical ? 400 : 590, display: 'flex', justifyContent: vertical ? 'center' : 'flex-start', opacity: more}}>
+        <Pill text={ui.hkMore} size={vertical ? 38 : 34} tone="amber" />
+      </div>
+      {/* the app icon lands on the phone */}
+      <div style={{position: 'absolute', zIndex: 12, left: cx - iconSize / 2, top: iconTy - iconSize / 2 - (1 - Math.min(1, iconS)) * 620, opacity: ease(frame, landStart - 4, 6), transform: `scale(${1.5 - 0.5 * Math.min(1.1, iconS)})`}}>
+        <Icon3D size={iconSize} rotX={(1 - iconS) * 70 - (landed ? 0 : 0)} rotY={(1 - iconS) * 220} glint={glint} />
+      </div>
+      <div style={{position: 'absolute', zIndex: 11, left: cx - iconSize * 1.1, top: iconTy - iconSize * 1.1, width: iconSize * 2.2, height: iconSize * 2.2, borderRadius: 999, border: `4px solid ${color.mint}`, opacity: (1 - ring) * (frame >= landStart + 12 ? 0.8 : 0), transform: `scale(${0.4 + ring * 1.3})`}} />
+      <div style={{position: 'absolute', zIndex: 10, left: vertical ? 0 : m.gutter, right: vertical ? 0 : undefined, top: vertical ? 200 : 380, textAlign: vertical ? 'center' : 'left', opacity: wordmark, transform: `translateY(${(1 - wordmark) * 20}px)`, ...txt(vertical ? 132 : 128, 700, color.ink), letterSpacing: -3}}>
+        LabGuide
       </div>
     </AbsoluteFill>
   );
@@ -375,7 +436,7 @@ export const RoleLayer: Layer = ({scene, ctx, prev}) => {
         const t = pop(local, fps, 8 + k * 5, 150);
         return (
           <div key={c} style={{opacity: t, transform: `scale(${0.85 + 0.15 * t})`}}>
-            <Pill text={ui[c] ?? c} size={vertical ? 32 : 30} tone={c === 'chSignIn' || c === 'chUz' ? 'amber' : 'mint'} />
+            <Pill text={ui[c] ?? c} size={vertical ? 32 : 30} tone={c === 'chSignIn' ? 'amber' : 'mint'} />
           </div>
         );
       })}

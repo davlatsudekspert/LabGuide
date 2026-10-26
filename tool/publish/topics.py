@@ -58,7 +58,7 @@ TOPICS = [
                    "For the laboratory specialist: test cards with units, guideline thresholds and a cited source for "
                    "each claim; calculators that work only from your own values; Levey–Jennings quality control with "
                    "Westgard rules; a calibration record; a differential counter; the instrument catalog and the "
-                   "atlases; in Uzbekistan, practice for the category assessment; records that stay on your phone.",
+                   "atlases; practice for the qualification category assessment; records that stay on your phone.",
                    "For the teacher: lecture slides and practical protocols for a big screen, offline too; a class that "
                    "students join with a QR or a short code (sign-in needed); a lecture test where questions can "
                    "differ per student; results by student and the hardest questions.",
@@ -71,7 +71,7 @@ TOPICS = [
                    "Специалисту лаборатории: карточки анализов с единицами, порогами из руководств и источником у "
                    "каждого утверждения; калькуляторы, которые считают только по вашим значениям; контроль качества "
                    "Леви–Дженнингса с правилами Вестгарда; запись калибровки; счётчик лейкоформулы; каталог приборов и "
-                   "атласы; в Узбекистане — подготовка к проверке знаний на категорию; записи остаются на вашем телефоне.",
+                   "атласы; подготовка к проверке знаний на категорию; записи остаются на вашем телефоне.",
                    "Преподавателю: слайды лекций и практические протоколы для большого экрана, в том числе без "
                    "интернета; группа, в которую студенты входят по QR или короткому коду (нужен вход в аккаунт); "
                    "тест по лекции, где вопросы у студентов могут различаться; результаты по студентам и самые "
@@ -85,7 +85,7 @@ TOPICS = [
                    "Laboratoriya mutaxassisi uchun: birliklar, qo‘llanma chegaralari va har da’vo manbasi bilan tahlil "
                    "kartalari; faqat sizning qiymatlaringizdan hisoblaydigan kalkulyatorlar; Westgard qoidalari bilan "
                    "Levey–Jennings sifat nazorati; kalibrlash yozuvi; leykoformula sanagichi; apparatlar katalogi va "
-                   "atlaslar; O‘zbekistonda — bilim va malakani baholashga tayyorlanish; yozuvlar telefoningizda qoladi.",
+                   "atlaslar; bilim va malakani baholashga tayyorlanish; yozuvlar telefoningizda qoladi.",
                    "Ustoz uchun: katta ekran uchun ma’ruza slaydlari va amaliy protokollar, internetsiz ham; talabalar "
                    "QR yoki qisqa kod bilan qo‘shiladigan guruh (akkauntga kirish kerak); savollar talabaga qarab "
                    "farq qilishi mumkin bo‘lgan ma’ruza testi; talabalar bo‘yicha natijalar va eng qiyin savollar.",
@@ -96,16 +96,13 @@ TOPICS = [
         app={
             "en": ["Role changes the home screen and its shortcuts; the knowledge base is the same for every role.",
                    "Classes need an account and a connection; the rest of the core content works without one.",
-                   "The category-assessment practice appears for the specialist and teacher roles, for Uzbek-language "
-                   "or Uzbekistan-region users, not for the student role."],
+                   "The qualification-category assessment practice is part of the app’s Learn section."],
             "ru": ["Роль меняет главный экран и быстрые действия; база знаний одна для всех ролей.",
                    "Для групп нужны аккаунт и подключение; остальное основное содержимое работает без них.",
-                   "Подготовка к проверке знаний на категорию показывается ролям специалиста и преподавателя, "
-                   "пользователям с узбекским языком или регионом Узбекистан, но не роли студента."],
+                   "Подготовка к проверке знаний на категорию — часть раздела обучения приложения."],
             "uz": ["Rol bosh sahifa va tezkor amallarni o‘zgartiradi; bilim bazasi barcha rollar uchun bitta.",
                    "Guruhlar uchun akkaunt va ulanish kerak; qolgan asosiy qism ularsiz ishlaydi.",
-                   "Bilim va malakani baholashga tayyorlanish mutaxassis va ustoz rollarida, o‘zbek tili yoki "
-                   "O‘zbekiston mintaqasidagi foydalanuvchilarga ko‘rinadi, talaba roliga emas."],
+                   "Bilim va malakani baholashga tayyorlanish — ilovaning o‘rganish bo‘limi qismi."],
         },
         limits={
             "en": ["Class screens (class code, QR, test, results, the student’s home) use demo data from the app’s own "
@@ -198,8 +195,11 @@ TOPICS = [
         paid=None,
         internal=["Free today. Copy checked against the final lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of "
                   "the rendered video (113.7 s).",
-                  "The category-assessment practice is narrated under the SPECIALIST, not the student: the app hides it "
-                  "for the student and physician roles (toifa_bank.dart).",
+                  "The category-assessment practice is narrated inside the SPECIALIST block with neutral wording; the current "
+                  "build hides it from student/physician roles and outside UZ. The video makes NO regional "
+                  "or role-exclusion claim (owner "
+                  "decision: available for all languages and countries); that holds only from the next app build "
+                  "(owner's separate app branch, not in a store build yet): do not publish before that build is live.",
                   "Class screens were filmed with the app's widget-test fake server: demo data, and the real class "
                   "server's deployment state was not verified.",
                   "No numbers about content size are used on purpose."],

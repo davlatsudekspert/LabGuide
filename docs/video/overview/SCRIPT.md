@@ -19,8 +19,8 @@ Timing source: voice manifest `video_studio/public/audio/en/overview.timing.json
 |  |  | L09 | 42.16–47.26 | Quality control: Levey–Jennings charts, with Westgard rules applied to every run. | Контроль качества: карты Леви–Дженнингса и правила Вестгарда в каждой серии. | Sifat nazorati: Levey–Jennings grafiklari, har seriyada Westgard qoidalari. |
 | **6. spec_c** (0:47.7–0:58.7) | role | L10 | 47.91–52.93 | Record a calibration. Count a differential, with percentages and absolute counts. | Запишите калибровку. Посчитайте лейкоформулу — проценты и абсолютные числа. | Kalibrlashni yozing. Leykoformulani sanang — foiz va mutlaq sonlar bilan. |
 |  |  | L11 | 53.13–55.86 | Browse the instrument catalog and the atlases. | Каталог приборов и атласы — под рукой. | Apparatlar katalogi va atlaslar ham shu yerda. |
-| **7. spec_d** (0:58.7–1:06.7) | role | L12 | 58.91–63.24 | In Uzbekistan, specialists can also practise for the category assessment. | В Узбекистане можно готовиться и к проверке знаний на категорию. | O‘zbekistonda bilim va malakani baholashga ham tayyorlanish mumkin. |
-|  |  | L13 | 63.45–65.22 | And your records stay on your phone. | А записи остаются на вашем телефоне. | Yozuvlaringiz esa telefoningizda qoladi. |
+| **7. spec_d** (0:58.7–1:06.7) | role | L12 | 58.91–63.18 | Specialists can also practise for the qualification category assessment. | Специалист может готовиться и к проверке знаний на категорию. | Mutaxassis bilim va malakani baholashga ham tayyorlanishi mumkin. |
+|  |  | L13 | 63.38–65.15 | And your records stay on your phone. | А записи остаются на вашем телефоне. | Yozuvlaringiz esa telefoningizda qoladi. |
 | **8. teach_a** (1:06.7–1:13.7) | role | L14 | 66.91–72.74 | For the teacher: lecture slides and practical protocols, ready for a big screen — offline too. | Преподавателю: слайды лекций и практические протоколы для большого экрана — и без интернета. | Ustoz uchun: katta ekran uchun ma’ruza slaydlari va amaliy protokollar — internetsiz ham. |
 | **9. teach_b** (1:13.7–1:26.7) | role | L15 | 73.91–77.80 | Open a class: students join with a QR code or a short code. | Откройте группу: студенты входят по QR-коду или короткому коду. | Guruh oching: talabalar QR kod yoki qisqa kod bilan qo‘shiladi. |
 |  |  | L16 | 78.00–81.03 | Set a lecture test — questions can differ per student. | Тест по лекции: вопросы у студентов могут различаться. | Ma’ruza testi: talabalarga boshqa savollar mumkin. |
@@ -39,6 +39,7 @@ Timing source: voice manifest `video_studio/public/audio/en/overview.timing.json
 | L01 | Reference ranges in a P D F. Formulas in a chat. A calculator in another app. |
 | L03 | Lab Guide brings it together: a laboratory reference and learning app in Uzbek, Russian and English. |
 | L09 | Quality control: Levvy Jennings charts, with West-gard rules applied to every run. |
+| L12 | Specialists can also practise — for the qualification category assessment. |
 | L15 | Open a class: students join with a Q R code or a short code. |
 | L23 | Lab Guide. A reference and learning aid — it does not diagnose. |
 
@@ -46,8 +47,8 @@ Timing source: voice manifest `video_studio/public/audio/en/overview.timing.json
 
 | Lang | Cues | Max chars / cue |
 |---|---|---|
-| en | 35 | 72 |
-| ru | 36 | 64 |
+| en | 34 | 72 |
+| ru | 36 | 63 |
 | uz | 34 | 73 |
 
 ## On-screen text (per language)
@@ -93,7 +94,7 @@ Timing source: voice manifest `video_studio/public/audio/en/overview.timing.json
 | `coInst` | Instrument catalog | Каталог приборов | Apparatlar katalogi |
 | `coSchem` | Original schematics | Оригинальные схемы | Original sxemalar |
 | `coAtlas` | Sections and atlases | Разделы и атласы | Bo‘limlar va atlaslar |
-| `coToifa` | Knowledge & Skills Assessment practice | Практика: проверка знаний и компетенций | Mashq: bilim va malakani baholash |
+| `coAssess` | Knowledge & Skills Assessment practice | Практика: проверка знаний и компетенций | Mashq: bilim va malakani baholash |
 | `coLocal` | Saved on this device | Хранится на этом устройстве | Shu qurilmada saqlanadi |
 | `coTeachHome` | Your home: classes and lectures | Ваш главный экран: группы и лекции | Bosh sahifangiz: guruhlar va ma’ruzalar |
 | `coLectures` | Lecture mode: slides and protocols | Режим лекции: слайды и протоколы | Ma’ruza rejimi: slaydlar va protokollar |
@@ -114,7 +115,6 @@ Timing source: voice manifest `video_studio/public/audio/en/overview.timing.json
 | `chThresholds` | Thresholds | Пороги | Chegaralar |
 | `chFormula` | Formula | Формула | Formula |
 | `chLimits` | Limits | Ограничения | Cheklovlar |
-| `chUz` | Shown for Uzbekistan | Показывается для Узбекистана | O‘zbekiston uchun ko‘rinadi |
 | `chSignIn` | Classes need sign-in | Для групп нужен вход | Guruh uchun kirish kerak |
 | `tagline1` | One app for the specialist, | Одно приложение для специалиста, | Mutaxassis, ustoz va talaba |
 | `tagline2` | the teacher and the student. | преподавателя и студента. | uchun bitta ilova. |

@@ -22,7 +22,7 @@
 * **G5** — App availability: the free store build is the only one that exists publicly; the video must match the build the owner links to. Store approval status is the owner's to confirm.
 * **G6** — Owner approval of every text in this kit and of the date. Nothing is published by us.
 * *Topic note* — Free today. Copy checked against the final lines.*.json, CLAIMS_AND_EVIDENCE.md, DESCRIPTION.md and QA.md of the rendered video (113.7 s).
-* *Topic note* — The category-assessment practice is narrated under the SPECIALIST, not the student: the app hides it for the student and physician roles (toifa_bank.dart).
+* *Topic note* — The category-assessment practice is narrated inside the SPECIALIST block with neutral wording; the current build hides it from student/physician roles and outside UZ. The video makes NO regional or role-exclusion claim (owner decision: available for all languages and countries); that holds only from the next app build (owner's separate app branch, not in a store build yet): do not publish before that build is live.
 * *Topic note* — Class screens were filmed with the app's widget-test fake server: demo data, and the real class server's deployment state was not verified.
 * *Topic note* — No numbers about content size are used on purpose.
 
@@ -38,7 +38,7 @@ Placeholders in the texts below (`[[LINK_APP_STORE]]`, `[[LINK_PLAY]]`, `[[LINK_
 
 ## 2. YouTube description (the first two lines are the hook shown before “more”)
 
-### 2.1 English (main) — 3263 characters (limit 5000)
+### 2.1 English (main) — 3193 characters (limit 5000)
 
 ```text
 Reference ranges in a PDF. Formulas in a chat. A calculator in another app.
@@ -46,7 +46,7 @@ One app for the lab specialist, the teacher and the student — in Uzbek, Russia
 
 In this video:
 • What LabGuide is: a laboratory reference and learning app in Uzbek, Russian and English. Core content works offline and without an account, and the app’s own privacy text says no ads, analytics or tracking. The home screen follows the role you choose.
-• For the laboratory specialist: test cards with units, guideline thresholds and a cited source for each claim; calculators that work only from your own values; Levey–Jennings quality control with Westgard rules; a calibration record; a differential counter; the instrument catalog and the atlases; in Uzbekistan, practice for the category assessment; records that stay on your phone.
+• For the laboratory specialist: test cards with units, guideline thresholds and a cited source for each claim; calculators that work only from your own values; Levey–Jennings quality control with Westgard rules; a calibration record; a differential counter; the instrument catalog and the atlases; practice for the qualification category assessment; records that stay on your phone.
 • For the teacher: lecture slides and practical protocols for a big screen, offline too; a class that students join with a QR or a short code (sign-in needed); a lecture test where questions can differ per student; results by student and the hardest questions.
 • For the student: learning from slides by topic, five new questions a day, topic quizzes with every answer explained, timed practice exams that work offline with a mistakes review, and a test from your teacher on the home screen.
 
@@ -60,7 +60,7 @@ Chapters
 What LabGuide does today:
 • Role changes the home screen and its shortcuts; the knowledge base is the same for every role.
 • Classes need an account and a connection; the rest of the core content works without one.
-• The category-assessment practice appears for the specialist and teacher roles, for Uzbek-language or Uzbekistan-region users, not for the student role.
+• The qualification-category assessment practice is part of the app’s Learn section.
 
 Good to know:
 • Class screens (class code, QR, test, results, the student’s home) use demo data from the app’s own test server; control, calibration and count values are illustrative.
@@ -85,7 +85,7 @@ Credits
 #LabGuide #LabSpecialist #MedicalTeacher
 ```
 
-### 2.2 Русский — 3471 characters (limit 5000)
+### 2.2 Русский — 3365 characters (limit 5000)
 
 ```text
 Референтные интервалы — в PDF. Формулы — в чате. Калькулятор — в другом приложении.
@@ -93,7 +93,7 @@ Credits
 
 В этом видео:
 • Что такое LabGuide: справочное и учебное приложение для лаборатории на узбекском, русском и английском. Основное содержимое работает без интернета и без аккаунта, а в собственной политике приложения — без рекламы, аналитики и отслеживания. Главный экран подстраивается под выбранную роль.
-• Специалисту лаборатории: карточки анализов с единицами, порогами из руководств и источником у каждого утверждения; калькуляторы, которые считают только по вашим значениям; контроль качества Леви–Дженнингса с правилами Вестгарда; запись калибровки; счётчик лейкоформулы; каталог приборов и атласы; в Узбекистане — подготовка к проверке знаний на категорию; записи остаются на вашем телефоне.
+• Специалисту лаборатории: карточки анализов с единицами, порогами из руководств и источником у каждого утверждения; калькуляторы, которые считают только по вашим значениям; контроль качества Леви–Дженнингса с правилами Вестгарда; запись калибровки; счётчик лейкоформулы; каталог приборов и атласы; подготовка к проверке знаний на категорию; записи остаются на вашем телефоне.
 • Преподавателю: слайды лекций и практические протоколы для большого экрана, в том числе без интернета; группа, в которую студенты входят по QR или короткому коду (нужен вход в аккаунт); тест по лекции, где вопросы у студентов могут различаться; результаты по студентам и самые трудные вопросы.
 • Студенту: учёба по слайдам и темам, пять новых вопросов в день, тесты по темам с объяснением каждого ответа, экзамены с таймером без интернета с разбором ошибок и тест от преподавателя на главном экране.
 
@@ -107,7 +107,7 @@ Credits
 Что LabGuide делает сегодня:
 • Роль меняет главный экран и быстрые действия; база знаний одна для всех ролей.
 • Для групп нужны аккаунт и подключение; остальное основное содержимое работает без них.
-• Подготовка к проверке знаний на категорию показывается ролям специалиста и преподавателя, пользователям с узбекским языком или регионом Узбекистан, но не роли студента.
+• Подготовка к проверке знаний на категорию — часть раздела обучения приложения.
 
 Важно знать:
 • Экраны группы (код группы, QR, тест, результаты, главный экран студента) используют демо-данные тестового сервера приложения; значения контроля, калибровки и подсчёта — примерные.
@@ -132,7 +132,7 @@ LabGuide — приложение-помощник для клинической
 #LabGuide #специалистлаборатории #преподаватель
 ```
 
-### 2.3 O‘zbekcha (Latin) — 3465 characters (limit 5000)
+### 2.3 O‘zbekcha (Latin) — 3362 characters (limit 5000)
 
 ```text
 Me’yor oraliqlari — PDF’da. Formulalar — chatda. Kalkulyator — boshqa ilovada.
@@ -140,7 +140,7 @@ Mutaxassis, ustoz va talaba uchun bitta ilova — o‘zbek, rus va ingliz tillar
 
 Bu videoda:
 • LabGuide nima: o‘zbek, rus va ingliz tillarida laboratoriya ma’lumotnomasi va o‘quv ilovasi. Asosiy qismi internetsiz va hisobsiz ishlaydi, ilovaning o‘z maxfiylik matnida esa reklama, analitika va kuzatuv yo‘q. Bosh sahifa tanlagan rolingizga moslashadi.
-• Laboratoriya mutaxassisi uchun: birliklar, qo‘llanma chegaralari va har da’vo manbasi bilan tahlil kartalari; faqat sizning qiymatlaringizdan hisoblaydigan kalkulyatorlar; Westgard qoidalari bilan Levey–Jennings sifat nazorati; kalibrlash yozuvi; leykoformula sanagichi; apparatlar katalogi va atlaslar; O‘zbekistonda — bilim va malakani baholashga tayyorlanish; yozuvlar telefoningizda qoladi.
+• Laboratoriya mutaxassisi uchun: birliklar, qo‘llanma chegaralari va har da’vo manbasi bilan tahlil kartalari; faqat sizning qiymatlaringizdan hisoblaydigan kalkulyatorlar; Westgard qoidalari bilan Levey–Jennings sifat nazorati; kalibrlash yozuvi; leykoformula sanagichi; apparatlar katalogi va atlaslar; bilim va malakani baholashga tayyorlanish; yozuvlar telefoningizda qoladi.
 • Ustoz uchun: katta ekran uchun ma’ruza slaydlari va amaliy protokollar, internetsiz ham; talabalar QR yoki qisqa kod bilan qo‘shiladigan guruh (akkauntga kirish kerak); savollar talabaga qarab farq qilishi mumkin bo‘lgan ma’ruza testi; talabalar bo‘yicha natijalar va eng qiyin savollar.
 • Talaba uchun: mavzu bo‘yicha slaydlardan o‘rganish, kuniga beshta yangi savol, har javobi izohlangan mavzu testlari, internetsiz ishlaydigan vaqtli mashq imtihonlari va xatolar tahlili hamda ustozning testi bosh sahifada.
 
@@ -154,7 +154,7 @@ Boblar
 LabGuide bugun nima qiladi:
 • Rol bosh sahifa va tezkor amallarni o‘zgartiradi; bilim bazasi barcha rollar uchun bitta.
 • Guruhlar uchun akkaunt va ulanish kerak; qolgan asosiy qism ularsiz ishlaydi.
-• Bilim va malakani baholashga tayyorlanish mutaxassis va ustoz rollarida, o‘zbek tili yoki O‘zbekiston mintaqasidagi foydalanuvchilarga ko‘rinadi, talaba roliga emas.
+• Bilim va malakani baholashga tayyorlanish — ilovaning o‘rganish bo‘limi qismi.
 
 Bilish foydali:
 • Guruh ekranlari (guruh kodi, QR, test, natijalar, talabaning bosh sahifasi) ilovaning o‘z test serveridagi demo ma’lumotdan foydalanadi; nazorat, kalibrlash va sanash qiymatlari namunaviy.

@@ -116,7 +116,7 @@ class Walk {
     Finder? tapOn,
     Map<String, Finder> marks = const {},
     bool settle = true,
-    bool texts = false,
+    bool texts = true,
     // Only for frames whose publisher/source line is dimmed out by a named
     // crop mark in the video (the crop must end above that line).
     bool brandOk = false,

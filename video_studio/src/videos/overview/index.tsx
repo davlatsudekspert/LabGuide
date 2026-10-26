@@ -10,7 +10,8 @@ import {Background, Badge} from '../../components/Basics';
 import {color, font} from '../../design/theme';
 import type {LangPack, Storyboard, VideoCtx, VideoDef} from '../../framework/types';
 import {Logo} from '../calibration/layers';
-import {accentOf, layers, RoleBadge} from './layers';
+import {layers, RoleBadge} from './layers';
+import {Beaker, Icon3D, Phone3D, Scope, TubeRack} from './hero3d';
 
 const Thumb: React.FC<{ctx: VideoCtx; kind: 'landscape' | 'cover'}> = ({ctx, kind}) => {
   const {ui, lang} = ctx;
@@ -36,9 +37,13 @@ const Thumb: React.FC<{ctx: VideoCtx; kind: 'landscape' | 'cover'}> = ({ctx, kin
       <RoleBadge role="student" size={land ? 24 : 36} label={ui.roleStudent} />
     </div>
   );
+  const src = `frames/${lang}/overview/home_lab.png`;
+  const hero = (pw: number, rot: number) => (
+    <Phone3D src={src} width={pw} rotY={rot} rotX={6} sweep={0.45} glow={0.45} />
+  );
   return (
     <AbsoluteFill>
-      <Background format={land ? 'horizontal' : 'vertical'} glow={land ? [0.75, 0.45] : [0.5, 0.65]} />
+      <Background format={land ? 'horizontal' : 'vertical'} glow={land ? [0.75, 0.45] : [0.5, 0.7]} />
       {land ? (
         <>
           <div style={{position: 'absolute', left: 64, top: 70, width: 560, display: 'flex', flexDirection: 'column', gap: 26}}>
@@ -48,9 +53,11 @@ const Thumb: React.FC<{ctx: VideoCtx; kind: 'landscape' | 'cover'}> = ({ctx, kin
             <div style={{height: 6}} />
             {roles}
           </div>
-          {shot('home_lab', 250, -6, 640, 150, 1)}
-          {shot('home_teacher', 270, 0, 850, 100, 3)}
-          {shot('home_student', 250, 6, 1070, 160, 2)}
+          <div style={{position: 'absolute', left: 560, top: 80, opacity: 0.5, filter: 'blur(3px)'}}><Scope w={460} /></div>
+          <div style={{position: 'absolute', left: 840, top: 40}}>{hero(300, -24)}</div>
+          <div style={{position: 'absolute', left: 650, top: 440}}><TubeRack h={190} /></div>
+          <div style={{position: 'absolute', left: 1090, top: 470}}><Beaker w={150} /></div>
+          <div style={{position: 'absolute', left: 940, top: 110}}><Icon3D size={110} rotX={-8} rotY={-18} glint={0.55} /></div>
           <div style={{position: 'absolute', left: 64, bottom: 30}}><Badge text={ui.thumbNote} tone="mint" size={18} /></div>
         </>
       ) : (
@@ -61,9 +68,11 @@ const Thumb: React.FC<{ctx: VideoCtx; kind: 'landscape' | 'cover'}> = ({ctx, kin
             {title}
             {roles}
           </div>
-          {shot('home_lab', 440, -6, -10, 760, 1)}
-          {shot('home_teacher', 480, 0, 300, 640, 3)}
-          {shot('home_student', 440, 6, 650, 770, 2)}
+          <div style={{position: 'absolute', left: 170, top: 520, opacity: 0.5, filter: 'blur(4px)'}}><Scope w={820} /></div>
+          <div style={{position: 'absolute', left: 240, top: 520}}>{hero(600, -22)}</div>
+          <div style={{position: 'absolute', left: 20, top: 1440}}><TubeRack h={300} /></div>
+          <div style={{position: 'absolute', left: 790, top: 1520}}><Beaker w={220} /></div>
+          <div style={{position: 'absolute', left: 450, top: 600}}><Icon3D size={200} rotX={-8} rotY={-18} glint={0.55} /></div>
           <div style={{position: 'absolute', left: 0, right: 0, bottom: 50, display: 'flex', justifyContent: 'center', zIndex: 5}}><Badge text={ui.thumbNote} tone="mint" size={26} /></div>
         </>
       )}

@@ -6,21 +6,21 @@ Files live in `video_studio/out/overview/<lang>/` (gitignored, not uploaded anyw
 
 | File | Duration (s) | Size (MB) | Video | Audio | sha256 |
 |---|---|---|---|---|---|
-| `en/overview_en.srt` |  | 0.00 |  |  | `63ae99493b9663d9487d0c9a5ec73ad9e3a86519b7af8e204dc74c859147db9e` |
-| `en/overview_en.vtt` |  | 0.00 |  |  | `88fefea3203780c568bc48562a9bc969b1d8228b2bfe706c49f78c9f2b70867a` |
-| `en/overview_en_cover_1080x1920.jpg` |  | 0.28 | 1080×1920 JPEG |  | `bbaf3c0dd15833bda4a8e5950248a66b04128d2641fd604adb978b5aed347802` |
-| `en/overview_en_horizontal.mp4` | 113.67 | 48.95 | h264 High 1920×1080 yuv420p 30/1 | aac 48000 Hz 1 ch | `231106bff8ac4f5eeb8a47cc28562d4f434b569cc89cddb24ad74c19feffa199` |
-| `en/overview_en_thumb_1280x720.jpg` |  | 0.15 | 1280×720 JPEG |  | `3e9d9143647d13bc9292736dd5ae3c77afa079273a1afa38b4ccb6852e691228` |
-| `en/overview_en_vertical.mp4` | 113.67 | 42.01 | h264 High 1080×1920 yuv420p 30/1 | aac 48000 Hz 1 ch | `c1c3d408db4363321c06873c87be8888aaedfa4e2d3bfe0daeba1def0ca1270c` |
-| `ru/overview_ru.srt` |  | 0.00 |  |  | `61ea7af4352a8a270e74c2b01fc8e1bc2d884e13fe80a890396774dbd4bb7776` |
-| `ru/overview_ru.vtt` |  | 0.00 |  |  | `8828c5346d8516561143ebe8af3b9a4b4ed1084bad510f9b038104228916eb9f` |
-| `ru/overview_ru_cover_1080x1920.jpg` |  | 0.27 | 1080×1920 JPEG |  | `2bb4af71396dd864e28ba92bc4aec0bc71490dd7b102fe3a3a18a66f69fba35a` |
-| `ru/overview_ru_horizontal.mp4` | 113.67 | 50.18 | h264 High 1920×1080 yuv420p 30/1 | aac 48000 Hz 1 ch | `56f0a2aed8fdd392b0075c9f73066d9188cdc05b257993ae534a8f7f0091b413` |
-| `ru/overview_ru_thumb_1280x720.jpg` |  | 0.15 | 1280×720 JPEG |  | `711a693b46717f6d3fda0dee53fe16d4980ede5aa5367ac258c708667566bff2` |
-| `ru/overview_ru_vertical.mp4` | 113.67 | 42.98 | h264 High 1080×1920 yuv420p 30/1 | aac 48000 Hz 1 ch | `8c04338f46034c83198dff0b87301731ffddff37fafa28e31458dbc5d0b9aadd` |
-| `uz/overview_uz.srt` |  | 0.00 |  |  | `32518615d6d951a14c5e59630f0b76372916b56c21ef8ef61a7358a8cc23e73a` |
-| `uz/overview_uz.vtt` |  | 0.00 |  |  | `653718a5d47a2db8bd995826d3ac3d5f046f6f114728f133c6032df54f0b8f03` |
-| `uz/overview_uz_cover_1080x1920.jpg` |  | 0.27 | 1080×1920 JPEG |  | `52a09c2bbc585067f2d557067bf3959c6b0dd74d7de3e1c99342cf475a8d550f` |
-| `uz/overview_uz_horizontal.mp4` | 113.67 | 49.31 | h264 High 1920×1080 yuv420p 30/1 | aac 48000 Hz 1 ch | `f42547a564e97eb292005b260e0365678df7925e623a9a3755eed42cff7abb9f` |
-| `uz/overview_uz_thumb_1280x720.jpg` |  | 0.14 | 1280×720 JPEG |  | `983c7c2c007d3ab2cb66d9e4fed6287807f1ac0e9f36c8940d07d72530f76809` |
-| `uz/overview_uz_vertical.mp4` | 113.67 | 42.21 | h264 High 1080×1920 yuv420p 30/1 | aac 48000 Hz 1 ch | `47a64b94cf7018a01a51eefd7e8bcb8ef447dcac5c39c3039f843a41b1bb38af` |
+| `en/overview_en.srt` |  | 0.00 |  |  | `5c02ccba7f1e902fac302dcc246a07ffb593484ebc938e0f262abec39a011a40` |
+| `en/overview_en.vtt` |  | 0.00 |  |  | `d76da42d55def4d0064014d63d1c5afbc7099a5974b5e2f5740cf4e91de695a2` |
+| `en/overview_en_cover_1080x1920.jpg` |  | 0.22 | 1080×1920 JPEG |  | `9e9c91d6ee347302692957bec36461e9b5584eb3cdf0397f200a5d2ee4882402` |
+| `en/overview_en_horizontal.mp4` | 113.67 | 49.80 | h264 High 1920×1080 yuv420p 30/1 | aac 48000 Hz 1 ch | `a195b5035cdeecccd88de5f48553782563e93f55f2499c3958defcf33af62cb6` |
+| `en/overview_en_thumb_1280x720.jpg` |  | 0.12 | 1280×720 JPEG |  | `23b35ac1617d131aeb5c3107de6188a7a0af54d57543570cfc1d65b09c3836d2` |
+| `en/overview_en_vertical.mp4` | 113.67 | 46.09 | h264 High 1080×1920 yuv420p 30/1 | aac 48000 Hz 1 ch | `e2d8e5f81e9ef54b941848815183c6fb28c74affc73b2a642eff8a87c8f3a671` |
+| `ru/overview_ru.srt` |  | 0.00 |  |  | `63e436c516846a621c6f2a2aea59508c73461af891248acd75e9c37a2d842ec0` |
+| `ru/overview_ru.vtt` |  | 0.00 |  |  | `45adf540c0f27079c4eb65519d1b43c9065b938e546a0140d1feae1ff7a51624` |
+| `ru/overview_ru_cover_1080x1920.jpg` |  | 0.22 | 1080×1920 JPEG |  | `618b31cb44b386ce0c04dc82bbff671f1a46445fd531ba71d9ea0922f9721569` |
+| `ru/overview_ru_horizontal.mp4` | 113.67 | 51.12 | h264 High 1920×1080 yuv420p 30/1 | aac 48000 Hz 1 ch | `43cc595fcbe034bd03c85c8b2a027d29a2dc61c978337af83f57ea2c3e269f9d` |
+| `ru/overview_ru_thumb_1280x720.jpg` |  | 0.12 | 1280×720 JPEG |  | `6acf017ca20eb09ff72536a5d6d0dc3b4645524c124aee16e5e8366c07014254` |
+| `ru/overview_ru_vertical.mp4` | 113.67 | 47.09 | h264 High 1080×1920 yuv420p 30/1 | aac 48000 Hz 1 ch | `758d544b8214725a0bfd01f9476e49ff199f1ea1f12a9f06db49ddbcf675b30e` |
+| `uz/overview_uz.srt` |  | 0.00 |  |  | `3e6d7fa5f9bd777a0afa511d721f12d23b43c8c55aaf4e216916be1f932e5028` |
+| `uz/overview_uz.vtt` |  | 0.00 |  |  | `76472e6231577dbd378b7790aaa3197c470177b7c3cff5d94bec162aad258e3c` |
+| `uz/overview_uz_cover_1080x1920.jpg` |  | 0.23 | 1080×1920 JPEG |  | `6d498a9862f7fdb18aefc09a61197fe7081e81a5db2fbc8cb6547147ee85c0de` |
+| `uz/overview_uz_horizontal.mp4` | 113.67 | 50.28 | h264 High 1920×1080 yuv420p 30/1 | aac 48000 Hz 1 ch | `1ba0a7935fe56da4fc84852ae8b3649dab1a1df9ca8cbc37a6197cd5578f0843` |
+| `uz/overview_uz_thumb_1280x720.jpg` |  | 0.11 | 1280×720 JPEG |  | `be2f02e2e139bba8ec554e5f14bffdf68f21d168cffff0a7ef3db2b01d817910` |
+| `uz/overview_uz_vertical.mp4` | 113.67 | 46.24 | h264 High 1080×1920 yuv420p 30/1 | aac 48000 Hz 1 ch | `b83fa5d71381cbd017c9098052b66c1fbed722fd5e69d33282a24a8d44d323bd` |
