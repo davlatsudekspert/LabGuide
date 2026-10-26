@@ -66,6 +66,16 @@ def apple():
         say(f'- versiyalar: HTTP {st}')
     st, d = asc_get(tok, f'/v1/apps/{app}/subscriptionGroups?limit=10')
     say(f"- obuna guruhlari: HTTP {st}" + (f", soni={len(d.get('data', []))}" if st == 200 else f" ({(d.get('errors') or [{}])[0].get('code')})"))
+    if st == 200:
+        for g in d.get('data', []):
+            s2, ds = asc_get(tok, f"/v1/subscriptionGroups/{g['id']}/subscriptions?limit=50")
+            for sub in (ds.get('data', []) if s2 == 200 else []):
+                a = sub['attributes']
+                sp, dp = asc_get(tok, f"/v1/subscriptions/{sub['id']}/prices?filter[territory]=USA&include=subscriptionPricePoint&limit=5")
+                usd = [i['attributes'].get('customerPrice') for i in dp.get('included', []) if i.get('type') == 'subscriptionPricePoints'] if sp == 200 else f'HTTP {sp}'
+                so, do = asc_get(tok, f"/v1/subscriptions/{sub['id']}/introductoryOffers?limit=5")
+                offers = [(o['attributes'].get('offerMode'), o['attributes'].get('duration')) for o in do.get('data', [])] if so == 200 else f'HTTP {so}'
+                say(f"  - {a.get('productId')}: {a.get('state')}, USD={usd}, intro={offers}")
     say('- Paid Apps shartnomasi, bank, soliq holati API orqali KO‘RINMAYDI: App Store Connect → Business → Agreements.')
 
 
@@ -92,7 +102,13 @@ def google():
         say(f'- treklar o‘qilmadi: {type(e).__name__}: {str(e)[:200]}')
     try:
         subs = svc.monetization().subscriptions().list(packageName=pkg).execute().get('subscriptions', [])
-        say(f'- obuna mahsulotlari: {len(subs)} ta ' + str([s.get("productId") for s in subs]))
+        say(f'- obuna mahsulotlari: {len(subs)} ta')
+        for sb in subs:
+            for bp in sb.get('basePlans', []):
+                us = [rc for rc in bp.get('regionalConfigs', []) if rc.get('regionCode') == 'US']
+                pr = us[0].get('price') if us else None
+                usd = f"{pr.get('units', '0')}.{int(pr.get('nanos', 0)) // 10_000_000:02d}" if pr else None
+                say(f"  - {sb.get('productId')} / {bp.get('basePlanId')}: {bp.get('state')}, US=${usd}")
     except Exception as e:  # noqa: BLE001
         say(f'- obunalar o‘qilmadi: {type(e).__name__}: {str(e)[:200]}')
     say('- Merchant profili, bank va soliq holati API orqali KO‘RINMAYDI: Play Console → Settings → Payments profile.')
