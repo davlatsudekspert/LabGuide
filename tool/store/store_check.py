@@ -76,6 +76,18 @@ def apple():
                 so, do = asc_get(tok, f"/v1/subscriptions/{sub['id']}/introductoryOffers?limit=5")
                 offers = [(o['attributes'].get('offerMode'), o['attributes'].get('duration')) for o in do.get('data', [])] if so == 200 else f'HTTP {so}'
                 say(f"  - {a.get('productId')}: {a.get('state')}, USD={usd}, intro={offers}")
+                if a.get('productId') == 'uz.labguide.student.monthly':
+                    pts, nxt = set(), f"/v1/subscriptions/{sub['id']}/pricePoints?filter[territory]=USA&limit=200"
+                    for _ in range(10):
+                        sc, dc = asc_get(tok, nxt)
+                        if sc != 200:
+                            break
+                        pts |= {x['attributes'].get('customerPrice') for x in dc.get('data', [])}
+                        link = (dc.get('links') or {}).get('next')
+                        if not link:
+                            break
+                        nxt = link.replace('https://api.appstoreconnect.apple.com', '')
+                    say(f"  - Apple USD narx nuqtalari soni={len(pts)}; 1.49:{'1.49' in pts} 2.49:{'2.49' in pts} 3.49:{'3.49' in pts} 24.99:{'24.99' in pts} 34.99:{'34.99' in pts}")
     say('- Paid Apps shartnomasi, bank, soliq holati API orqali KO‘RINMAYDI: App Store Connect → Business → Agreements.')
 
 
