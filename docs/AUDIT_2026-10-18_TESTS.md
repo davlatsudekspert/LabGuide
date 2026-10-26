@@ -101,7 +101,7 @@ variantlar aralashtirilmaydi; paket savollarida aralashtiriladi — ikkalasida h
 | `test/widget/classroom_real_decks_test.dart` | d040, d118, d048 × oddiy/variantli: ustoz ilovada topshiradi → «Talaba ko‘rinishida sinash» (har savol, ball, serverga yuborilmaydi) → talaba ilovada yechadi (server balli 6/6) → ikkinchi talaba xato → ustoz natijalari va «eng qiyin savollar» matni → katta ekran. 360×640 ×1.3 uz/ru/en: topshirish, sinash, talaba testi. Katta ekran tiklanish holati (1.2). |
 | `test/widget/toifa_iphone_real_test.dart` | iPhone, iOS: mashq rejimida 50 savolning hammasi ekrandan, 25-savolda ilova qayta ochiladi, natija 40/50, kunlik maqsad va «Ertaga davom etamizmi?» taklifi. Bilet: 5 savol, yozish maydoni yo‘q, 3-savolda qayta ochilsa davom etadi, bilet kunlik hisobga yoziladi. |
 
-Toifa bo‘limi faqat o‘zbek tili yoki UZ mintaqasida ko‘rinadi (D-60) — iPhone testi uz’da;
+Toifa bo‘limi (D-79 dan beri) hamma tilda va davlatda ko‘rinadi; iPhone testi uz’da;
 ru/en tarjimalarning to‘liqligi qorovulda tekshiriladi, 320 px ×1.3 uz/ru/en tartibi mavjud
 `toifa_daily_flow_test.dart` da.
 

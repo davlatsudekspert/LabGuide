@@ -329,13 +329,12 @@ Future<void> _assessment(
   s.exams.random = Random(11);
   s.toifa.random = Random(4);
   if (lang != 'uz') {
-    // Bo‘lim faqat O‘zbekiston uchun: ru/en interfeysda — Profil sozlamasi.
+    // Bo‘lim barcha til va davlatlarda ko‘rinadi (D-79) — Profil sozlamasi
+    // faqat yashirish uchun; bosilmaydi.
     await w.go('/profile');
-    final uzChip = find.text(l.profileAttestationUz);
-    await w.show(uzChip);
+    await w.show(find.text(l.profileAttestationShow));
     await w.scroll(200);
     await w.snap('as_profile');
-    await w.press(uzChip);
   }
   await w.go('/learn');
   final card = find.text(l.toifaTitle);

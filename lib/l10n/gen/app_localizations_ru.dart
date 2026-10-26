@@ -6000,17 +6000,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profileAttestation => 'Проверка знаний и компетенций';
 
   @override
-  String get profileAttestationAuto => 'Автоматически';
-
-  @override
-  String get profileAttestationUz => 'Узбекистан';
+  String get profileAttestationShow => 'Показывать';
 
   @override
   String get profileAttestationNone => 'Скрыть';
 
   @override
   String get profileAttestationNote =>
-      'Показывает раздел проверки знаний и компетенций (Узбекистан) на любом языке интерфейса. Автоматически: раздел виден, если язык узбекский или регион устройства — Узбекистан.';
+      'Раздел проверки знаний и компетенций доступен на любом языке интерфейса и в любой стране. Выберите «Скрыть», чтобы убрать его из приложения.';
 
   @override
   String get profileAppearance => 'Оформление';
@@ -12725,7 +12722,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get howToAssessmentStep6 =>
-      'Раздел для Узбекистана: на узбекском языке или Профиль → «Проверка знаний и компетенций» → «Узбекистан».';
+      'Раздел доступен на любом языке и в любой стране. Чтобы скрыть его: Профиль → «Проверка знаний и компетенций» → «Скрыть».';
 
   @override
   String get howToAssessmentResult =>

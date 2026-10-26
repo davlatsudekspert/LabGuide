@@ -159,7 +159,7 @@ HIGH = {
     "SCHEM-bsc_class2-result": "shkaf sinovi/sertifikati ahamiyati tushunilmasa — himoyasiz ishlash",
     "SCHEM-bsc_class2-part-02": "old panjarani to‘sish operator himoyasini buzadi",
     "SCHEM-mycobacterial_culture-result": "DST talqini (1/2-qator) xato bo‘lsa — sil davolash rejimi noto‘g‘ri",
-    "SCHEM-microbial_id_ast-result": "MIK va S/R toifasi xato tushunilsa — noto‘g‘ri antibiotik tanlovi",
+    "SCHEM-microbial_id_ast-result": "MIK va S/R kategoriyasi xato tushunilsa — noto‘g‘ri antibiotik tanlovi",
     "SCHEM-cartridge_molecular-result": "MTB/RIF natijasi noto‘g‘ri o‘qilsa — sil/rifampitsin chidamliligi bo‘yicha noto‘g‘ri qaror",
     "SCHEM-gel_card_system-result": "qon guruhi/DAT reaksiyasini noto‘g‘ri o‘qish — mos kelmaydigan transfuziya xavfi",
     "SCHEM-gel_card_system-part-06": "musbat reaksiya ko‘rinishi xato bo‘lsa — qon guruhi xato aniqlanadi",

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/scheduler.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -66,12 +65,7 @@ class _SimulationSetupScreenState extends State<SimulationSetupScreen> {
 
   bool _toifaHere(BuildContext context) {
     final settings = context.services.settings;
-    return toifaAvailable(
-      settings.language,
-      SchedulerBinding.instance.platformDispatcher.locales,
-      role: settings.role,
-      region: settings.attestationRegion,
-    );
+    return toifaAvailable(settings.attestationRegion);
   }
 
   Future<void> _start(ExamQuestionSource source) async {

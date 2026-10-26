@@ -10258,17 +10258,11 @@ abstract class AppLocalizations {
   /// **'Knowledge & Skills Assessment'**
   String get profileAttestation;
 
-  /// No description provided for @profileAttestationAuto.
+  /// No description provided for @profileAttestationShow.
   ///
   /// In en, this message translates to:
-  /// **'Automatic'**
-  String get profileAttestationAuto;
-
-  /// No description provided for @profileAttestationUz.
-  ///
-  /// In en, this message translates to:
-  /// **'Uzbekistan'**
-  String get profileAttestationUz;
+  /// **'Show'**
+  String get profileAttestationShow;
 
   /// No description provided for @profileAttestationNone.
   ///
@@ -10279,7 +10273,7 @@ abstract class AppLocalizations {
   /// No description provided for @profileAttestationNote.
   ///
   /// In en, this message translates to:
-  /// **'Shows the Knowledge & Skills Assessment section (Uzbekistan) in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.'**
+  /// **'Shows the Knowledge & Skills Assessment section in every interface language and in every country. Choose Hide to remove it from the app.'**
   String get profileAttestationNote;
 
   /// No description provided for @profileAppearance.
@@ -21643,7 +21637,7 @@ abstract class AppLocalizations {
   /// No description provided for @howToAssessmentStep6.
   ///
   /// In en, this message translates to:
-  /// **'The section is for Uzbekistan: in Uzbek, or Profile → “Knowledge & Skills Assessment” → “Uzbekistan”.'**
+  /// **'The section is available in every language and country. To hide it: Profile → “Knowledge & Skills Assessment” → “Hide”.'**
   String get howToAssessmentStep6;
 
   /// No description provided for @howToAssessmentResult.

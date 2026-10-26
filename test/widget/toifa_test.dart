@@ -20,6 +20,7 @@ import '../helpers/learn_helpers.dart';
 
 final uz = lookupAppLocalizations(const Locale('uz'));
 final ru = lookupAppLocalizations(const Locale('ru'));
+final en = lookupAppLocalizations(const Locale('en'));
 
 const _tall = Size(390, 2400);
 
@@ -46,77 +47,13 @@ void main() {
   setUpAll(loadAppFonts);
 
   group('ko‘rinish qoidasi', () {
-    test('til uz yoki mintaqa UZ', () {
-      expect(toifaAvailable(AppLanguage.uz, const [Locale('en', 'US')]), true);
-      expect(toifaAvailable(AppLanguage.ru, const [Locale('ru', 'UZ')]), true);
-      expect(toifaAvailable(AppLanguage.en, const [Locale('uz', 'UZ')]), true);
-      expect(toifaAvailable(AppLanguage.ru, const [Locale('ru', 'RU')]), false);
-      expect(toifaAvailable(AppLanguage.en, const [Locale('en', 'US')]), false);
-      expect(toifaAvailable(AppLanguage.ru, const [Locale('ru')]), false);
-    });
-
-    // `auto` — 6 ta kombinatsiya uchun AVVALGI xatti-harakat (o‘zgarmagan).
-    test('auto: 6 kombinatsiya avvalgidek', () {
-      const auto = AttestationRegion.auto;
-      for (final (lang, locales, visible) in [
-        (AppLanguage.uz, const [Locale('en', 'US')], true),
-        (AppLanguage.ru, const [Locale('ru', 'UZ')], true),
-        (AppLanguage.en, const [Locale('uz', 'UZ')], true),
-        (AppLanguage.ru, const [Locale('ru', 'RU')], false),
-        (AppLanguage.en, const [Locale('en', 'US')], false),
-        (AppLanguage.ru, const [Locale('ru')], false),
-      ]) {
-        expect(toifaAvailable(lang, locales, region: auto), visible);
-        // region berilmasa ham auto bilan bir xil.
-        expect(toifaAvailable(lang, locales), visible);
-      }
-    });
-
-    test('uz: til va mintaqadan qat‘i nazar ko‘rinadi; none: yashirin', () {
-      for (final lang in AppLanguage.values) {
-        for (final locales in [
-          const [Locale('ru', 'RU')],
-          const [Locale('en', 'US')],
-          const [Locale('uz', 'UZ')],
-          const <Locale>[],
-        ]) {
-          expect(
-            toifaAvailable(lang, locales, region: AttestationRegion.uz),
-            true,
-            reason: '$lang $locales',
-          );
-          expect(
-            toifaAvailable(lang, locales, region: AttestationRegion.none),
-            false,
-            reason: '$lang $locales',
-          );
-        }
-      }
-    });
-
-    test('rol cheklovi sozlamadan kuchli: uz bo‘lsa ham shifokor/talaba yo‘q', () {
-      for (final r in [AppRole.doctor, AppRole.student]) {
-        expect(
-          toifaAvailable(
-            AppLanguage.ru,
-            const [Locale('ru', 'RU')],
-            role: r,
-            region: AttestationRegion.uz,
-          ),
-          false,
-        );
-      }
-      for (final r in [AppRole.lab, AppRole.teacher]) {
-        expect(
-          toifaAvailable(
-            AppLanguage.ru,
-            const [Locale('ru', 'RU')],
-            role: r,
-            region: AttestationRegion.uz,
-          ),
-          true,
-        );
-      }
+    // D-79 (2026-10-26): til, davlat va rol ko'rinishga ta'sir qilmaydi;
+    // faqat `none` sozlamasi yashiradi.
+    test('auto/uz: ko‘rinadi; none: yashirin', () {
+      expect(toifaAvailable(), true);
+      expect(toifaAvailable(AttestationRegion.auto), true);
+      expect(toifaAvailable(AttestationRegion.uz), true);
+      expect(toifaAvailable(AttestationRegion.none), false);
     });
 
     test('sozlama saqlanadi va qayta ochilganda tiklanadi; standart — auto', () async {
@@ -143,68 +80,63 @@ void main() {
       expect(b.attestationRegion, AttestationRegion.auto);
     });
 
-    test('shifokor va talaba roliga ko‘rsatilmaydi (UZ bo‘lsa ham)', () {
-      const uzLoc = [Locale('uz', 'UZ')];
-      for (final r in [AppRole.doctor, AppRole.student]) {
-        expect(toifaAvailable(AppLanguage.uz, uzLoc, role: r), false);
-      }
-      for (final r in [AppRole.lab, AppRole.teacher]) {
-        expect(toifaAvailable(AppLanguage.uz, uzLoc, role: r), true);
-      }
-    });
-
-    for (final (lang, locale, visible) in [
-      (AppLanguage.uz, const Locale('en', 'US'), true),
-      (AppLanguage.ru, const Locale('ru', 'UZ'), true),
-      (AppLanguage.ru, const Locale('ru', 'RU'), false),
-      (AppLanguage.en, const Locale('en', 'US'), false),
+    for (final (lang, locale) in [
+      (AppLanguage.uz, const Locale('en', 'US')),
+      (AppLanguage.uz, const Locale('uz', 'UZ')),
+      (AppLanguage.ru, const Locale('ru', 'UZ')),
+      (AppLanguage.ru, const Locale('ru', 'RU')),
+      (AppLanguage.en, const Locale('en', 'US')),
+      (AppLanguage.en, const Locale('de', 'DE')),
     ]) {
-      testWidgets('${lang.name} + ${locale.toLanguageTag()} → '
-          '${visible ? 'ko‘rinadi' : 'yashirin'}', (tester) async {
+      testWidgets('${lang.name} + ${locale.toLanguageTag()} → ko‘rinadi '
+          '(barcha rollar), none yashiradi', (tester) async {
         final s = await makeServices(tester, language: lang);
         tester.platformDispatcher.localesTestValue = [locale];
         await pumpApp(tester, s, size: _tall);
         // Laborant bosh sahifasi — tezkor amal.
-        expect(find.byType(ToifaEntryCard), visible ? findsOne : findsNothing);
+        expect(find.byType(ToifaEntryCard), findsOne);
         await goTo(tester, '/learn');
-        expect(find.byType(ToifaEntryCard), visible ? findsOne : findsNothing);
-        // To'g'ridan-to'g'ri manzil ham faqat ko'rinadiganlarga ochiladi.
+        expect(find.byType(ToifaEntryCard), findsOne);
+        // To'g'ridan-to'g'ri manzil ham ochiladi.
         await goTo(tester, '/learn/toifa');
-        expect(find.byType(ToifaHubScreen), visible ? findsOne : findsNothing);
-        if (!visible) expect(find.byType(LearnScreen), findsOne);
+        expect(find.byType(ToifaHubScreen), findsOne);
         // ru interfeys — savollar o'zbekcha ekani aytiladi.
-        if (visible && lang == AppLanguage.ru) {
+        if (lang == AppLanguage.ru) {
           expect(find.text(ru.toifaUzbekOnly), findsWidgets);
         }
-        // Talaba: O'rganishda toifa kartasi yo'q (malaka toifasi unga emas).
-        await s.settings.setRole(AppRole.student);
-        await goTo(tester, '/learn');
-        expect(find.byType(ToifaEntryCard), findsNothing);
-        await goTo(tester, '/learn/toifa');
-        expect(find.byType(ToifaHubScreen), findsNothing);
-        // Shifokor: bosh sahifada ham, O'rganishda ham yo'q, manzil yopiq.
-        await s.settings.setRole(AppRole.doctor);
-        await goTo(tester, '/home');
-        expect(find.byType(ToifaEntryCard), findsNothing);
-        await goTo(tester, '/learn');
-        expect(find.byType(ToifaEntryCard), findsNothing);
-        await goTo(tester, '/learn/toifa');
-        expect(find.byType(ToifaHubScreen), findsNothing);
+        if (lang == AppLanguage.en) {
+          expect(find.text(en.toifaUzbekOnly), findsWidgets);
+        }
+        // Barcha rollar (D-79): O'rganishda karta bor, manzil ochiladi.
+        for (final r in AppRole.values) {
+          await s.settings.setRole(r);
+          await goTo(tester, '/learn');
+          expect(find.byType(ToifaEntryCard), findsOne, reason: r.name);
+          await goTo(tester, '/learn/toifa');
+          expect(find.byType(ToifaHubScreen), findsOne, reason: r.name);
+        }
+        // `none` — har qanday rolda yashirin, manzil /learn ga qaytaradi.
+        await s.settings.setAttestationRegion(AttestationRegion.none);
+        for (final r in AppRole.values) {
+          await s.settings.setRole(r);
+          await goTo(tester, '/learn');
+          expect(find.byType(ToifaEntryCard), findsNothing, reason: r.name);
+          await goTo(tester, '/learn/toifa');
+          expect(find.byType(ToifaHubScreen), findsNothing, reason: r.name);
+          expect(find.byType(LearnScreen), findsOne, reason: r.name);
+        }
       });
     }
   });
 
   group('tildan mustaqil: attestationRegion', () {
-    testWidgets('ru til + ru_RU qurilma + sozlama uz → bo‘lim ko‘rinadi', (
+    testWidgets('ru til + ru_RU qurilma, standart sozlama → bo‘lim ko‘rinadi', (
       tester,
     ) async {
       final s = await makeServices(tester, language: AppLanguage.ru);
       tester.platformDispatcher.localesTestValue = const [Locale('ru', 'RU')];
+      expect(s.settings.attestationRegion, AttestationRegion.auto);
       await pumpApp(tester, s, size: _tall);
-      // auto — yashirin (avvalgidek).
-      expect(find.byType(ToifaEntryCard), findsNothing);
-      await s.settings.setAttestationRegion(AttestationRegion.uz);
-      await tester.pumpAndSettle();
       expect(find.byType(ToifaEntryCard), findsOne);
       await goTo(tester, '/learn');
       expect(find.byType(ToifaEntryCard), findsOne);
@@ -220,6 +152,24 @@ void main() {
       await goTo(tester, '/learn/toifa/oral/q/kdl-o-001');
       expect(find.text(tr!.text), findsWidgets);
       expect(find.text(ru.toifaUzbekOnly), findsWidgets);
+    });
+
+    testWidgets('en til + US qurilma: none yashiradi, auto qaytaradi', (
+      tester,
+    ) async {
+      final s = await makeServices(tester, language: AppLanguage.en);
+      tester.platformDispatcher.localesTestValue = const [Locale('en', 'US')];
+      await pumpApp(tester, s, size: _tall);
+      expect(find.byType(ToifaEntryCard), findsOne);
+      await s.settings.setAttestationRegion(AttestationRegion.none);
+      await tester.pumpAndSettle();
+      expect(find.byType(ToifaEntryCard), findsNothing);
+      await goTo(tester, '/learn/toifa');
+      expect(find.byType(ToifaHubScreen), findsNothing);
+      expect(find.byType(LearnScreen), findsOne);
+      await s.settings.setAttestationRegion(AttestationRegion.auto);
+      await goTo(tester, '/learn/toifa');
+      expect(find.byType(ToifaHubScreen), findsOne);
     });
 
     testWidgets('none: uz til + UZ qurilma bo‘lsa ham yashirin, manzil yopiq', (
@@ -239,19 +189,18 @@ void main() {
       expect(find.byType(LearnScreen), findsOne);
     });
 
-    testWidgets('uz sozlamasi shifokor/talabaga bo‘limni ochmaydi', (
+    testWidgets('shifokor va talabaga ham ko‘rinadi (D-79), none yashiradi', (
       tester,
     ) async {
-      final s = await makeServices(tester, language: AppLanguage.ru);
-      tester.platformDispatcher.localesTestValue = const [Locale('ru', 'RU')];
-      await s.settings.setAttestationRegion(AttestationRegion.uz);
+      final s = await makeServices(tester, language: AppLanguage.en);
+      tester.platformDispatcher.localesTestValue = const [Locale('en', 'US')];
       await pumpApp(tester, s, size: _tall);
       for (final r in [AppRole.student, AppRole.doctor]) {
         await s.settings.setRole(r);
         await goTo(tester, '/learn');
-        expect(find.byType(ToifaEntryCard), findsNothing);
+        expect(find.byType(ToifaEntryCard), findsOne, reason: r.name);
         await goTo(tester, '/learn/toifa');
-        expect(find.byType(ToifaHubScreen), findsNothing);
+        expect(find.byType(ToifaHubScreen), findsOne, reason: r.name);
       }
     });
 
@@ -261,15 +210,15 @@ void main() {
       await pumpApp(tester, s, size: _tall);
       await goTo(tester, '/profile');
       expect(find.text(ru.profileAttestation), findsOne);
-      await tapScroll(tester, ru.profileAttestationUz);
-      expect(s.settings.attestationRegion, AttestationRegion.uz);
-      await goTo(tester, '/learn');
-      expect(find.byType(ToifaEntryCard), findsOne);
-      await goTo(tester, '/profile');
       await tapScroll(tester, ru.profileAttestationNone);
       expect(s.settings.attestationRegion, AttestationRegion.none);
       await goTo(tester, '/learn');
       expect(find.byType(ToifaEntryCard), findsNothing);
+      await goTo(tester, '/profile');
+      await tapScroll(tester, ru.profileAttestationShow);
+      expect(s.settings.attestationRegion, AttestationRegion.auto);
+      await goTo(tester, '/learn');
+      expect(find.byType(ToifaEntryCard), findsOne);
     });
   });
 

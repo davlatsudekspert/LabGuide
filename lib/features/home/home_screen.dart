@@ -300,8 +300,8 @@ class HomeScreen extends StatelessWidget {
             // Hamjamiyat (faqat server ulangan buildda; aks holda yo'q).
             const CommunityHomeCard(),
             // Laborant uchun tezkor amal: toifa imtihoniga tayyorgarlik
-            // (faqat O'zbekiston foydalanuvchilariga). Bo'lim ochilgach —
-            // "Bugun" kartasi (laborant va toifani ochgan har kim).
+            // (bo'lim hamma uchun ochiq, D-79). Bo'lim ochilgach —
+            // "Bugun" kartasi (toifani ochgan har kim).
             if (toifaVisible(context)) _ToifaHomeSlot(lab: role == AppRole.lab),
             LgSectionTitle(l.homeUsefulTests),
             ContentGate(

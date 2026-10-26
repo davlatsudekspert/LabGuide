@@ -149,8 +149,7 @@ const appRoutes = [
   '/learn/exam',
   '/learn/exam/run',
   '/learn/exam/result/missing',
-  // Toifa bo'limi: uz da ochiladi, ru/en (mintaqa UZ emas) — /learn ga
-  // qaytariladi.
+  // Toifa bo'limi: barcha til va davlatlarda ochiladi (D-79).
   '/learn/toifa',
   '/learn/toifa/test',
   '/learn/toifa/test/result/missing',

@@ -132,7 +132,7 @@ class AppServices {
   /// ishga tushmaydi (D-71).
   final EntitlementService entitlements;
 
-  /// Toifa imtihoniga tayyorgarlik (faqat O'zbekiston foydalanuvchilariga).
+  /// Toifa imtihoniga tayyorgarlik (hamma til, davlat va rol uchun, D-79).
   final ToifaController toifa;
 
   /// Leykoformula hisoblagichi va natijalar tarixi (faqat qurilmada).

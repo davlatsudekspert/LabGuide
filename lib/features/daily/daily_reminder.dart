@@ -453,13 +453,8 @@ class ReminderController extends ChangeNotifier {
     );
   }
 
-  /// Toifa bo'limi shu foydalanuvchiga ochiqmi (til/mintaqa, rol).
-  bool get _toifaAllowed => toifaAvailable(
-    settings.language,
-    PlatformDispatcher.instance.locales,
-    role: settings.role,
-    region: settings.attestationRegion,
-  );
+  /// Toifa bo'limi shu foydalanuvchiga ochiqmi (faqat sozlama; D-79).
+  bool get _toifaAllowed => toifaAvailable(settings.attestationRegion);
 
   /// Toifa eslatmasi rejasi: bugungi maqsad bajarilgan bo'lsa — ertadan.
   /// Bo'lim yopiq (masalan, rol o'zgardi) — eslatmalar bekor qilinadi.

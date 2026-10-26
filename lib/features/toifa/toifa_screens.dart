@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/scheduler.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -26,15 +25,10 @@ import '../howto/howto_widgets.dart';
 
 export 'toifa_today.dart' show toifaBase;
 
-/// Bo'lim shu foydalanuvchiga ko'rinadimi: `attestationRegion` sozlamasi
-/// (auto: til uz yoki mintaqa UZ; uz: doim; none: yashirin); shifokor va
-/// talaba roliga emas.
-bool toifaVisible(BuildContext context) => toifaAvailable(
-  context.services.settings.language,
-  SchedulerBinding.instance.platformDispatcher.locales,
-  role: context.services.settings.role,
-  region: context.services.settings.attestationRegion,
-);
+/// Bo'lim shu foydalanuvchiga ko'rinadimi: til, davlat va roldan qat'i nazar
+/// (D-79); faqat `attestationRegion` sozlamasi `none` bo'lsa yashirin.
+bool toifaVisible(BuildContext context) =>
+    toifaAvailable(context.services.settings.attestationRegion);
 
 String _lang(BuildContext context) =>
     Localizations.localeOf(context).languageCode;

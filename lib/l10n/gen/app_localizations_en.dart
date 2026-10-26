@@ -5978,17 +5978,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileAttestation => 'Knowledge & Skills Assessment';
 
   @override
-  String get profileAttestationAuto => 'Automatic';
-
-  @override
-  String get profileAttestationUz => 'Uzbekistan';
+  String get profileAttestationShow => 'Show';
 
   @override
   String get profileAttestationNone => 'Hide';
 
   @override
   String get profileAttestationNote =>
-      'Shows the Knowledge & Skills Assessment section (Uzbekistan) in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.';
+      'Shows the Knowledge & Skills Assessment section in every interface language and in every country. Choose Hide to remove it from the app.';
 
   @override
   String get profileAppearance => 'Appearance';
@@ -12661,7 +12658,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToAssessmentStep6 =>
-      'The section is for Uzbekistan: in Uzbek, or Profile → “Knowledge & Skills Assessment” → “Uzbekistan”.';
+      'The section is available in every language and country. To hide it: Profile → “Knowledge & Skills Assessment” → “Hide”.';
 
   @override
   String get howToAssessmentResult =>

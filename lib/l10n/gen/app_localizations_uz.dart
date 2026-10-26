@@ -2362,7 +2362,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calcAcr => 'Albumin/kreatinin nisbati';
 
   @override
-  String get calcAcrSub => 'Siydik ACR · KDIGO A toifasi';
+  String get calcAcrSub => 'Siydik ACR · KDIGO A kategoriyasi';
 
   @override
   String get calcAnionGap => 'Anion oralig‘i';
@@ -2503,12 +2503,12 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String resGfrCategory(String code) {
-    return 'KDIGO GFR toifasi: $code';
+    return 'KDIGO GFR kategoriyasi: $code';
   }
 
   @override
   String resAlbCategory(String code) {
-    return 'KDIGO albuminuriya toifasi: $code';
+    return 'KDIGO albuminuriya kategoriyasi: $code';
   }
 
   @override
@@ -4206,20 +4206,20 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaLoadError => 'Savollar bankini ochib bo‘lmadi';
 
   @override
-  String get toifaYourCategory => 'Toifangiz';
+  String get toifaYourCategory => 'Kategoriyangiz';
 
   @override
-  String get toifaCatSecond => '3–2-toifa';
+  String get toifaCatSecond => '3–2-kategoriya';
 
   @override
-  String get toifaCatFirst => '1-toifa';
+  String get toifaCatFirst => '1-kategoriya';
 
   @override
-  String get toifaCatHighest => 'Oliy toifa';
+  String get toifaCatHighest => 'Oliy kategoriya';
 
   @override
   String get toifaCategoryHint =>
-      'Og‘zaki bilet shu toifa ro‘yxatidan tuziladi. Test savollari barcha toifalar uchun umumiy.';
+      'Og‘zaki bilet shu kategoriya ro‘yxatidan tuziladi. Test savollari barcha kategoriyalar uchun umumiy.';
 
   @override
   String get toifaReadyTest => 'Test';
@@ -4255,7 +4255,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get toifaOralRowPick => 'Avval toifangizni tanlang';
+  String get toifaOralRowPick => 'Avval kategoriyangizni tanlang';
 
   @override
   String toifaOralRowActive(int done, int total) {
@@ -4288,7 +4288,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String toifaAboutList(int tests, int oral) {
-    return 'Ro‘yxatda $tests ta test va $oral ta og‘zaki savol (toifalar bo‘yicha takrorlar birlashtirilgan).';
+    return 'Ro‘yxatda $tests ta test va $oral ta og‘zaki savol (kategoriyalar bo‘yicha takrorlar birlashtirilgan).';
   }
 
   @override
@@ -4619,7 +4619,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String toifaOralStep1(int count) {
-    return 'Toifangiz ro‘yxatidan tasodifiy $count ta savol.';
+    return 'Kategoriyangiz ro‘yxatidan tasodifiy $count ta savol.';
   }
 
   @override
@@ -4630,7 +4630,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Javob rejasini ko‘rib, o‘zingizni baholang: bildim, qisman yoki bilmadim.';
 
   @override
-  String get toifaPickCategoryFirst => 'Avval toifani tanlang';
+  String get toifaPickCategoryFirst => 'Avval kategoriyani tanlang';
 
   @override
   String get toifaDrawTicket => 'Bilet olish';
@@ -4797,7 +4797,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get toifaProgressPickCategory =>
-      'Og‘zaki natija toifangiz ro‘yxati bo‘yicha hisoblanadi — toifani tanlang:';
+      'Og‘zaki natija kategoriyangiz ro‘yxati bo‘yicha hisoblanadi — kategoriyani tanlang:';
 
   @override
   String get toifaRecentTests => 'So‘nggi testlar';
@@ -5878,17 +5878,14 @@ class AppLocalizationsUz extends AppLocalizations {
   String get profileAttestation => 'Bilim va malakani baholash';
 
   @override
-  String get profileAttestationAuto => 'Avtomatik';
-
-  @override
-  String get profileAttestationUz => 'O‘zbekiston';
+  String get profileAttestationShow => 'Ko‘rsatish';
 
   @override
   String get profileAttestationNone => 'Yashirish';
 
   @override
   String get profileAttestationNote =>
-      'Bilim va malakani baholash bo‘limini interfeys tilidan qat’i nazar ko‘rsatadi. Avtomatik: til o‘zbekcha yoki qurilma mintaqasi O‘zbekiston bo‘lsa ko‘rinadi.';
+      'Bilim va malakani baholash bo‘limi barcha tillarda va barcha davlatlarda ko‘rinadi. Bo‘limni ilovadan olib tashlash uchun “Yashirish” ni tanlang.';
 
   @override
   String get profileAppearance => 'Tashqi ko‘rinish';
@@ -6984,7 +6981,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get analyteTreatmentGoalsNotice =>
-      'Davolash maqsadi shifokor tomonidan bemorning to‘liq xavf baholashi asosida belgilanadi; ilova xavf toifasini aniqlamaydi.';
+      'Davolash maqsadi shifokor tomonidan bemorning to‘liq xavf baholashi asosida belgilanadi; ilova xavf kategoriyasini aniqlamaydi.';
 
   @override
   String get analyteTreatmentGoalsNotRef =>
@@ -8432,14 +8429,14 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get cytoOtherSub =>
-      'Siydik, seroz suyuqliklar, balg‘am: xulosa toifalari';
+      'Siydik, seroz suyuqliklar, balg‘am: xulosa kategoriyalari';
 
   @override
   String get cytoOtherIntro =>
-      'Qisqa sharh: faqat xalqaro xulosa toifalarining nomlari. Mezonlar va xavf ko‘rsatkichlari — manbalarda.';
+      'Qisqa sharh: faqat xalqaro xulosa kategoriyalarining nomlari. Mezonlar va xavf ko‘rsatkichlari — manbalarda.';
 
   @override
-  String get cytoCategoriesTitle => 'Toifalar';
+  String get cytoCategoriesTitle => 'Kategoriyalar';
 
   @override
   String get contactPrivacyPolicy => 'Maxfiylik siyosati';
@@ -10875,7 +10872,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsUrineSystemResult =>
-      'Chiziq kimyosi natijalari va cho‘kma elementlari (eritrotsit, leykotsit, silindr, kristall, bakteriya va boshq.) soni yoki toifasi, ko‘rib chiqish uchun tasvirlar bilan.';
+      'Chiziq kimyosi natijalari va cho‘kma elementlari (eritrotsit, leykotsit, silindr, kristall, bakteriya va boshq.) soni yoki kategoriyasi, ko‘rib chiqish uchun tasvirlar bilan.';
 
   @override
   String get schemPartsMassSpecGcGasName => 'Tashuvchi gaz ballon';
@@ -11126,7 +11123,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsMicrobialIdAstSoftwareFn =>
-      'O‘sish egri chiziqlaridan MIK va talqin toifasini hisoblab, hisobot beradi.';
+      'O‘sish egri chiziqlaridan MIK va talqin kategoriyasini hisoblab, hisobot beradi.';
 
   @override
   String get schemPartsMicrobialIdAstPrinciple =>
@@ -11134,7 +11131,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsMicrobialIdAstResult =>
-      'Har antibiotik uchun MIK qiymati va talqin toifasi (masalan, sezuvchan yoki chidamli); identifikatsiya kartasida — mikroorganizm turi.';
+      'Har antibiotik uchun MIK qiymati va talqin kategoriyasi (masalan, sezuvchan yoki chidamli); identifikatsiya kartasida — mikroorganizm turi.';
 
   @override
   String get schemPartsBloodCultureVialsName => 'Gemokultura flakonlari';
@@ -12520,7 +12517,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get howToAssessmentStep1 =>
-      'Toifangizni tanlang (3–2, 1 yoki oliy) va kunlik maqsadni belgilang.';
+      'Kategoriyangizni tanlang (3–2, 1 yoki oliy) va kunlik maqsadni belgilang.';
 
   @override
   String get howToAssessmentStep2 =>
@@ -12540,7 +12537,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get howToAssessmentStep6 =>
-      'Bo‘lim O‘zbekiston uchun: o‘zbek tilida yoki Profil → «Bilim va malakani baholash» → «O‘zbekiston».';
+      'Bo‘lim barcha tillarda va barcha davlatlarda mavjud. Yashirish uchun: Profil → «Bilim va malakani baholash» → «Yashirish».';
 
   @override
   String get howToAssessmentResult =>
@@ -12763,7 +12760,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proPayFeatToifa =>
-      'To‘liq toifa banki: rasmiy test va mavzular bo‘yicha mashq';
+      'To‘liq savollar banki: rasmiy test va mavzular bo‘yicha mashq';
 
   @override
   String get proPayFeatWeak => 'Zaif mavzular tahlili natijada';
@@ -13474,7 +13471,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proTierNote =>
-      'Ustoz panelining Pro imkoniyatlari faqat Ustoz Pro yoki Premium rejasida, professional laboratoriya funksiyalari esa faqat Mutaxassis Pro yoki Premium rejasida bo‘ladi. Ilovada rolni o‘zgartirish ularni ochmaydi. Bugun bepul bo‘lgan hamma narsa — Laboratoriya bo‘limi, atlas, testlar, toifa, guruhlar va topshiriqlar — bepul qoladi.';
+      'Ustoz panelining Pro imkoniyatlari faqat Ustoz Pro yoki Premium rejasida, professional laboratoriya funksiyalari esa faqat Mutaxassis Pro yoki Premium rejasida bo‘ladi. Ilovada rolni o‘zgartirish ularni ochmaydi. Bugun bepul bo‘lgan hamma narsa — Laboratoriya bo‘limi, atlas, testlar, bilim va malakani baholash, guruhlar va topshiriqlar — bepul qoladi.';
 
   @override
   String get proLockedLearner =>
@@ -13923,7 +13920,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get ttSourceQuiz => 'Mashq savollari';
 
   @override
-  String get ttSourceToifa => 'Toifa banki';
+  String get ttSourceToifa => 'Baholash banki';
 
   @override
   String get ttSourceDeck => 'Mavzu testi';

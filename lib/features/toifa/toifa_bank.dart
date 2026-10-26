@@ -5,28 +5,17 @@ import '../content/content_model.dart';
 import '../learn/exam_question.dart';
 import '../settings/settings_controller.dart';
 
-/// Bo'lim O'zbekiston foydalanuvchilariga: [region] sozlamasiga ko'ra —
-/// `auto` (avvalgidek): ilova tili o'zbekcha yoki qurilma mintaqasi
-/// (locale countryCode) UZ; `uz`: til va mintaqadan qat'i nazar ko'rinadi;
-/// `none`: yashirin. Til faqat interfeys tili — toifa materiallari tanlangan
-/// tilda (yordamchi tarjima) ko'rsatiladi. KDL malaka toifasi
-/// laboratoriya mutaxassisligi uchun — shifokor roliga ko'rsatilmaydi
-/// (egasi qarori, 2026-10-09), talabaga ham (talaba toifa topshirmaydi,
-/// egasi, 2026-10-12): kunlik savollar ham toifa bankidan olinmaydi.
-bool toifaAvailable(
-  AppLanguage language,
-  Iterable<Locale> deviceLocales, {
-  AppRole? role,
-  AttestationRegion region = AttestationRegion.auto,
-}) =>
-    role != AppRole.doctor &&
-    role != AppRole.student &&
+/// Bo'lim hamma uchun ochiq (egasi qarori, 2026-10-26, D-79): hamma tilda,
+/// hamma davlatda va hamma rolda (laborant, ustoz, talaba, shifokor). D-40 /
+/// D-60 dagi til/mintaqa sharti va shifokor/talaba rol cheklovlari bekor
+/// qilindi. Faqat foydalanuvchining o'z tanlovi yashiradi:
+/// [AttestationRegion.none]; `auto` (standart) va `uz` — ko'rinadi.
+/// Toifa materiallari tanlangan tilda (yordamchi tarjima) ko'rsatiladi,
+/// rasmiy savol matni o'zbekcha qoladi.
+bool toifaAvailable([AttestationRegion region = AttestationRegion.auto]) =>
     switch (region) {
-      AttestationRegion.uz => true,
+      AttestationRegion.auto || AttestationRegion.uz => true,
       AttestationRegion.none => false,
-      AttestationRegion.auto =>
-        language == AppLanguage.uz ||
-            deviceLocales.any((l) => l.countryCode?.toUpperCase() == 'UZ'),
     };
 
 /// Malaka toifasi: og'zaki savollar ro'yxati toifa bo'yicha beriladi.

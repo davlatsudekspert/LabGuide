@@ -208,32 +208,31 @@ class ProfileScreen extends StatelessWidget {
                   ),
               ],
             ),
-            // Malaka toifasi (KDL attestatsiyasi) tildan mustaqil boshqariladi.
-            // Shifokor va talabaga bo'lim baribir ko'rsatilmaydi — sozlama ham
-            // yashirin.
-            if (settings.role != AppRole.doctor &&
-                settings.role != AppRole.student) ...[
-              LgSectionTitle(l.profileAttestation),
-              Wrap(
-                key: const ValueKey('profile-attestation'),
-                spacing: 6,
-                runSpacing: 6,
-                children: [
-                  for (final (region, label) in [
-                    (AttestationRegion.auto, l.profileAttestationAuto),
-                    (AttestationRegion.uz, l.profileAttestationUz),
-                    (AttestationRegion.none, l.profileAttestationNone),
-                  ])
-                    LgChoiceChip(
-                      label: label,
-                      selected: settings.attestationRegion == region,
-                      onTap: () => settings.setAttestationRegion(region),
-                    ),
-                ],
-              ),
-              const SizedBox(height: 6),
-              Text(l.profileAttestationNote, style: text.bodySmall),
-            ],
+            // Malaka toifasi (KDL attestatsiyasi): hamma til, davlat va rolda
+            // ko'rinadi; foydalanuvchi xohlasa yashiradi (D-79).
+            LgSectionTitle(l.profileAttestation),
+            Wrap(
+              key: const ValueKey('profile-attestation'),
+              spacing: 6,
+              runSpacing: 6,
+              children: [
+                for (final (region, label) in [
+                  (AttestationRegion.auto, l.profileAttestationShow),
+                  (AttestationRegion.none, l.profileAttestationNone),
+                ])
+                  LgChoiceChip(
+                    label: label,
+                    // Saqlangan `uz` tanlovi ham “Ko'rsatish” (D-79).
+                    selected:
+                        (settings.attestationRegion !=
+                            AttestationRegion.none) ==
+                        (region != AttestationRegion.none),
+                    onTap: () => settings.setAttestationRegion(region),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 6),
+            Text(l.profileAttestationNote, style: text.bodySmall),
             LgSectionTitle(l.profileAppearance),
             LgRow(
               key: const ValueKey('profile-theme-row'),

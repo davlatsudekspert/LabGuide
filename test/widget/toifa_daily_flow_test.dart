@@ -219,11 +219,14 @@ void main() {
     await tester.pumpAndSettle();
     // Bosh sahifadan — toifa bo'limi (davom etayotgan ish yo'q).
     expect(find.byType(ToifaHubScreen), findsOne);
-    // Ustoz ham bo'limni ochgan bo'lsa — karta ko'rinadi; shifokorga yo'q.
-    await s.settings.setRole(AppRole.teacher);
-    await goTo(tester, '/home');
-    expect(find.byType(ToifaTodayCard), findsOne);
-    await s.settings.setRole(AppRole.doctor);
+    // Bo'limni ochgan har kim (ustoz, shifokor — D-79) kartani ko'radi;
+    // `none` tanlansa — yo'q.
+    for (final r in [AppRole.teacher, AppRole.doctor, AppRole.student]) {
+      await s.settings.setRole(r);
+      await goTo(tester, '/home');
+      expect(find.byType(ToifaTodayCard), findsOne, reason: r.name);
+    }
+    await s.settings.setAttestationRegion(AttestationRegion.none);
     await goTo(tester, '/home');
     expect(find.byType(ToifaTodayCard), findsNothing);
   });

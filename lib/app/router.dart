@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -1198,19 +1197,13 @@ GoRouter buildRouter(
                       builder: (context, state) =>
                           const ResultsAnalyticsScreen(),
                     ),
-                  // Toifa imtihoniga tayyorgarlik — faqat O'zbekiston
-                  // foydalanuvchilariga (til uz yoki mintaqa UZ), shifokor va
-                  // talaba rolidan tashqari (D-40, D-60); boshqalar
-                  // to'g'ridan-to'g'ri manzil bilan ham kira olmaydi.
+                  // Toifa imtihoniga tayyorgarlik — barcha til, davlat va
+                  // rollarda (D-79; D-40/D-60 cheklovlari bekor); foydalanuvchi
+                  // o'zi yashirgan bo'lsa to'g'ridan-to'g'ri manzil ham yopiq.
                   GoRoute(
                     path: 'toifa',
                     redirect: (context, state) =>
-                        toifaAvailable(
-                          settings.language,
-                          SchedulerBinding.instance.platformDispatcher.locales,
-                          role: settings.role,
-                          region: settings.attestationRegion,
-                        )
+                        toifaAvailable(settings.attestationRegion)
                         ? null
                         : '/learn',
                     builder: (context, state) => const ToifaHubScreen(),

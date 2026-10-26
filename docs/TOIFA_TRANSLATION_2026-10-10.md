@@ -33,8 +33,8 @@ Asset hajmi: `kdl_tests.json` 450 608 B, `kdl_oral.json` 1 739 762 B
   (og‘zaki savolda reja ham) ko‘rinadi. Interfeys uz bo‘lsa belgi ham, tugma ham yo‘q.
 - Baholash o‘zgarmagan: faqat rasmiy `key` bo‘yicha; variantlar tartibi va
   kalit indekslari tarjimadan mustaqil.
-- Ko‘rinish qoidasi o‘zgarmagan: Toifa faqat UZ foydalanuvchilarga (shifokorga
-  emas); tarjima ru interfeysli UZ foydalanuvchilar va sinf (classroom) testlari
+- Ko‘rinish qoidasi keyin o‘zgardi (D-79, 2026-10-26): bo‘lim hamma til, davlat va
+  rolda ochiq; tarjima ru interfeysli UZ foydalanuvchilar va sinf (classroom) testlari
   uchun ishlaydi (`topic_questions.dart`, `classroom_screens.dart`,
   `lecture_screens.dart`, `daily_screens.dart`, imtihon ko‘rib chiqish kartasi).
 - Yangi l10n kalitlari: `toifaShowOriginal`, `toifaHideOriginal`,
