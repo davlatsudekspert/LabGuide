@@ -1,0 +1,335 @@
+{
+  "id": "qpcr",
+  "version": 1,
+  "status": "EXPERT_REVIEW_PENDING",
+  "title": {
+    "en": "Real-time PCR: curves and Cq",
+    "ru": "ПЦР в реальном времени: кривые и Cq",
+    "uz": "Real vaqt PCR: egri chiziqlar va Cq"
+  },
+  "fps": 30,
+  "formats": {
+    "vertical": {
+      "width": 1080,
+      "height": 1920
+    },
+    "horizontal": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "timing": {
+    "_doc": "Same rules as the flagships; with the English voice the timing manifest public/audio/en/qpcr.timing.json replaces the estimate for EVERY language edition.",
+    "leadSec": 0.25,
+    "tailSec": 0.35,
+    "gapSec": 0.2,
+    "minLineSec": 1.6,
+    "cps": {
+      "en": 16,
+      "ru": 15,
+      "uz": 14
+    },
+    "cueMax": {
+      "en": {
+        "L11": 50
+      },
+      "ru": {
+        "L07": 40
+      }
+    },
+    "_cueMaxDoc": "Per-language line ids whose cues are split shorter: the exact font check (scripts/subrows.mjs) found > 2 rows on the vertical plate."
+  },
+  "data": {
+    "_doc": "ILLUSTRATIVE CURVES - not a real assay, instrument, threshold setting or patient result. Two made-up samples (A, B) and a no-template control (NTC) as logistic curves; Cq = threshold crossing solved exactly in code (video_studio/src/lib/qpcr.js; independent check video_studio/scripts/crosscheck_qpcr.py). Fluorescence in arbitrary units. The doubling bars are the idealised 2^n of the app card's 'roughly doubling the target each cycle'.",
+    "cycles": 40,
+    "base": 0.05,
+    "threshold": 0.2,
+    "samples": [
+      {
+        "id": "A",
+        "mid": 24.3,
+        "slope": 1.3,
+        "top": 1.0,
+        "color": "mint"
+      },
+      {
+        "id": "B",
+        "mid": 33.3,
+        "slope": 1.3,
+        "top": 0.9,
+        "color": "amber"
+      },
+      {
+        "id": "NTC",
+        "flat": true,
+        "drift": 0.0004,
+        "color": "inkDim"
+      }
+    ],
+    "doublingSteps": 5,
+    "paths": {
+      "_doc": "Schematic coordinates traced from tool/illustrations/schematic/real_time_pcr.svg (corrected optical path: excitation source 4 -> excitation filter 5 -> tube 6 -> emission filter 7 -> detector 8).",
+      "excite": [
+        [
+          440,
+          550
+        ],
+        [
+          466,
+          550
+        ],
+        [
+          528,
+          552
+        ]
+      ],
+      "emit": [
+        [
+          536,
+          548
+        ],
+        [
+          567,
+          505
+        ],
+        [
+          605,
+          455
+        ]
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "lines": [
+        "L01",
+        "L02"
+      ],
+      "minSec": 4.5
+    },
+    {
+      "id": "cycle",
+      "layer": "cycle",
+      "lines": [
+        "L03",
+        "L04"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "step": "01"
+      }
+    },
+    {
+      "id": "cycler",
+      "layer": "tour",
+      "lines": [
+        "L05"
+      ],
+      "minSec": 5.5,
+      "props": {
+        "schematic": "real_time_pcr",
+        "step": "02",
+        "kicker": "kickerCycler",
+        "badge": "schematicNote",
+        "parts": [
+          {
+            "n": 1,
+            "name": "p1"
+          },
+          {
+            "n": 2,
+            "name": "p2"
+          },
+          {
+            "n": 3,
+            "name": "p3"
+          }
+        ],
+        "cols": 1,
+        "legendTop": 1020
+      }
+    },
+    {
+      "id": "optics",
+      "layer": "tour",
+      "lines": [
+        "L06",
+        "L07"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "schematic": "real_time_pcr",
+        "step": "03",
+        "kicker": "kickerOptics",
+        "badge": "schematicNote",
+        "parts": [
+          {
+            "n": 4,
+            "name": "p4",
+            "cue": 0
+          },
+          {
+            "n": 5,
+            "name": "p5",
+            "cue": 0
+          },
+          {
+            "n": 6,
+            "name": "p6",
+            "cue": 0
+          },
+          {
+            "n": 7,
+            "name": "p7",
+            "cue": 1
+          },
+          {
+            "n": 8,
+            "name": "p8",
+            "cue": 1
+          }
+        ],
+        "paths": [
+          {
+            "ref": "excite",
+            "cue": 0,
+            "at": 0.4,
+            "dur": 2.2,
+            "color": "beam",
+            "width": 6
+          },
+          {
+            "ref": "emit",
+            "cue": 1,
+            "at": 0.2,
+            "dur": 2.2,
+            "color": "mint",
+            "width": 6
+          }
+        ],
+        "zoom": 1.3,
+        "focus": [
+          520,
+          470
+        ],
+        "cols": 1,
+        "legendTop": 1020,
+        "hWidth": 820,
+        "hLegendLeft": 1220
+      }
+    },
+    {
+      "id": "curves",
+      "layer": "curves",
+      "lines": [
+        "L08",
+        "L09"
+      ],
+      "minSec": 9.0,
+      "props": {
+        "step": "04"
+      }
+    },
+    {
+      "id": "cautions",
+      "layer": "cautions",
+      "lines": [
+        "L10"
+      ],
+      "minSec": 6.0,
+      "props": {
+        "step": "05"
+      }
+    },
+    {
+      "id": "app_card",
+      "layer": "phone",
+      "lines": [
+        "L11",
+        "L12"
+      ],
+      "minSec": 9.0,
+      "props": {
+        "step": "06",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "q_dir",
+            "w": 0.8,
+            "mark": "card",
+            "tap": true,
+            "callout": "coDir",
+            "cue": 0
+          },
+          {
+            "frame": "q_card",
+            "w": 1.1,
+            "mark": "schematic",
+            "callout": "coCard",
+            "cue": 0
+          },
+          {
+            "frame": "q_parts",
+            "w": 1,
+            "mark": "parts",
+            "callout": "coParts",
+            "cue": 1
+          },
+          {
+            "frame": "q_principle",
+            "w": 1,
+            "mark": "field",
+            "crop": "field",
+            "callout": "coPrinciple",
+            "cue": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "app_limits",
+      "layer": "phone",
+      "lines": [
+        "L13"
+      ],
+      "minSec": 6.0,
+      "props": {
+        "step": "07",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "q_limits",
+            "w": 1,
+            "mark": "field",
+            "crop": "field",
+            "callout": "coLimits",
+            "tone": "warn"
+          },
+          {
+            "frame": "q_qc",
+            "w": 1,
+            "mark": "field",
+            "crop": "field",
+            "callout": "coQc",
+            "tone": "warn"
+          }
+        ]
+      }
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "lines": [
+        "L14",
+        "L15"
+      ],
+      "minSec": 6.5
+    }
+  ],
+  "thumbnail": {
+    "headlineKey": "thumbHeadline",
+    "subKey": "thumbSub"
+  }
+}

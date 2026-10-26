@@ -11,8 +11,9 @@ import {leukocyteVideo} from './videos/leukocyte';
 import {photometryVideo} from './videos/photometry';
 import {qcVideo} from './videos/qc';
 import {gcmsVideo} from './videos/gcms';
+import {qpcrVideo} from './videos/qpcr';
 
-export const videos: VideoDef[] = [calibrationVideo, leukocyteVideo, photometryVideo, qcVideo, gcmsVideo];
+export const videos: VideoDef[] = [calibrationVideo, leukocyteVideo, photometryVideo, qcVideo, gcmsVideo, qpcrVideo];
 
 const defaults: VideoProps = {lang: 'en', timing: null, appFrames: null, subtitles: true};
 

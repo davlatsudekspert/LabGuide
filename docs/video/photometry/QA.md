@@ -30,6 +30,8 @@ narration re-muxed).
 
 ## Checked and OK
 
+* Row check re-run with the stricter `subrows.mjs` (borders + 1.5 % slack, added during the GC-MS/qPCR QA). It flags RU L15 and UZ L12 as possible 3-row cues on the vertical plate. Both were checked in the final vertical MP4s and show **2 rows**, so this is the margin's false positive and no change was made.
+
 * ffprobe (all six): H.264 High, yuv420p, 30 fps, 69.63 s, AAC-LC 48 kHz mono (`OUTPUTS.md`).
 * Loudness (EN vertical, UZ horizontal): −16.2 LUFS integrated, true peak −2.3 dBTP.
 * Hook: first frame already busy (beam on, number rolling from the standard's 0.412 up to 1.52); subtitle at

@@ -1,0 +1,102 @@
+{
+  "videoId": "qpcr",
+  "lang": "en",
+  "source": "synthetic narration: tool/tts/synth.py backend=kokoro",
+  "totalSec": 73.4,
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 4.389
+    },
+    {
+      "id": "L02",
+      "start": 4.589,
+      "end": 6.573
+    },
+    {
+      "id": "L03",
+      "start": 7.173,
+      "end": 13.637
+    },
+    {
+      "id": "L04",
+      "start": 13.837,
+      "end": 16.269
+    },
+    {
+      "id": "L05",
+      "start": 16.869,
+      "end": 22.181
+    },
+    {
+      "id": "L06",
+      "start": 22.781,
+      "end": 27.816
+    },
+    {
+      "id": "L07",
+      "start": 28.016,
+      "end": 31.877
+    },
+    {
+      "id": "L08",
+      "start": 32.477,
+      "end": 35.954
+    },
+    {
+      "id": "L09",
+      "start": 36.154,
+      "end": 41.935
+    },
+    {
+      "id": "L10",
+      "start": 42.535,
+      "end": 48.21
+    },
+    {
+      "id": "L11",
+      "start": 48.81,
+      "end": 55.701
+    },
+    {
+      "id": "L12",
+      "start": 55.901,
+      "end": 59.613
+    },
+    {
+      "id": "L13",
+      "start": 60.213,
+      "end": 63.946
+    },
+    {
+      "id": "L14",
+      "start": 66.213,
+      "end": 68.218
+    },
+    {
+      "id": "L15",
+      "start": 68.418,
+      "end": 73.047
+    }
+  ],
+  "loudness": {
+    "target": {
+      "I": -16,
+      "TP": -2.4,
+      "LRA": 11
+    },
+    "before": {
+      "I": -22.7,
+      "TP": -2.84,
+      "LRA": 2.3
+    },
+    "after": {
+      "I": -16.27,
+      "TP": -2.4,
+      "LRA": 2
+    }
+  },
+  "voice": "Kokoro-82M v1.0 int8 ONNX, voice af_heart (Apache-2.0)",
+  "listeningReview": "PENDING — nobody has listened to this voice yet"
+}

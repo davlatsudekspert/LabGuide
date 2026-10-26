@@ -32,6 +32,9 @@
     "cueMax": {
       "en": {
         "L12": 45
+      },
+      "ru": {
+        "L12": 40
       }
     },
     "_cueMaxDoc": "Exact font check (scripts/subrows.mjs) found > 2 rows on the vertical plate for EN L11/L12: L12 is split into shorter cues (cueMax), L11 keeps one cue at 0.9 x the plate font (43 px, still >= 40 px) so its reading time is not cut.",

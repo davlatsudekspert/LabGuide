@@ -41,7 +41,7 @@ Timing source: voice manifest `video_studio/public/audio/en/gcms.timing.json` (s
 | Lang | Cues | Max chars / cue |
 |---|---|---|
 | en | 23 | 74 |
-| ru | 20 | 62 |
+| ru | 22 | 62 |
 | uz | 22 | 64 |
 
 ## On-screen text (per language)

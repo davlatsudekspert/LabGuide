@@ -13,13 +13,16 @@ const id = args.id;
 const {lines, storyboard} = videoData(id);
 const {timing, layout} = effectiveTiming(id);
 const zoneAt = (t) => layout.scenes.find((s) => t >= s.startSec && t < s.endSec)?.props?.subZone === 'left';
+// Safety margin: the browser wrapped a cue that PIL measured at 879.6 of 880 px
+// (RU qPCR L07) — subtract the 1 px borders and keep 1.5 % slack.
+const W = (w) => Math.floor((w - 2) * 0.985);
 const items = [];
 for (const lang of LANGS) {
   for (const c of buildCues(normalizeTiming(timing), lines[lang], storyboard.timing.cueMax?.[lang])) {
     const k = storyboard.timing.cueFont?.[lang]?.[c.lineId] ?? 1;
-    items.push({key: `${lang}|vertical|${c.lineId}#${c.index}|${c.text}`, text: c.text, size: Math.round(48 * k), width: 940 - 60});
+    items.push({key: `${lang}|vertical|${c.lineId}#${c.index}|${c.text}`, text: c.text, size: Math.round(48 * k), width: W(940 - 60)});
     const left = zoneAt(c.start);
-    items.push({key: `${lang}|horizontal|${c.lineId}#${c.index}|${c.text}`, text: c.text, size: Math.round(44 * k), width: (left ? 1080 : 1480) - 60});
+    items.push({key: `${lang}|horizontal|${c.lineId}#${c.index}|${c.text}`, text: c.text, size: Math.round(44 * k), width: W((left ? 1080 : 1480) - 60)});
   }
 }
 const res = JSON.parse(execFileSync('python3', ['-I', path.join(studio, 'scripts/subrows.py'), path.join(studio, 'public/fonts/Inter-600.ttf')], {input: JSON.stringify(items)}).toString());

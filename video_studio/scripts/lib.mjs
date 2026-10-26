@@ -8,6 +8,7 @@ import {differentialMath, differentialVars} from '../src/lib/differential.js';
 import {photometryMath, photometryVars} from '../src/lib/photometry.js';
 import {qcMath, qcVars} from '../src/lib/qc.js';
 import {gcmsMath, gcmsVars} from '../src/lib/gcms.js';
+import {qpcrMath, qpcrVars} from '../src/lib/qpcr.js';
 import {buildCues, toSrt, toVtt} from '../src/lib/subtitles.js';
 import {calibrationVars, resolveLines} from '../src/lib/text.js';
 import {layoutScenes, normalizeTiming, placeholderTiming} from '../src/lib/timing.js';
@@ -28,6 +29,7 @@ const VIDEO_MATH = {
   photometry: {compute: (sb) => photometryMath(sb.data), vars: photometryVars},
   qc: {compute: (sb) => qcMath(sb.data), vars: qcVars},
   gcms: {compute: (sb) => gcmsMath(sb.data), vars: gcmsVars},
+  qpcr: {compute: (sb) => qpcrMath(sb.data), vars: qpcrVars},
 };
 
 export function parseArgs(argv) {
