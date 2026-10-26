@@ -66,6 +66,10 @@ on:
         description: "FAQAT deploy_api: pullik server yo'llarini (admin Pro berish, ustoz testlari, huquqlar) YOQISH — Worker secretiga bayroq yoziladi. Do'kon tekshiruvi (Apple/Google kalitlari) yo'q: xarid 503, sinov fail-closed. Bepul ilova yo'llariga ta'sir qilmaydi."
         type: boolean
         default: false
+      pro_gating:
+        description: "FAQAT pro_preview bilan: hamma imkoniyatni OCHMASDAN (pullik funksiyalar obunasiz yopiq) sandbox xarid sinovi uchun build. Standart false = hamma ochiq."
+        type: boolean
+        default: false
       apple_setup:
         description: "testflight uchun: bundle ID va App Store profilini API orqali yaratish (yo'q bo'lsa)"
         type: boolean
@@ -103,7 +107,7 @@ env:
   # testflight / play_internal da `pro_preview` belgilansa yoqiladi (tester
   # ko'rishi uchun; hamma imkoniyat ochiq). push/PR/build/deploy — doim 'false'.
   LG_PRO_ENABLED: ${{ (inputs.pro_preview && (inputs.mode == 'testflight' || inputs.mode == 'play_internal')) && 'true' || 'false' }}
-  LG_ALL_FEATURES_OPEN: ${{ (inputs.pro_preview && (inputs.mode == 'testflight' || inputs.mode == 'play_internal')) && 'true' || 'false' }}
+  LG_ALL_FEATURES_OPEN: ${{ (inputs.pro_preview && !inputs.pro_gating && (inputs.mode == 'testflight' || inputs.mode == 'play_internal')) && 'true' || 'false' }}
   # Google / Apple bilan kirish (D-56, docs/AUTH_SOCIAL_LOGIN.md). OAuth client
   # ID lar sir emas (ochiq identifikator): repo variables. Bo'sh bo'lsa
   # tegishli tugma ilovada ko'rinmaydi. LG_APPLE_SIGNIN=true FAQAT egasi

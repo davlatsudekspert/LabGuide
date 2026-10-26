@@ -34,7 +34,10 @@ Avval o‘qi: `docs/PAID_OWNER_HELPER_CHECKLIST.md`, `docs/PAID_SANDBOX_RUNBOOK.
 6. Play Console → Internal testing → draft relizni testerlarga ochish (“Start rollout to Internal testing”).
 7. Hammasi tayyor bo‘lgach egasidan so‘ra: GitHub Actions → LabGuide CI → `deploy_api` (+ `billing_preview`) — BIR marta.
    Keyin `GET https://labguide-api.davlatsudekspert.workers.dev/v1/billing/status` ni tekshir.
-8. `docs/PAID_SANDBOX_RUNBOOK.md` §2 matritsasi bo‘yicha sandbox sinov: sotib olish, tiklash, bekor qilish, muddat
+8. Haqiqiy sandbox sinov uchun alohida build kerak (hozirgi test build hamma imkoniyatni OCHIQ qoldiradi): egasi
+   Actions → LabGuide CI → `play_internal` va `testflight` ni `pro_preview` + `pro_gating` belgilab ishga tushiradi
+   (har biri BIR marta) — bunda pullik funksiyalar obunasiz yopiq bo‘ladi va xarid ekrani haqiqiy do‘kon mahsulotlarini oladi.
+9. `docs/PAID_SANDBOX_RUNBOOK.md` §2 matritsasi bo‘yicha sandbox sinov: sotib olish, tiklash, bekor qilish, muddat
    tugashi, mehmon va akkauntli, 7 kunlik sinov. Har qatorga PASS / FAIL / NOT RUN yoz.
 
 ## MUHIM: tartib — pullik versiyani do‘konga hozir YUBORMA

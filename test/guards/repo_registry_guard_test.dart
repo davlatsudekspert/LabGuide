@@ -222,10 +222,14 @@ void main() {
         'play_internal da yoqiladi, har buildda uzatiladi', () {
       const cond =
           "(inputs.pro_preview && (inputs.mode == 'testflight' || inputs.mode == 'play_internal'))";
+      const open =
+          "(inputs.pro_preview && !inputs.pro_gating && (inputs.mode == 'testflight' || inputs.mode == 'play_internal'))";
       for (final k in ['LG_PRO_ENABLED', 'LG_ALL_FEATURES_OPEN']) {
         expect(
           yml,
-          contains("  $k: \${{ $cond && 'true' || 'false' }}\n"),
+          contains(
+            "  $k: \${{ ${k == 'LG_PRO_ENABLED' ? cond : open} && 'true' || 'false' }}\n",
+          ),
           reason: k,
         );
         // Boshqa hech qayerda `true` qilib o'rnatilmaydi (GITHUB_ENV ham).
