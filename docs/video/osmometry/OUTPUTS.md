@@ -21,6 +21,6 @@ Files live in `video_studio/out/osmometry/<lang>/` (gitignored, not uploaded any
 | `uz/osmometry_uz.srt` |  | 0.00 |  |  | `0eeb6b356aa23e59ebc2a65954a4c8fea5bf0600d706a847b5a34aeb1037d23c` |
 | `uz/osmometry_uz.vtt` |  | 0.00 |  |  | `dae2e6585490357f6dfb5d8291e08017e6555119c154c97a80bc6474c6aa4cbd` |
 | `uz/osmometry_uz_cover_1080x1920.jpg` |  | 0.18 | 1080×1920 JPEG |  | `edcdeaaa887932911eaea015589b9ca36be864cc880a9b342f75cf51d51cc181` |
-| `uz/osmometry_uz_horizontal.mp4` | 78.20 | 22.34 | h264 High 1920×1080 yuv420p 30/1 | aac 48000 Hz 1 ch | `c394c3ce62c72b64747f151840bdf116c9b0424add42a8c73b4bf40da968f87f` |
+| `uz/osmometry_uz_horizontal.mp4` | 78.20 | 22.45 | h264 High 1920×1080 yuv420p 30/1 | aac 48000 Hz 1 ch | `825ce62aecd7d8d5b751011bda3f36f4791d97bc19cb709303be8055a461db22` |
 | `uz/osmometry_uz_thumb_1280x720.jpg` |  | 0.10 | 1280×720 JPEG |  | `5d325645c536a9ee48a01674b5f3f31d96fe395faf363bbc0721f316ac6d022f` |
-| `uz/osmometry_uz_vertical.mp4` | 78.20 | 21.95 | h264 High 1080×1920 yuv420p 30/1 | aac 48000 Hz 1 ch | `e4d6282f6a4774355758f331187c0f4abf4972efcafdcf2c597de848d6bc8e8a` |
+| `uz/osmometry_uz_vertical.mp4` | 78.20 | 22.40 | h264 High 1080×1920 yuv420p 30/1 | aac 48000 Hz 1 ch | `24857e1ccf3a1909de0d11d7ff68d34bcf0b6e2f6d94544d8e961ee291ae5f67` |

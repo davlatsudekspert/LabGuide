@@ -12,6 +12,8 @@ Status of the whole video: **EXPERT_REVIEW_PENDING**. Nothing here is marked as 
 
 **No price/tier statement.** The card and the calculator are in the free app build.
 
+**Update 2026-10-27 (wording fix).** In the UZ edition the calculators list frame `c_list` (row «Siydik ACR · KDIGO A …») was filmed again from the shipping-wording app (commit `d962a5c`; branch name in WORDING_FIX_2026-10-27.md): the old frame used the banned UZ word (t-word), the new one says «kategoriyasi». Every other frame is unchanged. See `docs/video/WORDING_FIX_2026-10-27.md`.
+
 ## 1. Claims → evidence
 
 | # | Where | Claim as shown | Evidence | Kind |

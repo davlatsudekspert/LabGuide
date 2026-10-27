@@ -6,6 +6,8 @@ Status of the whole video: **EXPERT_REVIEW_PENDING**. Nothing here is marked as 
 
 **The hook** shows the app's own eGFR formula text: `lib/features/tools/calc_info.dart`, `ClinicalCalc.egfr` (EN/RU/UZ strings copied into `lines.*.json → ui.formula / ui.kappa`). It ends in "= ?". The video computes no result. **No price/tier statement.** All calculators are in the free app build.
 
+**Update 2026-10-27 (wording fix).** The app frames of this video were filmed again from the shipping-wording app (commit `d962a5c`, read-only worktree; branch name in WORDING_FIX_2026-10-27.md): the eGFR result, the calculators list and the Profile units frames no longer show the banned UZ word for «category» (t-word) or the region-bound note about one country. Frames that did not change are pixel-identical to the earlier ones. See `docs/video/WORDING_FIX_2026-10-27.md`.
+
 ## 1. Claims → evidence
 
 | # | Where | Claim as shown | Evidence | Kind |

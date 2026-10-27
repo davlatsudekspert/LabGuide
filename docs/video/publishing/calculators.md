@@ -129,7 +129,7 @@ LabGuide — приложение-помощник для клинической
 #LabGuide #рСКФ #креатинин
 ```
 
-### 2.3 O‘zbekcha (Latin) — 2940 characters (limit 5000)
+### 2.3 O‘zbekcha (Latin) — 2950 characters (limit 5000)
 
 ```text
 Kreatinin 88, yosh 45, erkak: eGFR qancha?
@@ -138,7 +138,7 @@ Qo‘lda — uzun formula, birlikdagi bitta xato javobni o‘zgartiradi. LabGuid
 Bu videoda:
 • Savol: kreatinin 88 µmol/L, yosh 45, erkak — eGFR qancha? Formula ilova ko‘rsatganidek (CKD-EPI 2021) va nega birliklar muhim (kreatinin mg/dL da: µmol/L ÷ 88,4).
 • Kalkulyatorlar qayerda — Lab → Kalkulyatorlar — ular o‘n yettita: klinik formulalar, qo‘lda usullar va laboratoriya vositalari; «Qanday foydalaniladi?» qadamlarni ilovaning o‘zida ko‘rsatadi.
-• eGFR ni ilovaning haqiqiy ekranlarida ko‘rib chiqish (namunaviy qiymatlar): maydonlar bo‘sh, jins tanlanmasa hisoblashdan oldin so‘raydi, natija KDIGO toifasi va kiritilgan qiymatlar bilan, pastda — formula, cheklovlar va manbalar.
+• eGFR ni ilovaning haqiqiy ekranlarida ko‘rib chiqish (namunaviy qiymatlar): maydonlar bo‘sh, jins tanlanmasa hisoblashdan oldin so‘raydi, natija KDIGO kategoriyasi va kiritilgan qiymatlar bilan, pastda — formula, cheklovlar va manbalar.
 • Kiritish tekshiruvlari: 18 yoshdan kichikka eGFR hisoblanmaydi, chunki tenglama kattalarda tuzilgan; mmol/L da kiritilgan glyukoza 90 birlik tekshiruvini chiqaradi.
 • SI yoki an’anaviy birliklar — profilda bir marta tanlanadi; laboratoriya vositalari, masalan suyultirish, C₁V₁ = C₂V₂, o‘z sonlaringizdan.
 
@@ -155,7 +155,7 @@ LabGuide bugun nima qiladi:
 
 Bilish foydali:
 • Videodagi barcha kiritishlar namunaviy, bemor ma’lumoti emas; ekrandagi har bir natijani ilova hisoblaydi.
-• Video hech bir natijani talqin qilmaydi (masalan, KDIGO toifasi bemor uchun nimani anglatishini).
+• Video hech bir natijani talqin qilmaydi (masalan, KDIGO kategoriyasi bemor uchun nimani anglatishini).
 • Ro‘yxatda 17 qator bor; ulardan biri hisoblamaydi, tushuntiradi.
 
 LabGuide — klinik laboratoriya uchun yordamchi ilova: laborantlar va talabalar uchun (o‘zbek, rus, ingliz tillarida). Bu o‘quv va ma’lumotnoma vositasi: u tashxis qo‘ymaydi va bemor natijalarini talqin qilmaydi. Internetsiz va hisobsiz ishlaydi.
@@ -230,12 +230,12 @@ Link in bio: [[LINK_BIO]]. Save this and share it with a colleague.
 Ссылка в профиле: [[LINK_BIO]]. Сохраните и перешлите коллеге.
 ```
 
-### 5.3 O‘zbekcha — 849 + hashtags 206 = 1057 characters
+### 5.3 O‘zbekcha — 854 + hashtags 206 = 1062 characters
 
 ```text
 Kreatinin 88, yosh 45, erkak: eGFR qancha?
 
-LabGuide kalkulyatorlariga taxminan bir daqiqalik sayohat: kreatinin, yosh va jinsdan eGFR ilovaning haqiqiy ekranlarida — bo‘sh maydonlar, kiritish tekshiruvlari, KDIGO toifasi, formula, cheklovlar va manbalar — so‘ng SI yoki an’anaviy birliklar va suyultirish kabi laboratoriya vositalari (namunaviy qiymatlar).
+LabGuide kalkulyatorlariga taxminan bir daqiqalik sayohat: kreatinin, yosh va jinsdan eGFR ilovaning haqiqiy ekranlarida — bo‘sh maydonlar, kiritish tekshiruvlari, KDIGO kategoriyasi, formula, cheklovlar va manbalar — so‘ng SI yoki an’anaviy birliklar va suyultirish kabi laboratoriya vositalari (namunaviy qiymatlar).
 
 U hisoblaydi — talqin sizniki. O‘rganish va tekshirish vositasi; tashxis qo‘ymaydi. Bo‘lim: Lab → Kalkulyatorlar.
 
@@ -317,7 +317,7 @@ All under `video_studio/out/calculators/<lang>/`. Alt text (thumbnail and cover 
 
 * **EN**: LabGuide logo, the title “Lab calculators” with the subtitle “Formula, limits, source”, a card with the app’s eGFR formula (CKD-EPI 2021), a phone screen showing an eGFR result with its KDIGO category, the entered values, the formula and its limitations, and the notice “Real app screens · illustrative values”.
 * **RU**: Логотип LabGuide, заголовок «Калькуляторы» с подзаголовком «Формула, ограничения, источник», карточка с формулой рСКФ из приложения (CKD-EPI 2021), экран телефона с результатом рСКФ, категорией KDIGO, введёнными значениями, формулой и ограничениями и пометка «Реальные экраны · примерные значения».
-* **UZ**: LabGuide logotipi, «Kalkulyatorlar» sarlavhasi va «Formula, cheklov, manba» sarlavha osti, ilovadagi eGFR formulasi kartasi (CKD-EPI 2021), eGFR natijasi, KDIGO toifasi, kiritilgan qiymatlar, formula va cheklovlar ko‘rsatilgan telefon ekrani hamda «Haqiqiy ekranlar · namunaviy qiymatlar» belgisi.
+* **UZ**: LabGuide logotipi, «Kalkulyatorlar» sarlavhasi va «Formula, cheklov, manba» sarlavha osti, ilovadagi eGFR formulasi kartasi (CKD-EPI 2021), eGFR natijasi, KDIGO kategoriyasi, kiritilgan qiymatlar, formula va cheklovlar ko‘rsatilgan telefon ekrani hamda «Haqiqiy ekranlar · namunaviy qiymatlar» belgisi.
 
 ## 10. End screen / CTA suggestion
 

@@ -41,7 +41,7 @@ Kreatinin 88, yosh 45, erkak: eGFR qancha? Qo‘lda bu uzun formula, birlikdagi 
 * **Qayerda:** Lab → Kalkulyatorlar — 17 qator: klinik formulalar, qo‘lda usullar va laboratoriya vositalari, hamda «Qanday foydalaniladi?» yo‘riqnomasi.
 * **Faqat sizning qiymatlaringiz:** maydonlar bo‘sh, har bir qiymatni o‘zingiz kiritasiz.
 * **Natijadan oldingi tekshiruvlar:** jins tanlanmasa eGFR hisoblanmaydi, 18 yoshgacha rad etiladi, mmol/L da kiritilgan glyukoza 90 esa birlik tekshiruvini chiqaradi.
-* **Nima olasiz:** KDIGO toifasi va kiritilgan qiymatlar bilan natija, pastida formula, cheklovlar va manbalar.
+* **Nima olasiz:** KDIGO kategoriyasi va kiritilgan qiymatlar bilan natija, pastida formula, cheklovlar va manbalar.
 * **Birliklar:** SI yoki an’anaviy, profilda bir marta tanlanadi.
 * **Laboratoriya vositalari:** suyultirish (C₁V₁ = C₂V₂) va boshqalar.
 
