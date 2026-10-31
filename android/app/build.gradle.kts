@@ -74,7 +74,7 @@ flutter {
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
-    // 7 kunlik sinov: Play Integrity API (classic so'rov), MainActivity.kt.
+    // 30 kunlik sinov: Play Integrity API (classic so'rov), MainActivity.kt.
     // Versiya shu muhitda Maven'dan yuklab tekshirilmadi (Gradle ishga tushirilmadi — NOT RUN).
     implementation("com.google.android.play:integrity:1.4.0")
 }

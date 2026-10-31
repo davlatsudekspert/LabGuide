@@ -16,13 +16,13 @@ enum GateState {
   /// Hisob bor, obuna yo'q, to'lov ishlayapti — pullik amal yopiq.
   closed,
 
-  /// 7 kunlik server sinovi faol.
+  /// 30 kunlik server sinovi faol.
   trial,
 
   /// Do'kon obunasi faol.
   subscribed,
 
-  /// Obuna muddati o'tgan (7 kundan keyin) — pullik amal yopiq, ma'lumot qoladi.
+  /// Obuna muddati o'tgan (30 kundan keyin) — pullik amal yopiq, ma'lumot qoladi.
   expired,
 
   /// Imzolangan kesh, internet yo'q (ilova qayta ochilgan).

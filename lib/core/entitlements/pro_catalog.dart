@@ -115,7 +115,8 @@ abstract final class ProPricing {
 
 /// Bepul foydalanish davri sozlamasi (D-71/D-73 → D-75 → D-76).
 ///
-/// D-76: 7 kunlik sinov (HAMMA reja uchun; D-75 dagi 30 kun bekor) — SERVER
+/// D-80 (2026-10-31, egasi qarori): 30 kunlik sinov (HAMMA pullik reja uchun;
+/// D-76/D-77 dagi 7 kun almashtirildi; Bepul daraja o'zgarmagan) — SERVER
 /// beradigan, kartasiz sinov (M1, [ProTrialMechanism.serverGranted]). Server qoidasi: `cloudflare/src/trial.ts`
 /// (`TRIAL_DAYS`, `TRIAL_PLATFORMS` — standart faqat Android; iOS Apple
 /// yozma javobidan keyin). Ilova sinov tugmasini faqat server imkoniyat
@@ -132,8 +133,8 @@ abstract final class ProTrialConfig {
   static const int? freeTrialDays = null;
   static const ProTrialMechanism mechanism = ProTrialMechanism.serverGranted;
 
-  /// Server sinovi (D-74/D-76) — `cloudflare/src/trial.ts` `TRIAL_DAYS` bilan bir xil.
-  static const int serverTrialDays = 7;
+  /// Server sinovi (D-74/D-80) — `cloudflare/src/trial.ts` `TRIAL_DAYS` bilan bir xil.
+  static const int serverTrialDays = 30;
 
   /// Do'kon kirish taklifi (bepul sinov) ko'rsatilsinmi/tanlansinmi: YO'Q.
   static const bool storeIntroOffersAllowed = false;

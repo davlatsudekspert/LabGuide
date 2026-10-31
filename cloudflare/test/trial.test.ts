@@ -117,13 +117,13 @@ describe('trial: bayroq va sozlama', () => {
 });
 
 describe('trial: berish va suiiste’mol cheklovlari', () => {
-  it('birinchi sinov: 201, 7 kun (D-76), source=trial; resolver va jurnal', async () => {
+  it('birinchi sinov: 201, 30 kun (D-80), source=trial; resolver va jurnal', async () => {
     const s = makeServer();
     const email = uniqueEmail('first');
     const u = await s.signIn(email);
     const r = await startTrial(s, u.token, email, dev());
     expect(r.status).toBe(201);
-    expect(TRIAL_DAYS).toBe(7);
+    expect(TRIAL_DAYS).toBe(30);
     expect(r.data.resolved).toEqual({
       source: 'trial',
       plan: 'student',
@@ -334,14 +334,14 @@ describe('trial: daraja hisobga ruxsat etilgan bo‘lishi kerak (D-74 (f))', () 
     expect(bad.status).toBe(400);
   });
 
-  it('tasdiqlangan mutaxassis — Mutaxassis sinovi (Lab, ustoz panelisiz), 7 kun', async () => {
+  it('tasdiqlangan mutaxassis — Mutaxassis sinovi (Lab, ustoz panelisiz), 30 kun', async () => {
     const s = makeServer();
     const email = uniqueEmail('spec-ok');
     const u = await s.signIn(email, { role: 'lab' });
     await verifySpecialist(s, u.token);
     const r = await startTrial(s, u.token, email, dev(), { tier: 'specialist' });
     expect(r.status).toBe(201);
-    expect(r.data.resolved).toMatchObject({ source: 'trial', plan: 'specialist', expires_at: new Date(s.clock.now + 7 * DAY).toISOString() });
+    expect(r.data.resolved).toMatchObject({ source: 'trial', plan: 'specialist', expires_at: new Date(s.clock.now + TRIAL_DAYS * DAY).toISOString() });
     expect((await s.call('GET', '/v1/pro/check/lab', { token: u.token })).status).toBe(200);
     expect((await s.call('GET', '/v1/pro/check/teacher_panel', { token: u.token })).data.error).toBe('tier_insufficient');
   });
@@ -363,7 +363,7 @@ describe('trial: daraja hisobga ruxsat etilgan bo‘lishi kerak (D-74 (f))', () 
     await verifySpecialist(s, b.token);
     const r = await startTrial(s, b.token, be, dev(), { tier: 'premium' });
     expect(r.status).toBe(201);
-    expect(r.data.resolved).toMatchObject({ source: 'trial', plan: 'premium', expires_at: new Date(s.clock.now + 7 * DAY).toISOString() });
+    expect(r.data.resolved).toMatchObject({ source: 'trial', plan: 'premium', expires_at: new Date(s.clock.now + TRIAL_DAYS * DAY).toISOString() });
     const row = await s.env.DB.prepare('SELECT tier FROM pro_trials WHERE user_id = ?1').bind(b.userId).first<{ tier: string }>();
     expect(row!.tier).toBe('premium');
     for (const c of ['learner', 'teacher_panel', 'lab']) {
@@ -373,7 +373,7 @@ describe('trial: daraja hisobga ruxsat etilgan bo‘lishi kerak (D-74 (f))', () 
 });
 
 describe('trial: muddat va pullik obuna (D-74 (g))', () => {
-  it('7 kundan keyin huquq yo‘q (expired), qayta sinov yo‘q', async () => {
+  it('30 kundan keyin huquq yo‘q (expired), qayta sinov yo‘q', async () => {
     const s = makeServer();
     const email = uniqueEmail('exp');
     const u = await s.signIn(email);
@@ -461,13 +461,13 @@ describe('trial: platforma (D-75, TRIAL_PLATFORMS standart android)', () => {
 
   it('imkoniyat so‘rovi: status.trial — platforma × attestatsiya', async () => {
     const off = makeServer(null);
-    expect((await off.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: false, ios: false, platforms: ['android'], days: 7 });
+    expect((await off.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: false, ios: false, platforms: ['android'], days: TRIAL_DAYS });
     const on = makeServer();
-    expect((await on.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: false, platforms: ['android'], days: 7 });
+    expect((await on.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: false, platforms: ['android'], days: TRIAL_DAYS });
     const both = makeServer(new FakeDeviceAttestationVerifier(), { TRIAL_PLATFORMS: 'android, ios' });
-    expect((await both.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: true, platforms: ['android', 'ios'], days: 7 });
+    expect((await both.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: true, platforms: ['android', 'ios'], days: TRIAL_DAYS });
     const none = makeServer(new FakeDeviceAttestationVerifier(), { TRIAL_PLATFORMS: 'web' });
-    expect((await none.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: false, ios: false, platforms: [], days: 7 });
+    expect((await none.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: false, ios: false, platforms: [], days: TRIAL_DAYS });
   });
 
   it('egasi Apple roziligidan keyin TRIAL_PLATFORMS=android,ios — iOS sinovi ishlaydi', async () => {
@@ -485,7 +485,7 @@ describe('trial: platforma (D-75, TRIAL_PLATFORMS standart android)', () => {
     expect(s.fetchCalls).toEqual([]);
     const rows = await s.env.DB.prepare('SELECT COUNT(*) AS n FROM entitlements WHERE user_id = ?1').bind(u.userId).first<{ n: number }>();
     expect(rows!.n).toBe(0);
-    // 7 kundan keyin: sinov tugaydi, do'kon obunasi paydo bo'lmaydi (avtomatik pullik yo'q).
+    // 30 kundan keyin: sinov tugaydi, do'kon obunasi paydo bo'lmaydi (avtomatik pullik yo'q).
     s.clock.now += (TRIAL_DAYS + 1) * DAY;
     const e = (await ents(s, u.token)).data;
     expect(e.resolved).toBeNull();

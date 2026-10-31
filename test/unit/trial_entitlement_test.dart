@@ -14,7 +14,7 @@ import '../helpers/billing_fakes.dart';
 
 final _t0 = DateTime.utc(2026, 10, 24, 12);
 
-Map<String, Object?> _trial({String plan = 'student', int days = 7}) => {
+Map<String, Object?> _trial({String plan = 'student', int days = ProTrialConfig.serverTrialDays}) => {
   'product_id': 'trial.$plan',
   'platform': 'trial',
   'source': 'trial',
@@ -106,15 +106,15 @@ void main() {
     expect(ent.activeEntitlement!.isTrial, isTrue);
     expect(ent.proSource, ProSource.trial);
     expect(ent.plan, ProPlan.student);
-    expect(ent.trialDaysLeft, 7, reason: 'D-76: 7 kunlik sinov');
-    expect(ProTrialConfig.serverTrialDays, 7);
+    expect(ent.trialDaysLeft, 30, reason: 'D-80: 30 kunlik sinov');
+    expect(ProTrialConfig.serverTrialDays, 30);
     expect(ent.trialUsed, isTrue);
-    // Server bilan qayta sinxronlangach (oflayn kesh 7 kun).
-    now = _t0.add(const Duration(days: 6, hours: 1));
+    // Server bilan qayta sinxronlangach (oflayn kesh 7 kun — sinov uzunligi emas).
+    now = _t0.add(const Duration(days: 29, hours: 1));
     src.snapshot = _snap([_trial()], at: now);
     await ent.refresh(reprobe: false);
     expect(ent.trialDaysLeft, 1);
-    now = _t0.add(const Duration(days: 8));
+    now = _t0.add(const Duration(days: 31));
     src.snapshot = _snap([_trial()], at: now);
     await ent.refresh(reprobe: false);
     expect(ent.activeEntitlement, isNull);
@@ -216,7 +216,7 @@ void main() {
   );
 
   test(
-    'Premium sinovi (D-76): reja serverga yuboriladi, 7 kun, hamma imkoniyat',
+    'Premium sinovi (D-76/D-80): reja serverga yuboriladi, 30 kun, hamma imkoniyat',
     () async {
       final src = _TrialServer();
       final ent = make(src, attestor: _FakeAttestor());
@@ -227,7 +227,7 @@ void main() {
       );
       expect(src.last!['plan'], 'premium');
       expect(ent.plan, ProPlan.premium);
-      expect(ent.trialDaysLeft, 7);
+      expect(ent.trialDaysLeft, 30);
       expect(ent.tier, ProPlan.premium.tier);
     },
   );

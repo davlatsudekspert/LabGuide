@@ -1,4 +1,4 @@
-// 7 kunlik sinov: holat mashinasi, server soati, takror, poyga, qayta
+// 30 kunlik sinov (D-80): holat mashinasi, server soati, takror, poyga, qayta
 // ro'yxatdan o'tish, IP tarmog'i limitlari (D-77 addendum). Qurilma
 // attestatsiyasi soxta (test/fake_attestation.ts), Google/Apple chaqirilmaydi.
 import { describe, expect, it } from 'vitest';
@@ -51,7 +51,7 @@ describe('holat mashinasi: not_started → active → expired (server soati)', (
     const email = uniqueEmail('sm');
     const u = await s.signIn(email);
     const t0 = await trialState(s, u.token);
-    expect(t0).toMatchObject({ state: 'not_started', plan: null, started_at: null, expires_at: null, remaining_ms: 0, days: 7 });
+    expect(t0).toMatchObject({ state: 'not_started', plan: null, started_at: null, expires_at: null, remaining_ms: 0, days: TRIAL_DAYS });
     expect(t0.server_time).toBe(new Date(s.clock.now).toISOString());
 
     const startedAt = s.clock.now;
@@ -125,9 +125,9 @@ describe('mijoz soatini o‘zgartirish (clock tampering) — e’tiborsiz', () =
       headers: { date: 'Mon, 01 Jan 2035 00:00:00 GMT', 'x-client-time': '2035-01-01T00:00:00Z' },
     });
     expect(r.status).toBe(201);
-    expect(r.data.resolved.expires_at).toBe(new Date(s.clock.now + 7 * DAY).toISOString());
+    expect(r.data.resolved.expires_at).toBe(new Date(s.clock.now + TRIAL_DAYS * DAY).toISOString());
     expect(r.data.server_time).toBe(new Date(s.clock.now).toISOString());
-    // Oflayn chegarasi ham server soatidan (≤ 7 kun).
+    // Oflayn chegarasi ham server soatidan (≤ 7 kun — OFFLINE_MAX_MS; sinov uzunligi emas).
     expect(Date.parse(r.data.offline_until)).toBeLessThanOrEqual(s.clock.now + 7 * DAY);
   });
 });

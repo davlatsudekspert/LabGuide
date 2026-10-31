@@ -1,4 +1,4 @@
-// 7 kunlik bepul sinov — BIR TELEFONGA BIR MARTA (D-74; muddat D-76). INERT:
+// 30 kunlik bepul sinov — BIR TELEFONGA BIR MARTA (D-74; muddat D-80, egasi qarori 2026-10-31). INERT:
 // * LG_BILLING_ENABLED=true bo'lmasa yo'llar umuman yo'q (app.ts → 404);
 // * qurilma attestatsiyasi tekshiruvchisi (`deps.attestation`) sozlanmagan
 //   bo'lsa — `503 device_attestation_not_configured` (production'da HECH
@@ -21,11 +21,11 @@
 //     pullik obunani hech qachon bosib o'tmaydi (billing.ts `resolveAccess`).
 //
 // Holat mashinasi (D-77 addendum, faqat SERVER soati): `not_started` →
-// `active` (start, 7 kun) → `expired` (server `now >= expires_at`). Qayta
+// `active` (start, 30 kun) → `expired` (server `now >= expires_at`). Qayta
 // boshlanmaydi: hisob, kanonik email va qurilma bo'yicha unikal yozuv;
 // mijoz yuborgan vaqt maydonlari (started_at, now va h.k.) O'QILMAYDI.
 // Bitta sinov = bitta hisob uchun BITTA reja (foydalanuvchi tanlagani),
-// 7 kun; keyin boshqa reja sinovi ham yo'q (`trial_already_used`).
+// 30 kun; keyin boshqa reja sinovi ham yo'q (`trial_already_used`).
 //
 // Haqiqiy tekshiruvchilar: src/attestation.ts (Play Integrity, DeviceCheck).
 // Secretlar bo'lmasa — `503 trial_unavailable` (fail closed).
@@ -40,8 +40,13 @@ import { attestTokenHash } from './attestation';
 import { bump, hit, peek } from './ratelimit';
 import { TIER_CAPABILITIES } from './tiers';
 
-/** Sinov uzunligi — HAMMA reja uchun 7 kun (D-76, egasi qarori; D-75 dagi 30 kun bekor). */
-export const TRIAL_DAYS = 7;
+/**
+ * Sinov uzunligi — HAMMA pullik reja uchun 30 kun (D-80, egasi qarori 2026-10-31;
+ * D-76/D-77 dagi 7 kun almashtirildi). Bepul daraja — o'zgarmagan (doim bepul).
+ * Bu faqat LabGuide SERVER sinovi; do'kon kirish taklifi (Apple/Google) uchun
+ * ilova kun hisoblamaydi — do'konning o'z kvitansiya sanalariga ishonadi (D-80).
+ */
+export const TRIAL_DAYS = 30;
 /**
  * Sinov yozuvi (faqat HMAC lar) saqlanish muddati: sinov boshlangandan
  * 730 kun (24 oy). Shundan keyin kunlik tozalash o'chiradi — o'sha qurilma

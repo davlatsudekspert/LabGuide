@@ -85,13 +85,13 @@ void main() {
         expect(ProTrialConfig.freeTrialDays, isNull);
         expect(ProTrialConfig.enabled, isFalse);
         expect(ProTrialConfig.storeIntroOffersAllowed, isFalse);
-        // 7 kunlik sinov (D-76; D-75 dagi 30 kun bekor) — faqat server
+        // 30 kunlik sinov (D-80, 2026-10-31; D-76/D-77 dagi 7 kun almashtirildi) — faqat server
         // beradigan, kartasiz, hamma reja uchun.
         expect(ProTrialConfig.mechanism, ProTrialMechanism.serverGranted);
-        expect(ProTrialConfig.serverTrialDays, 7);
+        expect(ProTrialConfig.serverTrialDays, 30);
         expect(
           _read('cloudflare/src/trial.ts'),
-          contains('export const TRIAL_DAYS = 7;'),
+          contains('export const TRIAL_DAYS = 30;'),
         );
       },
     );

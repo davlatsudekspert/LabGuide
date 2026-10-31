@@ -6,6 +6,7 @@
 // tekshiradi.
 import { describe, expect, it } from 'vitest';
 import { csvCell, TT_GRACE_MS, TT_LIMITS } from '../src/teachertests';
+import { TRIAL_DAYS } from '../src/trial';
 import { makeServer as baseServer, uniqueEmail } from './helpers';
 
 const DAY = 86400_000;
@@ -29,7 +30,7 @@ async function buy(s: Srv, userId: string, plan: keyof typeof PRODUCTS, days = 3
     .run();
 }
 
-async function trial(s: Srv, userId: string, tier: 'student' | 'teacher', days = 7) {
+async function trial(s: Srv, userId: string, tier: 'student' | 'teacher', days = TRIAL_DAYS) {
   const k = () => crypto.randomUUID().replace(/-/g, '').padEnd(64, '0').slice(0, 64);
   await s.env.DB.prepare(
     `INSERT INTO pro_trials (id, user_id, tier, platform, email_key, device_key, started_at, expires_at, retain_until)
@@ -143,7 +144,7 @@ describe('vakolat: sessiya, reja (requireTier), ustoz hisobi', () => {
     expect((await s.call('GET', '/v1/teacher/tests', { token: noRole.token })).data.error).toBe('teacher_role_required');
   });
 
-  it('Ustoz Pro obunasi, Premium va 7 kunlik Ustoz sinovi — ochiq; sinov tugagach — yopiq, lekin ma’lumot ko‘rinadi', async () => {
+  it('Ustoz Pro obunasi, Premium va 30 kunlik Ustoz sinovi — ochiq; sinov tugagach — yopiq, lekin ma’lumot ko‘rinadi', async () => {
     const s = makeServer();
     for (const plan of ['teacher', 'premium'] as const) {
       const u = await s.signInTeacher(uniqueEmail(plan));
@@ -161,7 +162,7 @@ describe('vakolat: sessiya, reja (requireTier), ustoz hisobi', () => {
       'tier_insufficient',
     );
 
-    s.clock.now += 8 * DAY; // sinov tugadi
+    s.clock.now += (TRIAL_DAYS + 1) * DAY; // sinov tugadi
     const after = await s.call('POST', '/v1/teacher/tests', { token: tr.token, body: testBody() });
     expect(after.status).toBe(403);
     expect(after.data.error).toBe('plan_required');
@@ -455,7 +456,7 @@ describe('topshirish: guruh yoki bitta talaba, muddat, urinishlar', () => {
     const r = await s.call('POST', `/v1/me/teacher-tests/${a.id}/start`, { token: free.token });
     expect(r.status).toBe(403);
     expect(r.data).toMatchObject({ error: 'plan_required', capability: 'learner' });
-    // Talaba sinovi (7 kun) — ochiq; o'rtada tugaydi.
+    // Talaba sinovi (30 kun) — ochiq; o'rtada tugaydi.
     await trial(s, free.userId, 'student', 1);
     const st = await s.call('POST', `/v1/me/teacher-tests/${a.id}/start`, { token: free.token });
     expect(st.status).toBe(201);

@@ -5,10 +5,40 @@ App Store Connect (API kalit) — ilova versiyalari va ko'rib chiqish holati, ob
 Google Play (service account) — treklar/relizlar holati, obuna mahsulotlari soni.
 Soliq/bank/shartnoma holati ikkala API'da ham YO'Q — ularni konsolda ko'rish kerak (hisobotda yoziladi).
 Kalitlar chiqarilmaydi; natija GITHUB_STEP_SUMMARY ga.
+
+D-80 (egasi qarori 2026-10-31): pullik rejalarning bepul sinovi = 30 kun. Do'kon tomoni:
+Apple — har bir obuna uchun Introductory Offer = FREE_TRIAL, ONE_MONTH (kalendar oy; server sinovi aniq 30 kun);
+Google Play — free-trial offer 30 kun / 1 oy. Bu skript FAQAT o'qiydi va kutilganidan farqni hisobotga
+yozadi (hech narsa yaratmaydi/o'zgartirmaydi). Apple va Play maydon nomlari bu muhitda haqiqiy API bilan
+TEKSHIRILMAGAN (skript ishga tushirilmagan — NOT RUN).
 """
 import base64, json, os, sys, tempfile, time, urllib.request, urllib.error
 
 out = []
+
+# D-80: kutilgan do'kon sinov (introductory / free-trial) davri.
+EXPECTED_APPLE_TRIAL = ('FREE_TRIAL', 'ONE_MONTH')   # ASC subscriptionOfferDuration
+EXPECTED_PLAY_TRIAL_DURATIONS = ('P1M', 'P30D')      # ISO 8601; Play Console variantlari bo'yicha egasi tekshiradi
+
+
+def apple_trial_verdict(offers):
+    """offers — [(offerMode, duration)] yoki 'HTTP ...' satri. D-80 kutilgan holatga nisbatan hukm."""
+    if isinstance(offers, str):
+        return 'NOT CHECKED (' + offers + ')'
+    if not offers:
+        return 'D-80 MISMATCH: intro offer YO‘Q (kutilgan: FREE_TRIAL ONE_MONTH)'
+    if EXPECTED_APPLE_TRIAL in [tuple(o) for o in offers]:
+        return 'D-80 ok: FREE_TRIAL ONE_MONTH'
+    return 'D-80 MISMATCH: intro=' + str(offers) + ' (kutilgan: FREE_TRIAL ONE_MONTH)'
+
+
+def play_trial_verdict(durations):
+    """durations — bepul (free) fazalar davomiyliklari ro'yxati."""
+    if not durations:
+        return 'D-80 MISMATCH: free-trial offer YO‘Q (kutilgan: 30 kun / 1 oy)'
+    if any(d in EXPECTED_PLAY_TRIAL_DURATIONS for d in durations):
+        return 'D-80 ok: free trial ' + ','.join(durations)
+    return 'D-80 MISMATCH: free trial=' + ','.join(durations) + ' (kutilgan: P1M yoki P30D)'
 
 
 def say(s=''):
@@ -76,6 +106,7 @@ def apple():
                 so, do = asc_get(tok, f"/v1/subscriptions/{sub['id']}/introductoryOffers?limit=5")
                 offers = [(o['attributes'].get('offerMode'), o['attributes'].get('duration')) for o in do.get('data', [])] if so == 200 else f'HTTP {so}'
                 say(f"  - {a.get('productId')}: {a.get('state')}, USD={usd}, intro={offers}")
+                say(f"    {apple_trial_verdict(offers)}")
                 if a.get('productId') == 'uz.labguide.student.monthly':
                     pts, nxt = set(), f"/v1/subscriptions/{sub['id']}/pricePoints?filter[territory]=USA&limit=200"
                     for _ in range(10):
@@ -121,6 +152,14 @@ def google():
                 pr = us[0].get('price') if us else None
                 usd = f"{pr.get('units', '0')}.{int(pr.get('nanos', 0)) // 10_000_000:02d}" if pr else None
                 say(f"  - {sb.get('productId')} / {bp.get('basePlanId')}: {bp.get('state')}, US=${usd}")
+                try:
+                    offers = svc.monetization().subscriptions().basePlans().offers().list(
+                        packageName=pkg, productId=sb.get('productId'), basePlanId=bp.get('basePlanId')).execute().get('subscriptionOffers', [])
+                    free = [ph.get('duration') for of in offers for ph in of.get('phases', [])
+                            if any('free' in rc for rc in ph.get('regionalConfigs', []))]
+                    say(f"    {play_trial_verdict(free)}")
+                except Exception as e:  # noqa: BLE001
+                    say(f"    D-80 NOT CHECKED (offerlar o‘qilmadi: {type(e).__name__}: {str(e)[:120]})")
     except Exception as e:  # noqa: BLE001
         say(f'- obunalar o‘qilmadi: {type(e).__name__}: {str(e)[:200]}')
     say('- Merchant profili, bank va soliq holati API orqali KO‘RINMAYDI: Play Console → Settings → Payments profile.')

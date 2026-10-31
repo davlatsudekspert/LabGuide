@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 
 import 'device_attestor.dart';
 
-/// Haqiqiy qurilma attestatsiyasi (7 kunlik sinov, D-77 addendum) —
+/// Haqiqiy qurilma attestatsiyasi (30 kunlik sinov, D-77 addendum) —
 /// platforma kanali `uz.labguide.app/attestation` orqali:
 ///
 /// * **Android** (`MainActivity.kt`): Google Play Integrity API (classic

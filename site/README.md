@@ -34,7 +34,7 @@ o‘zini sinaydi.
 Bosh sahifa va o‘chirish sahifasi qo‘lda yoziladi. Ulardagi da’volar siyosat bilan bir xil
 bo‘lsin (ilovada yo‘q narsani yozmang). D-77: to‘lov/obuna so‘zlari, Pro va Premium nomlari faqat
 `privacy/` va `terms/` da bo‘lishi mumkin; narx (so‘m, USD, $) hech bir sahifada yozilmaydi — narx
-do‘kondan; sinov muddati faqat 7 kun (`check_site.py` shuni tekshiradi).
+do‘kondan; sinov muddati faqat 30 kun (D-80; `check_site.py` shuni tekshiradi).
 
 ## Joylash
 

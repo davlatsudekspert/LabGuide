@@ -78,7 +78,7 @@ class ServerEntitlement {
   /// Manba: admin bergan Pro (D-73; `platform == 'admin_grant'`).
   static const adminGrantSource = 'admin_grant';
 
-  /// Manba: 7 kunlik bepul sinov (D-74/D-76; `platform == 'trial'`).
+  /// Manba: 30 kunlik bepul sinov (D-74/D-80; `platform == 'trial'`).
   static const trialSource = 'trial';
 
   /// Manba: mehmon (hisobsiz) do'kon xaridi (D-77 addendum, Apple 5.1.1(v)).

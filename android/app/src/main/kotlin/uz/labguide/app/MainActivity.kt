@@ -29,7 +29,7 @@ class MainActivity : FlutterActivity() {
                 }
             }
 
-        // 7 kunlik sinov uchun qurilma attestatsiyasi (D-77 addendum):
+        // 30 kunlik sinov uchun qurilma attestatsiyasi (D-77 addendum):
         // Google Play Integrity (classic so'rov). Nonce'ni Dart tomoni
         // hisoblaydi: base64url(SHA-256("labguide-trial-v1|<server nonce>|<ANDROID_ID>")),
         // server (cloudflare/src/attestation.ts) xuddi shunday tekshiradi.

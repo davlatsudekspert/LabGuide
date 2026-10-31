@@ -59,18 +59,18 @@ class SiteGuards(unittest.TestCase):
         for lang in ('uz', 'ru', 'en'):
             self.assertIn(f'<section id="{lang}" lang="{lang}">', page)
         # Har uch tilda majburiy obuna shartlari bor (Apple 3.1.2 / Play): avtomatik
-        # yangilanish, do'kon orqali bekor qilish, 7 kunlik sinov, nima yopilishi.
+        # yangilanish, do'kon orqali bekor qilish, 30 kunlik sinov, nima yopilishi.
         src = (ROOT / 'docs/store/TERMS_OF_USE.md').read_text(encoding='utf-8')
         sections = re.split(r'^## ', src, flags=re.M)[1:]
         self.assertEqual(len(sections), 3)
         must = {
-            'O‘zbekcha': ['avtomatik', '24 soat', 'bekor qil', '7 kunlik bepul sinov', 'faqat pullik imkoniyatlar yopiladi',
+            'O‘zbekcha': ['avtomatik', '24 soat', 'bekor qil', '30 kunlik bepul sinov', 'faqat pullik imkoniyatlar yopiladi',
                           'Talaba Pro', 'Ustoz Pro', 'Mutaxassis Pro', 'Premium', 'Apple', 'Google Play',
                           'tashxis qo‘ymaydi', PRIVACY_URL],
-            'Русский': ['автоматическ', '24 часа', 'отмен', 'на 7 дней', 'закрываются только платные функции',
+            'Русский': ['автоматическ', '24 часа', 'отмен', 'на 30 дней', 'закрываются только платные функции',
                         'Студент Pro', 'Преподаватель Pro', 'Специалист Pro', 'Premium', 'Apple', 'Google Play',
                         'не ставит диагноз', PRIVACY_URL],
-            'English': ['auto-renew', '24 hours', 'cancel', '7-day free trial', 'only the paid features close',
+            'English': ['auto-renew', '24 hours', 'cancel', '30-day free trial', 'only the paid features close',
                         'Student Pro', 'Teacher Pro', 'Specialist Pro', 'Premium', 'Apple', 'Google Play',
                         'does not diagnose', PRIVACY_URL],
         }
@@ -101,16 +101,16 @@ class SiteGuards(unittest.TestCase):
 
     def test_no_payment_words_on_site(self):
         # D-77 (D-58 o'rniga, faqat paid/pro-premium): to'lov/obuna so'zlari
-        # faqat privacy/ sahifasida; narx literali va 7 dan boshqa sinov
+        # faqat privacy/ sahifasida; narx literali va 30 dan boshqa sinov
         # muddati hech bir sahifada yo'q.
         names = {n for n, _ in check_site.BANNED}
         for n in ('Pro', 'obuna', 'subscription', 'payment', 'to‘lov', 'оплата/подписка',
-                  'narx literali', 'sinov 7 kun emas'):
+                  'narx literali', 'sinov 30 kun emas'):
             self.assertIn(n, names)
         self.assertEqual(check_site.SUBSCRIPTION_TEXT_PAGES, {'privacy/index.html', 'terms/index.html'})
         self.assertTrue(check_site.SUBSCRIPTION_WORDS <= names)
         self.assertNotIn('narx literali', check_site.SUBSCRIPTION_WORDS)
-        self.assertNotIn('sinov 7 kun emas', check_site.SUBSCRIPTION_WORDS)
+        self.assertNotIn('sinov 30 kun emas', check_site.SUBSCRIPTION_WORDS)
 
 
 if __name__ == '__main__':

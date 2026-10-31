@@ -190,7 +190,7 @@ class StorePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
   /// Play har taklif (base plan / offer) uchun alohida yozuv beradi.
   /// Standart ([allowStoreOffers] = false): faqat ASOSIY REJA (base plan,
   /// `offerId == null`) — bepul sinov va chegirmali takliflar ko'rsatilmaydi
-  /// va tanlanmaydi (7 kunlik sinov server beradi; ikki sinov bo'lmasin).
+  /// va tanlanmaydi (30 kunlik sinov server beradi; ikki sinov bo'lmasin).
   /// [allowStoreOffers] = true (egasi qarori): Play qaytargan (ya'ni
   /// foydalanuvchi HAQLI bo'lgan) birinchi taklif tanlanadi, shartlari
   /// `pricingPhases` dan [StoreIntroOffer] ga yoziladi va xarid o'sha offer

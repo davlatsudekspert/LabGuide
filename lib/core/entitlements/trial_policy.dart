@@ -2,7 +2,7 @@ import 'purchase_adapter.dart';
 
 /// Ikki xil "bepul davr" siyosati (D-77 addendum; docs/PRO_TRIAL_ABUSE_NOTES.md §5):
 ///
-/// 1. **LabGuide server sinovi** — 7 kun, kartasiz, avtomatik pullik emas,
+/// 1. **LabGuide server sinovi** — 30 kun (D-80), kartasiz, avtomatik pullik emas,
 ///    bir hisob/email/qurilmaga bir marta (`cloudflare/src/trial.ts`).
 /// 2. **Do'kon kirish taklifi** — Apple Introductory Offer / Play free-trial
 ///    yoki chegirmali offer: avtomatik yangilanadigan obunaning bir qismi,
@@ -23,6 +23,11 @@ import 'purchase_adapter.dart';
 ///   HAR DOIM ko'rsatiladi (aks holda to'lov oynasi do'kon oynasidan farq
 ///   qiladi). Egasi App Store Connect'da taklif yaratmasa — hech narsa
 ///   ko'rsatilmaydi.
+/// * Do'kon sinov/kirish taklifining TUGASH vaqti (D-80) — do'konning o'z
+///   kvitansiya sanasi (Apple `expiresDate`, Google Play `expiryTime`):
+///   ilova ham, server ham uni qayta HISOBLAMAYDI. Apple "1 oy" — kalendar
+///   oy (28-31 kun), LabGuide server sinovi esa aniq 30 kun; bu ikki sinov
+///   bir-biriga qo'shilmaydi va taqqoslanmaydi.
 /// * Xarid faqat foydalanuvchi tugmani bosib, do'konning o'z tasdiq oynasida
 ///   tasdiqlagandan keyin (StoreKit / Play Billing) — ilova o'zi pul yechmaydi.
 abstract final class StoreOfferPolicy {

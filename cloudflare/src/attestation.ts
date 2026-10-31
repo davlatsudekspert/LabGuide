@@ -1,4 +1,4 @@
-// Qurilma attestatsiyasi — haqiqiy tekshiruvchilar (7 kunlik sinov, D-74/D-77).
+// Qurilma attestatsiyasi — haqiqiy tekshiruvchilar (30 kunlik sinov, D-74/D-80).
 //
 // INERT: Worker secretlari bo'lmasa `configured()` = false → sinov
 // `503 trial_unavailable` (ilova sinov tugmasini ko'rsatmaydi). Hech qanday

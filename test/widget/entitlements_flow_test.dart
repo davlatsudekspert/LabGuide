@@ -198,7 +198,7 @@ void main() {
       final monthly = uz.proPayPricePer(r'$3.49', uz.proPayUnitMonth);
       await seen(monthly);
       // D-75: do'kon sinov taklifi (avtomatik pullik) ko'rsatilmaydi, hatto
-      // do'kon qaytarsa ham — 7 kunlik sinov (D-76) faqat server sinovi.
+      // do'kon qaytarsa ham — 30 kunlik sinov (D-80) faqat server sinovi.
       expect(
         find.text(uz.proPayTrial(uz.proPayDays(30), monthly)),
         findsNothing,

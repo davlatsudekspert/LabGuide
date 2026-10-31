@@ -492,7 +492,7 @@ describe('platformVerifier (production marshruti)', () => {
       APPLE_DEVICECHECK_PRIVATE_KEY: dcPem,
     } as never);
     s.setAttestation(platformVerifier());
-    expect((await s.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: true, platforms: ['android', 'ios'], days: 7 });
+    expect((await s.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: true, platforms: ['android', 'ios'], days: 30 });
   });
 
   it('standart TRIAL_PLATFORMS (faqat android): DeviceCheck sozlangan bo‘lsa ham iOS — false', async () => {

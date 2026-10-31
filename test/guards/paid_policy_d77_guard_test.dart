@@ -1,13 +1,13 @@
 // Qorovul (guard) testlari: D-77 (2026-10-25, egasi qarori) — FAQAT
-// `paid/pro-premium` tarmog'i. Free + Pro + Premium, bepul sinov faqat 7 kun,
-// do'kondagi bepul versiya o'zgarmaydi, hech narsa egasining ruxsatisiz
+// `paid/pro-premium` tarmog'i. Free + Pro + Premium, bepul sinov (D-77: 7 kun;
+// D-80, 2026-10-31, egasi qarori: 30 kun — hozirgi amaldagi), do'kondagi bepul versiya o'zgarmaydi, hech narsa egasining ruxsatisiz
 // nashr qilinmaydi. D-58 qorovuli (“ilovada Pro/to'lov yo'q”) shu tarmoqda
 // shu fayl bilan almashtirildi (D-58 `main` da kuchda).
 //
 // (a) build bayroqlarining standart holati aniq va tekshirilgan;
 // (b) ARB / lib da narx literali yo'q (narx do'kondan; ma'lumot — ProPricing);
-// (c) sinov uzunligi hamma joyda 7 (Dart, TypeScript, ARB, hujjat); eski
-//     30 kunlik sinov matni faqat SUPERSEDED tarixda;
+// (c) sinov uzunligi hamma joyda 30 (Dart, TypeScript, ARB, hujjat; D-80); eski
+//     7 kunlik sinov matni faqat SUPERSEDED tarixda;
 // (d) do'kon talablari asoslari: tiklash tugmasi, xariddan oldin narx+davr,
 //     tashqi to'lov havolasi yo'q.
 // Jadval: docs/GUARDS.md.
@@ -79,12 +79,12 @@ final _arbPrice = RegExp(
   caseSensitive: false,
 );
 
-/// Eski (SUPERSEDED) uzun sinov: “30 kunlik sinov”, “30-day trial”,
-/// “пробный период 30 дней”, `TRIAL_DAYS = 30`.
-final _trial30 = RegExp(
-  r'(?<!\d)30[\s\-–]*(kun|days?|дн)[^\n]{0,40}?(sinov|trial|пробн|bepul foydalan|free access|бесплатн)|'
-  r'(sinov|trial|пробн)[^\n.]{0,30}?(?<!\d)30[\s\-–]*(kun|days?|дн)|'
-  r'(TRIAL_DAYS|serverTrialDays|freeTrialDays|trialDays)\s*[=:]\s*30\b',
+/// Eski (SUPERSEDED, D-80 gacha) qisqa sinov: “7 kunlik sinov”, “7-day trial”,
+/// “пробный период 7 дней”, `TRIAL_DAYS = 7`.
+final _trialOld = RegExp(
+  r'(?<![\d.])7[\s\-–]*(kun|days?|дн)[^\n]{0,40}?(sinov|trial|пробн|bepul foydalan|free access|бесплатн)|'
+  r'(sinov|trial|пробн)[^\n.]{0,30}?(?<![\d.])7[\s\-–]*(kun|days?|дн)|'
+  r'(TRIAL_DAYS|serverTrialDays|freeTrialDays|trialDays)\s*[=:]\s*7\b',
   caseSensitive: false,
 );
 
@@ -102,7 +102,7 @@ const _ruleFiles = {
 
 /// Markdown: fayl boshida (12 qator) yoki bo'lim sarlavhasi + keyingi 4
 /// qatorda “SUPERSEDED” bo'lsa — tarix.
-List<String> _trial30Outside(File f) {
+List<String> _trialOldOutside(File f) {
   final path = _norm(f.path);
   if (_ruleFiles.contains(path)) return const [];
   final lines = f.readAsLinesSync();
@@ -119,7 +119,7 @@ List<String> _trial30Outside(File f) {
           .take(5)
           .any((l) => l.contains('SUPERSEDED'));
     }
-    if (!_trial30.hasMatch(line)) continue;
+    if (!_trialOld.hasMatch(line)) continue;
     if (_supersededLine.hasMatch(line)) continue;
     if (fileIsHistory || sectionIsHistory) continue;
     bad.add('$path:${i + 1}: ${line.trim()}');
@@ -291,24 +291,24 @@ void main() {
     );
   });
 
-  group('D-77 (c): sinov uzunligi hamma joyda 7', () {
-    test('Dart, TypeScript va server testi: 7', () {
-      expect(ProTrialConfig.serverTrialDays, 7);
+  group('D-77 (c) / D-80: sinov uzunligi hamma joyda 30', () {
+    test('Dart, TypeScript va server testi: 30', () {
+      expect(ProTrialConfig.serverTrialDays, 30);
       expect(
         _read('lib/core/entitlements/pro_catalog.dart'),
-        contains('static const int serverTrialDays = 7;'),
+        contains('static const int serverTrialDays = 30;'),
       );
       expect(
         _read('cloudflare/src/trial.ts'),
-        contains('export const TRIAL_DAYS = 7;'),
+        contains('export const TRIAL_DAYS = 30;'),
       );
       expect(
         _read('cloudflare/test/trial.test.ts'),
-        contains('expect(TRIAL_DAYS).toBe(7);'),
+        contains('expect(TRIAL_DAYS).toBe(30);'),
       );
     });
 
-    test('ARB: sinov matnidagi har bir son — 7 (uz/ru/en)', () {
+    test('ARB: sinov matnidagi har bir son — 30 (uz/ru/en)', () {
       final days = {
         'uz': RegExp(r'(\d+)\s*kunlik\s+(bepul\s+)?sinov'),
         'ru': RegExp(r'пробн\S*\s+период\S*\s+(на\s+)?(\d+)\s*дн'),
@@ -322,14 +322,14 @@ void main() {
         for (final e in arb.entries) {
           for (final m in rx.allMatches(e.value)) {
             final n = lang == 'ru' ? m[2] : m[1];
-            expect(n, '7', reason: '$lang ${e.key}: ${e.value}');
+            expect(n, '30', reason: '$lang ${e.key}: ${e.value}');
           }
         }
       }
     });
 
     test(
-      'D-77 qarori yozilgan: 7 kun, D-58 faqat shu tarmoqda almashtirildi',
+      'D-77 (tarix) va D-80 (30 kun) yozilgan; D-58 faqat shu tarmoqda almashtirildi',
       () {
         final decisions = _read('docs/DECISIONS.md');
         final i = decisions.indexOf('## D-77.');
@@ -340,11 +340,19 @@ void main() {
         expect(d77, contains('D-58'));
         expect(d77, contains('UNCONFIRMED-until-created-in-store'));
         expect(d77, contains('ruxsatisiz hech narsa nashr qilinmaydi'));
+        // D-80: egasi qarori 2026-10-31 — sinov 30 kun, Bepul o'zgarmagan.
+        final j = decisions.indexOf('## D-80.');
+        expect(j, greaterThan(i));
+        final d80 = decisions.substring(j);
+        expect(d80, contains('2026-10-31'));
+        expect(d80, contains('30 kun'));
+        expect(d80, contains('Bepul'));
+        expect(d80, contains('kvitansiya'));
       },
     );
 
     test(
-      'eski uzun sinov matni faqat SUPERSEDED tarixda (kod, ARB, hujjat, sayt)',
+      'eski 7 kunlik sinov matni faqat SUPERSEDED tarixda (kod, ARB, hujjat, sayt)',
       () {
         final ext = RegExp(
           r'\.(dart|ts|arb|md|html|sql|csv|json|py|ya?ml|txt)$',
@@ -361,21 +369,23 @@ void main() {
             'site',
             'supabase',
           ])
-            for (final f in _files(dir, ext)) ..._trial30Outside(f),
+            for (final f in _files(dir, ext)) ..._trialOldOutside(f),
         ];
         expect(bad, isEmpty, reason: bad.join('\n'));
       },
     );
 
     test('qorovulning o‘zi ishlaydi (namuna)', () {
-      expect(_trial30.hasMatch('30 kunlik bepul sinov'), isTrue);
-      expect(_trial30.hasMatch('a 30-day free trial'), isTrue);
-      expect(_trial30.hasMatch('пробный период на 30 дней'), isTrue);
-      expect(_trial30.hasMatch('TRIAL_DAYS = 30;'), isTrue);
-      expect(_trial30.hasMatch('30 kun ichida o‘chiradi'), isFalse);
-      expect(_trial30.hasMatch('Last 30 days'), isFalse);
-      expect(_trial30.hasMatch('730 kun (24 oy) sinov yozuvi'), isFalse);
-      expect(_supersededLine.hasMatch('D-75 dagi 30 kun bekor'), isTrue);
+      expect(_trialOld.hasMatch('7 kunlik bepul sinov'), isTrue);
+      expect(_trialOld.hasMatch('a 7-day free trial'), isTrue);
+      expect(_trialOld.hasMatch('пробный период на 7 дней'), isTrue);
+      expect(_trialOld.hasMatch('TRIAL_DAYS = 7;'), isTrue);
+      expect(_trialOld.hasMatch('30 kunlik bepul sinov'), isFalse);
+      expect(_trialOld.hasMatch('TRIAL_DAYS = 30;'), isFalse);
+      expect(_trialOld.hasMatch('Last 7 days'), isFalse);
+      expect(_trialOld.hasMatch('730 kun (24 oy) sinov yozuvi'), isFalse);
+      expect(_trialOld.hasMatch('1.7 kun sinov'), isFalse);
+      expect(_supersededLine.hasMatch('D-77 dagi 7 kun bekor'), isTrue);
     });
   });
 

@@ -129,7 +129,7 @@ describe('billing: sozlanmagan server', () => {
       app_store: false,
       play_store: false,
       sandbox: false,
-      trial: { android: false, ios: false, platforms: ['android'], days: 7 },
+      trial: { android: false, ios: false, platforms: ['android'], days: 30 },
       guest: { purchase_plans: ['student', 'specialist'], account_only_capabilities: ['teacher_panel'], max_devices: 5 },
     });
 

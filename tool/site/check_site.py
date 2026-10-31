@@ -9,8 +9,8 @@ Xato topilsa, nol bo'lmagan kod bilan tugaydi. Tekshiriladi:
   "eslatma" oddiy so'z; "e'lon qilishdan oldin"),
   TODO, repo ichki yo'llari (docs/, lib/, cloudflare/) va qaror raqamlari (D-41);
 * D-77 (`paid/pro-premium` tarmog'i; D-58 o'rniga): narx literali ($4.99,
-  12 000 so'm, …) hech bir sahifada yo'q — narx faqat do'kondan; "30 kunlik
-  sinov" va 7 dan boshqa sinov muddati yo'q; to'lov/obuna so'zlari (Pro, obuna,
+  12 000 so'm, …) hech bir sahifada yo'q — narx faqat do'kondan; sinov muddati
+  faqat 30 kun (D-80; "7 kunlik sinov" — eskirgan); to'lov/obuna so'zlari (Pro, obuna,
   subscription, payment va h.k.) faqat `privacy/` va `terms/` sahifalarida (ular
   `docs/store/PRIVACY_POLICY.md` va `docs/store/TERMS_OF_USE.md` dan yasaladi —
   qo'lda qo'shilgan bo'lim "eskirgan" xatosi bilan ushlanadi), boshqa
@@ -60,11 +60,11 @@ BANNED: list[tuple[str, re.Pattern[str]]] = [
     # D-77: narx faqat do'kondan (ilovada ham, saytda ham qotirilmaydi).
     ('narx literali', re.compile(
         r'[$€£]\s?\d|\d\s?(usd|uzs|сум)\b|\b(usd|uzs)\s?\d|\d\s?so[’\'‘`ʻ]m\b', re.IGNORECASE)),
-    # D-77: sinov faqat 7 kun; "30 kunlik sinov" — SUPERSEDED (D-74/D-75).
-    ('sinov 7 kun emas', re.compile(
-        r'\b(?!7\b)\d+[\s\u00a0-]*(kun(lik)?\s+(bepul\s+)?sinov|days?\s+(free\s+)?trial|'
+    # D-80: sinov faqat 30 kun; "7 kunlik sinov" — SUPERSEDED (D-77, 2026-10-31 gacha).
+    ('sinov 30 kun emas', re.compile(
+        r'\b(?!30\b)\d+[\s\u00a0-]*(kun(lik)?\s+(bepul\s+)?sinov|days?\s+(free\s+)?trial|'
         r'дн\w*\s+(бесплатн\w*\s+)?(пробн|доступ))|'
-        r'(sinov|trial|пробн\w*\s+период\w*)\s+(на\s+|of\s+)?(?!7\b)\d+[\s\u00a0-]*(kun|days?|дн)',
+        r'(sinov|trial|пробн\w*\s+период\w*)\s+(на\s+|of\s+)?(?!30\b)\d+[\s\u00a0-]*(kun|days?|дн)',
         re.IGNORECASE)),
 ]
 
@@ -250,10 +250,10 @@ Profil sahifasi. Provider.</p><a href="#a">x</a><a href="mailto:a@b.uz">m</a>
         # D-77: narx va sinov muddati.
         'narx $': (good.replace('Provider.', 'Only $4.99 a month.'), 'narx literali'),
         'narx so‘m': (good.replace('Profil sahifasi.', 'Oyiga 12 000 so‘m.'), 'narx literali'),
-        '30 kunlik sinov': (good.replace('Profil sahifasi.', '30 kunlik bepul sinov.'), 'sinov 7 kun emas'),
-        '30-day trial': (good.replace('Provider.', 'A 30-day free trial.'), 'sinov 7 kun emas'),
-        '14 дней': (good.replace('Provider.', 'Пробный период 14 дней.'), 'sinov 7 kun emas'),
-        '7 kunlik sinov ruxsat': (good.replace('Profil sahifasi.', '7 kunlik bepul sinov. 30 kun ichida o‘chiriladi.'), None),
+        '7 kunlik sinov': (good.replace('Profil sahifasi.', '7 kunlik bepul sinov.'), 'sinov 30 kun emas'),
+        '7-day trial': (good.replace('Provider.', 'A 7-day free trial.'), 'sinov 30 kun emas'),
+        '14 дней': (good.replace('Provider.', 'Пробный период 14 дней.'), 'sinov 30 kun emas'),
+        '30 kunlik sinov ruxsat': (good.replace('Profil sahifasi.', '30 kunlik bepul sinov. 30 kun ichida o‘chiriladi.'), None),
     }
     for name, (html_text, expect) in cases.items():
         with tempfile.TemporaryDirectory() as d:
@@ -289,21 +289,21 @@ Profil sahifasi. Provider.</p><a href="#a">x</a><a href="mailto:a@b.uz">m</a>
         ok = any('narx literali' in e for e in check_site(site, check_fresh=False))
         print(f'  {"ok  " if ok else "XATO"} privacy/: narx literali baribir taqiqlangan')
         failures += 0 if ok else 1
-        # terms/ ham obuna so'zlariga ruxsat oladi, lekin narx va 30 kunlik sinov — yo'q.
+        # terms/ ham obuna so'zlariga ruxsat oladi, lekin narx va 30 kundan boshqa sinov muddati — yo'q.
         (site / 'privacy' / 'index.html').write_text(page.format('Hello.'), encoding='utf-8')
         (site / 'terms').mkdir()
         (site / 'terms' / 'index.html').write_text(
-            page.format('Pro subscription, obuna, подписка, payment, to‘lov. 7 kunlik bepul sinov.'), encoding='utf-8')
+            page.format('Pro subscription, obuna, подписка, payment, to‘lov. 30 kunlik bepul sinov.'), encoding='utf-8')
         ok = check_site(site, check_fresh=False) == []
-        print(f'  {"ok  " if ok else "XATO"} terms/: obuna so‘zlari va 7 kunlik sinov ruxsat')
+        print(f'  {"ok  " if ok else "XATO"} terms/: obuna so‘zlari va 30 kunlik sinov ruxsat')
         failures += 0 if ok else 1
         (site / 'terms' / 'index.html').write_text(page.format('Pro: $4.99 oyiga.'), encoding='utf-8')
         ok = any('narx literali' in e for e in check_site(site, check_fresh=False))
         print(f'  {"ok  " if ok else "XATO"} terms/: narx literali taqiqlangan')
         failures += 0 if ok else 1
-        (site / 'terms' / 'index.html').write_text(page.format('30 kunlik bepul sinov.'), encoding='utf-8')
-        ok = any('sinov 7 kun emas' in e for e in check_site(site, check_fresh=False))
-        print(f'  {"ok  " if ok else "XATO"} terms/: 30 kunlik sinov taqiqlangan')
+        (site / 'terms' / 'index.html').write_text(page.format('7 kunlik bepul sinov.'), encoding='utf-8')
+        ok = any('sinov 30 kun emas' in e for e in check_site(site, check_fresh=False))
+        print(f'  {"ok  " if ok else "XATO"} terms/: 7 kunlik sinov taqiqlangan (D-80)')
         failures += 0 if ok else 1
         (site / 'terms' / 'index.html').write_text(page.format('Hello.'), encoding='utf-8')
         (site / 'index.html').write_text(page.format('Oylik obuna.'), encoding='utf-8')

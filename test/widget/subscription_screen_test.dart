@@ -178,7 +178,7 @@ void main() {
     }
     expect(find.textContaining(r'$4.99'), findsOneWidget);
     expect(find.textContaining(r'$49.99'), findsOneWidget);
-    expect(find.text(uz.proSubTrialTitle(7)), findsOneWidget);
+    expect(find.text(uz.proSubTrialTitle(30)), findsOneWidget);
     // Server bu platformada sinov taklif qilmaydi (standart): qoida va sinov
     // matni ko'rsatilmaydi, faqat oddiy izoh (mehmon).
     expect(find.text(uz.proSubTrialOncePerPhone), findsNothing);
@@ -308,7 +308,7 @@ void main() {
         findsOneWidget,
       );
       expect(find.text(uz.proSubTrialOncePerPhone), findsOneWidget);
-      expect(ProTrialConfig.serverTrialDays, 7);
+      expect(ProTrialConfig.serverTrialDays, 30);
       // To'rt reja uchun ham sinov tugmasi (D-76: Premium qo'shildi).
       for (final p in ProPlan.values) {
         expect(

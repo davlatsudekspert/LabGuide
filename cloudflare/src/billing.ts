@@ -346,6 +346,8 @@ export async function verifyApple(ctx: Ctx, transactionId: string, expectedProdu
   if (latest.revocationDate) status = 'revoked';
   // Grace davrida tranzaksiya `expiresDate` o'tgan bo'ladi — huquq grace
   // tugashigacha (gracePeriodExpiresDate) davom etadi (Apple Billing Grace Period).
+  // D-80: do'kon sinov/kirish davrining tugashi ham do'kon kvitansiyasidagi sana
+  // (Apple "1 oy" = kalendar oy) — server uni 30 kunga qayta HISOBLAMAYDI.
   let expiresAt = latest.expiresDate ?? null;
   if (status === 'grace_period' && renewal?.gracePeriodExpiresDate && (expiresAt == null || renewal.gracePeriodExpiresDate > expiresAt)) {
     expiresAt = renewal.gracePeriodExpiresDate;

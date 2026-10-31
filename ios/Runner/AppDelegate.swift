@@ -24,7 +24,7 @@ import UserNotifications
   }
 }
 
-/// 7 kunlik sinov uchun qurilma attestatsiyasi (D-77 addendum): Apple
+/// 30 kunlik sinov uchun qurilma attestatsiyasi (D-77 addendum): Apple
 /// DeviceCheck (`DCDevice.generateToken`). Server (cloudflare/src/attestation.ts)
 /// tokenni Apple'ga yuborib ikki bitni o'qiydi/yozadi (bit0 = sinov ishlatilgan).
 /// `deviceId` — Keychain'dagi tasodifiy UUID (shu qurilmada; ilova qayta

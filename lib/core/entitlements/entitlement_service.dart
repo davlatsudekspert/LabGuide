@@ -27,7 +27,7 @@ enum ProSource {
   /// Admin bergan Pro (D-73), shu sessiyada serverdan tasdiqlangan.
   adminGrant,
 
-  /// 7 kunlik bepul sinov (D-74/D-76), shu sessiyada serverdan tasdiqlangan.
+  /// 30 kunlik bepul sinov (D-74/D-80), shu sessiyada serverdan tasdiqlangan.
   trial,
 
   /// Imzolangan oflayn kesh (muddati tugamagan).
@@ -238,7 +238,7 @@ class EntitlementService extends ChangeNotifier {
   ];
 
   /// Ko'rsatilgan do'kon taklifi LabGuide server sinovidan keyin
-  /// (foydalanuvchi sinovdan foydalangan) — UI "bu do'kon taklifi, 7 kunlik
+  /// (foydalanuvchi sinovdan foydalangan) — UI "bu do'kon taklifi, 30 kunlik
   /// LabGuide sinovidan alohida" deb aniq yozadi.
   bool get storeOfferAfterServerTrial => trialUsed;
 

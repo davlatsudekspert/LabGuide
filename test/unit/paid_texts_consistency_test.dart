@@ -7,7 +7,7 @@
 //   Premium; ru: Студент Pro / Преподаватель Pro / Специалист Pro / Premium;
 //   en: Student Pro / Teacher Pro / Specialist Pro / Premium); eski
 //   “Ustoz” / “Премиум” / “Teacher plan” kabi nomlar qaytmaydi.
-// * Bepul sinov — hamma matnda faqat 7 kun (30 / 14 emas), bir marta, karta yo'q.
+// * Bepul sinov — hamma matnda faqat 30 kun (D-80; 7 / 14 emas), bir marta, karta yo'q.
 // * Narx literali yo'q: ARB, sayt, huquqiy va do'kon matnlarida narx
 //   yozilmaydi (narx do'kondan; yagona ma'lumot — ProPricing).
 // * To'lov oynasidan Foydalanish shartlari va Maxfiylik siyosatiga havola bor
@@ -70,10 +70,10 @@ final _trialDays = {
   'en': RegExp(r'(\d+)-day\s+(free\s+)?trial', caseSensitive: false),
 };
 
-/// 7 dan boshqa sinov muddati (har qanday til; yaqin so'z bilan).
+/// 30 dan boshqa sinov muddati (har qanday til; yaqin so'z bilan).
 final _otherTrial = RegExp(
-  r'(?<!\d)(?!7(?!\d))\d+[\s -]*(kunlik|kun|days?|day|дн\w*)[\s-]*(bepul\s+|free\s+|бесплатн\w*\s+)?(sinov|trial|пробн)|'
-  r'(sinov|trial|пробн\w*\s+период\w*)\s+(na\s+|of\s+|на\s+)?(?!7(?!\d))\d+[\s -]*(kun|days?|дн)',
+  r'(?<!\d)(?!30(?!\d))\d+[\s -]*(kunlik|kun|days?|day|дн\w*)[\s-]*(bepul\s+|free\s+|бесплатн\w*\s+)?(sinov|trial|пробн)|'
+  r'(sinov|trial|пробн\w*\s+период\w*)\s+(na\s+|of\s+|на\s+)?(?!30(?!\d))\d+[\s -]*(kun|days?|дн)',
   caseSensitive: false,
 );
 
@@ -125,14 +125,14 @@ String _privacy16(String langSection) {
   return langSection.substring(a, b);
 }
 
-/// Matn (hujjat) ichidagi sinov muddati 7 ekanini tekshiradi.
-void _expectTrial7(String lang, String text, String where) {
+/// Matn (hujjat) ichidagi sinov muddati 30 ekanini tekshiradi (D-80).
+void _expectTrial30(String lang, String text, String where) {
   for (final m in _trialDays[lang]!.allMatches(text)) {
     final n = lang == 'ru' ? m[2] : m[1];
-    expect(n, '7', reason: '$where: ${m[0]}');
+    expect(n, '30', reason: '$where: ${m[0]}');
   }
   final bad = _otherTrial.firstMatch(text);
-  expect(bad, isNull, reason: '$where: 7 dan boshqa sinov muddati: ${bad?[0]}');
+  expect(bad, isNull, reason: '$where: 30 dan boshqa sinov muddati: ${bad?[0]}');
 }
 
 void main() {
@@ -220,11 +220,11 @@ void main() {
     });
   });
 
-  group('bepul sinov: hamma matnda faqat 7 kun', () {
-    test('ARB: sinov matnida 7; 7 dan boshqa muddat yo‘q', () {
+  group('bepul sinov: hamma matnda faqat 30 kun (D-80)', () {
+    test('ARB: sinov matnida 30; 30 dan boshqa muddat yo‘q', () {
       for (final l in _langs) {
         for (final e in arb[l]!.entries) {
-          _expectTrial7(l, e.value, '$l ${e.key}');
+          _expectTrial30(l, e.value, '$l ${e.key}');
         }
         expect(_trialDays[l]!.hasMatch(arb[l]!['proPrivacyTrialNote']!), isTrue,
             reason: '$l proPrivacyTrialNote sinov muddatini aytmaydi');
@@ -246,23 +246,23 @@ void main() {
       }
     });
 
-    test('shartlar, siyosat, do‘kon hujjatlari va sayt sahifalari: 7 kun', () {
+    test('shartlar, siyosat, do‘kon hujjatlari va sayt sahifalari: 30 kun', () {
       for (final l in _langs) {
-        _expectTrial7(l, _flat(terms[l]!), '$l TERMS_OF_USE');
+        _expectTrial30(l, _flat(terms[l]!), '$l TERMS_OF_USE');
         expect(_trialDays[l]!.hasMatch(_flat(terms[l]!)), isTrue, reason: '$l TERMS_OF_USE sinov muddatini aytmaydi');
         final p16 = _flat(_privacy16(privacy[l]!));
-        _expectTrial7(l, p16, '$l PRIVACY 16');
+        _expectTrial30(l, p16, '$l PRIVACY 16');
         expect(_trialDays[l]!.hasMatch(p16), isTrue, reason: '$l PRIVACY 16 sinov muddatini aytmaydi');
       }
       for (final e in {'APP_STORE 16': appStore, 'PLAY 7': play}.entries) {
         for (final l in _langs) {
-          _expectTrial7(l, _flat(e.value), '${e.key} [$l]');
+          _expectTrial30(l, _flat(e.value), '${e.key} [$l]');
         }
       }
       for (final page in ['site/terms/index.html', 'site/privacy/index.html']) {
         final html = _flat(_read(page).replaceAll(RegExp(r'<[^>]+>'), ' '));
         for (final l in _langs) {
-          _expectTrial7(l, html, '$page [$l]');
+          _expectTrial30(l, html, '$page [$l]');
         }
       }
     });
