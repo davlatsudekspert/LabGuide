@@ -30,6 +30,11 @@ export interface Env {
    * `/v1/billing/*` va `/v1/entitlements` yo'llari mavjud; aks holda 404.
    */
   LG_BILLING_ENABLED?: string;
+  /** Ilova siyosati (src/policy.ts): majburiy / taklif qilinadigan versiya va yangilash havolalari. Bo'sh — hech kim majburlanmaydi. */
+  LG_MIN_APP_VERSION?: string;
+  LG_LATEST_APP_VERSION?: string;
+  LG_UPDATE_URL_ANDROID?: string;
+  LG_UPDATE_URL_IOS?: string;
   /**
    * Maxfiy: App Store Server API kaliti (App Store Connect → Users and
    * Access → Integrations → In-App Purchase). Uchalasi bo'lmasa — App Store

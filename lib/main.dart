@@ -27,6 +27,7 @@ import 'core/entitlements/platform_device_attestor.dart';
 import 'core/entitlements/pro_catalog.dart';
 import 'core/entitlements/purchase_adapter.dart';
 import 'core/entitlements/store_purchase_adapter.dart';
+import 'core/policy/app_policy.dart';
 import 'core/storage/kv_store.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
@@ -55,7 +56,7 @@ import 'features/share/file_export.dart';
 import 'features/share/result_share.dart';
 import 'features/toifa/toifa_controller.dart';
 
-const _appVersion = '0.1.0';
+const _appVersion = '0.1.1';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,6 +72,12 @@ Future<void> main() async {
   );
   await services.auth.reconcileWithBackend();
   unawaited(services.refreshAccess());
+  // Server "yangilang" / majburiy yangilash desa (lib/core/policy): ochilganda va
+  // qayta ochilganda so'raladi; xato bo'lsa jim (fail open).
+  unawaited(services.policy?.refresh());
+  AppLifecycleListener(
+    onResume: () => unawaited(services.policy?.refresh()),
+  );
   // Pro (D-71): faqat LG_PRO_ENABLED=true buildda. Standart (bepul reliz) da
   // bu qator umuman bajarilmaydi — do'kon plagini ishga tushmaydi.
   if (BuildFlags.proEnabled) {
@@ -167,6 +174,17 @@ AppServices createServices({
     reading: ReadingController(store, bundle: bundle),
     backend: server,
     access: AccessController(server),
+    policy: AppPolicyController(
+      appVersion: config.appVersion,
+      endpoint: server is CloudflareLabBackend
+          ? server.config.resolve('/v1/app-policy', {
+              'platform': defaultTargetPlatform == TargetPlatform.iOS
+                  ? 'ios'
+                  : 'android',
+              'version': config.appVersion,
+            })
+          : null,
+    ),
     partners: PartnersController(store, server),
     // Pro (D-71): bayroq o'chiq bo'lsa — o'chirilgan servis (do'kon ham,
     // server ham yo'q, hamma imkoniyat ochiq). Yoqilgan bo'lsa — do'kon

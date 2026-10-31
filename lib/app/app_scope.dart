@@ -10,6 +10,7 @@ import '../core/backend/pro_grants.dart';
 import '../core/backend/teacher_tests.dart';
 import '../core/build_flags.dart';
 import '../core/entitlements/entitlement_service.dart';
+import '../core/policy/app_policy.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/classroom/classroom_local.dart';
@@ -94,11 +95,15 @@ class AppServices {
     required this.community,
     required this.topicTests,
     required this.howToVideos,
+    this.policy,
     this.qrScanner = const MobileQrScanner(),
     this.fileSharer = const SystemFileSharer(),
   });
 
   final AppConfig config;
+
+  /// "Yangilang" / majburiy yangilash siyosati (null — server sozlanmagan yoki testda).
+  final AppPolicyController? policy;
   final KeyValueStore store;
   final SettingsController settings;
   final AuthController auth;

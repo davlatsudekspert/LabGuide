@@ -11,6 +11,7 @@ import '../features/toifa/toifa_screens.dart' show toifaBase;
 import '../l10n/gen/app_localizations.dart';
 import 'app_scope.dart';
 import 'router.dart';
+import 'update_gate.dart';
 
 class LabGuideApp extends StatefulWidget {
   const LabGuideApp({super.key, required this.services});
@@ -123,6 +124,14 @@ class _LabGuideAppState extends State<LabGuideApp> {
           debugShowCheckedModeBanner: false,
           routerConfig: _router,
           scaffoldMessengerKey: _messenger,
+          // Server "yangilang" desa (lib/core/policy): taklif yoki majburiy ekran.
+          builder: (context, child) {
+            final policy = widget.services.policy;
+            if (child == null || policy == null) {
+              return child ?? const SizedBox.shrink();
+            }
+            return UpdateGate(controller: policy, child: child);
+          },
           theme: buildLgTheme(
             Brightness.light,
             theme: _settings.appTheme,

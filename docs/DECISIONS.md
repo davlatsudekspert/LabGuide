@@ -1826,3 +1826,16 @@ hujjat (`rc/paid-1`); push `rc/paid-1` ga, boshqa hech narsa: build, CI, deploy,
    sinov matni faqat SUPERSEDED tarixda; `pro_flag_default_guard_test.dart`, `test/unit/paid_texts_consistency_test.dart`,
    `tool/site/check_site.py` (+ `test_guards.py`) — 30; server testlari `TRIAL_DAYS` orqali. Tekshiruv natijalari —
    `docs/RELEASE_CANDIDATE_2026-10-31.md`.
+
+## D-81 — Ilova siyosati: "yangilang" / majburiy yangilash (egasi qarori 2026-10-31)
+1. **Muammo:** allaqachon tarqatilgan APK'larni keyin boshqarib bo'lmaydi (ularda tekshiruv yo'q). Faqat KEYINGI qurilishlar uchun:
+   ilova ochilganda va qayta ochilganda (internet bo'lsa) `GET /v1/app-policy?platform=&version=` so'raydi.
+2. **Server (`cloudflare/src/policy.ts`):** ochiq, hisobsiz, hech narsa saqlanmaydi. Worker o'zgaruvchilari: `LG_MIN_APP_VERSION`
+   (undan eski versiyada yangilash MAJBURIY), `LG_LATEST_APP_VERSION` (taklif, yopsa bo'ladi), `LG_UPDATE_URL_ANDROID/IOS` (faqat https).
+   Hammasi bo'sh bo'lsa — hech kim majburlanmaydi. O'zgartirish deploy bilan, ilova qayta chiqmaydi.
+3. **Ilova (`lib/core/policy/app_policy.dart`, `lib/app/update_gate.dart`):** majburiy — butun ekran (yopib bo'lmaydi); taklif —
+   tepada ixcham band ("Keyinroq" bilan yopiladi). **Fail open:** internet yo'q, xato, noto'g'ri javob yoki noto'g'ri sozlama
+   foydalanuvchini HECH QACHON qulflamaydi. Havola serverdan keladi (kodda do'kon havolasi yo'q: do'konda yo'q ilovaga havola berilmaydi).
+4. **Pro bilan bog'liq:** eski (siyosatsiz) APK'lar bepul versiya bo'lib qoladi — ularda Pro funksiya yo'q. Pro huquqlari serverda
+   tekshiriladi (D-71/D-75). Majburiy yangilashni yoqish (min versiya qo'yish) — egasining alohida qarori + `deploy_api`.
+5. **Versiya:** 0.1.0 -> 0.1.1 (siyosat tekshiruvi bor birinchi qurilish). Matnlar (uz/ru/en) `update_gate.dart` ichida — NEEDS_NATIVE_REVIEW.

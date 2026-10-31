@@ -11,6 +11,7 @@ import * as complaints from './complaints';
 import type { Ctx, Deps } from './context';
 import { deriveKeys, hex, hmac } from './crypto';
 import * as groups from './groups';
+import * as policy from './policy';
 import * as social from './social';
 import * as stepUp from './stepup';
 import * as support from './support';
@@ -61,6 +62,8 @@ const plannedAdmin: Handler = async (ctx) => {
 
 const routes: Route[] = [
   r('GET', '/v1/health', async () => json({ ok: true, api: 1 })),
+  // Ilova siyosati: "yangilang" / majburiy yangilash (src/policy.ts). Ochiq, hisobsiz.
+  r('GET', '/v1/app-policy', policy.appPolicy),
 
   // Auth
   r('POST', '/v1/auth/otp/request', auth.requestCode),
