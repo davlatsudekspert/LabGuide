@@ -45,8 +45,9 @@ const crf = Number(args.crf ?? 19);
 const concurrency = Number(args.concurrency ?? 3);
 const range = args.frames ? String(args.frames).split('-').map(Number) : null;
 
-if (diskFreeMB() < 400) {
-  console.error(`only ${diskFreeMB()} MB free — refusing to render (need >= 400 MB)`);
+const MIN_FREE_MB = Number(process.env.LG_MIN_FREE_MB ?? 400); // tight disks: LG_MIN_FREE_MB=200
+if (diskFreeMB() < MIN_FREE_MB) {
+  console.error(`only ${diskFreeMB()} MB free — refusing to render (need >= ${MIN_FREE_MB} MB)`);
   process.exit(2);
 }
 
