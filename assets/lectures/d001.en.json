@@ -310,14 +310,14 @@
    "note": "Answers: 1 — A (pre-analytical); 2 — B (BSL-2); 3 — C (gloves); 4 — B (20–30 seconds). Group test in the app: Learn → Groups → topic → test."
   },
   {
-   "title": "Review questions (qualification category — oral)",
+   "title": "Review questions (Knowledge & Skills Assessment — oral)",
    "bullets": [
     "kdl-o-006 — General safety, electrical and fire safety",
     "kdl-o-007 — Biosafety: risk assessment, BSL, PPE, waste",
     "kdl-o-037 — Medical ethics and deontology, confidentiality",
     "In the app — Learn → Category → Oral questions: with an answer outline"
    ],
-   "note": "Questions from the LabGuide qualification-category bank (official questions). Answer outlines are available in the app."
+   "note": "Questions from the LabGuide Knowledge & Skills Assessment (official questions). Answer outlines are available in the app."
   },
   {
    "title": "Sources",
@@ -330,7 +330,7 @@
     "ISO 15189:2022. Medical laboratories — Requirements for quality and competence.",
     "Plebani M. Errors in clinical laboratories or errors in laboratory medicine? Clin Chem Lab Med. 2006;44(6):750–759.",
     "Ministry of Health of the Republic of Uzbekistan, order No. 88 of 24 March 2022 — code of ethics for medical workers (text: lex.uz).",
-    "LabGuide qualification-category bank: kdl-o-006, kdl-o-007, kdl-o-037. Icons: Material Icons (Apache 2.0)."
+    "LabGuide Knowledge & Skills Assessment questions: kdl-o-006, kdl-o-007, kdl-o-037. Icons: Material Icons (Apache 2.0)."
    ],
    "note": "The teacher reviews the content and adds local procedures (institution SOPs, post-exposure protocol, waste classes)."
   }

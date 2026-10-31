@@ -92,12 +92,8 @@ class LearnScreen extends StatelessWidget {
         const DailyCard(),
         // Guruhda berilgan (hali topshirilmagan) testlar — muddati bilan.
         const AssignedTestsCard(),
-        // Faqat O'zbekiston foydalanuvchilariga (til uz yoki mintaqa UZ).
-        // Talabaga malaka toifasi kerak emas — uning O'rganishida kartasi yo'q
-        // (kunlik savollar qoladi, manzil laborant/ustozga ochiq).
-        if (toifaVisible(context) &&
-            context.services.settings.role != AppRole.student)
-          const ToifaEntryCard(),
+        // Hamma til, davlat va rolda (D-79); faqat `none` sozlamasi yashiradi.
+        if (toifaVisible(context)) const ToifaEntryCard(),
         // Dars mavzulari kontent paketidan keladi (hozircha bo'sh — domla
         // materiallari kelib, tekshirilgach qo'shiladi).
         ContentGate(

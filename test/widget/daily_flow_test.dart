@@ -43,6 +43,8 @@ void main() {
       reminderScheduler: reminders,
       sharer: sharer,
     );
+    // Kontent paketi manbasi oqimi: toifa yashirilgan (D-79: `none`).
+    await s.settings.setAttestationRegion(AttestationRegion.none);
     await pumpApp(tester, s, size: const Size(390, 1400));
     // Bosh sahifadagi karta.
     expect(find.text(en.dailyCardStart), findsOneWidget);
@@ -144,11 +146,29 @@ void main() {
     expect(again.daily.streak.current, 1);
   });
 
-  testWidgets('kunlik manba: ru til + ru_RU + auto — kontent paketi', (
+  // D-79: til va davlatdan qat'i nazar toifa banki (auto — standart).
+  for (final (lang, locale) in [
+    (AppLanguage.ru, const Locale('ru', 'RU')),
+    (AppLanguage.en, const Locale('en', 'US')),
+  ]) {
+    testWidgets('kunlik manba: ${lang.name} + ${locale.toLanguageTag()} + '
+        'auto — toifa banki', (tester) async {
+      tester.platformDispatcher.localesTestValue = [locale];
+      final s = await makeServices(tester, language: lang);
+      await pumpApp(tester, s, size: const Size(390, 1400));
+      await goTo(tester, kDailyLocation);
+      expect(s.daily.todaySet!.sourceId, ToifaQuestionSource.sourceId);
+      final l = lookupAppLocalizations(Locale(lang.name));
+      expect(find.text(l.dailySourceToifa), findsOneWidget);
+    });
+  }
+
+  testWidgets('kunlik manba: ru til + ru_RU + sozlama none — kontent paketi', (
     tester,
   ) async {
     tester.platformDispatcher.localesTestValue = const [Locale('ru', 'RU')];
     final s = await makeServices(tester, language: AppLanguage.ru);
+    await s.settings.setAttestationRegion(AttestationRegion.none);
     await pumpApp(tester, s, size: const Size(390, 1400));
     await goTo(tester, kDailyLocation);
     expect(s.daily.todaySet!.sourceId, isNot(ToifaQuestionSource.sourceId));
@@ -178,16 +198,19 @@ void main() {
     expect(find.text(uz.dailySourceToifa), findsNothing);
   });
 
-  testWidgets('uz shifokor: toifa emas, kontent paketi savollari', (
-    tester,
-  ) async {
-    tester.platformDispatcher.localesTestValue = const [Locale('uz', 'UZ')];
-    final s = await makeServices(tester, role: AppRole.doctor);
-    await pumpApp(tester, s, size: const Size(390, 1400));
-    await goTo(tester, kDailyLocation);
-    expect(s.daily.todaySet!.sourceId, isNot(ToifaQuestionSource.sourceId));
-    expect(find.text(uz.dailySourceToifa), findsNothing);
-  });
+  // D-79: shifokor va talaba roli ham toifa bankidan oladi (rol cheklovi yo'q).
+  for (final role in [AppRole.doctor, AppRole.student]) {
+    testWidgets('uz ${role.name}: kunlik savollar toifa bankidan (D-79)', (
+      tester,
+    ) async {
+      tester.platformDispatcher.localesTestValue = const [Locale('uz', 'UZ')];
+      final s = await makeServices(tester, role: role);
+      await pumpApp(tester, s, size: const Size(390, 1400));
+      await goTo(tester, kDailyLocation);
+      expect(s.daily.todaySet!.sourceId, ToifaQuestionSource.sourceId);
+      expect(find.text(uz.dailySourceToifa), findsOneWidget);
+    });
+  }
 
   testWidgets('ruxsat rad etilsa — halol xabar, eslatma o‘chiq', (
     tester,

@@ -177,7 +177,7 @@ def title_slide():
          'Ustoz tekshiruvi uchun qoralama — dars oldidan mazmunni ko‘rib chiqing', 14, PALE)
     notes(s, 'Kirish. Dars rejasi: laboratoriya xizmati tuzilishi, namuna yo‘li, sifat tizimi, xavfsizlik '
              '(umumiy, yong‘in, biologik, qo‘l gigiyenasi, SHHV), etika va deontologiya, ma’naviyat. '
-             'Oxirida mini-test va og‘zaki savollar (toifa banki: kdl-o-006, kdl-o-007, kdl-o-037).')
+             'Oxirida mini-test va og‘zaki savollar (bilim va malakani baholash savollari: kdl-o-006, kdl-o-007, kdl-o-037).')
     record('Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya',
            ['Amaliy mashg‘ulot (4 soat) + Ma’naviyat darsi (2 soat)'], eyebrow='1-modul · 1-mavzu')
 
@@ -460,7 +460,7 @@ cards('Umumiy xavfsizlik tizimi', [
     ('list', 'Tashkiliy', 'Yozma xavfsizlik rejasi va SOP, mas’ul shaxs, ish boshlashda va davriy o‘qitish, favqulodda vaziyat mashqlari'),
     ('electric', 'Elektr', 'Shikastlangan rozetka/uskuna belgilanib ishdan chiqariladi; nam qo‘l bilan ulash taqiqlanadi; ta’mirda tokdan ajratish'),
     ('fire', 'Yong‘in', 'Yonuvchi erituvchilar minimal miqdorda, maxsus shkafda; ochiq olov nazoratsiz qoldirilmaydi; yo‘laklar ochiq'),
-], 3, 'Toifa og‘zaki savoli kdl-o-006 rejasi asosida. Har bir xodim avariya jihozlari joyini bilishi kerak: '
+], 3, 'Bilim va malakani baholash og‘zaki savoli kdl-o-006 rejasi asosida. Har bir xodim avariya jihozlari joyini bilishi kerak: '
       'o‘t o‘chirgich, signal, chiqish yo‘llari, avariya dushi/ko‘z yuvgich, birinchi yordam qutisi.')
 
 cards('Yong‘in chiqqanda: RACE va PASS', [
@@ -595,13 +595,13 @@ quiz('Mini-test', [
 ], 'Javoblar: 1 — A (preanalitik); 2 — B (BSL-2); 3 — C (qo‘lqop); 4 — B (20–30 soniya). '
    'Ilovada guruh testi: O‘rganish → Guruhlar → mavzu → test.')
 
-bullets('Nazorat savollari (toifa — og‘zaki)', [
+bullets('Nazorat savollari (bilim va malakani baholash — og‘zaki)', [
     'kdl-o-006 — Umumiy xavfsizlik, elektr va yong‘in xavfsizligi',
     'kdl-o-007 — Biologik xavfsizlik: xavfni baholash, BSL, SHHV, chiqindilar',
     'kdl-o-037 — Tibbiy etika va deontologiya, konfidensiallik',
-    'Ilovada — O‘rganish → Toifa → Og‘zaki savollar: javob rejasi bilan',
-], 'school', 'Savollar LabGuide toifa bankidan (rasmiy savollar). Javob rejalari ilovada mavjud.',
-   caption='Toifa savollari')
+    'Ilovada — O‘rganish → Bilim va malakani baholash → Og‘zaki savollar: javob rejasi bilan',
+], 'school', 'Savollar LabGuide bilim va malakani baholash savollaridan (rasmiy savollar). Javob rejalari ilovada mavjud.',
+   caption='Baholash savollari')
 
 s = prs.slides.add_slide(blank)
 base(s, 'Manbalar')
@@ -614,7 +614,7 @@ SOURCES = [
     'ISO 15189:2022. Medical laboratories — Requirements for quality and competence.',
     'Plebani M. Errors in clinical laboratories or errors in laboratory medicine? Clin Chem Lab Med. 2006;44(6):750–759.',
     'O‘zR SSV, 2022-yil 24-mart, 88-son buyruq — tibbiyot xodimlari odob-axloq kodeksi (matni: lex.uz).',
-    'LabGuide toifa banki: kdl-o-006, kdl-o-007, kdl-o-037. Belgilar: Material Icons (Apache 2.0).',
+    'LabGuide bilim va malakani baholash savollari: kdl-o-006, kdl-o-007, kdl-o-037. Belgilar: Material Icons (Apache 2.0).',
 ]
 text(s, Inches(0.6), Inches(2.0), Inches(12.1), Inches(4.4), SOURCES, 15, INK, space=6)
 NOTE_END = ('Taqdimot qoralama: ustoz mazmunni tekshirib, mahalliy tartiblarni (muassasa SOP, '

@@ -550,7 +550,7 @@ const cytoCells = <CytoCell>[
       'en': 'Halo + abnormal nucleus. A plain nucleus means it is not one.',
     }),
     meaning: _T({
-      'uz': 'HPV ta’siri belgisi; Bethesda bo‘yicha LSIL toifasiga kiradi.',
+      'uz': 'HPV ta’siri belgisi; Bethesda bo‘yicha LSIL kategoriyasiga kiradi.',
       'ru': 'Признак действия ВПЧ; по Bethesda относится к LSIL.',
       'en': 'A sign of HPV effect; reported as LSIL in Bethesda.',
     }),

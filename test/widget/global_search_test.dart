@@ -249,21 +249,28 @@ void main() {
       expect(find.widgetWithText(LgRow, l.featureQc), findsOneWidget);
     });
 
-    testWidgets('toifa bo\'limi shifokor va talabaga ko\'rinmaydi', (
-      tester,
-    ) async {
-      for (final role in [AppRole.doctor, AppRole.student]) {
-        final l = await openSearch(tester, role: role);
-        await type(tester, 'toifa');
-        expect(find.widgetWithText(LgRow, l.toifaTitle), findsNothing);
-        await tester.pumpWidget(const SizedBox());
+    // D-79: hamma rol, til va davlatda; faqat `none` yashiradi.
+    for (final role in AppRole.values) {
+      for (final language in AppLanguage.values) {
+        testWidgets('toifa bo\'limi qidiruvda: ${role.name}, ${language.name}', (
+          tester,
+        ) async {
+          final l = await openSearch(tester, language: language, role: role);
+          await type(tester, 'toifa');
+          expect(find.widgetWithText(LgRow, l.toifaTitle), findsWidgets);
+        });
       }
-    });
+    }
 
-    testWidgets('toifa bo\'limi uz bo\'lmagan tilda va qurilmada yo\'q', (
+    testWidgets('toifa bo\'limi sozlama none bo\'lsa qidiruvda yo\'q', (
       tester,
     ) async {
-      final l = await openSearch(tester, language: AppLanguage.en);
+      final s = await makeServices(tester, language: AppLanguage.en);
+      await s.settings.setAttestationRegion(AttestationRegion.none);
+      await pumpApp(tester, s, size: const Size(390, 3200));
+      await goTo(tester, '/home');
+      await tester.tap(find.byType(HomeSearchField));
+      await tester.pumpAndSettle();
       await type(tester, 'toifa');
       expect(
         find.widgetWithText(
@@ -272,7 +279,6 @@ void main() {
         ),
         findsNothing,
       );
-      expect(l.toifaTitle, isNotEmpty);
     });
 
     // D-69 Q4: Ma'ruza hamma rolga (O'rganish tabidagi qator bilan bir xil).

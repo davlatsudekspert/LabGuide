@@ -24,7 +24,7 @@ class CytoFact {
 
 const cytoAdequacy = <CytoFact>[
   CytoFact(
-    _T({'uz': 'Ikki toifa', 'ru': 'Две категории', 'en': 'Two categories'}),
+    _T({'uz': 'Ikki kategoriya', 'ru': 'Две категории', 'en': 'Two categories'}),
     _T({
       'uz':
           'Baholash uchun yaroqli — xulosada endotservikal/transformatsiya '
@@ -793,7 +793,7 @@ cytoMaturationIndex(int parabasal, int intermediate, int superficial) {
 
 // ───────────────────────── Boshqa namunalar ─────────────────────────
 
-/// Xalqaro hisobot tizimi: nomi, qisqa izoh, toifalar.
+/// Xalqaro hisobot tizimi: nomi, qisqa izoh, kategoriyalar.
 class CytoSystem {
   const CytoSystem({
     required this.title,
@@ -869,7 +869,7 @@ const cytoOtherSystems = <CytoSystem>[
     ],
     note: _T({
       'uz':
-          '2-nashrda past darajali urotelial neoplaziya (LGUN) alohida toifa '
+          '2-nashrda past darajali urotelial neoplaziya (LGUN) alohida kategoriya '
           'emas — NHGUC ichiga kiritilgan.',
       'ru':
           'Во 2-м издании уротелиальная неоплазия низкой степени (LGUN) не '
@@ -889,7 +889,7 @@ const cytoOtherSystems = <CytoSystem>[
     system: _T({
       'uz':
           'Seroz suyuqlik sitopatologiyasi bo‘yicha xalqaro tizim (IAC va ASC, '
-          '2020): 5 toifa.',
+          '2020): 5 kategoriya.',
       'ru':
           'Международная система для серозных жидкостей (IAC и ASC, 2020): '
           '5 категорий.',
@@ -934,7 +934,7 @@ const cytoOtherSystems = <CytoSystem>[
     }),
     system: _T({
       'uz':
-          'JSST o‘pka sitopatologiyasi hisobot tizimi (IAC va IARC): 5 toifa, '
+          'JSST o‘pka sitopatologiyasi hisobot tizimi (IAC va IARC): 5 kategoriya, '
           'barcha o‘pka namunalari uchun.',
       'ru':
           'Система ВОЗ для цитопатологии лёгкого (IAC и IARC): 5 категорий для '

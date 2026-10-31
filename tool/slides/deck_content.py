@@ -151,12 +151,12 @@ UI = {
     'oral_a': {'uz': 'Javob rejasi', 'ru': 'План ответа', 'en': 'Answer outline'},
     'qa_label': {'uz': 'Mashq · savol-javob', 'ru': 'Практика · вопросы и ответы',
                  'en': 'Practice · Q&A'},
-    'bank_test': {'uz': 'Toifa imtihoni test banki, №{n}',
-                  'ru': 'Банк тестов квалификационного экзамена, №{n}',
-                  'en': 'Qualification-exam test bank, no. {n}'},
-    'bank_oral': {'uz': 'Toifa imtihoni og‘zaki savollar banki',
-                  'ru': 'Банк устных вопросов квалификационного экзамена',
-                  'en': 'Qualification-exam oral question bank'},
+    'bank_test': {'uz': 'Bilim va malakani baholash test savollari, №{n}',
+                  'ru': 'Тестовые вопросы квалификационного экзамена, №{n}',
+                  'en': 'Qualification-exam test questions, no. {n}'},
+    'bank_oral': {'uz': 'Bilim va malakani baholash og‘zaki savollari',
+                  'ru': 'Устные вопросы квалификационного экзамена',
+                  'en': 'Qualification-exam oral questions'},
     'sources': {'uz': 'Adabiyotlar', 'ru': 'Литература', 'en': 'References'},
     'source_prefix': {'uz': 'Manba', 'ru': 'Источник', 'en': 'Source'},
     'more_sources': {'uz': 'va yana {n} ta — oxirgi slaydda',
@@ -437,7 +437,7 @@ class Sources:
         if key not in self.entries:
             self.entries[key] = {
                 'short': T('bank_test', lang, n=n) if kind == 'test' else T('bank_oral', lang),
-                'full': 'KDL ixtisoslashtirish (toifa) imtihoni savollari banki: '
+                'full': 'KDL ixtisoslashtirish bilim va malakani baholash savollari: '
                         + ('test savollari (ro‘yxat bo‘yicha)' if kind == 'test' else 'og‘zaki savollar'),
                 'url': None}
         return {'key': key, 'loc': f'№{n}' if n else ''}
@@ -1303,7 +1303,7 @@ def collect(repo, day, lang):
     if qs:
         groups.append(('qa', qs))
     if L_['analytes'] and not any(v['limits'] for v in cov['analytes'].values()) and not ors:
-        cov['missing'].append('me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q')
+        cov['missing'].append('me’yor/qaror chegaralari: kartalarda ham, bilim va malakani baholash savollarida ham yo‘q')
     if L_.get('gap'):
         cov['missing'].append('curriculum: gap bayrog‘i (havolalar yetarli emas)')
     return groups, src, cov

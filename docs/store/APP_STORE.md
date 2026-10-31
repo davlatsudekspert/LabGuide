@@ -55,7 +55,7 @@ elektrolitlar, gormonlar, gematologiya, siydik tahlili va boshqalar) va 43 ta ho
 manbaga bog‘langan: har kartada “Manba: muallif, yil, nom” ro‘yxati.
 • Birliklar: SI (mmol/L, µmol/L) yoki an’anaviy (mg/dL) — Profilda tanlanadi; kalkulyatorlar
 tanlangan tizimda boshlanadi. Moddaga xos birlik konvertori.
-• Klinik kalkulyatorlar: eGFR (CKD-EPI 2021) va KDIGO toifasi, albumin/kreatinin nisbati,
+• Klinik kalkulyatorlar: eGFR (CKD-EPI 2021) va KDIGO kategoriyasi, albumin/kreatinin nisbati,
 anion oralig‘i, albumin bo‘yicha tuzatilgan kalsiy, LDL (Friedewald, Sampson) va non-HDL,
 osmolyallik, HbA1c NGSP ↔ IFCC va eAG. Har birida formula, cheklovlar va manba.
 • Laboratoriya kalkulyatorlari: hisoblash kamerasi, leykoformula, retikulotsitlar, yorug‘lik
@@ -154,7 +154,7 @@ based on the scientific literature; the sources are shown in the app.
 
 ## 5. Keywords (≤ 100 belgi, vergul bilan, bo‘shliqsiz) — 2026-10-12 yangilandi
 
-- uz (97): `klinik laboratoriya,KDL,biokimyo,laborant,tahlil,toifa,QC,Westgard,eGFR,leykoformula,preanalitika`
+- uz (97): `klinik laboratoriya,KDL,biokimyo,laborant,tahlil,baholash,QC,Westgard,eGFR,leykoformula,preanalitika`
 - ru (97): `КДЛ,клиническая лаборатория,биохимия,лаборант,анализы,контроль качества,Вестгард,СКФ,лейкоформула`
 - en (95): `clinical laboratory,biochemistry,lab tests,medical lab,QC,Westgard,eGFR,hematology,preanalytics`
 
@@ -164,7 +164,7 @@ Nomda (title) bor so‘z keywords'da takrorlanmaydi (Apple ikkalasini birga hiso
 (+ "Store settings → Tags" dan 5 tagacha tayyor teg: Medical / Education).
 - Nom (≤30): uz `LabGuide: KDL va biokimyo` · ru `LabGuide: КДЛ и биохимия` · en `LabGuide: Clinical Lab Guide`
 - Qisqa tavsif (≤80):
-  - uz `Klinik laboratoriya diagnostikasi va biokimyo: tahlillar, QC, toifa, kalkulyator`
+  - uz `Klinik laboratoriya diagnostikasi va biokimyo: tahlillar, QC, baholash, kalkulyator`
   - ru `Клиническая лабораторная диагностика и биохимия: анализы, контроль качества`
   - en `Clinical lab diagnostics & biochemistry: lab tests, QC, calculators, exam prep`
 
@@ -487,7 +487,7 @@ tegilmadi — Pro relizi bilan birga qilinadi:
 
 1. English (US) keywords — o'zbekcha so'zlar qo'shiladi (100 belgigacha, nomdagi
    so'zlar takrorlanmaydi), masalan:
-   `laborant,tahlil,KDL,toifa,klinik laboratoriya,biokimyo,leykoformula,Westgard,eGFR`
+   `laborant,tahlil,KDL,baholash,klinik laboratoriya,biokimyo,leykoformula,Westgard,eGFR`
 2. Russian localization ochiladi: nom `LabGuide: КДЛ и биохимия`, subtitle
    `Клиническая лаборатория`, keywords 5-bo'limdagi ru qatori
    (`КДЛ,лаборант,анализы,биохимия,...`), ruscha skrinshotlar (docs/store/screenshots/ru).

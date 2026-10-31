@@ -4546,7 +4546,7 @@
       }
      ],
      "note": {
-      "uz": "Xavf toifalari ta’rifi shu yo‘riqnomaning 4-jadvalida.",
+      "uz": "Xavf kategoriyalari ta’rifi shu yo‘riqnomaning 4-jadvalida.",
       "ru": "Определения категорий риска — в таблице 4 этих рекомендаций.",
       "en": "The risk categories are defined in Table 4 of this guideline."
      }
@@ -12539,7 +12539,7 @@
       }
      ],
      "text": {
-      "uz": "Natija «umumiy D vitamini» yoki alohida D2 va D3 sifatida berilishi mumkin; ular organizmda deyarli bir xil ishlaydi va asosiy ko‘rsatkich — umumiy D vitamini (D2 + D3). Laboratoriya blanki odatda natijani toifa bilan tavsiflaydi: tanqis, yetarli emas, yetarli/optimal yoki toksik; manbada bu toifalar uchun raqamlar berilmagan.",
+      "uz": "Natija «umumiy D vitamini» yoki alohida D2 va D3 sifatida berilishi mumkin; ular organizmda deyarli bir xil ishlaydi va asosiy ko‘rsatkich — umumiy D vitamini (D2 + D3). Laboratoriya blanki odatda natijani kategoriya bilan tavsiflaydi: tanqis, yetarli emas, yetarli/optimal yoki toksik; manbada bu kategoriyalar uchun raqamlar berilmagan.",
       "ru": "Результат может быть выдан как «общий витамин D» или отдельно D2 и D3; они действуют в организме примерно одинаково, и главный показатель — общий витамин D (D2 + D3). Бланк обычно описывает результат категорией: дефицит, недостаточность, достаточный/оптимальный или токсичный уровень; числовых границ этих категорий в источнике нет.",
       "en": "Results may be reported as “total vitamin D” or as vitamin D2 and D3 separately; D2 and D3 work about the same, and total vitamin D (D2 + D3) is the important number. Reports usually describe results as deficient, insufficient, sufficient/optimal or toxic; the source gives no numbers for these categories."
      }
@@ -55560,7 +55560,7 @@
    "derived_from": {
     "deck": "d056",
     "slide": "Mochevinani aniqlash usullari?",
-    "source_label": "Manba: StatPearls: Azotemia (Archived); KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR toifalari G1…; StatPearls: Hexokinase Method",
+    "source_label": "Manba: StatPearls: Azotemia (Archived); KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR kategoriyalari G1…; StatPearls: Hexokinase Method",
     "fact": {
      "uz": "ammiak glutamatdegidrogenaza reaksiyasida NADH ni sarflaydi – 340 nm da yutilish kamayishi kinetik o‘lchanadi",
      "ru": "аммиак в реакции глутаматдегидрогеназы расходует NADH – кинетически измеряют снижение поглощения при 340 нм",
@@ -55646,7 +55646,7 @@
    "derived_from": {
     "deck": "d056",
     "slide": "Mochevinani aniqlash usullari?",
-    "source_label": "Manba: StatPearls: Azotemia (Archived); KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR toifalari G1…; StatPearls: Hexokinase Method",
+    "source_label": "Manba: StatPearls: Azotemia (Archived); KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR kategoriyalari G1…; StatPearls: Hexokinase Method",
     "fact": {
      "uz": "ammoniyli geparin ishlatilmaydi – ammiak ifloslanishi",
      "ru": "аммонийный гепарин не используют – загрязнение аммиаком",
@@ -55732,7 +55732,7 @@
    "derived_from": {
     "deck": "d056",
     "slide": "Mochevinani qonda aniqlash usullari va klinik-diagnostik ahamiyati?",
-    "source_label": "Manba: StatPearls: Azotemia (Archived); KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR toifalari G1…; StatPearls: Hexokinase Method",
+    "source_label": "Manba: StatPearls: Azotemia (Archived); KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR kategoriyalari G1…; StatPearls: Hexokinase Method",
     "fact": {
      "uz": "og‘ir jigar yetishmovchiligi (mochevina sintezi kamayadi)",
      "ru": "тяжёлая печёночная недостаточность (синтез мочевины снижается)",
@@ -55816,7 +55816,7 @@
    "derived_from": {
     "deck": "d056",
     "slide": "Qoldiq azot. Azotemiyalar. Klinik diagnostik ahamiyati?",
-    "source_label": "Manba: StatPearls: Azotemia (Archived); KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR toifalari G1…",
+    "source_label": "Manba: StatPearls: Azotemia (Archived); KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR kategoriyalari G1…",
     "fact": {
      "uz": "mochevina/kreatinin nisbati odatda >20:1 (mg/dL da)",
      "ru": "отношение мочевина/креатинин обычно >20:1 (в мг/дл)",
@@ -55902,7 +55902,7 @@
    "derived_from": {
     "deck": "d057",
     "slide": "Kreatininni aniqlash usullari?",
-    "source_label": "Manba: KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR toifalari G1…",
+    "source_label": "Manba: KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR kategoriyalari G1…",
     "fact": {
      "uz": "Jaffe usuli – kreatininning ishqoriy muhitda pikrat bilan qizil-to‘q sariq kompleksi",
      "ru": "Метод Яффе – красно-оранжевый комплекс креатинина с пикратом в щелочной среде",
@@ -55988,7 +55988,7 @@
    "derived_from": {
     "deck": "d057",
     "slide": "Kreatininni aniqlash usullari?",
-    "source_label": "Manba: KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR toifalari G1…",
+    "source_label": "Manba: KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR kategoriyalari G1…",
     "fact": {
      "uz": "KDIGO 2024 imkon bo‘lsa fermentativ usulni tavsiya qiladi (ayniqsa bolalarda)",
      "ru": "KDIGO 2024 рекомендует по возможности ферментативный метод (особенно у детей)",
@@ -56074,7 +56074,7 @@
    "derived_from": {
     "deck": "d057",
     "slide": "Kreatininni aniqlash usullari?",
-    "source_label": "Manba: KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR toifalari G1…",
+    "source_label": "Manba: KDIGO 2024 CKD Guideline (Kidney Int 2024;105(4S)): GFR kategoriyalari G1…",
     "fact": {
      "uz": "plazmani 12 soat ichida ajratish",
      "ru": "плазму отделять в течение 12 часов",
@@ -80766,7 +80766,7 @@
    "cautions": [
     {
      "text": {
-      "uz": "Natijalar «tanqis», «yetarli emas», «yetarli» va «toksik» toifalarida beriladi — aniq chegaralar laboratoriya hisobotida. Umumiy vitamin D (D2 + D3) muhim.",
+      "uz": "Natijalar «tanqis», «yetarli emas», «yetarli» va «toksik» kategoriyalarida beriladi — aniq chegaralar laboratoriya hisobotida. Umumiy vitamin D (D2 + D3) muhim.",
       "ru": "Результаты делят на «дефицит», «недостаточность», «достаточность» и «токсичность» — точные границы в бланке лаборатории. Значение имеет общий витамин D (D2 + D3).",
       "en": "Results fall into deficient, insufficient, sufficient and toxic categories — exact cut-offs are on the lab report. Total vitamin D (D2 + D3) is the value that matters."
      },

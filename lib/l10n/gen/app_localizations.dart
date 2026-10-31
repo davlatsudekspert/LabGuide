@@ -7471,7 +7471,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaLoadError.
   ///
   /// In en, this message translates to:
-  /// **'Could not open the question bank'**
+  /// **'Could not open the questions'**
   String get toifaLoadError;
 
   /// No description provided for @toifaYourCategory.
@@ -7531,7 +7531,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaTestRowSub.
   ///
   /// In en, this message translates to:
-  /// **'{count} random questions · {bank} in the bank'**
+  /// **'{count} random questions · {bank} in total'**
   String toifaTestRowSub(int count, int bank);
 
   /// No description provided for @toifaPracticeTitle.
@@ -7651,7 +7651,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaFormatStep1.
   ///
   /// In en, this message translates to:
-  /// **'{count} random questions out of {bank} in the bank.'**
+  /// **'{count} random questions out of {bank} in total.'**
   String toifaFormatStep1(int count, int bank);
 
   /// No description provided for @toifaFormatStep2.
@@ -9457,7 +9457,7 @@ abstract class AppLocalizations {
   /// No description provided for @examSourceMissing.
   ///
   /// In en, this message translates to:
-  /// **'This exam’s question bank isn’t available in the app'**
+  /// **'This exam’s questions aren’t available in the app'**
   String get examSourceMissing;
 
   /// No description provided for @examMultiHint.
@@ -9709,7 +9709,7 @@ abstract class AppLocalizations {
   /// No description provided for @classesNoAssignmentsTeacher.
   ///
   /// In en, this message translates to:
-  /// **'No assignments yet. Pick topics and a number of questions from the bank to set one.'**
+  /// **'No assignments yet. Pick topics and a number of questions to set one.'**
   String get classesNoAssignmentsTeacher;
 
   /// No description provided for @classesNoAssignmentsStudent.
@@ -10258,17 +10258,11 @@ abstract class AppLocalizations {
   /// **'Knowledge & Skills Assessment'**
   String get profileAttestation;
 
-  /// No description provided for @profileAttestationAuto.
+  /// No description provided for @profileAttestationShow.
   ///
   /// In en, this message translates to:
-  /// **'Automatic'**
-  String get profileAttestationAuto;
-
-  /// No description provided for @profileAttestationUz.
-  ///
-  /// In en, this message translates to:
-  /// **'Uzbekistan'**
-  String get profileAttestationUz;
+  /// **'Show'**
+  String get profileAttestationShow;
 
   /// No description provided for @profileAttestationNone.
   ///
@@ -10279,7 +10273,7 @@ abstract class AppLocalizations {
   /// No description provided for @profileAttestationNote.
   ///
   /// In en, this message translates to:
-  /// **'Shows the Knowledge & Skills Assessment section (Uzbekistan) in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.'**
+  /// **'Shows the Knowledge & Skills Assessment section in every interface language and in every country. Choose Hide to remove it from the app.'**
   String get profileAttestationNote;
 
   /// No description provided for @profileAppearance.
@@ -21643,7 +21637,7 @@ abstract class AppLocalizations {
   /// No description provided for @howToAssessmentStep6.
   ///
   /// In en, this message translates to:
-  /// **'The section is for Uzbekistan: in Uzbek, or Profile → “Knowledge & Skills Assessment” → “Uzbekistan”.'**
+  /// **'The section is available in every language and country. To hide it: Profile → “Knowledge & Skills Assessment” → “Hide”.'**
   String get howToAssessmentStep6;
 
   /// No description provided for @howToAssessmentResult.
@@ -21985,7 +21979,7 @@ abstract class AppLocalizations {
   /// No description provided for @proPayFeatToifa.
   ///
   /// In en, this message translates to:
-  /// **'The full qualification exam bank: official test and practice by topic'**
+  /// **'All qualification exam questions: official test and practice by topic'**
   String get proPayFeatToifa;
 
   /// No description provided for @proPayFeatWeak.
@@ -23461,7 +23455,7 @@ abstract class AppLocalizations {
   /// No description provided for @proSimBank.
   ///
   /// In en, this message translates to:
-  /// **'Question bank'**
+  /// **'Question source'**
   String get proSimBank;
 
   /// No description provided for @proSimBankPack.
@@ -23551,7 +23545,7 @@ abstract class AppLocalizations {
   /// No description provided for @proResultsEntrySub.
   ///
   /// In en, this message translates to:
-  /// **'Trend across all banks, topics and weak spots; PDF / CSV export'**
+  /// **'Trend across all sources, topics and weak spots; PDF / CSV export'**
   String get proResultsEntrySub;
 
   /// No description provided for @proResultsEmpty.
@@ -23881,7 +23875,7 @@ abstract class AppLocalizations {
   /// No description provided for @ttSourceToifa.
   ///
   /// In en, this message translates to:
-  /// **'Category exam bank'**
+  /// **'Assessment questions'**
   String get ttSourceToifa;
 
   /// No description provided for @ttSourceDeck.

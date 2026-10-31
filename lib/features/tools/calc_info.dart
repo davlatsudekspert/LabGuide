@@ -481,7 +481,7 @@ final Map<ClinicalCalc, CalcInfo> calcInfo = {
       }),
       LocalizedText({
         'uz':
-            'G toifasi — faqat KDIGO tasnifi (2012; 2024 da o‘zgarmagan). Buyrak shikastlanishi '
+            'G kategoriyasi — faqat KDIGO tasnifi (2012; 2024 da o‘zgarmagan). Buyrak shikastlanishi '
             'belgilari bo‘lmasa, G1 va G2 surunkali buyrak kasalligi '
             'mezonlariga mos kelmaydi.',
         'ru':
@@ -521,7 +521,7 @@ final Map<ClinicalCalc, CalcInfo> calcInfo = {
       LocalizedText({
         'uz':
             'KDIGO chegaralari: A1 < 3 mg/mmol (< 30 mg/g), A2 3–30 '
-            '(30–300), A3 > 30 (> 300). Toifa siz kiritgan birlik tizimida '
+            '(30–300), A3 > 30 (> 300). Kategoriya siz kiritgan birlik tizimida '
             'aniqlanadi.',
         'ru':
             'Пороги KDIGO: A1 < 3 мг/ммоль (< 30 мг/г), A2 3–30 (30–300), '
@@ -533,7 +533,7 @@ final Map<ClinicalCalc, CalcInfo> calcInfo = {
             'you entered.',
       }),
       LocalizedText({
-        'uz': 'A toifasi — faqat KDIGO 2012 tasnifi, tashxis emas.',
+        'uz': 'A kategoriyasi — faqat KDIGO 2012 tasnifi, tashxis emas.',
         'ru': 'Категория A — только классификация KDIGO 2012, не диагноз.',
         'en':
             'The A category is the KDIGO 2012 classification only, not a '

@@ -2261,7 +2261,7 @@
   "toifaHideOriginal": "Hide original text",
   "toifaOriginalTitle": "Official text (Uzbek)",
   "toifaTranslationAux": "The translation is auxiliary; scoring follows the official Uzbek text.",
-  "toifaLoadError": "Could not open the question bank",
+  "toifaLoadError": "Could not open the questions",
   "toifaYourCategory": "Your category",
   "toifaCatSecond": "Category 3–2",
   "toifaCatFirst": "First category",
@@ -2271,7 +2271,7 @@
   "toifaReadyOral": "Oral",
   "toifaPrepare": "Assessment",
   "toifaTestTitle": "Knowledge test",
-  "toifaTestRowSub": "{count} random questions · {bank} in the bank",
+  "toifaTestRowSub": "{count} random questions · {bank} in total",
   "@toifaTestRowSub": {
     "placeholders": {
       "count": {
@@ -2382,7 +2382,7 @@
     }
   },
   "toifaFormatTitle": "Format",
-  "toifaFormatStep1": "{count} random questions out of {bank} in the bank.",
+  "toifaFormatStep1": "{count} random questions out of {bank} in total.",
   "@toifaFormatStep1": {
     "placeholders": {
       "count": {
@@ -3249,7 +3249,7 @@
   "examWrongTag": "Wrong",
   "examWhyWrong": "Why not this answer",
   "examNoSource": "No source is given for this question.",
-  "examSourceMissing": "This exam’s question bank isn’t available in the app",
+  "examSourceMissing": "This exam’s questions aren’t available in the app",
   "examMultiHint": "Several correct answers — select all",
   "examNoExplanation": "No explanation has been written for this question yet.",
   "examByTopic": "By topic",
@@ -3315,7 +3315,7 @@
   "classesGroupMissing": "Class not found, or you’re no longer a member",
   "classesBackToList": "Back to classes",
   "classesAssignments": "Assignments",
-  "classesNoAssignmentsTeacher": "No assignments yet. Pick topics and a number of questions from the bank to set one.",
+  "classesNoAssignmentsTeacher": "No assignments yet. Pick topics and a number of questions to set one.",
   "classesNoAssignmentsStudent": "No assignments yet",
   "classesNoAssignmentsStudentBody": "When your teacher sets one, it will appear here.",
   "classesNoDue": "no due date",
@@ -3547,10 +3547,9 @@
   "profileUnitsSi": "SI (mmol/L, µmol/L)",
   "profileUnitsConventional": "Conventional (mg/dL)",
   "profileAttestation": "Knowledge & Skills Assessment",
-  "profileAttestationAuto": "Automatic",
-  "profileAttestationUz": "Uzbekistan",
+  "profileAttestationShow": "Show",
   "profileAttestationNone": "Hide",
-  "profileAttestationNote": "Shows the Knowledge & Skills Assessment section (Uzbekistan) in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.",
+  "profileAttestationNote": "Shows the Knowledge & Skills Assessment section in every interface language and in every country. Choose Hide to remove it from the app.",
   "profileAppearance": "Appearance",
   "themeSystem": "System",
   "themeLight": "Light",
@@ -6744,7 +6743,7 @@
   "howToAssessmentStep3": "“Topic practice”: the key and an explanation right after each answer.",
   "howToAssessmentStep4": "“Oral ticket”: draw a ticket, prepare, view the answer plan and rate yourself.",
   "howToAssessmentStep5": "“Mistake review” and “Progress”: rework mistakes and follow your results by topic.",
-  "howToAssessmentStep6": "The section is for Uzbekistan: in Uzbek, or Profile → “Knowledge & Skills Assessment” → “Uzbekistan”.",
+  "howToAssessmentStep6": "The section is available in every language and country. To hide it: Profile → “Knowledge & Skills Assessment” → “Hide”.",
   "howToAssessmentResult": "Practice on the official question list, your results and a review of mistakes — to check your own knowledge.",
   "howToDifferentialStep1": "“Cell identification”: size, nucleus, cytoplasm and granules of each cell.",
   "howToDifferentialStep2": "“Start counting”: tap +1, long-press −1; 100 or 200 cells.",
@@ -6801,7 +6800,7 @@
   "proPayFree": "Free features stay free and have no daily limits. When a trial or subscription ends, only the paid features close.",
   "proPayFeatQuestions": "Practice by topic and card mini-tests",
   "proPayFeatExam": "Exam simulation (timed test)",
-  "proPayFeatToifa": "The full qualification exam bank: official test and practice by topic",
+  "proPayFeatToifa": "All qualification exam questions: official test and practice by topic",
   "proPayFeatWeak": "Weak-topic analysis in your results",
   "proPayFeatAtlas": "Microscopy atlas practice",
   "proPayFeatHistory": "Full results history",
@@ -7408,7 +7407,7 @@
   "proSimRule2": "Questions are drawn from every topic in proportion to its size.",
   "proSimRule3": "Questions come in order: no going back and no flags.",
   "proSimRule4": "The result is graded against the pass mark; the report shows time per question and a topic breakdown.",
-  "proSimBank": "Question bank",
+  "proSimBank": "Question source",
   "proSimBankPack": "Topic questions",
   "proSimPool": "{count} questions in {topics} topics",
   "@proSimPool": {
@@ -7433,7 +7432,7 @@
   "proSimTag": "simulation",
   "proResultsTitle": "Results analysis",
   "proResultsSubtitle": "Full history across all tests, trend and weak topics",
-  "proResultsEntrySub": "Trend across all banks, topics and weak spots; PDF / CSV export",
+  "proResultsEntrySub": "Trend across all sources, topics and weak spots; PDF / CSV export",
   "proResultsEmpty": "No results yet — take your first test.",
   "proResultsBankOther": "Other tests",
   "proResultsSessions": "Tests",
@@ -7567,7 +7566,7 @@
     }
   },
   "ttSourceQuiz": "Practice questions",
-  "ttSourceToifa": "Category exam bank",
+  "ttSourceToifa": "Assessment questions",
   "ttSourceDeck": "Topic test",
   "ttEditTitleNew": "New test",
   "ttEditTitle": "Edit test",

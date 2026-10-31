@@ -3599,7 +3599,7 @@
    "tasks": [
     {
      "text": {
-      "uz": "Truenat MTB va MTB Plus natijalari WHO algoritmida “MTBC detected” toifasiga kiradi.",
+      "uz": "Truenat MTB va MTB Plus natijalari WHO algoritmida “MTBC detected” kategoriyasiga kiradi.",
       "ru": "Результаты Truenat MTB и MTB Plus в алгоритме ВОЗ относятся к категории «MTBC detected».",
       "en": "Truenat MTB and MTB Plus results fall under “MTBC detected” in the WHO algorithm."
      },
@@ -3808,7 +3808,7 @@
    "tasks": [
     {
      "text": {
-      "uz": "Boshlang‘ich OIV-1 darajasini o‘lchash va antiretrovirus terapiya davomida o‘zgarishlarni kuzatish. WHO toifalari: > 1000 kopiya/mL — bostirilmagan; aniqlanadigan lekin ≤ 1000 — bostirilgan; aniqlanmaydi — aniqlanmaydigan daraja.",
+      "uz": "Boshlang‘ich OIV-1 darajasini o‘lchash va antiretrovirus terapiya davomida o‘zgarishlarni kuzatish. WHO kategoriyalari: > 1000 kopiya/mL — bostirilmagan; aniqlanadigan lekin ≤ 1000 — bostirilgan; aniqlanmaydi — aniqlanmaydigan daraja.",
       "ru": "Измерение исходного уровня ВИЧ-1 и наблюдение за изменениями на антиретровирусной терапии. Категории ВОЗ: > 1000 копий/мл — не подавлена; определяется, но ≤ 1000 — подавлена; не определяется — неопределяемая.",
       "en": "Measures baseline HIV-1 level and follows changes during antiretroviral therapy. WHO categories: above 1,000 copies/mL unsuppressed; detectable but at or below 1,000 suppressed; not detected means undetectable."
      },
@@ -7493,7 +7493,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Karta MICni aniqlashning ikki barobar suyultirish usulining miniatyura, avtomatlashtirilgan varianti; chuqurchalardagi yorug‘lik o‘tkazuvchanligi har 15 daqiqada o‘lchanadi, oxirida MIC va talqin toifasi hisobotda chiqadi.",
+     "uz": "Karta MICni aniqlashning ikki barobar suyultirish usulining miniatyura, avtomatlashtirilgan varianti; chuqurchalardagi yorug‘lik o‘tkazuvchanligi har 15 daqiqada o‘lchanadi, oxirida MIC va talqin kategoriyasi hisobotda chiqadi.",
      "ru": "Карта — миниатюрный автоматизированный вариант метода двукратных разведений для определения МПК (MIC); светопропускание лунок измеряется каждые 15 минут, по завершении формируется отчёт с MIC и категорией интерпретации.",
      "en": "The card is a miniaturised automated version of the doubling-dilution MIC method; well transmittance is read every 15 minutes and a report gives the MIC and interpretive category."
     },
@@ -7603,7 +7603,7 @@
    },
    "principle": {
     "text": {
-     "uz": "Barcha sezgirlik sinovlarining asosi — minimal ingibitor konsentratsiya (MIC); klinik MIC chegaralari izolyatni «S» (oddiy dozada sezgir), «I» (yuqori ta’sirda sezgir) yoki «R» (chidamli) deb toifalaydi.",
+     "uz": "Barcha sezgirlik sinovlarining asosi — minimal ingibitor konsentratsiya (MIC); klinik MIC chegaralari izolyatni «S» (oddiy dozada sezgir), «I» (yuqori ta’sirda sezgir) yoki «R» (chidamli) deb kategoriyaga ajratadi.",
      "ru": "Основа всех тестов чувствительности — минимальная подавляющая концентрация (МПК); клинические пограничные значения MIC относят изолят к категориям «S» (чувствителен при стандартной дозе), «I» (чувствителен при повышенной экспозиции) или «R» (устойчив).",
      "en": "The basis of all susceptibility testing is the minimum inhibitory concentration (MIC); clinical MIC breakpoints categorise an isolate as S (susceptible, standard dosing), I (susceptible, increased exposure) or R (resistant)."
     },

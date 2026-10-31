@@ -44,9 +44,9 @@ enum AppLanguage {
 /// (egasi talabi, 2026-10-24: Uzbekistondagi rus tilli foydalanuvchi ham
 /// barcha materialni ruscha ko'radi, toifa esa alohida boshqariladi).
 ///
-/// * [auto] — avvalgi xatti-harakat: ilova tili o'zbekcha YOKI qurilma
-///   mintaqasi UZ bo'lsa ko'rinadi (mavjud foydalanuvchilar uchun o'zgarmaydi);
-/// * [uz] — til va mintaqadan qat'i nazar ko'rinadi;
+/// * [auto] — standart: til va mintaqadan qat'i nazar ko'rinadi (D-79,
+///   2026-10-26; ilgari faqat til uz yoki mintaqa UZ edi);
+/// * [uz] — ham doim ko'rinadi ([auto] bilan bir xil; saqlangan tanlov uchun);
 /// * [none] — hech qachon ko'rinmaydi.
 enum AttestationRegion {
   auto,

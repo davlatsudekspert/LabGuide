@@ -105,7 +105,7 @@ qatlamlarini ishga tushiradi» — Python qadamlari yoki worker testlari olib ta
 |---|---|
 | Test 50 savol, bilet 5 savol, kunlik maqsad 50 / 1 bilet | `test/guards/learning_guard_test.dart :: rasmiy formatlar: test 50 savol, bilet 5 savol` |
 | Mashq rejimi — xato darhol ko‘rinadi | `learning_guard_test.dart :: mashq rejimi bor: …`; `test/widget/toifa_daily_flow_test.dart` |
-| Shifokor/talabaga toifa yopiq (audit 17-okt, #1) | `test/widget/toifa_test.dart` (`AppRole.doctor, AppRole.student`) |
+| Toifa hamma til/davlat/rolda ochiq, faqat `none` yashiradi (D-79; avvalgi rol cheklovi bekor) | `test/widget/toifa_test.dart`, `daily_flow_test.dart`, `global_search_test.dart` |
 
 ### Ma’ruza va mavzu testlari (D-59, D-66)
 

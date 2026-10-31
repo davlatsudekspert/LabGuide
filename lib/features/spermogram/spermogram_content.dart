@@ -139,7 +139,7 @@ abstract final class SpermL {
   });
   static const quizIntro = _T({
     'uz':
-        'Chegaralar, harakatchanlik toifalari, atamalar va preanalitika '
+        'Chegaralar, harakatchanlik kategoriyalari, atamalar va preanalitika '
         'bo‘yicha savollar. Har javobdan keyin izoh ochiladi.',
     'ru':
         'Вопросы о референтных пределах, категориях подвижности, терминах и '
@@ -275,7 +275,7 @@ abstract final class SpermL {
         'JSST: har bir takrorda taxminan 200 ta spermatozoid sanaladi; har '
         'takror — alohida yangi nam preparat. Avval tez va sekin progressiv, '
         'so‘ng shu maydondagi noprogressiv va harakatsizlar sanaladi. 200 ga '
-        'yetganda maydondagi barcha toifalar sanalmagan bo‘lsa, sanash davom '
+        'yetganda maydondagi barcha kategoriyalar sanalmagan bo‘lsa, sanash davom '
         'ettiriladi. 100 — faqat mashq uchun.',
     'ru':
         'ВОЗ: в каждом повторе оценивают около 200 сперматозоидов; каждый '
@@ -292,7 +292,7 @@ abstract final class SpermL {
   });
   static const targetReached = _T({
     'uz':
-        'Maqsadga yetildi. Joriy maydonning barcha toifalarini sanab '
+        'Maqsadga yetildi. Joriy maydonning barcha kategoriyalarini sanab '
         'tugating; keyin ikkinchi takror bilan solishtiring (JSST Table 2.2).',
     'ru':
         'Цель достигнута. Досчитайте все категории текущего участка; затем '
@@ -611,13 +611,13 @@ abstract final class SpermL {
         'teratospermia should not be used (WHO 2010).',
   });
   static const gradesTitle = _T({
-    'uz': 'Harakatchanlik toifalari (JSST 2021)',
+    'uz': 'Harakatchanlik kategoriyalari (JSST 2021)',
     'ru': 'Категории подвижности (ВОЗ 2021)',
     'en': 'Motility grades (WHO 2021)',
   });
   static const gradesNote = _T({
     'uz':
-        '6-nashrda to‘rt toifa (a, b, c, d) qaytarildi, chunki tez progressiv '
+        '6-nashrda to‘rt kategoriya (a, b, c, d) qaytarildi, chunki tez progressiv '
         'spermatozoidlar borligi yoki yo‘qligi klinik ahamiyatga ega.',
     'ru':
         'В 6-м издании возвращены четыре категории (a, b, c, d), так как '
@@ -692,7 +692,7 @@ const spermParamUnits = <SpermParam, LocalizedText>{
   SpermParam.normalForms: _T({'uz': '%', 'ru': '%', 'en': '%'}),
 };
 
-/// Harakatchanlik toifalari: nom, tugma yozuvi, ta'rif (JSST 2021 §2.4.6.1).
+/// Harakatchanlik kategoriyalari: nom, tugma yozuvi, ta'rif (JSST 2021 §2.4.6.1).
 class GradeInfo {
   const GradeInfo(this.letter, this.name, this.definition);
   final String letter;
@@ -1395,7 +1395,7 @@ final spermQuiz = <SpermQuizItem>[
   SpermQuizItem(
     'sperm-q-grades',
     const _T({
-      'uz': 'JSST 2021 harakatchanlikni nechta toifaga ajratadi?',
+      'uz': 'JSST 2021 harakatchanlikni nechta kategoriyaga ajratadi?',
       'ru': 'Сколько категорий подвижности в ВОЗ 2021?',
       'en': 'How many motility grades does WHO 2021 use?',
     }),

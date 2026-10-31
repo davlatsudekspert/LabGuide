@@ -1216,7 +1216,7 @@ Manba: `docs/APP_MAP_2026-10-18.md` §4. Har qaror minimal o'zgarish bilan; eski
   Pro faqat main'dan yangi alohida tarmoqda tayyorlanadi (`pro-later` — eski surat); bepul reliz o'zgarmaydi.
 - **Ochiq (egasi qarori):** Toifa bo'limi hozir til UZ yoki qurilma mintaqasi UZ bo'lsa ko'rinadi (D-40). Master
   rejadagi "til mamlakatga bog'lanmasin" bilan ziddiyat: ruscha tilli va rus mintaqali foydalanuvchi ko'rmaydi.
-  Variant: sozlamalarda ochiq tanlov.
+  Variant: sozlamalarda ochiq tanlov. **Hal qilindi: D-79 (2026-10-26) — bo'lim hamma uchun ochiq.**
 
 
 ## D-71. Pro tarmog'i (`pro-next`): haqiqiy holat, bayroqlar, TAKLIF narxlar (2026-10-24, TASDIQLANMAGAN)
@@ -1773,3 +1773,21 @@ o'qituvchi testlari server qismi ishlamaydi. Do'konga yuboriladigan (bepul) buil
 sinov fail-closed `503 trial_unavailable`; admin Pro berish, ustoz testlari va huquqlar ishlaydi. Egasi (ADMIN_EMAILS,
 standart davlatsudekspert@gmail.com): `loadAccess` muddatsiz **Premium** (admin_grant) qo'shadi — jadvalga yozilmaydi,
 ro'yxatdan chiqarilsa darhol yo'qoladi (`tiers.test.ts`). Bepul ilova yo'llari o'zgarmaydi. Real do'kon xaridi sinalmagan.
+
+## D-79. “Bilim va malakani baholash” (toifa) — hamma tilda, hamma davlatda, hamma rolda (2026-10-26, egasi qarori)
+Egasi: "hamma tilda ko‘rinadigan, hamma davlat ishlata olsin, funksiya hamma joyda bir xil". **Bekor qilinadi:** D-40 /
+D-60 dagi (1) "til uz yoki qurilma mintaqasi UZ" sharti va (2) shifokor/talaba roliga yopish (2026-10-09, 2026-10-12
+qarorlari). D-40 ning qolgan qismlari (eslatma 20:00, Android ovozi) o'zgarmagan.
+- `toifaAvailable([AttestationRegion])`: `auto` (standart) va `uz` — doim ko'rinadi; faqat foydalanuvchi o'zi tanlagan
+  `none` ("Yashirish") yashiradi. Til, qurilma mintaqasi va rol hisobga olinmaydi. Bitta qoida hamma joyda: router
+  redirect (`/learn/toifa`), O'rganish kartasi, bosh sahifa slot/hero, kunlik karta va savol manbasi, kunlik eslatma
+  (`_toifaAllowed`), global qidiruv bo'limi, Pro simulyatsiya, "davom etish" yozuvi.
+- **Kunlik to'plam o'zgardi:** shifokor va talaba ham (toifa ko'rinib turganda) kunlik 5 savolni toifa bankidan oladi
+  (avval kontent paketi mashq savollari edi); `none` tanlaganlar kontent paketida qoladi.
+- Profil sozlamasi endi ikki tanlov: "Ko‘rsatish" (`auto`; saqlangan `uz` ham shunday ko‘rinadi) va "Yashirish" (`none`);
+  `profileAttestationAuto`/`profileAttestationUz` kalitlari o'rniga `profileAttestationShow`. Hamma rolga ko'rinadi.
+- Mazmun o'zgarmagan: rasmiy savol matni o'zbekcha, ru/en da "Rasmiy matn — o‘zbekcha" belgisi va yordamchi tarjima.
+- **Matn qoidasi (egasi):** foydalanuvchi ko'radigan matnda "toifa" so'zi yo'q — o'zbekcha “kategoriya” (ru «категория»,
+  en "category"). Kalit nomlari va kod identifikatorlari (`toifa*`, `/learn/toifa`) o'zgarmaydi.
+- Qorovullar: `test/widget/toifa_test.dart` (barcha til/mintaqa/rol, `none`), `daily_flow_test.dart`,
+  `global_search_test.dart`.

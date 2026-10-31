@@ -321,7 +321,7 @@ PARTS["urine_system"] = {
         "Штативы с пробами по транспортной линии идут к двум модулям. Химический модуль считывает зоны тест-полоски рефлектометрически. Модуль осадка получает цифровые микроскопические изображения мочи; программа классифицирует частицы (эритроциты, лейкоциты, цилиндры, кристаллы и др.), изображения можно просмотреть на экране.",
         "Sample racks travel along the transport line to two modules. The chemistry module reads the strip pads by reflectance. The sediment module takes digital microscope images of the urine; software classifies particles (red cells, white cells, casts, crystals, etc.) and the images can be reviewed on screen."),
     "result": T(["ro-6500", "mr-eu5600", TB],
-        "Chiziq kimyosi natijalari va cho'kma elementlari (eritrotsit, leykotsit, silindr, kristall, bakteriya va boshq.) soni yoki toifasi, ko'rib chiqish uchun tasvirlar bilan.",
+        "Chiziq kimyosi natijalari va cho'kma elementlari (eritrotsit, leykotsit, silindr, kristall, bakteriya va boshq.) soni yoki kategoriyasi, ko'rib chiqish uchun tasvirlar bilan.",
         "Результаты химического анализа полоской и количество или категории элементов осадка (эритроциты, лейкоциты, цилиндры, кристаллы, бактерии и др.) с изображениями для просмотра.",
         "Strip chemistry results plus counts or categories of sediment elements (red cells, white cells, casts, crystals, bacteria, etc.) with images for review."),
 }
@@ -494,7 +494,7 @@ PARTS["microbial_id_ast"] = {
           ("Оптический сканер", "Каждые 15 минут измеряет свет, прошедший через каждую лунку."),
           ("Optical scanner", "Measures the light through every well every 15 minutes.")),
         P("software", (1170, 238), None, ["a3-fda-k201675"],
-          ("Kompyuter va dastur", "O'sish egri chiziqlaridan MIK va talqin toifasini hisoblab, hisobot beradi."),
+          ("Kompyuter va dastur", "O'sish egri chiziqlaridan MIK va talqin kategoriyasini hisoblab, hisobot beradi."),
           ("Компьютер и программа", "По кривым роста рассчитывает МПК и категорию интерпретации, выдаёт отчёт."),
           ("Computer and software", "Calculates the MIC and interpretive category from growth curves and issues a report.")),
     ],
@@ -503,7 +503,7 @@ PARTS["microbial_id_ast"] = {
         "Из чистой культуры готовят суспензию стандартной плотности, карта заполняется ею через соломинку под вакуумом. В лунках AST-карты антибиотики в разных разведениях (миниатюрный автоматический вариант метода МПК). Оптический сканер каждые 15 минут измеряет свет, прошедший через лунки: рост ослабляет свет; программа рассчитывает МПК по динамике роста.",
         "A suspension of standard density is made from a pure culture and drawn into the card through its straw under vacuum. AST card wells contain antimicrobials at different dilutions (a miniaturised automated MIC method). An optical scanner measures light through the wells every 15 minutes: growth attenuates the light, and software calculates the MIC from the growth kinetics."),
     "result": T(["a3-fda-k201675", TB],
-        "Har antibiotik uchun MIK qiymati va talqin toifasi (masalan, sezuvchan yoki chidamli); identifikatsiya kartasida — mikroorganizm turi.",
+        "Har antibiotik uchun MIK qiymati va talqin kategoriyasi (masalan, sezuvchan yoki chidamli); identifikatsiya kartasida — mikroorganizm turi.",
         "Значение МПК и категория интерпретации для каждого антибиотика (например, чувствителен или устойчив); на карте идентификации — вид микроорганизма.",
         "An MIC value and interpretive category for each antimicrobial (e.g. susceptible or resistant); with an identification card, the organism species."),
 }
