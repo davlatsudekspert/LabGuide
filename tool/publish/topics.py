@@ -1546,7 +1546,7 @@ TOPICS = [
                    "usullar va laboratoriya vositalari; «Qanday foydalaniladi?» qadamlarni ilovaning o‘zida "
                    "ko‘rsatadi.",
                    "eGFR ni ilovaning haqiqiy ekranlarida ko‘rib chiqish (namunaviy qiymatlar): maydonlar bo‘sh, "
-                   "jins tanlanmasa hisoblashdan oldin so‘raydi, natija KDIGO toifasi va kiritilgan qiymatlar bilan, "
+                   "jins tanlanmasa hisoblashdan oldin so‘raydi, natija KDIGO kategoriyasi va kiritilgan qiymatlar bilan, "
                    "pastda — formula, cheklovlar va manbalar.",
                    "Kiritish tekshiruvlari: 18 yoshdan kichikka eGFR hisoblanmaydi, chunki tenglama kattalarda "
                    "tuzilgan; mmol/L da kiritilgan glyukoza 90 birlik tekshiruvini chiqaradi.",
@@ -1581,7 +1581,7 @@ TOPICS = [
                    "В списке 17 строк; одна из них объясняет, а не считает."],
             "uz": ["Videodagi barcha kiritishlar namunaviy, bemor ma’lumoti emas; ekrandagi har bir natijani ilova "
                    "hisoblaydi.",
-                   "Video hech bir natijani talqin qilmaydi (masalan, KDIGO toifasi bemor uchun nimani anglatishini).",
+                   "Video hech bir natijani talqin qilmaydi (masalan, KDIGO kategoriyasi bemor uchun nimani anglatishini).",
                    "Ro‘yxatda 17 qator bor; ulardan biri hisoblamaydi, tushuntiradi."],
         },
         ig={
@@ -1599,7 +1599,7 @@ TOPICS = [
                    "Раздел: Лаб. → Калькуляторы."],
             "uz": ["Kreatinin 88, yosh 45, erkak: eGFR qancha?",
                    "LabGuide kalkulyatorlariga taxminan bir daqiqalik sayohat: kreatinin, yosh va jinsdan eGFR "
-                   "ilovaning haqiqiy ekranlarida — bo‘sh maydonlar, kiritish tekshiruvlari, KDIGO toifasi, formula, "
+                   "ilovaning haqiqiy ekranlarida — bo‘sh maydonlar, kiritish tekshiruvlari, KDIGO kategoriyasi, formula, "
                    "cheklovlar va manbalar — so‘ng SI yoki an’anaviy birliklar va suyultirish kabi laboratoriya "
                    "vositalari (namunaviy qiymatlar).",
                    "U hisoblaydi — talqin sizniki. O‘rganish va tekshirish vositasi; tashxis qo‘ymaydi. Bo‘lim: "
@@ -1645,7 +1645,7 @@ TOPICS = [
                   "категорией KDIGO, введёнными значениями, формулой и ограничениями и пометка «Реальные экраны · "
                   "примерные значения».",
             "uz": "LabGuide logotipi, «Kalkulyatorlar» sarlavhasi va «Formula, cheklov, manba» sarlavha osti, "
-                  "ilovadagi eGFR formulasi kartasi (CKD-EPI 2021), eGFR natijasi, KDIGO toifasi, kiritilgan "
+                  "ilovadagi eGFR formulasi kartasi (CKD-EPI 2021), eGFR natijasi, KDIGO kategoriyasi, kiritilgan "
                   "qiymatlar, formula va cheklovlar ko‘rsatilgan telefon ekrani hamda «Haqiqiy ekranlar · namunaviy "
                   "qiymatlar» belgisi.",
         },

@@ -15,7 +15,7 @@ Timing source: voice manifest `video_studio/public/audio/en/calculators.timing.j
 | **3. app_howto** (0:17.5–0:22.0) | phone | L05 | 17.74–21.24 | Not sure how? “How to use?” shows the steps, right in the app. | «Как пользоваться?» — шаги прямо в приложении. | «Qanday foydalaniladi?» — qadamlar ilovaning o‘zida. |
 | **4. app_egfr** (0:22.0–0:32.5) | phone | L06 | 22.24–25.04 | The fields start empty: every value is yours. | Поля пустые: каждое значение вводите вы. | Maydonlar bo‘sh: har qiymatni o‘zingiz kiritasiz. |
 |  |  | L07 | 25.24–28.18 | Forget the sex, and it asks before it calculates. | Забыли пол — он спросит, прежде чем считать. | Jinsni unutsangiz — hisoblashdan oldin so‘raydi. |
-|  |  | L08 | 28.38–32.16 | The result shows its KDIGO category and the values you entered. | Результат — с категорией KDIGO и введёнными значениями. | Natija KDIGO toifasi va kiritilgan qiymatlar bilan. |
+|  |  | L08 | 28.38–32.16 | The result shows its KDIGO category and the values you entered. | Результат — с категорией KDIGO и введёнными значениями. | Natija KDIGO kategoriyasi va kiritilgan qiymatlar bilan. |
 | **5. app_refs** (0:32.5–0:37.5) | phone | L09 | 32.76–36.13 | Below it: the formula, its limitations and the sources. | Ниже — формула, ограничения и источники. | Pastda — formula, cheklovlar va manbalar. |
 | **6. app_checks** (0:37.5–0:46.8) | phone | L10 | 37.76–42.67 | Under 18, eGFR is refused: the equation was built on adults. | До 18 лет рСКФ не считается: уравнение создано на взрослых. | 18 yoshdan kichikka eGFR hisoblanmaydi: tenglama kattalarda tuzilgan. |
 |  |  | L11 | 42.87–46.47 | And glucose 90 in mmol/L gets a unit check. | А глюкоза 90 ммоль/л вызовет проверку единиц. | Glyukoza 90 mmol/L esa birlik tekshiruvini chiqaradi. |
@@ -64,7 +64,7 @@ Timing source: voice manifest `video_studio/public/audio/en/calculators.timing.j
 | `coManual` | Manual methods + laboratory | Ручные методы + лабораторные | Qo‘lda usullar + laboratoriya |
 | `coEmpty` | Fields start empty | Поля пустые | Maydonlar bo‘sh |
 | `coSex` | Sex missing → it asks | Нет пола → спросит | Jins yo‘q → so‘raydi |
-| `coResult` | Result · KDIGO category · your inputs | Результат · категория KDIGO · ваши данные | Natija · KDIGO toifasi · qiymatlaringiz |
+| `coResult` | Result · KDIGO category · your inputs | Результат · категория KDIGO · ваши данные | Natija · KDIGO kategoriyasi · qiymatlaringiz |
 | `coRefs` | Formula and limitations | Формула и ограничения | Formula va cheklovlar |
 | `coChild` | Under 18: not calculated | До 18 лет: не считается | 18 yoshgacha: hisoblanmaydi |
 | `coUnit` | Unusual for this unit → check | Необычно для единицы → проверка | Birlik uchun odatiy emas → tekshiruv |

@@ -1,0 +1,73 @@
+# Wording fix for the 8 topic videos (2026-10-27)
+
+Scope: calibration, qc, photometry, osmometry, leukocyte, calculators, gcms, qpcr (en/ru/uz, 16:9 and 9:16, thumbnails, covers, SRT/VTT, publishing kit). The overview video and the reel were **not touched**.
+
+Owner rules checked: (1) the UZ word «t-word» (toifa, any form) must not appear — section/exam name = «Bilim va malakani baholash» / «Оценка знаний и навыков» / "Knowledge and skills assessment", result class and personal levels = kategoriya / категория / category; (2) no «bank» in the sense of a question bank; (3) no region-exclusive claims; (4) Uzbek Latin apostrophes U+2018 / U+2019, RU/UZ stay `NEEDS_NATIVE_REVIEW`.
+
+## What was searched
+
+| Place | Method | Result |
+|---|---|---|
+| `docs/video/<8 topics>/**` (lines.*.json, storyboard.json, SCRIPT, DESCRIPTION, CLAIMS, QA, README) | grep `toif`, `bank`, `банк`, `Uzbekistan`/`O‘zbekiston`/`Узбекистан` | 6 hits, all in `calculators` (UZ) |
+| `video_studio/src`, `video_studio/scripts`, `video_studio/public/audio/*.timing.json` | grep | 0 hits |
+| `docs/video/publishing/<8 topics>.md`, `tool/publish/*.py` (topics.py, common.py, kit.py …) | grep | 4 hits in the calculators kit (UZ) |
+| Previously delivered SRT/VTT of all 24 editions | grep | 1 hit each in `calculators_uz.srt/.vtt` (the L08 cue); the other 46 files clean |
+| App frames, 3 languages × 8 topics = 267 PNG | `tesseract` (eng, rus+eng, psm 11) on every frame; plus a pixel comparison of every frame against a fresh capture from the shipping-wording app | see below |
+| Thumbnails/covers, 48 JPG | `tesseract` | 0 hits |
+| Narration audio | The narration is **English only** (Kokoro, owner decision 2026-10-25); the English lines contain none of the banned words (grep of `lines.en.json`). No audio was re-synthesised and no timing changed. | not re-listened |
+
+## Found
+
+| Topic | Language | Where | Found |
+|---|---|---|---|
+| calculators | UZ | `lines.uz.json` L08 (narration/subtitle) and `ui.coResult` (on-screen pill) | «KDIGO t-word-si» |
+| calculators | UZ | `DESCRIPTION.md` l.44, `SCRIPT.md` (2 places), `docs/video/publishing/calculators.md` (4), `tool/publish/topics.py` (4) | same phrase |
+| calculators | UZ | app frames `c_list` («Siydik ACR · KDIGO A …»), `e_result` («KDIGO GFR …: G1»), `e_formula` (a limitation bullet that starts with «G …» was half hidden behind the navigation bar; the old app text used the banned word) | banned word inside the real app screenshot |
+| calculators | UZ, RU, EN | app frame `p_units` (Profile → Units, Knowledge and skills assessment switch with the sentence «… (Uzbekistan) in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan») | region-exclusive claim inside the real app screenshot (rule 3) |
+| osmometry | UZ | app frame `c_list` (calculators list row «Siydik ACR · KDIGO A …») | banned word inside the real app screenshot |
+| calibration, qc, photometry, leukocyte, gcms, qpcr | all | — | nothing found |
+
+Also found, **outside the 8 videos, not changed**: `tool/publish/topics.py` / `docs/video/publishing/exam_simulation.md` (paid topic, not part of this job) still contain «question banks» (EN/RU/UZ: «banklaridan», «банков вопросов») and an internal note / UZ text with «t-word testi». Those are paid-topic drafts that were not delivered; they need the same fix before that kit is used.
+
+## Changed
+
+* `docs/video/calculators/lines.uz.json` (L08, `coResult`), `DESCRIPTION.md`, `SCRIPT.md` (regenerated), `docs/video/publishing/calculators.md` (regenerated with `tool/publish/build_kit.py`), `tool/publish/topics.py`: «KDIGO t-word-si» → «KDIGO kategoriyasi». EN/RU already said «category»/«категория».
+* App frames re-captured with the repo's Flutter widget-test walk (`video_studio/flutter_walk/`, same walk files) against a **read-only detached worktree of the shipping-wording app** (branch `feat/toifa-everywhere`, commit `d962a5c`; the worktree was removed afterwards, the branch was not touched). Walks were run for all 8 topics and compared pixel by pixel with the frames used before:
+  * calibration: all identical except small regions in 4 history/log frames (presumably date/time text; not inspected visually, OCR shows no banned word);
+  * leukocyte: only one small region in `d_history` (same presumption); gcms, qpcr: all identical;
+  * qc, photometry: some frames differ because the new app build has other UI changes (header, chips, bullets); OCR of old and new shows **no banned word in the old frames**, so they were **kept** (no re-render needed);
+  * calculators: 12 frames × 3 languages replaced (identical except the ones listed above); osmometry: UZ `c_list` + `frames.json` replaced.
+* `tool/publish/package_parts.py` (new): builds the YouTube/Instagram archives straight into parts < 450 MB (same content and validation as `package.py`).
+* `docs/video/{calculators,osmometry}/CLAIMS_AND_EVIDENCE.md` (update note), `OUTPUTS.md` (regenerated by `video_studio/scripts/docs.mjs`).
+
+Note for the native reviewer: the app's RU section name in Profile is «Проверка знаний и компетенций» and the EN name is "Knowledge & Skills Assessment"; the owner's wording rule asks for «Оценка знаний и навыков» / "Knowledge and skills assessment". That is app text (ARB), not video text; it appears only in the cropped Profile frame.
+
+## Re-rendered (once each, `node scripts/render.mjs`, CRF 19, English narration unchanged)
+
+| Edition | Files |
+|---|---|
+| calculators UZ | horizontal, vertical, thumbnail, cover, SRT, VTT |
+| calculators RU | same (new `p_units` frame) |
+| calculators EN | same (new `p_units` frame) |
+| osmometry UZ | same (new `c_list` frame) |
+
+= 4 editions, 8 MP4. Not re-rendered: all other 20 editions (their MP4/JPG/SRT/VTT are byte-identical to the earlier delivery).
+
+## Verified
+
+* ffprobe of the 8 new MP4: H.264, yuv420p, 30 fps, 1920×1080 / 1080×1920, AAC, durations calculators 63.97 s, osmometry 78.20 s (same as before).
+* Contact sheets viewed: calculators UZ vertical, RU horizontal, EN vertical (every ~2–3 s), osmometry UZ horizontal and one vertical frame of the calculators list; the replaced app frames were viewed at full size.
+* OCR of the QA frames of the new calculators editions: no banned word. OCR of all 48 thumbnails/covers: none.
+* grep of docs, publishing kit, new SRT/VTT and the text files **inside the four ZIPs** (README, SCHEDULE, MANIFEST, metadata, captions, descriptions): no «toif», «bank», «Uzbekistan», «банк», «Узбекистан».
+* `python3 -m unittest test_kit test_package` in `tool/publish`: 53 tests OK; `build_kit.py --check`: OK.
+
+## NOT verified / open
+
+* The narration was **not listened to** (nobody has; English synthetic voice). Narration text was not changed.
+* I did **not** view every scene of every re-rendered edition at full size (calculators UZ horizontal and EN horizontal, RU vertical, osmometry UZ vertical were only sampled through the contact sheets above), and the 20 editions that were not re-rendered were not viewed again; for them the check is text/OCR based. OCR can miss small text; the pixel comparison with the shipping-wording app is the stronger evidence for the frames that are identical.
+* UZ and RU texts are still `NEEDS_NATIVE_REVIEW`; expert/scientific review is still pending as before.
+* The replaced frames come from a newer app build than the rest; for calculators/osmometry they are pixel-identical outside the changed text.
+
+## Hand-over archives
+
+`LABGUIDE_YOUTUBE_FINAL_v2_PART1/2.zip` (16:9 videos, 1280×720 thumbnails, SRT/VTT, per-edition texts) and `LABGUIDE_INSTAGRAM_FINAL_v2_PART1/2.zip` (9:16 videos, covers, captions), built by `tool/publish/package_parts.py --suffix v2`. Part 1 = calibration, leukocyte, photometry, qc; part 2 = calculators, gcms, osmometry, qpcr; every part also holds README, SCHEDULE, SHA256SUMS and MANIFEST. The overview video and the reel are not inside.
