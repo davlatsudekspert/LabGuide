@@ -1,0 +1,3 @@
+# Voice comparison: same lines in every UzbekVoice model (shoira, lola, kamola, jasur, sevinch).
+C1 | Levi-Jenings, Vestgard, hisoblangan glomerulyar filtratsiya tezligi, miqdoriy polimeraza zanjir reaksiyasi, gaz xromatografiya mass-spektrometriya, besh millimol litr.
+C2 | Me’yor oraliqlari, faylda. Formulalar, chatda. Kalkulyator, boshqa ilovada.

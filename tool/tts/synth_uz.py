@@ -20,6 +20,12 @@ Providers
                    printed). The response format is unknown, so handling is tolerant (binary audio, JSON with url or
                    base64, async task polling) and the first call prints a diagnostic. 0.5 so'm per character.
 
+    gemini         Gemini TTS (Interactions API; model gemini-3.8-flash-tts, voice Fola; --gemini-style optional). Written from
+                   API facts relayed by the owner's helper; never run against the real service. Key only from GEMINI_API_KEY
+                   (never printed). Language is auto-detected; 24 kHz WAV is normalised like the other providers.
+                   --text-variant spoken (default, pure-Uzbek voice text) | subtitle (the written subtitle text with PDF,
+                   eGFR, mmol/L as written) | both (sample only); --voices A,B,C and --max-chars N for the test runs.
+
 Fitting (per line, see fit_decision): trim leading/trailing silence; if the clip is longer than its slot
 speed it up with ffmpeg atempo by at most +12 %; shorter clips are padded with silence (optionally slowed down to
 at most -12 % with --slow-short). A clip that still does not fit is reported: it may run on into the guard gap up
@@ -160,6 +166,56 @@ class AzureProvider(Provider):
 
     def cache_tag(self):
         return "azure|" + AZURE_FORMAT + "|" + (self.rate or "")
+
+
+class EdgeProvider(Provider):
+    """Microsoft Edge read-aloud voices through the unofficial `edge-tts` package (free, no key, same neural voices
+    as Azure uz-UZ-MadinaNeural / SardorNeural). NOT an official, licensed channel: fine for drafts and for the owner's
+    listening, not recommended for public posting (use --provider azure with an official key for that)."""
+    name = "edge"
+
+    def __init__(self, rate: str | None = "-3%", pkgs: str | None = None, min_interval_s: float = 0.5, sleep=time.sleep):
+        if pkgs:
+            sys.path.insert(0, pkgs)
+        try:
+            import certifi
+            ca = "/root/.ccr/ca-bundle.crt"
+            if os.path.exists(ca):
+                certifi.where = lambda: ca
+            import edge_tts  # noqa: F401
+        except ImportError:
+            raise SystemExit("edge provider needs the edge-tts package (pip install edge-tts or --edge-pkgs DIR).")
+        self.rate, self.min_interval, self.sleep, self._last = rate, min_interval_s, sleep, 0.0
+        self.requests = 0
+
+    def synthesize(self, text: str, voice: str) -> tuple[bytes, int]:
+        import asyncio
+        import subprocess
+        import tempfile
+        import edge_tts
+        wait = self.min_interval - (time.monotonic() - self._last)
+        if wait > 0:
+            self.sleep(wait)
+        err = None
+        for attempt in range(4):
+            with tempfile.TemporaryDirectory() as td:
+                mp3, wav = os.path.join(td, "a.mp3"), os.path.join(td, "a.wav")
+                try:
+                    self.requests += 1
+                    kw = {"rate": self.rate} if self.rate else {}
+                    comm = edge_tts.Communicate(text, voice, **kw)
+                    asyncio.run(asyncio.wait_for(comm.save(mp3), 90))
+                    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", mp3, "-ar", str(TARGET_SR), "-ac", "1",
+                                    "-c:a", "pcm_s16le", wav], check=True)
+                    self._last = time.monotonic()
+                    return synth.wav_bytes_to_pcm(open(wav, "rb").read())
+                except Exception as e:  # network hiccup: retry
+                    err = e
+                    self.sleep(3.0 * (attempt + 1))
+        raise SystemExit("edge-tts failed after retries: %s: %s" % (type(err).__name__, str(err)[:200]))
+
+    def cache_tag(self):
+        return "edge|" + (self.rate or "")
 
 
 def _redact(s: str, secret: str) -> str:
@@ -457,15 +513,294 @@ class UzbekVoiceAIProvider(Provider):
         return "uzbekvoiceai|" + ("blocking" if self.blocking else "async")
 
 
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/interactions"
+GEMINI_VOICES_URL = "https://generativelanguage.googleapis.com/v1beta/voices"
+GEMINI_DEFAULT_MODEL = "gemini-3.8-flash-tts"
+GEMINI_DEFAULT_VOICE = "Fola"
+GEMINI_KNOWN_MODELS = ("gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts", "gemini-3.1-flash-tts-preview",
+                       "gemini-2.5-pro-preview-tts")
+GEMINI_COMPARE_VOICES = ("Fola", "Kore", "Puck", "Charon", "Leda", "Sulafat", "Zephyr")
+GEMINI_CHUNK_CHARS = 900
+GEMINI_MIN_INTERVAL_S = 6.0
+_VOICE_RE = re.compile(r"[A-Za-z0-9_-]{2,40}")
+_MODEL_RE = re.compile(r"[A-Za-z0-9._-]{3,64}")
+_GOOGLE_KEY_RE = re.compile(r"AIza[0-9A-Za-z_\-]{20,}")
+
+
+def split_chunks(text: str, limit: int = GEMINI_CHUNK_CHARS) -> list[str]:
+    """Split on sentence ends into pieces of at most `limit` characters (a single over-long sentence is cut at the
+    last comma / semicolon / space before the limit, and only as a last resort in the middle of a word)."""
+    text = text.strip()
+    if len(text) <= limit:
+        return [text] if text else []
+    pieces: list[str] = []
+    for sent in re.split(r"(?<=[.!?…])\s+", text):
+        sent = sent.strip()
+        while len(sent) > limit:
+            cut = max(sent.rfind(", ", 0, limit), sent.rfind("; ", 0, limit))
+            cut = cut + 1 if cut >= limit // 3 else max(sent.rfind(" ", 0, limit), -1)
+            if cut < limit // 3:
+                cut = limit
+            pieces.append(sent[:cut].strip())
+            sent = sent[cut:].strip()
+        if sent:
+            pieces.append(sent)
+    chunks: list[str] = []
+    for p in pieces:
+        if chunks and len(chunks[-1]) + 1 + len(p) <= limit:
+            chunks[-1] += " " + p
+        else:
+            chunks.append(p)
+    return chunks
+
+
+class GeminiProvider(Provider):
+    """Gemini text-to-speech through the Interactions API. Written from facts relayed by the owner's helper (Google's
+    docs, 2026-10-31); NEVER RUN against the real service (no key existed, no call has been made).
+
+      POST https://generativelanguage.googleapis.com/v1beta/interactions
+           headers  x-goog-api-key: <GEMINI_API_KEY>, Content-Type: application/json
+           body     {"model": ..., "input": [{"type": "user_input", "content": [{"type": "text", "text": T,
+                      "annotations": [{"type": "speech_metadata", "style": S}]}]}],
+                     "response_format": {"type": "audio"}, "generation_config": {"speech_config": [{"voice": V}]}}
+      response: steps[] with type 'model_output', content[] items type 'audio', base64 WAV in `data` (24 kHz mono 16-bit
+                PCM per the docs). The LAST such item is used.
+    The language is auto-detected (no language parameter). The text is read verbatim, so NO style instruction is ever put
+    into the text: style goes only into speech_metadata.style (default empty). Long texts are split on sentences into
+    chunks of at most 900 characters (the real limit is unknown) and the clips are joined.
+    Rate limits are unknown: --min-interval (default 6 s) between calls and exponential backoff on 429 / 5xx (3 retries).
+    Free tier: Google may use the data to improve its products and humans may read it: only public text is sent.
+    Key ONLY from the environment (GEMINI_API_KEY); never printed, logged or written.
+    """
+    name = "gemini"
+
+    def __init__(self, key: str | None = None, model: str = GEMINI_DEFAULT_MODEL, style: str = "", *,
+                 url: str = GEMINI_URL, http_post=synth.default_http_post, http_get=default_http_get,
+                 sleep=time.sleep, min_interval_s: float = GEMINI_MIN_INTERVAL_S, max_retries: int = 3,
+                 backoff_s: float = 8.0, budget: "CharBudget | None" = None, diag=None,
+                 chunk_chars: int = GEMINI_CHUNK_CHARS, chunk_gap_s: float = 0.15):
+        self._key = key if key is not None else os.environ.get("GEMINI_API_KEY", "")
+        if not self._key:
+            raise SystemExit("Gemini provider needs GEMINI_API_KEY in the environment (repository secret GEMINI_API_KEY "
+                             "for the workflow, see docs/video/voice_uz/README.md; never paste it into the chat). "
+                             "Nothing was sent.")
+        if not _MODEL_RE.fullmatch(model or ""):
+            raise SystemExit("--gemini-model looks wrong (letters, digits, . _ - only): %r" % model)
+        if not url.startswith("https://"):
+            raise SystemExit("Gemini URL must start with https://")
+        self.model, self.style, self.url = model, style or "", url
+        self.http_post, self.http_get, self.sleep = http_post, http_get, sleep
+        self.min_interval, self.max_retries, self.backoff = min_interval_s, max_retries, backoff_s
+        self.budget, self.chunk_chars, self.chunk_gap = budget, chunk_chars, chunk_gap_s
+        self.diag = diag if diag is not None else (lambda m: print(m, file=sys.stderr))
+        self._first_http = False
+        self._first_audio = False
+        self._last = 0.0
+        self.chars_sent = 0
+        self.requests = 0
+
+    def __repr__(self):  # never show the key
+        return "GeminiProvider(model=%r, key=<hidden>)" % self.model
+
+    # -- plumbing ---------------------------------------------------------------------------------------
+    def _headers(self) -> dict:
+        return {"x-goog-api-key": self._key, "Content-Type": "application/json"}
+
+    def _safe(self, s: str, n: int = 300) -> str:
+        s = _GOOGLE_KEY_RE.sub("<hidden>", _redact(s, self._key))
+        return s[:n]
+
+    def _detail(self, data: bytes) -> str:
+        text = data[:2000].decode("utf-8", "replace")
+        try:
+            j = json.loads(text)
+            msg = (j.get("error") or {}).get("message") if isinstance(j, dict) and isinstance(j.get("error"), dict) else None
+            if msg:
+                return self._safe(str(msg))
+        except ValueError:
+            pass
+        return self._safe(text)
+
+    @staticmethod
+    def _json_keys(data: bytes) -> str:
+        try:
+            j = json.loads(data.decode("utf-8"))
+        except ValueError:
+            return "(body is not JSON, %d bytes)" % len(data)
+        if isinstance(j, dict):
+            return ", ".join(sorted(map(str, j.keys()))) or "(empty object)"
+        return "(JSON %s)" % type(j).__name__
+
+    def _wait_interval(self) -> None:
+        wait = self.min_interval - (time.monotonic() - self._last)
+        if wait > 0:
+            self.sleep(wait)
+        self._last = time.monotonic()
+
+    def _request(self, method: str, url: str, body: bytes | None) -> tuple[int, bytes, dict, int]:
+        """Returns (status, data, headers, retries used). 429 and 5xx are retried with exponential backoff."""
+        for attempt in range(self.max_retries + 1):
+            self._wait_interval()
+            self.requests += 1
+            if method == "POST":
+                status, data, hdrs = self.http_post(url, self._headers(), body)
+            else:
+                status, data, hdrs = self.http_get(url, {"x-goog-api-key": self._key})
+            if (status == 429 or 500 <= status <= 599) and attempt < self.max_retries:
+                ra = (hdrs or {}).get("Retry-After") or (hdrs or {}).get("retry-after")
+                try:
+                    delay = min(120.0, float(ra)) if ra else self.backoff * (2 ** attempt)
+                except ValueError:
+                    delay = self.backoff * (2 ** attempt)
+                self.diag("Gemini HTTP %d (%s): retry %d/%d in %.0f s" % (
+                    status, "rate limit / quota" if status == 429 else "server error", attempt + 1, self.max_retries, delay))
+                self.sleep(delay)
+                continue
+            return status, data, hdrs, attempt
+        raise AssertionError("unreachable")  # pragma: no cover
+
+    @staticmethod
+    def extract_audio(j) -> tuple[str | None, str | None]:
+        """(base64 data, mime type) of the LAST audio item of a model_output step; None when there is none."""
+        found: tuple[str | None, str | None] = (None, None)
+        if not isinstance(j, dict):
+            return found
+        for step in j.get("steps") or []:
+            if isinstance(step, dict) and step.get("type") == "model_output":
+                for item in step.get("content") or []:
+                    if isinstance(item, dict) and item.get("type") == "audio" and isinstance(item.get("data"), str) \
+                            and item["data"]:
+                        found = (item["data"], item.get("mime_type"))
+        if found[0] is None:  # tolerance: a flat `outputs` list of content items
+            for item in j.get("outputs") or []:
+                if isinstance(item, dict) and item.get("type") == "audio" and isinstance(item.get("data"), str) \
+                        and item["data"]:
+                    found = (item["data"], item.get("mime_type"))
+        return found
+
+    def build_body(self, text: str, voice: str) -> bytes:
+        body = {"model": self.model,
+                "input": [{"type": "user_input", "content": [
+                    {"type": "text", "text": text, "annotations": [{"type": "speech_metadata", "style": self.style}]}]}],
+                "response_format": {"type": "audio"},
+                "generation_config": {"speech_config": [{"voice": voice}]}}
+        return json.dumps(body, ensure_ascii=False).encode("utf-8")
+
+    def _one(self, text: str, voice: str) -> tuple[bytes, int]:
+        import base64
+        import binascii
+        status, data, _, retries = self._request("POST", self.url, self.build_body(text, voice))
+        if not self._first_http:
+            self._first_http = True
+            self.diag("Gemini first-call diagnostic: HTTP %d, response keys: %s" % (status, self._json_keys(data)))
+        if status != 200:
+            detail = self._detail(data)
+            if status in (401, 403):
+                raise SystemExit("Gemini rejected the key (HTTP %d). Check the GEMINI_API_KEY secret, that the "
+                                 "Generative Language API is enabled for its project and that the model %r is allowed. "
+                                 "Detail: %s" % (status, self.model, detail))
+            if status == 404:
+                raise SystemExit("Gemini HTTP 404: model %r or endpoint not found (try --gemini-model %s). Detail: %s"
+                                 % (self.model, GEMINI_KNOWN_MODELS[0], detail))
+            if status == 429 or 500 <= status <= 599:
+                raise SystemExit("Gemini HTTP %d persisted after %d retries (%s). Free-tier limits are unknown: wait, "
+                                 "raise --min-interval (now %g s) or check the quota in AI Studio. Detail: %s"
+                                 % (status, retries, "rate limit / quota" if status == 429 else "server error",
+                                    self.min_interval, detail))
+            raise SystemExit("Gemini TTS HTTP %d: %s" % (status, detail))
+        try:
+            j = json.loads(data.decode("utf-8"))
+        except ValueError:
+            raise SystemExit("Gemini: HTTP 200 but the body is not JSON (%d bytes); see the diagnostic above" % len(data))
+        b64, mime = self.extract_audio(j)
+        if b64 is None:
+            raise SystemExit("Gemini: no model_output audio item in the response (keys: %s). The text may have been "
+                             "refused or the response format differs." % self._json_keys(data))
+        try:
+            raw = base64.b64decode(b64.split(",", 1)[1] if b64.startswith("data:") and "," in b64 else b64)
+        except (binascii.Error, ValueError):
+            raise SystemExit("Gemini: the audio data is not valid base64")
+        if _sniff_audio(raw) is None and mime and re.search(r"pcm|l16", mime, re.I):
+            m = re.search(r"rate=(\d+)", mime)
+            pcm, sr, kind = raw[: len(raw) // 2 * 2], int(m.group(1)) if m else 24000, "raw-pcm"
+        else:
+            try:
+                pcm, sr, kind = decode_audio_bytes(raw)
+            except ValueError as e:
+                raise SystemExit("Gemini: " + str(e))
+        if not self._first_audio:
+            self._first_audio = True
+            self.diag("Gemini audio: %d bytes decoded (%s), %d Hz, %.2f s for %d characters" % (
+                len(raw), kind, sr, len(pcm) / 2 / sr, len(text)))
+        return pcm, sr
+
+    # -- public ---------------------------------------------------------------------------------------------
+    def synthesize(self, text: str, voice: str) -> tuple[bytes, int]:
+        voice = voice or GEMINI_DEFAULT_VOICE
+        if not _VOICE_RE.fullmatch(voice):
+            raise SystemExit("Gemini voice name looks wrong (letters, digits, _ - only): %r" % voice)
+        chunks = split_chunks(text, self.chunk_chars)
+        if not chunks:
+            raise SystemExit("Gemini: empty text")
+        total = sum(len(c) for c in chunks)
+        if self.budget:
+            self.budget.check(total)
+        pcms, sr_seen = [], None
+        for c in chunks:
+            pcm, sr = self._one(c, voice)
+            if sr_seen is None:
+                sr_seen = sr
+            elif sr != sr_seen:
+                raise SystemExit("Gemini: sample rate changed between chunks (%d vs %d)" % (sr_seen, sr))
+            pcms.append(pcm)
+            self.chars_sent += len(c)
+            if self.budget:
+                self.budget.add(len(c))
+        gap = b"\x00\x00" * int(round(self.chunk_gap * sr_seen))
+        return gap.join(pcms), sr_seen
+
+    def list_voices(self, language_code: str = "uz", page_size: int = 50) -> list[str]:
+        """GET /v1beta/voices?language_code=uz&page_size=50 (extended voices). Tolerant: names from name / voice / id."""
+        status, data, _, _ = self._request("GET", "%s?language_code=%s&page_size=%d" % (
+            GEMINI_VOICES_URL, language_code, page_size), None)
+        if status != 200:
+            raise SystemExit("Gemini voices HTTP %d: %s" % (status, self._detail(data)))
+        try:
+            j = json.loads(data.decode("utf-8"))
+        except ValueError:
+            raise SystemExit("Gemini voices: response is not JSON")
+        items = j.get("voices") if isinstance(j, dict) else None
+        names = []
+        for it in items or []:
+            if isinstance(it, dict):
+                n = it.get("name") or it.get("voice") or it.get("id") or it.get("display_name")
+                if n:
+                    names.append(self._safe(str(n), 80))
+            elif isinstance(it, str):
+                names.append(self._safe(it, 80))
+        return names
+
+    def cache_tag(self):
+        return "gemini|%s|%s" % (self.model, self.style)
+
+
 def make_provider(name: str, args) -> Provider:
+    mi = getattr(args, "min_interval", None)
     if name == "azure":
         return AzureProvider(rate=args.rate, guard=synth.QuotaGuard(limit=args.azure_char_limit),
-                             min_interval_s=args.min_interval)
+                             min_interval_s=3.2 if mi is None else mi)
+    if name == "edge":
+        return EdgeProvider(rate=args.rate if args.rate else "-3%", pkgs=getattr(args, "edge_pkgs", None))
     if name == "uzbekvoiceai":
         return UzbekVoiceAIProvider(
             auth_scheme=args.uzv_auth, blocking=not args.uzv_async,
             budget=CharBudget(Path.home() / ".labguide_tts_uzbekvoice_usage.json", args.uzv_char_limit))
-    raise SystemExit("unknown provider %r (azure, uzbekvoiceai)" % name)
+    if name == "gemini":
+        return GeminiProvider(
+            model=args.gemini_model, style=args.gemini_style,
+            min_interval_s=GEMINI_MIN_INTERVAL_S if mi is None else mi,
+            budget=CharBudget(Path.home() / ".labguide_tts_gemini_usage.json", args.gemini_char_limit))
+    raise SystemExit("unknown provider %r (azure, uzbekvoiceai, gemini)" % name)
 
 
 # --------------------------------------------------------------------------- audio helpers (pure python)
@@ -649,8 +984,12 @@ def plan_path(video: str, repo: Path = REPO) -> Path:
     return repo / "docs/video" / video / "voice_uz" / "plan.json"
 
 
-def line_text(line: dict, use_suggested: bool) -> tuple[str, str]:
-    """(text to send, 'original'|'suggested'). Suggested is used only when it exists and was asked for."""
+def line_text(line: dict, use_suggested: bool, text_variant: str = "spoken") -> tuple[str, str]:
+    """(text to send, 'original'|'suggested'|'subtitle'). Suggested is used only when it exists and was asked for.
+    text_variant 'subtitle' sends the ORIGINAL written Uzbek subtitle text (PDF, eGFR, mmol/L as written) - meant for
+    LLM-based TTS (Gemini) that may read such terms by itself; the default 'spoken' is the pure-Uzbek voice text."""
+    if text_variant == "subtitle":
+        return line["text_uz"], "subtitle"
     s = line.get("suggested") or {}
     if use_suggested and s.get("status") == "SUGGESTED" and s.get("text_tts"):
         return s["text_tts"], "suggested"
@@ -710,7 +1049,7 @@ def next_starts(lines: list[dict], total_s: float) -> list[float]:
 def run_video(plan: dict, out_root: Path, *, synthesizer: Synthesizer | None, dry_run: bool = False,
               allow_unfit: bool = False, use_suggested: bool = False, max_tempo: float = MAX_TEMPO, slow_short: bool = False,
               loudnorm: bool = True, lufs: float = TARGET_LUFS, tp: float = TARGET_TP, tempo_fn=ffmpeg_tempo,
-              rate_cps: float | None = None, natural: bool = False) -> dict:
+              rate_cps: float | None = None, natural: bool = False, text_variant: str = "spoken") -> dict:
     """natural=True: NO fitting to the English slots and no timeline. Every line is synthesised once, silence-trimmed,
     written to <out>/<id>/uz/lines/<line>.wav and its length to voice_uz_lines.json; tool/tts/retime_uz.py then builds
     the Uzbek timeline (scenes stretched only where a line does not fit at +12 %) and assembles the WAV."""
@@ -721,14 +1060,17 @@ def run_video(plan: dict, out_root: Path, *, synthesizer: Synthesizer | None, dr
     out_dir = out_root / vid / "uz"
     rows, clips, sr_seen = [], [], None
     for line in lines:
-        text, variant = line_text(line, use_suggested)
+        text, variant = line_text(line, use_suggested, text_variant)
         avail = line["available_s"]
         hard = line["hard_end_s"] - line["start_s"]
         row = {"id": line["id"], "scene": line["scene"], "start_s": line["start_s"], "available_s": avail,
                "hard_s": round(hard, 3), "text_variant": variant, "chars_sent": len(text)}
         if dry_run:
-            est = line["suggested"]["est_speech_s"] if variant == "suggested" else line["est_speech_s"]
-            est = est * plan["assumptions"]["speech_rate_chars_per_s"] / rate
+            if variant == "subtitle":
+                est = len(text) / rate
+            else:
+                est = line["suggested"]["est_speech_s"] if variant == "suggested" else line["est_speech_s"]
+                est = est * plan["assumptions"]["speech_rate_chars_per_s"] / rate
             d = fit_decision(est, avail, hard, max_tempo=max_tempo,
                              slow_to=line["en_clip_s"] if slow_short else None)
             row.update(raw_s=None, trimmed_s=round(est, 3), estimated=True)
@@ -753,7 +1095,7 @@ def run_video(plan: dict, out_root: Path, *, synthesizer: Synthesizer | None, dr
         "schema": "labguide.voice_uz.report/1", "videoId": vid, "dry_run": dry_run, "timeline_total_s": total_s,
         "provider": None if dry_run else synthesizer.provider.name, "voice": None if dry_run else synthesizer.voice,
         "apostrophe": None if dry_run else synthesizer.apostrophe, "text_variant": "suggested" if use_suggested else "original",
-        "max_tempo": max_tempo, "lines": rows,
+        "voice_text": text_variant, "max_tempo": max_tempo, "lines": rows,
         "summary": {"lines": len(rows), "chars_sent": sum(r["chars_sent"] for r in rows),
                     "sped_up": sum(r["status"] == "sped_up" for r in rows),
                     "overflow": sum(r["status"] == "overflow" for r in rows),
@@ -826,7 +1168,7 @@ def report_markdown(rep: dict) -> str:
 # --------------------------------------------------------------------------- sample mode
 
 def run_sample(items: list[dict], out_root: Path, synthesizer: Synthesizer, *, gap_s: float = 0.5,
-               rate_cps: float = SPEECH_RATE_CPS, label: str = "") -> dict:
+               rate_cps: float = SPEECH_RATE_CPS, label: str = "", text_variant: str = "spoken") -> dict:
     out_dir = out_root / "voice_uz_sample"
     parts, rows, sr_seen = [], [], None
     for it in items:
@@ -847,6 +1189,7 @@ def run_sample(items: list[dict], out_root: Path, synthesizer: Synthesizer, *, g
            "measured_chars_per_s": round(tot_chars / tot_s, 2) if tot_s else None,
            "assumed_chars_per_s": rate_cps, "total_seconds": round(tot_s, 2),
            "provider": synthesizer.provider.name, "voice": synthesizer.voice, "apostrophe": synthesizer.apostrophe,
+           "text_variant": text_variant,
            "next_step": "Listen. If the measured rate differs, re-run tool/tts/plan_uz.py --rate <measured> to refresh the fit tables."}
     (out_dir / ("sample%s.json" % label)).write_text(json.dumps(rep, ensure_ascii=False, indent=2), encoding="utf-8")
     return rep
@@ -859,9 +1202,18 @@ def parse_args(argv=None):
     ap.add_argument("plans", nargs="*", help="plan.json files (or use --video / --all)")
     ap.add_argument("--video", help="comma separated video ids")
     ap.add_argument("--all", action="store_true", help="all 9 videos")
-    ap.add_argument("--provider", default="uzbekvoiceai", choices=["uzbekvoiceai", "azure"],
-                    help="uzbekvoiceai (default, voice shoira) or azure (uz-UZ-MadinaNeural / uz-UZ-SardorNeural)")
-    ap.add_argument("--voice", default=None, help="uzbekvoiceai: shoira (default) lola kamola jasur sevinch; azure: uz-UZ-MadinaNeural (default) or uz-UZ-SardorNeural")
+    ap.add_argument("--provider", default="uzbekvoiceai", choices=["uzbekvoiceai", "azure", "gemini", "edge"],
+                    help="uzbekvoiceai (default, voice shoira), azure (uz-UZ-MadinaNeural / uz-UZ-SardorNeural) or gemini (GEMINI_API_KEY, voice Fola)")
+    ap.add_argument("--voice", default=None, help="uzbekvoiceai: shoira (default) lola kamola jasur sevinch; azure: uz-UZ-MadinaNeural (default) or uz-UZ-SardorNeural; gemini: Fola (default) Kore Puck Charon Leda Sulafat Zephyr ...")
+    ap.add_argument("--voices", default=None, help="with --sample: comma separated voices, all synthesized in ONE run (one character cap, one process)")
+    ap.add_argument("--text-variant", default="spoken", choices=["spoken", "subtitle", "both"],
+                    help="spoken (default): the pure-Uzbek voice text; subtitle: the ORIGINAL written subtitle text (PDF, eGFR, mmol/L as written); both: only with --sample")
+    ap.add_argument("--max-chars", type=int, default=None,
+                    help="abort BEFORE any request when the planned characters of this run exceed N (also checked in --dry-run)")
+    ap.add_argument("--gemini-model", default=GEMINI_DEFAULT_MODEL, help="Gemini model (default %s; also gemini-3.8-flash-lite-tts, previews gemini-3.1-flash-tts-preview, gemini-2.5-pro-preview-tts)" % GEMINI_DEFAULT_MODEL)
+    ap.add_argument("--gemini-style", default="", help="Gemini speech_metadata.style (default empty); NEVER put style instructions into the text")
+    ap.add_argument("--gemini-char-limit", type=int, default=40_000, help="local cumulative character budget for Gemini (a safety net; the free-tier limits are unknown)")
+    ap.add_argument("--list-gemini-voices", action="store_true", help="GET /v1beta/voices?language_code=uz&page_size=50 and print the names (one request)")
     ap.add_argument("--out-root", default=str(DEFAULT_OUT_ROOT), help="default video_studio/out (gitignored)")
     ap.add_argument("--dry-run", action="store_true", help="no network, no keys: fit table from the plans' estimates")
     ap.add_argument("--sample", action="store_true", help="synthesize only docs/video/voice_uz/SAMPLE_TEXT.txt")
@@ -886,42 +1238,100 @@ def parse_args(argv=None):
     ap.add_argument("--uzv-char-limit", type=int, default=19_000,
                     help="local cumulative character budget for UzbekVoice (10 000 so'm = 20 000 chars; a 165-char sample was already spent)")
     ap.add_argument("--price-per-char", type=float, default=0.5, help="so'm per character, shown in dry-run cost lines (owner's figure, unverified)")
+    ap.add_argument("--edge-pkgs", default=None, help="directory holding the edge_tts package (provider edge)")
     ap.add_argument("--azure-char-limit", type=int, default=450_000)
-    ap.add_argument("--min-interval", type=float, default=3.2, help="seconds between Azure requests (F0: 20 per 60 s)")
+    ap.add_argument("--min-interval", type=float, default=None, help="seconds between requests (default: Azure 3.2 = F0 20 per 60 s; Gemini 6)")
     return ap.parse_args(argv)
 
 
 def cost_note(a, chars: int) -> str:
+    if a.provider == "gemini":
+        return " (Gemini is billed per audio token, not per character; the character count is only the size estimate)"
     return (" = about %.0f so'm at %g so'm/char (owner's figure for UzbekVoice, unverified)" % (chars * a.price_per_char, a.price_per_char)
             if a.provider == "uzbekvoiceai" else "")
+
+
+def sample_items_for(items: list[dict], variant: str) -> list[dict]:
+    """spoken: text_tts (pure Uzbek) is sent; subtitle: the written text as in the sample file."""
+    if variant == "subtitle":
+        return [dict(it, text_tts=it["text"]) for it in items]
+    return items
+
+
+def check_cap(planned: int, cap: int | None, what: str) -> None:
+    if cap is not None and planned > cap:
+        raise SystemExit("character cap: %s would send %d characters > --max-chars %d. Nothing was sent. "
+                         "(Shorten the text / fewer voices, or raise the cap on purpose.)" % (what, planned, cap))
+
+
+def planned_video_chars(plan: dict, use_suggested: bool, text_variant: str) -> int:
+    return sum(len(line_text(l, use_suggested, text_variant)[0]) for l in plan["lines"])
 
 
 def main(argv=None) -> int:
     a = parse_args(argv)
     out_root = Path(a.out_root)
     if a.voice is None:
-        a.voice = "uz-UZ-MadinaNeural" if a.provider == "azure" else UzbekVoiceAIProvider.DEFAULT_MODEL
-    if a.provider == "azure" and a.voice not in AZURE_VOICES:
+        a.voice = ("uz-UZ-MadinaNeural" if a.provider in ("azure", "edge")
+                   else GEMINI_DEFAULT_VOICE if a.provider == "gemini" else UzbekVoiceAIProvider.DEFAULT_MODEL)
+    if a.provider in ("azure", "edge") and a.voice not in AZURE_VOICES:
         print("note: voice %r is not one of %s" % (a.voice, ", ".join(AZURE_VOICES)), file=sys.stderr)
+    if a.text_variant != "spoken" and a.provider != "gemini":
+        print("note: --text-variant %s sends text the provider was not tested with (written terms such as PDF/eGFR); "
+              "meant for Gemini" % a.text_variant, file=sys.stderr)
+    if a.list_gemini_voices:
+        for n in make_provider("gemini", a).list_voices("uz", 50):
+            print(n)
+        return 0
 
     if a.sample:
-        items = parse_sample(Path(a.sample_file))
+        if a.voices and a.provider != "gemini":
+            raise SystemExit("--voices is only for --provider gemini (use --voice otherwise)")
+        base_items = parse_sample(Path(a.sample_file))
+        variants = ["spoken", "subtitle"] if a.text_variant == "both" else [a.text_variant]
+        voices = [v.strip() for v in a.voices.split(",") if v.strip()] if a.voices else [a.voice]
+        apos = ["keep", "ascii", "modifier"] if a.apostrophe_variants else [a.apostrophe]
+        per_variant = {v: sum(len(i["text_tts"]) for i in sample_items_for(base_items, v)) for v in variants}
+        planned = sum(per_variant.values()) * len(voices) * len(apos)
+        check_cap(planned, a.max_chars, "the sample run (%d voice(s) x %d text variant(s))" % (len(voices), len(variants)))
         if a.dry_run:
             tot = 0.0
-            for it in items:
-                est = len(it["text_tts"]) / SPEECH_RATE_CPS
-                tot += est
-                print("%s  %3d chars  ~%.1f s   %s" % (it["id"], len(it["text_tts"]), est, it["text_tts"]))
-            chars = sum(len(i["text_tts"]) for i in items)
-            print("total ~%.1f s (at the measured %g chars/s), %d characters%s; nothing was sent" % (tot, SPEECH_RATE_CPS, chars, cost_note(a, chars)))
+            for v in variants:
+                for it in sample_items_for(base_items, v):
+                    est = len(it["text_tts"]) / SPEECH_RATE_CPS
+                    tot += est
+                    print("%s%s  %3d chars  ~%.1f s   %s" % (it["id"], " [%s]" % v if len(variants) > 1 or v != "spoken" else "",
+                                                               len(it["text_tts"]), est, it["text_tts"]))
+            print("one voice: ~%.1f s (at the measured %g chars/s), %d characters; this run (%d voice(s)): %d characters%s; "
+                  "nothing was sent" % (tot, SPEECH_RATE_CPS, sum(per_variant.values()), len(voices), planned, cost_note(a, planned)))
             return 0
         provider = make_provider(a.provider, a)
-        variants = ["keep", "ascii", "modifier"] if a.apostrophe_variants else [a.apostrophe]
-        for v in variants:
-            sy = Synthesizer(provider, a.voice, out_root / ".cache_uz", v, a.force)
-            rep = run_sample(items, out_root, sy, label=("_" + v) if a.apostrophe_variants else "")
-            print("sample [%s]: %s  %.1f s, measured %.1f chars/s (plans use %g)" % (
-                v, rep["file"], rep["total_seconds"], rep["measured_chars_per_s"] or 0, SPEECH_RATE_CPS))
+        failed, done = [], 0
+        for voice in voices:
+            try:
+                for v in apos:
+                    for tv in variants:
+                        parts = []
+                        if a.apostrophe_variants:
+                            parts.append(v)
+                        if a.provider == "gemini" or len(voices) > 1:
+                            parts.append(voice)
+                        if a.provider == "gemini" or tv != "spoken" or len(variants) > 1:
+                            parts.append(tv)
+                        label = ("_" + "_".join(parts)) if parts else ""
+                        sy = Synthesizer(provider, voice, out_root / ".cache_uz", v, a.force)
+                        rep = run_sample(sample_items_for(base_items, tv), out_root, sy, label=label, text_variant=tv)
+                        done += 1
+                        print("sample [%s, %s, %s]: %s  %.1f s, measured %.1f chars/s (plans use %g)" % (
+                            voice, v, tv, rep["file"], rep["total_seconds"], rep["measured_chars_per_s"] or 0, SPEECH_RATE_CPS))
+            except SystemExit as e:  # one failing voice must not hide the others, unless nothing worked at all
+                print("voice %s FAILED: %s" % (voice, e), file=sys.stderr)
+                failed.append(voice)
+                if not done or len(voices) == 1:
+                    return 1
+        if failed:
+            print("failed voices: %s" % ", ".join(failed), file=sys.stderr)
+            return 1
         return 0
 
     ids = VIDEOS if a.all else (a.video.split(",") if a.video else [])
@@ -929,16 +1339,20 @@ def main(argv=None) -> int:
     if not paths:
         print("nothing to do: give plan.json files, --video ID[,ID] or --all (or --sample)", file=sys.stderr)
         return 2
+    if a.text_variant == "both":
+        raise SystemExit("--text-variant both is only for --sample")
+    plans = [load_plan(p) for p in paths]
+    planned = sum(planned_video_chars(pl, a.use_suggested, a.text_variant) for pl in plans)
+    check_cap(planned, a.max_chars, "this run (%d video(s))" % len(plans))
     provider = None if a.dry_run else make_provider(a.provider, a)
     unfit_any = False
     total_chars = 0
-    for p in paths:
-        plan = load_plan(p)
+    for plan in plans:
         sy = None if a.dry_run else Synthesizer(provider, a.voice, out_root / ".cache_uz", a.apostrophe, a.force)
         rep = run_video(plan, out_root, synthesizer=sy, dry_run=a.dry_run, allow_unfit=a.allow_unfit,
                         use_suggested=a.use_suggested,
                         max_tempo=a.max_tempo, slow_short=a.slow_short, loudnorm=not a.no_loudnorm,
-                        lufs=a.lufs, tp=a.tp, rate_cps=a.rate_cps, natural=a.natural)
+                        lufs=a.lufs, tp=a.tp, rate_cps=a.rate_cps, natural=a.natural, text_variant=a.text_variant)
         s = rep["summary"]
         print("%-12s lines %2d  chars %5d  sped_up %2d  overflow %2d  truncated %2d%s" % (
             rep["videoId"], s["lines"], s["chars_sent"], s["sped_up"], s["overflow"], s["truncated"],

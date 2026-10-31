@@ -1,2 +1,2 @@
-sample
-# run 5: spoken-uzbek-only sample
+gemini-compare:docs/video/voice_uz/GEMINI_TEST.txt
+# run: gemini compare 7 voices x 2 text variants

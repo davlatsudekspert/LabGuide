@@ -28,7 +28,8 @@ Videos: `overview`, `calibration`, `qc`, `photometry`, `osmometry`, `leukocyte`,
 | Plan builder (re-run after any text or rate change) | `tool/tts/plan_uz.py` |
 | Synthesis + fitting + timeline + loudness + report | `tool/tts/synth_uz.py` |
 | Swap the audio of finished MP4s without re-rendering | `tool/tts/remux_uz.py` |
-| Offline tests (fake provider, fake HTTP) | `tool/tts/test_synth_uz.py` |
+| Offline tests (fake provider, fake HTTP) | `tool/tts/test_synth_uz.py`, `tool/tts/test_synth_gemini.py` |
+| Gemini voice test lines | `docs/video/voice_uz/GEMINI_TEST.txt` |
 
 ## 2. How the plans are built (read this before trusting any number)
 
@@ -122,6 +123,70 @@ Azure steps (the owner, in their own Azure account - nobody else creates this):
   calibration 1 460, qc 1 043, photometry 994, osmometry 1 041, leukocyte 1 437, calculators 946, gcms 1 220, qpcr 1 066.
   Redoing everything once more would use the other half of the balance, so listen to a sample of the pure-Uzbek forms
   **before** the first pass, and re-run only changed lines (the cache does that).
+
+### Gemini TTS (third provider, `--provider gemini`) - facts relayed by the owner's helper, NOT verified by us
+
+Implemented in `synth_uz.py` (`GeminiProvider`), offline-tested with a fake HTTP layer in `tool/tts/test_synth_gemini.py`;
+**never run against the real service - no key existed, no call has been made.** Facts as relayed (Google docs, 2026-10-31):
+
+* `POST https://generativelanguage.googleapis.com/v1beta/interactions`, headers `x-goog-api-key: $GEMINI_API_KEY` and
+  `Content-Type: application/json`. Body: `model` (default `gemini-3.8-flash-tts`; also `gemini-3.8-flash-lite-tts`, previews
+  `gemini-3.1-flash-tts-preview`, `gemini-2.5-pro-preview-tts`), `input` = one `user_input` with the text and
+  `annotations: [{"type": "speech_metadata", "style": "<style or empty>"}]`, `response_format: {"type": "audio"}`,
+  `generation_config.speech_config: [{"voice": "<voice>"}]`.
+* Response: base64 audio in `steps[].content[].data` (step `model_output`, content `audio`); the tool takes the **last** such
+  item. Decoded bytes should be a complete WAV (24 kHz mono 16-bit). The tool also tolerates other containers (ffmpeg) and raw PCM
+  with a `mime_type`; the pipeline then handles it like every other provider (trim, fit, loudnorm to 48 kHz mono PCM16).
+* Language is **auto-detected** (no language parameter; Uzbek is listed as "Northern Uzbek"). The text is read **verbatim**, so the
+  tool never puts style words into the text: the style goes only into `speech_metadata.style` (`--gemini-style`, default empty).
+  Pauses would be English tags such as `<short pause>` (not used by our texts).
+* Voices: 30 prebuilt (Zephyr, Puck, Charon, Kore, Fola, Leda, Sulafat ...). `python3 tool/tts/synth_uz.py --list-gemini-voices`
+  does one `GET /v1beta/voices?language_code=uz&page_size=50` to list the extended voices (needs the key; parsing is a guess).
+* Text longer than 900 characters is split on sentence ends (the real limit is unknown) and the clips are joined.
+* **Free tier**: exists, but Google may use free-tier data to improve its products and humans may read it. Only the public
+  narration text is sent. Free-tier rate limits are unknown: the tool waits `--min-interval` (default 6 s) between requests and
+  retries 429 and 5xx with exponential backoff (8, 16, 32 s, or `Retry-After`), at most 3 retries, then stops with a clear message.
+  Paid price relayed: about $9 per 1M output audio tokens (flash) - small for us; the tool prints **characters** only
+  (`--gemini-char-limit`, default 40 000, is a local safety counter in `~/.labguide_tts_gemini_usage.json`).
+* First call prints a key-free diagnostic to stderr: HTTP status, response keys, decoded audio bytes, sample rate, duration.
+* Licence / commercial use of Gemini-generated audio, SynthID watermark and disclosure rules: **OPEN**, not checked.
+
+**Key (the owner):** aistudio.google.com -> **Get API key** -> create a key (a new Google Cloud project is created or chosen;
+the key starts with `AIza`). Then GitHub -> repository **Settings -> Secrets and variables -> Actions -> New repository secret**,
+name exactly `GEMINI_API_KEY`. The workflow reads it only through the environment and fails with a clear message if it is empty.
+Never paste the key into the chat, a file or a commit. Locally: `export GEMINI_API_KEY=...` in your own shell only.
+Optional repository **variables** (same page, tab Variables): `GEMINI_VOICE` (default `Fola`), `GEMINI_MODEL`
+(default `gemini-3.8-flash-tts`), `GEMINI_COMPARE_CAP` (default 3000), `GEMINI_ALL_CAP` (default 12000).
+
+**Two text variants.** `--text-variant spoken` (default) sends the pure-Uzbek voice text from `uz_prep.py`; `--text-variant subtitle`
+sends the ORIGINAL written subtitle text (PDF, eGFR, GC-MS, mmol/L ... as written), because an LLM-based TTS may read such terms
+correctly by itself. `--text-variant both` (sample only) synthesizes both so you can hear the difference. The test lines are in
+`docs/video/voice_uz/GEMINI_TEST.txt` (hook sentence, normal sentence, hard-terms line, a PDF + mg/dL line).
+
+**Workflow modes** (first line of `docs/video/voice_uz/RUN_REQUEST.txt`; pushing that file is what starts real calls - nobody
+did it yet; only the repo owner's pushes run):
+
+| First line | What it does | Characters |
+|---|---|---|
+| `gemini-compare:docs/video/voice_uz/GEMINI_TEST.txt` | 7 voices (Fola Kore Puck Charon Leda Sulafat Zephyr) x 2 text variants x 4 lines, model `gemini-3.8-flash-tts`, one process, `--min-interval 6` | 2 947 (cap 3 000) |
+| `gemini-all` | all 9 videos, voice `GEMINI_VOICE` (default Fola), text variant spoken | 10 697 (cap 12 000) |
+| `gemini-video:<id>` | one video (e.g. `gemini-video:overview`), same settings | e.g. overview 1 490 |
+
+The cap is checked **before the first request** (`--max-chars`, also in `--dry-run`): over the cap the run stops with nothing sent.
+Existing modes (`sample`, `all`, `video:<id>`, `sample:<file>`, `compare:<file>`) are unchanged and still use UzbekVoice.
+Output: artifact `uz-voice-<run>`; compare files are `out_voice/gemini/voice_uz_sample/sample_<Voice>_<spoken|subtitle>.wav` (plus
+`<id>_<Voice>_<variant>.wav` per line and `sample_*.json` with the measured seconds).
+Local commands (no key needed for the dry runs):
+
+```bash
+python3 tool/tts/synth_uz.py --provider gemini --sample --sample-file docs/video/voice_uz/GEMINI_TEST.txt \
+    --voices Fola,Kore,Puck,Charon,Leda,Sulafat,Zephyr --text-variant both --max-chars 3000 --dry-run
+python3 tool/tts/synth_uz.py --provider gemini --all --max-chars 12000 --dry-run
+python3 tool/tts/synth_uz.py --provider gemini --video overview --text-variant subtitle --dry-run
+```
+
+Not verified for Gemini: every fact above (endpoint, body, response shape, WAV format, rate limits, chunk limit, voice
+names, Uzbek quality, how it reads PDF / eGFR / mmol/L), the workflow run itself, and anything about licences.
 
 ## 4. Commands
 
@@ -225,6 +290,9 @@ No TTS call for the spoken-Uzbek-only texts, no key used, **nobody has listened*
 stress, or of the long replacement phrases), no render, no remux of real MP4s (only unit tests with a 2-second fake clip), no check
 of `uz-UZ` regional availability, no licence confirmation, no native-speaker review of the Uzbek terms. The speech rate 12.9
 chars/s is the owner's single sample, not ours. Unit tests (offline) and the dry run were run.
+
+**Gemini:** no request was ever sent (no key exists yet), the workflow modes `gemini-*` were never run, the response parsing is written from relayed
+facts and checked only against fake responses, nobody has heard a Gemini voice, and the free-tier limits / licence are unknown.
 
 ## 9. Fit reality check (measured rate, spoken-Uzbek-only text)
 
