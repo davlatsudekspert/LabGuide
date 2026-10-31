@@ -307,10 +307,37 @@ class AzureTests(unittest.TestCase):
         self.assertIn("xml:lang='ru-RU'", s)
 
 
+def _fake_numpy():
+    """Minimal numpy stand-in (clip / * / astype('<i2') / tobytes) for machines without numpy, e.g. the Actions
+    runner: SileroBackend only needs these four operations on a short list."""
+    import struct
+    import types
+
+    class Arr(list):
+        def __mul__(self, k):
+            return Arr(x * k for x in self)
+
+        def astype(self, dt):
+            assert dt == "<i2"
+            return Arr(int(x) for x in self)
+
+        def tobytes(self):
+            return struct.pack("<%dh" % len(self), *self)
+
+    return types.SimpleNamespace(clip=lambda arr, lo, hi: Arr(min(hi, max(lo, x)) for x in arr))
+
+
 class SileroStubTests(unittest.TestCase):
     def test_silero_backend_with_fake_modules(self):
         import types
         calls = {}
+        # CI (ubuntu runner) has no numpy: this test only needs a tiny stand-in, so fall back to one instead of erroring
+        try:
+            import numpy  # noqa: F401
+            fake_np = None
+        except ImportError:
+            fake_np = _fake_numpy()
+            sys.modules["numpy"] = fake_np
 
         class FakeAudio(list):
             pass
@@ -332,6 +359,8 @@ class SileroStubTests(unittest.TestCase):
         finally:
             sys.modules.pop("torch", None)
             sys.modules.pop("silero", None)
+            if fake_np is not None:
+                sys.modules.pop("numpy", None)
         self.assertEqual(calls["args"], ("салом", "uzb_saida", 48000))
         self.assertEqual(sr, 48000)
         self.assertEqual(len(pcm), 8)

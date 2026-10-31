@@ -9,13 +9,19 @@ how an Uzbek reader would say them. Stdlib only; reuses the number words of tool
 per-video pronunciation_uz.csv. `warnings` lists things this module could NOT expand (digits, dates,
 unknown upper-case abbreviations): the plan marks such lines NEEDS_MANUAL.
 
-IMPORTANT: every respelling here is a PROPOSAL. Azure uz-UZ voices do not support SSML <phoneme> or custom
-lexicons (Microsoft Learn, language-support table), so the only lever is plain-text respelling. Nobody has
-listened to any of this yet: all rows are NEEDS_NATIVE_REVIEW. Apostrophes in o‘ g‘ (U+2018) and tutuq
+SPOKEN-UZBEK-ONLY RULE (owner, from listening tests of UzbekVoice 'shoira'): the voice cannot read English/Latin
+terms and letter-by-letter respellings ('pe de ef', 'e ge ef er') sound bad. The voice text therefore contains
+ONLY ordinary Uzbek words (loanwords in Uzbek orthography such as kalkulyator, kyuveta count as ordinary). Every
+abbreviation / Latin term is replaced by an Uzbek term, a descriptive phrase, or dropped (the on-screen subtitle
+keeps it). The replacements live in tool/tts/lexicon/spoken_uz_only.json (terms, line_terms, line_overrides);
+personal names are the only unavoidable foreign tokens and are listed as NEEDS_OWNER_APPROVAL there.
+
+Nobody has listened to any of this yet: all rows are NEEDS_NATIVE_REVIEW. Apostrophes in o‘ g‘ (U+2018) and tutuq
 (U+2019) are kept as written; synth_uz.py can map them at synthesis time (--apostrophe).
 """
 from __future__ import annotations
 
+import json
 import re
 import sys
 import unicodedata
@@ -27,43 +33,29 @@ import synth  # noqa: E402  (number words, decimals, units)
 APOS = "[’‘ʼ'`]"
 BANNED = re.compile("|".join(["toi" + "fa", "ban" + "k"]), re.IGNORECASE)  # owner's word list; split so a text search is clean
 
-# Uzbek letter names (used to spell abbreviations)
-LETTER = {"A": "a", "B": "be", "C": "se", "D": "de", "E": "e", "F": "ef", "G": "ge", "H": "ha", "I": "i",
-          "J": "je", "K": "ka", "L": "el", "M": "em", "N": "en", "O": "o", "P": "pe", "Q": "kyu", "R": "er",
-          "S": "es", "T": "te", "U": "u", "V": "ve", "W": "dabl yu", "X": "iks", "Y": "ye", "Z": "zet"}
-
-# term, written regex (case-sensitive), spoken, risk, note, attach-suffix-without-space
-# Order matters: longest / most specific first.
-_ABBR = [
-    ("GC-MS", r"GC-MS", "ji si em es", "HIGH", "English letter names; alternative: ge se em es / xromato-mass-spektrometriya", False),
-    ("qPCR", r"qPCR", "kyu pe se er", "HIGH", "q = kyu (as in QC/QR); PCR spelled with Uzbek letter names", False),
-    ("PCR", r"PCR", "pe se er", "MEDIUM", "same as tool/tts/lexicon/uz.json", False),
-    ("eGFR", r"eGFR", "e ge ef er", "HIGH", "alternative: i ji ef ar", False),
-    ("KDIGO", r"KDIGO", "kidigo", "HIGH", "read as one word; native check", True),
-    ("LabGuide", r"LabGuide", "Leb Gayd", "HIGH", "brand; same as tool/tts/lexicon/uz.json", True),
-    ("WBC", r"WBC", "dabl yu bi si", "HIGH", "English letter names (white blood cells); alternative: ve be se", False),
-    ("QC", r"QC", "kyu si", "MEDIUM", "alternative: ku se", False),
-    ("QR", r"QR", "kyu er", "MEDIUM", "alternative: ku er", False),
-    ("PDF", r"PDF", "pe de ef", "LOW", "", False),
-    ("CSV", r"CSV", "si es vi", "MEDIUM", "", False),
-    ("IFU", r"IFU", "i ef yu", "HIGH", "instructions for use; alternative: foydalanish yo‘riqnomasi (changes wording)", False),
-    ("SOP", r"SOP", "es o pe", "MEDIUM", "", False),
-    ("REF", r"REF", "er e ef", "HIGH", "catalogue number label; alternative: ref", False),
-    ("SD", r"SD", "es de", "MEDIUM", "standard deviation; alternative: standart og‘ish", False),
-    ("SI", r"SI", "es i", "MEDIUM", "", False),
-    ("GC", r"GC", "ji si", "HIGH", "", False),
-    ("MS", r"MS", "em es", "MEDIUM", "", False),
-    ("Cq", r"Cq", "si kyu", "HIGH", "quantification cycle", False),
-    ("Levey–Jennings", r"Levey[–-]Jennings", "Livi Jenings", "HIGH", "personal names; English pronunciation approximated", False),
-    ("Westgard", r"Westgard", "Vestgard", "HIGH", "personal name", False),
-    ("R²", r"R²", "er kvadrat", "LOW", "", False),
-]
-
 _UNITS_SPOKEN = [
     ("mOsm/kg", r"mOsm/kg", "milliosmol kilogramm", "MEDIUM", "unit"),
-    ("m/z", r"m/z", "em zet", "HIGH", "mass-to-charge ratio"),
     ("mmol/L", r"mmol/L", "millimol litr", "MEDIUM", "unit; number words from synth.py"),
 ]
+
+LEXICON_FILE = Path(__file__).resolve().parent / "lexicon" / "spoken_uz_only.json"
+_LEX_CACHE: dict = {}
+
+
+def load_lexicon(path: Path | None = None) -> dict:
+    """The spoken-Uzbek-only lexicon (cached)."""
+    p = Path(path or LEXICON_FILE)
+    if str(p) not in _LEX_CACHE:
+        lex = json.loads(p.read_text(encoding="utf-8"))
+        for t in lex["terms"]:
+            suf = "|".join(t.get("detached_suffixes", []))
+            t["_rx"] = re.compile(
+                ("" if t["pattern"].startswith(":") else r"(?<![\w])") + r"(?:" + t["pattern"] + r")" +
+                (r"(?:" + APOS + r"(?P<suf>[a-zA-Z]+))?(?![\w])" if t["action"] == "replace" else "") +
+                ((r"(?:\s+(?P<dsuf>" + suf + r")(?![\w]))?") if suf else ""))
+        _LEX_CACHE[str(p)] = lex
+    return _LEX_CACHE[str(p)]
+
 
 # loanwords written in Uzbek orthography: spoken = written, but each is a pronunciation risk to listen for
 WATCH = {
@@ -107,7 +99,7 @@ class Recorder:
 
     def add(self, term, written, spoken, risk, note="", kind="term"):
         self.used.append({"term": term, "written": written, "spoken": spoken, "risk": risk, "note": note,
-                          "kind": kind})
+                          "kind": kind, "action": "replaced", "approval": "no"})
         return spoken
 
 
@@ -119,40 +111,87 @@ def _decimal_vergul(whole: str, frac: str) -> str:
     return " ".join(parts)
 
 
-def prepare(text: str, extra_warn: bool = True, decimal: str = "vergul") -> tuple[str, list[dict], list[str]]:
+_VOWELS = "aeiou"
+
+
+def attach_suffix(spoken: str, suf: str) -> str:
+    """Attach an Uzbek case/possessive suffix (written after an apostrophe in the subtitle, e.g. PDF’da) to the
+    last word of the spoken replacement, with the few Uzbek sound rules that matter here."""
+    if not suf:
+        return spoken
+    last = spoken[-1]
+    if last == "i" and suf.startswith("si"):      # yo‘riqnomasi + sidan -> yo‘riqnomasidan
+        suf = suf[2:]
+    elif last in _VOWELS and suf.startswith("ing"):  # protsedura + ingizdan -> procedurangizdan
+        suf = suf[1:]
+    elif last in _VOWELS and suf.startswith("i"):    # protsedura + idan -> protsedurasidan
+        suf = "s" + suf
+    elif suf.startswith("ga") and last in "kq":      # ga -> ka / qa
+        suf = ("k" if last == "k" else "q") + suf[1:]
+    return spoken + suf
+
+
+def _sentence_start(text: str, pos: int) -> bool:
+    return re.search(r"(?:^|[.!?…]\s*|[«\"]\s*)$", text[:pos]) is not None
+
+
+def _check_override_source(ov: dict, text: str) -> list[str]:
+    return [] if ov["source"] == unicodedata.normalize("NFC", text) else [
+        "STALE_OVERRIDE: the subtitle text changed since the override in spoken_uz_only.json was written"]
+
+
+def prepare(text: str, extra_warn: bool = True, decimal: str = "vergul", key: str | None = None,
+            lexicon: dict | None = None) -> tuple[str, list[dict], list[str]]:
     """decimal: 'vergul' (2,3 -> 'ikki vergul uch', short, conversational) or 'formal' ('ikki butun o‘ndan uch').
 
-    Both are proposals for native review; 'vergul' is the default because it is ~25 % shorter and the
-    narration windows are tight.
+    key: "<video>:<line id>" (suffix ":S" for the suggested shorter text) selects line-specific entries of the
+    lexicon (line_overrides = whole spoken line written by hand, line_terms = replace one term differently).
+    Both decimals variants are proposals for native review; 'vergul' is the default because it is ~25 % shorter and
+    the narration windows are tight.
     """
+    lex = lexicon or load_lexicon()
     rec = Recorder()
     t = unicodedata.normalize("NFC", text)
     t = t.replace("«", "").replace("»", "")
+    warnings: list[str] = []
 
-    # --- whole formulas -------------------------------------------------------------
-    t = re.sub(r"A = log₁₀\(I₀/I\)",
-               lambda m: rec.add("A = log10(I0/I)", m.group(0), "A teng I nol bo‘lingan I ning o‘nli logarifmi",
-                                 "HIGH", "formula read aloud", "formula"), t)
-    t = re.sub(r"C = A namuna ÷ A standart × standart konsentratsiyasi",
-               lambda m: rec.add("C = A_sample / A_std x C_std", m.group(0),
-                                 "se teng a namuna bo‘lingan a standart, ko‘paytirilgan standart konsentratsiyasi",
-                                 "HIGH", "formula read aloud", "formula"), t)
-    t = re.sub(r"C1·V1 = C2·V2",
-               lambda m: rec.add("C1V1 = C2V2", m.group(0),
-                                 "se bir ve bir teng se ikki ve ikki",
-                                 "HIGH", "formula read aloud", "formula"), t)
+    ov = (lex.get("line_overrides") or {}).get(key) if key else None
+    if ov:
+        warnings += _check_override_source(ov, text)
+        for tok in ov["tokens"]:
+            rec.add(tok["term"], tok["term"], tok["spoken"], tok.get("risk", "MEDIUM"), tok["note"], tok["kind"])
+            rec.used[-1].update(action=tok["action"], approval=tok["approval"])
+        # numerals that stayed in the sentence are spelled in the override itself
+        t = ov["spoken"]
+        _numbers_in_source(text, rec)
+        return _finish(text, t, rec, warnings, extra_warn)
 
-    # --- Westgard rule names (before generic numbers/units) --------------------------
-    def qc_rule(m):
-        a, b = m.group(1), m.group(2)
-        return rec.add("Westgard rule " + m.group(0), m.group(0), "%s %s es" % (_words(a), _words(b)),
-                       "HIGH", "rule name: first digit = count, second = SD multiple, s = SD", "qc-rule")
+    line_terms = (lex.get("line_terms") or {}).get(key, {}) if key else {}
+    protected: list[str] = []   # replaced text is hidden from the later rules (so 'Lab Gayd' is not hit by the 'Lab' rule)
 
-    t = re.sub(r"(?<![\w])(\d{1,2})-(\d)s(?![\w])", qc_rule, t)
-    t = re.sub(r"(?<![\w])R-4s(?![\w])",
-               lambda m: rec.add("Westgard rule R-4s", m.group(0), "er to‘rt es", "HIGH", "range rule", "qc-rule"), t)
-    t = re.sub(r"(?<![\w])10x(?![\w])",
-               lambda m: rec.add("Westgard rule 10x", m.group(0), "o‘n iks", "HIGH", "ten in a row", "qc-rule"), t)
+    # --- Westgard names, abbreviations, Latin terms (lexicon, in file order) --------------------------
+    for term in lex["terms"]:
+        rx = term["_rx"]
+        spoken0 = line_terms.get(term["term"], term["spoken"])
+
+        def rep(m, term=term, spoken0=spoken0):
+            gd = m.groupdict()
+            if term["action"] == "drop":
+                rec.add(term["term"], m.group(0).strip(), "", term["risk"], term["note"], term["kind"])
+                rec.used[-1].update(action="dropped", approval=term["approval"])
+                return ""
+            out = attach_suffix(spoken0, gd.get("suf") or "")
+            if gd.get("dsuf"):
+                out = attach_suffix(out, gd["dsuf"])
+            if _sentence_start(m.string, m.start()) or term["kind"] == "label" and term["term"] == "Lab":
+                out = out[:1].upper() + out[1:]
+            rec.add(term["term"], m.group(0), out, term["risk"], term["note"], term["kind"])
+            rec.used[-1].update(action="replaced", approval=term["approval"])
+            protected.append(out)
+            return chr(0xE000 + len(protected) - 1)
+
+        t = rx.sub(rep, t)
+    t = re.sub("[\ue000-\uefff]", lambda m: protected[ord(m.group(0)) - 0xE000], t)
 
     # --- units with their own words ---------------------------------------------------
     for term, rx, spoken, risk, note in _UNITS_SPOKEN:
@@ -162,30 +201,20 @@ def prepare(text: str, extra_warn: bool = True, decimal: str = "vergul") -> tupl
                    lambda m, term=term, spoken=spoken, risk=risk, note=note: rec.add(term, m.group(0), spoken, risk, note, "unit"), t)
     t = re.sub(r"(?<![\w])kg iga(?![\w])",
                lambda m: rec.add("kg iga", m.group(0), "kilogrammiga", "LOW", "per kg of water", "unit"), t)
-    t = re.sub(r"(?<![\w])massa/zaryad", lambda m: "massa zaryad", t)
+    t = re.sub(r"(?<![\w])massa/zaryad", lambda m: rec.add("massa/zaryad", m.group(0), "massa-zaryad", "LOW", "", "symbol"), t)
 
-    # --- abbreviations (with optional ’suffix) -----------------------------------------
-    for term, rx, spoken, risk, note, attach in _ABBR:
-        pat = re.compile(r"(?<![\w])(?:" + rx + r")(?:" + APOS + r"(?P<suf>[a-zA-Z]+))?(?![\w])")
+    if re.search(r"(?<![\w])(?:\d{1,2}-\ds|R-\ds|\d{1,2}x)(?![\w])", t):   # synth.py would read '3s' as 3 seconds
+        warnings.append("Westgard rule token without a lexicon entry (would be misread): " +
+                        ",".join(re.findall(r"(?<![\w])(?:\d{1,2}-\ds|R-\ds|\d{1,2}x)(?![\w])", t)))
+    return _finish(text, t, rec, warnings, extra_warn, decimal)
 
-        def rep(m, term=term, spoken=spoken, risk=risk, note=note, attach=attach):
-            suf = m.group("suf") or ""
-            out = _join_suffix(spoken, suf, attach)
-            rec.add(term, m.group(0), out, risk, note, "abbr")
-            return out
 
-        t = pat.sub(rep, t)
+def _numbers_in_source(text: str, rec: "Recorder") -> None:
+    for m in re.finditer(r"(?<![\w.,])\d+(?:[.,]\d+)?(?![\w])", text):
+        rec.add("number " + m.group(0), m.group(0), "(in words)", "LOW", "", "number")
 
-    # --- single letters used as labels / symbols ---------------------------------------
-    t = re.sub(r"(?<![\w])B(?= namuna)",
-               lambda m: rec.add("B", "B namuna", "be", "LOW", "sample label", "letter"), t)
-    t = re.sub(r"(?<![\w])A(?= namuna)",
-               lambda m: rec.add("A", "A namuna", "a", "LOW", "sample label", "letter"), t)
-    t = re.sub(r"(?<![\w])z(?=:)",
-               lambda m: rec.add("z", "z:", "zet", "LOW", "z-score symbol", "letter"), t)
-    t = re.sub(r"(?<![\w])A = (?=\d)",
-               lambda m: rec.add("A =", "A =", "a teng ", "LOW", "absorbance equals", "symbol"), t)
 
+def _finish(text: str, t: str, rec: "Recorder", warnings: list[str], extra_warn: bool, decimal: str = "vergul"):
     # --- numbers -----------------------------------------------------------------------
     t = re.sub(r"(?<![\w.,])(\d+)\s?%\s?i(?![\w])",
                lambda m: rec.add("N % i", m.group(0), _words(m.group(1)) + " foizi", "LOW", "percent + possessive", "number"), t)
@@ -220,23 +249,26 @@ def prepare(text: str, extra_warn: bool = True, decimal: str = "vergul") -> tupl
         if s in t:
             rec.add(s, s, sp.strip() or ",", "LOW", "symbol read aloud" if s != "→" else "menu path: pause", "symbol")
             t = t.replace(s, sp)
-    t = t.replace("−", "minus ") if re.search(r"−\s?\d", t) else t
-    t = re.sub(r"(?<=[A-Za-zʻ‘’])–(?=[A-Za-z])", " ", t)           # Buger–Lambert–Ber
+    if re.search(r"−\s?\d", t):
+        rec.add("−", "−", "minus", "LOW", "minus sign", "symbol")
+        t = t.replace("−", "minus ")
+    t = re.sub(r"(?<=[A-Za-zʻ‘’])–(?=[A-Za-z])", " ", t)           # en dash between words
     t = re.sub(r"\s*—\s*", ", ", t)                                 # em dash = pause (as synth.normalise_text)
+    t = re.sub(r"([?!]),", r"\1", t)                                 # '?, ' after a quoted question
     t = re.sub(r"\s+", " ", t)
     t = re.sub(r"\s+([,;:.!?…])", r"\1", t)
     t = re.sub(r",\s*,", ",", t)
     t = re.sub(r"^[,\s]+", "", t).strip()
-    if text[:1].isupper() and t[:1].islower():
+    if not text[:1].islower() and t[:1].islower():
         t = t[:1].upper() + t[1:]
 
     # --- loanword watch list (spoken = written) ----------------------------------------
     low = t.lower()
     for w, risk in WATCH.items():
         if re.search(r"(?<![\w])" + w, low):
-            rec.add(w, w, w, risk, "spoken as written (Uzbek orthography); LISTEN for stress/vowels", "watch")
+            rec.add(w, w, w, risk, "ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels", "watch")
+            rec.used[-1].update(action="kept", approval="no")
 
-    warnings = []
     if extra_warn:
         if re.search(r"\d", t):
             warnings.append("digit left: " + ",".join(sorted(set(re.findall(r"\d+", t)))))
@@ -245,7 +277,7 @@ def prepare(text: str, extra_warn: bool = True, decimal: str = "vergul") -> tupl
         left = re.findall(r"(?<![\w])[A-Z]{2,}(?![\w])", t)
         if left:
             warnings.append("unexpanded capitals: " + ",".join(sorted(set(left))))
-        if re.search(r"[=÷×+%~→·²₀₁{}]", t):
+        if re.search(r"[=÷×+%~→·²₀₁{}/]", t):
             warnings.append("symbol left in spoken text")
         if BANNED.search(t):
             warnings.append("banned term in output")

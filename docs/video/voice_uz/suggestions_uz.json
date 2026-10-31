@@ -2,7 +2,7 @@
  "overview": {
   "L02": "Laboratoriya bilimi tarqoq — kamdan-kam o‘z tilingizda.",
   "L03": "LabGuide hammasini jamlaydi — o‘zbek, rus, ingliz tilidagi ma’lumotnoma va o‘quv ilovasi.",
-  "L06": "Lab mutaxassisiga: javoblar ish joyida.",
+  "L06": {"none": "The old suggestion only shortened the app tab name 'Lab'; the voice now says 'Laboratoriya' either way, so it saves nothing. No other safe shortening."},
   "L07": "Tahlil kartalari: birliklar, qo‘llanma chegaralari, yuqori yoki past natija ma’nosi — manbalari bilan.",
   "L08": "Kalkulyator faqat sonlaringizdan hisoblaydi; formula, cheklov, manba bor.",
   "L12": "Mutaxassis bilim va malakani baholashga ham tayyorlansa bo‘ladi.",
@@ -86,7 +86,7 @@
   "L07": "Molekula ionlanadi va ion-bo‘laklarga ajraladi.",
   "L09": "Natija: ushlanish vaqti bo‘yicha xromatogramma va har cho‘qqi mass-spektri.",
   "L10": "Modda spektr kutubxonasi yoki standartlar bilan aniqlanadi.",
-  "L14": "Kartada QC va biologik xavfsizlik ham bor: issiq qismlar, ko‘zoynak, xalat, qo‘lqop."
+  "L14": {"none": "The old suggestion only shortened 'sifat nazorati' to 'QC'; the voice says 'sifat nazorati' either way, so it saves nothing. No other safe shortening."}
  },
  "qpcr": {
   "L01": "A — 22-siklda, B — 31-siklda chiziqni kesadi.",

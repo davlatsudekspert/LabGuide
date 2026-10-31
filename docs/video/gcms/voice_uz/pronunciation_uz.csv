@@ -1,13 +1,16 @@
-term,written,spoken_respelling,risk,kind,lines,note,review
-GC,GC,ji si,HIGH,abbr,L05,,NEEDS_NATIVE_REVIEW
-GC-MS,GC-MS,ji si em es,HIGH,abbr,L02 L12 L16,English letter names; alternative: ge se em es / xromato-mass-spektrometriya,NEEDS_NATIVE_REVIEW
-LabGuide,LabGuide’da,Leb Gaydda,HIGH,abbr,L12,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L16,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-m/z,m/z,em zet,HIGH,unit,L08,mass-to-charge ratio,NEEDS_NATIVE_REVIEW
-avtonamunaoluvchi,avtonamunaoluvchi,avtonamunaoluvchi,HIGH,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-derivatizatsiya,derivatizatsiya,derivatizatsiya,HIGH,watch,L05,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-QC,QC,kyu si,MEDIUM,abbr,L11,alternative: ku se,NEEDS_NATIVE_REVIEW
-kvadrupol,kvadrupol,kvadrupol,MEDIUM,watch,L06 L08,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-toksikologiya,toksikologiya,toksikologiya,MEDIUM,watch,L12,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-xromatogramma,xromatogramma,xromatogramma,MEDIUM,watch,L09,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-→,→,",",LOW,symbol,L12 L16,menu path: pause,NEEDS_NATIVE_REVIEW
+term,written,spoken_respelling,risk,kind,lines,note,review,action,needs_owner_approval
+LabGuide,LabGuide’da,Lab Gaydda,HIGH,name,L12,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+LabGuide,LabGuide,Lab Gayd,HIGH,name,L16,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+avtonamunaoluvchi,avtonamunaoluvchi,avtonamunaoluvchi,HIGH,watch,L03,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+derivatizatsiya,derivatizatsiya,derivatizatsiya,HIGH,watch,L05,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+GC-MS,GC-MS,Gaz xromatografiya mass-spektrometriya,MEDIUM,abbr,L02,Standard full term (gas chromatography - mass spectrometry).,NEEDS_NATIVE_REVIEW,replaced,no
+GC-MS,GC-MS,gaz xromatografiya mass-spektrometriya,MEDIUM,abbr,L12 L16,Standard full term (gas chromatography - mass spectrometry).,NEEDS_NATIVE_REVIEW,replaced,no
+kvadrupol,kvadrupol,kvadrupol,MEDIUM,watch,L06 L08,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+toksikologiya,toksikologiya,toksikologiya,MEDIUM,watch,L12,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+xromatografiya,xromatografiya,xromatografiya,MEDIUM,watch,L02 L05 L12 L16,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+xromatogramma,xromatogramma,xromatogramma,MEDIUM,watch,L09,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+GC,GC,Gaz xromatografiya,LOW,abbr,L05,Gas chromatography.,NEEDS_NATIVE_REVIEW,replaced,no
+QC,QC,Sifat nazorati,LOW,abbr,L11,Quality control.,NEEDS_NATIVE_REVIEW,replaced,no
+Lab,Lab,Laboratoriya,LOW,label,L12 L16,Name of the app tab 'Lab' spoken as Laboratoriya (the screen shows the tab name 'Lab').,NEEDS_NATIVE_REVIEW,replaced,yes
+m/z,m/z,,LOW,symbol,L08,"Symbol m/z is a repeat of 'massa/zaryad nisbati' just before it; dropped from the voice, shown on screen. 'massa/zaryad' spoken as 'massa-zaryad'.",NEEDS_NATIVE_REVIEW,dropped,yes
+→,→,",",LOW,symbol,L12 L16,menu path: pause,NEEDS_NATIVE_REVIEW,replaced,no

@@ -1,9 +1,9 @@
-term,written,spoken_respelling,risk,kind,lines,note,review
-LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L03 L23,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-Levey–Jennings,Levey–Jennings,Livi Jenings,HIGH,abbr,L09,personal names; English pronunciation approximated,NEEDS_NATIVE_REVIEW
-Westgard,Westgard,Vestgard,HIGH,abbr,L09,personal name,NEEDS_NATIVE_REVIEW
-QR,QR,kyu er,MEDIUM,abbr,L15,alternative: ku er,NEEDS_NATIVE_REVIEW
-leykoformula,leykoformula,leykoformula,MEDIUM,watch,L10,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-PDF,PDF’da,pe de ef da,LOW,abbr,L01,,NEEDS_NATIVE_REVIEW
-atlas,atlas,atlas,LOW,watch,L11,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-kalibrlash,kalibrlash,kalibrlash,LOW,watch,L10,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+term,written,spoken_respelling,risk,kind,lines,note,review,action,needs_owner_approval
+LabGuide,LabGuide,Lab Gayd,HIGH,name,L03 L23,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+Levey–Jennings,Levey–Jennings,Levi-Jenings,HIGH,name,L09,"Personal names (Levey, Jennings); spelling in Uzbek orthography, no Uzbek equivalent exists.",NEEDS_NATIVE_REVIEW,replaced,yes
+Westgard,Westgard,Vestgard,HIGH,name,L09,Personal name (James Westgard).,NEEDS_NATIVE_REVIEW,replaced,yes
+QR kod,QR kod,skanerlanadigan kod,MEDIUM,abbr,L15,QR code: no common Uzbek spoken term; descriptive phrase. Owner/native to confirm.,NEEDS_NATIVE_REVIEW,replaced,yes
+leykoformula,leykoformula,leykoformula,MEDIUM,watch,L10,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+PDF,PDF’da,faylda,LOW,abbr,L01,A PDF = a file; the subtitle keeps PDF.,NEEDS_NATIVE_REVIEW,replaced,no
+atlas,atlas,atlas,LOW,watch,L11,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+kalibrlash,kalibrlash,kalibrlash,LOW,watch,L10,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no

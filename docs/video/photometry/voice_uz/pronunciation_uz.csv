@@ -1,16 +1,16 @@
-term,written,spoken_respelling,risk,kind,lines,note,review
-IFU,IFU’sidan,i ef yu sidan,HIGH,abbr,L14,instructions for use; alternative: foydalanish yo‘riqnomasi (changes wording),NEEDS_NATIVE_REVIEW
-LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L11 L15,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-A = log10(I0/I),A = log₁₀(I₀/I),A teng I nol bo‘lingan I ning o‘nli logarifmi,HIGH,formula,L04,formula read aloud,NEEDS_NATIVE_REVIEW
-C = A_sample / A_std x C_std,C = A namuna ÷ A standart × standart konsentratsiyasi,"se teng a namuna bo‘lingan a standart, ko‘paytirilgan standart konsentratsiyasi",HIGH,formula,L09,formula read aloud,NEEDS_NATIVE_REVIEW
-"decimal 1,52","1,52",bir vergul ellik ikki,MEDIUM,number,L01,decimal comma read as 'vergul' (alternative: butun … dan …),NEEDS_NATIVE_REVIEW
-kyuveta,kyuveta,kyuveta,MEDIUM,watch,L03 L08,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-N % i,10 % i,o‘n foizi,LOW,number,L05,percent + possessive,NEEDS_NATIVE_REVIEW
-N % i,1 % i,bir foizi,LOW,number,L05,percent + possessive,NEEDS_NATIVE_REVIEW
-number 1,1,bir,LOW,number,L05,,NEEDS_NATIVE_REVIEW
-number 2,2,ikki,LOW,number,L05,,NEEDS_NATIVE_REVIEW
-A =,A =,a teng ,LOW,symbol,L05,absorbance equals,NEEDS_NATIVE_REVIEW
-→,→,",",LOW,symbol,L15,menu path: pause,NEEDS_NATIVE_REVIEW
-fotometr,fotometr,fotometr,LOW,watch,L03 L11,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-konsentratsiya,konsentratsiya,konsentratsiya,LOW,watch,L06 L09,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-reagent,reagent,reagent,LOW,watch,L14,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+term,written,spoken_respelling,risk,kind,lines,note,review,action,needs_owner_approval
+LabGuide,LabGuide,Lab Gayd,HIGH,name,L11 L15,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+A =,A =,optik zichlik,MEDIUM,formula,L05,"'A' is the optical density (absorbance) as defined in L04; spoken as the word, not the letter.",NEEDS_NATIVE_REVIEW,replaced,yes
+A = log10(I0/I),A = log10(I0/I),bu nisbatning o‘nli logarifmi,MEDIUM,formula,L04,"Formula spoken as words: I0 = kirgan nur, I = chiqqan nur (as the same sentence says), so A = decimal logarithm of that ratio. No letter names.",NEEDS_NATIVE_REVIEW,replaced,yes
+C = A namuna ÷ A standart × standart konsentratsiyasi,C = A namuna ÷ A standart × standart konsentratsiyasi,namuna optik zichligi standart optik zichligiga bo‘linadi va standart konsentratsiyasiga ko‘paytiriladi,MEDIUM,formula,L09,"Formula read as a sentence (C = concentration, A = optical density). Same operations in the same order; no letter names.",NEEDS_NATIVE_REVIEW,replaced,yes
+Buger–Lambert–Ber,Buger–Lambert–Ber,Buger-Lambert-Ber,MEDIUM,name,L06,"Personal names, already written in Uzbek orthography in the subtitle; hyphens kept as in the Uzbek lab textbooks.",NEEDS_NATIVE_REVIEW,replaced,yes
+"decimal 1,52","1,52",bir vergul ellik ikki,MEDIUM,number,L01,decimal comma read as 'vergul' (alternative: butun … dan …),NEEDS_NATIVE_REVIEW,replaced,no
+kyuveta,kyuveta,kyuveta,MEDIUM,watch,L03 L08,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+IFU,IFU’sidan,foydalanish yo‘riqnomasidan,LOW,abbr,L14,Instructions for use.,NEEDS_NATIVE_REVIEW,replaced,no
+number 1,1,(in words),LOW,number,L05,,NEEDS_NATIVE_REVIEW,replaced,no
+number 10,10,(in words),LOW,number,L05,,NEEDS_NATIVE_REVIEW,replaced,no
+number 2,2,(in words),LOW,number,L05,,NEEDS_NATIVE_REVIEW,replaced,no
+→,→,",",LOW,symbol,L15,menu path: pause,NEEDS_NATIVE_REVIEW,replaced,no
+fotometr,fotometr,fotometr,LOW,watch,L03 L11,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+konsentratsiya,konsentratsiya,konsentratsiya,LOW,watch,L06 L09,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+reagent,reagent,reagent,LOW,watch,L14,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no

@@ -1,0 +1,95 @@
+term,spoken Uzbek form,kind,where used,approval needed yes/no,note
+Buger–Lambert–Ber,Buger-Lambert-Ber,personal name / brand,photometry:L06,yes,"Personal names, already written in Uzbek orthography in the subtitle; hyphens kept as in the Uzbek lab textbooks."
+LabGuide,Lab Gayd,personal name / brand,overview:L03 overview:L23 calibration:L13 calibration:L21 qc:L11 qc:L17 photometry:L11 photometry:L15 osmometry:L09 osmometry:L16 leukocyte:L13 leukocyte:L24 leukocyte:L25 calculators:L03 calculators:L15 gcms:L12 gcms:L16 qpcr:L11 qpcr:L15,yes,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.; forms in the texts: Lab Gaydda
+Levey–Jennings,Levi-Jenings,personal name / brand,overview:L09 qc:L03,yes,"Personal names (Levey, Jennings); spelling in Uzbek orthography, no Uzbek equivalent exists."
+Peltye,Peltye,personal name / brand,qpcr:L05,yes,Personal name (Peltier) already in Uzbek orthography in the subtitle; kept as written.
+Westgard,Vestgard,personal name / brand,overview:L09 qc:L13,yes,Personal name (James Westgard).
+Cq,chegaraviy sikl,abbreviation,qpcr:L09,no,"Cq = quantification cycle (threshold cycle, Ct): 'chegaraviy sikl'."
+Cq (2nd),u,abbreviation,qpcr:L09,no,second mention spoken as the pronoun 'u' (it) to avoid repeating the long term
+CSV jadval,jadval fayli,abbreviation,qc:L15,no,CSV table file = table file.; forms in the texts: Jadval fayli
+eGFR,hisoblangan glomerulyar filtratsiya tezligi,abbreviation,calculators:L01,no,Estimated GFR; the term Uzbek/Russian lab specialists use (raschetnaya SKF = hisoblangan GFT).
+eGFR,glomerulyar filtratsiya tezligi,abbreviation,calculators:L10,no,Estimated GFR; the term Uzbek/Russian lab specialists use (raschetnaya SKF = hisoblangan GFT).
+GC,gaz xromatografiya,abbreviation,gcms:L05,no,Gas chromatography.; forms in the texts: Gaz xromatografiya
+GC-MS,gaz xromatografiya mass-spektrometriya,abbreviation,gcms:L02 gcms:L12 gcms:L16,no,Standard full term (gas chromatography - mass spectrometry).; forms in the texts: Gaz xromatografiya mass-spektrometriya
+IFU,foydalanish yo‘riqnomasi,abbreviation,calibration:L12 calibration:L14 photometry:L14,no,Instructions for use.; forms in the texts: foydalanish yo‘riqnomasidan
+KDIGO,buyrak kasalliklari bo‘yicha xalqaro tavsiyalar,abbreviation,calculators:L08,yes,KDIGO = Kidney Disease: Improving Global Outcomes. No spoken Uzbek abbreviation exists; descriptive phrase (literal meaning of the name). Owner to confirm or choose to drop.
+PCR,polimeraza zanjir reaksiyasi,abbreviation,qpcr:L11 qpcr:L15,no,Standard full term.
+PDF,fayl,abbreviation,overview:L01,no,A PDF = a file; the subtitle keeps PDF.; forms in the texts: faylda
+QC,sifat nazorati,abbreviation,calibration:L16 gcms:L11,no,Quality control.; forms in the texts: Sifat nazorati
+qPCR,miqdoriy polimeraza zanjir reaksiyasi,abbreviation,(not in the 9 videos; kept for other apps),no,quantitative PCR; not in the 9 scripts as a bare token (kept for the glossary and other apps).
+QR kod,skanerlanadigan kod,abbreviation,overview:L15,yes,QR code: no common Uzbek spoken term; descriptive phrase. Owner/native to confirm.
+REF,katalog raqami,abbreviation,calibration:L14,no,REF = catalogue / reference number on the reagent label.
+R²,determinatsiya koeffitsiyenti,abbreviation,calibration:L09 calibration:L11,no,Coefficient of determination.
+SD,standart og‘ish,abbreviation,qc:L01 qc:L03 qc:L05 qc:L06 qc:L10 qc:L11,no,Standard deviation.; forms in the texts: standart og‘ishdan
+SI,xalqaro birliklar sistemasi,abbreviation,calculators:L12,no,SI = International System of Units.; forms in the texts: Xalqaro birliklar sistemasi
+SOP,standart operatsion protsedura,abbreviation,calibration:L12,no,"Standard operating procedure, the full term used in Uzbek labs.; forms in the texts: standart operatsion protsedurasidan"
+WBC,leykotsitlar soni,abbreviation,leukocyte:L20 leukocyte:L21,no,White blood cell count = total leukocyte count.; forms in the texts: Leykotsitlar soni
+A namuna,birinchi,label,qpcr:L01,yes,Sample label A spoken as 'birinchi' (first) - letter names are not used.; forms in the texts: Birinchi
+B namuna,ikkinchi,label,qpcr:L01,yes,Sample label B spoken as 'ikkinchi' (second).
+Lab,Laboratoriya,label,calibration:L21 qc:L17 osmometry:L09 osmometry:L13 osmometry:L16 leukocyte:L25 calculators:L03 calculators:L15 gcms:L12 gcms:L16 qpcr:L11 qpcr:L15,yes,Name of the app tab 'Lab' spoken as Laboratoriya (the screen shows the tab name 'Lab').
+1-2s,(dropped from the voice),QC rule name,qc:L06,yes,"Westgard rule name dropped; the sentence already says 'ikki standart og‘ishdan tashqari bitta qiymat - ogohlantirish, rad emas'."
+1-3s,uch standart og‘ish qoidasi,QC rule name,qc:L08,yes,Westgard 1-3s = one value beyond 3 SD. No spoken Uzbek name exists; descriptive.
+"2-2s, 4-1s, 10x",ketma-ket qiymatlarning bir tomonga og‘ishi,QC rule name,qc:L09,yes,"Three Westgard rules (2-2s, 4-1s, 10x) all mean consecutive values on the same side of the mean; spoken as that summary. Individual rule names stay in the subtitle. LONG FORM if the owner wants every rule spoken (about 190 characters, ~17 s in a ~5 s slot): 'ketma-ket ikki qiymat ikki standart og‘ishdan, ketma-ket to‘rt qiymat bir standart og‘ishdan tashqarida yoki ketma-ket o‘nta qiymat o‘rtachaning bir tomonida'."
+4-1s,(dropped from the voice),QC rule name,qc:L10,yes,Westgard rule name dropped; the sentence already says 'ketma-ket to‘rt qiymat bir standart og‘ishdan tashqarida'.
+R-4s,diapazon qoidasi,QC rule name,qc:L08,yes,"Westgard R-4s = range rule (R = range, 4s = 4 SD). Descriptive."
+A =,optik zichlik,formula,photometry:L05,yes,"'A' is the optical density (absorbance) as defined in L04; spoken as the word, not the letter."
+A = log10(I0/I),bu nisbatning o‘nli logarifmi,formula,photometry:L04,yes,"Formula spoken as words: I0 = kirgan nur, I = chiqqan nur (as the same sentence says), so A = decimal logarithm of that ratio. No letter names."
+C = A namuna ÷ A standart × standart konsentratsiyasi,namuna optik zichligi standart optik zichligiga bo‘linadi va standart konsentratsiyasiga ko‘paytiriladi,formula,photometry:L09,yes,"Formula read as a sentence (C = concentration, A = optical density). Same operations in the same order; no letter names."
+C1·V1 = C2·V2,suyultirish formulasi,formula,calculators:L13,yes,Dilution formula (C1V1 = C2V2) named instead of read out; reading it needs ~100 characters (9 s) in a 5 s slot. The equation stays on screen. LONG FORM: 'boshlang‘ich konsentratsiya ko‘paytirilgan boshlang‘ich hajm teng oxirgi konsentratsiya ko‘paytirilgan oxirgi hajm'.
+kg iga,kilogrammiga,unit,osmometry:L08,no,per kg of water
+mmol/L,millimol litr,unit,calculators:L11,no,unit after a number (synth.py unit table; 5 mmol/L -> besh millimol litr)
+mOsm/kg,milliosmol kilogramm,unit,osmometry:L08,no,unit
+%,foiz,symbol,photometry:L05,no,percent sign (synth.py); '10 % i' -> 'o‘n foizi'
++,plyus,symbol,qc:L01 leukocyte:L14,no,plus sign
+=,teng,symbol,leukocyte:L20,no,symbol read aloud
+m/z,(dropped from the voice),symbol,gcms:L08,yes,"Symbol m/z is a repeat of 'massa/zaryad nisbati' just before it; dropped from the voice, shown on screen. 'massa/zaryad' spoken as 'massa-zaryad'."
+z:,(dropped from the voice),symbol,qc:L05,yes,z-score label dropped; the sentence 'Har natija ... o‘rtachadan necha standart og‘ish uzoqda' stays complete; the screen shows z.
+~,taxminan,symbol,qc:L04,no,approximately
+×,ko‘paytirilgan,symbol,leukocyte:L20,no,symbol read aloud
+÷,bo‘lingan,symbol,leukocyte:L20,no,symbol read aloud
+→,",",symbol,calibration:L21 qc:L17 photometry:L15 osmometry:L09 osmometry:L13 osmometry:L16 leukocyte:L25 calculators:L03 calculators:L15 gcms:L12 gcms:L16 qpcr:L11 qpcr:L15,no,menu path: pause
+−,minus,symbol,leukocyte:L14,no,minus sign before a number (synth.py)
+"decimal N,M",nol vergul to‘rt yuz sakson olti,number pattern,calibration:L01 qc:L01 photometry:L01,no,numbers are always spelled out in Uzbek words (synth.py number words)
+integer,sakson sakkiz,number pattern,qc:L04 qc:L06 qc:L08 qc:L09 qc:L10 photometry:L05 leukocyte:L01 leukocyte:L02 leukocyte:L07 leukocyte:L12 leukocyte:L14 leukocyte:L16 calculators:L01 calculators:L10 calculators:L11,no,numbers are always spelled out in Uzbek words (synth.py number words)
+N-noun ordinal,yigirma ikkinchi siklda,number pattern,leukocyte:L19 qpcr:L01,no,numbers are always spelled out in Uzbek words (synth.py number words)
+range N–M,ikkidan beshgacha,number pattern,leukocyte:L05,no,numbers are always spelled out in Uzbek words (synth.py number words)
+analizator,analizator,loanword kept (Uzbek orthography),calibration:L03 calibration:L13,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+atlas,atlas,loanword kept (Uzbek orthography),overview:L11,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+avtonamunaoluvchi,avtonamunaoluvchi,loanword kept (Uzbek orthography),gcms:L03,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+bazofil,bazofil,loanword kept (Uzbek orthography),leukocyte:L08,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+biokimyo,biokimyo,loanword kept (Uzbek orthography),osmometry:L09,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+derivatizatsiya,derivatizatsiya,loanword kept (Uzbek orthography),gcms:L05,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+eozinofil,eozinofil,loanword kept (Uzbek orthography),leukocyte:L07,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+eritrotsit,eritrotsit,loanword kept (Uzbek orthography),leukocyte:L03 leukocyte:L04,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+fluoressensiya,fluoressensiya,loanword kept (Uzbek orthography),qpcr:L07,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+fotometr,fotometr,loanword kept (Uzbek orthography),calibration:L03 photometry:L03 photometry:L11,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+glyukoza,glyukoza,loanword kept (Uzbek orthography),osmometry:L13 calculators:L11,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+immersiya,immersiya,loanword kept (Uzbek orthography),leukocyte:L03,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+kalibrator,kalibrator,loanword kept (Uzbek orthography),calibration:L06 calibration:L15,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+kalibrlash,kalibrlash,loanword kept (Uzbek orthography),overview:L10 calibration:L02 calibration:L04 calibration:L08 calibration:L13 calibration:L16 calibration:L18 calibration:L20 calibration:L21,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+konsentratsiya,konsentratsiya,loanword kept (Uzbek orthography),calibration:L01 calibration:L04 calibration:L07 photometry:L06 photometry:L09,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+kreatinin,kreatinin,loanword kept (Uzbek orthography),calculators:L01,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+kvadrupol,kvadrupol,loanword kept (Uzbek orthography),gcms:L06 gcms:L08,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+kyuveta,kyuveta,loanword kept (Uzbek orthography),calibration:L03 photometry:L03 photometry:L08,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+leykoformula,leykoformula,loanword kept (Uzbek orthography),overview:L10 leukocyte:L25,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+leykotsit,leykotsit,loanword kept (Uzbek orthography),leukocyte:L03 leukocyte:L12 leukocyte:L20 leukocyte:L21,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+limfotsit,limfotsit,loanword kept (Uzbek orthography),leukocyte:L09,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+mikroskop,mikroskop,loanword kept (Uzbek orthography),leukocyte:L18,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+mochevina,mochevina,loanword kept (Uzbek orthography),osmometry:L13,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+molekulyar,molekulyar,loanword kept (Uzbek orthography),qpcr:L11,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+monotsit,monotsit,loanword kept (Uzbek orthography),leukocyte:L10,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+neytrofil,neytrofil,loanword kept (Uzbek orthography),leukocyte:L05,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+osmolyal,osmolyal,loanword kept (Uzbek orthography),osmometry:L07 osmometry:L08 osmometry:L13 osmometry:L14,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+osmolyallik,osmolyallik,loanword kept (Uzbek orthography),osmometry:L07 osmometry:L08 osmometry:L13,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+osmolyarlik,osmolyarlik,loanword kept (Uzbek orthography),osmometry:L08,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+osmometr,osmometr,loanword kept (Uzbek orthography),osmometry:L02 osmometry:L03 osmometry:L09 osmometry:L16,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+peltye,peltye,loanword kept (Uzbek orthography),qpcr:L05,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+polimeraza,polimeraza,loanword kept (Uzbek orthography),qpcr:L03 qpcr:L11 qpcr:L15,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+praymer,praymer,loanword kept (Uzbek orthography),qpcr:L03,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+reagent,reagent,loanword kept (Uzbek orthography),calibration:L14 photometry:L14,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+termistor,termistor,loanword kept (Uzbek orthography),osmometry:L03,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+termosiklator,termosiklator,loanword kept (Uzbek orthography),qpcr:L05,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+toksikologiya,toksikologiya,loanword kept (Uzbek orthography),gcms:L12,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+trombotsit,trombotsit,loanword kept (Uzbek orthography),leukocyte:L03,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+xromatografiya,xromatografiya,loanword kept (Uzbek orthography),gcms:L02 gcms:L05 gcms:L12 gcms:L16,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"
+xromatogramma,xromatogramma,loanword kept (Uzbek orthography),gcms:L09,no,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels"

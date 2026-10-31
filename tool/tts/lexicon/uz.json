@@ -1,5 +1,5 @@
 {
-  "_note": "STARTER respelling map. Values are plain text that replaces the key before synthesis (whole word, case-insensitive). A value may also be {\"default\": ..., \"azure\": ..., \"piper\": ...}. NOT verified by ear - a native speaker must listen and correct before publishing videos.",
+  "_note": "NOT USED by the UzbekVoice pipeline (uz_prep.py / plan_uz.py): that one uses spoken_uz_only.json (ordinary Uzbek words only, no letter-name respellings). This starter map is only for the older generic synth.py. STARTER respelling map. Values are plain text that replaces the key before synthesis (whole word, case-insensitive). A value may also be {\"default\": ..., \"azure\": ..., \"piper\": ...}. NOT verified by ear - a native speaker must listen and correct before publishing videos.",
   "entries": {
     "PCR": "pe se er",
     "DNK": "de en ka",

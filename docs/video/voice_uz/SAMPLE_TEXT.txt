@@ -3,8 +3,9 @@
 # S1 and S2 are overview lines L01 and L02 (hook, first scene) exactly as in docs/video/overview/lines.uz.json.
 # S3 is a pronunciation test line: no sentence, only hard terms that occur in the nine videos
 # (Levey-Jennings, Westgard, eGFR, qPCR, GC-MS, mmol/L).
-# Expected total: about 14 s at the assumed 13 characters/second (tool/tts/synth_uz.py --dry-run --sample).
-# ALL RESPELLINGS ARE UNVERIFIED: NEEDS_NATIVE_REVIEW. Listen for: PDF, Levey-Jennings, Westgard, eGFR, qPCR, GC-MS.
+# The voice text is spoken-Uzbek-only (tool/tts/lexicon/spoken_uz_only.json): PDF -> fayl, eGFR / qPCR / GC-MS -> full Uzbek terms.
+# Expected total: see tool/tts/synth_uz.py --dry-run --sample (measured rate 10.75 characters/second).
+# ALL FORMS ARE UNVERIFIED: NEEDS_NATIVE_REVIEW. Listen for: faylda, Levi-Jenings, Vestgard and the long term phrases.
 S1 | Me’yor oraliqlari — PDF’da. Formulalar — chatda. Kalkulyator — boshqa ilovada.
 S2 | Laboratoriya bilimi tarqoq — va kamdan-kam o‘z tilingizda.
 S3 | Levey–Jennings, Westgard, eGFR, qPCR, GC-MS, 5 mmol/L.

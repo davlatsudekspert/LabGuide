@@ -1,16 +1,17 @@
-term,written,spoken_respelling,risk,kind,lines,note,review
-IFU,IFU,i ef yu,HIGH,abbr,L12 L14,instructions for use; alternative: foydalanish yo‘riqnomasi (changes wording),NEEDS_NATIVE_REVIEW
-LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L13 L21,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-REF,REF,er e ef,HIGH,abbr,L14,catalogue number label; alternative: ref,NEEDS_NATIVE_REVIEW
-QC,QC,kyu si,MEDIUM,abbr,L16,alternative: ku se,NEEDS_NATIVE_REVIEW
-SOP,SOP’idan,es o pe idan,MEDIUM,abbr,L12,,NEEDS_NATIVE_REVIEW
-"decimal 0,486","0,486",nol vergul to‘rt yuz sakson olti,MEDIUM,number,L01,decimal comma read as 'vergul' (alternative: butun … dan …),NEEDS_NATIVE_REVIEW
-kyuveta,kyuveta,kyuveta,MEDIUM,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-R²,R²,er kvadrat,LOW,abbr,L09 L11,,NEEDS_NATIVE_REVIEW
-→,→,",",LOW,symbol,L21,menu path: pause,NEEDS_NATIVE_REVIEW
-analizator,analizator,analizator,LOW,watch,L03 L13,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-fotometr,fotometr,fotometr,LOW,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-kalibrator,kalibrator,kalibrator,LOW,watch,L06 L15,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-kalibrlash,kalibrlash,kalibrlash,LOW,watch,L02 L04 L08 L13 L16 L18 L20 L21,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-konsentratsiya,konsentratsiya,konsentratsiya,LOW,watch,L01 L04 L07,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-reagent,reagent,reagent,LOW,watch,L14,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+term,written,spoken_respelling,risk,kind,lines,note,review,action,needs_owner_approval
+LabGuide,LabGuide,Lab Gayd,HIGH,name,L13 L21,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+R²,R²,determinatsiya koeffitsiyenti,MEDIUM,abbr,L09 L11,Coefficient of determination.,NEEDS_NATIVE_REVIEW,replaced,no
+"decimal 0,486","0,486",nol vergul to‘rt yuz sakson olti,MEDIUM,number,L01,decimal comma read as 'vergul' (alternative: butun … dan …),NEEDS_NATIVE_REVIEW,replaced,no
+kyuveta,kyuveta,kyuveta,MEDIUM,watch,L03,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+IFU,IFU,foydalanish yo‘riqnomasi,LOW,abbr,L12 L14,Instructions for use.,NEEDS_NATIVE_REVIEW,replaced,no
+QC,QC,sifat nazorati,LOW,abbr,L16,Quality control.,NEEDS_NATIVE_REVIEW,replaced,no
+REF,REF,katalog raqami,LOW,abbr,L14,REF = catalogue / reference number on the reagent label.,NEEDS_NATIVE_REVIEW,replaced,no
+SOP,SOP’idan,standart operatsion protsedurasidan,LOW,abbr,L12,"Standard operating procedure, the full term used in Uzbek labs.",NEEDS_NATIVE_REVIEW,replaced,no
+Lab,Lab,Laboratoriya,LOW,label,L21,Name of the app tab 'Lab' spoken as Laboratoriya (the screen shows the tab name 'Lab').,NEEDS_NATIVE_REVIEW,replaced,yes
+→,→,",",LOW,symbol,L21,menu path: pause,NEEDS_NATIVE_REVIEW,replaced,no
+analizator,analizator,analizator,LOW,watch,L03 L13,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+fotometr,fotometr,fotometr,LOW,watch,L03,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+kalibrator,kalibrator,kalibrator,LOW,watch,L06 L15,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+kalibrlash,kalibrlash,kalibrlash,LOW,watch,L02 L04 L08 L13 L16 L18 L20 L21,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+konsentratsiya,konsentratsiya,konsentratsiya,LOW,watch,L01 L04 L07,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+reagent,reagent,reagent,LOW,watch,L14,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no

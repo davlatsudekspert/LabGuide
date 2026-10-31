@@ -21,6 +21,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import plan_uz  # noqa: E402
 import remux_uz  # noqa: E402
+import spoken_docs  # noqa: E402
 import synth  # noqa: E402
 import synth_uz as su  # noqa: E402
 import uz_prep  # noqa: E402
@@ -178,22 +179,29 @@ class TextTests(unittest.TestCase):
 
     def test_prep_hard_terms(self):
         sp, used, warns = uz_prep.prepare("Levey–Jennings, Westgard, eGFR, qPCR, GC-MS, 5 mmol/L.")
-        self.assertEqual(sp, "Livi Jenings, Vestgard, e ge ef er, kyu pe se er, ji si em es, besh millimol litr.")
+        self.assertEqual(sp, "Levi-Jenings, Vestgard, hisoblangan glomerulyar filtratsiya tezligi, miqdoriy polimeraza zanjir reaksiyasi, "
+                             "gaz xromatografiya mass-spektrometriya, besh millimol litr.")
         self.assertEqual(warns, [])
         self.assertTrue(all(u["risk"] in ("LOW", "MEDIUM", "HIGH") for u in used))
 
     def test_prep_numbers_dates_symbols(self):
-        sp, _, w = uz_prep.prepare("o‘rtachadan +2,3 SD; 1-3s va R-4s; 22-siklda; 10 % i; 2–5 bo‘lak")
-        self.assertEqual(sp, "o‘rtachadan plyus ikki vergul uch es de; bir uch es va er to‘rt es; "
+        sp, _, w = uz_prep.prepare("o‘rtachadan +2,3 SD; 22-siklda; 10 % i; 2–5 bo‘lak")
+        self.assertEqual(sp, "o‘rtachadan plyus ikki vergul uch standart og‘ish; "
                              "yigirma ikkinchi siklda; o‘n foizi; ikkidan beshgacha bo‘lak")
         self.assertEqual(w, [])
+        sp, _, w = uz_prep.prepare("1-3s")        # a Westgard rule name without an entry is NOT silently spoken
+        self.assertTrue(w, sp)
         sp, _, w = uz_prep.prepare("Tahlil 15.03.2026 sanasida.")
         self.assertTrue(any("date" in x or "digit" in x for x in w))  # dates are NOT silently expanded
         sp, _, _ = uz_prep.prepare("1,52", decimal="formal")
-        self.assertEqual(sp, "bir butun yuzdan ellik ikki")
+        self.assertEqual(sp, "Bir butun yuzdan ellik ikki")
 
     def test_prep_suffix_and_brand(self):
-        self.assertEqual(uz_prep.prepare("LabGuide’da PDF’da SOP’idan")[0], "Leb Gaydda pe de ef da es o pe idan")
+        self.assertEqual(uz_prep.prepare("LabGuide’da PDF’da SOP’idan IFU’sidan SOP’ingizdan 2 SD dan")[0],
+                         "Lab Gaydda faylda standart operatsion protsedurasidan foydalanish yo‘riqnomasidan "
+                         "standart operatsion protsedurangizdan ikki standart og‘ishdan")
+        self.assertEqual(uz_prep.prepare("QC bo‘lmasa; WBC bilan; Lab → Kalibrlash")[0],
+                         "Sifat nazorati bo‘lmasa; leykotsitlar soni bilan; Laboratoriya, Kalibrlash")
 
     def test_banned_words_never_in_prep_output(self):
         for t in ("Natija KDIGO kategoriyasi.",):
@@ -202,8 +210,8 @@ class TextTests(unittest.TestCase):
     def test_sample_file(self):
         items = su.parse_sample(REPO / "docs/video/voice_uz/SAMPLE_TEXT.txt")
         self.assertEqual([i["id"] for i in items], ["S1", "S2", "S3"])
-        total = sum(len(i["text_tts"]) for i in items) / 13.0
-        self.assertTrue(10 <= total <= 20, total)
+        total = sum(len(i["text_tts"]) for i in items) / su.SPEECH_RATE_CPS
+        self.assertTrue(10 <= total <= 30, total)
         src = json.loads((REPO / "docs/video/overview/lines.uz.json").read_text(encoding="utf-8"))["lines"]
         self.assertEqual(items[0]["text"], src["L01"])
         self.assertEqual(items[1]["text"], src["L02"])
@@ -511,6 +519,110 @@ class PlanTests(unittest.TestCase):
         j = plan_uz.judge(5.0, 4.0, 4.0)  # 5/1.12 = 4.464
         self.assertEqual(j["fit"], "TOO_LONG by 0.46 s")
         self.assertEqual(plan_uz.judge(4.4, 4.0, 4.0)["fit"], "OK")  # 10 % speed-up is enough
+
+
+class SpokenUzbekOnlyTests(unittest.TestCase):
+    """Owner's rule (listening tests): the voice text contains ONLY ordinary Uzbek words - no abbreviations, no
+    letter-name respellings ('pe de ef'), no English words. Checked against a reviewed vocabulary
+    (tool/tts/lexicon/uz_voice_vocab.txt) plus explicit forbidden patterns. Offline."""
+
+    ALPHABET = re.compile(r"^[a-zA-Zʻ‘’'\s,.:;!?…\-–()]+$")
+
+    @classmethod
+    def setUpClass(cls):
+        txt = (REPO / "tool/tts/lexicon/uz_voice_vocab.txt").read_text(encoding="utf-8")
+        cls.vocab = {w for w in txt.splitlines() if w and not w.startswith("#")}
+        cls.texts = []     # (where, voice text)
+        for v in plan_uz.VIDEOS:
+            plan = su.load_plan(su.plan_path(v))
+            for l in plan["lines"]:
+                cls.texts.append(("%s:%s" % (v, l["id"]), l["text_tts"]))
+                sg = l.get("suggested") or {}
+                if sg.get("text_tts"):
+                    cls.texts.append(("%s:%s:S" % (v, l["id"]), sg["text_tts"]))
+
+    def test_vocabulary_has_no_letter_names_abbreviations_or_english(self):
+        bad = self.vocab & spoken_docs.FORBIDDEN_WORDS
+        self.assertEqual(bad, set())
+        for w in self.vocab:
+            self.assertRegex(w, r"^[a-zʻ‘’']+$")
+            if len(w) <= 2:
+                self.assertIn(w, spoken_docs.ALLOWED_SHORT | {"ip", "ta"}, w)   # no 1-2 letter 'letter names'
+
+    def test_every_voice_text_is_ordinary_uzbek(self):
+        self.assertGreater(len(self.texts), 200)
+        for where, t in self.texts:
+            self.assertRegex(t, self.ALPHABET, (where, t))                      # no digits, no symbols (= ÷ × % / ² ...)
+            self.assertNotRegex(t, r"\b[A-Z]{2,}\b", (where, t))                # no abbreviations
+            self.assertNotRegex(t, r"\b\w*[a-z][A-Z]\w*\b", (where, t))         # no camel-case brand/abbreviation (LabGuide, eGFR, qPCR)
+            for w in spoken_docs.words(t):
+                self.assertTrue(len(w) > 1 or w == "u", (where, w, "single letter"))   # no letter names / labels
+                self.assertIn(w, self.vocab, "%s: %r is not in the reviewed vocabulary (%s)" % (where, w, t))
+                self.assertNotIn(w, spoken_docs.FORBIDDEN_WORDS, (where, w))
+            self.assertIsNone(uz_prep.BANNED.search(t), where)
+
+    def test_plans_have_no_unexpanded_tokens_or_warnings(self):
+        for v in plan_uz.VIDEOS:
+            for l in su.load_plan(su.plan_path(v))["lines"]:
+                warns = [n for n in l["notes"] if not n.startswith("SOURCE_TERM_REPLACED")]
+                self.assertEqual(warns, [], (v, l["id"]))
+                self.assertEqual(l["review"], "NEEDS_NATIVE_REVIEW", (v, l["id"]))
+
+    def test_lexicon_targets_are_pure_and_names_need_approval(self):
+        lex = uz_prep.load_lexicon()
+        for t in lex["terms"]:
+            for w in spoken_docs.words(t["spoken"]):
+                self.assertNotIn(w, spoken_docs.FORBIDDEN_WORDS - spoken_docs.APPROVED_NAMES, (t["term"], w))
+                self.assertIn(w, self.vocab, (t["term"], w))
+            if t["kind"] == "name":
+                self.assertEqual(t["approval"], "yes", t["term"])
+        for key, ov in lex["line_overrides"].items():
+            vid, lid = key.split(":")[:2]
+            plan = su.load_plan(su.plan_path(vid))
+            line = next(l for l in plan["lines"] if l["id"] == lid)
+            sugg = json.loads((REPO / "docs/video/voice_uz/suggestions_uz.json").read_text(encoding="utf-8"))
+            src = sugg[vid][lid] if key.endswith(":S") else line["text_uz"]
+            self.assertEqual(ov["source"], src, "%s: subtitle changed, override is stale" % key)
+        approved = set()
+        for t in lex["terms"]:
+            if t["kind"] == "name":
+                approved.update(spoken_docs.words(t["spoken"]))
+        self.assertTrue({"lab", "gayd", "levi", "jenings", "vestgard", "buger", "lambert", "peltye"} <= approved | {"peltye"})
+        self.assertEqual(set(spoken_docs.APPROVED_NAMES) & set(spoken_docs.FORBIDDEN_WORDS), set())
+
+    def test_old_letter_name_respellings_are_gone(self):
+        for old in ("pe de ef", "e ge ef er", "ji si em es", "kyu pe se er", "dabl yu", "es de", "kyu si", "Leb Gayd", "Livi Jenings"):
+            self.assertNotIn(old, uz_prep.prepare("PDF eGFR GC-MS qPCR WBC SD QC LabGuide Levey–Jennings")[0])
+            for _, t in self.texts:
+                self.assertNotIn(old, t)
+
+    def test_subtitle_texts_are_unchanged_and_may_keep_abbreviations(self):
+        # the on-screen text stays as in lines.uz.json (plus the one known banned-word replacement)
+        for v in plan_uz.VIDEOS:
+            uz = json.loads((REPO / "docs/video" / v / "lines.uz.json").read_text(encoding="utf-8"))["lines"]
+            for l in su.load_plan(su.plan_path(v))["lines"]:
+                if "SOURCE_TERM_REPLACED" not in " ".join(l["notes"]):   # the one known banned-word replacement
+                    self.assertEqual(l["text_uz_template"] or l["text_uz"], uz[l["id"]], (v, l["id"]))
+
+    def test_review_documents_exist(self):
+        d = REPO / "docs/video/voice_uz"
+        md = (d / "SPOKEN_VS_SUBTITLE.md").read_text(encoding="utf-8")
+        self.assertIn("NEEDS_OWNER_APPROVAL", md)
+        for v in plan_uz.VIDEOS:
+            self.assertIn("\n## %s\n" % v, md)
+        with (d / "GLOSSARY_UZ_ONLY.csv").open(encoding="utf-8", newline="") as f:
+            rows = list(__import__("csv").reader(f))
+        self.assertEqual(rows[0][:5], ["term", "spoken Uzbek form", "kind", "where used", "approval needed yes/no"])
+        self.assertGreater(len(rows), 40)
+        self.assertTrue(all(r[4] in ("yes", "no") for r in rows[1:]))
+        for r in rows[1:]:
+            self.assertIsNone(uz_prep.BANNED.search(" ".join(r)))
+
+    def test_rate_is_the_measured_one(self):
+        self.assertEqual(plan_uz.RATE_CPS, 10.75)
+        self.assertEqual(su.SPEECH_RATE_CPS, 10.75)
+        for v in plan_uz.VIDEOS:
+            self.assertEqual(su.load_plan(su.plan_path(v))["assumptions"]["speech_rate_chars_per_s"], 10.75)
 
 
 class EndToEndTests(unittest.TestCase):

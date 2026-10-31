@@ -1,14 +1,15 @@
-term,written,spoken_respelling,risk,kind,lines,note,review
-LabGuide,LabGuide’da,Leb Gaydda,HIGH,abbr,L09,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L16,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-osmolyal,osmolyal,osmolyal,HIGH,watch,L07 L08 L13 L14,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-osmolyallik,osmolyallik,osmolyallik,HIGH,watch,L07 L08 L13,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-osmolyarlik,osmolyarlik,osmolyarlik,HIGH,watch,L08,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-mOsm/kg,mOsm/kg,milliosmol kilogramm,MEDIUM,unit,L08,unit,NEEDS_NATIVE_REVIEW
-glyukoza,glyukoza,glyukoza,MEDIUM,watch,L13,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-mochevina,mochevina,mochevina,MEDIUM,watch,L13,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-osmometr,osmometr,osmometr,MEDIUM,watch,L02 L03 L09 L16,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-termistor,termistor,termistor,MEDIUM,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-→,→,",",LOW,symbol,L09 L13 L16,menu path: pause,NEEDS_NATIVE_REVIEW
-kg iga,kg iga,kilogrammiga,LOW,unit,L08,per kg of water,NEEDS_NATIVE_REVIEW
-biokimyo,biokimyo,biokimyo,LOW,watch,L09,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+term,written,spoken_respelling,risk,kind,lines,note,review,action,needs_owner_approval
+LabGuide,LabGuide’da,Lab Gaydda,HIGH,name,L09,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+LabGuide,LabGuide,Lab Gayd,HIGH,name,L16,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+osmolyal,osmolyal,osmolyal,HIGH,watch,L07 L08 L13 L14,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+osmolyallik,osmolyallik,osmolyallik,HIGH,watch,L07 L08 L13,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+osmolyarlik,osmolyarlik,osmolyarlik,HIGH,watch,L08,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+mOsm/kg,mOsm/kg,milliosmol kilogramm,MEDIUM,unit,L08,unit,NEEDS_NATIVE_REVIEW,replaced,no
+glyukoza,glyukoza,glyukoza,MEDIUM,watch,L13,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+mochevina,mochevina,mochevina,MEDIUM,watch,L13,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+osmometr,osmometr,osmometr,MEDIUM,watch,L02 L03 L09 L16,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+termistor,termistor,termistor,MEDIUM,watch,L03,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+Lab,Lab,Laboratoriya,LOW,label,L09 L13 L16,Name of the app tab 'Lab' spoken as Laboratoriya (the screen shows the tab name 'Lab').,NEEDS_NATIVE_REVIEW,replaced,yes
+→,→,",",LOW,symbol,L09 L13 L16,menu path: pause,NEEDS_NATIVE_REVIEW,replaced,no
+kg iga,kg iga,kilogrammiga,LOW,unit,L08,per kg of water,NEEDS_NATIVE_REVIEW,replaced,no
+biokimyo,biokimyo,biokimyo,LOW,watch,L09,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no

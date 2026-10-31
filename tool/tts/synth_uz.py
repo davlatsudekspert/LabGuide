@@ -58,6 +58,7 @@ import uz_prep  # noqa: E402
 
 VIDEOS = ["overview", "calibration", "qc", "photometry", "osmometry", "leukocyte", "calculators", "gcms", "qpcr"]
 DEFAULT_OUT_ROOT = REPO / "video_studio" / "out"
+SPEECH_RATE_CPS = 10.75   # measured by the owner on real UzbekVoice shoira audio (same value as plan_uz.RATE_CPS)
 SAMPLE_FILE = REPO / "docs/video/voice_uz/SAMPLE_TEXT.txt"
 AZURE_FORMAT = "riff-48khz-16bit-mono-pcm"
 AZURE_VOICES = ("uz-UZ-MadinaNeural", "uz-UZ-SardorNeural")
@@ -811,7 +812,7 @@ def report_markdown(rep: dict) -> str:
 # --------------------------------------------------------------------------- sample mode
 
 def run_sample(items: list[dict], out_root: Path, synthesizer: Synthesizer, *, gap_s: float = 0.5,
-               rate_cps: float = 13.0, label: str = "") -> dict:
+               rate_cps: float = SPEECH_RATE_CPS, label: str = "") -> dict:
     out_dir = out_root / "voice_uz_sample"
     parts, rows, sr_seen = [], [], None
     for it in items:
@@ -891,19 +892,19 @@ def main(argv=None) -> int:
         if a.dry_run:
             tot = 0.0
             for it in items:
-                est = len(it["text_tts"]) / 13.0
+                est = len(it["text_tts"]) / SPEECH_RATE_CPS
                 tot += est
                 print("%s  %3d chars  ~%.1f s   %s" % (it["id"], len(it["text_tts"]), est, it["text_tts"]))
             chars = sum(len(i["text_tts"]) for i in items)
-            print("total ~%.1f s (assumed 13 chars/s), %d characters%s; nothing was sent" % (tot, chars, cost_note(a, chars)))
+            print("total ~%.1f s (at the measured %g chars/s), %d characters%s; nothing was sent" % (tot, SPEECH_RATE_CPS, chars, cost_note(a, chars)))
             return 0
         provider = make_provider(a.provider, a)
         variants = ["keep", "ascii", "modifier"] if a.apostrophe_variants else [a.apostrophe]
         for v in variants:
             sy = Synthesizer(provider, a.voice, out_root / ".cache_uz", v, a.force)
             rep = run_sample(items, out_root, sy, label=("_" + v) if a.apostrophe_variants else "")
-            print("sample [%s]: %s  %.1f s, measured %.1f chars/s (assumed 13)" % (
-                v, rep["file"], rep["total_seconds"], rep["measured_chars_per_s"] or 0))
+            print("sample [%s]: %s  %.1f s, measured %.1f chars/s (plans use %g)" % (
+                v, rep["file"], rep["total_seconds"], rep["measured_chars_per_s"] or 0, SPEECH_RATE_CPS))
         return 0
 
     ids = VIDEOS if a.all else (a.video.split(",") if a.video else [])

@@ -1,14 +1,16 @@
-term,written,spoken_respelling,risk,kind,lines,note,review
-KDIGO,KDIGO,kidigo,HIGH,abbr,L08,read as one word; native check,NEEDS_NATIVE_REVIEW
-LabGuide,LabGuide’da,Leb Gaydda,HIGH,abbr,L03,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L15,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-eGFR,eGFR,e ge ef er,HIGH,abbr,L01 L10,alternative: i ji ef ar,NEEDS_NATIVE_REVIEW
-C1V1 = C2V2,C1·V1 = C2·V2,se bir ve bir teng se ikki ve ikki,HIGH,formula,L13,formula read aloud,NEEDS_NATIVE_REVIEW
-SI,SI,es i,MEDIUM,abbr,L12,,NEEDS_NATIVE_REVIEW
-number 90 mmol/L,90 mmol/L,to‘qson millimol litr,MEDIUM,number,L11,,NEEDS_NATIVE_REVIEW
-glyukoza,glyukoza,glyukoza,MEDIUM,watch,L11,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
-number 18,18,o‘n sakkiz,LOW,number,L10,,NEEDS_NATIVE_REVIEW
-number 45,45,qirq besh,LOW,number,L01,,NEEDS_NATIVE_REVIEW
-number 88,88,sakson sakkiz,LOW,number,L01,,NEEDS_NATIVE_REVIEW
-→,→,",",LOW,symbol,L03 L15,menu path: pause,NEEDS_NATIVE_REVIEW
-kreatinin,kreatinin,kreatinin,LOW,watch,L01,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+term,written,spoken_respelling,risk,kind,lines,note,review,action,needs_owner_approval
+LabGuide,LabGuide’da,Lab Gaydda,HIGH,name,L03,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+LabGuide,LabGuide,Lab Gayd,HIGH,name,L15,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+KDIGO,KDIGO,buyrak kasalliklari bo‘yicha xalqaro tavsiyalar,MEDIUM,abbr,L08,KDIGO = Kidney Disease: Improving Global Outcomes. No spoken Uzbek abbreviation exists; descriptive phrase (literal meaning of the name). Owner to confirm or choose to drop.,NEEDS_NATIVE_REVIEW,replaced,yes
+eGFR,eGFR,hisoblangan glomerulyar filtratsiya tezligi,MEDIUM,abbr,L01,Estimated GFR; the term Uzbek/Russian lab specialists use (raschetnaya SKF = hisoblangan GFT).,NEEDS_NATIVE_REVIEW,replaced,no
+eGFR,eGFR,glomerulyar filtratsiya tezligi,MEDIUM,abbr,L10,Estimated GFR; the term Uzbek/Russian lab specialists use (raschetnaya SKF = hisoblangan GFT).,NEEDS_NATIVE_REVIEW,replaced,no
+C1·V1 = C2·V2,C1·V1 = C2·V2,suyultirish formulasi,MEDIUM,formula,L13,Dilution formula (C1V1 = C2V2) named instead of read out; reading it needs ~100 characters (9 s) in a 5 s slot. The equation stays on screen. LONG FORM: 'boshlang‘ich konsentratsiya ko‘paytirilgan boshlang‘ich hajm teng oxirgi konsentratsiya ko‘paytirilgan oxirgi hajm'.,NEEDS_NATIVE_REVIEW,replaced,yes
+number 90 mmol/L,90 mmol/L,to‘qson millimol litr,MEDIUM,number,L11,,NEEDS_NATIVE_REVIEW,replaced,no
+glyukoza,glyukoza,glyukoza,MEDIUM,watch,L11,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no
+SI,SI,Xalqaro birliklar sistemasi,LOW,abbr,L12,SI = International System of Units.,NEEDS_NATIVE_REVIEW,replaced,no
+Lab,Lab,Laboratoriya,LOW,label,L03 L15,Name of the app tab 'Lab' spoken as Laboratoriya (the screen shows the tab name 'Lab').,NEEDS_NATIVE_REVIEW,replaced,yes
+number 18,18,o‘n sakkiz,LOW,number,L10,,NEEDS_NATIVE_REVIEW,replaced,no
+number 45,45,qirq besh,LOW,number,L01,,NEEDS_NATIVE_REVIEW,replaced,no
+number 88,88,sakson sakkiz,LOW,number,L01,,NEEDS_NATIVE_REVIEW,replaced,no
+→,→,",",LOW,symbol,L03 L15,menu path: pause,NEEDS_NATIVE_REVIEW,replaced,no
+kreatinin,kreatinin,kreatinin,LOW,watch,L01,"ordinary Uzbek-orthography loanword, spoken as written; LISTEN for stress/vowels",NEEDS_NATIVE_REVIEW,kept,no

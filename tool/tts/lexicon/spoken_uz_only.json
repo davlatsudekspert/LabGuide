@@ -1,0 +1,548 @@
+{
+ "_note": "SPOKEN-UZBEK-ONLY lexicon for the UzbekVoice.ai (shoira) voice text. Owner's rule from listening tests: the voice cannot read English/Latin terms and letter-by-letter respellings sound bad, so the VOICE text contains only ordinary Uzbek words (loanwords written in Uzbek orthography are ordinary). On-screen subtitles are unchanged. Used by tool/tts/uz_prep.py. Every entry is NEEDS_NATIVE_REVIEW; 'approval: yes' = NEEDS_OWNER_APPROVAL. Apostrophes: o‘ g‘ = U+2018, tutuq = U+2019. Reusable for other apps' videos.",
+ "version": 1,
+ "terms": [
+  {
+   "term": "LabGuide",
+   "pattern": "LabGuide",
+   "spoken": "Lab Gayd",
+   "kind": "name",
+   "action": "replace",
+   "approval": "yes",
+   "risk": "HIGH",
+   "note": "Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.",
+   "alt": "Leb Gayd | Lab Gaid"
+  },
+  {
+   "term": "Levey–Jennings",
+   "pattern": "Levey[–-]Jennings",
+   "spoken": "Levi-Jenings",
+   "kind": "name",
+   "action": "replace",
+   "approval": "yes",
+   "risk": "HIGH",
+   "note": "Personal names (Levey, Jennings); spelling in Uzbek orthography, no Uzbek equivalent exists.",
+   "alt": "Livi Jenings"
+  },
+  {
+   "term": "Westgard",
+   "pattern": "Westgard",
+   "spoken": "Vestgard",
+   "kind": "name",
+   "action": "replace",
+   "approval": "yes",
+   "risk": "HIGH",
+   "note": "Personal name (James Westgard).",
+   "alt": "Uestgard"
+  },
+  {
+   "term": "Buger–Lambert–Ber",
+   "pattern": "Buger[–-]Lambert[–-]Ber",
+   "spoken": "Buger-Lambert-Ber",
+   "kind": "name",
+   "action": "replace",
+   "approval": "yes",
+   "risk": "MEDIUM",
+   "note": "Personal names, already written in Uzbek orthography in the subtitle; hyphens kept as in the Uzbek lab textbooks."
+  },
+  {
+   "term": "Peltye",
+   "pattern": "Peltye",
+   "spoken": "Peltye",
+   "kind": "name",
+   "action": "replace",
+   "approval": "yes",
+   "risk": "HIGH",
+   "note": "Personal name (Peltier) already in Uzbek orthography in the subtitle; kept as written."
+  },
+  {
+   "term": "GC-MS",
+   "pattern": "GC-MS",
+   "spoken": "gaz xromatografiya mass-spektrometriya",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "MEDIUM",
+   "note": "Standard full term (gas chromatography - mass spectrometry)."
+  },
+  {
+   "term": "qPCR",
+   "pattern": "qPCR",
+   "spoken": "miqdoriy polimeraza zanjir reaksiyasi",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "MEDIUM",
+   "note": "quantitative PCR; not in the 9 scripts as a bare token (kept for the glossary and other apps)."
+  },
+  {
+   "term": "PCR",
+   "pattern": "PCR",
+   "spoken": "polimeraza zanjir reaksiyasi",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "MEDIUM",
+   "note": "Standard full term."
+  },
+  {
+   "term": "eGFR",
+   "pattern": "eGFR",
+   "spoken": "hisoblangan glomerulyar filtratsiya tezligi",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "MEDIUM",
+   "note": "Estimated GFR; the term Uzbek/Russian lab specialists use (raschetnaya SKF = hisoblangan GFT)."
+  },
+  {
+   "term": "KDIGO",
+   "pattern": "KDIGO",
+   "spoken": "buyrak kasalliklari bo‘yicha xalqaro tavsiyalar",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "yes",
+   "risk": "MEDIUM",
+   "note": "KDIGO = Kidney Disease: Improving Global Outcomes. No spoken Uzbek abbreviation exists; descriptive phrase (literal meaning of the name). Owner to confirm or choose to drop.",
+   "alt": "drop: 'Natija kategoriyasi va kiritilgan qiymatlar bilan'"
+  },
+  {
+   "term": "WBC",
+   "pattern": "WBC",
+   "spoken": "leykotsitlar soni",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "LOW",
+   "note": "White blood cell count = total leukocyte count."
+  },
+  {
+   "term": "QC",
+   "pattern": "QC",
+   "spoken": "sifat nazorati",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "LOW",
+   "note": "Quality control."
+  },
+  {
+   "term": "QR kod",
+   "pattern": "QR(?: kod)?",
+   "spoken": "skanerlanadigan kod",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "yes",
+   "risk": "MEDIUM",
+   "note": "QR code: no common Uzbek spoken term; descriptive phrase. Owner/native to confirm.",
+   "alt": "kvadrat shtrix-kod | drop"
+  },
+  {
+   "term": "PDF",
+   "pattern": "PDF",
+   "spoken": "fayl",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "LOW",
+   "note": "A PDF = a file; the subtitle keeps PDF.",
+   "alt": "hujjat"
+  },
+  {
+   "term": "CSV jadval",
+   "pattern": "CSV(?: jadval)?",
+   "spoken": "jadval fayli",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "LOW",
+   "note": "CSV table file = table file.",
+   "alt": "vergul bilan ajratilgan fayl"
+  },
+  {
+   "term": "IFU",
+   "pattern": "IFU",
+   "spoken": "foydalanish yo‘riqnomasi",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "LOW",
+   "note": "Instructions for use."
+  },
+  {
+   "term": "SOP",
+   "pattern": "SOP",
+   "spoken": "standart operatsion protsedura",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "LOW",
+   "note": "Standard operating procedure, the full term used in Uzbek labs."
+  },
+  {
+   "term": "REF",
+   "pattern": "REF",
+   "spoken": "katalog raqami",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "LOW",
+   "note": "REF = catalogue / reference number on the reagent label."
+  },
+  {
+   "term": "SD",
+   "pattern": "SD",
+   "spoken": "standart og‘ish",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "LOW",
+   "note": "Standard deviation.",
+   "detached_suffixes": [
+    "dan",
+    "ga",
+    "da",
+    "ni",
+    "ning"
+   ]
+  },
+  {
+   "term": "SI",
+   "pattern": "SI",
+   "spoken": "xalqaro birliklar sistemasi",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "LOW",
+   "note": "SI = International System of Units."
+  },
+  {
+   "term": "GC",
+   "pattern": "GC",
+   "spoken": "gaz xromatografiya",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "LOW",
+   "note": "Gas chromatography."
+  },
+  {
+   "term": "Cq",
+   "pattern": "Cq",
+   "spoken": "chegaraviy sikl",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "MEDIUM",
+   "note": "Cq = quantification cycle; the Uzbek/Russian lab term for the same quantity is 'chegaraviy sikl' (threshold cycle, Ct)."
+  },
+  {
+   "term": "R²",
+   "pattern": "R²",
+   "spoken": "determinatsiya koeffitsiyenti",
+   "kind": "abbr",
+   "action": "replace",
+   "approval": "no",
+   "risk": "MEDIUM",
+   "note": "Coefficient of determination."
+  },
+  {
+   "term": "Lab",
+   "pattern": "Lab",
+   "spoken": "Laboratoriya",
+   "kind": "label",
+   "action": "replace",
+   "approval": "yes",
+   "risk": "LOW",
+   "note": "Name of the app tab 'Lab' spoken as Laboratoriya (the screen shows the tab name 'Lab')."
+  },
+  {
+   "term": "z:",
+   "pattern": "z:\\s*",
+   "spoken": "",
+   "kind": "symbol",
+   "action": "drop",
+   "approval": "yes",
+   "risk": "LOW",
+   "note": "z-score label dropped; the sentence 'Har natija ... o‘rtachadan necha standart og‘ish uzoqda' stays complete; the screen shows z."
+  },
+  {
+   "term": "1-2s",
+   "pattern": "(?<![\\w])1-2s:?\\s*",
+   "spoken": "",
+   "kind": "rule",
+   "action": "drop",
+   "approval": "yes",
+   "risk": "MEDIUM",
+   "note": "Westgard rule name dropped; the sentence already says 'ikki standart og‘ishdan tashqari bitta qiymat - ogohlantirish, rad emas'."
+  },
+  {
+   "term": "4-1s",
+   "pattern": ":\\s*4-1s(?=\\.)",
+   "spoken": "",
+   "kind": "rule",
+   "action": "drop",
+   "approval": "yes",
+   "risk": "MEDIUM",
+   "note": "Westgard rule name dropped; the sentence already says 'ketma-ket to‘rt qiymat bir standart og‘ishdan tashqarida'."
+  },
+  {
+   "term": "A namuna",
+   "pattern": "A(?= namuna)",
+   "spoken": "birinchi",
+   "kind": "label",
+   "action": "replace",
+   "approval": "yes",
+   "risk": "LOW",
+   "note": "Sample label A spoken as 'birinchi' (first) - letter names are not used."
+  },
+  {
+   "term": "B namuna",
+   "pattern": "B(?= namuna)",
+   "spoken": "ikkinchi",
+   "kind": "label",
+   "action": "replace",
+   "approval": "yes",
+   "risk": "LOW",
+   "note": "Sample label B spoken as 'ikkinchi' (second)."
+  }
+ ],
+ "line_terms": {
+  "calculators:L10": {
+   "eGFR": "glomerulyar filtratsiya tezligi"
+  },
+  "calculators:L10:S": {
+   "eGFR": "glomerulyar filtratsiya tezligi"
+  }
+ },
+ "line_terms_note": {
+  "calculators:L10": "'hisoblangan' omitted because the same sentence says 'hisoblanmaydi' (avoid 'hisoblangan ... hisoblanmaydi')"
+ },
+ "line_overrides": {
+  "photometry:L04": {
+   "source": "Optik zichlik — kirgan va chiqqan nur nisbati: A = log₁₀(I₀/I).",
+   "spoken": "Optik zichlik, kirgan va chiqqan nur nisbati: bu nisbatning o‘nli logarifmi.",
+   "tokens": [
+    {
+     "term": "A = log10(I0/I)",
+     "action": "replaced",
+     "spoken": "bu nisbatning o‘nli logarifmi",
+     "kind": "formula",
+     "approval": "yes",
+     "note": "Formula spoken as words: I0 = kirgan nur, I = chiqqan nur (as the same sentence says), so A = decimal logarithm of that ratio. No letter names.",
+     "risk": "MEDIUM"
+    }
+   ]
+  },
+  "photometry:L04:S": {
+   "source": "Optik zichlik — kirgan, chiqqan nur nisbati: A = log₁₀(I₀/I).",
+   "spoken": "Optik zichlik, kirgan, chiqqan nur nisbati: bu nisbatning o‘nli logarifmi.",
+   "tokens": [
+    {
+     "term": "A = log10(I0/I)",
+     "action": "replaced",
+     "spoken": "bu nisbatning o‘nli logarifmi",
+     "kind": "formula",
+     "approval": "yes",
+     "note": "same as photometry:L04",
+     "risk": "MEDIUM"
+    }
+   ]
+  },
+  "photometry:L05": {
+   "source": "A = 1 da nurning faqat 10 % i o‘tadi, A = 2 da — 1 % i.",
+   "spoken": "Optik zichlik bir bo‘lganda nurning faqat o‘n foizi o‘tadi, ikki bo‘lganda, bir foizi.",
+   "tokens": [
+    {
+     "term": "A =",
+     "action": "replaced",
+     "spoken": "optik zichlik",
+     "kind": "formula",
+     "approval": "yes",
+     "note": "'A' is the optical density (absorbance) as defined in L04; spoken as the word, not the letter.",
+     "risk": "MEDIUM"
+    }
+   ]
+  },
+  "photometry:L09": {
+   "source": "C = A namuna ÷ A standart × standart konsentratsiyasi.",
+   "spoken": "Konsentratsiya: namuna optik zichligi standart optik zichligiga bo‘linadi va standart konsentratsiyasiga ko‘paytiriladi.",
+   "tokens": [
+    {
+     "term": "C = A namuna ÷ A standart × standart konsentratsiyasi",
+     "action": "replaced",
+     "spoken": "namuna optik zichligi standart optik zichligiga bo‘linadi va standart konsentratsiyasiga ko‘paytiriladi",
+     "kind": "formula",
+     "approval": "yes",
+     "note": "Formula read as a sentence (C = concentration, A = optical density). Same operations in the same order; no letter names.",
+     "risk": "MEDIUM"
+    }
+   ]
+  },
+  "qc:L08": {
+   "source": "1-3s va R-4s — tasodifiy xato: seriya rad etiladi.",
+   "spoken": "Uch standart og‘ish va diapazon qoidalari, tasodifiy xato: seriya rad etiladi.",
+   "tokens": [
+    {
+     "term": "1-3s",
+     "action": "replaced",
+     "spoken": "uch standart og‘ish qoidasi",
+     "kind": "rule",
+     "approval": "yes",
+     "note": "Westgard 1-3s = one value beyond 3 SD. No spoken Uzbek name exists; descriptive.",
+     "risk": "MEDIUM"
+    },
+    {
+     "term": "R-4s",
+     "action": "replaced",
+     "spoken": "diapazon qoidasi",
+     "kind": "rule",
+     "approval": "yes",
+     "note": "Westgard R-4s = range rule (R = range, 4s = 4 SD). Descriptive.",
+     "risk": "MEDIUM"
+    }
+   ]
+  },
+  "qc:L09": {
+   "source": "2-2s, 4-1s va 10x — tizimli xato, ya’ni siljish.",
+   "spoken": "Ketma-ket qiymatlarning bir tomonga og‘ishi, tizimli xato, ya’ni siljish.",
+   "tokens": [
+    {
+     "term": "2-2s, 4-1s, 10x",
+     "action": "replaced",
+     "spoken": "ketma-ket qiymatlarning bir tomonga og‘ishi",
+     "kind": "rule",
+     "approval": "yes",
+     "note": "Three Westgard rules (2-2s, 4-1s, 10x) all mean consecutive values on the same side of the mean; spoken as that summary. Individual rule names stay in the subtitle. LONG FORM if the owner wants every rule spoken (about 190 characters, ~17 s in a ~5 s slot): 'ketma-ket ikki qiymat ikki standart og‘ishdan, ketma-ket to‘rt qiymat bir standart og‘ishdan tashqarida yoki ketma-ket o‘nta qiymat o‘rtachaning bir tomonida'.",
+     "risk": "MEDIUM"
+    }
+   ]
+  },
+  "calculators:L13": {
+   "source": "Laboratoriya vositalari ham: suyultirish, C1·V1 = C2·V2, o‘z sonlaringizdan.",
+   "spoken": "Laboratoriya vositalari ham: suyultirish formulasi, o‘z sonlaringizdan.",
+   "tokens": [
+    {
+     "term": "C1·V1 = C2·V2",
+     "action": "replaced",
+     "spoken": "suyultirish formulasi",
+     "kind": "formula",
+     "approval": "yes",
+     "note": "Dilution formula (C1V1 = C2V2) named instead of read out; reading it needs ~100 characters (9 s) in a 5 s slot. The equation stays on screen. LONG FORM: 'boshlang‘ich konsentratsiya ko‘paytirilgan boshlang‘ich hajm teng oxirgi konsentratsiya ko‘paytirilgan oxirgi hajm'.",
+     "risk": "MEDIUM"
+    }
+   ]
+  },
+  "calculators:L13:S": {
+   "source": "Lab vositalari ham: suyultirish, C1·V1 = C2·V2, sonlaringizdan.",
+   "spoken": "Laboratoriya vositalari ham: suyultirish formulasi, sonlaringizdan.",
+   "tokens": [
+    {
+     "term": "C1·V1 = C2·V2",
+     "action": "replaced",
+     "spoken": "suyultirish formulasi",
+     "kind": "formula",
+     "approval": "yes",
+     "note": "same as calculators:L13",
+     "risk": "MEDIUM"
+    },
+    {
+     "term": "Lab",
+     "action": "replaced",
+     "spoken": "Laboratoriya",
+     "kind": "label",
+     "approval": "no",
+     "note": "tab name",
+     "risk": "MEDIUM"
+    }
+   ]
+  },
+  "gcms:L08": {
+   "source": "Kvadrupol ionlarni massa/zaryad nisbati — m/z bo‘yicha saralab, navbat bilan o‘tkazadi.",
+   "spoken": "Kvadrupol ionlarni massa-zaryad nisbati bo‘yicha saralab, navbat bilan o‘tkazadi.",
+   "tokens": [
+    {
+     "term": "m/z",
+     "action": "dropped",
+     "spoken": "",
+     "kind": "symbol",
+     "approval": "yes",
+     "note": "Symbol m/z is a repeat of 'massa/zaryad nisbati' just before it; dropped from the voice, shown on screen. 'massa/zaryad' spoken as 'massa-zaryad'.",
+     "risk": "LOW"
+    }
+   ]
+  },
+  "qpcr:L09": {
+   "source": "Cq — chegara kesib o‘tilgan sikl: Cq qancha past bo‘lsa, boshida nishon shuncha ko‘p.",
+   "spoken": "Chegaraviy sikl, chegara kesib o‘tilgan sikl: u qancha past bo‘lsa, boshida nishon shuncha ko‘p.",
+   "tokens": [
+    {
+     "term": "Cq",
+     "action": "replaced",
+     "spoken": "chegaraviy sikl",
+     "kind": "abbr",
+     "approval": "no",
+     "note": "Cq = quantification cycle (threshold cycle, Ct): 'chegaraviy sikl'.",
+     "risk": "MEDIUM"
+    },
+    {
+     "term": "Cq (2nd)",
+     "action": "replaced",
+     "spoken": "u",
+     "kind": "abbr",
+     "approval": "no",
+     "note": "second mention spoken as the pronoun 'u' (it) to avoid repeating the long term",
+     "risk": "MEDIUM"
+    }
+   ]
+  },
+  "qpcr:L09:S": {
+   "source": "Cq — chegara kesilgan sikl: Cq qancha past, boshida nishon shuncha ko‘p.",
+   "spoken": "Chegaraviy sikl, chegara kesilgan sikl: u qancha past, boshida nishon shuncha ko‘p.",
+   "tokens": [
+    {
+     "term": "Cq",
+     "action": "replaced",
+     "spoken": "chegaraviy sikl",
+     "kind": "abbr",
+     "approval": "no",
+     "note": "Cq = quantification cycle (threshold cycle, Ct): 'chegaraviy sikl'.",
+     "risk": "MEDIUM"
+    },
+    {
+     "term": "Cq (2nd)",
+     "action": "replaced",
+     "spoken": "u",
+     "kind": "abbr",
+     "approval": "no",
+     "note": "second mention spoken as the pronoun 'u' (it) to avoid repeating the long term",
+     "risk": "MEDIUM"
+    }
+   ]
+  },
+  "qpcr:L01:S": {
+   "source": "A — 22-siklda, B — 31-siklda chiziqni kesadi.",
+   "spoken": "Birinchi namuna yigirma ikkinchi siklda, ikkinchi namuna o‘ttiz birinchi siklda chiziqni kesadi.",
+   "tokens": [
+    {
+     "term": "A namuna",
+     "action": "replaced",
+     "spoken": "birinchi namuna",
+     "kind": "label",
+     "approval": "yes",
+     "note": "sample label A spoken as 'birinchi namuna' (the word 'namuna' is added: it is in the original sentence of L01)",
+     "risk": "MEDIUM"
+    },
+    {
+     "term": "B namuna",
+     "action": "replaced",
+     "spoken": "ikkinchi namuna",
+     "kind": "label",
+     "approval": "yes",
+     "note": "sample label B spoken as 'ikkinchi namuna'",
+     "risk": "MEDIUM"
+    }
+   ]
+  }
+ }
+}

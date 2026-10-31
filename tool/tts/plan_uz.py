@@ -13,9 +13,10 @@ Inputs (all in the repo, nothing is downloaded, no TTS is called):
                                                   (video_studio/scripts/dump_resolved_lines.mjs)
   docs/video/voice_uz/suggestions_uz.json         hand-written SHORTER wordings (used only for TOO_LONG lines)
 
-ASSUMPTIONS (documented, NOT measured - nobody has synthesised Uzbek yet):
-  * speech rate 13 characters/second of the TTS-ready text (spaces and punctuation included); the
-    low/high band is 11 / 15 chars/s. The real number comes from `synth_uz.py --sample`.
+RATE (measured): 10.75 characters/second of the TTS-ready text (spaces and punctuation included), measured by the
+  owner on real UzbekVoice 'shoira' audio (the earlier 13 chars/s was only an assumption). Band used for the
+  low/high estimate: 9.7 / 11.8 (+-10 %, a guess - one measurement only).
+ASSUMPTIONS (documented):
   * the Uzbek clip starts where the English clip starts and may run until the next line starts minus a
     0.10 s guard (last line of a scene: until the scene ends minus 0.05 s; very last line: until the
     video end minus 0.10 s). ffmpeg atempo may speed a clip up by at most 12 %.
@@ -26,6 +27,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -38,8 +40,8 @@ import uz_prep  # noqa: E402
 VIDEOS = ["overview", "calibration", "qc", "photometry", "osmometry", "leukocyte", "calculators", "gcms", "qpcr"]
 SCHEMA = "labguide.voice_uz.plan/1"
 PRICE_SOM_PER_CHAR = 0.5  # UzbekVoice price relayed by the owner (unverified): 500 so'm per 1000 characters
-RATE_CPS = 13.0
-RATE_LOW, RATE_HIGH = 11.0, 15.0
+RATE_CPS = 10.75          # MEASURED on real Shoira audio (owner's listening/synthesis test); was an assumed 13.0
+RATE_LOW, RATE_HIGH = 9.7, 11.8  # +-10 % band around the single measurement
 MAX_TEMPO = 1.12
 GUARD_LINE = 0.10
 GUARD_SCENE = 0.05
@@ -93,6 +95,15 @@ def judge(est: float, available: float, window: float) -> dict:
             "tempo_needed": round(max(1.0, tempo), 3)}
 
 
+def cut_needed(text: str, available: float, rate: float) -> tuple[int, int]:
+    """(characters, approximate words) that must go so the line fits `available` s at the maximum +12 % tempo.
+    Words = characters / average characters per word of that very line (spaces included)."""
+    chars = len(text)
+    over = max(0, chars - int(available * MAX_TEMPO * rate))
+    avg = chars / max(1, len(text.split()))
+    return over, int(math.ceil(over / avg)) if over else 0
+
+
 def check_banned(text: str) -> str:
     if uz_prep.BANNED.search(text):
         raise SystemExit("banned term in text: %r" % text)
@@ -132,7 +143,7 @@ def build_video(vid: str, resolved: dict, suggestions: dict, rate: float) -> dic
         if lid in resolved.get("source_term_replaced", {}).get(vid, []):
             notes.append("SOURCE_TERM_REPLACED: lines.uz.json holds a word from the owner's banned list; the voice "
                          "text uses the neutral loanword 'kategoriyasi' (fix the source subtitle/on-screen key too)")
-        spoken, used, warns = uz_prep.prepare(text)
+        spoken, used, warns = uz_prep.prepare(text, key="%s:%s" % (vid, lid))
         c_written, c_spoken = len(text), len(spoken)
         est = estimate_s(c_spoken, rate)
         j = judge(est, available, window)
@@ -149,6 +160,9 @@ def build_video(vid: str, resolved: dict, suggestions: dict, rate: float) -> dic
             "est_speech_s": round(est, 2),
             "est_speech_s_range": [round(c_spoken / RATE_HIGH, 2), round(c_spoken / RATE_LOW, 2)],
             **j,
+            "extra_s_if_stretched": round(max(0.0, est - available), 2),
+            "cut_chars_for_fit": cut_needed(spoken, available, rate)[0],
+            "cut_words_for_fit": cut_needed(spoken, available, rate)[1],
             "suggested": None,
             "pronunciation_terms": sorted({u["term"] for u in used if u["kind"] != "watch"}),
             "review": "NEEDS_NATIVE_REVIEW",
@@ -163,12 +177,15 @@ def build_video(vid: str, resolved: dict, suggestions: dict, rate: float) -> dic
                 row["suggested"] = {"status": "NO_SAFE_SHORTENING", "note": sug["none"]}
             elif sug:
                 s_text = check_banned(sug)
-                s_spoken, _, s_warns = uz_prep.prepare(s_text)
+                s_spoken, _, s_warns = uz_prep.prepare(s_text, key="%s:%s:S" % (vid, lid))
                 s_est = estimate_s(len(s_spoken), rate)
                 row["suggested"] = {
                     "text_uz": s_text, "text_tts": s_spoken, "chars_written": len(s_text),
                     "chars_spoken": len(s_spoken), "est_speech_s": round(s_est, 2),
                     **judge(s_est, available, window),
+                    "extra_s_if_stretched": round(max(0.0, s_est - available), 2),
+                    "cut_chars_for_fit": cut_needed(s_spoken, available, rate)[0],
+                    "cut_words_for_fit": cut_needed(s_spoken, available, rate)[1],
                     "status": "SUGGESTED", "review": "NEEDS_NATIVE_REVIEW",
                     "note": "shorter wording of the same statement; owner / native review required; "
                             "burned-in subtitles still show the long text unless lines.uz.json is changed too",
@@ -185,6 +202,10 @@ def build_video(vid: str, resolved: dict, suggestions: dict, rate: float) -> dic
 
     after_long = sum(1 for r in rows if _unresolved(r))
     est_with = sum((r["suggested"] or {}).get("est_speech_s", r["est_speech_s"]) for r in rows)
+    def eff(r, k_row, k_sug):
+        sg = r["suggested"] or {}
+        return sg[k_sug] if k_sug in sg else r[k_row]
+
     plan = {
         "schema": SCHEMA, "videoId": vid, "lang": "uz", "script": "Latin (o‘ g‘ = U+2018, tutuq = U+2019)",
         "status": "NEEDS_NATIVE_REVIEW",
@@ -192,7 +213,7 @@ def build_video(vid: str, resolved: dict, suggestions: dict, rate: float) -> dic
                      "note": "The English narration timing defines scene boundaries of the existing renders; the Uzbek "
                              "track must keep the same total length so it can be muxed with -c:v copy."},
         "assumptions": {"speech_rate_chars_per_s": rate, "rate_band": [RATE_LOW, RATE_HIGH],
-                        "rate_basis": "assumed for Uzbek neural TTS, text = TTS-ready variant incl. spaces; NOT measured",
+                        "rate_basis": "MEASURED by the owner on real UzbekVoice shoira audio (10.75 chars/s); text = TTS-ready variant incl. spaces; single measurement, band is a guess",
                         "max_tempo": MAX_TEMPO, "line_guard_s": GUARD_LINE, "scene_guard_s": GUARD_SCENE,
                         "too_short_below": "%.0f %% of the English clip" % (SHORT_RATIO * 100)},
         "summary": {
@@ -202,6 +223,13 @@ def build_video(vid: str, resolved: dict, suggestions: dict, rate: float) -> dic
             "est_speech_s": round(sum(r["est_speech_s"] for r in rows), 2),
             "too_long": n_long, "too_short": n_short,
             "too_long_after_suggestions": after_long,
+            "extra_s_if_scenes_stretched": round(sum(r["extra_s_if_stretched"] for r in rows), 2),
+            "extra_s_if_scenes_stretched_at_plus12": round(sum(r["overrun_after_max_speedup_s"] for r in rows), 2),
+            "extra_s_if_scenes_stretched_with_suggestions": round(sum(eff(r, "extra_s_if_stretched", "extra_s_if_stretched") for r in rows), 2),
+            "extra_s_at_plus12_with_suggestions": round(sum(eff(r, "overrun_after_max_speedup_s", "overrun_after_max_speedup_s") for r in rows), 2),
+            "cut_words_for_fit": sum(r["cut_words_for_fit"] for r in rows),
+            "cut_words_for_fit_with_suggestions": sum(eff(r, "cut_words_for_fit", "cut_words_for_fit") for r in rows),
+            "words_total": sum(len(r["text_tts"].split()) for r in rows),
             "est_speech_s_with_suggestions": round(est_with, 2),
             "chars_written": sum(r["chars_written"] for r in rows),
             "chars_spoken": sum(r["chars_spoken"] for r in rows),
@@ -244,10 +272,11 @@ def write_plan_files(plan: dict, out_dir: Path) -> None:
     rows = sorted(agg.values(), key=lambda e: (order[e["risk"]], e["kind"], e["term"]))
     with (out_dir / "pronunciation_uz.csv").open("w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["term", "written", "spoken_respelling", "risk", "kind", "lines", "note", "review"])
+        w.writerow(["term", "written", "spoken_respelling", "risk", "kind", "lines", "note", "review", "action",
+                    "needs_owner_approval"])
         for e in rows:
             w.writerow([e["term"], e["written"], e["spoken"], e["risk"], e["kind"], " ".join(e["lines"]),
-                        e["note"], "NEEDS_NATIVE_REVIEW"])
+                        e["note"], "NEEDS_NATIVE_REVIEW", e.get("action", ""), e.get("approval", "no")])
 
 
 def main(argv=None) -> int:
@@ -264,8 +293,11 @@ def main(argv=None) -> int:
     tot = {"lines": 0, "avail": 0.0, "est": 0.0, "en": 0.0, "long": 0, "long_after": 0}
     print("%-12s %5s %10s %8s %9s %8s %10s" % ("video", "lines", "avail_s", "en_s", "est_s", "TOO_LONG", "after_sugg"))
     summary = {}
+    plans, all_used = {}, {}
     for vid in vids:
         plan = build_video(vid, resolved, suggestions.get(vid, {}), a.rate)
+        all_used[vid] = plan["_rows_used"]
+        plans[vid] = {k: v for k, v in plan.items() if k != "_rows_used"}
         s = plan["summary"]
         summary[vid] = dict(s, total_s=plan["timeline"]["total_s"])
         print("%-12s %5d %10.2f %8.2f %9.2f %8d %10d" % (vid, s["lines"], s["available_s"], s["en_clip_s"],
@@ -293,18 +325,24 @@ def main(argv=None) -> int:
                                                             x["chars_spoken_with_suggestions"],
                                                             x["chars_spoken_with_suggestions"] * PRICE_SOM_PER_CHAR))
         cost.append("| **all 9, first pass** | %d | %.0f | %d | %.0f |" % (tot_c, tot_c * PRICE_SOM_PER_CHAR, tot_cs, tot_cs * PRICE_SOM_PER_CHAR))
+        SAMPLE_CHARS = sum(len(uz_prep.prepare(l.partition("|")[2].strip())[0]) for l in
+                           (REPO / "docs/video/voice_uz/SAMPLE_TEXT.txt").read_text(encoding="utf-8").splitlines()
+                           if l.strip() and not l.startswith("#"))
         lc = summary[longest]["chars_spoken"]
         cost += ["", "Longest video: **%s** (%d characters): one full redo costs about %.0f so'm (original text; %.0f so'm with suggestions). "
                  "Balance 10 000 so'm = 20 000 characters, i.e. the first pass of all nine videos (%d characters) uses about %.0f %% of it; "
-                 "the sample (219 characters) about %.0f so'm." % (
+                 "the sample (%d characters) about %.0f so'm." % (
                      longest, lc, lc * PRICE_SOM_PER_CHAR, summary[longest]["chars_spoken_with_suggestions"] * PRICE_SOM_PER_CHAR,
-                     tot_c, 100.0 * tot_c * PRICE_SOM_PER_CHAR / 10000, 219 * PRICE_SOM_PER_CHAR)]
+                     tot_c, 100.0 * tot_c * PRICE_SOM_PER_CHAR / 10000, SAMPLE_CHARS, SAMPLE_CHARS * PRICE_SOM_PER_CHAR)]
         md = ["# Uzbek voice: fit summary (ESTIMATES, nothing synthesised)", "",
-              "Generated by `python3 tool/tts/plan_uz.py` at an assumed **%g characters/second** (TTS-ready text, band %g-%g). "
+              "Generated by `python3 tool/tts/plan_uz.py` at the **measured %g characters/second** (owner's measurement on real "
+              "UzbekVoice `shoira` audio; TTS-ready text incl. spaces; the +-10 %% band %g-%g is a guess from one measurement). "
+              "Voice text = spoken-Uzbek-only variant (no abbreviations, letter names or English words; see `SPOKEN_VS_SUBTITLE.md`). "
               "NEEDS_NATIVE_REVIEW. `available` = sum of the line slots (start -> next start minus guard); `EN clip` = the English "
               "narration speech in the same lines; `est` = Uzbek speech estimate; a line is TOO_LONG when it does not fit its slot "
-              "even at +12 %% tempo." % (a.rate, RATE_LOW, RATE_HIGH), "",
-              "| video | lines | video length s | available s | EN clip s | est Uzbek s | est with suggestions s | TOO_LONG | still TOO_LONG with suggestions |",
+              "even at +12 %% tempo (ffmpeg atempo)." % (a.rate, RATE_LOW, RATE_HIGH), "",
+              "## 1. Fit per video", "",
+              "| video | lines | video length s | available s | EN clip s | est Uzbek s | est with suggestions s | TOO_LONG (cannot fit even at +12 %) | still TOO_LONG with suggestions |",
               "|---|---|---|---|---|---|---|---|---|"]
         t = [0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0]
         for vid in vids:
@@ -316,7 +354,38 @@ def main(argv=None) -> int:
                                    "est_speech_s_with_suggestions", "too_long", "too_long_after_suggestions")):
                 t[i] += x[k]
         md.append("| **total** | %d | %.1f | %.1f | %.1f | %.1f | %.1f | %d | %d |" % tuple(t))
+        pct = 100.0 * (t[4] / t[3] - 1) if t[3] else 0
+        md += ["", "Honest reading: the Uzbek voice needs about **%.0f %% more time than the English narration** in the same lines "
+               "(%.1f s Uzbek vs %.1f s English clips, %.1f s available because each slot also contains the pause before the next line). "
+               "Per line the overrun is not shared: a short line cannot lend its spare seconds to a long neighbour, "
+               "because every line starts where the English line starts. \"With suggestions\" uses the hand-written SHORTER wordings "
+               "of `suggestions_uz.json` (only lines that have one; they are NOT adopted in the subtitles)." % (pct, t[4], t[3], t[2]), "",
+               "## 2. If the Uzbek edition is made to fit: option A (longer scenes) versus option B (cut words)", "",
+               "* **Option A - re-render the Uzbek editions with longer scenes.** Extra seconds = sum over lines of the overrun; "
+               "'natural speed' keeps the voice as synthesised, '+12 % tempo' lets ffmpeg speed every long line up by 12 %. "
+               "Upper bound: a re-timed layout could reuse the slack of short lines, so the real need lies between the sum and about half of it. "
+               "The English/Russian editions keep their length; the Uzbek video would be longer than the English one.",
+               "* **Option B - keep the video, cut words.** Words that must go so that every line fits at +12 % tempo "
+               "(characters over the cap / average word length of the line). Counted for the original subtitle wording and after "
+               "adopting the existing SUGGESTED shorter wordings (lines without a suggestion keep the original; the "
+               "suggestions exist only for lines that were too long at the old assumed 13 chars/s).", "",
+               "| video | lines | words | TOO_LONG lines | A: extra s at natural speed | A: extra s at +12 % tempo | A at +12 % with suggestions | B: words to cut | B: words to cut with suggestions |",
+               "|---|---|---|---|---|---|---|---|---|"]
+        tt = [0, 0, 0, 0.0, 0.0, 0.0, 0, 0]
+        for vid in vids:
+            x = summary[vid]
+            md.append("| %s | %d | %d | %d | %.1f | %.1f | %.1f | %d | %d |" % (
+                vid, x["lines"], x["words_total"], x["too_long"], x["extra_s_if_scenes_stretched"],
+                x["extra_s_if_scenes_stretched_at_plus12"], x["extra_s_at_plus12_with_suggestions"],
+                x["cut_words_for_fit"], x["cut_words_for_fit_with_suggestions"]))
+            for i, k in enumerate(("lines", "words_total", "too_long", "extra_s_if_scenes_stretched",
+                                   "extra_s_if_scenes_stretched_at_plus12", "extra_s_at_plus12_with_suggestions",
+                                   "cut_words_for_fit", "cut_words_for_fit_with_suggestions")):
+                tt[i] += x[k]
+        md.append("| **total** | %d | %d | %d | %.1f | %.1f | %.1f | %d | %d |" % tuple(tt))
         (REPO / "docs/video/voice_uz/FIT_SUMMARY.md").write_text("\n".join(md + cost) + "\n", encoding="utf-8")
+        import spoken_docs  # noqa: E402  (SPOKEN_VS_SUBTITLE.md, GLOSSARY_UZ_ONLY.csv, vocabulary snapshot)
+        spoken_docs.write_all(plans, all_used, REPO)
     return 0
 
 

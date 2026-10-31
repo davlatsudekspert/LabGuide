@@ -1,21 +1,25 @@
-term,written,spoken_respelling,risk,kind,lines,note,review
-LabGuide,LabGuide’da,Leb Gaydda,HIGH,abbr,L11,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L17,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
-Levey–Jennings,Levey–Jennings,Livi Jenings,HIGH,abbr,L03,personal names; English pronunciation approximated,NEEDS_NATIVE_REVIEW
-Westgard,Westgard,Vestgard,HIGH,abbr,L13,personal name,NEEDS_NATIVE_REVIEW
-Westgard rule 1-2s,1-2s,bir ikki es,HIGH,qc-rule,L06,"rule name: first digit = count, second = SD multiple, s = SD",NEEDS_NATIVE_REVIEW
-Westgard rule 1-3s,1-3s,bir uch es,HIGH,qc-rule,L08,"rule name: first digit = count, second = SD multiple, s = SD",NEEDS_NATIVE_REVIEW
-Westgard rule 10x,10x,o‘n iks,HIGH,qc-rule,L09,ten in a row,NEEDS_NATIVE_REVIEW
-Westgard rule 2-2s,2-2s,ikki ikki es,HIGH,qc-rule,L09,"rule name: first digit = count, second = SD multiple, s = SD",NEEDS_NATIVE_REVIEW
-Westgard rule 4-1s,4-1s,to‘rt bir es,HIGH,qc-rule,L09 L10,"rule name: first digit = count, second = SD multiple, s = SD",NEEDS_NATIVE_REVIEW
-Westgard rule R-4s,R-4s,er to‘rt es,HIGH,qc-rule,L08,range rule,NEEDS_NATIVE_REVIEW
-CSV,CSV,si es vi,MEDIUM,abbr,L15,,NEEDS_NATIVE_REVIEW
-SD,SD,es de,MEDIUM,abbr,L01 L03 L05 L06 L10 L11,standard deviation; alternative: standart og‘ish,NEEDS_NATIVE_REVIEW
-"decimal 2,3","2,3",ikki vergul uch,MEDIUM,number,L01,decimal comma read as 'vergul' (alternative: butun … dan …),NEEDS_NATIVE_REVIEW
-z,z:,zet,LOW,letter,L05,z-score symbol,NEEDS_NATIVE_REVIEW
-number 1,1,bir,LOW,number,L10,,NEEDS_NATIVE_REVIEW
-number 2,2,ikki,LOW,number,L06,,NEEDS_NATIVE_REVIEW
-number 20,20,yigirma,LOW,number,L04,,NEEDS_NATIVE_REVIEW
-+,+,plyus ,LOW,symbol,L01,plus sign,NEEDS_NATIVE_REVIEW
-~,~,taxminan ,LOW,symbol,L04,approximately,NEEDS_NATIVE_REVIEW
-→,→,",",LOW,symbol,L17,menu path: pause,NEEDS_NATIVE_REVIEW
+term,written,spoken_respelling,risk,kind,lines,note,review,action,needs_owner_approval
+LabGuide,LabGuide’da,Lab Gaydda,HIGH,name,L11,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+LabGuide,LabGuide,Lab Gayd,HIGH,name,L17,Brand name: plain Uzbek-orthography spelling of how it is said. Replaces the old respelling 'Leb Gayd'.,NEEDS_NATIVE_REVIEW,replaced,yes
+Levey–Jennings,Levey–Jennings,Levi-Jenings,HIGH,name,L03,"Personal names (Levey, Jennings); spelling in Uzbek orthography, no Uzbek equivalent exists.",NEEDS_NATIVE_REVIEW,replaced,yes
+Westgard,Westgard,Vestgard,HIGH,name,L13,Personal name (James Westgard).,NEEDS_NATIVE_REVIEW,replaced,yes
+"decimal 2,3","2,3",ikki vergul uch,MEDIUM,number,L01,decimal comma read as 'vergul' (alternative: butun … dan …),NEEDS_NATIVE_REVIEW,replaced,no
+1-2s,1-2s:,,MEDIUM,rule,L06,"Westgard rule name dropped; the sentence already says 'ikki standart og‘ishdan tashqari bitta qiymat - ogohlantirish, rad emas'.",NEEDS_NATIVE_REVIEW,dropped,yes
+1-3s,1-3s,uch standart og‘ish qoidasi,MEDIUM,rule,L08,Westgard 1-3s = one value beyond 3 SD. No spoken Uzbek name exists; descriptive.,NEEDS_NATIVE_REVIEW,replaced,yes
+"2-2s, 4-1s, 10x","2-2s, 4-1s, 10x",ketma-ket qiymatlarning bir tomonga og‘ishi,MEDIUM,rule,L09,"Three Westgard rules (2-2s, 4-1s, 10x) all mean consecutive values on the same side of the mean; spoken as that summary. Individual rule names stay in the subtitle. LONG FORM if the owner wants every rule spoken (about 190 characters, ~17 s in a ~5 s slot): 'ketma-ket ikki qiymat ikki standart og‘ishdan, ketma-ket to‘rt qiymat bir standart og‘ishdan tashqarida yoki ketma-ket o‘nta qiymat o‘rtachaning bir tomonida'.",NEEDS_NATIVE_REVIEW,replaced,yes
+4-1s,: 4-1s,,MEDIUM,rule,L10,Westgard rule name dropped; the sentence already says 'ketma-ket to‘rt qiymat bir standart og‘ishdan tashqarida'.,NEEDS_NATIVE_REVIEW,dropped,yes
+R-4s,R-4s,diapazon qoidasi,MEDIUM,rule,L08,"Westgard R-4s = range rule (R = range, 4s = 4 SD). Descriptive.",NEEDS_NATIVE_REVIEW,replaced,yes
+CSV jadval,CSV jadval,Jadval fayli,LOW,abbr,L15,CSV table file = table file.,NEEDS_NATIVE_REVIEW,replaced,no
+SD,SD,standart og‘ish,LOW,abbr,L01 L03 L05 L11,Standard deviation.,NEEDS_NATIVE_REVIEW,replaced,no
+SD,SD dan,standart og‘ishdan,LOW,abbr,L06 L10,Standard deviation.,NEEDS_NATIVE_REVIEW,replaced,no
+Lab,Lab,Laboratoriya,LOW,label,L17,Name of the app tab 'Lab' spoken as Laboratoriya (the screen shows the tab name 'Lab').,NEEDS_NATIVE_REVIEW,replaced,yes
+number 1,1,(in words),LOW,number,L08,,NEEDS_NATIVE_REVIEW,replaced,no
+number 1,1,bir,LOW,number,L10,,NEEDS_NATIVE_REVIEW,replaced,no
+number 2,2,ikki,LOW,number,L06,,NEEDS_NATIVE_REVIEW,replaced,no
+number 2,2,(in words),LOW,number,L09,,NEEDS_NATIVE_REVIEW,replaced,no
+number 20,20,yigirma,LOW,number,L04,,NEEDS_NATIVE_REVIEW,replaced,no
+number 4,4,(in words),LOW,number,L09,,NEEDS_NATIVE_REVIEW,replaced,no
++,+,plyus ,LOW,symbol,L01,plus sign,NEEDS_NATIVE_REVIEW,replaced,no
+z:,z:,,LOW,symbol,L05,z-score label dropped; the sentence 'Har natija ... o‘rtachadan necha standart og‘ish uzoqda' stays complete; the screen shows z.,NEEDS_NATIVE_REVIEW,dropped,yes
+~,~,taxminan ,LOW,symbol,L04,approximately,NEEDS_NATIVE_REVIEW,replaced,no
+→,→,",",LOW,symbol,L17,menu path: pause,NEEDS_NATIVE_REVIEW,replaced,no
