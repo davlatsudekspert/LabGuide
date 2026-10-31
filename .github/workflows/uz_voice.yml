@@ -1,7 +1,11 @@
 # O'zbekcha ovoz sintezi (UzbekVoice.ai) — FAQAT audio, video/render YO'Q.
 # Ishga tushirish: filialga docs/video/voice_uz/RUN_REQUEST.txt faylini push qilish.
-#   1-qator: sample | video:<id> | all      (masalan: sample, video:overview, all)
-# Kalit: GitHub Secret UZBEKVOICE_API_KEY (Settings -> Secrets and variables -> Actions).
+#   1-qator: sample | video:<id> | all | sample:<fayl> | compare:<fayl>          (UzbekVoice, kalit UZBEKVOICE_API_KEY)
+#            gemini-compare:docs/video/voice_uz/GEMINI_TEST.txt                    (Gemini: 7 ovoz x 2 matn varianti, <=3000 belgi)
+#            gemini-all | gemini-video:<id>                                        (Gemini: GEMINI_VOICE, standart Fola; matn: spoken; <=12000 belgi)
+# Kalit: GitHub Secret UZBEKVOICE_API_KEY yoki GEMINI_API_KEY (Settings -> Secrets and variables -> Actions).
+# Gemini: faqat env orqali, hech qachon chop etilmaydi. Belgi chegarasi oshsa, so'rov yuborilmasdan to'xtaydi (--max-chars).
+# Ixtiyoriy repo o'zgaruvchilari (Variables): GEMINI_VOICE, GEMINI_MODEL, GEMINI_COMPARE_CAP, GEMINI_ALL_CAP.
 # Natija: Artifact "uz-voice-<run>" (voice_uz.wav har bir rolik uchun yoki namuna fayllari).
 # Narx: 0.5 so'm/belgi; mahalliy byudjet --uzv-char-limit (standart 19000). Kalit hech qachon chop etilmaydi.
 name: UzVoice
@@ -26,7 +30,9 @@ jobs:
         run: |
           mode="$(head -n1 docs/video/voice_uz/RUN_REQUEST.txt | tr -d '\r' | tr -cd 'a-zA-Z0-9:_/.-')"
           case "$mode" in
+            *..*) echo "Noto'g'ri rejim (..): $mode"; exit 1 ;;
             sample|all|video:*|sample:docs/video/voice_uz/*.txt|compare:docs/video/voice_uz/*.txt) echo "mode=$mode" >> "$GITHUB_OUTPUT" ;;
+            gemini-all|gemini-video:*|gemini-compare:docs/video/voice_uz/*.txt) echo "mode=$mode" >> "$GITHUB_OUTPUT" ;;
             *) echo "Noto'g'ri rejim: $mode"; exit 1 ;;
           esac
       - name: ffmpeg tekshiruvi
@@ -38,16 +44,39 @@ jobs:
       - name: Sintez
         env:
           UZBEKVOICE_API_KEY: ${{ secrets.UZBEKVOICE_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_VOICE: ${{ vars.GEMINI_VOICE }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GEMINI_COMPARE_CAP: ${{ vars.GEMINI_COMPARE_CAP }}
+          GEMINI_ALL_CAP: ${{ vars.GEMINI_ALL_CAP }}
         run: |
           set -euo pipefail
-          if [ -z "${UZBEKVOICE_API_KEY:-}" ]; then echo "UZBEKVOICE_API_KEY secret yo'q — to'xtadi"; exit 1; fi
           mode="${{ steps.req.outputs.mode }}"
+          case "$mode" in
+            gemini-*)
+              if [ -z "${GEMINI_API_KEY:-}" ]; then echo "GEMINI_API_KEY secret yo'q yoki bo'sh (Settings -> Secrets and variables -> Actions -> Repository secrets). Hech narsa yuborilmadi — to'xtadi"; exit 1; fi ;;
+            *)
+              if [ -z "${UZBEKVOICE_API_KEY:-}" ]; then echo "UZBEKVOICE_API_KEY secret yo'q — to'xtadi"; exit 1; fi ;;
+          esac
+          gmodel="${GEMINI_MODEL:-gemini-3.8-flash-tts}"
+          gvoice="${GEMINI_VOICE:-Fola}"
           case "$mode" in
             sample) python3 tool/tts/synth_uz.py --sample --out-root out_voice ;;
             compare:*) for v in shoira lola kamola jasur sevinch; do python3 tool/tts/synth_uz.py --sample --sample-file "${mode#compare:}" --voice "$v" --out-root "out_voice/$v" || echo "voice $v failed"; done ;;
             sample:*) python3 tool/tts/synth_uz.py --sample --sample-file "${mode#sample:}" --out-root out_voice ;;
             all)    python3 tool/tts/synth_uz.py --all --out-root out_voice --allow-unfit ;;
             video:*) python3 tool/tts/synth_uz.py --video "${mode#video:}" --out-root out_voice --allow-unfit ;;
+            gemini-compare:*)
+              # bitta jarayon: 7 ovoz x 2 matn varianti; belgi chegarasi birinchi so'rovdan OLDIN tekshiriladi
+              python3 tool/tts/synth_uz.py --provider gemini --gemini-model "$gmodel" --sample --sample-file "${mode#gemini-compare:}" \
+                --voices Fola,Kore,Puck,Charon,Leda,Sulafat,Zephyr --text-variant both --min-interval 6 \
+                --max-chars "${GEMINI_COMPARE_CAP:-3000}" --out-root out_voice/gemini ;;
+            gemini-all)
+              python3 tool/tts/synth_uz.py --provider gemini --gemini-model "$gmodel" --voice "$gvoice" --all --text-variant spoken \
+                --min-interval 6 --max-chars "${GEMINI_ALL_CAP:-12000}" --out-root out_voice --allow-unfit ;;
+            gemini-video:*)
+              python3 tool/tts/synth_uz.py --provider gemini --gemini-model "$gmodel" --voice "$gvoice" --video "${mode#gemini-video:}" --text-variant spoken \
+                --min-interval 6 --max-chars "${GEMINI_ALL_CAP:-12000}" --out-root out_voice --allow-unfit ;;
           esac
       - name: Artifact (faqat audio va hisobot)
         if: always()

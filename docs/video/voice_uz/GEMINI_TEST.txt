@@ -1,0 +1,8 @@
+# Gemini TTS voice test: the same 4 lines in every voice, both text variants (spoken = pure-Uzbek voice text, subtitle = the written text as on screen).
+# Format: <id> | <written Uzbek text>.  Lines starting with # are ignored. Public marketing text only (free-tier data may be read by Google).
+# G3 and G4 keep PDF, eGFR, qPCR, GC-MS, mmol/L, mg/dL as written: an LLM-based TTS may read them correctly by itself - we want to hear both variants.
+# ALL OF THIS IS UNVERIFIED: no call has been made, nobody has listened. NEEDS_NATIVE_REVIEW.
+G1 | Laboratoriya bilimi tarqoq.
+G2 | Natijani kiriting va me’yorni ko‘ring.
+G3 | Levey–Jennings, Westgard, eGFR, qPCR, GC-MS, 5 mmol/L.
+G4 | PDF’da hisobot, 90 mg/dL.
