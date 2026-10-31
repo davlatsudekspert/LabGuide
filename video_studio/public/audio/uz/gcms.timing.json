@@ -1,126 +1,125 @@
 {
   "videoId": "gcms",
   "lang": "uz",
-  "source": "ESTIMATE: characters of the TTS-ready text / 12.9 chars/s - no audio",
-  "estimated": true,
+  "source": "real Uzbek voice durations (voice_uz_lines.json)",
+  "estimated": false,
   "generatedBy": "tool/tts/retime_uz.py",
   "baseTiming": "public/audio/en/gcms.timing.json",
   "maxTempo": 1.12,
-  "estimateRateCharsPerSec": 12.9,
-  "totalSec": 92.161,
+  "totalSec": 85.631,
   "origTotalSec": 82.9,
   "review": "PENDING - nobody has listened to the Uzbek voice",
   "lines": [
     {
       "id": "L01",
       "start": 0.25,
-      "end": 3.988,
-      "raw_s": 4.186,
+      "end": 4.045,
+      "raw_s": 4.25,
       "tempo": 1.12
     },
     {
       "id": "L02",
-      "start": 4.188,
-      "end": 10.348,
-      "raw_s": 6.899,
+      "start": 4.245,
+      "end": 9.28,
+      "raw_s": 5.64,
       "tempo": 1.12
     },
     {
       "id": "L03",
-      "start": 10.948,
-      "end": 19.095,
-      "raw_s": 8.372,
-      "tempo": 1.02756
+      "start": 9.88,
+      "end": 17.89,
+      "raw_s": 8.01,
+      "tempo": 1.0
     },
     {
       "id": "L04",
-      "start": 19.42,
-      "end": 23.642,
-      "raw_s": 4.729,
-      "tempo": 1.12
+      "start": 18.352,
+      "end": 22.072,
+      "raw_s": 3.72,
+      "tempo": 1.0
     },
     {
       "id": "L05",
-      "start": 23.842,
-      "end": 29.309,
-      "raw_s": 6.124,
-      "tempo": 1.12
+      "start": 22.285,
+      "end": 26.915,
+      "raw_s": 4.63,
+      "tempo": 1.0
     },
     {
       "id": "L06",
-      "start": 29.909,
-      "end": 36.589,
-      "raw_s": 7.442,
-      "tempo": 1.11406
+      "start": 27.77,
+      "end": 34.06,
+      "raw_s": 6.29,
+      "tempo": 1.0
     },
     {
       "id": "L07",
-      "start": 36.909,
-      "end": 40.37,
-      "raw_s": 3.876,
-      "tempo": 1.12
+      "start": 34.77,
+      "end": 37.91,
+      "raw_s": 3.14,
+      "tempo": 1.0
     },
     {
       "id": "L08",
-      "start": 40.57,
-      "end": 46.799,
-      "raw_s": 6.279,
-      "tempo": 1.0081
+      "start": 38.277,
+      "end": 42.917,
+      "raw_s": 4.64,
+      "tempo": 1.0
     },
     {
       "id": "L09",
-      "start": 47.117,
-      "end": 52.585,
-      "raw_s": 6.124,
-      "tempo": 1.12
+      "start": 44.978,
+      "end": 49.698,
+      "raw_s": 4.72,
+      "tempo": 1.0
     },
     {
       "id": "L10",
-      "start": 52.785,
-      "end": 57.077,
-      "raw_s": 4.806,
-      "tempo": 1.12
+      "start": 50.469,
+      "end": 54.399,
+      "raw_s": 3.93,
+      "tempo": 1.0
     },
     {
       "id": "L11",
-      "start": 57.677,
-      "end": 62.383,
-      "raw_s": 5.271,
-      "tempo": 1.12
+      "start": 54.973,
+      "end": 58.933,
+      "raw_s": 3.96,
+      "tempo": 1.0
     },
     {
       "id": "L12",
-      "start": 62.983,
-      "end": 70.943,
-      "raw_s": 8.915,
+      "start": 59.973,
+      "end": 66.822,
+      "raw_s": 7.67,
       "tempo": 1.12
     },
     {
       "id": "L13",
-      "start": 71.143,
-      "end": 74.949,
-      "raw_s": 4.264,
-      "tempo": 1.12
+      "start": 67.022,
+      "end": 70.575,
+      "raw_s": 3.74,
+      "tempo": 1.05259
     },
     {
       "id": "L14",
-      "start": 75.549,
-      "end": 82.194,
-      "raw_s": 7.442,
-      "tempo": 1.12
+      "start": 70.885,
+      "end": 76.821,
+      "raw_s": 5.99,
+      "tempo": 1.00923
     },
     {
       "id": "L15",
-      "start": 82.794,
-      "end": 85.382,
-      "raw_s": 2.868,
-      "tempo": 1.10817
+      "start": 77.138,
+      "end": 79.368,
+      "raw_s": 2.23,
+      "tempo": 1.0
     },
     {
       "id": "L16",
-      "start": 85.582,
-      "end": 91.811,
-      "raw_s": 6.977,
+      "start": 79.834,
+      "end": 85.281,
+      "raw_s": 6.1,
       "tempo": 1.12
     }
   ],
@@ -130,150 +129,137 @@
       "layer": "hook",
       "from_s": 0.0,
       "orig_s": 8.202,
-      "new_s": 10.698,
-      "extra_s": 2.496,
-      "stretch": 1.304,
+      "new_s": 9.63,
+      "extra_s": 1.428,
+      "stretch": 1.174,
       "lines": 2,
       "sped_up": 2,
       "no_fit_at_max_tempo": [
         "L01",
         "L02"
       ],
-      "last_line_end_rel": 10.348
+      "last_line_end_rel": 9.28
     },
     {
       "id": "gc",
       "layer": "tour",
-      "from_s": 10.698,
+      "from_s": 9.63,
       "orig_s": 8.472,
       "new_s": 8.472,
       "extra_s": 0.0,
       "stretch": 1.0,
       "lines": 1,
-      "sped_up": 1,
+      "sped_up": 0,
       "no_fit_at_max_tempo": [],
-      "last_line_end_rel": 8.398
+      "last_line_end_rel": 8.26
     },
     {
       "id": "separate",
       "layer": "separate",
-      "from_s": 19.17,
+      "from_s": 18.102,
       "orig_s": 9.418,
-      "new_s": 10.49,
-      "extra_s": 1.072,
-      "stretch": 1.114,
+      "new_s": 9.418,
+      "extra_s": 0.0,
+      "stretch": 1.0,
       "lines": 2,
-      "sped_up": 2,
-      "no_fit_at_max_tempo": [
-        "L04",
-        "L05"
-      ],
-      "last_line_end_rel": 10.14
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 8.813
     },
     {
       "id": "ms",
       "layer": "tour",
-      "from_s": 29.659,
+      "from_s": 27.52,
       "orig_s": 7.0,
       "new_s": 7.0,
       "extra_s": 0.0,
       "stretch": 1.0,
       "lines": 1,
-      "sped_up": 1,
+      "sped_up": 0,
       "no_fit_at_max_tempo": [],
-      "last_line_end_rel": 6.93
+      "last_line_end_rel": 6.54
     },
     {
       "id": "quad",
       "layer": "quad",
-      "from_s": 36.659,
+      "from_s": 34.52,
       "orig_s": 10.208,
       "new_s": 10.208,
       "extra_s": 0.0,
       "stretch": 1.0,
       "lines": 2,
-      "sped_up": 2,
-      "no_fit_at_max_tempo": [
-        "L07"
-      ],
-      "last_line_end_rel": 10.139
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 8.397
     },
     {
       "id": "result",
       "layer": "result",
-      "from_s": 46.867,
+      "from_s": 44.728,
       "orig_s": 9.995,
-      "new_s": 10.559,
-      "extra_s": 0.564,
-      "stretch": 1.056,
+      "new_s": 9.995,
+      "extra_s": 0.0,
+      "stretch": 1.0,
       "lines": 2,
-      "sped_up": 2,
-      "no_fit_at_max_tempo": [
-        "L09",
-        "L10"
-      ],
-      "last_line_end_rel": 10.209
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 9.671
     },
     {
       "id": "qc",
       "layer": "qcnote",
-      "from_s": 57.427,
+      "from_s": 54.723,
       "orig_s": 5.0,
-      "new_s": 5.307,
-      "extra_s": 0.307,
-      "stretch": 1.061,
+      "new_s": 5.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
       "lines": 1,
-      "sped_up": 1,
-      "no_fit_at_max_tempo": [
-        "L11"
-      ],
-      "last_line_end_rel": 4.957
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 4.21
     },
     {
       "id": "app_card",
       "layer": "phone",
-      "from_s": 62.733,
+      "from_s": 59.723,
       "orig_s": 10.912,
-      "new_s": 12.566,
-      "extra_s": 1.654,
-      "stretch": 1.152,
+      "new_s": 10.912,
+      "extra_s": 0.0,
+      "stretch": 1.0,
       "lines": 2,
       "sped_up": 2,
       "no_fit_at_max_tempo": [
-        "L12",
-        "L13"
+        "L12"
       ],
-      "last_line_end_rel": 12.216
+      "last_line_end_rel": 10.851
     },
     {
       "id": "app_safety",
       "layer": "phone",
-      "from_s": 75.299,
+      "from_s": 70.635,
       "orig_s": 6.253,
-      "new_s": 7.245,
-      "extra_s": 0.992,
-      "stretch": 1.159,
+      "new_s": 6.253,
+      "extra_s": 0.0,
+      "stretch": 1.0,
       "lines": 1,
       "sped_up": 1,
-      "no_fit_at_max_tempo": [
-        "L14"
-      ],
-      "last_line_end_rel": 6.895
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 6.185
     },
     {
       "id": "end",
       "layer": "cta",
-      "from_s": 82.544,
+      "from_s": 76.888,
       "orig_s": 7.44,
-      "new_s": 9.617,
-      "extra_s": 2.177,
-      "stretch": 1.293,
+      "new_s": 8.742,
+      "extra_s": 1.302,
+      "stretch": 1.175,
       "lines": 2,
-      "sped_up": 2,
+      "sped_up": 1,
       "no_fit_at_max_tempo": [
         "L16"
       ],
-      "last_line_end_rel": 9.267
+      "last_line_end_rel": 8.392
     }
   ]
 }
