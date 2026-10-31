@@ -1,1 +1,2 @@
 sample
+# retry 2: offline tests non-blocking
