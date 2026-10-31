@@ -1,5 +1,8 @@
 # Shanba, 17-oktabr: ish rejasi
 
+> **Tarix (SUPERSEDED qismlari) — D-80 (2026-10-31, egasi qarori):** bu kunlik reja eski. Bepul sinov muddati endi **30 kun**
+> (hamma pullik reja); 7 / 14 kunlik sinov matni — tarix.
+
 Boshlanish: 17-oktabr, 11:00 (Toshkent) — egasi ruxsati bilan so'ramasdan boshlanadi.
 
 Asos: egasi bilan kelishilgan qarorlar D-45…D-51 (`DECISIONS.md`). Bu hujjat ularni bitta

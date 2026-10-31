@@ -511,9 +511,11 @@ tegilmadi — Pro relizi bilan birga qilinadi:
 Bitta **Subscription Group**; unga 8 ta auto-renewable mahsulot (4 reja × oylik/yillik). Mahsulot id’lari
 `lib/core/entitlements/billing_catalog.dart` dan olingan (**yangi id o‘ylab topilmadi**):
 `uz.labguide.student|teacher|specialist|premium` + `.monthly` / `.yearly` — do‘konda yaratilmaguncha UNCONFIRMED.
-Narx pog‘onalarini egasi App Store Connect’da tanlaydi (hujjatda yozilmaydi). **Introductory Offer / Free Trial
-YARATILMAYDI** (bepul sinov — ilova ichidagi 7 kunlik server sinovi, 16.2). `PRO_BILLING_PLAN.md` 9.1-bo‘limdagi
-“6 mahsulot”, “Introductory Offer → Free Trial 7/14 kun” va “Pro ↔ Ustoz Pro” darajalari **eskirgan** (D-76/D-77
+Narx pog‘onalarini egasi App Store Connect’da tanlaydi (hujjatda yozilmaydi). **Introductory Offer = Free Trial, 1 oy**
+(egasi qarori D-80, 2026-10-31: bepul sinov 30 kun; 8 mahsulotning HAMMASIGA; Apple “1 oy” — kalendar oy, 28–31 kun;
+App Store Connect’da yaratilganmi — NOT VERIFIED, `tool/store/store_check.py` `intro=` ni o‘qiydi). Ilovadagi server sinovi
+ham 30 kun (16.2): ikkalasining qo‘shilishi (stacking) — NEEDS_OWNER_CHECK. `PRO_BILLING_PLAN.md` 9.1-bo‘limdagi
+“6 mahsulot”, “Introductory Offer → Free Trial 7/14 kun” va “Pro ↔ Ustoz Pro” darajalari **eskirgan** (D-76/D-77/D-80
 bilan almashtirilgan).
 
 | Maydon | uz (agar ASC uzbek tilini qabul qilsa) | ru | en (US) |
@@ -536,15 +538,16 @@ ASC o‘zbek tilini do‘kon tili sifatida qo‘llamaydi (15-bo‘lim) — uz us
 
 ### 16.2 Bepul sinov va “Restore” joyi
 
-- **Bepul sinov = ilova ichidagi 7 kun, bir marta, karta yo‘q** (server beradi; Apple “Introductory Offer” emas).
+- **Bepul sinov = ilova ichidagi 30 kun (D-80), bir marta, karta yo‘q** (server beradi; Apple “Introductory Offer” dan alohida).
   Profil → Obuna → “Bepul sinovni boshlash: <reja>”. Tugagach **faqat pullik imkoniyatlar yopiladi**; bepul qism va
   ma’lumotlar qoladi. Sinov tugmasi faqat qurilma tekshiruvi (Apple App Attest/DeviceCheck) sozlangan platformada
   chiqadi — hozir iOS’da server sinovi o‘chiq (`TRIAL_PLATFORMS`, attestatsiya yo‘q): **NEEDS_OWNER_CHECK** —
   topshiriladigan buildda iOS’da sinov bormi, review izohiga shuni aniq yozing. Apple 3.1.1/3.1.2 nuqtai nazaridan
   kartasiz, server beradigan sinov savol tug‘dirishi mumkin (`PAID_TRIAL_MODELS` Model A) — NEEDS_OWNER_CHECK.
-- Agar kelajakda do‘kon “Introductory Offer” yoqilsa: ilova matnlari (`proPayTrial`, `proPayStoreTrialNote`)
-  narx va yangilanish shartlari **do‘kon oynasidagidek** ekanini aytadi; ikkala sinovni birga qo‘llamang (7 + 7 kun
-  chalkashligi).
+- Do‘kon “Introductory Offer” (D-80: 1 oy) yaratilsa: ilova matnlari (`proPayTrial`, `proPayStoreTrialNote`)
+  narx va yangilanish shartlari **do‘kon oynasidagidek** ekanini aytadi; tugash sanasi — do‘kon kvitansiyasidagi sana
+  (ilova/server QAYTA HISOBLAMAYDI; Apple “1 oy” kalendar oy, server sinovi aniq 30 kun). Ikkala sinovni birga
+  qo‘llamang (30 + ~30 kun chalkashligi): qaysi biri asosiy — egasi qarori kerak (NEEDS_OWNER_CHECK).
 - **Xaridni tiklash:** Profil → Obuna → “Xaridni tiklash” va to‘lov oynasi (Obuna bo‘lish) pastida. Obunani boshqarish:
   “Obunani boshqarish yoki bekor qilish” (Apple obuna sahifasi). Mehmon rejimida xarid, tiklash va sinov yo‘q
   (hisobga kirish tugmasi chiqadi) — **NEEDS_OWNER_CHECK:** Apple 5.1.1 hisobsiz xaridni kutishi mumkin.
@@ -556,7 +559,7 @@ shartlari va Maxfiylik havolalari metadatada bo‘lishi kerak.
 
 **uz**
 Pullik rejalar (ixtiyoriy): Talaba Pro, Ustoz Pro, Mutaxassis Pro va Premium. Bugun bepul imkoniyatlar bepul
-qoladi. 7 kunlik bepul sinov bir marta beriladi va karta talab qilmaydi; sinov yoki obuna tugasa, faqat pullik
+qoladi. 30 kunlik bepul sinov bir marta beriladi va karta talab qilmaydi; sinov yoki obuna tugasa, faqat pullik
 imkoniyatlar yopiladi. Obuna avtomatik yangilanadi: narx va davr xariddan oldin App Store oynasida ko‘rsatiladi,
 to‘lov xaridni tasdiqlaganingizda Apple hisobingizdan olinadi. Joriy davr tugashidan kamida 24 soat oldin bekor
 qilinmasa, obuna yangilanadi. Obunani Sozlamalar → ismingiz → Obunalar bo‘limida boshqarish va bekor qilish mumkin.
@@ -564,7 +567,7 @@ Foydalanish shartlari: https://labguide.nfcstore.uz/terms/ · Maxfiylik siyosati
 
 **ru**
 Платные планы (по желанию): Студент Pro, Преподаватель Pro, Специалист Pro и Premium. Функции, бесплатные сегодня,
-остаются бесплатными. Бесплатный пробный период на 7 дней даётся один раз, карта не нужна; когда пробный период или
+остаются бесплатными. Бесплатный пробный период на 30 дней даётся один раз, карта не нужна; когда пробный период или
 подписка заканчиваются, закрываются только платные функции. Подписка продлевается автоматически: цена и период
 показываются в окне App Store до покупки, оплата списывается с вашей учётной записи Apple при подтверждении покупки.
 Если не отменить подписку как минимум за 24 часа до конца текущего периода, она продлится. Управлять подпиской и
@@ -573,7 +576,7 @@ Foydalanish shartlari: https://labguide.nfcstore.uz/terms/ · Maxfiylik siyosati
 
 **en**
 Paid plans (optional): Student Pro, Teacher Pro, Specialist Pro and Premium. Features that are free today stay free. The
-7-day free trial is given once and needs no card; when a trial or subscription ends, only the paid features close.
+30-day free trial is given once and needs no card; when a trial or subscription ends, only the paid features close.
 Subscriptions renew automatically: the price and period are shown in the App Store sheet before you buy, and payment is
 charged to your Apple Account when you confirm the purchase. Unless cancelled at least 24 hours before the end of the
 current period, the subscription renews. You can manage and cancel it in Settings → your name → Subscriptions.
@@ -611,8 +614,8 @@ features and shows a "Sign in" button instead of the buy button.
 Review account: <REVIEW_ACCOUNT - NEEDS_OWNER_CHECK: owner decides how the reviewer signs in, e.g. Sign in with Apple, or a
 monitored mailbox for the email code>.
 
-FREE TRIAL: a 7-day in-app trial (given once per phone/account/email, no card, never converts to a paid plan by itself).
-It is not an App Store introductory offer. <TRIAL_ON_IOS - NEEDS_OWNER_CHECK: state whether the trial button is available
+FREE TRIAL: a 30-day in-app trial (given once per phone/account/email, no card, never converts to a paid plan by itself).
+It is separate from any App Store introductory offer (owner decision: one-month introductory offer; <INTRO_OFFER_STATUS - NEEDS_OWNER_CHECK>). <TRIAL_ON_IOS - NEEDS_OWNER_CHECK: state whether the trial button is available
 on iOS in this build; if the device check is not enabled on iOS, say so.>
 
 SANDBOX TEST STEPS:

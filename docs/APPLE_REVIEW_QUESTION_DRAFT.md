@@ -7,7 +7,7 @@
 
 ---
 
-**Subject:** Guideline 3.1.1 / 3.1.2 — developer-granted, payment-free 7-day trial and administrator-granted
+**Subject:** Guideline 3.1.1 / 3.1.2 — developer-granted, payment-free 30-day trial and administrator-granted
 access alongside auto-renewable subscriptions (LabGuide, bundle ID `uz.labguide.app`)
 
 Hello App Review team,
@@ -24,8 +24,8 @@ auto-renewal terms, Restore Purchases, a link to manage or cancel the subscripti
 (`showManageSubscriptions`), and links to our Terms of Use and Privacy Policy. The app does not link to or
 mention any other payment method. We do not plan to configure an introductory free-trial offer.
 
-**Question 1 — payment-free 7-day trial granted by our server.**
-A signed-in user (verified email) could start a one-time 7-day trial of one plan from inside the app.
+**Question 1 — payment-free 30-day trial granted by our server.**
+A signed-in user (verified email) could start a one-time 30-day trial of one plan from inside the app.
 - No payment method is requested and nothing is charged. The trial never converts to a paid subscription;
   it simply ends. To continue, the user would separately choose to buy a subscription through In-App
   Purchase.
@@ -34,7 +34,7 @@ A signed-in user (verified email) could start a one-time 7-day trial of one plan
 - One trial per account, per email address and per device. On iOS we would use DeviceCheck (the two
   per-device bits) only to record that a device has already used the promotional trial. We do not
   fingerprint devices.
-- The trial is recorded on our server and unlocks the same features as the paid plan for 7 days.
+- The trial is recorded on our server and unlocks the same features as the paid plan for 30 days.
 
 Is this server-granted, payment-free trial acceptable under Guideline 3.1.1 for an app that also sells
 auto-renewable subscriptions, or must any free trial on iOS be configured as an App Store introductory offer?

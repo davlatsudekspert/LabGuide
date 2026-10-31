@@ -1546,6 +1546,7 @@ VA attestatsiya bo'lsa; aks holda oddiy izoh; sinov kodi xarid boshlamaydi. “O
 10. D-73/D-74 dagi boshqa ochiq qarorlar (nima pullik bo'ladi — hozir hech narsa; Mutaxassis → ustoz paneli va h.k.).
 
 ## D-76. Pro: to'rt reja (Premium), `lab` imkoniyati, Lab — Pro (REJA, faol emas), 7 kunlik sinov, mehmon xarid qilmaydi (2026-10-24, egasi qarori; Pro YOQILMAGAN)
+> **QISMAN SUPERSEDED (D-80, 2026-10-31, egasi qarori):** bepul sinov uzunligi **30 kun** (hamma pullik reja; Bepul daraja o'zgarmagan). Quyidagi “7 kun” matni — tarix.
 `pro-next` qatoridagi `pro/tiers-premium` tarmog'ida (lokal). **Hech narsa deploy qilinmadi, push qilinmadi, yoqilmadi,
 do'konga yuborilmadi; production D1 ga migratsiya qo'llanmadi** (`0018_premium_tier.sql` — faqat fayl).
 `BuildFlags.proEnabled` standart `false`; `ProGatePolicy.gated` BO'SH (bugun bepul hech narsa yopilmadi); server
@@ -1632,6 +1633,7 @@ ustiga: qatorlar saqlanadi, premium ochiladi, unikal indekslar qayta quriladi).
 
 
 ## D-77. Pullik tizim: Free + Pro + Premium, faqat 7 kunlik sinov, keyingi yangilanishda (2026-10-25, egasi qarori)
+> **QISMAN SUPERSEDED (D-80, 2026-10-31, egasi qarori):** bepul sinov uzunligi **30 kun** (hamma pullik reja; Bepul daraja o'zgarmagan). Quyidagi “7 kun” matni — tarix.
 **Egasi qarori (2026-10-25):** keyingi yangilanishda **Free + Pro + Premium** chiqadi, bepul sinov **faqat 7 kun**
 (30 kunlik variant YO'Q). Do'konlarda (App Store / Google Play) tekshiruvda turgan bepul versiya (`main` `4b0f057`)
 **o'zgarmaydi**; pullik tizim alohida tarmoqda — `paid/pro-premium` (`fix/images-apparatus` + `pro/tiers-premium`
@@ -1665,6 +1667,7 @@ qo'lda tahrir “eskirgan” xatosi bilan ushlanadi). Maxfiylik/shartlar matni (
 Pro testlari soxta do'kon / soxta server / soxta attestatsiya bilan. Holat: `docs/PAID_BRANCH_STATUS.md`.
 
 ### D-77 addendum (2026-10-25, `paid/srv`): sinov attestatsiyasi, mehmon xaridi, billing to‘liqligi
+> **QISMAN SUPERSEDED (D-80, 2026-10-31, egasi qarori):** bepul sinov uzunligi **30 kun** (hamma pullik reja; Bepul daraja o'zgarmagan). Quyidagi “7 kun” matni — tarix.
 Faqat lokal tarmoq `paid/srv` (`paid/pro-premium@21b5a24` dan). **Push, merge, PR, build, deploy, migratsiya
 (remote), do‘kon/Apple/Google/Cloudflare API chaqiruvi — QILINMAGAN.** Haqiqiy do‘kon xaridi va qurilmada attestatsiya
 — NOT VERIFIED (faqat soxta fetch, sintetik token/zanjir, soxta platforma kanali). Hamma o‘chirgich avvalgidek O‘CHIQ
@@ -1726,8 +1729,8 @@ PR, build, deploy yo'q; `LG_PRO_ENABLED` standart `false`).
 4. **Mutaxassis Pro** (`lab`): professional laboratoriya funksiyalari.
 5. **Premium** = hammasi birga. Matritsa D-76 dagidek: Talaba = learner; Ustoz = learner + teacher_panel; Mutaxassis =
    learner + lab; Premium = uchalasi.
-6. Har foydalanuvchi tegishli pullik funksiyalarni **7 kun** bepul sinaydi (D-76/D-77, o'zgarmadi).
-7. 7 kundan keyin obunasiz — faqat PULLIK funksiyalar yopiladi; bepul funksiyalar va foydalanuvchining BARCHA
+6. Har foydalanuvchi tegishli pullik funksiyalarni **30 kun** bepul sinaydi (D-80, 2026-10-31; D-76/D-77 dagi 7 kun almashtirildi).
+7. 30 kundan keyin obunasiz — faqat PULLIK funksiyalar yopiladi; bepul funksiyalar va foydalanuvchining BARCHA
    ma'lumotlari qoladi (o'chirilmaydi, yashirilmaydi; avval yaratilgan Pro natijalari ko'rinadi — faqat yangi pullik
    amalni boshlash yopiladi).
 
@@ -1791,3 +1794,35 @@ qarorlari). D-40 ning qolgan qismlari (eslatma 20:00, Android ovozi) o'zgarmagan
   en "category"). Kalit nomlari va kod identifikatorlari (`toifa*`, `/learn/toifa`) o'zgarmaydi.
 - Qorovullar: `test/widget/toifa_test.dart` (barcha til/mintaqa/rol, `none`), `daily_flow_test.dart`,
   `global_search_test.dart`.
+
+## D-80. Pullik reja sinovi = 30 kun (egasi qarori, 2026-10-31); Bepul o'zgarmaydi
+**Egasi qarori (2026-10-31, o'zbek tilida og'zaki):** pullik rejalar (Talaba / Ustoz / Mutaxassis / Premium) uchun bepul
+sinov **30 kun** (D-76/D-77 dagi 7 kun almashtirildi). **Bepul daraja** (Free) — doim bepul va o'zgarmagan. Tarif
+qoidalari, narxlar va mahsulot id'lari O'ZGARTIRILMADI (narx/id — UNCONFIRMED-until-created-in-store, D-77). Faqat kod va
+hujjat (`rc/paid-1`); push `rc/paid-1` ga, boshqa hech narsa: build, CI, deploy, do'kon/konsol harakati — QILINMAGAN.
+1. **Kodda (bir manba):** server `cloudflare/src/trial.ts` `TRIAL_DAYS = 30`; ilova `ProTrialConfig.serverTrialDays = 30`;
+   ARB uz/ru/en: `proPrivacyTrialNote`, `proTermsBody`, `proGateClosedBody` (“30 kunlik / 30 дней / 30-day”);
+   `proSubTrialTitle/Body` — `{days}` o'zgaruvchisi (`serverTrialDays`) orqali. Foydalanish shartlari va maxfiylik
+   siyosati (`docs/store/TERMS_OF_USE.md`, `PRIVACY_POLICY.md`) va ulardan yasalgan `site/terms`, `site/privacy` — 30 kun.
+2. **Server sinovi — o'zgarmagan qoidalar:** faqat server soati, bir telefonga/hisobga/emailga bir marta, kartasiz,
+   avtomatik pullikka o'tmaydi, `trial_unavailable` mantig'i (attestatsiya sozlanmagan bo'lsa 503) tegilmagan. Oflayn kesh
+   chegarasi (`OFFLINE_MAX_MS` / `offlineTtl` = 7 kun) — SINOV uzunligi EMAS, o'zgartirilmadi: 30 kunlik sinov paytida
+   ilova har ≤ 7 kunda serverdan yangilanishi kerak (oflaynda kesh 7 kundan keyin huquq bermaydi).
+3. **Do'kon tomoni (egasi/yordamchi qiladi, NOT VERIFIED):** Apple App Store Connect — 8 obuna mahsulotining HAMMASIGA
+   Introductory Offer = Free Trial, **1 oy**; Google Play Console — 8 base plan uchun free-trial offer **30 kun / 1 oy**
+   (Console’dagi mavjud variantlarga qarab). Hozircha do'konlarda yaratilganligi tekshirilmagan; `tool/store/store_check.py`
+   o'qish rejimida ASC/Play takliflarini hisobotga chiqaradi va 1 oydan boshqasini ogohlantiradi (hech narsa o'zgartirmaydi).
+4. **Do'kon sinov sanasi — do'konga ishoniladi:** Apple “1 oy” — KALENDAR oy (28–31 kun), LabGuide server sinovi esa aniq
+   30 kun. Do'kon taklifining tugash vaqti — do'konning o'z kvitansiya sanasi (Apple `expiresDate`, Google Play
+   `expiryTime`); ilova ham, server ham uni qayta HISOBLAMAYDI va 30 kunga tenglashtirmaydi (`billing.ts`,
+   `trial_policy.dart`). `period_type = trial/intro` faqat do'kon maydonidan olinadi.
+5. **OCHIQ (egasi qarori kerak, kod O'ZGARTIRILMADI):** (a) ikki sinov qo'shilishi (stacking) — server sinovi 30 kun +
+   do'kon taklifi 1 oy = ~2 oy bepul bo'lishi mumkin; ilovada `storeIntroOffersAllowed = false`, `freeTrialDays = null`
+   (Play’da taklif tanlanmaydi; Apple taklifini esa Apple haqli foydalanuvchiga O'ZI qo'llaydi); `TRIAL_PLATFORMS` standart
+   `android` (iOS’da server sinovi o'chiq). Qaysi platformada qaysi mexanizm asosiy ekani — `docs/RELEASE_CANDIDATE_2026-10-31.md` §3.
+   (b) Apple 3.1.1/3.1.2 bo'yicha serverdan beriladigan kartasiz sinov savoli (`docs/APPLE_REVIEW_QUESTION_DRAFT.md`) —
+   30 kunga yangilandi, lekin yuborilmagan.
+6. **Qorovullar:** `test/guards/paid_policy_d77_guard_test.dart` (c) — endi 30 (Dart, TS, ARB, hujjat, sayt) va eski 7 kunlik
+   sinov matni faqat SUPERSEDED tarixda; `pro_flag_default_guard_test.dart`, `test/unit/paid_texts_consistency_test.dart`,
+   `tool/site/check_site.py` (+ `test_guards.py`) — 30; server testlari `TRIAL_DAYS` orqali. Tekshiruv natijalari —
+   `docs/RELEASE_CANDIDATE_2026-10-31.md`.

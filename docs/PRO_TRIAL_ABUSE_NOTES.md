@@ -7,14 +7,14 @@
 > sintetik tokenlar bilan unit testlar). `0016`/`0019` — faqat fayl.
 
 ## 1. Maqsad va qoida (bitta sinov)
-- **7 kun** (D-76/D-77), kartasiz, avtomatik pullik emas; faqat SERVER qaror qiladi va faqat SERVER soati.
+- **30 kun** (D-80, 2026-10-31; avval 7 kun — D-76/D-77), kartasiz, avtomatik pullik emas; faqat SERVER qaror qiladi va faqat SERVER soati.
 - **Bir marta**: bir hisobga, bir kanonik emailga va bir qurilmaga (unikal indekslar). Hisob o‘chirib qayta
   ro‘yxatdan o‘tish sinovni qaytarmaydi (yozuv 24 oy saqlanadi, hisobdan uziladi).
-- **Bitta sinov = bitta reja**: foydalanuvchi tanlagan reja (Talaba / Ustoz / Mutaxassis / Premium) 7 kunga
+- **Bitta sinov = bitta reja**: foydalanuvchi tanlagan reja (Talaba / Ustoz / Mutaxassis / Premium) 30 kunga
   ochiladi; boshqa reja sinovi keyin YO‘Q (`trial_already_used`). Reja ruxsati (D-74 (f)): ustoz paneli bor reja
   — serverda ustoz (`teacher_accounts`), Lab bor reja — tasdiqlangan mutaxassis; Premium — ikkalasi.
 - Holat mashinasi (`GET /v1/billing/trial`): `not_started` → `active` (start) → `expired` (`now >= expires_at`,
-  server soati). `expired` dan hech qachon qayta boshlanmaydi. 7 kundan keyin faqat pullik funksiyalar yopiladi;
+  server soati). `expired` dan hech qachon qayta boshlanmaydi. 30 kundan keyin faqat pullik funksiyalar yopiladi;
   Free va saqlangan ma’lumot qoladi.
 - Mijoz yuborgan vaqt (`started_at`, `now`, `days`, `Date` sarlavhasi) O‘QILMAYDI (test:
   `trial_antiabuse.test.ts` “clock tampering”).

@@ -3,6 +3,7 @@
 > **Tarix (SUPERSEDED qismlari) — D-77 (2026-10-25, egasi qarori):** bu hujjat birlashtirishdan oldingi audit surati.
 > Egasi qarori: Free + Pro + Premium, bepul sinov faqat **7 kun** (“30 kun” varianti yopildi). Birlashma holati:
 > `docs/PAID_BRANCH_STATUS.md`.
+> **D-80 (2026-10-31, egasi qarori):** sinov endi **30 kun** — bu hujjatdagi “7 kun” — SUPERSEDED tarix.
 
 Faqat o‘qish auditi. Kod o‘zgartirilmadi, hech narsa birlashtirilmadi, push/deploy/do‘kon API chaqiruvi yo‘q.
 Tekshirilgan tarmoqlar (SHA):

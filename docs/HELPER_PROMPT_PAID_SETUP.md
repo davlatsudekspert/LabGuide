@@ -19,9 +19,9 @@ Avval o‘qi: `docs/PAID_OWNER_HELPER_CHECKLIST.md`, `docs/PAID_SANDBOX_RUNBOOK.
 1. App Store Connect: bitta obuna guruhi va 8 obuna mahsuloti (ID lar aynan):
    `uz.labguide.student.monthly|yearly`, `uz.labguide.teacher.monthly|yearly`,
    `uz.labguide.specialist.monthly|yearly`, `uz.labguide.premium.monthly|yearly`. Har biriga uz/ru/en nom va tavsif,
-   7 kunlik introductory offer (bepul sinov). Narx: egasi tasdiqlagan bazaviy USD (checklist 0-bo‘lim); mahalliy
+   introductory offer = Free Trial, 1 oy (D-80: sinov 30 kun; bepul sinov). Narx: egasi tasdiqlagan bazaviy USD (checklist 0-bo‘lim); mahalliy
    valyuta narx nuqtalarini egasidan SO‘RA, o‘zing o‘ylab topma.
-2. Google Play Console: xuddi shu 8 obuna (base plan), 7 kunlik free-trial offer.
+2. Google Play Console: xuddi shu 8 obuna (base plan), free-trial offer 30 kun / 1 oy (D-80).
 3. Kalitlar yarat va GitHub Secrets’ga (Settings → Secrets and variables → Actions) qo‘y — nomlari aynan:
    `APPLE_IAP_KEY_ID`, `APPLE_IAP_ISSUER_ID`, `APPLE_IAP_PRIVATE_KEY`, `APPLE_DEVICECHECK_KEY_ID`,
    `APPLE_DEVICECHECK_TEAM_ID`, `APPLE_DEVICECHECK_PRIVATE_KEY`, `GOOGLE_PLAY_SERVICE_ACCOUNT`,
@@ -38,7 +38,7 @@ Avval o‘qi: `docs/PAID_OWNER_HELPER_CHECKLIST.md`, `docs/PAID_SANDBOX_RUNBOOK.
    Actions → LabGuide CI → `play_internal` va `testflight` ni `pro_preview` + `pro_gating` belgilab ishga tushiradi
    (har biri BIR marta) — bunda pullik funksiyalar obunasiz yopiq bo‘ladi va xarid ekrani haqiqiy do‘kon mahsulotlarini oladi.
 9. `docs/PAID_SANDBOX_RUNBOOK.md` §2 matritsasi bo‘yicha sandbox sinov: sotib olish, tiklash, bekor qilish, muddat
-   tugashi, mehmon va akkauntli, 7 kunlik sinov. Har qatorga PASS / FAIL / NOT RUN yoz.
+   tugashi, mehmon va akkauntli, 30 kunlik sinov. Har qatorga PASS / FAIL / NOT RUN yoz.
 
 ## MUHIM: tartib — pullik versiyani do‘konga hozir YUBORMA
 - Hozir ilovaning BEPUL versiyasi App Store va Google Play tekshiruvida. Bir vaqtda bitta versiya tekshiruvda
@@ -49,7 +49,7 @@ Avval o‘qi: `docs/PAID_OWNER_HELPER_CHECKLIST.md`, `docs/PAID_SANDBOX_RUNBOOK.
   1. 8 mahsulot yaratilgan, narxlar egasi tasdiqlagan.
   2. Apple “Paid Apps” shartnomasi, bank va soliq: egasi aytdi — Apple va Google ikkalasida ham to‘ldirilgan va qabul
      qilingan (2026-10-26, egasining so‘zi; sen ASC/Play Console’da holatini “Active” deb tasdiqlab ol).
-  3. Haqiqiy do‘kon sandbox sinovi o‘tgan (sotib olish, tiklash, bekor qilish, 7 kunlik sinov) — natijalar PASS/FAIL/NOT RUN.
+  3. Haqiqiy do‘kon sandbox sinovi o‘tgan (sotib olish, tiklash, bekor qilish, 30 kunlik sinov) — natijalar PASS/FAIL/NOT RUN.
   4. Maxfiylik siyosati va shartlar sahifalari, App Privacy va Play Data Safety formalari obunaga mos yangilangan; Apple
      tekshiruvi uchun obuna ekrani skrinshoti va sinov akkaunti tayyor.
   5. Huquqshunos ko‘rigi, mutaxassis ko‘rigi (ilmiy kontent) va RU/UZ ona tili tekshiruvi egasi tomonidan tasdiqlangan.

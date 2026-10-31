@@ -1,6 +1,6 @@
 # Pro tayyorlik auditi — 2026-10-24 (D-75)
 
-> **SUPERSEDED qismi — D-76 (keyinroq, 2026-10-24, egasi qarori; D-77):** quyidagi jadvaldagi “30 kunlik sinov” endi **7 kun** (hamma reja);
+> **SUPERSEDED qismi — D-76 (keyinroq, 2026-10-24, egasi qarori; D-77):** quyidagi jadvaldagi “30 kunlik sinov” endi **7 kun** (hamma reja; SUPERSEDED: D-80, 2026-10-31 — **30 kun**);
 > reja soni 3 → 4 (Premium); matritsa `learner`/`teacher_panel`/`lab` (Mutaxassis ustoz panelisiz); yangi migratsiya
 > `0018_premium_tier.sql` (faqat fayl). Bu audit — D-75 holatining surati; amaldagi qoidalar: `docs/DECISIONS.md` D-76.
 

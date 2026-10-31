@@ -6,7 +6,7 @@
 
 ## 1. Nima qilindi
 
-Egasi qarori D-77 (2026-10-25): keyingi yangilanishda **Free + Pro + Premium**, bepul sinov **faqat 7 kun**.
+Egasi qarori D-77 (2026-10-25): keyingi yangilanishda **Free + Pro + Premium**, bepul sinov **faqat 7 kun** (SUPERSEDED: D-80, 2026-10-31 — sinov **30 kun**).
 Do‘kon tekshiruvidagi bepul versiya (`main` `4b0f057`) va `fix/images-apparatus` (`215d3e8`) o‘zgartirilmadi;
 `pro/tiers-premium` (`531ba02`) faqat o‘qildi.
 
@@ -54,7 +54,7 @@ D-77 faqat shu tarmoqda D-58 ni almashtiradi (`main` da D-58 kuchda). Yangi fayl
 - (b) narx literali yo‘q: `lib/` (faqat `pro_catalog.dart` `ProPricing` dan tashqari), ARB, `cloudflare/src`;
   `ProPricing` = D-76 narxlari; `pro_catalog.dart` va `billing_catalog.dart` da **UNCONFIRMED-until-created-in-store**
   belgisi;
-- (c) sinov 7: `ProTrialConfig.serverTrialDays`, `TRIAL_DAYS`, server testi, ARB `proPrivacyTrialNote` (uch tilda);
+- (c) sinov 30 (D-80; avval 7): `ProTrialConfig.serverTrialDays`, `TRIAL_DAYS`, server testi, ARB `proPrivacyTrialNote` (uch tilda);
   eski uzun (SUPERSEDED) sinov matni faqat tarixda — D-70/D-71/D-72 ga va `PRO_PROPOSAL_D72.md`,
   `PRO_READINESS_2026-10-24.md`, `TIERS_AUDIT_2026-10-25.md`, `TIERS_INTEGRATION_PLAN.md` ga SUPERSEDED belgisi
   qo‘shildi (qaror raqamlari o‘zgartirilmadi);
@@ -78,7 +78,7 @@ xatosini beradi (manbada yo‘q).
 | `LG_FAKE_PURCHASES`, `LG_PARTNER_ADS`, `LG_ALL_FEATURES_OPEN` | `false` |
 | `ProTrialConfig.storeIntroOffersAllowed` / `freeTrialDays` | `false` / `null` |
 | Server `LG_BILLING_ENABLED` | o‘rnatilmagan → `/v1/billing/*`, `/v1/pro/*`, admin grant — 404 |
-| Sinov uzunligi | 7 kun (o‘zgartirilmadi) |
+| Sinov uzunligi | 30 kun (D-80, 2026-10-31; avval 7 kun) |
 
 ## 5. Test natijalari (2026-10-25, shu tarmoqda, haqiqiy ishga tushirish)
 
@@ -121,7 +121,7 @@ Har Flutter ishga tushirish `flock /tmp/flutter_test.lock` ostida, ketma-ket.
 Mahalliy tarmoq `paid/txt` (`paid/pro-premium@21b5a24` dan). Push/PR/build/deploy/do‘kon API — QILINMAGAN.
 - **ARB `pro*`** (uz/ru/en): reja nomlari yakuniy — uz Talaba Pro / Ustoz Pro / Mutaxassis Pro / Premium; ru Студент Pro /
   Преподаватель Pro / Специалист Pro / Premium; en Student Pro / Teacher Pro / Specialist Pro / Premium (“Ustoz” ↔ “Ustoz Pro”
-  nomuvofiqligi tuzatildi). To‘lov oynasi, “Obuna” ekrani, sinov (7 kun, bir marta, kartasiz; do‘kon taklifi ko‘rsatilsa narx va
+  nomuvofiqligi tuzatildi). To‘lov oynasi, “Obuna” ekrani, sinov (30 kun — D-80; bir marta, kartasiz; do‘kon taklifi ko‘rsatilsa narx va
   yangilanish shartlari do‘kon oynasidagidek), muddat tugash (“faqat pullik imkoniyatlar yopiladi; bepul va ma’lumot qoladi”),
   bekor qilish/qaytarish/oflayn/mehmon/xato matnlari. 20 yangi kalit (`proPayCancelPath*`, `proPayStoreTrialNote`,
   `proPayRefund*`, `proPayCancelledUntil`, `proPayGraceNote`, `proPayOffline*`, `proPayAgreeNote`, `proPayFeat*` yangilari,

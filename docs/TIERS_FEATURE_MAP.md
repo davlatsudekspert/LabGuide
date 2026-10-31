@@ -9,7 +9,7 @@
 cheklovsiz qoladi (kunlik limit yo‘q). Egasi ro‘yxatidagi nomlar — mahsulot nomlari; pullik bo‘ladi faqat bugun
 YO‘Q, yangi yoki kengaytirilgan qism. Har pullik amal faqat BOSHLANISHIDA tekshiriladi (`requireFeature` /
 `runExport` / `ProFeatureGate`), boshlangan amal to‘xtatilmaydi, obuna tugaganda foydalanuvchi ma’lumoti
-o‘chirilmaydi va yashirilmaydi (saqlangan natijalarni ko‘rish ochiq). Sinov — 7 kun (D-76/D-77).
+o‘chirilmaydi va yashirilmaydi (saqlangan natijalarni ko‘rish ochiq). Sinov — 30 kun (D-80; D-76/D-77 dagi 7 kun almashtirildi).
 
 Holatlar: **BUILT_AND_TESTED** — ekran + avtomatik testlar (soxta do‘kon bilan) o‘tadi; **BUILT_PARTIAL** — bir
 qismi qurilgan; **NOT_BUILT** — qurilmadi (sabab ko‘rsatilgan). Katalog: `lib/core/entitlements/feature.dart`;
@@ -52,7 +52,7 @@ Premium = Talaba Pro + Ustoz Pro + Mutaxassis Pro (`PlanMatrix`, server `TIER_CA
 |---|---|
 | Bayroq o‘chiq (standart) | Pro qatorlari va yo‘llari yo‘q; bepul ekranlar `main` bilan bir xil |
 | Obunasiz (yopiq) | bepul hammasi ochiq; Pro qatori → to‘lov oynasi (faqat shu funksiyani ochadigan rejalar) |
-| 7 kunlik sinov / obuna | ochiq |
+| 30 kunlik sinov / obuna | ochiq |
 | Muddati o‘tgan | yangi pullik amal yopiq; saqlangan simulyatsiya hisobotlari va bepul tarix ochiq, hech narsa o‘chmagan |
 | Oflayn (imzolangan kesh) | kesh muddati ichida ochiq |
 | Mehmon | to‘lov oynasida obuna tugmasi o‘rniga izoh va “Hisobga kirish” (D-76 §5) |

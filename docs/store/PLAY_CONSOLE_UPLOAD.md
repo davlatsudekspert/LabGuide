@@ -136,9 +136,12 @@ bo'ladi (bu AAB 20), shuning uchun mos keladi.
 4 ta obuna × 2 ta base plan (`monthly` — P1M, `yearly` — P1Y). Id’lar kodda (`billing_catalog.dart`; **yangi id
 o‘ylab topilmadi**): subscription id `uz.labguide.student`, `uz.labguide.teacher`, `uz.labguide.specialist`,
 `uz.labguide.premium`; base plan id `monthly` / `yearly`. Narxni egasi tanlaydi (hujjatda yozilmaydi). **Free-trial
-offer YARATILMAYDI** va boshqa chegirmali offer ham yo‘q (bepul sinov — ilova ichidagi 7 kunlik server sinovi;
-ilova do‘kon takliflarini yoqmagan). `PRO_BILLING_PLAN.md` 9.2-bo‘limdagi “6 subscription” va “Free trial 7/14 kun
-offer” **eskirgan** (D-76/D-77).
+offer — egasi qarori D-80 (2026-10-31): 30 kun / 1 oy, Play Console’da egasi o‘rnatadi** (8 ta base plan uchun;
+yaratilganmi — NOT VERIFIED; Play’da trial davomiyligi variantlarini Console’da tekshiring). Ilovadagi server sinovi ham 30 kun;
+kod bo‘yicha ilova do‘kon takliflarini hozircha yoqmagan (`storeIntroOffersAllowed = false`) — bayroq o‘zgartirilmagan,
+ikki sinovning qo‘shilishi (stacking) NEEDS_OWNER_CHECK. Tugash sanasi — Play’ning o‘z kvitansiya sanasi (`expiryTime`),
+qayta hisoblanmaydi. `PRO_BILLING_PLAN.md` 9.2-bo‘limdagi “6 subscription” va “Free trial 7/14 kun
+offer” **eskirgan** (D-76/D-77/D-80).
 
 | Maydon | uz | ru | en |
 |---|---|---|---|
@@ -188,7 +191,7 @@ Hamma tilda oxirida: Foydalanish shartlari `https://labguide.nfcstore.uz/terms/`
 2. Ilovada tester hisobi bilan kiring → Profil → Obuna → reja → “Obuna bo‘lish” → Play oynasida tasdiqlang (test kartasi: “Always approves”).
 3. Pullik imkoniyatlar ochiladi → Profil → Obuna → **“Xaridni tiklash”** (shu ekran va to‘lov oynasi pastida) → boshqa qurilmada tiklash.
 4. “Obunani boshqarish yoki bekor qilish” Play obuna sahifasini ochadi; bekor qilingach to‘langan davr oxirigacha ishlaydi, keyin faqat pullik qism yopiladi.
-5. Sinov (7 kun): Android’da tugma faqat Play Integrity sozlangan serverda chiqadi (hozir sozlanmagan — tugma yashirin; `PRO_TEST_ENVIRONMENT.md` 4-bo‘lim 6-band).
+5. Sinov (30 kun, D-80): Android’da tugma faqat Play Integrity sozlangan serverda chiqadi (hozir sozlanmagan — tugma yashirin; `PRO_TEST_ENVIRONMENT.md` 4-bo‘lim 6-band).
 6. Oflayn, “Always declines” (grace/hold), “Approves then charges back” (refund) holatlari — `PRO_TEST_ENVIRONMENT.md` 4-bo‘lim.
 
 ---

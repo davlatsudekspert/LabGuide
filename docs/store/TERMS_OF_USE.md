@@ -20,7 +20,7 @@ LabGuide — klinik laboratoriya bo‘yicha o‘quv va ma’lumotnoma ilovasi. A
 bepul qoladi. Qo‘shimcha pullik imkoniyatlar — Talaba Pro, Ustoz Pro, Mutaxassis Pro va Premium
 rejalari — Apple App Store yoki Google Play orqali avtomatik yangilanuvchi obuna sifatida sotiladi.
 Narx va davr xariddan oldin do‘kon oynasida ko‘rsatiladi va pul faqat siz o‘sha oynada o‘zingiz
-tasdiqlaganingizdan keyin yechiladi. 7 kunlik bepul sinov bir marta beriladi va karta talab qilmaydi.
+tasdiqlaganingizdan keyin yechiladi. 30 kunlik bepul sinov bir marta beriladi va karta talab qilmaydi.
 Sinov yoki obuna tugasa, faqat pullik imkoniyatlar yopiladi; bepul imkoniyatlar va ma’lumotlaringiz
 qoladi. LabGuide tashxis qo‘ymaydi va shifokor xulosasini almashtirmaydi.
 
@@ -91,9 +91,9 @@ xariddan oldin do‘kon oynasida ko‘rsatiladi (mahalliy valyutada).
 - **Narx o‘zgarishi.** Narx o‘zgarsa, buni do‘kon o‘z qoidalariga ko‘ra sizga xabar qiladi.
 - Xarid qilishda do‘konning o‘z shartlari ham amal qiladi.
 
-### 8. Bepul sinov (7 kun)
+### 8. Bepul sinov (30 kun)
 
-LabGuide’ning 7 kunlik bepul sinovi tanlangan rejaning pullik imkoniyatlarini sinash uchun. U:
+LabGuide’ning 30 kunlik bepul sinovi tanlangan rejaning pullik imkoniyatlarini sinash uchun. U:
 
 - bir marta beriladi — bitta telefonga, hisobga va emailga bitta sinov; boshqa hisob bilan ham, hisobni
   o‘chirib qayta ochganda ham qayta berilmaydi (buning uchun saqlanadigan yozuvlar Maxfiylik siyosatining 16-bo‘limida yozilgan);
@@ -153,7 +153,7 @@ LabGuide — учебное и справочное приложение по к
 бесплатны и остаются бесплатными. Дополнительные платные возможности — планы Студент Pro, Преподаватель
 Pro, Специалист Pro и Premium — продаются через Apple App Store или Google Play как подписка с
 автоматическим продлением. Цена и период показываются в окне магазина до покупки, а деньги списываются
-только после того, как вы сами подтвердите покупку в этом окне. Бесплатный пробный период на 7 дней
+только после того, как вы сами подтвердите покупку в этом окне. Бесплатный пробный период на 30 дней
 даётся один раз и не требует карты. Когда пробный период или подписка заканчиваются, закрываются только
 платные функции; бесплатные функции и ваши данные остаются. LabGuide не ставит диагноз и не заменяет
 заключение врача.
@@ -227,9 +227,9 @@ LabGuide — учебный и справочный инструмент. Он �
 - **Изменение цены.** При изменении цены магазин уведомляет вас по своим правилам.
 - При покупке действуют и собственные условия магазина.
 
-### 8. Бесплатный пробный период (7 дней)
+### 8. Бесплатный пробный период (30 дней)
 
-Бесплатный пробный период LabGuide на 7 дней позволяет попробовать платные функции выбранного плана.
+Бесплатный пробный период LabGuide на 30 дней позволяет попробовать платные функции выбранного плана.
 Он:
 
 - даётся один раз — один пробный период на телефон, аккаунт и email; повторно не даётся ни другому
@@ -291,7 +291,7 @@ LabGuide is a learning and reference app for clinical laboratory diagnostics. Th
 and stay free. Extra paid features — the Student Pro, Teacher Pro, Specialist Pro and Premium plans — are
 sold through the Apple App Store or Google Play as auto-renewing subscriptions. The price and period are
 shown in the store sheet before you buy, and you are charged only after you confirm the purchase yourself
-in that sheet. The 7-day free trial is given once and needs no card. When a trial or subscription ends,
+in that sheet. The 30-day free trial is given once and needs no card. When a trial or subscription ends,
 only the paid features close; free features and your data stay. LabGuide does not diagnose and does not
 replace a physician’s judgment.
 
@@ -360,9 +360,9 @@ and period are shown in the store sheet before you buy (in your local currency).
 - **Price changes.** If a price changes, the store informs you under its own rules.
 - The store’s own terms also apply to your purchase.
 
-### 8. The free trial (7 days)
+### 8. The free trial (30 days)
 
-LabGuide’s 7-day free trial lets you try the paid features of the plan you choose. It:
+LabGuide’s 30-day free trial lets you try the paid features of the plan you choose. It:
 
 - is given once — one trial per phone, account and email; it is not given again to another account, nor
   after deleting and re-creating your account (the records kept for this are described in section 16 of

@@ -310,7 +310,7 @@ Ilova bolalarga mo‘ljallanmagan va ulardan ataylab ma’lumot to‘plamaydi.
 
 LabGuide’ning bepul imkoniyatlari bepul qoladi. Qo‘shimcha pullik imkoniyatlar (Talaba Pro, Ustoz Pro,
 Mutaxassis Pro va Premium rejalari) faqat Apple App Store yoki Google Play orqali, avtomatik
-yangilanuvchi obuna sifatida sotiladi; bundan tashqari 7 kunlik bepul sinov bor. Narx va davr xariddan
+yangilanuvchi obuna sifatida sotiladi; bundan tashqari 30 kunlik bepul sinov bor. Narx va davr xariddan
 oldin do‘kon oynasida ko‘rsatiladi; obuna, sinov va bekor qilish qoidalari —
 [Foydalanish shartlari](https://labguide.nfcstore.uz/terms/) da. Pullik reja va bepul sinov uchun hisob
 kerak; mehmon rejimida ular mavjud emas (2-bo‘lim).
@@ -334,7 +334,7 @@ kerak; mehmon rejimida ular mavjud emas (2-bo‘lim).
   olingan obuna bitta LabGuide hisobiga bog‘lanadi. Mehmon rejimida xarid qilib yoki tiklab bo‘lmaydi;
   qurilmadagi do‘kon xaridi hisobga kirmaguncha pullik imkoniyatlarni ochmaydi va hisobga kirganda
   serverga bog‘lanadi.
-- **Bepul sinov (7 kun, bir marta).** Sinov karta yoki to‘lov usulini talab qilmaydi va o‘zi pullik obunaga
+- **Bepul sinov (30 kun, bir marta).** Sinov karta yoki to‘lov usulini talab qilmaydi va o‘zi pullik obunaga
   aylanmaydi. U bir telefonga, bir hisobga va bir emailga bir marta beriladi. Buning uchun server
   saqlaydi: sinov boshlangan va tugaydigan sana, tanlangan reja, platforma (iOS yoki Android),
   emailingizning kanonik ko‘rinishi (masalan Gmail’da nuqta va “+teg”siz) va qurilma belgisining faqat
@@ -672,7 +672,7 @@ iPhone QR-код читается системным средством Apple. �
 
 Бесплатные функции LabGuide остаются бесплатными. Дополнительные платные возможности (планы Студент Pro,
 Преподаватель Pro, Специалист Pro и Premium) продаются только через Apple App Store или Google Play как
-подписка с автоматическим продлением; кроме того, есть бесплатный пробный период на 7 дней. Цена и период
+подписка с автоматическим продлением; кроме того, есть бесплатный пробный период на 30 дней. Цена и период
 показываются в окне магазина до покупки; правила подписки, пробного периода и отмены — в
 [Условиях использования](https://labguide.nfcstore.uz/terms/). Для платного плана и пробного периода
 нужен аккаунт; в гостевом режиме они недоступны (раздел 2).
@@ -696,7 +696,7 @@ iPhone QR-код читается системным средством Apple. �
   вашему аккаунту. Купленная подписка привязывается к одному аккаунту LabGuide. В гостевом режиме нельзя
   купить или восстановить покупку; покупка на устройстве не открывает платные функции, пока вы не вошли в
   аккаунт, и привязывается к серверу после входа.
-- **Бесплатный пробный период (7 дней, один раз).** Для него не нужны карта или способ оплаты, и он сам не
+- **Бесплатный пробный период (30 дней, один раз).** Для него не нужны карта или способ оплаты, и он сам не
   превращается в платную подписку. Он даётся один раз на телефон, аккаунт и email. Для этого сервер хранит:
   даты начала и окончания, выбранный план, платформу (iOS или Android), каноническую форму вашего email
   (например, для Gmail — без точек и «+тега») и идентификатора устройства только в виде необратимых хешей,
@@ -1033,7 +1033,7 @@ The app is not directed to children and does not knowingly collect their data.
 
 LabGuide’s free features stay free. Extra paid features (the Student Pro, Teacher Pro, Specialist Pro and
 Premium plans) are sold only through the Apple App Store or Google Play as auto-renewing subscriptions;
-there is also a 7-day free trial. The price and period are shown in the store sheet before you buy; the
+there is also a 30-day free trial. The price and period are shown in the store sheet before you buy; the
 rules for subscriptions, the trial and cancelling are in the
 [Terms of Use](https://labguide.nfcstore.uz/terms/). A paid plan and the free trial need an account; they
 are not available in guest mode (section 2).
@@ -1058,7 +1058,7 @@ are not available in guest mode (section 2).
   A purchased subscription is linked to one LabGuide account. In guest mode you cannot buy or restore;
   a store purchase on the device does not unlock paid features until you sign in, and is linked to the
   server when you do.
-- **Free trial (7 days, once).** It needs no card or payment method and does not turn into a paid
+- **Free trial (30 days, once).** It needs no card or payment method and does not turn into a paid
   subscription by itself. It is given once per phone, account and email. To enforce this the server keeps:
   the start and end dates, the plan chosen, the platform (iOS or Android), the canonical form of your
   email (for Gmail, for example, without dots and “+tag”) and of a device marker only as one-way hashes made

@@ -10,7 +10,7 @@
 - [x] Apple va Google: bank/soliq va pullik ilovalar shartnomasi to‘ldirilgan, qabul qilingan (egasi aytdi 2026-10-26; konsolda “Active” holatini tekshirish kerak).
 - [ ] Narx nuqtalari: ilovadagi bazaviy narxlar (USD) `ProPricing`da: Talaba 1.49 / 9.99, Ustoz 2.49 / 24.99,
       Mutaxassis 3.49 / 34.99, Premium 4.99 / 49.99 (oy / yil). UZS va boshqa valyuta narxlarini do‘konda tanlaysiz.
-- [ ] Bepul sinov: 7 kun, do‘kon “introductory offer” sifatida (rozilikka qarshi pul yechilmaydi).
+- [ ] Bepul sinov: **30 kun** (D-80, egasi qarori 2026-10-31; avval 7 kun), do‘kon “introductory offer” sifatida (rozilikka qarshi pul yechilmaydi). Apple: **1 oy** (kalendar oy; server 30 kun hisoblaydi — ilova do‘kon kvitansiyasidagi sanaga ishonadi, qayta hisoblamaydi).
 
 ## 1. Mahsulotlar (8 ta; ID lar aynan shunday) — App Store Connect va Google Play
 | Reja | Oylik ID | Yillik ID |
@@ -19,8 +19,8 @@
 | Ustoz Pro | `uz.labguide.teacher.monthly` | `uz.labguide.teacher.yearly` |
 | Mutaxassis Pro | `uz.labguide.specialist.monthly` | `uz.labguide.specialist.yearly` |
 | Premium | `uz.labguide.premium.monthly` | `uz.labguide.premium.yearly` |
-- [ ] App Store Connect: bitta obuna guruhi, 8 mahsulot, har biriga uz/ru/en nom-tavsif, 7 kunlik introductory offer.
-- [ ] Google Play: 8 ta obuna (base plan), 7 kunlik free trial offer. Ilovada: Obuna ekrani + Tiklash + Shartlar/Maxfiylik havolalari bor.
+- [ ] App Store Connect: bitta obuna guruhi, 8 mahsulot, har biriga uz/ru/en nom-tavsif, introductory offer = Free Trial, **1 oy** (8 tasining hammasiga).
+- [ ] Google Play: 8 ta obuna (base plan), free trial offer **30 kun / 1 oy** (Play Console’da egasi o‘rnatadi; 8 tasining hammasiga). Ilovada: Obuna ekrani + Tiklash + Shartlar/Maxfiylik havolalari bor.
 
 ## 2. Apple kalitlari → GitHub Secrets (nomlar)
 - [ ] `APPLE_IAP_KEY_ID`, `APPLE_IAP_ISSUER_ID`, `APPLE_IAP_PRIVATE_KEY` (App Store Connect → Users and Access → Integrations → In-App Purchase).
@@ -40,7 +40,7 @@
 - [ ] Tekshiruv: `GET /v1/billing/status` (app_store/play_store true bo‘lishi kerak).
 
 ## 5. Sinov (sandbox) — `PAID_SANDBOX_RUNBOOK.md` §2 matritsasi
-- [ ] Sotib olish, tiklash, bekor qilish, muddat tugashi, yangilanish, oflayn; mehmon va akkauntli; 7 kunlik sinov bir martalik.
+- [ ] Sotib olish, tiklash, bekor qilish, muddat tugashi, yangilanish, oflayn; mehmon va akkauntli; 30 kunlik sinov bir martalik.
 - [ ] Hamma natija PASS/FAIL yoziladi; real do‘kon sinalmaguncha “sinalgan” deb yozilmaydi.
 
 ## 6. Reliz oldidan (Production — alohida ruxsat)

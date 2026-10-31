@@ -3,6 +3,8 @@
 > **Narxlar va sinov muddatlari bu hujjatning eski qismlarida ESKIRGAN** (29 000 so'm/$4.99, Ustoz $6.99, 7/14 kun).
 > **D-76 (2026-10-24, egasi):** to'rt reja (Premium qo'shildi), imkoniyatlar `learner`/`teacher_panel`/`lab`, Lab — Pro
 > (REJA, faol emas), sinov 7 kun, mehmon xarid qilmaydi — `docs/DECISIONS.md` D-76.
+> **SUPERSEDED (D-80, 2026-10-31, egasi qarori):** sinov uzunligi endi **30 kun** (hamma pullik reja; Bepul o‘zgarmagan).
+> Hujjatdagi 7 / 14 kunlik sinov matni — tarix.
 > Amaldagi narxlar (EGASI QARORI 2026-10-24, lekin YOQILMAGAN), to'rt daraja (D-76), yangi mahsulot id'lari va admin
 > tomonidan Pro berish — **D-73** (§2 pastda yangilangan); ochiq qarorlar — D-73 §5. Bu hujjatdagi yopish ro'yxati (§1) `main` dagi
 > bepul imkoniyatlar bilan ziddiyatda: hech narsa yopilmaydi.
@@ -336,7 +338,7 @@ D-73 §3 va `docs/ADMIN_PANEL_GUIDE.md` §8. Migratsiya `0015_pro_grants.sql` �
 - Ilova: Profil → **Obuna** (`/profile/subscription`, faqat `BuildFlags.proEnabled`): rejalar, USD narxlar (katalog),
   holat, sinov qoidasi, tiklash; to‘lov oynasi (`/profile/purchase`) shu ekrandan.
 - Eslatma: 9-bo‘limdagi 7/14 kunlik do‘kon sinovi ESKIRGAN (D-71/D-73). Server sinovi muddati — **7 kun, hamma reja
-  uchun (D-76)**; D-74/D-75 dagi 30 kun bekor.
+  uchun (D-76)** — D-80 (2026-10-31) bilan **30 kun**ga almashtirildi; D-74/D-75 dagi 30 kun D-76 da bekor qilingan edi.
 
 ## D-75 yangilanishi
 Do'kon tekshiruvchilari injeksiya qilinadi, Apple JWS imzosi tekshiriladi, sandbox faqat `LG_BILLING_SANDBOX=true`, Play'da

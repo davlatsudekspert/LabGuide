@@ -23,9 +23,12 @@
    `uz.labguide.student.monthly/.yearly`, `uz.labguide.teacher.monthly/.yearly`,
    `uz.labguide.specialist.monthly/.yearly`, `uz.labguide.premium.monthly/.yearly`; narx pog‘onalari
    `<OWNER_TO_CONFIRM>`; lokalizatsiya (uz/ru/en), review skrinshoti.
-3. Kirish taklifi (Introductory Offer): **standart — yaratilmaydi** (D-76: server sinovi). Agar egasi yaratsa —
-   Apple uni haqli foydalanuvchiga O‘ZI qo‘llaydi; ilova shartlarni StoreKit’dan o‘qib ko‘rsatadi
-   (`trial_policy.dart`). `<OWNER_TO_CONFIRM: taklif bormi, necha kun>`.
+3. Kirish taklifi (Introductory Offer = Free Trial): egasi qarori D-80 (2026-10-31) — bepul sinov **30 kun**; Apple’da
+   8 mahsulotning hammasiga **1 oy** (Apple “1 oy” = kalendar oy, server sinovi esa aniq 30 kun). Apple uni haqli
+   foydalanuvchiga O‘ZI qo‘llaydi; ilova shartlarni StoreKit’dan o‘qib ko‘rsatadi, tugash sanasini QAYTA HISOBLAMAYDI —
+   do‘kon kvitansiyasidagi sana (`trial_policy.dart`, D-80). Do‘konda yaratilganmi — NOT VERIFIED
+   (`tool/store/store_check.py` ASC’da `intro=` ni o‘qiydi). Server sinovi bilan qo‘shilib ketishi (stacking) —
+   `docs/RELEASE_CANDIDATE_2026-10-31.md` §3.
 4. Family Sharing — O‘CHIQ (D-75).
 5. Users and Access → Integrations → In-App Purchase kaliti (.p8, Key ID, Issuer ID) → `APPLE_IAP_*`.
 6. Developer → Keys → **DeviceCheck** kaliti (.p8, Key ID, Team ID) → `APPLE_DEVICECHECK_*` (faqat iOS sinovi
@@ -37,8 +40,9 @@
 ### 1.3 Google Play Console (internal / closed testing)
 1. Payments profile / merchant — `<OWNER_TO_CONFIRM>`.
 2. 4 obuna (`uz.labguide.student|teacher|specialist|premium`) × 2 base plan (`monthly` P1M, `yearly` P1Y);
-   narxlar (UZS pog‘onalari) `<OWNER_TO_CONFIRM>`. **Free-trial offer standart — YARATILMAYDI** (ilova standartda
-   faqat base plan sotadi; offer yaratilsa ham ishlatilmaydi, `storeIntroOffersAllowed = false`).
+   narxlar (UZS pog‘onalari) `<OWNER_TO_CONFIRM>`. **Free-trial offer — egasi qarori D-80: 30 kun / 1 oy, Play Console’da
+   egasi o‘rnatadi** (NOT VERIFIED). Kod bo‘yicha ilova standartda faqat base plan sotadi: offer yaratilsa ham
+   `storeIntroOffersAllowed = false` bo‘lgani uchun tanlanmaydi (bu bayroq D-80 da O‘ZGARTIRILMAGAN — qaror kerak).
 3. Setup → License testing: tester Google hisoblari (A, B) `<OWNER_TO_CONFIRM>`.
 4. Internal testing treki — Pro bayrog‘i bilan yig‘ilgan test build; testerlar ro‘yxati.
 5. Google Cloud: service account (Play Developer API: “View financial data, orders…” + “Manage orders and
@@ -85,8 +89,8 @@ Har qator: **qadam → kutilgan natija (kod bo‘yicha)**. Natija ustunini egasi
 | O1 | Oflayn | ikkalasi | Xariddan keyin internetni o‘chiring | ≤ 7 kun (yoki obuna tugashigacha) huquq; keyin yo‘q; Free ishlaydi | NOT RUN |
 | O2 | Soat orqaga | ikkalasi | Oflayn, 6-kuni ilovani oching, soatni 1-kunga qaytaring | Huquq YO‘Q (monoton yuqori belgi); soat to‘g‘rilansa — qaytadi; internetda server javobi tiklaydi | NOT RUN |
 | ST1 | Do‘kon sinovi (faqat egasi taklif yaratsa) | iOS (Apple o‘zi qo‘llaydi) / Android (`storeIntroOffersAllowed` true bo‘lsa) | Haqli Apple ID / Google hisob | Kartada do‘kondan olingan shart: “{davr} bepul, keyin {narx}”; serverda `period_type = trial`, huquq bor; server sinovidan keyin bo‘lsa — “bu do‘kon taklifi” izohi | NOT RUN |
-| T1 | Server sinovi — boshlash | Android | Hisob → Obuna → “Bepul sinovni boshlash” | Tugma faqat `status.trial.android = true` (Play Integrity sozlangan) bo‘lsa; 201, 7 kun, `GET /v1/billing/trial` → `active` | NOT RUN |
-| T2 | Sinov — muddat | Android | 7 kun (server soati) | `expired`; pullik funksiyalar yopiladi, Free + ma’lumot qoladi; qayta sinov yo‘q | NOT RUN |
+| T1 | Server sinovi — boshlash | Android | Hisob → Obuna → “Bepul sinovni boshlash” | Tugma faqat `status.trial.android = true` (Play Integrity sozlangan) bo‘lsa; 201, 30 kun (D-80), `GET /v1/billing/trial` → `active` | NOT RUN |
+| T2 | Sinov — muddat | Android | 30 kun (server soati; D-80) | `expired`; pullik funksiyalar yopiladi, Free + ma’lumot qoladi; qayta sinov yo‘q | NOT RUN |
 | T3 | Sinov — takror | Android | Ilovani o‘chirib qayta o‘rnatib, yangi hisob bilan | 409 `trial_already_used` (o‘sha ANDROID_ID); factory reset’dan keyin — YANGI sinov (qolgan xavf) | NOT RUN |
 | T4 | Sinov — email aliasi | ikkalasi | `ali.v+x@gmail.com` (avval `aliv@gmail.com` olgan) | 409 | NOT RUN |
 | T5 | Sinov — root / emulyator | Android | Root qilingan yoki emulyator | 403 `device_attestation_failed` (MEETS_DEVICE_INTEGRITY yo‘q) | NOT RUN |

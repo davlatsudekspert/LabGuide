@@ -7,7 +7,7 @@
 
 Egasi qarori (2026-10-25): **Ustoz Pro** (`teacher_panel`) = test yaratish, talabalarni biriktirish, guruhlar va
 natijalarni boshqarish. **Bugun `main` da bor hamma narsa bepul qoladi** — Pro faqat YANGI imkoniyat qo‘shadi.
-7 kunlik sinov — huquq/sinov tizimi (o‘zgartirilmadi).
+30 kunlik sinov (D-80; D-76 dagi 7 kun almashtirildi) — huquq/sinov tizimi (o‘zgartirilmadi).
 
 ## 1. Bugun bepul (o‘zgarmaydi) va Pro qo‘shimchasi — imkoniyat bo‘yicha
 

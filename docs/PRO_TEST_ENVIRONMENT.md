@@ -15,7 +15,7 @@ flutter run --dart-define=LG_PRO_ENABLED=true --dart-define=LG_FAKE_PURCHASES=tr
 ```
 - Profil → “Obuna”: narxlar katalogdan (Talaba 1.49/9.99, Ustoz 2.49/24.99, Mutaxassis 3.49/34.99, Premium 4.99/49.99 USD; D-76).
 - Hisobga kiring (email kodi) → “Bepul sinovni boshlash” tugmasi chiqadi (soxta attestatsiya) → tasdiq oynasi →
-  7 kunlik sinov (D-76, hamma reja). Sinov hech qanday xarid boshlamaydi. Mehmon xarid qilmaydi va sinov olmaydi —
+  30 kunlik sinov (D-80, hamma pullik reja; D-76 dagi 7 kun almashtirildi). Sinov hech qanday xarid boshlamaydi. Mehmon xarid qilmaydi va sinov olmaydi —
   avval hisobga kiring (D-76).
 - “Obuna bo‘lish” → soxta do‘kon → Pro (`environment: sandbox`). Ilova qayta ochilsa holat yo‘qoladi.
 - Pul, haqiqiy do‘kon yoki server ishtirok etmaydi.
@@ -56,7 +56,7 @@ Faqat ALOHIDA test Worker va test D1 bazasida (production emas).
 1. Play Console → Setup → License testing: tester Google hisoblarini qo‘shing.
 2. Ichki test treki (internal testing) — Pro bayrog‘i bilan yig‘ilgan test build.
 3. Obunalar: `uz.labguide.student`, `uz.labguide.teacher`, `uz.labguide.specialist`, `uz.labguide.premium`; har birida base
-   plan `monthly` (P1M) va `yearly` (P1Y). **Free-trial offer yaratmang** (7 kun — server sinovi, D-76).
+   plan `monthly` (P1M) va `yearly` (P1Y). Server sinovi (30 kun, D-80) alohida; do‘kon free-trial offer (egasi qarori D-80: Apple Introductory Offer = 1 oy, Google free trial = 30 kun / 1 oy) yaratilsa — uni server sinovi bilan qo‘shish (stacking) masalasi `docs/RELEASE_CANDIDATE_2026-10-31.md` §3 da: NEEDS_OWNER_CHECK.
 4. Test kartalari: “Always approves” → xarid; “Always declines” → IN_GRACE_PERIOD (Pro bor) → ON_HOLD
    (Pro yo‘q); “Approves then charges back” → voided/REVOKED (Pro darhol yo‘q); oylik rejani pauza → PAUSED
    (Pro yo‘q) → RECOVERED.

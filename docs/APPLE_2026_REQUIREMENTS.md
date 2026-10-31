@@ -391,8 +391,9 @@ yangilanish yuborish uchun ham kerak (2024-10-16 dan). Hujjat: `help/app-store-c
 - **3.1.2(c):** obunadan oldin nima olinishini va narxni aniq yozing; Schedule 2 (nom, davr, narx, avtomatik uzaytirish,
   bekor qilish, Terms/Privacy havolalari) — `PurchaseScreen` da bor (`payDisclosure`, `payRestore`, `payManage`, `payTerms`,
   `payPrivacy`, testlar) ✓. Narx **do'kondan** olinadi, kodda yozilmagan ✓ (D-57 tekshiruvi).
-- **Bepul sinov** (Introductory Offer): Pro/talaba 7 kun, Ustoz Pro 14 kun (D-49). Muddati va keyingi narx to'lov
-  oynasida ko'rinadi (“7 kun bepul, keyin $X / oy”) ✓.
+- **Bepul sinov** (Introductory Offer): Pro/talaba 7 kun, Ustoz Pro 14 kun (D-49; ESKIRGAN/SUPERSEDED — D-80, 2026-10-31:
+  hamma pullik reja 30 kun, Apple’da 1 oy). Muddati va keyingi narx to'lov
+  oynasida ko'rinadi (“{davr} bepul, keyin $X / oy”) ✓.
 - **Narxni o'zgartirish:** hali sotuvda emas; keyin oshirish — mavjud obunachilardan Apple roziligi (bildirishnoma)
   talab qilishi mumkin. Apple chegara jadvali (`help/app-store-connect/reference/auto-renewable-subscription-price-increase-thresholds`)
   qidiruv parchasida O'zbekiston uchun “USD, 6 (oylik), 60 (yillik)” ko'rsatilgan [?: ma'nosi tasdiqlanmagan —
