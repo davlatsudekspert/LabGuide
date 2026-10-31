@@ -901,6 +901,11 @@ def qa_slides(repo, src, day, lang, caps=None):
         tr = q.get('tr', {}).get(lang) if lang != 'uz' else None
         text = tr['q'] if tr else q['q']
         plan = tr['plan'] if tr else q['plan']
+        if lang == 'uz':
+            # Egasi qoidasi: foydalanuvchiga ko'rinadigan matnda «toifa» so'zi yo'q.
+            # Rasmiy javob rejalari (assets/toifa, hash bilan qo'riqlangan) o'zgarmaydi;
+            # faqat slaydga chiqayotgan matn «kategoriya» deb yoziladi.
+            plan = [x.replace('toifasi', 'kategoriyasi').replace('toifa', 'kategoriya') for x in plan]
         refs = [src.url(r) for r in q.get('refs') or []] or [src.bank('oral', lang)]
         out.append(Slide('text', title=T('oral_a', lang), eyebrow=f'{T("qa_label", lang)} · {T("oral_q", lang)}',
                          data={'lead': text, 'blocks': [{'label': None, 'text': x} for x in plan],
