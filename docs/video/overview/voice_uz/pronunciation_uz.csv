@@ -1,0 +1,9 @@
+term,written,spoken_respelling,risk,kind,lines,note,review
+LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L03 L23,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+Levey–Jennings,Levey–Jennings,Livi Jenings,HIGH,abbr,L09,personal names; English pronunciation approximated,NEEDS_NATIVE_REVIEW
+Westgard,Westgard,Vestgard,HIGH,abbr,L09,personal name,NEEDS_NATIVE_REVIEW
+QR,QR,kyu er,MEDIUM,abbr,L15,alternative: ku er,NEEDS_NATIVE_REVIEW
+leykoformula,leykoformula,leykoformula,MEDIUM,watch,L10,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+PDF,PDF’da,pe de ef da,LOW,abbr,L01,,NEEDS_NATIVE_REVIEW
+atlas,atlas,atlas,LOW,watch,L11,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+kalibrlash,kalibrlash,kalibrlash,LOW,watch,L10,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW

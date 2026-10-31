@@ -1,0 +1,16 @@
+term,written,spoken_respelling,risk,kind,lines,note,review
+IFU,IFU’sidan,i ef yu sidan,HIGH,abbr,L14,instructions for use; alternative: foydalanish yo‘riqnomasi (changes wording),NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L11 L15,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+A = log10(I0/I),A = log₁₀(I₀/I),A teng I nol bo‘lingan I ning o‘nli logarifmi,HIGH,formula,L04,formula read aloud,NEEDS_NATIVE_REVIEW
+C = A_sample / A_std x C_std,C = A namuna ÷ A standart × standart konsentratsiyasi,"se teng a namuna bo‘lingan a standart, ko‘paytirilgan standart konsentratsiyasi",HIGH,formula,L09,formula read aloud,NEEDS_NATIVE_REVIEW
+"decimal 1,52","1,52",bir vergul ellik ikki,MEDIUM,number,L01,decimal comma read as 'vergul' (alternative: butun … dan …),NEEDS_NATIVE_REVIEW
+kyuveta,kyuveta,kyuveta,MEDIUM,watch,L03 L08,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+N % i,10 % i,o‘n foizi,LOW,number,L05,percent + possessive,NEEDS_NATIVE_REVIEW
+N % i,1 % i,bir foizi,LOW,number,L05,percent + possessive,NEEDS_NATIVE_REVIEW
+number 1,1,bir,LOW,number,L05,,NEEDS_NATIVE_REVIEW
+number 2,2,ikki,LOW,number,L05,,NEEDS_NATIVE_REVIEW
+A =,A =,a teng ,LOW,symbol,L05,absorbance equals,NEEDS_NATIVE_REVIEW
+→,→,",",LOW,symbol,L15,menu path: pause,NEEDS_NATIVE_REVIEW
+fotometr,fotometr,fotometr,LOW,watch,L03 L11,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+konsentratsiya,konsentratsiya,konsentratsiya,LOW,watch,L06 L09,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+reagent,reagent,reagent,LOW,watch,L14,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW

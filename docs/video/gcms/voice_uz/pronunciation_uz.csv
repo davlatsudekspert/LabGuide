@@ -1,0 +1,13 @@
+term,written,spoken_respelling,risk,kind,lines,note,review
+GC,GC,ji si,HIGH,abbr,L05,,NEEDS_NATIVE_REVIEW
+GC-MS,GC-MS,ji si em es,HIGH,abbr,L02 L12 L16,English letter names; alternative: ge se em es / xromato-mass-spektrometriya,NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide’da,Leb Gaydda,HIGH,abbr,L12,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L16,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+m/z,m/z,em zet,HIGH,unit,L08,mass-to-charge ratio,NEEDS_NATIVE_REVIEW
+avtonamunaoluvchi,avtonamunaoluvchi,avtonamunaoluvchi,HIGH,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+derivatizatsiya,derivatizatsiya,derivatizatsiya,HIGH,watch,L05,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+QC,QC,kyu si,MEDIUM,abbr,L11,alternative: ku se,NEEDS_NATIVE_REVIEW
+kvadrupol,kvadrupol,kvadrupol,MEDIUM,watch,L06 L08,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+toksikologiya,toksikologiya,toksikologiya,MEDIUM,watch,L12,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+xromatogramma,xromatogramma,xromatogramma,MEDIUM,watch,L09,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+→,→,",",LOW,symbol,L12 L16,menu path: pause,NEEDS_NATIVE_REVIEW

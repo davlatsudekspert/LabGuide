@@ -1,0 +1,21 @@
+term,written,spoken_respelling,risk,kind,lines,note,review
+LabGuide,LabGuide’da,Leb Gaydda,HIGH,abbr,L11,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L17,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+Levey–Jennings,Levey–Jennings,Livi Jenings,HIGH,abbr,L03,personal names; English pronunciation approximated,NEEDS_NATIVE_REVIEW
+Westgard,Westgard,Vestgard,HIGH,abbr,L13,personal name,NEEDS_NATIVE_REVIEW
+Westgard rule 1-2s,1-2s,bir ikki es,HIGH,qc-rule,L06,"rule name: first digit = count, second = SD multiple, s = SD",NEEDS_NATIVE_REVIEW
+Westgard rule 1-3s,1-3s,bir uch es,HIGH,qc-rule,L08,"rule name: first digit = count, second = SD multiple, s = SD",NEEDS_NATIVE_REVIEW
+Westgard rule 10x,10x,o‘n iks,HIGH,qc-rule,L09,ten in a row,NEEDS_NATIVE_REVIEW
+Westgard rule 2-2s,2-2s,ikki ikki es,HIGH,qc-rule,L09,"rule name: first digit = count, second = SD multiple, s = SD",NEEDS_NATIVE_REVIEW
+Westgard rule 4-1s,4-1s,to‘rt bir es,HIGH,qc-rule,L09 L10,"rule name: first digit = count, second = SD multiple, s = SD",NEEDS_NATIVE_REVIEW
+Westgard rule R-4s,R-4s,er to‘rt es,HIGH,qc-rule,L08,range rule,NEEDS_NATIVE_REVIEW
+CSV,CSV,si es vi,MEDIUM,abbr,L15,,NEEDS_NATIVE_REVIEW
+SD,SD,es de,MEDIUM,abbr,L01 L03 L05 L06 L10 L11,standard deviation; alternative: standart og‘ish,NEEDS_NATIVE_REVIEW
+"decimal 2,3","2,3",ikki vergul uch,MEDIUM,number,L01,decimal comma read as 'vergul' (alternative: butun … dan …),NEEDS_NATIVE_REVIEW
+z,z:,zet,LOW,letter,L05,z-score symbol,NEEDS_NATIVE_REVIEW
+number 1,1,bir,LOW,number,L10,,NEEDS_NATIVE_REVIEW
+number 2,2,ikki,LOW,number,L06,,NEEDS_NATIVE_REVIEW
+number 20,20,yigirma,LOW,number,L04,,NEEDS_NATIVE_REVIEW
++,+,plyus ,LOW,symbol,L01,plus sign,NEEDS_NATIVE_REVIEW
+~,~,taxminan ,LOW,symbol,L04,approximately,NEEDS_NATIVE_REVIEW
+→,→,",",LOW,symbol,L17,menu path: pause,NEEDS_NATIVE_REVIEW

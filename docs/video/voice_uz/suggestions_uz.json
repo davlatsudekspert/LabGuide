@@ -1,0 +1,103 @@
+{
+ "overview": {
+  "L02": "Laboratoriya bilimi tarqoq — kamdan-kam o‘z tilingizda.",
+  "L03": "LabGuide hammasini jamlaydi — o‘zbek, rus, ingliz tilidagi ma’lumotnoma va o‘quv ilovasi.",
+  "L06": "Lab mutaxassisiga: javoblar ish joyida.",
+  "L07": "Tahlil kartalari: birliklar, qo‘llanma chegaralari, yuqori yoki past natija ma’nosi — manbalari bilan.",
+  "L08": "Kalkulyator faqat sonlaringizdan hisoblaydi; formula, cheklov, manba bor.",
+  "L12": "Mutaxassis bilim va malakani baholashga ham tayyorlansa bo‘ladi.",
+  "L15": "Guruh oching: talaba QR yoki qisqa kod bilan kiradi.",
+  "L16": "Ma’ruza testi: talabaga turli savol mumkin.",
+  "L20": "Vaqtli imtihon-mashq internetsiz; xatolarni takrorlash mumkin.",
+  "L22": "Bitta ilova: uch rol uchun."
+ },
+ "calibration": {
+  "L01": "Yutilish 0,486. Konsentratsiya qancha?",
+  "L02": "Kalibrlashsiz hech kim ayta olmaydi.",
+  "L05": "Nur ko‘p yutilsa, detektorga kam yetadi — yutilish ortadi.",
+  "L08": "Eng kichik kvadratlar chizig‘i — kalibrlash egrisi.",
+  "L09": "Qiyalik, ozod had, R² nuqtalardan hisoblangan.",
+  "L11": "R² yetarli emas: qoldiq kichik, tendensiyasiz bo‘lsin.",
+  "L12": "Qabul mezonlari — IFU va o‘z SOP’ingizdan.",
+  "L13": "LabGuide analizatorni kalibrlamaydi — o‘tgan kalibrlashni qayd etadi.",
+  "L14": "Apparat, analit, reagent REF, IFU versiyasi — taxminiy parametr yo‘q.",
+  "L15": "Yozuv: kalibrator loti, belgilangan qiymatlar, birlik — varag‘idan.",
+  "L16": "«Qabul qilindi» kalibrlashdan keyin QC o‘tmaguncha bloklanadi…",
+  "L17": "…va vakolatli shaxs belgilanmaguncha.",
+  "L18": "Yozuvlar kalibrlash jurnaliga tushadi — shu qurilmada.",
+  "L19": "Yaratish, tahrirlash, o‘chirish — tarixda qoladi, o‘chirilsa ham.",
+  "L20": "Kalibrlash — shunchaki egri chiziq emas, har natijaga ishonch."
+ },
+ "qc": {
+  "L01": "Ertalabki nazorat: o‘rtachadan +2,3 SD.",
+  "L02": "To‘xtatasizmi yoki natija berasizmi?",
+  "L03": "Levey–Jennings grafigi nazorat natijasini o‘rtacha va SD bilan taqqoslaydi.",
+  "L07": "Avval boshqa qoidalarni tekshiring.",
+  "L10": "Ketma-ket to‘rt qiymat 1 SD dan tashqarida: 4-1s. Rad, sababini toping.",
+  "L11": "LabGuide’da har daraja uchun o‘rtacha, SD va manba kiritiladi.",
+  "L13": "Westgard qoidalari har seriyada tekshiriladi va nomlanadi."
+ },
+ "photometry": {
+  "L01": {
+   "none": "The decimal number (read aloud) takes most of the slot; no meaning-preserving shortening of the wording found. Options for the owner: read the number faster, or accept a short overflow."
+  },
+  "L02": "Bu raqamga ishonamizmi?",
+  "L03": "Fotometr kyuvetadan bir to‘lqin uzunligini o‘tkazadi.",
+  "L04": "Optik zichlik — kirgan, chiqqan nur nisbati: A = log₁₀(I₀/I).",
+  "L06": "Ma’lum oraliqda optik zichlik konsentratsiyaga mutanosib: Buger–Lambert–Ber qonuni.",
+  "L07": "Chegaradan oshsa, chiziq bukiladi, natija past chiqadi.",
+  "L08": "Uch kyuveta: blank nol beradi, so‘ng standart va namuna.",
+  "L12": "Blank, standart, namuna — qadamma-qadam, hisob ham…",
+  "L14": "To‘lqin uzunligi, blank, chegaralar — reagent IFU’sidan."
+ },
+ "osmometry": {
+  "L02": "Erigan zarracha muzlash nuqtasini pasaytiradi. Osmometr buni o‘lchaydi.",
+  "L04": "Sovutish bloki namunani muzlash nuqtasidan past sovitadi.",
+  "L06": {
+   "none": "No meaning-preserving shortening found (every word carries content); rely on tempo / short overflow into the gap, or owner rewrite."
+  },
+  "L12": "Tozalanmagan idish oldingi namunani keyingisiga o‘tkazadi.",
+  "L14": "O‘lchanganini qo‘shing — osmolyal farqni ko‘rsatadi."
+ },
+ "leukocyte": {
+  "L01": "87… yoki 97?",
+  "L03": "Immersiya ostida bo‘yalgan surtma: eritrotsit, trombotsit, leykotsit.",
+  "L04": "Eritrotsit tegsa, ustma-ust tushmasa — sanang.",
+  "L05": "Segment yadroli neytrofil: 2–5 bo‘lak, ingichka ip, och pushti sitoplazma.",
+  "L11": "Maydonma-maydon, bir tomonga, qaytmay — hujayra ikki marta sanalmasin.",
+  "L13": "LabGuide’da har hujayra turiga katta tugma bor.",
+  "L24": "Ko‘zingiz hujayrada. Hisobni LabGuide yuritadi."
+ },
+ "calculators": {
+  "L02": "Qo‘lda — uzun formula, birlikdagi bir xato javobni o‘zgartiradi.",
+  "L06": "Maydonlar bo‘sh: qiymat sizniki.",
+  "L07": "Jinsni unutsangiz — avval so‘raydi.",
+  "L10": "18 yoshdan kichikka eGFR berilmaydi: tenglama kattalarda tuzilgan.",
+  "L11": "Glyukoza 90 mmol/L esa birlikni tekshiradi.",
+  "L13": "Lab vositalari ham: suyultirish, C1·V1 = C2·V2, sonlaringizdan.",
+  "L14": "Hisoblaydi, talqin sizniki."
+ },
+ "gcms": {
+  "L01": {
+   "none": "Only 1 character over the limit (about 0.1 s); no safe shortening needed - tempo covers it."
+  },
+  "L02": "GC-MS avval ajratadi, so‘ng bo‘laklarini o‘qiydi.",
+  "L04": "Moddalar kolonkadan turli vaqtda chiqadi: ushlanish vaqti.",
+  "L07": "Molekula ionlanadi va ion-bo‘laklarga ajraladi.",
+  "L09": "Natija: ushlanish vaqti bo‘yicha xromatogramma va har cho‘qqi mass-spektri.",
+  "L10": "Modda spektr kutubxonasi yoki standartlar bilan aniqlanadi.",
+  "L14": "Kartada QC va biologik xavfsizlik ham bor: issiq qismlar, ko‘zoynak, xalat, qo‘lqop."
+ },
+ "qpcr": {
+  "L01": "A — 22-siklda, B — 31-siklda chiziqni kesadi.",
+  "L02": "Qaysida avval nishon ko‘proq edi?",
+  "L03": "Har siklda qizdirish zanjirni ajratadi; sovutishda praymer birikadi, polimeraza yangi zanjir quradi.",
+  "L04": "Nishon har siklda qariyb ikki marta ko‘payadi.",
+  "L07": {
+   "none": "2 characters over (about 0.15 s); no meaning-preserving shortening of the technical wording; tempo covers it."
+  },
+  "L08": "Signal mahsulot bilan o‘sadi: kuchayish egrisi.",
+  "L09": "Cq — chegara kesilgan sikl: Cq qancha past, boshida nishon shuncha ko‘p.",
+  "L10": "Ozgina ifloslanish soxta natija beradi, kuchayish yo‘qligi manfiylikni isbotlamaydi."
+ }
+}

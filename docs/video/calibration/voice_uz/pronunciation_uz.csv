@@ -1,0 +1,16 @@
+term,written,spoken_respelling,risk,kind,lines,note,review
+IFU,IFU,i ef yu,HIGH,abbr,L12 L14,instructions for use; alternative: foydalanish yo‘riqnomasi (changes wording),NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L13 L21,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+REF,REF,er e ef,HIGH,abbr,L14,catalogue number label; alternative: ref,NEEDS_NATIVE_REVIEW
+QC,QC,kyu si,MEDIUM,abbr,L16,alternative: ku se,NEEDS_NATIVE_REVIEW
+SOP,SOP’idan,es o pe idan,MEDIUM,abbr,L12,,NEEDS_NATIVE_REVIEW
+"decimal 0,486","0,486",nol vergul to‘rt yuz sakson olti,MEDIUM,number,L01,decimal comma read as 'vergul' (alternative: butun … dan …),NEEDS_NATIVE_REVIEW
+kyuveta,kyuveta,kyuveta,MEDIUM,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+R²,R²,er kvadrat,LOW,abbr,L09 L11,,NEEDS_NATIVE_REVIEW
+→,→,",",LOW,symbol,L21,menu path: pause,NEEDS_NATIVE_REVIEW
+analizator,analizator,analizator,LOW,watch,L03 L13,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+fotometr,fotometr,fotometr,LOW,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+kalibrator,kalibrator,kalibrator,LOW,watch,L06 L15,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+kalibrlash,kalibrlash,kalibrlash,LOW,watch,L02 L04 L08 L13 L16 L18 L20 L21,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+konsentratsiya,konsentratsiya,konsentratsiya,LOW,watch,L01 L04 L07,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+reagent,reagent,reagent,LOW,watch,L14,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW

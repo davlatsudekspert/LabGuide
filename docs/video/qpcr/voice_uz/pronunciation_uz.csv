@@ -1,0 +1,16 @@
+term,written,spoken_respelling,risk,kind,lines,note,review
+Cq,Cq,si kyu,HIGH,abbr,L09,quantification cycle,NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide’da,Leb Gaydda,HIGH,abbr,L11,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L15,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+fluoressensiya,fluoressensiya,fluoressensiya,HIGH,watch,L07,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+peltye,peltye,peltye,HIGH,watch,L05,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+PCR,PCR,pe se er,MEDIUM,abbr,L11 L15,same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+N-noun ordinal,22-,yigirma ikkinchi ,MEDIUM,number,L01,hyphenated numeral read as ordinal (…inchi),NEEDS_NATIVE_REVIEW
+N-noun ordinal,31-,o‘ttiz birinchi ,MEDIUM,number,L01,hyphenated numeral read as ordinal (…inchi),NEEDS_NATIVE_REVIEW
+molekulyar,molekulyar,molekulyar,MEDIUM,watch,L11,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+polimeraza,polimeraza,polimeraza,MEDIUM,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+praymer,praymer,praymer,MEDIUM,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+termosiklator,termosiklator,termosiklator,MEDIUM,watch,L05,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+A,A namuna,a,LOW,letter,L01,sample label,NEEDS_NATIVE_REVIEW
+B,B namuna,be,LOW,letter,L01,sample label,NEEDS_NATIVE_REVIEW
+→,→,",",LOW,symbol,L11 L15,menu path: pause,NEEDS_NATIVE_REVIEW

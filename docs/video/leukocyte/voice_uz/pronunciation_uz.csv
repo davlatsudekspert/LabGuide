@@ -1,0 +1,28 @@
+term,written,spoken_respelling,risk,kind,lines,note,review
+LabGuide,LabGuide’da,Leb Gaydda,HIGH,abbr,L13,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L24 L25,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+WBC,WBC,dabl yu bi si,HIGH,abbr,L20 L21,English letter names (white blood cells); alternative: ve be se,NEEDS_NATIVE_REVIEW
+N-noun ordinal,10-,o‘ninchi ,MEDIUM,number,L19,hyphenated numeral read as ordinal (…inchi),NEEDS_NATIVE_REVIEW
+range N–M,2–5,ikkidan beshgacha,MEDIUM,number,L05,numeric range spoken as 'N-dan M-gacha',NEEDS_NATIVE_REVIEW
+bazofil,bazofil,bazofil,MEDIUM,watch,L08,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+eozinofil,eozinofil,eozinofil,MEDIUM,watch,L07,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+eritrotsit,eritrotsit,eritrotsit,MEDIUM,watch,L03 L04,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+immersiya,immersiya,immersiya,MEDIUM,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+leykoformula,leykoformula,leykoformula,MEDIUM,watch,L25,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+leykotsit,leykotsit,leykotsit,MEDIUM,watch,L03 L12,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+limfotsit,limfotsit,limfotsit,MEDIUM,watch,L09,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+monotsit,monotsit,monotsit,MEDIUM,watch,L10,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+neytrofil,neytrofil,neytrofil,MEDIUM,watch,L05,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+trombotsit,trombotsit,trombotsit,MEDIUM,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+number 1,1,bir,LOW,number,L14,,NEEDS_NATIVE_REVIEW
+number 100,100,yuz,LOW,number,L02 L12 L16,,NEEDS_NATIVE_REVIEW
+number 2,2,ikki,LOW,number,L07,,NEEDS_NATIVE_REVIEW
+number 200,200,ikki yuz,LOW,number,L16,,NEEDS_NATIVE_REVIEW
+number 87,87,sakson yetti,LOW,number,L01,,NEEDS_NATIVE_REVIEW
+number 97,97,to‘qson yetti,LOW,number,L01,,NEEDS_NATIVE_REVIEW
++,+,plyus ,LOW,symbol,L14,plus sign,NEEDS_NATIVE_REVIEW
+=,=,teng,LOW,symbol,L20,symbol read aloud,NEEDS_NATIVE_REVIEW
+×,×,ko‘paytirilgan,LOW,symbol,L20,symbol read aloud,NEEDS_NATIVE_REVIEW
+÷,÷,bo‘lingan,LOW,symbol,L20,symbol read aloud,NEEDS_NATIVE_REVIEW
+→,→,",",LOW,symbol,L25,menu path: pause,NEEDS_NATIVE_REVIEW
+mikroskop,mikroskop,mikroskop,LOW,watch,L18,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW

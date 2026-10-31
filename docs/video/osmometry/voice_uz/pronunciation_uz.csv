@@ -1,0 +1,14 @@
+term,written,spoken_respelling,risk,kind,lines,note,review
+LabGuide,LabGuide’da,Leb Gaydda,HIGH,abbr,L09,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L16,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+osmolyal,osmolyal,osmolyal,HIGH,watch,L07 L08 L13 L14,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+osmolyallik,osmolyallik,osmolyallik,HIGH,watch,L07 L08 L13,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+osmolyarlik,osmolyarlik,osmolyarlik,HIGH,watch,L08,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+mOsm/kg,mOsm/kg,milliosmol kilogramm,MEDIUM,unit,L08,unit,NEEDS_NATIVE_REVIEW
+glyukoza,glyukoza,glyukoza,MEDIUM,watch,L13,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+mochevina,mochevina,mochevina,MEDIUM,watch,L13,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+osmometr,osmometr,osmometr,MEDIUM,watch,L02 L03 L09 L16,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+termistor,termistor,termistor,MEDIUM,watch,L03,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+→,→,",",LOW,symbol,L09 L13 L16,menu path: pause,NEEDS_NATIVE_REVIEW
+kg iga,kg iga,kilogrammiga,LOW,unit,L08,per kg of water,NEEDS_NATIVE_REVIEW
+biokimyo,biokimyo,biokimyo,LOW,watch,L09,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW

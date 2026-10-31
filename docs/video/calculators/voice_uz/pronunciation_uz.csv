@@ -1,0 +1,14 @@
+term,written,spoken_respelling,risk,kind,lines,note,review
+KDIGO,KDIGO,kidigo,HIGH,abbr,L08,read as one word; native check,NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide’da,Leb Gaydda,HIGH,abbr,L03,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+LabGuide,LabGuide,Leb Gayd,HIGH,abbr,L15,brand; same as tool/tts/lexicon/uz.json,NEEDS_NATIVE_REVIEW
+eGFR,eGFR,e ge ef er,HIGH,abbr,L01 L10,alternative: i ji ef ar,NEEDS_NATIVE_REVIEW
+C1V1 = C2V2,C1·V1 = C2·V2,se bir ve bir teng se ikki ve ikki,HIGH,formula,L13,formula read aloud,NEEDS_NATIVE_REVIEW
+SI,SI,es i,MEDIUM,abbr,L12,,NEEDS_NATIVE_REVIEW
+number 90 mmol/L,90 mmol/L,to‘qson millimol litr,MEDIUM,number,L11,,NEEDS_NATIVE_REVIEW
+glyukoza,glyukoza,glyukoza,MEDIUM,watch,L11,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
+number 18,18,o‘n sakkiz,LOW,number,L10,,NEEDS_NATIVE_REVIEW
+number 45,45,qirq besh,LOW,number,L01,,NEEDS_NATIVE_REVIEW
+number 88,88,sakson sakkiz,LOW,number,L01,,NEEDS_NATIVE_REVIEW
+→,→,",",LOW,symbol,L03 L15,menu path: pause,NEEDS_NATIVE_REVIEW
+kreatinin,kreatinin,kreatinin,LOW,watch,L01,spoken as written (Uzbek orthography); LISTEN for stress/vowels,NEEDS_NATIVE_REVIEW
