@@ -68,13 +68,21 @@ void main() {
     expect(find.text('APP-CONTENT'), findsOneWidget);
   });
 
-  testWidgets('Uzbek and Russian texts', (tester) async {
+  // uz / ru uchun Material delegatlari testda yo'q: Flutter "locale not supported" ogohlantirishini
+  // istisno sifatida beradi — har testda bitta pump, ogohlantirish takeException bilan olinadi.
+  testWidgets('Uzbek text', (tester) async {
     final c = _controller({'min_version': '0.2.0'});
     await tester.runAsync(c.refresh);
     await tester.pumpWidget(_app(c, locale: const Locale('uz')));
+    tester.takeException();
     expect(find.text('Ilovani yangilang'), findsOneWidget);
+  });
+
+  testWidgets('Russian text', (tester) async {
+    final c = _controller({'min_version': '0.2.0'});
+    await tester.runAsync(c.refresh);
     await tester.pumpWidget(_app(c, locale: const Locale('ru')));
-    await tester.pump();
+    tester.takeException();
     expect(find.text('Обновите приложение'), findsOneWidget);
   });
 }
