@@ -24,9 +24,9 @@ jobs:
       - name: Rejim (RUN_REQUEST.txt 1-qator)
         id: req
         run: |
-          mode="$(head -n1 docs/video/voice_uz/RUN_REQUEST.txt | tr -d '\r' | tr -cd 'a-z0-9:_-')"
+          mode="$(head -n1 docs/video/voice_uz/RUN_REQUEST.txt | tr -d '\r' | tr -cd 'a-zA-Z0-9:_/.-')"
           case "$mode" in
-            sample|all|video:*) echo "mode=$mode" >> "$GITHUB_OUTPUT" ;;
+            sample|all|video:*|sample:docs/video/voice_uz/*.txt) echo "mode=$mode" >> "$GITHUB_OUTPUT" ;;
             *) echo "Noto'g'ri rejim: $mode"; exit 1 ;;
           esac
       - name: ffmpeg tekshiruvi
@@ -44,6 +44,7 @@ jobs:
           mode="${{ steps.req.outputs.mode }}"
           case "$mode" in
             sample) python3 tool/tts/synth_uz.py --sample --out-root out_voice ;;
+            sample:*) python3 tool/tts/synth_uz.py --sample --sample-file "${mode#sample:}" --out-root out_voice ;;
             all)    python3 tool/tts/synth_uz.py --all --out-root out_voice --allow-unfit ;;
             video:*) python3 tool/tts/synth_uz.py --video "${mode#video:}" --out-root out_voice --allow-unfit ;;
           esac

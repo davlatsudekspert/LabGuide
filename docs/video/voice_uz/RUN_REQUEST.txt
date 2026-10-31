@@ -1,2 +1,1 @@
-sample
-# retry 3: secret added
+sample:docs/video/voice_uz/TERM_TEST.txt

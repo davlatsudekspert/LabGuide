@@ -1,0 +1,22 @@
+# Term test: har bir murakkab so'zning variantlari. Egasi tinglab eng yaxshisini tanlaydi.
+T01 | pe de ef
+T02 | pi di ef
+T03 | Livi Jenings
+T04 | Levi Jennings
+T05 | Vestgard
+T06 | Uestgard
+T07 | e ge ef er
+T08 | i ji ef ar
+T09 | kyu pe se er
+T10 | kyu pi si ar
+T11 | ji si em es
+T12 | dji si em es
+T13 | besh millimol litr
+T14 | besh milligramm detsilitr
+T15 | key di ay ji o
+T16 | osmolyarlik
+T17 | derivatizatsiya
+T18 | fluoressensiya
+T19 | peltye
+T20 | avtonamunaoluvchi
+T21 | Me’yor oraliqlari, o‘lchov, g‘alati, ta’sir.
