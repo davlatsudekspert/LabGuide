@@ -1,1 +1,2 @@
-sample:docs/video/voice_uz/TERM_TEST.txt
+sample
+# run 5: spoken-uzbek-only sample
