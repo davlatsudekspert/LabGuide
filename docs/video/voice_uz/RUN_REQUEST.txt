@@ -1,1 +1,2 @@
-compare:docs/video/voice_uz/COMPARE.txt
+gemini-compare:docs/video/voice_uz/GEMINI_TEST.txt
+# run: gemini compare 7 voices x 2 text variants
