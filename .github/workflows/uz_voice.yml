@@ -1,0 +1,57 @@
+# O'zbekcha ovoz sintezi (UzbekVoice.ai) — FAQAT audio, video/render YO'Q.
+# Ishga tushirish: filialga docs/video/voice_uz/RUN_REQUEST.txt faylini push qilish.
+#   1-qator: sample | video:<id> | all      (masalan: sample, video:overview, all)
+# Kalit: GitHub Secret UZBEKVOICE_API_KEY (Settings -> Secrets and variables -> Actions).
+# Natija: Artifact "uz-voice-<run>" (voice_uz.wav har bir rolik uchun yoki namuna fayllari).
+# Narx: 0.5 so'm/belgi; mahalliy byudjet --uzv-char-limit (standart 19000). Kalit hech qachon chop etilmaydi.
+name: UzVoice
+on:
+  push:
+    branches: [video/uz-voice]
+    paths: ['docs/video/voice_uz/RUN_REQUEST.txt']
+permissions:
+  contents: read
+concurrency:
+  group: uz-voice
+  cancel-in-progress: false
+jobs:
+  synth:
+    if: github.actor == 'davlatsudekspert'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+      - name: Rejim (RUN_REQUEST.txt 1-qator)
+        id: req
+        run: |
+          mode="$(head -n1 docs/video/voice_uz/RUN_REQUEST.txt | tr -d '\r' | tr -cd 'a-z0-9:_-')"
+          case "$mode" in
+            sample|all|video:*) echo "mode=$mode" >> "$GITHUB_OUTPUT" ;;
+            *) echo "Noto'g'ri rejim: $mode"; exit 1 ;;
+          esac
+      - name: ffmpeg tekshiruvi
+        run: ffmpeg -version | head -n1
+      - name: Offlayn testlar
+        run: python3 -m unittest discover -s tool/tts -p 'test_*.py'
+      - name: Sintez
+        env:
+          UZBEKVOICE_API_KEY: ${{ secrets.UZBEKVOICE_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${UZBEKVOICE_API_KEY:-}" ]; then echo "UZBEKVOICE_API_KEY secret yo'q — to'xtadi"; exit 1; fi
+          mode="${{ steps.req.outputs.mode }}"
+          case "$mode" in
+            sample) python3 tool/tts/synth_uz.py --sample --out-root out_voice ;;
+            all)    python3 tool/tts/synth_uz.py --all --out-root out_voice --allow-unfit ;;
+            video:*) python3 tool/tts/synth_uz.py --video "${mode#video:}" --out-root out_voice --allow-unfit ;;
+          esac
+      - name: Artifact (faqat audio va hisobot)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: uz-voice-${{ github.run_number }}
+          path: |
+            out_voice/**
+            video_studio/out/sample/**
+          if-no-files-found: ignore
+          retention-days: 14
