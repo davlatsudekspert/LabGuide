@@ -6,11 +6,19 @@
 //   npm run render -- --id calibration --lang all --format all
 //   npm run render -- --id calibration --lang uz --format horizontal --frames 0-89   (quick check)
 //   options: --crf 19  --concurrency 3  --reuse-bundle  --no-subs  --no-thumbs  --thumbs-only
+//            --uz-strict (uz must have its re-timed public/audio/uz/<id>.timing.json)  --allow-silent
 //
 // Audio: if public/audio/en/<id>.wav + <id>.timing.json exist (English narration
-// for ALL editions), the WAV is muxed as AAC 48 kHz; otherwise the MP4 is silent
+// for en/ru), the WAV is muxed as AAC 48 kHz; otherwise the MP4 is silent
 // and the run says so. Outputs: out/<id>/<lang>/ (gitignored).
-import {spawn} from 'node:child_process';
+//
+// UZBEK edition (re-timed, tool/tts/retime_uz.py): when public/audio/uz/<id>.timing.json exists, lang uz uses ITS
+// timeline (scenes longer than the English ones where the Uzbek voice needs it) and muxes public/audio/uz/<id>.wav
+// (must be as long as the video). Without the WAV, or with an ESTIMATED timing file, nothing is rendered unless
+// --allow-silent is given; the result is then a clearly named preview, never a final:
+//   out/<id>/uz_preview/<id>_uz_<format>_SILENT_PREVIEW.mp4 (no thumbnails).
+// ru/en are rendered exactly as before.
+import {execFileSync, spawn} from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import {renderFrames, renderStill, selectComposition} from '@remotion/renderer';
@@ -25,6 +33,7 @@ import {
   parseArgs,
   runPrepare,
   studio,
+  uzVoice,
   writeSubs,
 } from './lib.mjs';
 
@@ -41,14 +50,56 @@ if (diskFreeMB() < 400) {
   process.exit(2);
 }
 
+const t0All = Date.now();
+function probeSec(file) {
+  return Number(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', file]).toString());
+}
+/** Plan the audio of one language edition. Returns {eff, wav, preview, label} or exits. */
+function planAudio(lang) {
+  const eff = effectiveTiming(id, lang);
+  if (lang === 'uz' && eff.track !== 'uz') {
+    if (args['uz-strict']) {
+      console.error('uz: no public/audio/uz/<id>.timing.json (run tool/tts/retime_uz.py first) — refusing (--uz-strict)');
+      process.exit(2);
+    }
+    console.warn('WARNING [uz]: no re-timed Uzbek timeline found — rendering on the ENGLISH timeline (legacy).');
+  }
+  if (eff.track === 'uz') {
+    const total = eff.layout.durationInFrames / 30;
+    const u = uzVoice(id);
+    const needSilent = u.estimated || !u.wav;
+    if (needSilent && !args['allow-silent']) {
+      console.error(
+        u.estimated
+          ? `uz: public/audio/uz/${id}.timing.json is an ESTIMATE (no real voice yet). Re-run retime_uz.py with real durations, or pass --allow-silent for a SILENT PREVIEW.`
+          : `uz: public/audio/uz/${id}.wav is missing. Build it (tool/tts/retime_uz.py --assemble) or pass --allow-silent for a SILENT PREVIEW.`,
+      );
+      process.exit(2);
+    }
+    if (needSilent) {
+      console.log(`[uz] SILENT PREVIEW (${u.estimated ? 'estimated timing' : 'no WAV'}), ${total.toFixed(1)} s — not a final`);
+      return {eff, wav: null, preview: true, label: 'silent PREVIEW'};
+    }
+    const wd = probeSec(u.wav);
+    if (Math.abs(wd - total) > 0.06) {
+      console.error(`uz: WAV is ${wd.toFixed(3)} s but the re-timed video is ${total.toFixed(3)} s — WAV and timing do not belong together`);
+      process.exit(2);
+    }
+    console.log(`audio [uz]: Uzbek narration ${path.relative(studio, u.wav)} (re-timed, ${total.toFixed(1)} s)`);
+    return {eff, wav: u.wav, preview: false, label: 'AAC Uzbek narration'};
+  }
+  console.log(
+    eff.voiced
+      ? `audio [${lang}]: English narration ${path.relative(studio, eff.wav)} (timing from voice manifest)`
+      : `audio [${lang}]: NONE — no voice manifest in public/audio/en/; rendering SILENT with placeholder timing`,
+  );
+  return {eff, wav: eff.wav, preview: false, label: eff.wav ? 'AAC narration' : 'silent'};
+}
+// Fail early (before bundling) when an uz edition cannot be rendered as requested.
+for (const lang of langs) planAudio(lang);
+
 runPrepare();
 const serveUrl = await makeBundle({reuse: !!args['reuse-bundle'], name: args['bundle-name'] ?? 'bundle'});
-const eff = effectiveTiming(id);
-console.log(
-  eff.voiced
-    ? `audio: English narration ${path.relative(studio, eff.wav)} (timing from voice manifest)`
-    : 'audio: NONE — no voice manifest in public/audio/en/; rendering SILENT with placeholder timing',
-);
 
 function ffmpegFor(out, durationSec, wav) {
   const a = ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', '30', '-c:v', 'mjpeg', '-i', 'pipe:0'];
@@ -65,7 +116,9 @@ function ffmpegFor(out, durationSec, wav) {
 }
 
 for (const lang of langs) {
-  const outDir = path.join(studio, 'out', id, lang);
+  const plan = planAudio(lang);
+  const eff = plan.eff;
+  const outDir = path.join(studio, 'out', id, plan.preview ? 'uz_preview' : lang);
   fs.mkdirSync(outDir, {recursive: true});
   if (!args['no-subs']) {
     const s = writeSubs(id, lang, outDir);
@@ -77,9 +130,9 @@ for (const lang of langs) {
     const frameRange = range ?? [0, composition.durationInFrames - 1];
     const n = frameRange[1] - frameRange[0] + 1;
     const suffix = range ? `_f${frameRange[0]}-${frameRange[1]}` : '';
-    const out = path.join(outDir, `${id}_${lang}_${format}${suffix}.mp4`);
+    const out = path.join(outDir, `${id}_${lang}_${format}${suffix}${plan.preview ? '_SILENT_PREVIEW' : ''}.mp4`);
     const durationSec = n / composition.fps;
-    const wav = eff.wav && !range ? eff.wav : null;
+    const wav = plan.wav && !range ? plan.wav : null;
     const ff = ffmpegFor(out, durationSec, wav);
     const done = new Promise((res, rej) => ff.on('close', (c) => (c === 0 ? res() : rej(new Error(`ffmpeg exit ${c}`)))));
     // Frames may finish out of order: write them strictly in sequence.
@@ -120,9 +173,9 @@ for (const lang of langs) {
     ff.stdin.end();
     await done;
     const sec = (Date.now() - t0) / 1000;
-    console.log(`[${lang}/${format}] -> ${path.relative(studio, out)} (${(fs.statSync(out).size / 1e6).toFixed(1)} MB, ${sec.toFixed(0)} s, ${wav ? 'AAC narration' : 'silent'})`);
+    console.log(`[${lang}/${format}] -> ${path.relative(studio, out)} (${(fs.statSync(out).size / 1e6).toFixed(1)} MB, ${sec.toFixed(0)} s, ${wav ? plan.label : plan.preview ? plan.label : 'silent'})`);
   }
-  if (!args['no-thumbs'] && !range) {
+  if (!args['no-thumbs'] && !range && !plan.preview) {
     for (const [cid, name] of [
       [`${id}-thumb`, `${id}_${lang}_thumb_1280x720.jpg`],
       [`${id}-cover`, `${id}_${lang}_cover_1080x1920.jpg`],
@@ -134,3 +187,4 @@ for (const lang of langs) {
     }
   }
 }
+console.log(`total render time ${((Date.now() - t0All) / 60000).toFixed(1)} min`);

@@ -88,6 +88,11 @@ export type VideoDef = {
 export type VideoProps = {
   lang: Lang;
   timing: Timing | null;
+  /**
+   * Only for a language edition with its OWN timeline (the re-timed Uzbek edition): the ENGLISH timing, i.e. the
+   * original scene geometry. Scenes that are longer than their English counterpart are "stretched" (see stretch.ts).
+   */
+  baseTiming?: Timing | null;
   appFrames: Record<string, FrameMeta> | null;
   subtitles: boolean;
 };

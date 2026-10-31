@@ -1,0 +1,372 @@
+{
+  "videoId": "leukocyte",
+  "lang": "uz",
+  "source": "ESTIMATE: characters of the TTS-ready text / 12.9 chars/s - no audio",
+  "estimated": true,
+  "generatedBy": "tool/tts/retime_uz.py",
+  "baseTiming": "public/audio/en/leukocyte.timing.json",
+  "maxTempo": 1.12,
+  "estimateRateCharsPerSec": 12.9,
+  "totalSec": 116.167,
+  "origTotalSec": 112.633,
+  "review": "PENDING - nobody has listened to the Uzbek voice",
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 2.949,
+      "raw_s": 3.023,
+      "tempo": 1.12
+    },
+    {
+      "id": "L02",
+      "start": 3.149,
+      "end": 6.541,
+      "raw_s": 3.798,
+      "tempo": 1.12
+    },
+    {
+      "id": "L03",
+      "start": 7.141,
+      "end": 12.678,
+      "raw_s": 6.202,
+      "tempo": 1.12
+    },
+    {
+      "id": "L04",
+      "start": 12.878,
+      "end": 16.408,
+      "raw_s": 3.953,
+      "tempo": 1.12
+    },
+    {
+      "id": "L05",
+      "start": 17.008,
+      "end": 23.306,
+      "raw_s": 7.054,
+      "tempo": 1.12
+    },
+    {
+      "id": "L06",
+      "start": 23.506,
+      "end": 27.382,
+      "raw_s": 4.341,
+      "tempo": 1.12
+    },
+    {
+      "id": "L07",
+      "start": 27.582,
+      "end": 32.081,
+      "raw_s": 5.039,
+      "tempo": 1.12
+    },
+    {
+      "id": "L08",
+      "start": 32.281,
+      "end": 36.179,
+      "raw_s": 4.264,
+      "tempo": 1.09378
+    },
+    {
+      "id": "L09",
+      "start": 36.491,
+      "end": 40.159,
+      "raw_s": 4.109,
+      "tempo": 1.12
+    },
+    {
+      "id": "L10",
+      "start": 40.359,
+      "end": 43.615,
+      "raw_s": 3.256,
+      "tempo": 1.0
+    },
+    {
+      "id": "L11",
+      "start": 46.272,
+      "end": 51.532,
+      "raw_s": 5.891,
+      "tempo": 1.12
+    },
+    {
+      "id": "L12",
+      "start": 51.732,
+      "end": 55.528,
+      "raw_s": 4.186,
+      "tempo": 1.10265
+    },
+    {
+      "id": "L13",
+      "start": 55.84,
+      "end": 59.577,
+      "raw_s": 4.186,
+      "tempo": 1.12
+    },
+    {
+      "id": "L14",
+      "start": 59.777,
+      "end": 62.978,
+      "raw_s": 3.256,
+      "tempo": 1.01717
+    },
+    {
+      "id": "L15",
+      "start": 63.178,
+      "end": 66.362,
+      "raw_s": 3.566,
+      "tempo": 1.12
+    },
+    {
+      "id": "L16",
+      "start": 66.962,
+      "end": 71.465,
+      "raw_s": 4.806,
+      "tempo": 1.06745
+    },
+    {
+      "id": "L17",
+      "start": 71.665,
+      "end": 73.771,
+      "raw_s": 2.326,
+      "tempo": 1.10417
+    },
+    {
+      "id": "L18",
+      "start": 74.077,
+      "end": 78.303,
+      "raw_s": 4.574,
+      "tempo": 1.08218
+    },
+    {
+      "id": "L19",
+      "start": 78.503,
+      "end": 83.629,
+      "raw_s": 5.271,
+      "tempo": 1.02849
+    },
+    {
+      "id": "L20",
+      "start": 83.944,
+      "end": 91.558,
+      "raw_s": 8.527,
+      "tempo": 1.12
+    },
+    {
+      "id": "L21",
+      "start": 92.158,
+      "end": 96.726,
+      "raw_s": 5.116,
+      "tempo": 1.12
+    },
+    {
+      "id": "L22",
+      "start": 96.926,
+      "end": 100.414,
+      "raw_s": 3.488,
+      "tempo": 1.0
+    },
+    {
+      "id": "L23",
+      "start": 103.027,
+      "end": 107.368,
+      "raw_s": 4.341,
+      "tempo": 1.0
+    },
+    {
+      "id": "L24",
+      "start": 109.527,
+      "end": 113.056,
+      "raw_s": 3.953,
+      "tempo": 1.12
+    },
+    {
+      "id": "L25",
+      "start": 113.256,
+      "end": 115.817,
+      "raw_s": 2.868,
+      "tempo": 1.12
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "from_s": 0.0,
+      "orig_s": 6.389,
+      "new_s": 6.891,
+      "extra_s": 0.502,
+      "stretch": 1.079,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L01",
+        "L02"
+      ],
+      "last_line_end_rel": 6.541
+    },
+    {
+      "id": "field",
+      "layer": "field",
+      "from_s": 6.891,
+      "orig_s": 8.416,
+      "new_s": 9.867,
+      "extra_s": 1.451,
+      "stretch": 1.172,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L03",
+        "L04"
+      ],
+      "last_line_end_rel": 9.517
+    },
+    {
+      "id": "cells_gran",
+      "layer": "cells",
+      "from_s": 16.758,
+      "orig_s": 19.483,
+      "new_s": 19.483,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 4,
+      "sped_up": 4,
+      "no_fit_at_max_tempo": [
+        "L05",
+        "L06",
+        "L07"
+      ],
+      "last_line_end_rel": 19.421
+    },
+    {
+      "id": "cells_mono",
+      "layer": "cells",
+      "from_s": 36.241,
+      "orig_s": 9.781,
+      "new_s": 9.781,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L09"
+      ],
+      "last_line_end_rel": 7.374
+    },
+    {
+      "id": "track",
+      "layer": "track",
+      "from_s": 46.022,
+      "orig_s": 9.568,
+      "new_s": 9.568,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L11"
+      ],
+      "last_line_end_rel": 9.507
+    },
+    {
+      "id": "app_tap",
+      "layer": "tapsync",
+      "from_s": 55.59,
+      "orig_s": 10.749,
+      "new_s": 11.122,
+      "extra_s": 0.373,
+      "stretch": 1.035,
+      "lines": 3,
+      "sped_up": 3,
+      "no_fit_at_max_tempo": [
+        "L13",
+        "L15"
+      ],
+      "last_line_end_rel": 10.772
+    },
+    {
+      "id": "app_target",
+      "layer": "phone",
+      "from_s": 66.712,
+      "orig_s": 7.115,
+      "new_s": 7.115,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 7.059
+    },
+    {
+      "id": "eyes_free",
+      "layer": "phone",
+      "from_s": 73.827,
+      "orig_s": 9.867,
+      "new_s": 9.867,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 9.802
+    },
+    {
+      "id": "formula",
+      "layer": "percent",
+      "from_s": 83.694,
+      "orig_s": 7.363,
+      "new_s": 8.214,
+      "extra_s": 0.851,
+      "stretch": 1.116,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L20"
+      ],
+      "last_line_end_rel": 7.864
+    },
+    {
+      "id": "app_result",
+      "layer": "phone",
+      "from_s": 91.908,
+      "orig_s": 10.869,
+      "new_s": 10.869,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L21"
+      ],
+      "last_line_end_rel": 8.506
+    },
+    {
+      "id": "app_save",
+      "layer": "phone",
+      "from_s": 102.777,
+      "orig_s": 6.5,
+      "new_s": 6.5,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 4.591
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "from_s": 109.277,
+      "orig_s": 6.533,
+      "new_s": 6.891,
+      "extra_s": 0.358,
+      "stretch": 1.055,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L24",
+        "L25"
+      ],
+      "last_line_end_rel": 6.541
+    }
+  ]
+}

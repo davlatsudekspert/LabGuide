@@ -1,0 +1,279 @@
+{
+  "videoId": "gcms",
+  "lang": "uz",
+  "source": "ESTIMATE: characters of the TTS-ready text / 12.9 chars/s - no audio",
+  "estimated": true,
+  "generatedBy": "tool/tts/retime_uz.py",
+  "baseTiming": "public/audio/en/gcms.timing.json",
+  "maxTempo": 1.12,
+  "estimateRateCharsPerSec": 12.9,
+  "totalSec": 92.161,
+  "origTotalSec": 82.9,
+  "review": "PENDING - nobody has listened to the Uzbek voice",
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 3.988,
+      "raw_s": 4.186,
+      "tempo": 1.12
+    },
+    {
+      "id": "L02",
+      "start": 4.188,
+      "end": 10.348,
+      "raw_s": 6.899,
+      "tempo": 1.12
+    },
+    {
+      "id": "L03",
+      "start": 10.948,
+      "end": 19.095,
+      "raw_s": 8.372,
+      "tempo": 1.02756
+    },
+    {
+      "id": "L04",
+      "start": 19.42,
+      "end": 23.642,
+      "raw_s": 4.729,
+      "tempo": 1.12
+    },
+    {
+      "id": "L05",
+      "start": 23.842,
+      "end": 29.309,
+      "raw_s": 6.124,
+      "tempo": 1.12
+    },
+    {
+      "id": "L06",
+      "start": 29.909,
+      "end": 36.589,
+      "raw_s": 7.442,
+      "tempo": 1.11406
+    },
+    {
+      "id": "L07",
+      "start": 36.909,
+      "end": 40.37,
+      "raw_s": 3.876,
+      "tempo": 1.12
+    },
+    {
+      "id": "L08",
+      "start": 40.57,
+      "end": 46.799,
+      "raw_s": 6.279,
+      "tempo": 1.0081
+    },
+    {
+      "id": "L09",
+      "start": 47.117,
+      "end": 52.585,
+      "raw_s": 6.124,
+      "tempo": 1.12
+    },
+    {
+      "id": "L10",
+      "start": 52.785,
+      "end": 57.077,
+      "raw_s": 4.806,
+      "tempo": 1.12
+    },
+    {
+      "id": "L11",
+      "start": 57.677,
+      "end": 62.383,
+      "raw_s": 5.271,
+      "tempo": 1.12
+    },
+    {
+      "id": "L12",
+      "start": 62.983,
+      "end": 70.943,
+      "raw_s": 8.915,
+      "tempo": 1.12
+    },
+    {
+      "id": "L13",
+      "start": 71.143,
+      "end": 74.949,
+      "raw_s": 4.264,
+      "tempo": 1.12
+    },
+    {
+      "id": "L14",
+      "start": 75.549,
+      "end": 82.194,
+      "raw_s": 7.442,
+      "tempo": 1.12
+    },
+    {
+      "id": "L15",
+      "start": 82.794,
+      "end": 85.382,
+      "raw_s": 2.868,
+      "tempo": 1.10817
+    },
+    {
+      "id": "L16",
+      "start": 85.582,
+      "end": 91.811,
+      "raw_s": 6.977,
+      "tempo": 1.12
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "from_s": 0.0,
+      "orig_s": 8.202,
+      "new_s": 10.698,
+      "extra_s": 2.496,
+      "stretch": 1.304,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L01",
+        "L02"
+      ],
+      "last_line_end_rel": 10.348
+    },
+    {
+      "id": "gc",
+      "layer": "tour",
+      "from_s": 10.698,
+      "orig_s": 8.472,
+      "new_s": 8.472,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 8.398
+    },
+    {
+      "id": "separate",
+      "layer": "separate",
+      "from_s": 19.17,
+      "orig_s": 9.418,
+      "new_s": 10.49,
+      "extra_s": 1.072,
+      "stretch": 1.114,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L04",
+        "L05"
+      ],
+      "last_line_end_rel": 10.14
+    },
+    {
+      "id": "ms",
+      "layer": "tour",
+      "from_s": 29.659,
+      "orig_s": 7.0,
+      "new_s": 7.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 6.93
+    },
+    {
+      "id": "quad",
+      "layer": "quad",
+      "from_s": 36.659,
+      "orig_s": 10.208,
+      "new_s": 10.208,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L07"
+      ],
+      "last_line_end_rel": 10.139
+    },
+    {
+      "id": "result",
+      "layer": "result",
+      "from_s": 46.867,
+      "orig_s": 9.995,
+      "new_s": 10.559,
+      "extra_s": 0.564,
+      "stretch": 1.056,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L09",
+        "L10"
+      ],
+      "last_line_end_rel": 10.209
+    },
+    {
+      "id": "qc",
+      "layer": "qcnote",
+      "from_s": 57.427,
+      "orig_s": 5.0,
+      "new_s": 5.307,
+      "extra_s": 0.307,
+      "stretch": 1.061,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L11"
+      ],
+      "last_line_end_rel": 4.957
+    },
+    {
+      "id": "app_card",
+      "layer": "phone",
+      "from_s": 62.733,
+      "orig_s": 10.912,
+      "new_s": 12.566,
+      "extra_s": 1.654,
+      "stretch": 1.152,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L12",
+        "L13"
+      ],
+      "last_line_end_rel": 12.216
+    },
+    {
+      "id": "app_safety",
+      "layer": "phone",
+      "from_s": 75.299,
+      "orig_s": 6.253,
+      "new_s": 7.245,
+      "extra_s": 0.992,
+      "stretch": 1.159,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L14"
+      ],
+      "last_line_end_rel": 6.895
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "from_s": 82.544,
+      "orig_s": 7.44,
+      "new_s": 9.617,
+      "extra_s": 2.177,
+      "stretch": 1.293,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L16"
+      ],
+      "last_line_end_rel": 9.267
+    }
+  ]
+}

@@ -58,7 +58,7 @@ import uz_prep  # noqa: E402
 
 VIDEOS = ["overview", "calibration", "qc", "photometry", "osmometry", "leukocyte", "calculators", "gcms", "qpcr"]
 DEFAULT_OUT_ROOT = REPO / "video_studio" / "out"
-SPEECH_RATE_CPS = 10.75   # measured by the owner on real UzbekVoice shoira audio (same value as plan_uz.RATE_CPS)
+SPEECH_RATE_CPS = 12.9    # measured by the owner on the real shoira sample of the final text (same value as plan_uz.RATE_CPS)
 SAMPLE_FILE = REPO / "docs/video/voice_uz/SAMPLE_TEXT.txt"
 AZURE_FORMAT = "riff-48khz-16bit-mono-pcm"
 AZURE_VOICES = ("uz-UZ-MadinaNeural", "uz-UZ-SardorNeural")
@@ -710,7 +710,10 @@ def next_starts(lines: list[dict], total_s: float) -> list[float]:
 def run_video(plan: dict, out_root: Path, *, synthesizer: Synthesizer | None, dry_run: bool = False,
               allow_unfit: bool = False, use_suggested: bool = False, max_tempo: float = MAX_TEMPO, slow_short: bool = False,
               loudnorm: bool = True, lufs: float = TARGET_LUFS, tp: float = TARGET_TP, tempo_fn=ffmpeg_tempo,
-              rate_cps: float | None = None) -> dict:
+              rate_cps: float | None = None, natural: bool = False) -> dict:
+    """natural=True: NO fitting to the English slots and no timeline. Every line is synthesised once, silence-trimmed,
+    written to <out>/<id>/uz/lines/<line>.wav and its length to voice_uz_lines.json; tool/tts/retime_uz.py then builds
+    the Uzbek timeline (scenes stretched only where a line does not fit at +12 %) and assembles the WAV."""
     vid = plan["videoId"]
     total_s = plan["timeline"]["total_s"]
     lines = plan["lines"]
@@ -735,8 +738,8 @@ def run_video(plan: dict, out_root: Path, *, synthesizer: Synthesizer | None, dr
                 sr_seen = sr
             elif sr != sr_seen:
                 raise SystemExit("sample rate changed between lines (%d vs %d)" % (sr_seen, sr))
-            fr = fit_clip(pcm, sr, avail, hard, max_tempo=max_tempo,
-                          slow_to=line["en_clip_s"] if slow_short else None, tempo_fn=tempo_fn)
+            fr = fit_clip(pcm, sr, 1e9 if natural else avail, 1e9 if natural else hard, max_tempo=max_tempo,
+                          slow_to=None if natural else (line["en_clip_s"] if slow_short else None), tempo_fn=tempo_fn)
             d = fr.decision
             row.update(raw_s=round(fr.raw_s, 3), trimmed_s=round(fr.trimmed_s, 3), estimated=False)
             clips.append((line["start_s"], fr.pcm))
@@ -762,6 +765,17 @@ def run_video(plan: dict, out_root: Path, *, synthesizer: Synthesizer | None, dr
     if dry_run:
         out_dir.mkdir(parents=True, exist_ok=True)
         (out_dir / "report.dry_run.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+        return report
+    if natural:
+        report["natural"] = True
+        report["output"] = {"clips_dir": str(out_dir / "lines")}
+        (out_dir / "voice_uz_lines.json").write_text(json.dumps(
+            {"schema": "labguide.voice_uz.lines/1", "videoId": vid, "text_variant": report["text_variant"],
+             "provider": report["provider"], "voice": report["voice"], "apostrophe": report["apostrophe"],
+             "lines": [{"id": r["id"], "scene": r["scene"], "raw_s": r["raw_s"], "trimmed_s": r["trimmed_s"],
+                        "chars_sent": r["chars_sent"]} for r in rows]}, ensure_ascii=False, indent=2), encoding="utf-8")
+        report["review"] = "NEEDS_NATIVE_REVIEW - natural clips; run tool/tts/retime_uz.py next"
+        (out_dir / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
         return report
     pcm, warns = build_timeline(clips, total_s, sr_seen)
     report["warnings"] += warns
@@ -859,6 +873,9 @@ def parse_args(argv=None):
     ap.add_argument("--rate-cps", type=float, help="override the plan's assumed chars/second (dry run)")
     ap.add_argument("--max-tempo", type=float, default=MAX_TEMPO)
     ap.add_argument("--slow-short", action="store_true", help="slow short clips down towards the English clip length (max -12 %%)")
+    ap.add_argument("--natural", action="store_true",
+                    help="no fitting to the English slots: write natural per-line clips + voice_uz_lines.json "
+                         "(input of tool/tts/retime_uz.py, Phase 1 of the re-timed Uzbek renders)")
     ap.add_argument("--no-loudnorm", action="store_true")
     ap.add_argument("--lufs", type=float, default=TARGET_LUFS)
     ap.add_argument("--tp", type=float, default=TARGET_TP)
@@ -921,11 +938,11 @@ def main(argv=None) -> int:
         rep = run_video(plan, out_root, synthesizer=sy, dry_run=a.dry_run, allow_unfit=a.allow_unfit,
                         use_suggested=a.use_suggested,
                         max_tempo=a.max_tempo, slow_short=a.slow_short, loudnorm=not a.no_loudnorm,
-                        lufs=a.lufs, tp=a.tp, rate_cps=a.rate_cps)
+                        lufs=a.lufs, tp=a.tp, rate_cps=a.rate_cps, natural=a.natural)
         s = rep["summary"]
         print("%-12s lines %2d  chars %5d  sped_up %2d  overflow %2d  truncated %2d%s" % (
             rep["videoId"], s["lines"], s["chars_sent"], s["sped_up"], s["overflow"], s["truncated"],
-            "  [dry run]" if a.dry_run else "  -> %s" % rep["output"]["file"]))
+            "  [dry run]" if a.dry_run else "  -> %s" % rep["output"].get("file", rep["output"].get("clips_dir"))))
         if s["unfit_ids"]:
             print("   do not fit their slot: " + " ".join(s["unfit_ids"]))
         unfit_any = unfit_any or bool(s["truncated"])

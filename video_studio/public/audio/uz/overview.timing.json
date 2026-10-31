@@ -1,0 +1,355 @@
+{
+  "videoId": "overview",
+  "lang": "uz",
+  "source": "ESTIMATE: characters of the TTS-ready text / 12.9 chars/s - no audio",
+  "estimated": true,
+  "generatedBy": "tool/tts/retime_uz.py",
+  "baseTiming": "public/audio/en/overview.timing.json",
+  "maxTempo": 1.12,
+  "estimateRateCharsPerSec": 12.9,
+  "totalSec": 116.932,
+  "origTotalSec": 113.667,
+  "review": "PENDING - nobody has listened to the Uzbek voice",
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 5.858,
+      "raw_s": 5.814,
+      "tempo": 1.03669
+    },
+    {
+      "id": "L02",
+      "start": 6.058,
+      "end": 10.003,
+      "raw_s": 4.419,
+      "tempo": 1.12
+    },
+    {
+      "id": "L03",
+      "start": 10.653,
+      "end": 17.09,
+      "raw_s": 7.209,
+      "tempo": 1.12
+    },
+    {
+      "id": "L04",
+      "start": 17.29,
+      "end": 22.274,
+      "raw_s": 5.581,
+      "tempo": 1.12
+    },
+    {
+      "id": "L05",
+      "start": 22.924,
+      "end": 25.869,
+      "raw_s": 2.946,
+      "tempo": 1.0
+    },
+    {
+      "id": "L06",
+      "start": 27.424,
+      "end": 30.746,
+      "raw_s": 3.721,
+      "tempo": 1.12
+    },
+    {
+      "id": "L07",
+      "start": 30.946,
+      "end": 38.629,
+      "raw_s": 8.605,
+      "tempo": 1.12
+    },
+    {
+      "id": "L08",
+      "start": 39.279,
+      "end": 45.162,
+      "raw_s": 6.589,
+      "tempo": 1.12
+    },
+    {
+      "id": "L09",
+      "start": 45.362,
+      "end": 50.414,
+      "raw_s": 5.659,
+      "tempo": 1.12
+    },
+    {
+      "id": "L10",
+      "start": 51.064,
+      "end": 56.162,
+      "raw_s": 5.581,
+      "tempo": 1.09488
+    },
+    {
+      "id": "L11",
+      "start": 56.362,
+      "end": 59.928,
+      "raw_s": 3.566,
+      "tempo": 1.0
+    },
+    {
+      "id": "L12",
+      "start": 62.064,
+      "end": 66.563,
+      "raw_s": 5.039,
+      "tempo": 1.12
+    },
+    {
+      "id": "L13",
+      "start": 66.763,
+      "end": 69.755,
+      "raw_s": 3.101,
+      "tempo": 1.03631
+    },
+    {
+      "id": "L14",
+      "start": 70.064,
+      "end": 76.744,
+      "raw_s": 6.822,
+      "tempo": 1.02122
+    },
+    {
+      "id": "L15",
+      "start": 77.064,
+      "end": 82.325,
+      "raw_s": 5.891,
+      "tempo": 1.12
+    },
+    {
+      "id": "L16",
+      "start": 82.525,
+      "end": 85.985,
+      "raw_s": 3.876,
+      "tempo": 1.12
+    },
+    {
+      "id": "L17",
+      "start": 86.185,
+      "end": 89.754,
+      "raw_s": 3.953,
+      "tempo": 1.10793
+    },
+    {
+      "id": "L18",
+      "start": 90.064,
+      "end": 94.375,
+      "raw_s": 4.806,
+      "tempo": 1.11485
+    },
+    {
+      "id": "L19",
+      "start": 94.575,
+      "end": 99.692,
+      "raw_s": 5.116,
+      "tempo": 1.0
+    },
+    {
+      "id": "L20",
+      "start": 100.064,
+      "end": 104.909,
+      "raw_s": 5.426,
+      "tempo": 1.12
+    },
+    {
+      "id": "L21",
+      "start": 105.109,
+      "end": 108.753,
+      "raw_s": 3.643,
+      "tempo": 1.0
+    },
+    {
+      "id": "L22",
+      "start": 109.064,
+      "end": 112.179,
+      "raw_s": 3.488,
+      "tempo": 1.12
+    },
+    {
+      "id": "L23",
+      "start": 112.379,
+      "end": 116.532,
+      "raw_s": 4.651,
+      "tempo": 1.12
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "from_s": 0.0,
+      "orig_s": 9.895,
+      "new_s": 10.403,
+      "extra_s": 0.508,
+      "stretch": 1.051,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L02"
+      ],
+      "last_line_end_rel": 10.003
+    },
+    {
+      "id": "what",
+      "layer": "what",
+      "from_s": 10.403,
+      "orig_s": 11.516,
+      "new_s": 12.27,
+      "extra_s": 0.754,
+      "stretch": 1.065,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L03",
+        "L04"
+      ],
+      "last_line_end_rel": 11.87
+    },
+    {
+      "id": "roles",
+      "layer": "roles",
+      "from_s": 22.674,
+      "orig_s": 4.5,
+      "new_s": 4.5,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 3.196
+    },
+    {
+      "id": "spec_a",
+      "layer": "role",
+      "from_s": 27.174,
+      "orig_s": 10.727,
+      "new_s": 11.855,
+      "extra_s": 1.128,
+      "stretch": 1.105,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L06",
+        "L07"
+      ],
+      "last_line_end_rel": 11.455
+    },
+    {
+      "id": "spec_b",
+      "layer": "role",
+      "from_s": 39.029,
+      "orig_s": 11.026,
+      "new_s": 11.786,
+      "extra_s": 0.76,
+      "stretch": 1.069,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L08",
+        "L09"
+      ],
+      "last_line_end_rel": 11.386
+    },
+    {
+      "id": "spec_c",
+      "layer": "role",
+      "from_s": 50.814,
+      "orig_s": 11.0,
+      "new_s": 11.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 9.114
+    },
+    {
+      "id": "spec_d",
+      "layer": "role",
+      "from_s": 61.814,
+      "orig_s": 8.0,
+      "new_s": 8.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L12"
+      ],
+      "last_line_end_rel": 7.941
+    },
+    {
+      "id": "teach_a",
+      "layer": "role",
+      "from_s": 69.814,
+      "orig_s": 7.0,
+      "new_s": 7.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 6.93
+    },
+    {
+      "id": "teach_b",
+      "layer": "role",
+      "from_s": 76.814,
+      "orig_s": 13.0,
+      "new_s": 13.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 3,
+      "sped_up": 3,
+      "no_fit_at_max_tempo": [
+        "L15",
+        "L16"
+      ],
+      "last_line_end_rel": 12.939
+    },
+    {
+      "id": "stud_a",
+      "layer": "role",
+      "from_s": 89.814,
+      "orig_s": 10.0,
+      "new_s": 10.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 9.877
+    },
+    {
+      "id": "stud_b",
+      "layer": "role",
+      "from_s": 99.814,
+      "orig_s": 9.0,
+      "new_s": 9.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L20"
+      ],
+      "last_line_end_rel": 8.938
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "from_s": 108.814,
+      "orig_s": 8.003,
+      "new_s": 8.117,
+      "extra_s": 0.114,
+      "stretch": 1.014,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L22",
+        "L23"
+      ],
+      "last_line_end_rel": 7.717
+    }
+  ]
+}

@@ -619,10 +619,10 @@ class SpokenUzbekOnlyTests(unittest.TestCase):
             self.assertIsNone(uz_prep.BANNED.search(" ".join(r)))
 
     def test_rate_is_the_measured_one(self):
-        self.assertEqual(plan_uz.RATE_CPS, 10.75)
-        self.assertEqual(su.SPEECH_RATE_CPS, 10.75)
+        self.assertEqual(plan_uz.RATE_CPS, 12.9)
+        self.assertEqual(su.SPEECH_RATE_CPS, 12.9)
         for v in plan_uz.VIDEOS:
-            self.assertEqual(su.load_plan(su.plan_path(v))["assumptions"]["speech_rate_chars_per_s"], 10.75)
+            self.assertEqual(su.load_plan(su.plan_path(v))["assumptions"]["speech_rate_chars_per_s"], 12.9)
 
 
 class EndToEndTests(unittest.TestCase):

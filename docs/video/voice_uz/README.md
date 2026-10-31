@@ -38,9 +38,10 @@ Videos: `overview`, `calibration`, `qc`, `photometry`, `osmometry`, `leukocyte`,
 * **Available time of a line** = from the line start to the next line's start minus 0.10 s; for the last line of a scene
   to the scene end minus 0.05 s; for the last line of the video to the end minus 0.10 s. `hard_end_s` = next line start
   minus 0.02 s (the absolute limit).
-* **Estimated speech duration = characters of the TTS-ready text / 10.75 characters per second.** 10.75 is the rate the
-  owner **measured on real Shoira audio** (it replaces the earlier assumed 13). It is one measurement: the plans store a
-  9.7 / 11.8 band (+-10 %, a guess). Re-run `python3 tool/tts/plan_uz.py --rate <new value>` if a later measurement differs.
+* **Estimated speech duration = characters of the TTS-ready text / 12.9 characters per second.** 12.9 is the rate the
+  owner **measured on the real Shoira sample of the final spoken-Uzbek-only text** (S1 12.15, S2 12.81, S3 13.30; it replaces
+  10.75, which came from a sample with letter-name respellings). It is one sample: the plans store a
+  11.6 / 14.2 band (+-10 %, a guess). Re-run `python3 tool/tts/plan_uz.py --rate <new value>` if a later measurement differs.
   (The 6.1 chars/s that the CI term test printed comes from very short test strings and is not representative.)
 * **Verdict.** `OK` = fits within +12 % tempo (ffmpeg atempo). `TOO_LONG by X s` = X seconds still do not fit after the
   maximum +12 % tempo. `TOO_SHORT` = estimated speech below 60 % of the English clip (it is padded with silence; informational).
@@ -143,7 +144,7 @@ python3 tool/tts/synth_uz.py --sample --apostrophe-variants             # o‘ g
 #    reaksiyasi), mmol/L, o‘ g‘ ma’lumot.
 #    Fix wrong words in tool/tts/lexicon/spoken_uz_only.json (terms / line_overrides), then:
 python3 tool/tts/plan_uz.py                      # rewrites the plans, SPOKEN_VS_SUBTITLE.md, GLOSSARY_UZ_ONLY.csv, FIT_SUMMARY
-#    (default rate 10.75 = measured; --rate <x> to try another)
+#    (default rate 12.9 = measured; --rate <x> to try another)
 python3 -m unittest discover -s tool/tts -p 'test_*.py'    # includes the 'only ordinary Uzbek words' checks
 
 # 2. One video, then all (re-uses cached lines: a repeat costs no characters); add --provider azure for Azure
@@ -222,13 +223,9 @@ English-voiced; whether shortened wordings may replace the subtitle text; native
 
 No TTS call for the spoken-Uzbek-only texts, no key used, **nobody has listened** to them (so no judgement of naturalness, accent,
 stress, or of the long replacement phrases), no render, no remux of real MP4s (only unit tests with a 2-second fake clip), no check
-of `uz-UZ` regional availability, no licence confirmation, no native-speaker review of the Uzbek terms. The speech rate 10.75
-chars/s is the owner's single measurement, not ours. Unit tests (offline) and the dry run were run.
+of `uz-UZ` regional availability, no licence confirmation, no native-speaker review of the Uzbek terms. The speech rate 12.9
+chars/s is the owner's single sample, not ours. Unit tests (offline) and the dry run were run.
 
 ## 9. Fit reality check (measured rate, spoken-Uzbek-only text)
 
-At 10.75 chars/s the Uzbek voice needs about **50 % more time than the English clips** (995 s vs 665 s over the nine videos) and
-about **36 % more than the available slots** (730 s), and **138 of 163 lines cannot fit their slot even at +12 % tempo** (132
-after the existing suggested shortenings). Some of this is the longer spoken forms (a full term instead of an abbreviation adds about
-50 s over all videos). Details and the option A (longer scenes, about 178 s extra over all videos at +12 % tempo) versus option B
-(about 333 words to cut, 277 with the suggestions) numbers: `FIT_SUMMARY.md`. This needs an owner decision before synthesising everything.
+At 12.9 chars/s (planning rate, band 11.6-14.2) the Uzbek voice needs about **25 % more time than the English clips** (829 s vs 665 s over the nine videos) and about **14 % more than the available slots** (730 s); **92 of 163 lines cannot fit their slot even at +12 % tempo** (58 after the existing suggested shortenings). Details: `FIT_SUMMARY.md`. The re-timed Uzbek renders (`RETIME_DESIGN.md`, `RENDER_PLAN_UZ.md`) stretch a scene only when one of its lines does not fit at +12 % tempo.

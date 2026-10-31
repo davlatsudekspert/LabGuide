@@ -1,0 +1,294 @@
+{
+  "videoId": "qc",
+  "lang": "uz",
+  "source": "ESTIMATE: characters of the TTS-ready text / 12.9 chars/s - no audio",
+  "estimated": true,
+  "generatedBy": "tool/tts/retime_uz.py",
+  "baseTiming": "public/audio/en/qc.timing.json",
+  "maxTempo": 1.12,
+  "estimateRateCharsPerSec": 12.9,
+  "totalSec": 85.545,
+  "origTotalSec": 79.7,
+  "review": "PENDING - nobody has listened to the Uzbek voice",
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 5.441,
+      "raw_s": 5.814,
+      "tempo": 1.12
+    },
+    {
+      "id": "L02",
+      "start": 5.641,
+      "end": 8.202,
+      "raw_s": 2.868,
+      "tempo": 1.12
+    },
+    {
+      "id": "L03",
+      "start": 8.802,
+      "end": 15.1,
+      "raw_s": 7.054,
+      "tempo": 1.12
+    },
+    {
+      "id": "L04",
+      "start": 15.3,
+      "end": 19.799,
+      "raw_s": 5.039,
+      "tempo": 1.12
+    },
+    {
+      "id": "L05",
+      "start": 20.399,
+      "end": 24.508,
+      "raw_s": 4.109,
+      "tempo": 1.0
+    },
+    {
+      "id": "L06",
+      "start": 25.899,
+      "end": 31.167,
+      "raw_s": 5.504,
+      "tempo": 1.04474
+    },
+    {
+      "id": "L07",
+      "start": 31.367,
+      "end": 34.067,
+      "raw_s": 3.023,
+      "tempo": 1.12
+    },
+    {
+      "id": "L08",
+      "start": 34.667,
+      "end": 40.35,
+      "raw_s": 6.047,
+      "tempo": 1.06397
+    },
+    {
+      "id": "L09",
+      "start": 40.667,
+      "end": 46.326,
+      "raw_s": 5.659,
+      "tempo": 1.0
+    },
+    {
+      "id": "L10",
+      "start": 47.167,
+      "end": 53.258,
+      "raw_s": 6.822,
+      "tempo": 1.12
+    },
+    {
+      "id": "L11",
+      "start": 53.858,
+      "end": 60.018,
+      "raw_s": 6.899,
+      "tempo": 1.12
+    },
+    {
+      "id": "L12",
+      "start": 60.218,
+      "end": 63.263,
+      "raw_s": 3.411,
+      "tempo": 1.12
+    },
+    {
+      "id": "L13",
+      "start": 63.863,
+      "end": 68.154,
+      "raw_s": 4.806,
+      "tempo": 1.12
+    },
+    {
+      "id": "L14",
+      "start": 68.354,
+      "end": 72.385,
+      "raw_s": 4.031,
+      "tempo": 1.0
+    },
+    {
+      "id": "L15",
+      "start": 73.794,
+      "end": 77.748,
+      "raw_s": 3.953,
+      "tempo": 1.0
+    },
+    {
+      "id": "L16",
+      "start": 79.294,
+      "end": 82.085,
+      "raw_s": 2.791,
+      "tempo": 1.0
+    },
+    {
+      "id": "L17",
+      "start": 82.481,
+      "end": 85.187,
+      "raw_s": 3.023,
+      "tempo": 1.11729
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "from_s": 0.0,
+      "orig_s": 6.475,
+      "new_s": 8.552,
+      "extra_s": 2.077,
+      "stretch": 1.321,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L01",
+        "L02"
+      ],
+      "last_line_end_rel": 8.202
+    },
+    {
+      "id": "chart",
+      "layer": "lj",
+      "from_s": 8.552,
+      "orig_s": 10.208,
+      "new_s": 11.597,
+      "extra_s": 1.389,
+      "stretch": 1.136,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L03",
+        "L04"
+      ],
+      "last_line_end_rel": 11.247
+    },
+    {
+      "id": "zscore",
+      "layer": "zscore",
+      "from_s": 20.149,
+      "orig_s": 5.5,
+      "new_s": 5.5,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 4.359
+    },
+    {
+      "id": "warn",
+      "layer": "lj",
+      "from_s": 25.649,
+      "orig_s": 8.032,
+      "new_s": 8.768,
+      "extra_s": 0.736,
+      "stretch": 1.092,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L07"
+      ],
+      "last_line_end_rel": 8.418
+    },
+    {
+      "id": "random",
+      "layer": "rules",
+      "from_s": 34.417,
+      "orig_s": 6.0,
+      "new_s": 6.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 5.933
+    },
+    {
+      "id": "systematic",
+      "layer": "rules",
+      "from_s": 40.417,
+      "orig_s": 6.5,
+      "new_s": 6.5,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 5.909
+    },
+    {
+      "id": "shift",
+      "layer": "lj",
+      "from_s": 46.917,
+      "orig_s": 6.275,
+      "new_s": 6.691,
+      "extra_s": 0.416,
+      "stretch": 1.066,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L10"
+      ],
+      "last_line_end_rel": 6.341
+    },
+    {
+      "id": "app_set",
+      "layer": "phone",
+      "from_s": 53.608,
+      "orig_s": 8.778,
+      "new_s": 10.005,
+      "extra_s": 1.227,
+      "stretch": 1.14,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L11",
+        "L12"
+      ],
+      "last_line_end_rel": 9.655
+    },
+    {
+      "id": "app_rules",
+      "layer": "phone",
+      "from_s": 63.613,
+      "orig_s": 9.931,
+      "new_s": 9.931,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L13"
+      ],
+      "last_line_end_rel": 8.772
+    },
+    {
+      "id": "app_more",
+      "layer": "phone",
+      "from_s": 73.544,
+      "orig_s": 5.5,
+      "new_s": 5.5,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 4.203
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "from_s": 79.044,
+      "orig_s": 6.501,
+      "new_s": 6.501,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 6.143
+    }
+  ]
+}

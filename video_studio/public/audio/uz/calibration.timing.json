@@ -1,0 +1,360 @@
+{
+  "videoId": "calibration",
+  "lang": "uz",
+  "source": "ESTIMATE: characters of the TTS-ready text / 12.9 chars/s - no audio",
+  "estimated": true,
+  "generatedBy": "tool/tts/retime_uz.py",
+  "baseTiming": "public/audio/en/calibration.timing.json",
+  "maxTempo": 1.12,
+  "estimateRateCharsPerSec": 12.9,
+  "totalSec": 110.759,
+  "origTotalSec": 91.6,
+  "review": "PENDING - nobody has listened to the Uzbek voice",
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 4.957,
+      "raw_s": 5.271,
+      "tempo": 1.12
+    },
+    {
+      "id": "L02",
+      "start": 5.157,
+      "end": 7.994,
+      "raw_s": 3.178,
+      "tempo": 1.12
+    },
+    {
+      "id": "L03",
+      "start": 8.594,
+      "end": 14.182,
+      "raw_s": 5.969,
+      "tempo": 1.06833
+    },
+    {
+      "id": "L04",
+      "start": 14.382,
+      "end": 18.05,
+      "raw_s": 4.109,
+      "tempo": 1.12
+    },
+    {
+      "id": "L05",
+      "start": 18.65,
+      "end": 23.91,
+      "raw_s": 5.891,
+      "tempo": 1.12
+    },
+    {
+      "id": "L06",
+      "start": 24.51,
+      "end": 29.695,
+      "raw_s": 5.736,
+      "tempo": 1.10647
+    },
+    {
+      "id": "L07",
+      "start": 30.01,
+      "end": 34.198,
+      "raw_s": 4.651,
+      "tempo": 1.11074
+    },
+    {
+      "id": "L08",
+      "start": 34.51,
+      "end": 39.009,
+      "raw_s": 5.039,
+      "tempo": 1.12
+    },
+    {
+      "id": "L09",
+      "start": 39.209,
+      "end": 44.677,
+      "raw_s": 6.124,
+      "tempo": 1.12
+    },
+    {
+      "id": "L10",
+      "start": 45.277,
+      "end": 49.618,
+      "raw_s": 4.341,
+      "tempo": 1.0
+    },
+    {
+      "id": "L11",
+      "start": 50.277,
+      "end": 56.645,
+      "raw_s": 7.132,
+      "tempo": 1.12
+    },
+    {
+      "id": "L12",
+      "start": 56.845,
+      "end": 63.627,
+      "raw_s": 7.597,
+      "tempo": 1.12
+    },
+    {
+      "id": "L13",
+      "start": 64.227,
+      "end": 69.488,
+      "raw_s": 5.891,
+      "tempo": 1.12
+    },
+    {
+      "id": "L14",
+      "start": 69.688,
+      "end": 77.094,
+      "raw_s": 8.295,
+      "tempo": 1.12
+    },
+    {
+      "id": "L15",
+      "start": 77.694,
+      "end": 83.369,
+      "raw_s": 6.357,
+      "tempo": 1.12
+    },
+    {
+      "id": "L16",
+      "start": 83.969,
+      "end": 89.091,
+      "raw_s": 5.736,
+      "tempo": 1.12
+    },
+    {
+      "id": "L17",
+      "start": 89.291,
+      "end": 91.921,
+      "raw_s": 2.946,
+      "tempo": 1.12
+    },
+    {
+      "id": "L18",
+      "start": 92.521,
+      "end": 96.882,
+      "raw_s": 4.884,
+      "tempo": 1.12
+    },
+    {
+      "id": "L19",
+      "start": 97.082,
+      "end": 102.48,
+      "raw_s": 6.047,
+      "tempo": 1.12
+    },
+    {
+      "id": "L20",
+      "start": 103.08,
+      "end": 107.787,
+      "raw_s": 5.271,
+      "tempo": 1.12
+    },
+    {
+      "id": "L21",
+      "start": 107.987,
+      "end": 110.409,
+      "raw_s": 2.713,
+      "tempo": 1.12
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "from_s": 0.0,
+      "orig_s": 7.2,
+      "new_s": 8.344,
+      "extra_s": 1.144,
+      "stretch": 1.159,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L01",
+        "L02"
+      ],
+      "last_line_end_rel": 7.994
+    },
+    {
+      "id": "analyzer",
+      "layer": "schematic",
+      "from_s": 8.344,
+      "orig_s": 9.653,
+      "new_s": 10.056,
+      "extra_s": 0.403,
+      "stretch": 1.042,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L04"
+      ],
+      "last_line_end_rel": 9.706
+    },
+    {
+      "id": "lightpath",
+      "layer": "lightpath",
+      "from_s": 18.4,
+      "orig_s": 5.123,
+      "new_s": 5.86,
+      "extra_s": 0.737,
+      "stretch": 1.144,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L05"
+      ],
+      "last_line_end_rel": 5.51
+    },
+    {
+      "id": "calibrators",
+      "layer": "calibrators",
+      "from_s": 24.26,
+      "orig_s": 5.5,
+      "new_s": 5.5,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 5.434
+    },
+    {
+      "id": "points",
+      "layer": "chart",
+      "from_s": 29.76,
+      "orig_s": 4.5,
+      "new_s": 4.5,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 4.437
+    },
+    {
+      "id": "fit",
+      "layer": "chart",
+      "from_s": 34.26,
+      "orig_s": 7.626,
+      "new_s": 10.767,
+      "extra_s": 3.141,
+      "stretch": 1.412,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L08",
+        "L09"
+      ],
+      "last_line_end_rel": 10.417
+    },
+    {
+      "id": "controls",
+      "layer": "chart",
+      "from_s": 45.027,
+      "orig_s": 5.0,
+      "new_s": 5.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 4.591
+    },
+    {
+      "id": "residuals",
+      "layer": "chart",
+      "from_s": 50.027,
+      "orig_s": 8.416,
+      "new_s": 13.951,
+      "extra_s": 5.535,
+      "stretch": 1.658,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L11",
+        "L12"
+      ],
+      "last_line_end_rel": 13.601
+    },
+    {
+      "id": "app_intro",
+      "layer": "phone",
+      "from_s": 63.977,
+      "orig_s": 10.422,
+      "new_s": 13.466,
+      "extra_s": 3.044,
+      "stretch": 1.292,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L13",
+        "L14"
+      ],
+      "last_line_end_rel": 13.116
+    },
+    {
+      "id": "app_record",
+      "layer": "phone",
+      "from_s": 77.444,
+      "orig_s": 5.0,
+      "new_s": 6.276,
+      "extra_s": 1.276,
+      "stretch": 1.255,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L15"
+      ],
+      "last_line_end_rel": 5.926
+    },
+    {
+      "id": "app_rules",
+      "layer": "phone",
+      "from_s": 83.719,
+      "orig_s": 7.158,
+      "new_s": 8.552,
+      "extra_s": 1.394,
+      "stretch": 1.195,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L16",
+        "L17"
+      ],
+      "last_line_end_rel": 8.202
+    },
+    {
+      "id": "app_log",
+      "layer": "phone",
+      "from_s": 92.271,
+      "orig_s": 8.586,
+      "new_s": 10.559,
+      "extra_s": 1.973,
+      "stretch": 1.23,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L18",
+        "L19"
+      ],
+      "last_line_end_rel": 10.209
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "from_s": 102.83,
+      "orig_s": 7.416,
+      "new_s": 7.929,
+      "extra_s": 0.513,
+      "stretch": 1.069,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L20",
+        "L21"
+      ],
+      "last_line_end_rel": 7.579
+    }
+  ]
+}

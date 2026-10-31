@@ -15,10 +15,10 @@ const format = args.format ?? 'vertical';
 const at = Number(args.at ?? 0.6);
 const out = args.out ?? path.join(studio, 'out/qa', id, `${lang}_${format}`);
 const cols = Number(args.cols ?? (format === 'vertical' ? 5 : 3));
-const mp4 = path.join(studio, 'out', id, lang, `${id}_${lang}_${format}.mp4`);
+const mp4 = args.mp4 ?? path.join(studio, 'out', id, lang, `${id}_${lang}_${format}.mp4`);
 if (!fs.existsSync(mp4)) throw new Error(`missing ${mp4}`);
 fs.mkdirSync(out, {recursive: true});
-const {layout} = effectiveTiming(id);
+const {layout} = effectiveTiming(id, lang);
 const shots = [
   {name: 'hook_t0.0', t: 0.0},
   {name: 'hook_t0.5', t: 0.5},

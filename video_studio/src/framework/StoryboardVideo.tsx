@@ -2,7 +2,7 @@
 // only changes the text pack, the timing manifest (subtitles/voice) and the
 // app frames passed in as props — never the structure.
 import React, {useMemo} from 'react';
-import {AbsoluteFill, interpolate, Sequence, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Freeze, interpolate, Sequence, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Background} from '../components/Basics';
 import {SubtitleTrack} from '../components/SubtitleTrack';
 import {useFonts} from '../design/fonts';
@@ -10,6 +10,7 @@ import {Format, metrics} from '../design/theme';
 import {buildCues} from '../lib/subtitles.js';
 import {resolveLines} from '../lib/text.js';
 import {layoutScenes, placeholderTiming} from '../lib/timing.js';
+import {idleScale, policyFor} from './stretch';
 import type {LaidScene, VideoCtx, VideoDef, VideoProps} from './types';
 
 const OVERLAP = 12; // frames of cross-fade between different layers
@@ -25,6 +26,8 @@ export function buildContext(def: VideoDef, props: VideoProps, format: Format) {
   const enLines = resolveLines(def.packs[def.narrationLang], def.vars(math, def.narrationLang)) as Record<string, string>;
   const timing = props.timing ?? placeholderTiming(def.storyboard, enLines, def.narrationLang);
   const layout = layoutScenes(def.storyboard, timing, def.storyboard.fps);
+  // Re-timed edition (Uzbek): the English layout is the reference for "how long was this scene originally".
+  const baseLayout = props.baseTiming ? layoutScenes(def.storyboard, props.baseTiming, def.storyboard.fps) : null;
   const ctx: VideoCtx = {
     videoId: def.id,
     lang: props.lang,
@@ -38,8 +41,22 @@ export function buildContext(def: VideoDef, props: VideoProps, format: Format) {
     storyboard: def.storyboard,
     voiced: props.timing != null,
   };
-  return {ctx, layout, timing};
+  return {ctx, layout, baseLayout, timing};
 }
+
+/** Hold mode: the children run on the original scene (baseFrames long) and their last frame is held. */
+const HoldLast: React.FC<{baseFrames: number; children: React.ReactNode}> = ({baseFrames, children}) => {
+  const frame = useCurrentFrame();
+  return <Freeze frame={Math.min(frame, baseFrames - 1)}>{children}</Freeze>;
+};
+
+/** Slow breathing zoom during the extra seconds of a stretched scene (stretch.ts). */
+const Idle: React.FC<{baseFrames: number; durFrames: number; amp: number; children: React.ReactNode}> = ({baseFrames, durFrames, amp, children}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const k = idleScale(frame, baseFrames, durFrames, fps, amp);
+  return <AbsoluteFill style={k === 1 ? undefined : {transform: `scale(${k})`, transformOrigin: '50% 50%'}}>{children}</AbsoluteFill>;
+};
 
 const SceneShell: React.FC<{
   scene: LaidScene;
@@ -56,10 +73,10 @@ const SceneShell: React.FC<{
 
 export const StoryboardVideo: React.FC<{def: VideoDef; format: Format} & VideoProps> = ({def, format, ...props}) => {
   useFonts();
-  const {ctx, layout, timing} = useMemo(
+  const {ctx, layout, baseLayout, timing} = useMemo(
     () => buildContext(def, props, format),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [def, format, props.lang, props.timing, props.appFrames],
+    [def, format, props.lang, props.timing, props.baseTiming, props.appFrames],
   );
   const cues = useMemo(
     () => buildCues(timing.lines, ctx.lines, (def.storyboard.timing as {cueMax?: Record<string, Record<string, number>>}).cueMax?.[props.lang] ?? null),
@@ -79,6 +96,18 @@ export const StoryboardVideo: React.FC<{def: VideoDef; format: Format} & VideoPr
         const contNext = !!next && next.layer === sc.layer && def.continuous.includes(sc.layer);
         const fadeIn = k > 0 && !contPrev;
         const fadeOut = !!next && !contNext;
+        // Stretch handling (only for editions with a base timing, i.e. the re-timed Uzbek edition).
+        const base = baseLayout ? (baseLayout.scenes[k] as LaidScene) : null;
+        const baseFrames = base ? Math.min(base.durationInFrames, sc.durationInFrames) : sc.durationInFrames;
+        const stretched = !!base && sc.durationInFrames - baseFrames >= 1;
+        const pol = policyFor(sc, contPrev || contNext);
+        const hold = stretched && pol.mode === 'hold' && !!base;
+        const shown = hold ? ({...(base as LaidScene), from: sc.from, durationInFrames: baseFrames} as LaidScene) : sc;
+        let inner = <Layer scene={shown} ctx={ctx} prev={prev} next={next} />;
+        if (hold) inner = <HoldLast baseFrames={baseFrames}>{inner}</HoldLast>;
+        if (stretched && pol.idle > 0) {
+          inner = <Idle baseFrames={baseFrames} durFrames={sc.durationInFrames} amp={pol.idle}>{inner}</Idle>;
+        }
         return (
           <Sequence
             key={sc.id}
@@ -87,7 +116,7 @@ export const StoryboardVideo: React.FC<{def: VideoDef; format: Format} & VideoPr
             name={`${k + 1}. ${sc.id} (${sc.layer})`}
           >
             <SceneShell scene={sc} fadeIn={fadeIn} fadeOut={fadeOut}>
-              <Layer scene={sc} ctx={ctx} prev={prev} next={next} />
+              {inner}
             </SceneShell>
           </Sequence>
         );

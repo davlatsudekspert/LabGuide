@@ -1,0 +1,255 @@
+{
+  "videoId": "calculators",
+  "lang": "uz",
+  "source": "ESTIMATE: characters of the TTS-ready text / 12.9 chars/s - no audio",
+  "estimated": true,
+  "generatedBy": "tool/tts/retime_uz.py",
+  "baseTiming": "public/audio/en/calculators.timing.json",
+  "maxTempo": 1.12,
+  "estimateRateCharsPerSec": 12.9,
+  "totalSec": 75.226,
+  "origTotalSec": 63.967,
+  "review": "PENDING - nobody has listened to the Uzbek voice",
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 7.102,
+      "raw_s": 7.674,
+      "tempo": 1.12
+    },
+    {
+      "id": "L02",
+      "start": 7.302,
+      "end": 11.801,
+      "raw_s": 5.039,
+      "tempo": 1.12
+    },
+    {
+      "id": "L03",
+      "start": 12.401,
+      "end": 15.239,
+      "raw_s": 3.178,
+      "tempo": 1.12
+    },
+    {
+      "id": "L04",
+      "start": 15.439,
+      "end": 20.247,
+      "raw_s": 5.271,
+      "tempo": 1.09641
+    },
+    {
+      "id": "L05",
+      "start": 20.561,
+      "end": 24.282,
+      "raw_s": 3.721,
+      "tempo": 1.0
+    },
+    {
+      "id": "L06",
+      "start": 25.061,
+      "end": 28.453,
+      "raw_s": 3.798,
+      "tempo": 1.12
+    },
+    {
+      "id": "L07",
+      "start": 28.653,
+      "end": 31.906,
+      "raw_s": 3.643,
+      "tempo": 1.12
+    },
+    {
+      "id": "L08",
+      "start": 32.106,
+      "end": 38.889,
+      "raw_s": 7.597,
+      "tempo": 1.12
+    },
+    {
+      "id": "L09",
+      "start": 39.489,
+      "end": 42.589,
+      "raw_s": 3.101,
+      "tempo": 1.0
+    },
+    {
+      "id": "L10",
+      "start": 44.489,
+      "end": 51.687,
+      "raw_s": 8.062,
+      "tempo": 1.12
+    },
+    {
+      "id": "L11",
+      "start": 51.887,
+      "end": 56.386,
+      "raw_s": 5.039,
+      "tempo": 1.12
+    },
+    {
+      "id": "L12",
+      "start": 56.986,
+      "end": 62.73,
+      "raw_s": 6.434,
+      "tempo": 1.12
+    },
+    {
+      "id": "L13",
+      "start": 63.33,
+      "end": 68.834,
+      "raw_s": 5.504,
+      "tempo": 1.0
+    },
+    {
+      "id": "L14",
+      "start": 69.477,
+      "end": 71.485,
+      "raw_s": 2.248,
+      "tempo": 1.12
+    },
+    {
+      "id": "L15",
+      "start": 71.685,
+      "end": 74.708,
+      "raw_s": 3.023,
+      "tempo": 1.0
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "from_s": 0.0,
+      "orig_s": 9.334,
+      "new_s": 12.151,
+      "extra_s": 2.817,
+      "stretch": 1.302,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L01",
+        "L02"
+      ],
+      "last_line_end_rel": 11.801
+    },
+    {
+      "id": "app_list",
+      "layer": "phone",
+      "from_s": 12.151,
+      "orig_s": 8.16,
+      "new_s": 8.16,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L03"
+      ],
+      "last_line_end_rel": 8.096
+    },
+    {
+      "id": "app_howto",
+      "layer": "phone",
+      "from_s": 20.311,
+      "orig_s": 4.5,
+      "new_s": 4.5,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 3.971
+    },
+    {
+      "id": "app_egfr",
+      "layer": "phone",
+      "from_s": 24.811,
+      "orig_s": 10.515,
+      "new_s": 14.427,
+      "extra_s": 3.912,
+      "stretch": 1.372,
+      "lines": 3,
+      "sped_up": 3,
+      "no_fit_at_max_tempo": [
+        "L06",
+        "L07",
+        "L08"
+      ],
+      "last_line_end_rel": 14.077
+    },
+    {
+      "id": "app_refs",
+      "layer": "phone",
+      "from_s": 39.239,
+      "orig_s": 5.0,
+      "new_s": 5.0,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 3.351
+    },
+    {
+      "id": "app_checks",
+      "layer": "phone",
+      "from_s": 44.239,
+      "orig_s": 9.312,
+      "new_s": 12.497,
+      "extra_s": 3.185,
+      "stretch": 1.342,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L10",
+        "L11"
+      ],
+      "last_line_end_rel": 12.147
+    },
+    {
+      "id": "app_units",
+      "layer": "phone",
+      "from_s": 56.736,
+      "orig_s": 5.0,
+      "new_s": 6.345,
+      "extra_s": 1.345,
+      "stretch": 1.269,
+      "lines": 1,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L12"
+      ],
+      "last_line_end_rel": 5.995
+    },
+    {
+      "id": "app_bench",
+      "layer": "phone",
+      "from_s": 63.08,
+      "orig_s": 6.147,
+      "new_s": 6.147,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 5.754
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "from_s": 69.227,
+      "orig_s": 5.999,
+      "new_s": 5.999,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [
+        "L14"
+      ],
+      "last_line_end_rel": 5.48
+    }
+  ]
+}

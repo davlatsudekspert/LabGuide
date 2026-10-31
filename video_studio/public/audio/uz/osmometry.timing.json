@@ -1,0 +1,246 @@
+{
+  "videoId": "osmometry",
+  "lang": "uz",
+  "source": "ESTIMATE: characters of the TTS-ready text / 12.9 chars/s - no audio",
+  "estimated": true,
+  "generatedBy": "tool/tts/retime_uz.py",
+  "baseTiming": "public/audio/en/osmometry.timing.json",
+  "maxTempo": 1.12,
+  "estimateRateCharsPerSec": 12.9,
+  "totalSec": 82.232,
+  "origTotalSec": 78.2,
+  "review": "PENDING - nobody has listened to the Uzbek voice",
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 3.647,
+      "raw_s": 3.566,
+      "tempo": 1.04978
+    },
+    {
+      "id": "L02",
+      "start": 3.847,
+      "end": 9.038,
+      "raw_s": 5.814,
+      "tempo": 1.12
+    },
+    {
+      "id": "L03",
+      "start": 9.638,
+      "end": 16.46,
+      "raw_s": 6.822,
+      "tempo": 1.0
+    },
+    {
+      "id": "L04",
+      "start": 17.299,
+      "end": 21.59,
+      "raw_s": 4.806,
+      "tempo": 1.12
+    },
+    {
+      "id": "L05",
+      "start": 21.79,
+      "end": 24.143,
+      "raw_s": 2.636,
+      "tempo": 1.12
+    },
+    {
+      "id": "L06",
+      "start": 24.343,
+      "end": 28.704,
+      "raw_s": 4.884,
+      "tempo": 1.12
+    },
+    {
+      "id": "L07",
+      "start": 29.304,
+      "end": 33.275,
+      "raw_s": 4.419,
+      "tempo": 1.11269
+    },
+    {
+      "id": "L08",
+      "start": 33.475,
+      "end": 39.754,
+      "raw_s": 6.279,
+      "tempo": 1.0
+    },
+    {
+      "id": "L09",
+      "start": 41.091,
+      "end": 47.061,
+      "raw_s": 6.124,
+      "tempo": 1.02579
+    },
+    {
+      "id": "L10",
+      "start": 47.261,
+      "end": 51.328,
+      "raw_s": 4.109,
+      "tempo": 1.01028
+    },
+    {
+      "id": "L11",
+      "start": 51.64,
+      "end": 58.546,
+      "raw_s": 7.132,
+      "tempo": 1.03265
+    },
+    {
+      "id": "L12",
+      "start": 58.746,
+      "end": 63.037,
+      "raw_s": 4.806,
+      "tempo": 1.12
+    },
+    {
+      "id": "L13",
+      "start": 63.637,
+      "end": 69.728,
+      "raw_s": 6.822,
+      "tempo": 1.12
+    },
+    {
+      "id": "L14",
+      "start": 69.928,
+      "end": 73.873,
+      "raw_s": 4.419,
+      "tempo": 1.12
+    },
+    {
+      "id": "L15",
+      "start": 74.473,
+      "end": 77.529,
+      "raw_s": 3.411,
+      "tempo": 1.11618
+    },
+    {
+      "id": "L16",
+      "start": 77.729,
+      "end": 81.882,
+      "raw_s": 4.651,
+      "tempo": 1.12
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "from_s": 0.0,
+      "orig_s": 8.886,
+      "new_s": 9.388,
+      "extra_s": 0.502,
+      "stretch": 1.056,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L02"
+      ],
+      "last_line_end_rel": 9.038
+    },
+    {
+      "id": "tour",
+      "layer": "tour",
+      "from_s": 9.388,
+      "orig_s": 7.661,
+      "new_s": 7.661,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 1,
+      "sped_up": 0,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 7.072
+    },
+    {
+      "id": "freeze",
+      "layer": "freeze",
+      "from_s": 17.049,
+      "orig_s": 11.198,
+      "new_s": 12.005,
+      "extra_s": 0.807,
+      "stretch": 1.072,
+      "lines": 3,
+      "sped_up": 3,
+      "no_fit_at_max_tempo": [
+        "L04",
+        "L05",
+        "L06"
+      ],
+      "last_line_end_rel": 11.655
+    },
+    {
+      "id": "result",
+      "layer": "result",
+      "from_s": 29.054,
+      "orig_s": 11.787,
+      "new_s": 11.787,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 1,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 10.7
+    },
+    {
+      "id": "app_card",
+      "layer": "phone",
+      "from_s": 40.841,
+      "orig_s": 10.549,
+      "new_s": 10.549,
+      "extra_s": 0.0,
+      "stretch": 1.0,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [],
+      "last_line_end_rel": 10.487
+    },
+    {
+      "id": "app_limits",
+      "layer": "phone",
+      "from_s": 51.39,
+      "orig_s": 11.275,
+      "new_s": 11.998,
+      "extra_s": 0.723,
+      "stretch": 1.064,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L12"
+      ],
+      "last_line_end_rel": 11.648
+    },
+    {
+      "id": "app_calc",
+      "layer": "phone",
+      "from_s": 63.387,
+      "orig_s": 9.419,
+      "new_s": 10.836,
+      "extra_s": 1.417,
+      "stretch": 1.15,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L13",
+        "L14"
+      ],
+      "last_line_end_rel": 10.486
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "from_s": 74.223,
+      "orig_s": 7.425,
+      "new_s": 8.009,
+      "extra_s": 0.584,
+      "stretch": 1.079,
+      "lines": 2,
+      "sped_up": 2,
+      "no_fit_at_max_tempo": [
+        "L16"
+      ],
+      "last_line_end_rel": 7.659
+    }
+  ]
+}

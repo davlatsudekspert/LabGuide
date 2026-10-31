@@ -17,7 +17,7 @@ const at = String(args.at ?? '0.7').split(',').map(Number);
 runPrepare();
 const serveUrl = await makeBundle({reuse: !!args['reuse-bundle'], name: 'bundle-still'});
 const props = inputProps(id, lang);
-const {layout} = effectiveTiming(id);
+const {layout} = effectiveTiming(id, lang);
 const outDir = path.join(studio, 'out/stills');
 fs.mkdirSync(outDir, {recursive: true});
 let targets = [];

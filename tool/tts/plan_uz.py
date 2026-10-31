@@ -13,9 +13,10 @@ Inputs (all in the repo, nothing is downloaded, no TTS is called):
                                                   (video_studio/scripts/dump_resolved_lines.mjs)
   docs/video/voice_uz/suggestions_uz.json         hand-written SHORTER wordings (used only for TOO_LONG lines)
 
-RATE (measured): 10.75 characters/second of the TTS-ready text (spaces and punctuation included), measured by the
-  owner on real UzbekVoice 'shoira' audio (the earlier 13 chars/s was only an assumption). Band used for the
-  low/high estimate: 9.7 / 11.8 (+-10 %, a guess - one measurement only).
+RATE (measured): 12.9 characters/second of the TTS-ready (spoken-Uzbek-only) text (spaces and punctuation included),
+  measured by the owner on a real UzbekVoice 'shoira' sample of the FINAL voice text (S1 12.15, S2 12.81, S3 13.30;
+  23.2 s for 299 chars). The earlier 10.75 came from a sample with letter-name respellings. Band used for the
+  low/high estimate: 11.6 / 14.2 (+-10 %, a guess - one sample only).
 ASSUMPTIONS (documented):
   * the Uzbek clip starts where the English clip starts and may run until the next line starts minus a
     0.10 s guard (last line of a scene: until the scene ends minus 0.05 s; very last line: until the
@@ -40,8 +41,8 @@ import uz_prep  # noqa: E402
 VIDEOS = ["overview", "calibration", "qc", "photometry", "osmometry", "leukocyte", "calculators", "gcms", "qpcr"]
 SCHEMA = "labguide.voice_uz.plan/1"
 PRICE_SOM_PER_CHAR = 0.5  # UzbekVoice price relayed by the owner (unverified): 500 so'm per 1000 characters
-RATE_CPS = 10.75          # MEASURED on real Shoira audio (owner's listening/synthesis test); was an assumed 13.0
-RATE_LOW, RATE_HIGH = 9.7, 11.8  # +-10 % band around the single measurement
+RATE_CPS = 12.9           # MEASURED on the real Shoira sample of the final spoken-Uzbek-only text (S1 12.15, S2 12.81, S3 13.30); an earlier sample with letter-name respellings gave 10.75
+RATE_LOW, RATE_HIGH = 11.6, 14.2  # +-10 % band around the single sample
 MAX_TEMPO = 1.12
 GUARD_LINE = 0.10
 GUARD_SCENE = 0.05
@@ -213,7 +214,7 @@ def build_video(vid: str, resolved: dict, suggestions: dict, rate: float) -> dic
                      "note": "The English narration timing defines scene boundaries of the existing renders; the Uzbek "
                              "track must keep the same total length so it can be muxed with -c:v copy."},
         "assumptions": {"speech_rate_chars_per_s": rate, "rate_band": [RATE_LOW, RATE_HIGH],
-                        "rate_basis": "MEASURED by the owner on real UzbekVoice shoira audio (10.75 chars/s); text = TTS-ready variant incl. spaces; single measurement, band is a guess",
+                        "rate_basis": "MEASURED by the owner on a real UzbekVoice shoira sample of the final spoken-Uzbek-only text (12.9 chars/s overall: 12.15 / 12.81 / 13.30); text = TTS-ready variant incl. spaces; one sample, band is a guess",
                         "max_tempo": MAX_TEMPO, "line_guard_s": GUARD_LINE, "scene_guard_s": GUARD_SCENE,
                         "too_short_below": "%.0f %% of the English clip" % (SHORT_RATIO * 100)},
         "summary": {

@@ -77,12 +77,36 @@ export function voice(id) {
   return {timing: null, timingFile: null, wav: null};
 }
 
-export function effectiveTiming(id) {
-  const {storyboard, lines} = videoData(id);
+/**
+ * Re-timed UZBEK edition (docs/video/voice_uz/RETIME_DESIGN.md): public/audio/uz/<id>.timing.json (+ <id>.wav),
+ * written by tool/tts/retime_uz.py. `estimated: true` = durations from the voice plan, no real audio (silent preview).
+ * Absent -> null (the uz edition then uses the English timeline like before).
+ */
+export function uzVoice(id) {
+  const base = path.join(studio, 'public/audio', 'uz');
+  const timingFile = path.join(base, `${id}.timing.json`);
+  const wav = path.join(base, `${id}.wav`);
+  if (!fs.existsSync(timingFile)) return null;
+  const timing = readJson(timingFile);
+  return {timing, timingFile, estimated: !!timing.estimated, wav: fs.existsSync(wav) ? wav : null};
+}
+
+/** Which timeline/audio drives this language edition: 'uz' (re-timed) or the English one. */
+export function trackFor(id, lang) {
+  if (lang === 'uz') {
+    const u = uzVoice(id);
+    if (u) return {track: 'uz', ...u};
+  }
   const v = voice(id);
-  const timing = v.timing ?? placeholderTiming(storyboard, lines[NARRATION_LANG], NARRATION_LANG);
+  return {track: 'en', timing: v.timing, timingFile: v.timingFile, estimated: false, wav: v.wav};
+}
+
+export function effectiveTiming(id, lang = NARRATION_LANG) {
+  const {storyboard, lines} = videoData(id);
+  const t = trackFor(id, lang);
+  const timing = t.timing ?? placeholderTiming(storyboard, lines[NARRATION_LANG], NARRATION_LANG);
   const layout = layoutScenes(storyboard, timing, storyboard.fps);
-  return {timing, layout, voiced: !!v.timing, wav: v.wav};
+  return {timing, layout, voiced: !!t.timing, wav: t.wav, track: t.track, estimated: t.estimated};
 }
 
 export function appFrames(id, lang) {
@@ -94,7 +118,7 @@ export function appFrames(id, lang) {
 
 export function writeSubs(id, lang, outDir) {
   const {lines, storyboard} = videoData(id);
-  const {timing} = effectiveTiming(id);
+  const {timing} = effectiveTiming(id, lang);
   const cues = buildCues(normalizeTiming(timing), lines[lang], storyboard.timing.cueMax?.[lang]);
   fs.mkdirSync(outDir, {recursive: true});
   const srt = path.join(outDir, `${id}_${lang}.srt`);
@@ -115,13 +139,16 @@ export async function makeBundle({reuse = false, name = 'bundle'} = {}) {
   if (reuse && fs.existsSync(path.join(outDir, 'index.html'))) return outDir;
   const {bundle} = await import('@remotion/bundler');
   console.log('bundling…');
-  return bundle({entryPoint: path.join(studio, 'src/index.ts'), outDir, publicDir: path.join(studio, 'public')});
+  // Webpack cache (~180 MB in node_modules/.cache) is off unless STUDIO_WEBPACK_CACHE=1: disk-careful runs.
+  return bundle({entryPoint: path.join(studio, 'src/index.ts'), outDir, publicDir: path.join(studio, 'public'), enableCaching: process.env.STUDIO_WEBPACK_CACHE === '1'});
 }
 
 export function inputProps(id, lang, subtitles = true) {
-  const {timing} = effectiveTiming(id);
-  const v = voice(id);
-  return {lang, timing: v.timing ? timing : null, appFrames: appFrames(id, lang), subtitles};
+  const {timing, voiced, track} = effectiveTiming(id, lang);
+  const props = {lang, timing: voiced ? timing : null, appFrames: appFrames(id, lang), subtitles};
+  // Re-timed edition: the English timing is the reference for the original scene lengths (stretch handling).
+  if (track === 'uz') props.baseTiming = voice(id).timing;
+  return props;
 }
 
 export function diskFreeMB() {
