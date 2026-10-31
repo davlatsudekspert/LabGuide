@@ -168,6 +168,56 @@ class AzureProvider(Provider):
         return "azure|" + AZURE_FORMAT + "|" + (self.rate or "")
 
 
+class EdgeProvider(Provider):
+    """Microsoft Edge read-aloud voices through the unofficial `edge-tts` package (free, no key, same neural voices
+    as Azure uz-UZ-MadinaNeural / SardorNeural). NOT an official, licensed channel: fine for drafts and for the owner's
+    listening, not recommended for public posting (use --provider azure with an official key for that)."""
+    name = "edge"
+
+    def __init__(self, rate: str | None = "-3%", pkgs: str | None = None, min_interval_s: float = 0.5, sleep=time.sleep):
+        if pkgs:
+            sys.path.insert(0, pkgs)
+        try:
+            import certifi
+            ca = "/root/.ccr/ca-bundle.crt"
+            if os.path.exists(ca):
+                certifi.where = lambda: ca
+            import edge_tts  # noqa: F401
+        except ImportError:
+            raise SystemExit("edge provider needs the edge-tts package (pip install edge-tts or --edge-pkgs DIR).")
+        self.rate, self.min_interval, self.sleep, self._last = rate, min_interval_s, sleep, 0.0
+        self.requests = 0
+
+    def synthesize(self, text: str, voice: str) -> tuple[bytes, int]:
+        import asyncio
+        import subprocess
+        import tempfile
+        import edge_tts
+        wait = self.min_interval - (time.monotonic() - self._last)
+        if wait > 0:
+            self.sleep(wait)
+        err = None
+        for attempt in range(4):
+            with tempfile.TemporaryDirectory() as td:
+                mp3, wav = os.path.join(td, "a.mp3"), os.path.join(td, "a.wav")
+                try:
+                    self.requests += 1
+                    kw = {"rate": self.rate} if self.rate else {}
+                    comm = edge_tts.Communicate(text, voice, **kw)
+                    asyncio.run(asyncio.wait_for(comm.save(mp3), 90))
+                    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", mp3, "-ar", str(TARGET_SR), "-ac", "1",
+                                    "-c:a", "pcm_s16le", wav], check=True)
+                    self._last = time.monotonic()
+                    return synth.wav_bytes_to_pcm(open(wav, "rb").read())
+                except Exception as e:  # network hiccup: retry
+                    err = e
+                    self.sleep(3.0 * (attempt + 1))
+        raise SystemExit("edge-tts failed after retries: %s: %s" % (type(err).__name__, str(err)[:200]))
+
+    def cache_tag(self):
+        return "edge|" + (self.rate or "")
+
+
 def _redact(s: str, secret: str) -> str:
     return s.replace(secret, "<hidden>") if secret else s
 
@@ -739,6 +789,8 @@ def make_provider(name: str, args) -> Provider:
     if name == "azure":
         return AzureProvider(rate=args.rate, guard=synth.QuotaGuard(limit=args.azure_char_limit),
                              min_interval_s=3.2 if mi is None else mi)
+    if name == "edge":
+        return EdgeProvider(rate=args.rate if args.rate else "-3%", pkgs=getattr(args, "edge_pkgs", None))
     if name == "uzbekvoiceai":
         return UzbekVoiceAIProvider(
             auth_scheme=args.uzv_auth, blocking=not args.uzv_async,
@@ -1136,7 +1188,7 @@ def parse_args(argv=None):
     ap.add_argument("plans", nargs="*", help="plan.json files (or use --video / --all)")
     ap.add_argument("--video", help="comma separated video ids")
     ap.add_argument("--all", action="store_true", help="all 9 videos")
-    ap.add_argument("--provider", default="uzbekvoiceai", choices=["uzbekvoiceai", "azure", "gemini"],
+    ap.add_argument("--provider", default="uzbekvoiceai", choices=["uzbekvoiceai", "azure", "gemini", "edge"],
                     help="uzbekvoiceai (default, voice shoira), azure (uz-UZ-MadinaNeural / uz-UZ-SardorNeural) or gemini (GEMINI_API_KEY, voice Fola)")
     ap.add_argument("--voice", default=None, help="uzbekvoiceai: shoira (default) lola kamola jasur sevinch; azure: uz-UZ-MadinaNeural (default) or uz-UZ-SardorNeural; gemini: Fola (default) Kore Puck Charon Leda Sulafat Zephyr ...")
     ap.add_argument("--voices", default=None, help="with --sample: comma separated voices, all synthesized in ONE run (one character cap, one process)")
@@ -1169,6 +1221,7 @@ def parse_args(argv=None):
     ap.add_argument("--uzv-char-limit", type=int, default=19_000,
                     help="local cumulative character budget for UzbekVoice (10 000 so'm = 20 000 chars; a 165-char sample was already spent)")
     ap.add_argument("--price-per-char", type=float, default=0.5, help="so'm per character, shown in dry-run cost lines (owner's figure, unverified)")
+    ap.add_argument("--edge-pkgs", default=None, help="directory holding the edge_tts package (provider edge)")
     ap.add_argument("--azure-char-limit", type=int, default=450_000)
     ap.add_argument("--min-interval", type=float, default=None, help="seconds between requests (default: Azure 3.2 = F0 20 per 60 s; Gemini 6)")
     return ap.parse_args(argv)
@@ -1202,9 +1255,9 @@ def main(argv=None) -> int:
     a = parse_args(argv)
     out_root = Path(a.out_root)
     if a.voice is None:
-        a.voice = ("uz-UZ-MadinaNeural" if a.provider == "azure"
+        a.voice = ("uz-UZ-MadinaNeural" if a.provider in ("azure", "edge")
                    else GEMINI_DEFAULT_VOICE if a.provider == "gemini" else UzbekVoiceAIProvider.DEFAULT_MODEL)
-    if a.provider == "azure" and a.voice not in AZURE_VOICES:
+    if a.provider in ("azure", "edge") and a.voice not in AZURE_VOICES:
         print("note: voice %r is not one of %s" % (a.voice, ", ".join(AZURE_VOICES)), file=sys.stderr)
     if a.text_variant != "spoken" and a.provider != "gemini":
         print("note: --text-variant %s sends text the provider was not tested with (written terms such as PDF/eGFR); "
