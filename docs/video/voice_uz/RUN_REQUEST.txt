@@ -1,2 +1,1 @@
-sample
-# run 5: spoken-uzbek-only sample
+compare:docs/video/voice_uz/COMPARE.txt
