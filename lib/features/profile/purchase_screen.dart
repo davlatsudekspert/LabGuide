@@ -347,7 +347,6 @@ class _PurchaseBody extends StatelessWidget {
       title: l.proPurchaseTitle,
       showProfile: false,
       children: [
-        const LgArtImage(LgArt.proPremium, height: 170),
         if (ent.proSource == ProSource.buildOpen)
           LgNotice(l.proPayTestBuildOpen, kind: NoticeKind.info),
         if (locked != null && !ent.can(locked))
