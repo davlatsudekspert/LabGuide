@@ -322,8 +322,8 @@ void main() {
         },
       );
 
-      testWidgets('${role.name}: tartib — qidiruv, reklama, tugmalar, hero, '
-          'kunlik karta, tahlillar', (tester) async {
+      testWidgets('${role.name}: tartib — qidiruv, reklama, tugmalar, '
+          'kunlik karta (bugun yechilmagan), hero, tahlillar', (tester) async {
         final l = _l(AppLanguage.uz);
         final s = await makeServices(tester, role: role, partnerAds: true);
         await pumpApp(tester, s, size: _tall);
@@ -332,13 +332,20 @@ void main() {
         final ads = tester.getTopLeft(find.byType(HomePartnerPair)).dy;
         final hero = tester.getTopLeft(find.byType(LgHeroCard)).dy;
         final firstTile = tester.getTopLeft(find.byType(LgTile).first).dy;
-        final daily = tester.getTopLeft(find.byType(DailyCard)).dy;
+        final daily = tester
+            .getTopLeft(
+              find.byWidgetPredicate(
+                (w) =>
+                    w is DailyCard && w.placement == DailyCardPlacement.homeTop,
+              ),
+            )
+            .dy;
         final useful = tester.getTopLeft(find.text(l.homeUsefulTests)).dy;
         expect(ads, greaterThanOrEqualTo(search));
         expect(firstTile, greaterThan(ads));
-        expect(hero, greaterThan(firstTile));
-        expect(daily, greaterThan(hero));
-        expect(useful, greaterThan(daily));
+        expect(daily, greaterThan(firstTile));
+        expect(hero, greaterThan(daily));
+        expect(useful, greaterThan(hero));
         // Tugmalar orasida reklama yo'q.
         expect(
           find.descendant(

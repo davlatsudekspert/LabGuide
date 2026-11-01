@@ -106,8 +106,15 @@ String _time(BuildContext context, int hour, int minute) =>
 
 /// Ixcham karta: bosh sahifada va O'rganish tabida. Manba yuklanishini
 /// kutmaydi — faqat saqlangan holatdan o'qiydi.
+/// Bosh sahifada joylashuv: [homeTop] — faqat bugun hali yechilmagan bo'lsa
+/// (to'liq karta, sahifa tepasida); [homeBottom] — faqat yechib bo'lingach
+/// (bir qatorli ixcham natija). [always] — O'rganish tabi: har doim to'liq.
+enum DailyCardPlacement { always, homeTop, homeBottom }
+
 class DailyCard extends StatelessWidget {
-  const DailyCard({super.key});
+  const DailyCard({super.key, this.placement = DailyCardPlacement.always});
+
+  final DailyCardPlacement placement;
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +129,16 @@ class DailyCard extends StatelessWidget {
         final streak = daily.streak;
         final started = set != null && set.answeredCount > 0;
         final done = set?.done ?? false;
+        if (placement == DailyCardPlacement.homeTop && done) {
+          return const SizedBox.shrink();
+        }
+        if (placement == DailyCardPlacement.homeBottom) {
+          if (!done) return const SizedBox.shrink();
+          return _DailyDoneRow(
+            title: l.dailyCardDone(set!.correctCount, set.ids.length),
+            streakDays: streak.current,
+          );
+        }
         final (title, body, cta) = done
             ? (
                 l.dailyCardDone(set!.correctCount, set.ids.length),
@@ -218,6 +235,62 @@ class DailyCard extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+/// Bugungi savollar yechilgach bosh sahifadagi bir qatorli natija
+/// (joy egallamaydi; bosilsa natija sahifasi ochiladi).
+class _DailyDoneRow extends StatelessWidget {
+  const _DailyDoneRow({required this.title, required this.streakDays});
+
+  final String title;
+  final int streakDays;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Material(
+        color: p.paper,
+        borderRadius: BorderRadius.circular(LgRadius.card),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(LgRadius.card),
+          onTap: () => openInTab(context, kDailyLocation),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            child: Row(
+              children: [
+                ExcludeSemantics(
+                  child: Icon(
+                    Icons.check_circle_rounded,
+                    color: p.brand,
+                    size: 22,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: text.bodyMedium,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                if (streakDays > 0) ...[
+                  const SizedBox(width: 8),
+                  _StreakChip(days: streakDays),
+                ],
+                ExcludeSemantics(
+                  child: Icon(Icons.chevron_right_rounded, color: p.brand),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
