@@ -106,10 +106,10 @@ String _time(BuildContext context, int hour, int minute) =>
 
 /// Ixcham karta: bosh sahifada va O'rganish tabida. Manba yuklanishini
 /// kutmaydi — faqat saqlangan holatdan o'qiydi.
-/// Bosh sahifada joylashuv: [homeTop] — faqat bugun hali yechilmagan bo'lsa
-/// (to'liq karta, sahifa tepasida); [homeBottom] — faqat yechib bo'lingach
-/// (bir qatorli ixcham natija). [always] — O'rganish tabi: har doim to'liq.
-enum DailyCardPlacement { always, homeTop, homeBottom }
+/// [homeCompact] — bosh sahifa tepasida bir qatorli satr (holatga qarab:
+/// boshlash / davom / natija; popup emas). [always] — O'rganish tabi:
+/// to'liq karta.
+enum DailyCardPlacement { always, homeCompact }
 
 class DailyCard extends StatelessWidget {
   const DailyCard({super.key, this.placement = DailyCardPlacement.always});
@@ -129,14 +129,14 @@ class DailyCard extends StatelessWidget {
         final streak = daily.streak;
         final started = set != null && set.answeredCount > 0;
         final done = set?.done ?? false;
-        if (placement == DailyCardPlacement.homeTop && done) {
-          return const SizedBox.shrink();
-        }
-        if (placement == DailyCardPlacement.homeBottom) {
-          if (!done) return const SizedBox.shrink();
-          return _DailyDoneRow(
-            title: l.dailyCardDone(set!.correctCount, set.ids.length),
-            streakDays: streak.current,
+        if (placement == DailyCardPlacement.homeCompact) {
+          return _DailyCompactRow(
+            done: done,
+            title: done
+                ? l.dailyCardDone(set!.correctCount, set.ids.length)
+                : started
+                ? l.dailyCardProgress(set.answeredCount, set.ids.length)
+                : l.dailyCardStart,
           );
         }
         final (title, body, cta) = done
@@ -239,16 +239,17 @@ class DailyCard extends StatelessWidget {
   }
 }
 
-/// Bugungi savollar yechilgach bosh sahifadagi bir qatorli natija
-/// (joy egallamaydi; bosilsa natija sahifasi ochiladi).
-class _DailyDoneRow extends StatelessWidget {
-  const _DailyDoneRow({required this.title, required this.streakDays});
+/// Bosh sahifa tepasidagi bir qatorli satr: bosilsa kunlik savollar
+/// (yoki natija) ochiladi. Joy kam oladi — asosiy karta pastga surilmaydi.
+class _DailyCompactRow extends StatelessWidget {
+  const _DailyCompactRow({required this.done, required this.title});
 
+  final bool done;
   final String title;
-  final int streakDays;
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
     return Padding(
@@ -265,24 +266,28 @@ class _DailyDoneRow extends StatelessWidget {
               children: [
                 ExcludeSemantics(
                   child: Icon(
-                    Icons.check_circle_rounded,
+                    done
+                        ? Icons.check_circle_rounded
+                        : Icons.wb_sunny_outlined,
                     color: p.brand,
                     size: 22,
                   ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: Text(
-                    title,
-                    style: text.bodyMedium,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      LgEyebrow(l.dailyTitle),
+                      Text(
+                        title,
+                        style: text.bodyMedium,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
                 ),
-                if (streakDays > 0) ...[
-                  const SizedBox(width: 8),
-                  _StreakChip(days: streakDays),
-                ],
                 ExcludeSemantics(
                   child: Icon(Icons.chevron_right_rounded, color: p.brand),
                 ),

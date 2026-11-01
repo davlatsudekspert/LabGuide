@@ -323,7 +323,7 @@ void main() {
       );
 
       testWidgets('${role.name}: tartib — qidiruv, reklama, tugmalar, '
-          'kunlik karta (bugun yechilmagan), hero, tahlillar', (tester) async {
+          'kunlik savol satri, hero, tahlillar', (tester) async {
         final l = _l(AppLanguage.uz);
         final s = await makeServices(tester, role: role, partnerAds: true);
         await pumpApp(tester, s, size: _tall);
@@ -336,7 +336,8 @@ void main() {
             .getTopLeft(
               find.byWidgetPredicate(
                 (w) =>
-                    w is DailyCard && w.placement == DailyCardPlacement.homeTop,
+                    w is DailyCard &&
+                    w.placement == DailyCardPlacement.homeCompact,
               ),
             )
             .dy;

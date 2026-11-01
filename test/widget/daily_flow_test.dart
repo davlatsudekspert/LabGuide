@@ -46,9 +46,9 @@ void main() {
     // Kontent paketi manbasi oqimi: toifa yashirilgan (D-79: `none`).
     await s.settings.setAttestationRegion(AttestationRegion.none);
     await pumpApp(tester, s, size: const Size(390, 1400));
-    // Bosh sahifadagi karta.
+    // Bosh sahifa tepasidagi bir qatorli satr (bosilsa savollar ochiladi).
     expect(find.text(en.dailyCardStart), findsOneWidget);
-    await tapScroll(tester, en.dailyStart);
+    await tapScroll(tester, en.dailyCardStart);
     expect(find.text(en.dailyTitle), findsWidgets);
     final set = s.daily.todaySet!;
     expect(set.sourceId, PackQuestionSource.sourceId);

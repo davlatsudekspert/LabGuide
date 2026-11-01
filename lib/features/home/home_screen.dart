@@ -287,16 +287,15 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 8),
-            // Kunlik 5 ta savol: bugun yechilmagan bo'lsa — eng tepada
-            // to'liq karta (popup emas); yechilgach — pastda bir qator.
-            const DailyCard(placement: DailyCardPlacement.homeTop),
+            // Kunlik 5 ta savol: tepada bir qatorli satr (popup emas) —
+            // boshlash / davom / bugungi natija.
+            const DailyCard(placement: DailyCardPlacement.homeCompact),
             if (config.featuredConditions.isNotEmpty)
               ConditionGuideCard(
                 base: '/home',
                 featured: config.featuredConditions,
               ),
             _HomeHero(config: config, role: role),
-            const DailyCard(placement: DailyCardPlacement.homeBottom),
             // Talabaga guruhda berilgan testlar (muddati bilan).
             const AssignedTestsCard(),
             // Hamjamiyat (faqat server ulangan buildda; aks holda yo'q).
