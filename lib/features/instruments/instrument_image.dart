@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../../app/widgets/lg_art.dart';
 import '../../app/widgets/links.dart';
 import '../../design/tokens.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -129,6 +130,10 @@ class _SchematicBlock extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        // Umumiy (brendsiz) muqova illyustratsiyasi — sxema va raqamli
+        // qismlar o'z joyida; izoh "aniq model emas" ikkalasiga tegishli.
+        if (LgArt.forSchematicAsset(schematic.asset) case final art?)
+          LgArtImage(art, height: 200, padding: const EdgeInsets.only(bottom: 8)),
         SchematicFigure(
           asset: schematic.asset,
           assetLarge: schematic.assetLarge,

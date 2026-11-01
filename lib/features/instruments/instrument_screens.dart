@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
+import '../../app/widgets/lg_art.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
@@ -104,6 +105,7 @@ class _InstrumentsScreenState extends State<InstrumentsScreen> {
       title: l.insTitle,
       subtitle: l.labInstrumentsSub,
       children: [
+        const LgArtImage.banner(LgArt.secInstruments),
         const HowToButton(HowToSection.instruments),
         SearchBox(
           controller: _query,

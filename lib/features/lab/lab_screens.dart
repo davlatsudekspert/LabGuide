@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../app/widgets/lg_art.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/diagram_figure.dart';
 import '../../core/build_flags.dart';
@@ -168,6 +169,7 @@ class PreanalyticsScreen extends StatelessWidget {
     return LgPage(
       title: l.preTitle,
       children: [
+        const LgArtImage.banner(LgArt.secPreanalytics),
         const HowToButton(HowToSection.preanalytics),
         LgSteps([l.preStep1, l.preStep2, l.preStep3, l.preStep4, l.preStep5]),
         const SizedBox(height: 12),

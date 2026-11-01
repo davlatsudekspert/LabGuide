@@ -1,0 +1,2 @@
+tool/screenshots/walk_illus_test.dart
+# Yangi illyustratsiyalar ekran rasmlari (2026-11-01)

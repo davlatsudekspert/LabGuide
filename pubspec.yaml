@@ -93,6 +93,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/illus/
     - assets/content/core/
     - assets/instruments/
     - assets/instruments/img/

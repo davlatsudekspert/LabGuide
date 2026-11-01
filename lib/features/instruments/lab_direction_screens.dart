@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
+import '../../app/widgets/lg_art.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -220,6 +221,10 @@ class _LabCard extends StatelessWidget {
         // bir xil vidjet, izoh va kattalashtirish.
         if (card.schematic case final sch?) ...[
           const SizedBox(height: 12),
+          // Umumiy (brendsiz) muqova illyustratsiyasi — sxema o'rnini
+          // egallamaydi; izoh "aniq model emas" pastda ikkalasiga tegishli.
+          if (LgArt.forSchematicKey(sch.key) case final art?)
+            LgArtImage(art, height: 200, padding: const EdgeInsets.only(bottom: 8)),
           SchematicFigure(
             asset: sch.asset,
             assetLarge: sch.assetLarge,

@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../app/widgets/lg_art.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -47,6 +48,7 @@ class CalculatorsScreen extends StatelessWidget {
     return LgPage(
       title: l.calcTitle,
       children: [
+        const LgArtImage.banner(LgArt.secCalculators),
         const HowToButton(HowToSection.calculators),
         LgSectionTitle(l.calcSectionClinical),
         for (final (i, c) in ClinicalCalc.values.indexed)

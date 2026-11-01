@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
+import '../../app/widgets/lg_art.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/diagram_figure.dart';
 import '../../core/build_flags.dart';
@@ -173,6 +174,7 @@ class QcScreen extends StatelessWidget {
         return LgPage(
           title: l.qcTitle,
           children: [
+            const LgArtImage.banner(LgArt.secQc),
             const HowToButton(HowToSection.qc),
             LgPanel(
               child: Column(

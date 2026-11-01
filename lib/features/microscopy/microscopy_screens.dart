@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
+import '../../app/widgets/lg_art.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../design/tokens.dart';
@@ -63,6 +64,7 @@ class _MicroscopyScreenState extends State<MicroscopyScreen> {
           title: l.micTitle,
           subtitle: l.micSubtitle,
           children: [
+            const LgArtImage.banner(LgArt.secMicroscopy),
             const HowToButton(HowToSection.microscopy),
             SearchBox(
               controller: _query,

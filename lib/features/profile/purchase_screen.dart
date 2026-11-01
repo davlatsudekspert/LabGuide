@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
+import '../../app/widgets/lg_art.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../core/entitlements/billing_catalog.dart';
@@ -118,6 +119,13 @@ class _PurchaseBody extends StatelessWidget {
     ProPlan.teacher => l.proTierNameTeacher,
     ProPlan.specialist => l.proTierNameSpecialist,
     ProPlan.premium => l.proTierNamePremium,
+  };
+
+  static LgArt _planArt(ProPlan plan) => switch (plan) {
+    ProPlan.student => LgArt.proStudent,
+    ProPlan.teacher => LgArt.proTeacher,
+    ProPlan.specialist => LgArt.proSpecialist,
+    ProPlan.premium => LgArt.proPremium,
   };
 
   static String _planSub(AppLocalizations l, ProPlan plan) => switch (plan) {
@@ -300,6 +308,8 @@ class _PurchaseBody extends StatelessWidget {
         if (ent.gated.contains(f) && plan.tier.covers(f)) proFeatureLabel(l, f),
     ];
     return [
+      const SizedBox(height: 8),
+      LgArtImage(_planArt(plan), height: 150, padding: EdgeInsets.zero),
       LgSectionTitle(_planTitle(l, plan)),
       Text(_planSub(l, plan), style: text.bodyMedium),
       const SizedBox(height: 6),
@@ -337,6 +347,7 @@ class _PurchaseBody extends StatelessWidget {
       title: l.proPurchaseTitle,
       showProfile: false,
       children: [
+        const LgArtImage(LgArt.proPremium, height: 170),
         if (ent.proSource == ProSource.buildOpen)
           LgNotice(l.proPayTestBuildOpen, kind: NoticeKind.info),
         if (locked != null && !ent.can(locked))

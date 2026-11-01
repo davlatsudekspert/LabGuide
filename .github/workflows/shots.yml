@@ -1,0 +1,43 @@
+# Ekran rasmlari (tool/screenshots/walk_*_test.dart) — egasiga ko'rsatish uchun.
+# tool/screenshots/SHOTS_REQUEST.txt ga push qilinganda ishlaydi: birinchi qator —
+# test fayli (masalan tool/screenshots/walk_illus_test.dart). Natija — artifact
+# (PNG). Hech narsa yuklanmaydi/chop etilmaydi, kalit ishlatilmaydi.
+name: Shots
+
+on:
+  push:
+    paths:
+      - tool/screenshots/SHOTS_REQUEST.txt
+
+concurrency:
+  group: shots-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  shots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.6
+          channel: stable
+          cache: true
+      - name: Ekran rasmlari
+        run: |
+          set -euo pipefail
+          T=$(head -1 tool/screenshots/SHOTS_REQUEST.txt | tr -d '\r')
+          case "$T" in tool/screenshots/walk_*_test.dart) ;; *) echo "noto'g'ri fayl: $T"; exit 1;; esac
+          flutter pub get --enforce-lockfile
+          flutter test "$T" --update-goldens
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shots-${{ github.run_number }}
+          path: tool/screenshots/out/walk/**
+          if-no-files-found: warn
+          retention-days: 14
