@@ -461,6 +461,9 @@ void main() {
               ? uz.proPayUnitYear
               : uz.proPayUnitMonth;
           final price = find.text(uz.proPayPricePer(p.displayPrice, unit));
+          // Mahsulotlar tartibi ekran tartibidan farq qilishi mumkin: tepadan.
+          tester.state<ScrollableState>(list()).position.jumpTo(0);
+          await tester.pumpAndSettle();
           await tester.scrollUntilVisible(price, 300, scrollable: list());
           expect(price, findsOneWidget, reason: p.id);
           final buy = find.descendant(

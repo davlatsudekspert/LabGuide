@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app_scope.dart';
+import 'package:labguide/app/widgets/lg_art.dart';
 import 'package:labguide/features/instruments/instruments_controller.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
@@ -104,7 +105,7 @@ void main() {
     expect(
       images,
       contains(
-        const AssetImage('assets/instruments/schematic/hematology5_1200.png'),
+        AssetImage(LgArt.instHematology.asset),
       ),
     );
     // Yo'nalish sahifasining bezak chizmasi model kartasida yo'q.
@@ -159,7 +160,10 @@ void main() {
       expect(
         images,
         contains(
-          AssetImage('assets/instruments/schematic/${schematic}_1200.png'),
+          AssetImage(
+            LgArt.forSchematicKey(schematic)?.asset ??
+                'assets/instruments/schematic/${schematic}_1200.png',
+          ),
         ),
       );
       expect(

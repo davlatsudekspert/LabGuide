@@ -101,8 +101,20 @@ void main() {
       } else {
         expect(_locked, findsOneWidget);
         expect(find.text(uz.proLockedLearner), findsOneWidget);
+        // Reja rasmlari ostida: mehmon izohi yoki tiklash tugmasi ko'ringuncha.
+        final note = find.byKey(const ValueKey('pay-guest-note'));
+        final restore = find.text(uz.proPayRestore);
+        for (var i = 0;
+            i < 30 && note.evaluate().isEmpty && restore.evaluate().isEmpty;
+            i++) {
+          await tester.drag(
+            find.byType(Scrollable).hitTestable().first,
+            const Offset(0, -300),
+          );
+          await tester.pumpAndSettle();
+        }
         expect(
-          find.byKey(const ValueKey('pay-guest-note')),
+          note,
           state == GateState.guest ? findsOneWidget : findsNothing,
         );
         expect(s.exams.active, isNull);
