@@ -18,6 +18,7 @@ import 'package:labguide/l10n/gen/app_localizations_ru.dart';
 import 'package:labguide/l10n/gen/app_localizations_uz.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../helpers/double_tap.dart';
 import '../helpers/harness.dart';
 
 final uz = AppLocalizationsUz();
@@ -113,8 +114,11 @@ void main() {
         in expectations.entries) {
       await s.settings.setRole(role);
       await tester.pumpAndSettle();
-      expect(find.text(hero), findsOneWidget, reason: '$role');
+      // Bosh sahifa tepasida kunlik savol satri bor: hero ekrandan pastda
+      // bo'lishi mumkin — ko'rinmaguncha suriladi.
       expect(find.text(action), findsWidgets, reason: '$role');
+      await scrollToFinder(tester, find.text(hero));
+      expect(find.text(hero), findsOneWidget, reason: '$role');
       expect(
         find.text(
           role == AppRole.doctor ? uz.homeHeroLabTitle : uz.condGuideTitle,
