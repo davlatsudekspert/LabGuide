@@ -182,8 +182,20 @@ void main() {
       tester,
       _model(category: 'hematology', schematic: 'hematology3'),
     );
+    // Sxema ustida umumiy muqova illyustratsiyasi (lib/app/widgets/lg_art.dart).
     expect(
-      tester.widget<Image>(find.byType(Image)).image,
+      find.image(const AssetImage('assets/images/illus/inst_hematology_analyzer.webp')),
+      findsOneWidget,
+    );
+    expect(
+      tester
+          .widget<Image>(
+            find.descendant(
+              of: find.byKey(const ValueKey('instrument-schematic')),
+              matching: find.byType(Image),
+            ),
+          )
+          .image,
       const AssetImage('assets/instruments/schematic/hematology3_1200.png'),
     );
     await tester.tap(find.byKey(const ValueKey('instrument-schematic')));
