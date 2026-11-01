@@ -19,19 +19,22 @@ WebP ga o‘tkazildi (720 px, bo‘lim bannerlari 1080×720, sifat 82). Uchinchi
 | sec_preanalytics, sec_instruments, sec_qc, sec_calculators, sec_microscopy | Lab bo‘limlari tepasidagi banner |
 | sec_learn | hozircha ishlatilmaydi |
 | pro_student / pro_teacher / pro_specialist / pro_premium | Pro sotib olish ekrani (tepa + har reja bo‘limi) |
-| inst_biochem_analyzer (chemistry), inst_hematology_analyzer (hematology3/5), inst_coagulometer (coag_analyzer), inst_elisa_reader (elisa_reader), inst_pcr_cycler (real_time_pcr), inst_osmometer (osmometer), inst_gcms (mass_spec_gc) | model/yo‘nalish kartasidagi sxema ustida muqova |
+| inst_biochem_analyzer (chemistry), inst_hematology_analyzer (hematology3/5), inst_coagulometer (coag_analyzer), inst_elisa_reader (elisa_reader), inst_pcr_cycler (real_time_pcr), inst_osmometer (osmometer), inst_gcms (mass_spec_gc), inst_mycobacterial_culture (mycobacterial_culture), inst_cartridge_molecular (cartridge_molecular), inst_fluorescence_microscope (fluorescence_microscope) — sil (TB) kartalari | model/yo‘nalish kartasidagi sxema ustida muqova |
 | inst_centrifuge, inst_hplc, inst_microscope | hozircha ishlatilmaydi (mos sxema kaliti yo‘q yoki aniq mos emas) |
 
 **sha256:**
 ```
 79badca07bc20e7ac7bd2695448bcf3fede173a4eb2a057a6d83a9c77d4bb694  inst_biochem_analyzer.webp
+12f1c87b41a7e56123be96c5d11f63205815a8590d2c53fb90a9ad70420fcdd0  inst_cartridge_molecular.webp
 599261f134c8a4ffa50f33aa6986cad6045bcbd58ddede885d4d75639ef0a10a  inst_centrifuge.webp
 80f5cacb9b443fa9dd857f608e776e2983cbef7dbdd348a28da5fde7a082c0c9  inst_coagulometer.webp
 2ca94d51da326d509b81590ccd55a242553d62be5274a021a84fb26f958b6354  inst_elisa_reader.webp
+2a6aa370e490212132fe08a946722c84084a1f48dd0ee9309299ea566ce7d212  inst_fluorescence_microscope.webp
 a354270a036491fe5e9bb4c6af788e11f08e2bfed987eeb1b31281b7c797fe8e  inst_gcms.webp
 64fa64c47d652e7ef242e583a8af2064ad380faa3669cdcf3181a372531da7b0  inst_hematology_analyzer.webp
 259990c64e9dad498c965a4e1b11047d1b8ac34b0cbc7ae91ecb4b0656ee93a3  inst_hplc.webp
 57b3ee770f8be02351524d619e37b4ab12bd5639d0ada0973042c1f357e42b97  inst_microscope.webp
+77fbe2d59081459e16202049caf058bd46f1d695d87a03a3d6567b415d93768d  inst_mycobacterial_culture.webp
 920722c723ea89e05f1c45cbd65d9d8d0b5ee63da4258e656ee9d5a2adfb4214  inst_osmometer.webp
 fa1f87fff399216d95c4da87610bfbb1d1d471f8e18b10fd535c1c94a52afd63  inst_pcr_cycler.webp
 75de2bd04dc7f52914395f872c27882162cf2113158ebd3898918c2462ff8e11  pro_premium.webp

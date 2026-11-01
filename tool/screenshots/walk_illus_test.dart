@@ -54,6 +54,9 @@ void main() {
       ('/lab/instruments/m/mindray-bs-240', 'biokimyo_model', 'instrument-schematic'),
       ('/lab/instruments/lc/a3-tox-gc-ms', 'gcms_karta', 'lab-card-schematic'),
       ('/lab/instruments/lc/a1-realtime-pcr-method', 'pcr_karta', 'lab-card-schematic'),
+      ('/lab/instruments/lc/a3-tb-bactec-mgit960-platform', 'sil_mgit', 'lab-card-schematic'),
+      ('/lab/instruments/lc/tb-genexpert-platform', 'sil_kartrij', 'lab-card-schematic'),
+      ('/lab/instruments/lc/a2-platform-led-fluorescence-microscope', 'sil_led_mikroskop', 'lab-card-schematic'),
     ]) {
       await goTo(tester, '/lab/instruments');
       await goTo(tester, route);

@@ -24,7 +24,10 @@ enum LgArt {
   instOsmometer('inst_osmometer'),
   instHplc('inst_hplc'),
   instGcms('inst_gcms'),
-  instMicroscope('inst_microscope');
+  instMicroscope('inst_microscope'),
+  instMycobacterialCulture('inst_mycobacterial_culture'),
+  instCartridgeMolecular('inst_cartridge_molecular'),
+  instFluorescenceMicroscope('inst_fluorescence_microscope');
 
   const LgArt(this.file);
 
@@ -42,6 +45,9 @@ enum LgArt {
     'real_time_pcr' => instPcr,
     'osmometer' => instOsmometer,
     'mass_spec_gc' => instGcms,
+    'mycobacterial_culture' => instMycobacterialCulture,
+    'cartridge_molecular' => instCartridgeMolecular,
+    'fluorescence_microscope' => instFluorescenceMicroscope,
     _ => null,
   };
 
