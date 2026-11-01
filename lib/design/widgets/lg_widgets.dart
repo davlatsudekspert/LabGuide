@@ -687,6 +687,7 @@ class LgTile extends StatelessWidget {
     required this.icon,
     required this.onTap,
     this.highlighted = false,
+    this.image,
   });
 
   final String title;
@@ -695,7 +696,12 @@ class LgTile extends StatelessWidget {
   final VoidCallback onTap;
   final bool highlighted;
 
+  /// Ixtiyoriy kichik illyustratsiya (asset yo'li) — ikonka o'rnida.
+  /// Yuklanmasa — oddiy ikonka belgisi ko'rsatiladi.
+  final String? image;
+
   static const _padding = 18.0;
+  static const _imageSize = 64.0;
 
   TextStyle _fitTitle(BuildContext context, TextStyle style) {
     final cell = _GridCell.maybeOf(context);
@@ -720,6 +726,23 @@ class LgTile extends StatelessWidget {
     return style.copyWith(fontSize: size);
   }
 
+  Widget _badge(LgPalette p, bool ring) => Container(
+                    width: 40,
+                    height: 40,
+                    // Ivory: dumaloq belgi, ingichka oltin halqa.
+                    decoration: ring
+                        ? BoxDecoration(
+                            color: highlighted ? p.paper : p.soft,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: p.accent),
+                          )
+                        : BoxDecoration(
+                            color: highlighted ? p.paper : p.soft,
+                            borderRadius: BorderRadius.circular(13),
+                          ),
+                    child: Icon(icon, color: p.brand, size: 22),
+                  );
+
   @override
   Widget build(BuildContext context) {
     final p = LgPalette.of(context);
@@ -743,22 +766,19 @@ class LgTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ExcludeSemantics(
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    // Ivory: dumaloq belgi, ingichka oltin halqa.
-                    decoration: ring
-                        ? BoxDecoration(
-                            color: highlighted ? p.paper : p.soft,
-                            shape: BoxShape.circle,
-                            border: Border.all(color: p.accent),
-                          )
-                        : BoxDecoration(
-                            color: highlighted ? p.paper : p.soft,
-                            borderRadius: BorderRadius.circular(13),
+                  child: image == null
+                      ? _badge(p, ring)
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(14),
+                          child: Image.asset(
+                            image!,
+                            width: _imageSize,
+                            height: _imageSize,
+                            fit: BoxFit.cover,
+                            filterQuality: FilterQuality.medium,
+                            errorBuilder: (_, _, _) => _badge(p, ring),
                           ),
-                    child: Icon(icon, color: p.brand, size: 22),
-                  ),
+                        ),
                 ),
                 const SizedBox(height: 16),
                 Column(

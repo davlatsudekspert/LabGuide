@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/shell.dart';
+import '../../app/widgets/lg_art.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/build_flags.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -272,6 +273,9 @@ class HomeScreen extends StatelessWidget {
                       title: config.actions[i].label,
                       caption: config.actions[i].caption,
                       icon: config.actions[i].icon,
+                      image: LgArt.forHomeLocation(
+                        config.actions[i].location,
+                      )?.asset,
                       highlighted: i == 0,
                       // Yorliq bo'limning o'zini va'da qiladi (masalan,
                       // "Kalkulyatorlar" — ro'yxat, oxirgi kalkulyator emas).

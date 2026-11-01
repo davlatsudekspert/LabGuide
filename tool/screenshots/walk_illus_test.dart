@@ -47,6 +47,19 @@ void main() {
     });
   }
 
+  for (final theme in [ThemeMode.light, ThemeMode.dark]) {
+    final tag = theme == ThemeMode.light ? 'light' : 'dark';
+    testWidgets('bosh sahifa plitkalari ($tag)', (tester) async {
+      await start(tester, theme: theme);
+      final w = Walk(tester, 'illus_home_$tag');
+      await goTo(tester, '/home');
+      await w.snap('tepa');
+      await w.scroll(400);
+      await w.snap('pastroq');
+      expect(tester.takeException(), isNull);
+    });
+  }
+
   testWidgets('apparat muqovalari', (tester) async {
     await start(tester);
     final w = Walk(tester, 'illus_instruments');

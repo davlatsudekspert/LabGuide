@@ -27,7 +27,13 @@ enum LgArt {
   instMicroscope('inst_microscope'),
   instMycobacterialCulture('inst_mycobacterial_culture'),
   instCartridgeMolecular('inst_cartridge_molecular'),
-  instFluorescenceMicroscope('inst_fluorescence_microscope');
+  instFluorescenceMicroscope('inst_fluorescence_microscope'),
+  tileQc('tile_qc'),
+  tileDiff('tile_diff'),
+  tileCalibration('tile_calibration'),
+  tileCalculators('tile_calculators'),
+  tilePreanalytics('tile_preanalytics'),
+  tileInstruments('tile_instruments');
 
   const LgArt(this.file);
 
@@ -48,6 +54,17 @@ enum LgArt {
     'mycobacterial_culture' => instMycobacterialCulture,
     'cartridge_molecular' => instCartridgeMolecular,
     'fluorescence_microscope' => instFluorescenceMicroscope,
+    _ => null,
+  };
+
+  /// Bosh sahifa plitkasi (manzil bo'yicha) -> kichik rasm; yo'q bo'lsa — ikonka.
+  static LgArt? forHomeLocation(String location) => switch (location) {
+    '/lab/qc' => tileQc,
+    '/lab/differential' => tileDiff,
+    '/lab/calibration' => tileCalibration,
+    '/lab/calculators' => tileCalculators,
+    '/lab/preanalytics' => tilePreanalytics,
+    '/lab/instruments' => tileInstruments,
     _ => null,
   };
 

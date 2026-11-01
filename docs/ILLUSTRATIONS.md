@@ -50,3 +50,14 @@ fa1f87fff399216d95c4da87610bfbb1d1d471f8e18b10fd535c1c94a52afd63  inst_pcr_cycle
 d58f740bac2d6e198c57c5743d0c73c0aa812ac0642ea07d44e3d8117faed7ec  sec_preanalytics.webp
 2f24e616a38975d15070e1ce3c90429dbf52a6b394987d8be79e2a361cbbce4a  sec_qc.webp
 ```
+
+## Bosh sahifa plitkalari (2026-11-01)
+Egasi ChatGPT bilan yaratgan 6 rasmli kollajdan kesilgan (288×288 WebP): `tile_qc`, `tile_diff`, `tile_calibration`,
+`tile_calculators`, `tile_preanalytics`, `tile_instruments`. Joyi: bosh sahifa tezkor plitkalari (ikonka o'rnida, 64 px;
+manzil bo'yicha `LgArt.forHomeLocation`). Rasm yuklanmasa — eski ikonka. Bezak: ekran o'quvchi o'qimaydi.
+- tile_calculators.webp: 5c32740061cd48d7c27805b74b98860ae7d35559f0422d8c47fac0dcdc2f6086
+- tile_calibration.webp: 1b369f2cb13fb13fe10aacd7204a29a79af5b9482a7a817a4644b3c153793207
+- tile_diff.webp: 726eaf924d673cc03f6165022db856e9e6760e940d18716279ddfe226261c53e
+- tile_instruments.webp: 397e50ea69cb1bd3cff456b33ca7e2bf1f340a8005f07a8282b56c4d849e4311
+- tile_preanalytics.webp: 58daf6e6fe18a5259945203e9cf5f1876afb71549a48208b1a275902a37f095e
+- tile_qc.webp: 2d893d696617022531b52074f5b6a11e5a5543ed5d35239f369c4a7eaba3bbde
