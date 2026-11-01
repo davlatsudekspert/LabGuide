@@ -1,2 +1,2 @@
 tool/screenshots/walk_illus_test.dart
-# Illyustratsiyalar + sil (TB) apparatlari (2026-11-01)
+# Bitta rasm: illyustratsiya kartada, sxema Qismlari panelida (2026-11-01)

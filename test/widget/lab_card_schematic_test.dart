@@ -3,6 +3,7 @@
 // lokalizatsiyalangan alt-matn, bosilsa to‘liq ekran. 320 px / ×1.3 shriftda
 // overflow yo‘q; istisno kartada chizma yo‘q.
 import 'package:flutter_test/flutter_test.dart';
+import 'package:labguide/app/widgets/lg_art.dart';
 import 'package:labguide/features/instruments/instrument_image.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
@@ -95,11 +96,13 @@ void main() {
       final img = tester.widget<Image>(
         find.descendant(of: fig, matching: find.byType(Image)),
       );
-      expect(
-        img.image,
-        AssetImage('assets/instruments/schematic/${key}_1200.png'),
-        reason: id,
+      // Illyustratsiyasi bor sinfda kartada FAQAT u; raqamli sxema "Qismlari"
+      // paneli ichida (lib/app/widgets/lg_art.dart).
+      final shown = AssetImage(
+        LgArt.forSchematicKey(key)?.asset ??
+            'assets/instruments/schematic/${key}_1200.png',
       );
+      expect(img.image, shown, reason: id);
       expect(img.fit, BoxFit.contain);
       expect(img.semanticLabel, l.instSchematicSemantics(label(l)), reason: id);
       // Izoh: “Sxematik tasvir — aniq model emas”, ekranga sig‘adi.
@@ -141,11 +144,7 @@ void main() {
           matching: find.byType(Image),
         ),
       );
-      expect(
-        big.image,
-        AssetImage('assets/instruments/schematic/${key}_1200.png'),
-        reason: id,
-      );
+      expect(big.image, shown, reason: id);
       expect(
         find.text('${l.instSchematicCaption}\n${l.instSchematicNotPhoto}'),
         findsOneWidget,

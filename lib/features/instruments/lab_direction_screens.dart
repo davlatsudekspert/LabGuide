@@ -221,11 +221,8 @@ class _LabCard extends StatelessWidget {
         // bir xil vidjet, izoh va kattalashtirish.
         if (card.schematic case final sch?) ...[
           const SizedBox(height: 12),
-          // Umumiy (brendsiz) muqova illyustratsiyasi — sxema o'rnini
-          // egallamaydi; izoh "aniq model emas" pastda ikkalasiga tegishli.
-          if (LgArt.forSchematicKey(sch.key) case final art?)
-            LgArtImage(art, height: 200, padding: const EdgeInsets.only(bottom: 8)),
           SchematicFigure(
+            cover: LgArt.forSchematicKey(sch.key),
             asset: sch.asset,
             assetLarge: sch.assetLarge,
             semanticLabel: l.instSchematicSemantics(_schematicLabel(l, sch)),

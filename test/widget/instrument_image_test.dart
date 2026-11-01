@@ -182,11 +182,9 @@ void main() {
       tester,
       _model(category: 'hematology', schematic: 'hematology3'),
     );
-    // Sxema ustida umumiy muqova illyustratsiyasi (lib/app/widgets/lg_art.dart).
-    expect(
-      find.image(const AssetImage('assets/images/illus/inst_hematology_analyzer.webp')),
-      findsOneWidget,
-    );
+    // Illyustratsiya bor turda kartada FAQAT u (lib/app/widgets/lg_art.dart);
+    // raqamli sxema "Qismlari" paneli ichida.
+    const cover = AssetImage('assets/images/illus/inst_hematology_analyzer.webp');
     expect(
       tester
           .widget<Image>(
@@ -196,7 +194,11 @@ void main() {
             ),
           )
           .image,
-      const AssetImage('assets/instruments/schematic/hematology3_1200.png'),
+      cover,
+    );
+    expect(
+      find.image(const AssetImage('assets/instruments/schematic/hematology3_1200.png')),
+      findsNothing,
     );
     await tester.tap(find.byKey(const ValueKey('instrument-schematic')));
     await tester.pumpAndSettle();
@@ -208,10 +210,7 @@ void main() {
         matching: find.byType(Image),
       ),
     );
-    expect(
-      big.image,
-      const AssetImage('assets/instruments/schematic/hematology3_1200.png'),
-    );
+    expect(big.image, cover);
     expect(
       find.text('${l.instSchematicCaption}\n${l.instSchematicNotPhoto}'),
       findsOneWidget,

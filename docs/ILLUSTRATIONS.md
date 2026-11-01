@@ -8,9 +8,11 @@ WebP ga o‘tkazildi (720 px, bo‘lim bannerlari 1080×720, sifat 82). Uchinchi
 
 **Qoidalar:**
 - Bezak uchun (ekran o‘quvchi o‘qimaydi). Ilmiy da’vo yoki tashxis ko‘rsatmaydi.
-- Apparat rasmlari — apparat TURINING umumiy (brendsiz) illyustratsiyasi, aniq model emas. Model/yo‘nalish kartasida sxema
-  (raqamli qismlari bilan, `docs/SCHEMATICS_PROVENANCE.md`) o‘z joyida qoladi; illyustratsiya faqat uning ustida muqova,
-  va ostidagi “Sxematik tasvir — aniq model emas” izohi ikkalasiga tegishli (D-36a siyosatiga mos: model fotosi emas).
+- Apparat rasmlari — apparat TURINING umumiy (brendsiz) illyustratsiyasi, aniq model emas. Illyustratsiyasi bor turda
+  model/yo‘nalish kartasida FAQAT illyustratsiya ko‘rinadi (egasi talabi 2026-11-01: ikki rasm ketma-ket g‘alati); raqamli
+  sxema (`docs/SCHEMATICS_PROVENANCE.md`) “Qismlari va ishlash prinsipi” paneli ichida, qismlar ro‘yxati raqamlari shu
+  sxemaga mos. Raqamlar illyustratsiyaga qo‘yilmadi: AI rasmdagi qismlar sxemadagi bilan aniq mos kelmaydi (noto‘g‘ri belgi
+  — ilmiy xato). “Sxematik tasvir — aniq model emas” izohi kartada qoladi (D-36a: model fotosi emas).
 - Kollajdan qirqilgan past o‘lchamli variantlar ishlatilmadi (har rasm alohida yaratilgan).
 
 **Qayerda:**
@@ -19,7 +21,7 @@ WebP ga o‘tkazildi (720 px, bo‘lim bannerlari 1080×720, sifat 82). Uchinchi
 | sec_preanalytics, sec_instruments, sec_qc, sec_calculators, sec_microscopy | Lab bo‘limlari tepasidagi banner |
 | sec_learn | hozircha ishlatilmaydi |
 | pro_student / pro_teacher / pro_specialist / pro_premium | Pro sotib olish ekrani (tepa + har reja bo‘limi) |
-| inst_biochem_analyzer (chemistry), inst_hematology_analyzer (hematology3/5), inst_coagulometer (coag_analyzer), inst_elisa_reader (elisa_reader), inst_pcr_cycler (real_time_pcr), inst_osmometer (osmometer), inst_gcms (mass_spec_gc), inst_mycobacterial_culture (mycobacterial_culture), inst_cartridge_molecular (cartridge_molecular), inst_fluorescence_microscope (fluorescence_microscope) — sil (TB) kartalari | model/yo‘nalish kartasidagi sxema ustida muqova |
+| inst_biochem_analyzer (chemistry), inst_hematology_analyzer (hematology3/5), inst_coagulometer (coag_analyzer), inst_elisa_reader (elisa_reader), inst_pcr_cycler (real_time_pcr), inst_osmometer (osmometer), inst_gcms (mass_spec_gc), inst_mycobacterial_culture (mycobacterial_culture), inst_cartridge_molecular (cartridge_molecular), inst_fluorescence_microscope (fluorescence_microscope) — sil (TB) kartalari | model/yo‘nalish kartasi rasmi (sxema — “Qismlari” panelida) |
 | inst_centrifuge, inst_hplc, inst_microscope | hozircha ishlatilmaydi (mos sxema kaliti yo‘q yoki aniq mos emas) |
 
 **sha256:**

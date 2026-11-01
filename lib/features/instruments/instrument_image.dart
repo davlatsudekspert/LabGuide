@@ -130,12 +130,9 @@ class _SchematicBlock extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // Umumiy (brendsiz) muqova illyustratsiyasi — sxema va raqamli
-        // qismlar o'z joyida; izoh "aniq model emas" ikkalasiga tegishli.
-        if (LgArt.forSchematicAsset(schematic.asset) case final art?)
-          LgArtImage(art, height: 200, padding: const EdgeInsets.only(bottom: 8)),
         SchematicFigure(
           asset: schematic.asset,
+          cover: LgArt.forSchematicAsset(schematic.asset),
           assetLarge: schematic.assetLarge,
           semanticLabel: l.instSchematicSemantics(model.kind.of(lang)),
           viewerTitle: model.model,
@@ -169,10 +166,16 @@ class SchematicFigure extends StatelessWidget {
     this.figureKey,
     this.captionKey,
     this.parts,
+    this.cover,
   });
 
   final String asset;
   final String assetLarge;
+
+  /// Umumiy (brendsiz) illyustratsiya bo'lsa — kartada FAQAT u ko'rinadi;
+  /// raqamli sxema "Qismlari va ishlash prinsipi" paneli ichida (egasi
+  /// talabi 2026-11-01: ikki rasm ketma-ket g'alati ko'rinardi).
+  final LgArt? cover;
 
   /// Rasm mazmunining lokalizatsiyalangan tavsifi (ekran o'quvchi uchun).
   final String semanticLabel;
@@ -210,7 +213,7 @@ class SchematicFigure extends StatelessWidget {
                 MaterialPageRoute<void>(
                   fullscreenDialog: true,
                   builder: (_) => InstrumentSchematicViewer(
-                    asset: assetLarge,
+                    asset: cover?.asset ?? assetLarge,
                     title: viewerTitle,
                     semanticLabel: semanticLabel,
                   ),
@@ -223,7 +226,7 @@ class SchematicFigure extends StatelessWidget {
                   // Katta (1200 px) nusxa: telefonda (3x) karta kengligi ~1000
                   // fizik piksel — 480 px nusxa xira bo'lib qolardi.
                   child: Image.asset(
-                    assetLarge,
+                    cover?.asset ?? assetLarge,
                     fit: BoxFit.contain,
                     semanticLabel: semanticLabel,
                     errorBuilder: (context, _, _) =>
@@ -268,7 +271,10 @@ class SchematicFigure extends StatelessWidget {
         ),
         if (parts case final e?) ...[
           const SizedBox(height: 8),
-          SchematicPartsPanel(entry: e),
+          SchematicPartsPanel(
+            entry: e,
+            schematicAsset: cover == null ? null : assetLarge,
+          ),
         ],
       ],
     );
@@ -283,9 +289,17 @@ const _calloutFill = Color(0xFF1B5E50);
 /// va vazifasi), so'ng ishlash prinsipi va natija. Standart holatda yopiq —
 /// karta qisqa qoladi. Matnlar ARB da (`schemParts*`).
 class SchematicPartsPanel extends StatelessWidget {
-  const SchematicPartsPanel({super.key, required this.entry});
+  const SchematicPartsPanel({
+    super.key,
+    required this.entry,
+    this.schematicAsset,
+  });
 
   final SchematicPartsEntry entry;
+
+  /// Kartada illyustratsiya ko'rsatilgan bo'lsa — raqamli sxema shu yerda
+  /// (qismlar ro'yxati raqamlari shu rasmga mos).
+  final String? schematicAsset;
 
   @override
   Widget build(BuildContext context) {
@@ -321,6 +335,21 @@ class SchematicPartsPanel extends StatelessWidget {
             style: text.bodySmall!.copyWith(color: p.sub),
           ),
           children: [
+            if (schematicAsset case final a?)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: AspectRatio(
+                  aspectRatio: 3 / 2,
+                  child: Image.asset(
+                    a,
+                    key: const ValueKey('schematic-parts-figure'),
+                    fit: BoxFit.contain,
+                    excludeFromSemantics: true,
+                    errorBuilder: (context, _, _) =>
+                        const _MissingMark(compact: true),
+                  ),
+                ),
+              ),
             heading(l.schemPartsPartsTitle),
             for (final part in entry.parts)
               _PartRow(n: part.n, name: t(part.nameId), fn: t(part.fnId)),
