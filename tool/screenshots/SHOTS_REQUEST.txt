@@ -1,2 +1,2 @@
-tool/screenshots/walk_illus_test.dart
-# Bosh sahifa plitkalari: yangi rasmlar (2026-11-01)
+tool/screenshots/walk_login_test.dart
+# Kirish ekrani hozirgi holat (2026-11-04)
