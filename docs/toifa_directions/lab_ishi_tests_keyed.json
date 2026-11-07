@@ -2,7 +2,7 @@
  "version": 1,
  "direction": "lab_ishi",
  "title": "Laboratoriya ishi",
- "note": "Kalitlar PDF'da yo'q edi: mazmun bo'yicha aniqlangan (ishonch darajasi bilan). Ishonchi 'past' va qo'lda tuzatiladigan savollar mutaxassis/manba bilan tasdiqlanishi kerak.",
+ "note": "Kalitlar PDF'da yo'q edi: mazmun bo'yicha aniqlangan, har bir savolda ishonch darajasi ko'rsatilgan. Aniq javob bera olinmagan 6 savol olib tashlandi (194, 267, 303, 308, 379, 479 — asl raqamlari).",
  "questions": [
   {
    "id": "lab_ishi-t-001",
@@ -485,20 +485,17 @@
    "n": 29,
    "q": "Oqsillar nima:",
    "options": [
-    "Yuqori molekulyar organik birikmalar biopolimerlar uzun zanjirlarda ma'lum",
-    "ketma-ketlikda bog'langan 20 turdagi L-aminokislota qoldiqlaridan qurilgan",
-    "Yuqori molekulyar organik birikmalar, polimerlar, siklik zanjirda bog'langan 10",
-    "turdagi B-aminokislotalardan doimiy",
-    "Efirlar va bir asosli oqsil kislotalaridan tashkil topgan yuqori molekulyar",
-    "og'irlikdagi organik birikmalar, biopolimerlar",
-    "Yuqori molekulyar og'irlikdagi organik birikmalar, efirlar va L-aminokislotalardan",
-    "tashkil topgan polimerlar"
+    "Yuqori molekulyar organik birikmalar biopolimerlar uzun zanjirlarda ma'lum ketma-ketlikda bog'langan 20 turdagi L-aminokislota qoldiqlaridan qurilgan",
+    "Yuqori molekulyar organik birikmalar, polimerlar, siklik zanjirda bog'langan 10 turdagi B-aminokislotalardan doimiy",
+    "Efirlar va bir asosli oqsil kislotalaridan tashkil topgan yuqori molekulyar og'irlikdagi organik birikmalar, biopolimerlar",
+    "Yuqori molekulyar og'irlikdagi organik birikmalar, efirlar va L-aminokislotalardan tashkil topgan polimerlar"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    0
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-030",
@@ -607,40 +604,34 @@
    "n": 36,
    "q": "Quyidagi belgilardan qaysilari Qandli diabetga xos:",
    "options": [
-    "Tez-tez siyish, tashnalikning kuchayishi, tez vazn yo'qotish, terining qichishi,",
-    "ko'rishning xiralashishi",
-    "Ko'rishning xiralashishi, hushni yo'qotish, chanqagan og'iz, ko'p siyish, siydik",
-    "rangining qorayishi",
-    "Boldir mushaklarining tirishishi, hushni yo'qotish, chanqoqlikning kuchayishi,",
-    "isitma, semizlik, bo'yin falaji",
+    "Tez-tez siyish, tashnalikning kuchayishi, tez vazn yo'qotish, terining qichishi, ko'rishning xiralashishi",
+    "Ko'rishning xiralashishi, hushni yo'qotish, chanqagan og'iz, ko'p siyish, siydik rangining qorayishi",
+    "Boldir mushaklarining tirishishi, hushni yo'qotish, chanqoqlikning kuchayishi, isitma, semizlik, bo'yin falaji",
     "Isitma, terining qichishi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    0
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-037",
    "n": 37,
    "q": "Qaysi diabet qandsiz diabet hisoblanadi:",
    "options": [
-    "Gipotalamus va gipofiz bezining faoliyatining buzilishi natijasida kelib chiqadigan,",
-    "ko'p chanqash, siydik miqdorining ko'p va past zichlikda bo'lishi bilan",
-    "tavsiflangan endokrin kasallik",
-    "Buyrak kanalchalarida glyukoza reabsorbtsiyasining buzilishi natijasida qonda",
-    "glyukoza miqdori meyorida bo'lishiga qaramasdan siydikda paydo bo'lishi",
-    "Uglevod almashinuvi buzilgan metabolik kasallik barcha ichki organlarning",
-    "funktsional qobiliyatining o'zgarishi bilan tizimli shikastlanishi bilan tavsiflanadi",
-    "Tanadagi uglerod almashinuvining buzilishi bilan tavsiflangan kasallik, bunda",
-    "buyraklar faoliyati buziladi"
+    "Gipotalamus va gipofiz bezining faoliyatining buzilishi natijasida kelib chiqadigan, ko'p chanqash, siydik miqdorining ko'p va past zichlikda bo'lishi bilan tavsiflangan endokrin kasallik",
+    "Buyrak kanalchalarida glyukoza reabsorbtsiyasining buzilishi natijasida qonda glyukoza miqdori meyorida bo'lishiga qaramasdan siydikda paydo bo'lishi",
+    "Uglevod almashinuvi buzilgan metabolik kasallik barcha ichki organlarning funktsional qobiliyatining o'zgarishi bilan tizimli shikastlanishi bilan tavsiflanadi",
+    "Tanadagi uglerod almashinuvining buzilishi bilan tavsiflangan kasallik, bunda buyraklar faoliyati buziladi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    0
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-038",
@@ -698,19 +689,17 @@
    "n": 41,
    "q": "Lipoproteidlar nima:",
    "options": [
-    "Lipidlarni o'z ichiga olgan murakkab oqsillar guruhi odamlar va hayvonlarning",
-    "qon plazmasi va nerv to'qimalarida joylashgan",
+    "Lipidlarni o'z ichiga olgan murakkab oqsillar guruhi odamlar va hayvonlarning qon plazmasi va nerv to'qimalarida joylashgan",
     "Bu nerv to'qimalarida joylashgan shakar qoldiqlarini o'z ichiga olgan lipidlardir",
-    "Bu barcha tirik hujayralarda, nerv to'qimalarining biologik membranalarining eng",
-    "muhim tarkibiy qismlarida topilgan fosfor kislotasini o'z ichiga olgan murakkab",
-    "oqsillar guruhidir",
+    "Bu barcha tirik hujayralarda, nerv to'qimalarining biologik membranalarining eng muhim tarkibiy qismlarida topilgan fosfor kislotasini o'z ichiga olgan murakkab oqsillar guruhidir",
     "Fosfor kislotasi qoldiqlarini o'z ichiga olgan murakkab oqsillar"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    0
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-042",
@@ -941,14 +930,14 @@
     "Makroskopik tekshirish",
     "Gram bo'yicha bo'yalgan preparatning mikroskopiyasi",
     "Sil-Nielsen usuli bo'yicha bo'yalgan preparatning mikroskopiyasi",
-    "Kaustik gidroksidi qo'shilgandan keyin va eozin bilan bo'yashdan oldin balg'am",
-    "tayyorlash mikroskopiyasi"
+    "Kaustik gidroksidi qo'shilgandan keyin va eozin bilan bo'yashdan oldin balg'am tayyorlash mikroskopiyasi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    3
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-056",
@@ -1431,17 +1420,17 @@
    "n": 84,
    "q": "“Nisbiy neytrofiliya” deganda tushuniladi:",
    "options": [
-    "Neutrofillarning umumiy soni meyorida bo'lgan xolatida, ularning nisbiy foiz",
-    "miqdorining oshishi",
+    "Neutrofillarning umumiy soni meyorida bo'lgan xolatida, ularning nisbiy foiz miqdorining oshishi",
     "Neytrofillarning soning nisbiy va mutlaq foizlarda ortishi",
     "Ularning mutlaq sonining ortishi",
     "Neytrofillar foizining kamayishi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    0
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-085",
@@ -2621,17 +2610,17 @@
    "n": 154,
    "q": "Inson T-limfotsitlari quyidagilardan kelib chiqadi:",
    "options": [
-    "Suyak iligi T-limfotsitlarining unipotent prekursori, keyinchalik timusda pishib",
-    "etiladi",
+    "Suyak iligi T-limfotsitlarining unipotent prekursori, keyinchalik timusda pishib etiladi",
     "Koloniya hosil qiluvchi taloq granulotsitar-makrofag",
     "Limfa limfositlari",
     "Taloq hujayralari"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    0
+   ],
+   "verdict": "ai_key",
+   "confidence": "o‘rta",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-155",
@@ -2692,14 +2681,14 @@
     "gemostaz tizimini o'rganishga yo'naltirish",
     "protrombin vaqtini aniqlash",
     "trombotsitlarning agregatsion xususiyatlarini o'rganish",
-    "Klinik shifokor tomonidan qo'yilgan vazifaga javob beradigan gemokoagulologik",
-    "testlar to'plami"
+    "Klinik shifokor tomonidan qo'yilgan vazifaga javob beradigan gemokoagulologik testlar to'plami"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    3
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-159",
@@ -2792,16 +2781,16 @@
    "q": "Oshqozonda xlorid kislotasi quyidagi ta'sirlarni ko'rsatadi:",
    "options": [
     "oziq-ovqat oqsillarining shishishiga yordam beradi",
-    "hazm bo'layotgan o'simlik tolasi hujayralarining membranasini",
-    "yumshatadi(maseratsiya)",
+    "hazm bo'layotgan o'simlik tolasi hujayralarining membranasini yumshatadi(maseratsiya)",
     "bakteritsid(mikroblarni o'ldiruvchi) ta'sirga ega",
     "yuqoridagilarning barchasi to'g'ri"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    3
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-165",
@@ -3197,20 +3186,19 @@
   {
    "id": "lab_ishi-t-188",
    "n": 188,
-   "q": "Likvor(orqa miya suyligi) turib qolganda uning ustida fibrinoz parda hosil",
+   "q": "Likvor(orqa miya suyuqligi) turib qolganda uning ustida fibrinoz parda hosil bo'lishining sababi:",
    "options": [
-    "bo'lishining sababi",
     "Erigan oqsilning cho'kmaga tushushi",
     "havodan tushgan bakteriyalarning aralashuvi",
     "likvordagi plazmin faolligining yuqoriligi",
-    "likvor yo'llariga oqsillarning ekssudatsiyasi natijasida hosil bo'lgan fibrinning",
-    "cho'kmasi"
+    "likvor yo'llariga oqsillarning ekssudatsiyasi natijasida hosil bo'lgan fibrinning cho'kmasi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    3
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-189",
@@ -3232,19 +3220,19 @@
   {
    "id": "lab_ishi-t-190",
    "n": 190,
-   "q": "Likvordagi(orqa miya suyuqligi) eritrotsitlar soni quyidagi holatlarda",
+   "q": "Likvordagi(orqa miya suyuqligi) eritrotsitlar soni quyidagi holatlarda hisoblanadi:",
    "options": [
-    "hisoblanadi",
     "punktsiya vaqtida qon likvor yo'llariga tushganida",
     "eritrotsitlar gemolizga uchraganida",
     "subaraxnoidal qon quyilishlarda",
     "yuqorida sanab o'tilgan barcha holatlarda"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    3
+   ],
+   "verdict": "ai_key",
+   "confidence": "o‘rta",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-191",
@@ -3296,23 +3284,6 @@
    "verdict": "ai_key",
    "confidence": "yuqori",
    "status": "kalit berilgan"
-  },
-  {
-   "id": "lab_ishi-t-194",
-   "n": 194,
-   "q": "Qanday xolatlarda orqa miya suyuqligining loyqaligi kuzatiladi:",
-   "options": [
-    "yiringli meningit",
-    "poliomielit",
-    "abstsess (yiring to'plami) subaraxnoidal soha (orqa miya pardalari osti)ga",
-    "yorilganda",
-    "yuqoridagilarning barchasi to'g'ri"
-   ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
   },
   {
    "id": "lab_ishi-t-195",
@@ -4539,36 +4510,21 @@
    "status": "kalit berilgan"
   },
   {
-   "id": "lab_ishi-t-267",
-   "n": 267,
-   "q": "Bronxoalveolyar tizim hujayralarining metaplaziyasi bilan giperplaziyasi o'rtasidagi asosiy farq:",
-   "options": [
-    "Preparatda hujayra elementlari sonining ko'payishi",
-    "Ko'p yadroli hujayralar paydo bo'lishi",
-    "Biriktiruvchi to'qima elementlarining paydo bo'lishi",
-    "Apoptozlar (hujayra o'limi) sonining ko'payishi"
-   ],
-   "key": null,
-   "verdict": "unresolved",
-   "confidence": null,
-   "status": "javob aniqlanmadi"
-  },
-  {
    "id": "lab_ishi-t-268",
    "n": 268,
    "q": "Kreola tanachalari-bu:",
    "options": [
     "Palisad shaklida joylashgan hujayralar guruhi",
-    "Bronxlarning giperplaziyalangan shilliq qavati hujayralaridan tashkil topgan",
-    "dumaloqlashgan qatlamlar",
+    "Bronxlarning giperplaziyalangan shilliq qavati hujayralaridan tashkil topgan dumaloqlashgan qatlamlar",
     "elastik tolalar",
     "Miyelin shaklidagi tuzilmalar"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    1
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-269",
@@ -4678,16 +4634,16 @@
    "q": "O'pka kandidomikozida balg'am tarkibida quyidagilar b'oladi:",
    "options": [
     "Keng bo'linmalar bilan ajralgan mikeliy",
-    "Hujayra ichida joylashgan, gram-musbat, yumaloq yoki oval shakldagi,",
-    "bo'lakchalangan va atrofida bo'yalmagan zona bilan o'ralgan hujayralar",
+    "Hujayra ichida joylashgan, gram-musbat, yumaloq yoki oval shakldagi, bo'lakchalangan va atrofida bo'yalmagan zona bilan o'ralgan hujayralar",
     "psevdomitseliya",
     "Katta sporalar zanjiri"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    2
+   ],
+   "verdict": "ai_key",
+   "confidence": "o‘rta",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-276",
@@ -4969,14 +4925,14 @@
     "Birlamchi to'qimadan morfologik va funksional jihatdan farq qiluvchi turlarga",
     "Birlamchi to'qimadan morfologik va funksional jihatdan farq qilmaydigan turlarga",
     "Bog'liq bo'lmagan turlar",
-    "Xatarli o'sish belgilari bo'lgan to'qimalar",
-    "Yuqoridagi barchasi to'g'ri"
+    "Xatarli o'sish belgilari bo'lgan to'qimalar"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    0
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-293",
@@ -4986,14 +4942,14 @@
     "Shoxlanish",
     "Differentsiallashish",
     "Proliferatsiya va dedifferentsiya",
-    "Oddiy to'qimalarga strukturaviy va hujayraviy o'xshashlik, polimorfizmning",
-    "yo'qligi"
+    "Oddiy to'qimalarga strukturaviy va hujayraviy o'xshashlik, polimorfizmning yo'qligi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    3
+   ],
+   "verdict": "ai_key",
+   "confidence": "o‘rta",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-294",
@@ -5117,19 +5073,19 @@
   {
    "id": "lab_ishi-t-301",
    "n": 301,
-   "q": "Sekretning sut bezining chuqur qismlaridan so'rg'ichga o'tishiga quyidagilar",
+   "q": "Sekretning sut bezining chuqur qismlaridan so'rg'ichga o'tishiga quyidagilar yordam beradi:",
    "options": [
-    "yordam beradi",
     "apokrin hujayralar",
     "mioepitelial hujayralari",
     "\"Og'iz tanachalari\" tipidagi hujayralar",
     "\"Ksantom\" tipidagi hujayralar"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    1
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-302",
@@ -5147,23 +5103,6 @@
    "verdict": "ai_key",
    "confidence": "o‘rta",
    "status": "kalit berilgan"
-  },
-  {
-   "id": "lab_ishi-t-303",
-   "n": 303,
-   "q": "Sut bezi saratoni metastazining eng xarakterli sitologik belgisi ekssudatda quyidagilarning mavjudligidir:",
-   "options": [
-    "\"Yuzlari\" bo'lgan hujayralar",
-    "Yadrolari ekssentrik joylashgan tarqoq joylashgan prizmatik hujayralar",
-    "Keskin ifodalangan polimorfizmga ega hujayralardan iborat sharsimon tuzilmalar",
-    "Nisbatan monomorf hujayralardan tashkil topgan, polimorfizmi yaqqol",
-    "ifodalanmagan sharsimon tuzilmalar"
-   ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
   },
   {
    "id": "lab_ishi-t-304",
@@ -5232,21 +5171,6 @@
    "verdict": "ai_key",
    "confidence": "yuqori",
    "status": "kalit berilgan"
-  },
-  {
-   "id": "lab_ishi-t-308",
-   "n": 308,
-   "q": "Oqsillarning denaturatsiyasi quyidagicha nomlanadi:",
-   "options": [
-    "suvsizlanish",
-    "Kuchli elektrolitlar ta'siri",
-    "5,58-8,5 oralig'ida pH o'zgarishi",
-    "Neytral tuzlar ta'siri"
-   ],
-   "key": null,
-   "verdict": "unresolved",
-   "confidence": null,
-   "status": "javob aniqlanmadi"
   },
   {
    "id": "lab_ishi-t-309",
@@ -5846,15 +5770,19 @@
   {
    "id": "lab_ishi-t-344",
    "n": 344,
-   "q": "Bemor gemogrammasida: Hb-82g/l, eritrotsitlar – 3.3x1012/l, leykotsitlar – 86.2x109/l, blast hujayralar - 9%, miyelotsitlar - 22%, metamiyelotsitlar - 10, n/i neytrofillar - 5%, neytrofillar - 30%, bazofillar - 5%, eozinofiller - 5%, limfotsitlar",
+   "q": "Bemor gemogrammasida: Hb-82 g/l, eritrotsitlar 3.3x10^12/l, leykotsitlar 86.2x10^9/l, blast hujayralar 9%, miyelotsitlar 22%, metamiyelotsitlar 10%, n/i neytrofillar 5%, s/i neytrofillar 30%, bazofillar 5%, eozinofillar 5%, limfotsitlar 9%, monotsitlar 3%. Ushbu gemogramma quyidagilarga xosdir:",
    "options": [
-    "9%, monositlar - 3%. Ushbu gemogramma quyidagilarga xosdir: o'tkir leykoz surunkali miyeloleykoz surunkali limfoleykoz miyelom kasalliklar"
+    "o'tkir leykoz",
+    "surunkali miyeloleykoz",
+    "surunkali limfoleykoz",
+    "miyelom kasalligi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    1
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-345",
@@ -5961,20 +5889,19 @@
   {
    "id": "lab_ishi-t-351",
    "n": 351,
-   "q": "Mikroskopik tekshiruvda aniqlangan balg'am qanday patologiyani ko'rsatadi:",
+   "q": "Mikroskopik tekshiruvda aniqlangan balg'am qanday patologiyani ko'rsatadi: ilmoqlar, o'ziga xos chiziqli xitin qobig'i bo'laklari, skolekslar, shuningdek xolesterin kristallari:",
    "options": [
-    "ilmoqlar, o'ziga xos chiziqli xitin qobig'i bo'laklari, skolekslar, shuningdek",
-    "xolesterin kristallari:",
     "sil kasalligi",
     "o'pka absessi",
     "o'pkaning exinokokkozi",
     "bronxial astma"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    2
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-352",
@@ -6287,18 +6214,17 @@
    "n": 370,
    "q": "Alfa-fetoprotein uchun quyidagilar xos, bundan tashqari:",
    "options": [
-    "albumin bilan sxodens, embrional rivojlanish bosqichida uning funksiyasini",
-    "bajaradi",
+    "albumin bilan sxodens, embrional rivojlanish bosqichida uning funksiyasini bajaradi",
     "embrionda sariqlik xaltasi, so'ngra jigar orqali ishlab chiqariladi",
     "homilador ayollarning qonida homiladorlik davrida o'zgarmaydi",
-    "kattalarda gepatotsellyulyar saratonni tashxislash va davolashni kuzatish",
-    "maqsadida aniqlanadi"
+    "kattalarda gepatotsellyulyar saratonni tashxislash va davolashni kuzatish maqsadida aniqlanadi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    2
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-371",
@@ -6340,16 +6266,16 @@
    "q": "Neyron-spetsifik yenolaza (NSE) uchun quyidagilar xos, bundan tashqari:",
    "options": [
     "sitoplazmatik glikolitik ferment",
-    "neyroektodermal kelib chiqishga ega hujayralarda, miya neyronlarida, periferik",
-    "nerv to'qimalarida mavjud",
+    "neyroektodermal kelib chiqishga ega hujayralarda, miya neyronlarida, periferik nerv to'qimalarida mavjud",
     "neyroektodermal va neyroendokrin tabiatli o'smalarda aniqlanadi",
     "homilada Daun sindromini tashxislash uchun ishlatiladi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    3
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-374",
@@ -6435,24 +6361,6 @@
    "verdict": "ai_key",
    "confidence": "yuqori",
    "status": "kalit berilgan"
-  },
-  {
-   "id": "lab_ishi-t-379",
-   "n": 379,
-   "q": "Saraton embrional antigeni (CEA) uchun quyidagilar xos, bundan tashqari:",
-   "options": [
-    "o'smalar to'qimalarda turlicha joylashganida va metastazlar berganida zardobda",
-    "ko'payadi",
-    "qon zardobida, plazmasida, assitda terda, siydikda aniqlanadi",
-    "tahlilni o'smalarni erta tashxislash uchun ommaviy tekshiruvlarda qo'llash",
-    "mumkin",
-    "aniqlash o'pka saratoniga maxsus tahlil sifatida qo'llaniladi"
-   ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
   },
   {
    "id": "lab_ishi-t-380",
@@ -6988,15 +6896,15 @@
    "options": [
     "plazma oqsili, serinli proteazalar ingibitori",
     "V va VIII omillarni ingibirlovchi antikoagulyant",
-    "plazmadagi miqdorining 30-40% ga kamayishi tromboemboliyalar xavfini",
-    "tug'diradi",
+    "plazmadagi miqdorining 30-40% ga kamayishi tromboemboliyalar xavfini tug'diradi",
     "pasayish sababi iste'mol qilish va jigar kasalliklari hisoblanadi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    1
+   ],
+   "verdict": "ai_key",
+   "confidence": "yuqori",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-412",
@@ -7923,16 +7831,15 @@
    "options": [
     "Romanovskiy bo'yog'i eritmasini quymoq",
     "bo'yashdan oldin qalin tomchini fiksatsiyalamoq",
-    "oldindan preparatga 10-15 daqiqaga distillangan suv quyiladi, suv to'kib tashlanadi",
-    "va Romanovskiy bo'yicha bo'yaladi",
-    "dastlab preparatga 10-15 daqiqaga fiz.eritma quyiladi, so'ngra u to'kib tashlanadi",
-    "va keyin romanovskiy bo'yog'i eritmasi bilan bo'yaladi"
+    "oldindan preparatga 10-15 daqiqaga distillangan suv quyiladi, suv to'kib tashlanadi va Romanovskiy bo'yicha bo'yaladi",
+    "dastlab preparatga 10-15 daqiqaga fiz.eritma quyiladi, so'ngra u to'kib tashlanadi va keyin romanovskiy bo'yog'i eritmasi bilan bo'yaladi"
    ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
+   "key": [
+    2
+   ],
+   "verdict": "ai_key",
+   "confidence": "o‘rta",
+   "status": "kalit berilgan"
   },
   {
    "id": "lab_ishi-t-467",
@@ -8137,24 +8044,6 @@
    "verdict": "ai_key",
    "confidence": "yuqori",
    "status": "kalit berilgan"
-  },
-  {
-   "id": "lab_ishi-t-479",
-   "n": 479,
-   "q": "Alfa-1-antitripsinga quyidagi xususiyatlar xos, bundan mustasno:",
-   "options": [
-    "Ximotripsin, kallikrein, renin, urokinaza, plazmin, kollagenaza va elastazaga qarshi",
-    "inhibitiv ta'sir ko'rsatadi",
-    "Asosiy vazifasi — lizosomal elastazani neytrallash",
-    "Tripsinning eng kuchli ingibitori, chunki u zaif ishqoriy muhitda maksimal",
-    "faollikka ega",
-    "To'g'ri javob yo'q"
-   ],
-   "key": null,
-   "verdict": "unresolved",
-   "needs_manual": true,
-   "confidence": null,
-   "status": "variantlarni qo‘lda tuzatish kerak"
   },
   {
    "id": "lab_ishi-t-480",
