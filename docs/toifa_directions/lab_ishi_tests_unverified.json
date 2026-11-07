@@ -1,0 +1,6560 @@
+{
+ "version": 1,
+ "direction": "lab_ishi",
+ "title": "Laboratoriya_ishi",
+ "note": "Rasmiy PDF ro'yxati; to'g'ri javob kaliti PDF'da yo'q. key=null — tekshirilmagan; ilovaga kalitsiz kiritilmaydi.",
+ "questions": [
+  {
+   "id": "lab_ishi-t-001",
+   "n": 1,
+   "q": "Xolesterinning biologik roli:",
+   "options": [
+    "lipotropik",
+    "immunoglobulin old mahsulotlari",
+    "vitaminlar va steroid gormonlar sintezi uchun asos",
+    "kislota-ishqor muvozanatini ta'minlaydi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-002",
+   "n": 2,
+   "q": "Qaysi a'zo hujayralar ALT faolligi eng yuqori:",
+   "options": [
+    "jigar",
+    "miokard",
+    "o'pka to'qimasida",
+    "skelet mushaklari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-003",
+   "n": 3,
+   "q": "Laboratoriyaga xos bo'lmagan quyidagi omillar tahlil natijalariga ta'sir qilishi mumkin, bundan mustasno:",
+   "options": [
+    "Bemorning jismoniy va hissiy stressi",
+    "Sirkadiyalik ritmlar, iqlim ta'siri",
+    "Dori-darmonlarni qabul qilish",
+    "Tana vazni"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-004",
+   "n": 4,
+   "q": "Tahlil natijalariga quyidagi laboratoriya ichidagi omillar ta'sir qilishi mumkin:",
+   "options": [
+    "Namuna saqlash shartlari",
+    "Gemoliz, lipemiya",
+    "Ishlatilgan usullar",
+    "Hamma sanab o'tilganlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-005",
+   "n": 5,
+   "q": "Namunani tahlil qilishda eng ko'p uchraydigan xatolar:",
+   "options": [
+    "Individual",
+    "Tasodifiy",
+    "Tizimli",
+    "Yuqoridagilardan biri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-006",
+   "n": 6,
+   "q": "Tizimli xatolar turlari:",
+   "options": [
+    "uslubiy",
+    "Asbobga bog'liq",
+    "Operatsion",
+    "Hamma sanab o'tilganlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-007",
+   "n": 7,
+   "q": "Xatoni aniqlab bo'lmaydi:",
+   "options": [
+    "Parallel namunalar usuli",
+    "Analitik usulni tanlash orqali",
+    "Tahlillarni ketma-ket ro'yxatga olish orqali",
+    "Natijani boshqa o'lchov birliklar tizimiga aylantirish orqali"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-008",
+   "n": 8,
+   "q": "Biokimyoviy tahlillarni sifat nazoratini o'tkazish uchun quyidagilardan foydalanish tavsiya etiladi:",
+   "options": [
+    "Substratlarning suvli eritmalari",
+    "Donorlik qoni",
+    "Sanoat zardobi (suyuq yoki liyofillangan)",
+    "Chet el firmalarining reagentlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-009",
+   "n": 9,
+   "q": "Nazorat zardobi bilan ishlaganda xatoliklar yuzaga kelishi mumkin:",
+   "options": [
+    "Ampulani ochishda moddaning yo'qolishi",
+    "Nazorat zardobini xona haroratida saqlash",
+    "Nazorat zardobini ko'p marotaba ketma ket muzlatish",
+    "Yuqoridagilarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-010",
+   "n": 10,
+   "q": "Ushbu funktsiyalardan qaysi biri oqsilning biologik funktsiyasi emas:",
+   "options": [
+    "Transport",
+    "Himoya",
+    "Strukturaviy",
+    "Energetik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-011",
+   "n": 11,
+   "q": "OIV infektsiyasining nisbiy xavf guruhlarini ayting:",
+   "options": [
+    "Inyektsion giyohvand moddalarni iste'mol qiluvchilar (IDUs)",
+    "Haq evaziga intim xizmatlar ko'rsatuvchi shaxslar",
+    "Mahbuslar, muhojirlar",
+    "Barcha sanab o'tilganlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-012",
+   "n": 12,
+   "q": "Inson organizmining quruq vaznini qancha % oqsildan iborat:",
+   "options": [
+    "45",
+    "50",
+    "10",
+    "5"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-013",
+   "n": 13,
+   "q": "Odam qon zardobida meyorida qancha oqsil mavjud:",
+   "options": [
+    "65-80 g/l",
+    "70-90 g/l",
+    "120-140 g/l",
+    "140-180 g/l"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-014",
+   "n": 14,
+   "q": "Tarkibida oqsil miqdori yuqori bo'lgan siydik probirkasiga 2-3 tomchi 50% azot kislotasi qo'shgandan keyin qanday rangli halqa hosil bo'ladi:",
+   "options": [
+    "Qizil",
+    "sariq",
+    "Oq",
+    "Qora"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-015",
+   "n": 15,
+   "q": "Qonda fermentlarning miqdorining ortishi aniqlanganda qanday tashxis qo'yiladi:",
+   "options": [
+    "Qandli diabet",
+    "Gepatit",
+    "Leykoz",
+    "OIV"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-016",
+   "n": 16,
+   "q": "Ushbu funktsiyalardan qaysi biri uglevodlarning biologik funktsiyalariga kirmaydi:",
+   "options": [
+    "Energetik",
+    "Strukturaviy",
+    "Himoya",
+    "Transport"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-017",
+   "n": 17,
+   "q": "Ushbu kasalliklarning qaysi birining sababi uglevod almashinuvining buzilishi emas:",
+   "options": [
+    "Qandli diabet",
+    "Galaktozemiya",
+    "Gipotirioz",
+    "Gipertirioz"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-018",
+   "n": 18,
+   "q": "Odam qonida meyorida qancha glyukoza bo'ladi (ml mol/gramda):",
+   "options": [
+    "1,2-2,0",
+    "2,1-3,4",
+    "3,5-6,0",
+    "7,0-9,0"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-019",
+   "n": 19,
+   "q": "Qonda glyukoza miqdorini tekshirishda reaktiv bilan zardob 37 S termostatda necha daqiqa inkubatsiya qilinadi:",
+   "options": [
+    "20",
+    "10",
+    "40",
+    "50"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-020",
+   "n": 20,
+   "q": "Ushbu biologik funktsiyalardan qaysi biri lipidlarning asosiy funktsiyasi hisoblanadi:",
+   "options": [
+    "Transport",
+    "Himoya",
+    "Energetik",
+    "Strukturaviy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-021",
+   "n": 21,
+   "q": "Naftoxinon qanday vitaminlar guruhiga kiradi:",
+   "options": [
+    "E vitamini",
+    "D vitamini",
+    "K vitamini",
+    "A vitamini"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-022",
+   "n": 22,
+   "q": "Ushbu vitaminlardan qaysi biri yog'li hisoblanadi:",
+   "options": [
+    "Piridoksin",
+    "Biotin",
+    "Retinol",
+    "Riboflavin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-023",
+   "n": 23,
+   "q": "Ushbu vitaminlardan qaysi biri P guruhiga kiradi:",
+   "options": [
+    "Piridoksin",
+    "Bioflavonoid",
+    "Tiamin",
+    "Retinol"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-024",
+   "n": 24,
+   "q": "D vitaminlarining biologik funktsiyasi:",
+   "options": [
+    "Ko'rish jarayoni",
+    "Nafas olish",
+    "Atsil guruhlarining transporti",
+    "Kaltsiy va fosfor almashinuvi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-025",
+   "n": 25,
+   "q": "Qaysi bezning gormonlari kalsiy va fosfor almashinuvida ishtirok etadi:",
+   "options": [
+    "Qalqonsimon bez",
+    "gipofiz",
+    "Oshqozon osti bezi",
+    "Buyrak usti bezlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-026",
+   "n": 26,
+   "q": "Ayollar qonida gemoglobinning meyoriy darajasi qanday:",
+   "options": [
+    "100-110",
+    "120-140",
+    "180-200",
+    "200-220"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-027",
+   "n": 27,
+   "q": "Erkaklarda qondagi ECHT ning meyori nechani tashkil etadi:",
+   "options": [
+    "02-okt",
+    "14-20",
+    "25-36",
+    "40-59"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-028",
+   "n": 28,
+   "q": "Qonni leykotsitlar miqdorini tekshirish uchun qanday asbobdan foydalaniladi:",
+   "options": [
+    "Panchenkov kamerasi",
+    "Goryaev kamerasi",
+    "spirtovka",
+    "Sentrifuga"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-029",
+   "n": 29,
+   "q": "Oqsillar nima:",
+   "options": [
+    "Yuqori molekulyar organik birikmalar biopolimerlar uzun zanjirlarda ma'lum",
+    "ketma-ketlikda bog'langan 20 turdagi L-aminokislota qoldiqlaridan qurilgan",
+    "Yuqori molekulyar organik birikmalar, polimerlar, siklik zanjirda bog'langan 10",
+    "turdagi B-aminokislotalardan doimiy",
+    "Efirlar va bir asosli oqsil kislotalaridan tashkil topgan yuqori molekulyar",
+    "og'irlikdagi organik birikmalar, biopolimerlar",
+    "Yuqori molekulyar og'irlikdagi organik birikmalar, efirlar va L-aminokislotalardan",
+    "tashkil topgan polimerlar"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-030",
+   "n": 30,
+   "q": "“Fermentlar” so'zi lotin tilidan qanday tarjima qilinadi:",
+   "options": [
+    "Fermentlar, oqsillar",
+    "Achitish, tezlashtirish",
+    "Achitqi, achitish",
+    "Tezlashtirish, Achitqi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-031",
+   "n": 31,
+   "q": "Tuzilishi bo'yicha fermentlar qanday bo'lishi mumkin:",
+   "options": [
+    "Oddiy va murakkab",
+    "Uch komponentli, oddiy va murakkab oqsillar",
+    "Oddiy va murakkab oqsillar",
+    "Bir komponentli, ikki komponentli, oddiy va murakkab oqsillar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-032",
+   "n": 32,
+   "q": "Suvda eruvchi vitaminlariga qanday vitaminlar kiradi:",
+   "options": [
+    "Tiamin, riboflavin, nikotinik kislota, tirodoksin, foliy kislotasi",
+    "Antihelorosit, orotat kislotasi, tiamin, biotin, antiroxitik",
+    "Anevrit, riboflavin, kalsiferollar, tokoferollar, siyanokobalamin",
+    "Filloxinlar, akseroftol, karotinlar, piridoksin, biotin, niatsin, retinol"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-033",
+   "n": 33,
+   "q": "Odam qonida meyorda qancha granulotsitlar bo'ladi:",
+   "options": [
+    "2,0-7,0",
+    "3,0-8,0",
+    "4,0-9,0",
+    "5,0-10,0"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-034",
+   "n": 34,
+   "q": "Qanday uglevodlar oddiy uglevodlar hisoblanadi:",
+   "options": [
+    "Saxaroza, glyukoza, diasaxaroza",
+    "Fruktoza, glyukoza, galaktoza",
+    "Saxaroza, diasaxaridlar, galaktoza",
+    "Glyukoza, galaktoza, diasaxaroza"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-035",
+   "n": 35,
+   "q": "Erkaklar qonida gemoglobin meyori qancha:",
+   "options": [
+    "110-140 g/l",
+    "120-150 g/l",
+    "130-160 g/l",
+    "160-170 g/l"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-036",
+   "n": 36,
+   "q": "Quyidagi belgilardan qaysilari Qandli diabetga xos:",
+   "options": [
+    "Tez-tez siyish, tashnalikning kuchayishi, tez vazn yo'qotish, terining qichishi,",
+    "ko'rishning xiralashishi",
+    "Ko'rishning xiralashishi, hushni yo'qotish, chanqagan og'iz, ko'p siyish, siydik",
+    "rangining qorayishi",
+    "Boldir mushaklarining tirishishi, hushni yo'qotish, chanqoqlikning kuchayishi,",
+    "isitma, semizlik, bo'yin falaji",
+    "Isitma, terining qichishi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-037",
+   "n": 37,
+   "q": "Qaysi diabet qandsiz diabet hisoblanadi:",
+   "options": [
+    "Gipotalamus va gipofiz bezining faoliyatining buzilishi natijasida kelib chiqadigan,",
+    "ko'p chanqash, siydik miqdorining ko'p va past zichlikda bo'lishi bilan",
+    "tavsiflangan endokrin kasallik",
+    "Buyrak kanalchalarida glyukoza reabsorbtsiyasining buzilishi natijasida qonda",
+    "glyukoza miqdori meyorida bo'lishiga qaramasdan siydikda paydo bo'lishi",
+    "Uglevod almashinuvi buzilgan metabolik kasallik barcha ichki organlarning",
+    "funktsional qobiliyatining o'zgarishi bilan tizimli shikastlanishi bilan tavsiflanadi",
+    "Tanadagi uglerod almashinuvining buzilishi bilan tavsiflangan kasallik, bunda",
+    "buyraklar faoliyati buziladi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-038",
+   "n": 38,
+   "q": "Oddiy oqsillarga nimalar kiradi:",
+   "options": [
+    "Proteinlar, protaminlar, glutaminlar",
+    "Xromoproteidlar, proteinlar, lipoproteidlar",
+    "Proproteinlar, protominlar, glyutiminlar",
+    "Lipoproteidlar, glikoproteidlar, xromoproteidlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-039",
+   "n": 39,
+   "q": "Qon tez ivib qolmasligi uchun tahlillar paytida qanday moddalar qo'shiladi:",
+   "options": [
+    "Sirka kislotasi",
+    "Reaktiv",
+    "Limon kislotasi",
+    "azot kislotasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-040",
+   "n": 40,
+   "q": "Qaysi o'simlikda eng ko'p shakar mavjud:",
+   "options": [
+    "shaftoli",
+    "gilos",
+    "Uzum",
+    "olxo'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-041",
+   "n": 41,
+   "q": "Lipoproteidlar nima:",
+   "options": [
+    "Lipidlarni o'z ichiga olgan murakkab oqsillar guruhi odamlar va hayvonlarning",
+    "qon plazmasi va nerv to'qimalarida joylashgan",
+    "Bu nerv to'qimalarida joylashgan shakar qoldiqlarini o'z ichiga olgan lipidlardir",
+    "Bu barcha tirik hujayralarda, nerv to'qimalarining biologik membranalarining eng",
+    "muhim tarkibiy qismlarida topilgan fosfor kislotasini o'z ichiga olgan murakkab",
+    "oqsillar guruhidir",
+    "Fosfor kislotasi qoldiqlarini o'z ichiga olgan murakkab oqsillar"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-042",
+   "n": 42,
+   "q": "Glyukagon gormoni qaysi bezda ishlab chiqariladi:",
+   "options": [
+    "Timus",
+    "Oshqozon osti bezi",
+    "Qalqonsimon orti bezi",
+    "Qalqonsimon bez"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-043",
+   "n": 43,
+   "q": "Qaytalanuvchi isitma qo'zg'atuvchisini ayting:",
+   "options": [
+    "B.recurrtntis",
+    "B.alveli",
+    "B. pumilis",
+    "B. subtilis"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-044",
+   "n": 44,
+   "q": "Gripp virusi genomi nimadan tashkil topgan:",
+   "options": [
+    "Bir zanjirli DNK molekulasi",
+    "Bir zanjirli DNK va RNK molekulalari",
+    "Bir zanjirli RNK molekulasi",
+    "Ikki zanjirli DNK molekulasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-045",
+   "n": 45,
+   "q": "Yog'da eriydigan vitaminlarni ko'rsating:",
+   "options": [
+    "A, D, E",
+    "A, D, B",
+    "A, D, C",
+    "A, D, PP"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-046",
+   "n": 46,
+   "q": "Quyidagi usullardan qaysi biri siydikdagi oqsilni aniqlaydi:",
+   "options": [
+    "Gaines sinamasi",
+    "Lange sinamasi",
+    "Sulfosalitsil kislotasi bilan sinama",
+    "Rosin sinamasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-047",
+   "n": 47,
+   "q": "Quyidagi kasalliklarning qaysi birida sutkalik diurez 8 litr bo'lishi mumkin:",
+   "options": [
+    "surunkali nefrit",
+    "O'tkir pielonefrit",
+    "Qandli diabet",
+    "Burishgan(bujmaygan) buyrak"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-048",
+   "n": 48,
+   "q": "Quyidagi kasalliklardan qaysi biriga gemoglobinuriya xos:",
+   "options": [
+    "O'tkir nefrit",
+    "Buyrak tosh kasalligi",
+    "Gemolitik buyrak",
+    "Virusli gepatit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-049",
+   "n": 49,
+   "q": "Quyidagi dorilarning qaysi biri yog 'kislotalari bo'laklarini: neytral yog', yog' kislotalari va sovunlarni farqlash imkonini beradi:",
+   "options": [
+    "nativ bo'yalmagan",
+    "Sudan III bilan bo'yalgan",
+    "Lugol eritmasi bilan bo'yalgan",
+    "Romanovskiy-Giemsa"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-050",
+   "n": 50,
+   "q": "Najas preparatlaridagi biriktiruvchi to'qima tolalarini shilimshiq iplardan qaysi usul bilan ajratib ko'rsatish mumkin:",
+   "options": [
+    "Lugol eritmasi bilan bo'yalgan",
+    "Nil ko'k sulfat bilan bo'yalgan",
+    "Sirka kislotasi qo'shish bilan",
+    "Ishqor qo'shish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-051",
+   "n": 51,
+   "q": "Quyidagi kasalliklarning qaysi birida najasning malhamsimon konsistensiyasi kuzatiladi:",
+   "options": [
+    "Atrofik gastrit",
+    "Pankreatit",
+    "Fermentativ dispepsiya",
+    "Dizenteriya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-052",
+   "n": 52,
+   "q": "Quyidagi holatlarning qaysi birida najas reaksiyasi kislotali bo'ladi:",
+   "options": [
+    "Axiliya",
+    "Chirigan dispepsiya",
+    "O'tkir enterit",
+    "Fermentativ dispepsiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-053",
+   "n": 53,
+   "q": "Quyidagi kasalliklardan qaysi biriga amiloreya xos:",
+   "options": [
+    "Dizenteriya",
+    "O'tkir enterit",
+    "O't-tosh kasalligi",
+    "Qabziyat bilan kechuvchi kolit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-054",
+   "n": 54,
+   "q": "Quyida keltirilgan usullardan qaysi biri yordamida tuberkulyoz mikobakteriyalarini aniqlash mumkin:",
+   "options": [
+    "Makroskopik tekshirish",
+    "Nativ preparatning mikroskopiyasi",
+    "Gram bo'yicha bo'yalgan preparatning mikroskopiyasi",
+    "Sil-Nielsen usuli bo'yicha bo'yalgan preparatning mikroskopiyasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-055",
+   "n": 55,
+   "q": "Balg'amda elastik tolalar qanday aniqlanadi:",
+   "options": [
+    "Makroskopik tekshirish",
+    "Gram bo'yicha bo'yalgan preparatning mikroskopiyasi",
+    "Sil-Nielsen usuli bo'yicha bo'yalgan preparatning mikroskopiyasi",
+    "Kaustik gidroksidi qo'shilgandan keyin va eozin bilan bo'yashdan oldin balg'am",
+    "tayyorlash mikroskopiyasi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-056",
+   "n": 56,
+   "q": "Quyidagi qaysi sharoitda seroz balg'am chiqariladi:",
+   "options": [
+    "O'tkir bronxit",
+    "Bronxial astma",
+    "Pnevmoniya",
+    "O'pka shishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-057",
+   "n": 57,
+   "q": "Quyidagi kasalliklarning qaysi birida balg'amda silindirik epiteliyning sezilarli miqdori topiladi:",
+   "options": [
+    "Bronxoektatik kasallik",
+    "O'tkir bronxit",
+    "Krupoz pnevmoniya",
+    "o'pka absessi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-058",
+   "n": 58,
+   "q": "Agar bemorning siydigi to'q jigarrang bo'lsa, bu qanday kasallikning belgisi va uning sababi:",
+   "options": [
+    "Gepatit o't pigmenti, o't kislotasi sekretsiyasi",
+    "Sariqlik,ko'p miqdorda o't kislotasi sekretyasi",
+    "Qandli diabet, shakarning ko'p miqdorda chiqarilishi,",
+    "Gastrit, ichak tayoqchalarining kamayishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-059",
+   "n": 59,
+   "q": "Bemor poliklinikaga Mantu sinamasi ijobiy natijasi bilan keldi. Mantu sinamasi qaysi kasalliklarni aniqlashda qo'llanilad :",
+   "options": [
+    "Sifilis(Zaxm)",
+    "Sil kasalligi(Tuberkulyoz)",
+    "Dizenteriya",
+    "Qorin tifi isitmasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-060",
+   "n": 60,
+   "q": "Pediatr qabuliga limfa tugunlari kattalashgan, harorati yuqori bo'lgan bola keltirildi . Pediatr qanday kasallikdan shubhalanadi:",
+   "options": [
+    "Pnevmoniya(Zotiljam)",
+    "Epidemiologik paratit",
+    "Sil kasalligi(Tuberkulyoz)",
+    "Qorin tifi isitmasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-061",
+   "n": 61,
+   "q": "Bemor tez-tez siydik ajralishidan shikoyat qiladi . Bu qanday kasallikning belgisi hisoblanadi:",
+   "options": [
+    "Qandli diabet",
+    "Piyelonefrit",
+    "Pnevmoniya(Zotiljam)",
+    "Epidemiologik paratit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-062",
+   "n": 62,
+   "q": "Bemorning uzoq turib qolgan siydigi xiralashgan. Xiralashishining sababi nima:",
+   "options": [
+    "Uglevodlar tufayli",
+    "Bakteriyalar tufayli",
+    "O't pigmenti tufayli",
+    "Aseton borligi tufayli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-063",
+   "n": 63,
+   "q": "Bemor ECHT uchun qon topshirdi. Ko'rsatkichlari yuqori chiqdi. Bu qanday kasallikning belgisi:",
+   "options": [
+    "Tug'ma yurak nuqsoni",
+    "Vabo(xolera)",
+    "eriterimiya",
+    "Revmatizm"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-064",
+   "n": 64,
+   "q": "Erkak va ayol siydigida oval, noksimon, uzunligi 5-30 mkm bo'lgan dumaloq mikroorganizm topildi, uning oldida 3-5 ta tayoqcha bor. Bu qanday mikroorganizm:",
+   "options": [
+    "Trichomonada",
+    "Spiroxeta",
+    "Streptokokk",
+    "Stafilokok"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-065",
+   "n": 65,
+   "q": "Bemorda appenditsit borligiga shubha qilingan. U qanday tahlillarni topshiradi:",
+   "options": [
+    "Leykotsitlar uchun",
+    "Eritrotsitlar uchun",
+    "ECHTga",
+    "Shakar uchun"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-066",
+   "n": 66,
+   "q": "Bemorda o't pufagining yarasi bor. Qanday ovqatlanish tavsiya etiladi:",
+   "options": [
+    "Vitaminlarga boy",
+    "Dengiz mahsulotlari",
+    "Kam yog'li ovqat",
+    "Sut mahsulotlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-067",
+   "n": 67,
+   "q": "Bola tug'ilgandan keyin 5-10 kunlarda sarg'aygan, sabablari nima:",
+   "options": [
+    "Qonda bilirubin miqdorining ko'payishi",
+    "Qonda ALT miqdorining oshishi",
+    "Qonda AST miqdorining ko'payishi",
+    "Qon shakar miqdorining ko'payishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-068",
+   "n": 68,
+   "q": "Bemor qonining rang koeffitsienti ko'rsatkichlarini tekshirish kerak. Laborant qanday tahlillarni o'tkazadi:",
+   "options": [
+    "Leykotsitlar, eritrotsitlar",
+    "ECHT, leykotsitlar",
+    "Gemoglobin, eritrotsitlar",
+    "ECHT, gemoglobin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-069",
+   "n": 69,
+   "q": "Bemor kasalxonaga og'ir ahvolda keltirildi. shoshilinch ravishda siydikda oqsillar va shakar mavjudligini tekshirish kerak. Qaysi usul qo'llaniladi:",
+   "options": [
+    "Algauzen usuli",
+    "Akimov usuli",
+    "Test- sinov tilsimchalari bilan",
+    "20% sulfasalitsil kislotasi bilan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-070",
+   "n": 70,
+   "q": "Bemor qorin og'rig'iga, ishtahaning yomonlashishiga, yuzidagi oq dog'lardan shikoyat qiladi. Qanday tahlillarga yuboriladi:",
+   "options": [
+    "Najas tahlili, najasda yashirin qonni aniqlash",
+    "Siydikda oqsillarni aniqlash",
+    "Siydikda glyukozani aniqlash",
+    "Qonda infeksiyani aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-071",
+   "n": 71,
+   "q": "Klinik diagnostika laboratoriyarining faoliyat sohasida me'yorini tavsiflash uchun quyidagi qiymatlarga e'tibor qaratish lozim:",
+   "options": [
+    "Adabiyotlarda berilgan ma'lumotlar",
+    "To'plamlar ichida ko'rsatilgan yo'riqnomaga asosan",
+    "DPM KDL blankalarida belgilangan",
+    "Yuqorida sanalganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-072",
+   "n": 72,
+   "q": "O'lchovning mos kelishi — bu o'lchov sifatini aks ettiruvchi xususiyat bo'lib, quyidagilardan iborat bo'lishi mumkin:",
+   "options": [
+    "O'lchanayotgan kattalikning haqiqiy qiymatiga yaqinligi",
+    "Bir xil sharoitda bajarilgan o'lchov natijalarining bir-biriga yaqinligi",
+    "Turli sharoitlarda bajarilgan o'lchov natijalarining bir-biriga yaqinligi",
+    "O'lchov natijalaridagi tizimli xatolarning nolga yaqinligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-073",
+   "n": 73,
+   "q": "Laboratoriyalararo sifat nazoratining asosiy talabi:",
+   "options": [
+    "Nazorat namunalarining tahlili, namunalar tahlilidan alohida olib boriladi",
+    "Nazorat namunalarining tahlilini laboratoriya mudiri bajaradi",
+    "Nazorat namunalarining tahlili laboratoriyaning kundalik ish jarayoniga kiritiladi",
+    "Nazorat namunalarining tahlili boshqa laboratoriyalarda amalga oshiriladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-074",
+   "n": 74,
+   "q": "5 litr 3% li xloramin eritmasini tayyorlash uchun qancha xloramin (g) olish kerak:",
+   "options": [
+    "1500",
+    "300",
+    "150",
+    "100"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-075",
+   "n": 75,
+   "q": "Goryaev kamerasida eritrotsitlarni sanashda xatoliklar manbai bo'lishi mumkin:",
+   "options": [
+    "Kamerani to'ldirgandan keyin, 10 daqiqa o'tisni kutmasdan hujayralarni sanash",
+    "Hujayralarning bir qismini o'zaro yopishishi natijasida Laxta xosil bo'lishi",
+    "Juda ko'p kvadratlarni sanash, eritrotsitlar gemolizi",
+    "Yuqoridagilarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-076",
+   "n": 76,
+   "q": "Gemoglobin quyidagi funktsiyani bajaradi:",
+   "options": [
+    "Metabolitlarni transporti",
+    "Qurilish(plastik) funktsiyasi",
+    "Kislorod va karbonat angidridni transporti",
+    "Mikroelementlarini transporti"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-077",
+   "n": 77,
+   "q": "Gemoglobinni aniqlashning eng aniq usuli:",
+   "options": [
+    "Xlorid kislotali gemoglobinini aniqlash",
+    "Karboksigemoglobinni aniqlash",
+    "Sianmetgemoglobin usuli",
+    "Metgemoglobinni aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-078",
+   "n": 78,
+   "q": "Anizotsitoz – bu............ o'zgarishi:",
+   "options": [
+    "Eritrotsitlar shakllari",
+    "Eritrositlar soni",
+    "Eritrotsitlardagi gemoglobinning miqdori",
+    "Eritrositlar hajmi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-079",
+   "n": 79,
+   "q": "Yuqori rang ko'rsatkichi quyidagilarda kuzatiladi:",
+   "options": [
+    "B12 tanqisligi anemiyasi",
+    "Temir tanqisligi anemiyasi",
+    "Leykozda",
+    "Yuqorida sanalgan barcha kasalliklarda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-080",
+   "n": 80,
+   "q": "Eritrositlarda gemoglobinning o'rtacha miqdori oshgan bo'ladi:",
+   "options": [
+    "Megoblastli anemiya",
+    "Temir tanqisligi anemiyasi",
+    "Surunkali yallig'lanishlardagi anemiya",
+    "Barcha sanalganlar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-081",
+   "n": 81,
+   "q": "Gematologik analizatorlar tomonidan qayd etilgan RDW quyidagi o'zgarishlarni aks ettiradi:",
+   "options": [
+    "Eritrotsitlar radiusi",
+    "Eritrositlar soni",
+    "Eritrotsitlarning gemoglobin bilan to'yinganligi",
+    "Hajmi bo'yicha eritrotsitlarning farqlanishi (anizositoz)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-082",
+   "n": 82,
+   "q": "Granulotsitlar quyidagi a'zoda hosil bo'ladi:",
+   "options": [
+    "Taloqda",
+    "Suyak iligida",
+    "Limfa tugunlarida",
+    "Taloq va limfa tugunlarida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-083",
+   "n": 83,
+   "q": "Trombotsitlar quyidagi a'zoda hosil bo'ladi:",
+   "options": [
+    "Taloqda",
+    "Suyak iligida",
+    "Limfa tugunlarida",
+    "Barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-084",
+   "n": 84,
+   "q": "“Nisbiy neytrofiliya” deganda tushuniladi:",
+   "options": [
+    "Neutrofillarning umumiy soni meyorida bo'lgan xolatida, ularning nisbiy foiz",
+    "miqdorining oshishi",
+    "Neytrofillarning soning nisbiy va mutlaq foizlarda ortishi",
+    "Ularning mutlaq sonining ortishi",
+    "Neytrofillar foizining kamayishi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-085",
+   "n": 85,
+   "q": "Periferik qonda bazofillar sonining mutlaq ortishi quyidagilarga xosdir:",
+   "options": [
+    "O'tkir leykozlarda",
+    "Surunkali miyeloproliferativ kasalliklarda",
+    "Allergik holatlarda",
+    "O'tkir yallig'lanishlarda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-086",
+   "n": 86,
+   "q": "Blast hujayralar yadro-sitoplazmatik nisbatga ega:",
+   "options": [
+    "sitoplazma foydasiga",
+    "Yadro foydasiga",
+    "muhim emas",
+    "Turli nisbatlarda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-087",
+   "n": 87,
+   "q": "Jigarning strukturaviy-funksional birligi:",
+   "options": [
+    "gepatotsitlar",
+    "Jigar bo'lagi (lobula)",
+    "Kupffer hujayrasi",
+    "Jigar yuzasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-088",
+   "n": 88,
+   "q": "Najasning qora rangga bo'yalishi sabab bo'ladi:",
+   "options": [
+    "Sterkobilin bilan",
+    "Bilirubin",
+    "To'g'ri ichakdan qon ketishi",
+    "Oshqozondan qon ketishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-089",
+   "n": 89,
+   "q": "Siydik quyidagi hollarda mevali hidga ega bo'ladi:",
+   "options": [
+    "Pielonefrit",
+    "diabetik koma",
+    "turg'un buyrak (qon oqimi to'xtagan buyrak)",
+    "Glomerulonefrit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-090",
+   "n": 90,
+   "q": "Silindruriya (ko'rish maydonida 3-5 silindr) kuzatiladi:",
+   "options": [
+    "Nefritda, nefrozda",
+    "gepatitda",
+    "Sistitda",
+    "Qandli diabetda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-091",
+   "n": 91,
+   "q": "Siydikning nisbiy zichligini aniqlash quyidagilar haqida ma'lumot beradi:",
+   "options": [
+    "buyraklarning ajratish fuktsiyasi",
+    "Konsentratsiya funktsiyasi",
+    "Filtrlash funksiyasi",
+    "Yuqoridagi barcha funktsiyalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-092",
+   "n": 92,
+   "q": "Buyrak kasalliklarida, ayniqsa, glomerulalar (klubochkalar) asosiy zararlanganda kuzatiladi:",
+   "options": [
+    "buyraklarning kontsentratsiya qobiliyatining buzilishi",
+    "filtiratsiyaning pasayishi",
+    "Reabsorbtsiya buzilishi",
+    "Barcha sanab o'tilgan funktsiyalarni buzilishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-093",
+   "n": 93,
+   "q": "Yog'li silindrlar quyidagi holatlarda uchraydi:",
+   "options": [
+    "O'tkir nefritda",
+    "Buyrakdan qon ketishida",
+    "Buyraklar amiloidozida",
+    "Lipoid nefrozda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-094",
+   "n": 94,
+   "q": "Siydikdagi glyukoza miqdori va poliuriya darajasi o'rtasida qanday bog'liqlik mavjud:",
+   "options": [
+    "Parallel bog'liqlik mavjud",
+    "Parallel bog'liqlik mavjud emas",
+    "Teskari bog'liqlik mavjud",
+    "To'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-095",
+   "n": 95,
+   "q": "O'tkir sistitda siydik cho'kmasida quyidagilarning ustunligi xarakterlidir:",
+   "options": [
+    "Eritrotsitlar",
+    "Leykotsitlar",
+    "buyrak epiteliysi",
+    "o'tuvchi epiteliy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-096",
+   "n": 96,
+   "q": "Romanovskiy bo'yog'i buferlangan suvda tayyorlanishi kerak, chunki:",
+   "options": [
+    "Bo'yoq cho'kmaga tushib qoladi",
+    "Bo'yoqning qon hujayralariga kirib borishini yaxshilaydi",
+    "Bo'yash jarayonida muhitning pH qiymatini saqlaydi",
+    "Tomchi yuvilib ketishining oldi olinadi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-097",
+   "n": 97,
+   "q": "Bolaning najasida dumaloq shaklli, rangsiz, shaffof, ikki qavatli qobiqli tuxumlar topildi. Tashqi va ichki qobiqlar o'rtasida o'ralgan filamentlar ko'rinadi. Markazda 3 juft ilgak bor. Topilgan tuxumlar:",
+   "options": [
+    "Askaridaga",
+    "Buqa tasmasimon chuvalchangiga",
+    "Mitti tasmasimon chuvalchangiga",
+    "Exiankokga"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-098",
+   "n": 98,
+   "q": "Biokimyoviy tahlillar uchun venoz qonni olish quyidagi umumiy qoidalarni o'z ichiga oladi:",
+   "options": [
+    "Och qoringa qon olish",
+    "Dorivor moddani kiritgan shprits yordamida qon olish",
+    "O'tkir uchli ingichka igna bilan qon olish",
+    "Antikoagulyantli shprits bilan qon olish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-099",
+   "n": 99,
+   "q": "Pankreatit kasalligida qon zardobida miqdori oshadi:",
+   "options": [
+    "Kreatinkinaza",
+    "Glutamatdegidrogenaza",
+    "GGTP",
+    "Lipaza"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-100",
+   "n": 100,
+   "q": "Yangi olingan qon zardobida birinchi navbatda quyidagi fermentlar faolligi tekshiriladi:",
+   "options": [
+    "Kreatinkinaza",
+    "Kislotali fosfataza",
+    "Transaminazalar",
+    "barcha sanab o'tilgan fermentlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-101",
+   "n": 101,
+   "q": "Qon glyukoza gomeostazida ishtirok etuvchi asosiy organ:",
+   "options": [
+    "Ichaklar",
+    "Skelet mushaklari",
+    "Jigar",
+    "O'pka"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-102",
+   "n": 102,
+   "q": "Xona haroratida stabilizatorsiz turganda qondagi glyukoza miqdori:",
+   "options": [
+    "ko'tariladi",
+    "O'zgarmaydi",
+    "Kamayadi",
+    "eriydi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-103",
+   "n": 103,
+   "q": "Qon zardobining xiralashishi quyidagilar xisobiga yuqori bo'ladi:",
+   "options": [
+    "Xolesterin",
+    "Fosfolipidlar",
+    "Triglitseridlar",
+    "yog ' kislotalari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-104",
+   "n": 104,
+   "q": "Gamma-globulinlar quyidagi kasalliklarda kamayadi:",
+   "options": [
+    "yurak ishemik kasalligida",
+    "gastritda",
+    "Nurlanish kasalligida",
+    "Jigar kasalliklarida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-105",
+   "n": 105,
+   "q": "Qon plazmasi oqsillarining fiziologik funktsiyalari quyidagilar, bundan tashqari:",
+   "options": [
+    "fermentativ",
+    "Transport",
+    "Gumoral immunitetni ta'minlash",
+    "Hujayraviy immunitetni ta'minlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-106",
+   "n": 106,
+   "q": "Oqsilning biologik faolligi quyidagi holatda yo'qotiladi:",
+   "options": [
+    "Suvsizlanish(Degidratatsiya)",
+    "Tabiiy tashuvchilarda xromotagrafiya",
+    "Elektroforezda",
+    "Denaturatsiyada"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-107",
+   "n": 107,
+   "q": "Disproteinemiya - bu:",
+   "options": [
+    "Umumiy oqsil miqdorinining oshishi",
+    "Umumiy oqsil miqdorining kamayishi",
+    "Fibrinogenning kamayishi",
+    "Plazma oqsillari fraktsiyalari nisbatining buzilishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-108",
+   "n": 108,
+   "q": "Temir tanqisligi anemiyasining sababi quyidagilar bo'lishi mumkin:",
+   "options": [
+    "Avitaminoz",
+    "porfirinlar sintezining buzilishi",
+    "Folat kislotasi yetishmovchiligi",
+    "Ferritin miqdorining kamligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-109",
+   "n": 109,
+   "q": "O'tkir pankreatit kasalligida qaysi ferment faolligining ortishi xos:",
+   "options": [
+    "AST",
+    "LDH",
+    "Lipaza",
+    "Insulin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-110",
+   "n": 110,
+   "q": "Qanday sariqlikda najas rangi to'liq rangsizlanadi:",
+   "options": [
+    "gemolitik",
+    "dori -darmonli gepatit",
+    "Obturatsion (mexanik)",
+    "Oilaviy nogemolitik sariqlik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-111",
+   "n": 111,
+   "q": "Gipoglikemiya xosdir:",
+   "options": [
+    "Tireotoksikoz",
+    "Insulinomalar",
+    "oshqozon yarasi kasalligiga",
+    "Semizlikga"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-112",
+   "n": 112,
+   "q": "OIV infektsiyasining qo'zg'atuvchisi:",
+   "options": [
+    "Protozoa (sodda hayvon)",
+    "virus",
+    "bakteriyalar",
+    "Xlamidiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-113",
+   "n": 113,
+   "q": "OIV infeksiyasining qo'zg'atuvchisi qaysi virsular oilasiga mansub:",
+   "options": [
+    "flaviviruslar",
+    "Retroviruslar",
+    "pikornaviruslar",
+    "ortomiksoviruslar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-114",
+   "n": 114,
+   "q": "OIV infeksiyasi bilan zararlanish manbalari quyidagilar:",
+   "options": [
+    "Simptomlarsiz tashuvchi bosqichidagi OIV bilan zararlanganlar",
+    "OITSning 3-4 bosqichidagi bemorlar",
+    "Generalizatsiyalangan limfadenopatiya bosqichidagi OIV bilan zararlanganlar",
+    "Barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-115",
+   "n": 115,
+   "q": "Organizmdagi qaysi biologik suyuqliklarida eng ko'p OIV qo'zgatuvchisi mavjud:",
+   "options": [
+    "qonda",
+    "Likvorda",
+    "So'lak,ter suyuqligida",
+    "Har qanday biologik suyuqlikda, agar unda ko'rinadigan darajada qon bo'lsa"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-116",
+   "n": 116,
+   "q": "OIV qanday yuqadi:",
+   "options": [
+    "Maishiy muloqot yo'li bilan",
+    "Jinsiy aloqa paytida",
+    "Havo tomchi yo'li bilan",
+    "Yo'talganda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-117",
+   "n": 117,
+   "q": "Respirator alkaloz quyidagi hollarda rivojlanadi:",
+   "options": [
+    "O'pka giperventiliyatsiyasida",
+    "traxeya o'smalari",
+    "O'pka gipoventiliyatsiyasida",
+    "Ko'p qayd qilish natijasida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-118",
+   "n": 118,
+   "q": "Metabolik atsidoz kompensatsiyasida ishtirok etmaydi:",
+   "options": [
+    "Fosfatli bufer tizimi",
+    "Sinovial suyuqlik",
+    "o'pka",
+    "bikarbonatli bufer tizimida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-119",
+   "n": 119,
+   "q": "Atsidozni aniqlash uchun qon quyidagilarga tekshiriladi:",
+   "options": [
+    "Titrlanuvchi kislotali",
+    "Fosfatlar miqdori",
+    "kaliy va natriy",
+    "pH qiymati"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-120",
+   "n": 120,
+   "q": "Diuretiklar hujayradan tashqaridagi metabolik alkaloz rivojlanishiga olib keladi, chunki:",
+   "options": [
+    "organizmda kaliyni saqlaydi",
+    "natriyning reabsorbtsiyasini oshiradi",
+    "kaliy organizmdan chiqib ketadi",
+    "suvning reabsorbtsiyasini oshiradi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-121",
+   "n": 121,
+   "q": "Qonning asosiy bufer tizimlariga quyidagilar kirmaydi:",
+   "options": [
+    "bikarbonat",
+    "fosfat",
+    "gemoglobin",
+    "asetat"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-122",
+   "n": 122,
+   "q": "Ve (Base excess) — bu quyidagiga ishora qiladi:",
+   "options": [
+    "Qon tarkibidagi umumiy buferlangan asoslar miqdori",
+    "Oqsilli bufer tizimi konsentratsiyasi",
+    "gemoglobin bufer tizimi kontsentratsiyasi",
+    "Bufer asoslarining meyoriy qiymatdan og'ishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-123",
+   "n": 123,
+   "q": "Kislota-asos nisbatini bilish sizga quyidagilarga imkon beradi:",
+   "options": [
+    "to'g'ri terapiya",
+    "davolash jarayonida bemorning kislota ishqoriy muovzanatini baholash",
+    "bemorning ahvolini baholash metabolik kasalliklarni aniqlash",
+    "Yuqoridagilarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-124",
+   "n": 124,
+   "q": "Qon olishda kislotali-ishqoriy muvozanatni saqlash uchun quyidagilarga rioya qilish zarur:",
+   "options": [
+    "arterial qonni geparinli probirkaga olish",
+    "Havoning kirishiga yo'l qo'ymaslik",
+    "Vena qon tomirini siqmasdan qon olish",
+    "Yuqorida sanalganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-125",
+   "n": 125,
+   "q": "Saqlash vaqtida qonning sovishi quyidagilarga olib keladi:",
+   "options": [
+    "namunaning pH darajasini oshishiga",
+    "namunaning pH qiymatini pasayishiga",
+    "namunadagi pCO2 ning ko'payishi",
+    "eritrotsitlardan kaliyning chiqarilishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-126",
+   "n": 126,
+   "q": "Gemoglobinning kislorod bilan to'yinganlik ko'rsatkichi:",
+   "options": [
+    "oksigemoglobinning umumiy gemoglobinga nisbati foizda",
+    "gemoglobinning har bir grammiga bog'langan kislorod miqdori",
+    "fizik erigan kislorodning oksigemoglobin kislorodiga nisbati",
+    "umumiy gemoglobinning gemoglobin kislorodiga nisbati"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-127",
+   "n": 127,
+   "q": "Oksigemoglobinning dissotsilanish darajasi nimani anglatadi:",
+   "options": [
+    "kislorodning porsial bosimi va miyoglobin miqdori o'rtasidagi bog'liqlik",
+    "gemoglobinning kislorod bilan to'yinganligining kislorod bosimiga bog'liqligi",
+    "oksigemoglobin miqdorining karbonat angidridning bosimiga bog'liqligi",
+    "pH darajasining oksigemoglobin darajasiga ta'siri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-128",
+   "n": 128,
+   "q": "PO2 indeksi quyidagilarni aks ettiradi:",
+   "options": [
+    "qondagi umumiy kislorod miqdori",
+    "gemoglobinning kislorod bilan to'yinganligi",
+    "gemoglobinga bog'liq kislorod",
+    "erigan kislorodning ulushi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-129",
+   "n": 129,
+   "q": "HbO indikatori quyidagicha tavsiflanadi:",
+   "options": [
+    "gemoglobinning kislorod bilan to'yinganligi",
+    "qon kislorod bosimi",
+    "qon zardobida oksigemoglobin kontsentratsiyasi",
+    "gematokrit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-130",
+   "n": 130,
+   "q": "Poykilotsitoz bu:",
+   "options": [
+    "eritrotsitlar shakli",
+    "eritrotsitlar o'lchami",
+    "eritrotsitlarning rang intensivligi",
+    "eritrostlarning hajmi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-131",
+   "n": 131,
+   "q": "Birinchi darajali tuberkulyoz o'chog'i parchalanishida balg'amda quyidagilarni aniqlash mumkin:",
+   "options": [
+    "kazeozli nekroz",
+    "tuberkulyoz mikobakteriyalari",
+    "xolesterin kristallari",
+    "yuqoridagilarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-132",
+   "n": 132,
+   "q": "sodda jonivorlarning vegetativ shakllarini aniqlash uchun yig'ilgan material najas chiqarilgandan(defekatsiyadan) keyin:",
+   "options": [
+    "6-12 soatdan keyin",
+    "2-3 soatdan keyin",
+    "30 daqiqagacha",
+    "ertasi kuni"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-133",
+   "n": 133,
+   "q": "Kaprologik tekshirish uchun bemorning najasi quyidagi joyda saqlanishi kerak:",
+   "options": [
+    "xona harorati",
+    "harorat – 3 °C",
+    "harorat -10 °C",
+    "harorat +3 yoki +5 °C"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-134",
+   "n": 134,
+   "q": "Najasda sodda jonivor va ularning sisralarini aniqlash uchun tekshirish kerak:",
+   "options": [
+    "nativ preparat",
+    "Lugol eritmasi bilan preparat",
+    "nativ va Lugol eritmasi bilan preparat",
+    "Geidengain usuli bo'yicha bo'yalgan preparat"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-135",
+   "n": 135,
+   "q": "Patogen sodda jonivorlarga quyidagilar kiradi:",
+   "options": [
+    "E. coli",
+    "T.hominis",
+    "E.histolytica",
+    "E.papa"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-136",
+   "n": 136,
+   "q": "E.Histolytica ning to'qima shakli quyidagilarda uchraydi:",
+   "options": [
+    "Shakllangan najas",
+    "to'g'ri ichakdan shilliq-qonli ajralmada",
+    "klizmadan keyingi suyuq, yangi chiqqan najas",
+    "klizmadan so'ng hosil bo'lgan shakillangan najasda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-137",
+   "n": 137,
+   "q": "Duodenumdagi (o'n ikki barmoqli ichakdagi) suyuqlikda xivchinlilar oilasining quyidagi vegetativ shakllari bo'lishi mumkin:",
+   "options": [
+    "Trichomonas",
+    "Xilomastics",
+    "Lamblia",
+    "yuqorida aytilganlarning hammasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-138",
+   "n": 138,
+   "q": "Perianal surtma tekshirilganda uzunchoq, biroz assimmetrik, shaffof, ingichka ikki qavatli silliq qobiq bilan qoplangan tuxumlar topildi, ichida lichinkalari ko'rinadi. Topilgan tuxumlar:",
+   "options": [
+    "ankilostamid",
+    "trixostrongilid",
+    "askarida",
+    "ostritsa"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-139",
+   "n": 139,
+   "q": "Qo'ng'ir rangli qobiq; turli o'lcham va har hil shakllar: noksimon, uchburchak, tuflisimon, nematoda tuxumlari odatda tartibsiz:",
+   "options": [
+    "ostritsa",
+    "urug'lantirilmagan askarida",
+    "vlasoglav",
+    "ankilostomatidlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-140",
+   "n": 140,
+   "q": "Najasdan limon shaklidagi, ikkala qutbida \"to'siqlari\" bo'lgan, sariq-jigarrang rangdagi tuxumlar topildi. Najasdan topilgan tuxumlar:",
+   "options": [
+    "Skarid",
+    "ankilostomatid",
+    "ostritsa",
+    "volgaslov"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-141",
+   "n": 141,
+   "q": "Bolaning najasida dumaloq shaklli, rangsiz, shaffof, ikki doirali qobiqli tuxumlar topilgan. O'rash filamentlari tashqi va ichki qobiqlar orasida ko'rinadi. Markazda 3 juft ilgak bor. Topilgan tuxumlar:",
+   "options": [
+    "askarida",
+    "vlasoglav",
+    "qoramol tasmasi",
+    "kichik zanjir qurti"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-142",
+   "n": 142,
+   "q": "Surunkali agioxolit va gepatit bilan og'rigan bemorda o'n ikki barmoqli ichak tarkibida mayda, oval, och sariq tuxumlar, qopqog'i yopilgan holda topilgan. tuxumning biroz toraygan uchi va qarama-qarshi tomonda konus shaklidagi tuberkul. Siz o'ylashingiz mumkin:",
+   "options": [
+    "fasciolosis",
+    "dikroselioz",
+    "opistorxoz",
+    "yuqoridagilarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-143",
+   "n": 143,
+   "q": "Bezgak uchun qonning qalin tomchisini bo'yash uchun Romanovskiy bo'yoq eritmasining optimal pH qiymati:",
+   "options": [
+    "4.0 - 4.5",
+    "5.5 - 6.0",
+    "6,2 - 6,5",
+    "7,0 - 7,2"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-144",
+   "n": 144,
+   "q": "Bezgak uchun standart qon tahlilida ko'rish kerak bo'lgan qalin qon tomchisining ko'rish maydonlarining minimal soni:",
+   "options": [
+    "10",
+    "100",
+    "200",
+    "300"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-145",
+   "n": 145,
+   "q": "Bezgak parazitining har qanday individida xos:",
+   "options": [
+    "sitoplazmasi va yadrosi",
+    "pigment va donadorlik",
+    "psevdopodiya",
+    "vakuola va sitoplazma"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-146",
+   "n": 146,
+   "q": "Bezgakni tekshirish uchun bemordan qon olish kerak:",
+   "options": [
+    "isitma paytida",
+    "terlash davrida",
+    "xurujlar oralig'ida",
+    "har qanday vaqtda, xurujdan qat'iy nazar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-147",
+   "n": 147,
+   "q": "Yupqa qon surtmasini tekshirish natijalariga ko'ra bezgak tashxisini rad etish mumkinmi:",
+   "options": [
+    "ha",
+    "yo'q",
+    "ha, agar 100 ta ko'rish sohasi tekshirilgan bo'lsa",
+    "ha, agar qon harorat ko'tarilgan vaqtda olingan bo'lsa"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-148",
+   "n": 148,
+   "q": "Tuxumning eng katta hajmlisi:",
+   "options": [
+    "askarida",
+    "vlasoglav",
+    "opistorxoz",
+    "fasciola"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-149",
+   "n": 149,
+   "q": "Tuxumning eng kichik hajmlisi:",
+   "options": [
+    "askarida",
+    "toksokara",
+    "opistorxiya",
+    "keng lenta"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-150",
+   "n": 150,
+   "q": "Najasni mikroskopik tekshiruvida askaridaning quyidagi tip tuxumlarini topish mumkin:",
+   "options": [
+    "urug'lantirilgan",
+    "urug'lantirilmagan",
+    "oqsil qobig'ili",
+    "yuqoridagilarning hammasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-151",
+   "n": 151,
+   "q": "Ichak amyobasini tashxislashda yetakchi usul hisoblanadi:",
+   "options": [
+    "koprologik",
+    "serologik",
+    "allergik sinama",
+    "koprokultura"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-152",
+   "n": 152,
+   "q": "Limfoid sistemaning markaziy a'zolari:",
+   "options": [
+    "Timus, suyak iligi",
+    "Jigar",
+    "Limfa tugunlari",
+    "Taloq"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-153",
+   "n": 153,
+   "q": "Limfoid sistemaning periferik a'zolariga quyidagilar kiradi:",
+   "options": [
+    "Bodomcha bez(Tonsillar)",
+    "Limfa tugunlari",
+    "Taloq",
+    "Yuqoridagilarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-154",
+   "n": 154,
+   "q": "Inson T-limfotsitlari quyidagilardan kelib chiqadi:",
+   "options": [
+    "Suyak iligi T-limfotsitlarining unipotent prekursori, keyinchalik timusda pishib",
+    "etiladi",
+    "Koloniya hosil qiluvchi taloq granulotsitar-makrofag",
+    "Limfa limfositlari",
+    "Taloq hujayralari"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-155",
+   "n": 155,
+   "q": "Trombositopeniyani aniqlash uchun tekshirish kerak:",
+   "options": [
+    "Trombositlarning yopish va birikish (adheziv-agregatsion) funksiyasi",
+    "Trombositlar soni",
+    "Fibrinogen",
+    "Trombin vaqti"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-156",
+   "n": 156,
+   "q": "Trombotsitopatiyani aniqlash uchun zarur",
+   "options": [
+    "Trombotsitlarning agregatsiya funktsiyasini tekshirish",
+    "Trombotsitlarning adgeziya funktsiyasini tekshirish",
+    "trombotsitlar omili 3",
+    "yuqoridagilarning hammasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-157",
+   "n": 157,
+   "q": "Gemofiliyada omillar yetishmovchiligi bo'ladi:",
+   "options": [
+    "Plazma omillari",
+    "Leykotsitlar",
+    "Qon tomirlarining endoteliyida",
+    "Fibrinolizda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-158",
+   "n": 158,
+   "q": "Koagulogramma ... deb ataladi:",
+   "options": [
+    "gemostaz tizimini o'rganishga yo'naltirish",
+    "protrombin vaqtini aniqlash",
+    "trombotsitlarning agregatsion xususiyatlarini o'rganish",
+    "Klinik shifokor tomonidan qo'yilgan vazifaga javob beradigan gemokoagulologik",
+    "testlar to'plami"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-159",
+   "n": 159,
+   "q": "Gemostazning kompleks bahosi quyidagilarni o'z ichiga olishi kerak:",
+   "options": [
+    "Trombositlar va qon tomirlarining faoliyatini o'rganish",
+    "Plazma komponentlarini o'rganish",
+    "Fibrinolitik tizimni o'rganish",
+    "yuqorida aytilganlarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-160",
+   "n": 160,
+   "q": "Gemorragik kasalliklar bilan og'rigan bemorlarda tekshiriladi:",
+   "options": [
+    "trombotsitlar agregatsiyasini o'rganish",
+    "fibrinolizni o'rganish",
+    "APTT, PV ni aniqlash",
+    "Yuqorida aytilganlarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-161",
+   "n": 161,
+   "q": "Gemostazni o'rganishda quyidagi omillar xatolikga olib kelishi mumkin:",
+   "options": [
+    "Gemoliz(eritrositlarning parchalanishi)",
+    "geparinning mavjudligi",
+    "antikoagulyant va qonning noto'g'ri nisbati",
+    "yuqoridagilarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-162",
+   "n": 162,
+   "q": "So'lak bezlari quyidagilardan qaysi birini ajratadi:",
+   "options": [
+    "maltaza",
+    "enterokinaza",
+    "lipaza",
+    "amilaza"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-163",
+   "n": 163,
+   "q": "Ovqat hazm bo'lish jarayonida sekretin quyidagi suyuqliklardan qaysi birining ajralishini rag'batlantiradi:",
+   "options": [
+    "ichak shirasining ajralishini rag'batlantiradi",
+    "o't",
+    "oshqozon shirasi",
+    "oshqozon osti bezi shirasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-164",
+   "n": 164,
+   "q": "Oshqozonda xlorid kislotasi quyidagi ta'sirlarni ko'rsatadi:",
+   "options": [
+    "oziq-ovqat oqsillarining shishishiga yordam beradi",
+    "hazm bo'layotgan o'simlik tolasi hujayralarining membranasini",
+    "yumshatadi(maseratsiya)",
+    "bakteritsid(mikroblarni o'ldiruvchi) ta'sirga ega",
+    "yuqoridagilarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-165",
+   "n": 165,
+   "q": "O't suyuqligining oqarib ketgan holati quyidagi kasalliklarda kuzatiladi:",
+   "options": [
+    "gemolitik anemiya (qon tanachalarining tez parchalanishi)",
+    "yuqumli gepatit",
+    "duodenit, xoletsistit",
+    "yuqorida sanab o'tilgan barcha kasalliklarda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-166",
+   "n": 166,
+   "q": "Najas (ahlat) tahliliga tayyorgarlikdan oldin bemor quyidagilarni qabul qilmasligi kerak:",
+   "options": [
+    "ich ketkazuvchi dorilar",
+    "vismut preparatlari",
+    "vagosimpatotrop dorilar",
+    "yuqorida aytilganlarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-167",
+   "n": 167,
+   "q": "..... -bilan kunlik najas miqdori ortadi:",
+   "options": [
+    "oqsilli ovqatda",
+    "uglevodli ovqatda",
+    "yog'li ovqatda",
+    "aralash (turli hil) ovqatda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-168",
+   "n": 168,
+   "q": "Najasaning rangiga ta'sir ko'rsatadi:",
+   "options": [
+    "qon aralashmalari",
+    "sabzavotlarning yashil qismlari",
+    "bilirubin (o't pigmenti)",
+    "yuqorida sanab o'tilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-169",
+   "n": 169,
+   "q": "Najasning meyoriy (jigarrang) rangini quyidagilar belgilaydi:",
+   "options": [
+    "uglevodli ovqat",
+    "oqsilli ovqat",
+    "yog'lar",
+    "sterkobilin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-170",
+   "n": 170,
+   "q": "Najas reaktsiyasi meyorda qanday bo'ladi:",
+   "options": [
+    "kislotali",
+    "ishqoriy",
+    "kuchli ishqoriy",
+    "neytral yoki biroz ishqoriy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-171",
+   "n": 171,
+   "q": "Sog'lom odamning najasida oqsil:",
+   "options": [
+    "Bo'ladi",
+    "Bo'lmaydi",
+    "Tahlil kuchsiz musbat",
+    "Tahlil kuchli musbat"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-172",
+   "n": 172,
+   "q": "Fermentativ kolit uchun xos:",
+   "options": [
+    "suyuq, ko'pikli axlat",
+    "malhamsimon axlat",
+    "pyuresimon axlat",
+    "shakillangan axlat"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-173",
+   "n": 173,
+   "q": "Qonda gemoglobin miqdorining ortishi kuzatiladi:",
+   "options": [
+    "Birlamchi va ikkilamchi eritrositozlarda",
+    "Megoblastik anemiyalarda",
+    "Gemoglobinapatiyalarda",
+    "Gipergidrotatsiyada"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-174",
+   "n": 174,
+   "q": "Leykotsitlarning mutlaq soni deganda tushunuladi:",
+   "options": [
+    "leykotsitar formulada har hil turdagi leykositlar foizi",
+    "1 litr qondagi leykotsitlar soni",
+    "periferik qon surtmasidagi leykotsitlar soni",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-175",
+   "n": 175,
+   "q": "Proteinuriya quyidagi kasalliklarda kuzatiladi:",
+   "options": [
+    "o'tkir glomerulonefrit",
+    "surunkali glomerulonefrit",
+    "o'tkir pielonefrit",
+    "sanab o'tilgan barcha kasalliklar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-176",
+   "n": 176,
+   "q": "Proteinuriya quyidagi a'zolarning shikastlanish belgisi bo'lishi mumkin:",
+   "options": [
+    "buyrak glomeruli",
+    "buyrak kanallari",
+    "siydik yo'llari",
+    "yuqoridagilarning hammasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-177",
+   "n": 177,
+   "q": "Nechiporenko usuli bo'yicha 1 ml siydikdagi leykotsitlarning meyoriy soni:",
+   "options": [
+    "5 ming",
+    "2 ming",
+    "6 ming",
+    "8 ming"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-178",
+   "n": 178,
+   "q": "Faqat buyrakdan kelib chiqqan siydik cho'kmasi elementlari:",
+   "options": [
+    "eritrotsitlar",
+    "leykotsitlar",
+    "tsilindrlar",
+    "yassi epiteliy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-179",
+   "n": 179,
+   "q": "Obturatsion sariqlikda siydikda urobilin paydo bo'lishi nimani bildirishi mumkin:",
+   "options": [
+    "O't yollarining o'tkazuvchanligi tiklanmoqda",
+    "O't yo'llarining tiqib qolishi",
+    "O't qopining shikastlanganligi",
+    "Jigar funktsiyaining tiklanganligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-180",
+   "n": 180,
+   "q": "\"Go'sht seli\" rangidagi siydik:",
+   "options": [
+    "o'tkir diffuz glomerulonefrit",
+    "pielonefrit",
+    "qandli diabet",
+    "buyraklar amiloidozi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-181",
+   "n": 181,
+   "q": "Siydikning ertalabki qismining nisbiy zichligi meyorda o'rtacha:",
+   "options": [
+    "1",
+    "1,004",
+    "1,01",
+    "1,015"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-182",
+   "n": 182,
+   "q": "Siydik rangining pushti yoki qizil rangda bo'lishi siydikda quyidagilasr borligini bildiradi:",
+   "options": [
+    "eritrotsitlar",
+    "gemoglobin",
+    "uroporfirinlar",
+    "yuqoridagilarning hammasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-183",
+   "n": 183,
+   "q": "O'tkir buyrak etishmovchiligiga xos:",
+   "options": [
+    "Sutkalik diurezning ko'payishi",
+    "Siydik ajralishining kamayishi yoki butunlay to'xtashi",
+    "Tungi diurezning ustunligi",
+    "Tez-tez siyish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-184",
+   "n": 184,
+   "q": "Orqa miya suyuqligidagi oqsilning meyori:",
+   "options": [
+    "0,033-0,1 g/l",
+    "0,2-0,3 g/l",
+    "0,3-0,5 g/l",
+    "0,5 g/l dan yuqori"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-185",
+   "n": 185,
+   "q": "Orqa miya suyuqligidagi(likvor) oqsil fraksiyalari nisbatining buzilishiga nima deyiladi:",
+   "options": [
+    "giperglyukoarxiya",
+    "disproteinarxiya",
+    "gipoxloremiya",
+    "disproteinemiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-186",
+   "n": 186,
+   "q": "Oqsil-hujayra dissotsiatsiyasiga quyidagilar kiradi:",
+   "options": [
+    "Orqa miya suyuqligida pleiositoz va oqsilning birgalikda mavjudligi",
+    "orqa miya suyuqligida oqsilning bo'lmasligi",
+    "orqa miya suyuqligida oqsil va glyukoza miqdorining oshishi",
+    "pleotsitoz mavjud bo'lgan holatda oqsilning bo'lmasligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-187",
+   "n": 187,
+   "q": "Orqa miya suyuqligida oqsilning ko'payishi sabablari:",
+   "options": [
+    "meningeal membranalarning yallig'lanishi paytidagi ekssudatsiya jarayonlari",
+    "o'sma hujayralarining parchalanishi",
+    "likvor (orqa miya suyuqligi) sohalarining siqilishi",
+    "yuqoridagi barcha omillar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-188",
+   "n": 188,
+   "q": "Likvor(orqa miya suyligi) turib qolganda uning ustida fibrinoz parda hosil",
+   "options": [
+    "bo'lishining sababi",
+    "Erigan oqsilning cho'kmaga tushushi",
+    "havodan tushgan bakteriyalarning aralashuvi",
+    "likvordagi plazmin faolligining yuqoriligi",
+    "likvor yo'llariga oqsillarning ekssudatsiyasi natijasida hosil bo'lgan fibrinning",
+    "cho'kmasi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-189",
+   "n": 189,
+   "q": "Sog'lom katta odamlarda likvor(orqa miya suyuqligi)da sitoz quyidagicha bo'ladi:",
+   "options": [
+    "1 mkl da 0 ta hujayra",
+    "1 mkl da 1 dan 5 tagacha hujayra",
+    "1 mkl da 10 ta hujayra",
+    "1 mkl da 10–50 ta hujayra"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-190",
+   "n": 190,
+   "q": "Likvordagi(orqa miya suyuqligi) eritrotsitlar soni quyidagi holatlarda",
+   "options": [
+    "hisoblanadi",
+    "punktsiya vaqtida qon likvor yo'llariga tushganida",
+    "eritrotsitlar gemolizga uchraganida",
+    "subaraxnoidal qon quyilishlarda",
+    "yuqorida sanab o'tilgan barcha holatlarda"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-191",
+   "n": 191,
+   "q": "Pleyotsitoz ... da kuzatiladi:",
+   "options": [
+    "tuberkulyoz meningit",
+    "Serebrospinal meningit",
+    "seroz meningit",
+    "barcha sanab o'tilgan kasalliklar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-192",
+   "n": 192,
+   "q": "Likvorni (orqa miya suyuqligini) tekshirishda quyidagilar muhim hisoblanadi:",
+   "options": [
+    "fizik xususiyatlarni aniqlash",
+    "oqsil miqdorini aniqlash",
+    "likvordagi hujayra elementlarini ajratib aniqlash",
+    "yuqorida aytilganlarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-193",
+   "n": 193,
+   "q": "Likvor(orqa miya suyuqligi)ni to'q gilos yoki to'q jigarrang rangda bo'lishi quyidagilar uchun xos:",
+   "options": [
+    "sariqlik",
+    "kistalar",
+    "gematomalar",
+    "meningit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-194",
+   "n": 194,
+   "q": "Qanday xolatlarda orqa miya suyuqligining loyqaligi kuzatiladi:",
+   "options": [
+    "yiringli meningit",
+    "poliomielit",
+    "abstsess (yiring to'plami) subaraxnoidal soha (orqa miya pardalari osti)ga",
+    "yorilganda",
+    "yuqoridagilarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-195",
+   "n": 195,
+   "q": "OIV infektsiyalari yuqmaydi:",
+   "options": [
+    "qon quyish(transfuzion) orqali",
+    "havo tomchi yo'li orqali",
+    "kasal onadan homilaga",
+    "jinsiy yo'l bilan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-196",
+   "n": 196,
+   "q": "Zaxm(sifilis) tashxisi uchun eng sezgir serologik usul:",
+   "options": [
+    "immunofluoressensiya reaktsiyasi",
+    "Kolmer reaktsiyasi",
+    "Vasserman reaktsiyasi",
+    "RIBT usuli bilan oqish speroxetani(treponema pallidum) aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-197",
+   "n": 197,
+   "q": "Gonoreya qo'zg'atuvchisi - gonokokk - bu:",
+   "options": [
+    "juft gramm-manfiy kokklarga",
+    "juft gramm-musbat kokklarga",
+    "juftlashgan gramm o'zgaruvchan(variabel) kokklarga",
+    "Gram-manfiy kokkobatsillalarga"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-198",
+   "n": 198,
+   "q": "ECHT ni tezlashishiga olib kelmaydi:",
+   "options": [
+    "fibrinogen miqdorining ko'payishi",
+    "globulin fraktsiyalarini ko'payishi",
+    "qonda patologik immunoglobulinlar kontsentratsiyasining oshishi",
+    "O't kislotalari konsentratsiyasining oshishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-199",
+   "n": 199,
+   "q": "Retikulotsitlar sonining ko'payishi:",
+   "options": [
+    "aplastik anemiya",
+    "gipoplastik anemiya",
+    "gemolitik sindrom",
+    "suyakdagi saraton metastazlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-200",
+   "n": 200,
+   "q": "Qon surtmalari fiksatsiya uchun qo'llanilmaydi:",
+   "options": [
+    "metil spirti",
+    "May-Grunvald fiksator-bo'yoq",
+    "etil spirti 96%",
+    "etil spirti 70%"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-201",
+   "n": 201,
+   "q": "Qon surtmalarini bo'yash uchun quyidagi usullar qo'llaniladi:",
+   "options": [
+    "Noxt usuli",
+    "Pappengeym usuli",
+    "Romanovskiy usuli",
+    "yuqorida sanab o'tilgan barcha usullar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-202",
+   "n": 202,
+   "q": "Gemoglobinni ... usuli bilan aniqlash mumkin",
+   "options": [
+    "polarimetriya",
+    "gazometriya",
+    "Gemoglobinsiyanid",
+    "yuqoridagi barcha usullar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-203",
+   "n": 203,
+   "q": "OIV bilan kasallangan odamning organizmida infektsiyadan keyin antitelarlarning paydo bo'lishining dastlabki muddati:",
+   "options": [
+    "2 kun",
+    "1 oy",
+    "2 hafta",
+    "3 oy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-204",
+   "n": 204,
+   "q": "OIV infeksiyasiga qarshi ELISA (IFA) testining manfiy natijasi",
+   "options": [
+    "kasallik yo'qligini bildiradi",
+    "qonda virus yo'qligini bildiradi",
+    "“OIV ga qarshi antitanachalar aniqlanmadi” degan xulosaga asos bo'ladi",
+    "qayta tekshiruv uchun asos bo'ladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-205",
+   "n": 205,
+   "q": "OIVning bosqichlari va har bir davrning asosiy xususiyatlari:",
+   "options": [
+    "inkubatsiya, birlamchi belgilar, ikkilamchi kasalliklar, terminal",
+    "inkubatsiya, prodromlar, kasallikni avj olishi, ikkilamchi kasalliklar, terminal",
+    "inkubatsiya, simptomsiz, kasallikni avj olishi, terminal",
+    "O'tkir isitma bosqichi, tarqalgan limfadenopatiya, OITSdan oldingi, OITS"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-206",
+   "n": 206,
+   "q": "Virus OIV bilan kasallangan odamning organizmida mavjud:",
+   "options": [
+    "Barcha bosqichlarida",
+    "inkubatsiyadan tashqari barcha bosqichlarda",
+    "barcha bosqichlarda, 2B dan tashqari, Pokrovskiy V.V tasnifiga ko'ra",
+    "terminaldan tashqari barcha bosqichlarda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-207",
+   "n": 207,
+   "q": "OIVga qarshi antitellarni aniqlashning serodiagnostika usuli hisoblanadi:",
+   "options": [
+    "to'g'ridan-to'g'ri gemagglyutinatsiya testi (RPHA)",
+    "ferment immuno analiz (ELISA)",
+    "komplement bog'lanish reaktsiyasi (CFR)",
+    "bilvosita gemagglyutinatsiya reaktsiyasi (RIHA)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-208",
+   "n": 208,
+   "q": "Immun tizimining markaziy organi hisoblanadi:",
+   "options": [
+    "Ingichka ichakdagi Peyer yamoqlari",
+    "qizil suyak iligi",
+    "taloq",
+    "periferik limfa tugunlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-209",
+   "n": 209,
+   "q": "Gemoblastozlar — quyidagi to'qimadan kelib chiqqan o'simta",
+   "options": [
+    "qon hosil qiluvchi to'qimadan",
+    "biriktiruvchi to'qimadan",
+    "mezenximal to'qimadan",
+    "limfoid to'qimadan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-210",
+   "n": 210,
+   "q": "O'tkir leykoz rivojlanishining asosiy etiologik omillaridan biri:",
+   "options": [
+    "tomir ichi gemolizi",
+    "o'tkazgan infektsiyalari",
+    "uzoq muddatli intoksikatsiya",
+    "ionlashtiruvchi nurlanish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-211",
+   "n": 211,
+   "q": "Miyeloblast leykozning morfologik substrati:",
+   "options": [
+    "granulotsitlar",
+    "trombotsitlar",
+    "atipik hujayralar",
+    "plazmatik hujayralari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-212",
+   "n": 212,
+   "q": "O'tkir leykoz diagnostikasi mezoni bo'lib suyak iligida quyidagilarning aniqlanishi hisoblanadi:",
+   "options": [
+    "30% yoki undan ko'p blast hujayralari",
+    "megalotsitlar, megaloblastlar",
+    "yog'li infiltratsiya",
+    "normoblastlar sonining ko'payishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-213",
+   "n": 213,
+   "q": "O'tkir leykozgaaga shubha qilingan hollarda majburiy tadqiqot usuli:",
+   "options": [
+    "taloq biopsiyasi",
+    "jigar biopsiyasi",
+    "limfa tugunlarining biopsiyasi",
+    "sternal punksiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-214",
+   "n": 214,
+   "q": "O'tkir miyeloblast leykoz diagnostikasida periferik qonda quyidagilarni aniqlanishiga asoslanadi:",
+   "options": [
+    "miyelotsitlar",
+    "promiyelotsitlar",
+    "metamiyelotsitlar",
+    "miyeloblastlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-215",
+   "n": 215,
+   "q": "O'tkir miyeloblast leykoz uchun quyidagilar eng xarakterlidir:",
+   "options": [
+    "trombotsitlar sonini oshirish",
+    "leykemik ziya (bo'shliq)",
+    "megaloblastlarning mavjudligi",
+    "gipereozinofiliya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-216",
+   "n": 216,
+   "q": "Mieloid leykozda leykemik ziya paytida periferik qonga xos bo'ladi:",
+   "options": [
+    "blastlar va granulotsitlarning yetuk shakllari",
+    "eozinofil-bazofil assotsiatsiyasi",
+    "faqat granulotsitlarning yosh shakllari",
+    "granulotsitlarning o'tish shakllari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-217",
+   "n": 217,
+   "q": "O'tkir mieloid leykozda tish milki qonashi va har qanday joydagi qon ketishi asosan quyidagilardan kelib chiqadi:",
+   "options": [
+    "retikulotsitoz",
+    "trombotsitopeniya",
+    "qon ivish omillarining yetishmasligi VIII, IX, X",
+    "qon tomir devorining yallig'lanishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-218",
+   "n": 218,
+   "q": "Leykozda isitma uchun quyidagilar eng xarakterlidir:",
+   "options": [
+    "to'lqinli xarakterga ega",
+    "infeksion asoratlar paytida yuzaga keladi",
+    "antibiotiklarni qabul qilgandan keyin yo'qoladi",
+    "kimyoterapiyadan keyin yo'qoladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-219",
+   "n": 219,
+   "q": "O'tkir mieloid leykozda giperplastik sindromning eng xos belgisi:",
+   "options": [
+    "Taloq va limfa tugunlarining kattalashishi",
+    "Teri osti qon ketishlari",
+    "uzoq muddatli isitma, titroq",
+    "vazn yo'qotish, mushaklar atrofiyasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-220",
+   "n": 220,
+   "q": "O'tkir leykoz diagnozini qo'yishda majburiy tekshiruv usuli:",
+   "options": [
+    "miyelogram",
+    "immunologik testlar",
+    "biokimyoviy usullar",
+    "sitogenetik usullar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-221",
+   "n": 221,
+   "q": "O'tkir leykoz diagnozida eng muhim ahamiyatga ega:",
+   "options": [
+    "nekrotik angina rivojlanishi",
+    "terining leykemiya infiltratsiyasi",
+    "mushak-skelet tizimining shikastlanishi",
+    "umumiy qon tahlilini tekshirish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-222",
+   "n": 222,
+   "q": "Ilioy(tos suyagi yon qisimlari) suyagining qanotidan trepanobiopsiya asosan quyidagi holatlarda o'tkaziladi:",
+   "options": [
+    "og'ir anemiya",
+    "aleykemik leykoz shaklida",
+    "sternal punktsiyasi noinformativ bo'lganda",
+    "neyroleykemiyaga shubha"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-223",
+   "n": 223,
+   "q": "Surunkali miyeloid leykozda periferik qondagi eng xarakterli belgi:",
+   "options": [
+    "\"qobilayatsizlik\"(provala fenomeni) yo'qligi",
+    "tez-tez trombotsitopeniya",
+    "limfotsitlar sonining mutlaq ko'payishi",
+    "anemiyaning og'ir darajasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-224",
+   "n": 224,
+   "q": "Limfoblastik leykozda periferik qonda eng xarakterli o'zgarish:",
+   "options": [
+    "limfotsitlar sonining mutlaq ko'payishi",
+    "neytrofillar sonining mutlaq ortishi",
+    "trombotsitlar sonining ortishi",
+    "limfotsitlar sonining keskin kamayashi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-225",
+   "n": 225,
+   "q": "Leykozda eng xarakterli sog'ayish mezoni:",
+   "options": [
+    "blast hujayralari sonini 50% ga kamaytirish",
+    "blast hujayralari sonini 70-90% ga kamaytirish",
+    "trombotsitlar sonini 50-80 mingga yetkazish",
+    "miyelogrammada blast hujayralarining 5% dan ko'p bo'lmasligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-226",
+   "n": 226,
+   "q": "Leykozda poliximoterapiyani qo'llash asosan quyidagilar bilan bog'liq:",
+   "options": [
+    "hujayra sikli fazalariga ta'siri bilan",
+    "immunomodulyator ta'sir bilan",
+    "dezintoksifikatsiya ta'siri bilan",
+    "suyak iligi transplantatsiyasiga tayyorgarlik bilan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-227",
+   "n": 227,
+   "q": "Suyak iligi transplantatsiyasining asorati:",
+   "options": [
+    "\"blastik\" lizisining rivojlanishi",
+    "transplantatsiyani rad etish(qabul qilinmasligi)",
+    "giperleykotsitozning paydo bo'lishi",
+    "og'ir trombotsitopeniya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-228",
+   "n": 228,
+   "q": "O'tkir leykozning morfologik substrati quyidagilardir:",
+   "options": [
+    "Blast xujayralari",
+    "Yetilgan limfotsitlar",
+    "Yetilish bosqichidagi va yetuk granulotsitlar",
+    "Plazmatik hujayralar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-229",
+   "n": 229,
+   "q": "O'tkir leykozda suyak-bo'g'im tizimining shikastlanishi eng ko'p quyidagilar bilan bog'liq:",
+   "options": [
+    "Subperiostal leykemik infiltratsiya bilan",
+    "Ikkilamchi deformatsiya qiluvchi osteoartroz",
+    "Osteoxondropatiya bilan",
+    "Pannikulit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-230",
+   "n": 230,
+   "q": "Kattalardagi o'tkir leykozning eng ko'p uchraydigan shakli:",
+   "options": [
+    "limfoblastik",
+    "miyeloblastik",
+    "promiyelositik",
+    "eritromyeloz"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-231",
+   "n": 231,
+   "q": "O'tkir leykozda mielogrammada eng xarakterli belgi:",
+   "options": [
+    "Blast hujayralari sonini 30% dan ortishi",
+    "Blast hujayralar sonining 5% dan kamligi",
+    "Yetuk limfotsitlarning 30% dan ko'p bo'lishi",
+    "Ko'p miqdorda megaloblastlarning mavjudligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-232",
+   "n": 232,
+   "q": "O'tkir leykemiya diagnostikasi ko'p hollarda:",
+   "options": [
+    "Anemiya sindromi",
+    "gemorragik sindrom",
+    "Giperplastik sindrom",
+    "Suyak iligidagi blast hujayralarining 30% dan ortig'i"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-233",
+   "n": 233,
+   "q": "Qaysi kasallikda periferik qon tahlilida leykemik bo'shliq (“leykemik provall”) eng xarakterli:",
+   "options": [
+    "Surunkali miyelo leykoz",
+    "O'tkir leykoz",
+    "Surunkali limfoleykoz",
+    "Limfogranulomatoz"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-234",
+   "n": 234,
+   "q": "Qaysi kasallik uchun quyidagi holat eng xarakterli: 60% gacha bo'lgan blastlar bilan kechadigan leykotsitoz, og'ir normoxrom anemiya, suyak iligining ko'p miqdordagi blast hujayra bilan boy hujayrali tarkibi:",
+   "options": [
+    "Surunkali miyeloleykoz",
+    "O'tkir leykoz",
+    "Surunkali limfoleykoz",
+    "Limfogranulomatoz"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-235",
+   "n": 235,
+   "q": "Qaysi leykoz turida suyak iligi punktsiyasida ko'pincha kam hujayrali chiqadi:",
+   "options": [
+    "Surunkali limfoleykoz",
+    "O'tkir aleykemik leykoz",
+    "eritremiya",
+    "miyelom kasalligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-236",
+   "n": 236,
+   "q": "Surunkali mieloleykozda trombositopatiyani aniqlash uchun quyidagilarni o'rganish kerak:",
+   "options": [
+    "Trombotsitlarning agregatsion-adgeziya funktsiyasi",
+    "Trombotsitlar soni",
+    "Trombotsitlarning deformatsiyasi",
+    "trombin vaqti"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-237",
+   "n": 237,
+   "q": "K vitamini metabolizmi buziladi:",
+   "options": [
+    "Buyrak kasalliklari",
+    "burundan qon ketish",
+    "miyokard infarkti",
+    "Parenximatoz gepatit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-238",
+   "n": 238,
+   "q": "Tabiiy antikoagulyant hisoblanadi:",
+   "options": [
+    "III omil",
+    "antitrombin",
+    "streptokinaza",
+    "ADF"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-239",
+   "n": 239,
+   "q": "Antikoagulyant ta'sirga ega:",
+   "options": [
+    "kollagen",
+    "trombin",
+    "Protein C",
+    "To'qima plazminogen aktivatori"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-240",
+   "n": 240,
+   "q": "Qon tomir endoteliysi sintez qiladi:",
+   "options": [
+    "protrombin",
+    "prostatsiklin",
+    "tromboksan",
+    "IX omil"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-241",
+   "n": 241,
+   "q": "Protein S ni aniqlashning diagnostik ahamiyati:",
+   "options": [
+    "Tromboz xavfini aniqlash",
+    "Bilvosita antikoagulyantlarning dozalarini oshirish yoki kamaytirish mezonlari",
+    "Geparin terapiyasini nazorat qilish",
+    "Fibrinolizni baholash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-242",
+   "n": 242,
+   "q": "Trombositlarning agregatsiyasini keltirib chiqaruvchi prokoagulyant:",
+   "options": [
+    "prostatsiklin",
+    "tromboksan",
+    "to'qimalar omili",
+    "Protein C"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-243",
+   "n": 243,
+   "q": "Qon olinayotganda glyukozani barqaror saqlab qolish uchun ishlatiladi:",
+   "options": [
+    "natriy oksalat",
+    "natriy ftorid",
+    "THU",
+    "geparin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-244",
+   "n": 244,
+   "q": "Sitrat va oksalat plazmani….. hisobiga barqarorlashtiradi:",
+   "options": [
+    "Kaltsiy ionlarining bog'lanishi",
+    "antitrombinni faollashtirish",
+    "Xageman (X) faktorining faollashuvini oldini olish orqali",
+    "tromboplastinni to'sib qo'yish orqali"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-245",
+   "n": 245,
+   "q": "Bemor namunasini ro'yxatga olish quyidagi bosqichda amalga oshiriladi:",
+   "options": [
+    "preanalitik",
+    "Analitik",
+    "postanalitik",
+    "preanalitik va postanalitik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-246",
+   "n": 246,
+   "q": "Laboratoriya tahlillari natijalarini baholash quyidagi bosqichda amalga oshiriladi:",
+   "options": [
+    "preanalitik",
+    "Analitik",
+    "postanalitik",
+    "Preanalitik va analitik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-247",
+   "n": 247,
+   "q": "Reanimatsiya bo'limidagi bemorlardan qon olmaslik kerak:",
+   "options": [
+    "Vena qon Tomirdan",
+    "Arteriya qon tomiridan",
+    "subklavial kateterdan",
+    "Barmoqdan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-248",
+   "n": 248,
+   "q": "Koagulogramma uchun qon olayotganda tirsak ustiga qo'yilgan turniket (jgut) qancha vaqtdan ortiq qolmasligi kerak:",
+   "options": [
+    "15 soniya",
+    "30 soniya",
+    "1 daqiqa",
+    "2 daqiqa"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-249",
+   "n": 249,
+   "q": "Koagulogramma uchun qon qabul qilishda ruxsat etilmaydi:",
+   "options": [
+    "Sitrat bilan to'ldirilgan vakuum probirkalaridan foydalanish",
+    "Sitratli plastik probirkalardan foydalanish",
+    "Silikonlangan sitrat probirkalaridan foydalanish",
+    "Inyeksiya shpritslari yordamida probirkalarni sitrat bilan to'ldirish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-250",
+   "n": 250,
+   "q": "Romanovskiy bo'yog'ini pH 6,8-7,2 bo'lgan buferli suvda tayyorlash kerak, chunki:",
+   "options": [
+    "Bo'yoq cho'kmasdan qoladi",
+    "Bo'yoqning qon hujayralariga kirib borishini yaxshilaydi",
+    "Hujayra elementlarini bo'yash uchun optimal sharoit yaratiladi",
+    "Preparatdagi tomchi yuvilib ketishdan himoyalanadi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-251",
+   "n": 251,
+   "q": "Sil (tuberkulyoz) kasalligida bakteriyalarni ajratib aniqlash balg'am namunasini mikroskopiya qilib ko'rib chiqish orqali quyidagi bo'yash usuli bilan amalga oshiriladi:",
+   "options": [
+    "Romanovskiy-Giemsa bo'yicha",
+    "Papanikolau bo'yicha",
+    "Ziel-Nielsen bo'yicha",
+    "Leishman bo'yicha"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-252",
+   "n": 252,
+   "q": "Agar 2 soat ichida o't namunasi mikroskopik tekshiruvdan o'tkazib bo'lmasa, uni qanday saqlash mumkin:",
+   "options": [
+    "Muzlatgichga qo'yish",
+    "Issiq suvli vannaga joylashtirish",
+    "Termostatga qo'yish",
+    "10% formalin, 10% EDTA, trasilol bilan konservatsiya qilish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-253",
+   "n": 253,
+   "q": "OIV yuqish omillari:",
+   "options": [
+    "qon",
+    "sperma suyuqlik",
+    "ona suti",
+    "Yuqoridagilarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-254",
+   "n": 254,
+   "q": "Epidural sohadagi qon tomirlar igna bilan shikastlanganda orqa miya suyuqligiga (likvorga) tushgan “yo'lchi” (tasodifiy) qon aralashmasidan xalos bo'lish uchun nima qilish kerak:",
+   "options": [
+    "Likvorni sentrifugalash",
+    "Likvorni filtrdan o'tkazish",
+    "Dastlabki 3–5 tomchi likvordan namunani olmaslik",
+    "Likvoroforez o'tkazish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-255",
+   "n": 255,
+   "q": "Klinik biokimyoda o'lchashning to'g'riligi quyidagilar yordamida aniqlanadi:",
+   "options": [
+    "Kalibratorlar",
+    "Bemor namunalari",
+    "Sertifikatlangan nazorat zardoblari",
+    "Sertifikatlanmagan nazorat zardoblari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-256",
+   "n": 256,
+   "q": "Qon zardobida plazmadan farqli o'laroq, yo'q:",
+   "options": [
+    "fibrinogen",
+    "Albumin",
+    "Kompiliment",
+    "Kallikrein"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-257",
+   "n": 257,
+   "q": "Polarimetriya - o'lchashga asoslangan usul:",
+   "options": [
+    "yorug'lik uzatish",
+    "loyqalik(xiralik)",
+    "yorug'likning tarqalishi",
+    "Polarizatsiyalangan nurning aylanishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-258",
+   "n": 258,
+   "q": "Spektrofotometrlarda monoxromatiklik quyidagilar yordamida ta'minlanadi:",
+   "options": [
+    "Vodorod chiroq",
+    "Galogen chiroq",
+    "Difraksion panjara yoki kvarts prizmasi",
+    "yorug'lik filtri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-259",
+   "n": 259,
+   "q": "Gematopoetik o'zak hujayraga quyidagilar xos:",
+   "options": [
+    "Polipotentlik",
+    "Cheksiz proliferativ qobiliyat",
+    "Differenserovka(farqlash) qobiliyatining cheklanganligi",
+    "O'z-o'zini yangilash va o'z-o'zini saqlashga qodir emas"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-260",
+   "n": 260,
+   "q": "“Klonaviy” kelib chiqishi atamasi bilan leykozlarda nima tushuniladi:",
+   "options": [
+    "Hujayralarning yangi xususiyatga ega b'olishi",
+    "Leykoz hujayralarining anaplaziyasi",
+    "Mutatsiyaga uchragan hujayraning avlodi",
+    "Leykoz hujayralari morfologiyasining xilma-xilligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-261",
+   "n": 261,
+   "q": "Suyak iligining stromal hujayrali elementlariga quyidagilar kiradi:",
+   "options": [
+    "eritroblastlar",
+    "fibroblastlar",
+    "Megakaryotsitlar",
+    "neytrofillar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-262",
+   "n": 262,
+   "q": "Mikrosferotsitozda Prays-Jons egri chizig'i:",
+   "options": [
+    "O'ngga siljiydi",
+    "Chapga siljiydi",
+    "Bir nechta cho'qqilar paydo bo'ladi",
+    "O'zgarmaydi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-263",
+   "n": 263,
+   "q": "Balg'amning tipik belgisi hisoblanadi:",
+   "options": [
+    "Alveolyar makrofaglar",
+    "fibrin",
+    "neytrofillar",
+    "Kurshman spirallari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-264",
+   "n": 264,
+   "q": "Krupoz pnevmoniyada balg'am tarkibida aniqlanishi mumkin:",
+   "options": [
+    "epiteloid hujayralar",
+    "Aktinomitsetlar",
+    "Leykotsitlar, eritrotsitlar va alveolyar makrofaglar bilan birga shilimshiq",
+    "Ditrix tiqinlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-265",
+   "n": 265,
+   "q": "Balg'amda gematoidin kristallari quyidagi holatda aniqlanadi:",
+   "options": [
+    "Bronxopnevmoniyada",
+    "bronxitda",
+    "bronxoektatik kasallikda",
+    "O'pka gangrenasida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-266",
+   "n": 266,
+   "q": "Bronxial astmada balg'amda quyidagilar xarakterli hisoblanadi:",
+   "options": [
+    "Alveolyar makrofaglar",
+    "Ohaklashgan elastik tolalar",
+    "Ditrix tiqinlari",
+    "eozinofillarning to'planishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-267",
+   "n": 267,
+   "q": "Bronxoalveolyar tizim hujayralarining metaplaziyasi bilan giperplaziyasi o'rtasidagi asosiy farq:",
+   "options": [
+    "Preparatda hujayra elementlari sonining ko'payishi",
+    "Ko'p yadroli hujayralar paydo bo'lishi",
+    "Biriktiruvchi to'qima elementlarining paydo bo'lishi",
+    "Apoptozlar (hujayra o'limi) sonining ko'payishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-268",
+   "n": 268,
+   "q": "Kreola tanachalari-bu:",
+   "options": [
+    "Palisad shaklida joylashgan hujayralar guruhi",
+    "Bronxlarning giperplaziyalangan shilliq qavati hujayralaridan tashkil topgan",
+    "dumaloqlashgan qatlamlar",
+    "elastik tolalar",
+    "Miyelin shaklidagi tuzilmalar"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-269",
+   "n": 269,
+   "q": "Balg'amda o'tkir bronxitda quyidagilar ko'p miqdorda bo'lishi xarakterlidir:",
+   "options": [
+    "gematoidin kristallari",
+    "elastik tolalar",
+    "Kurshman spirallari",
+    "Silindrsimon kiprikli epiteliy hujayralari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-270",
+   "n": 270,
+   "q": "Siliotrofiya - bu:",
+   "options": [
+    "Bronxlarning yallig'lanishi",
+    "Kiprikli silindrsimon epiteliyning zararlanishi (degeneratsiyasi)",
+    "Balg'amda Sharko-Leiden kristallarining paydo bo'lishi",
+    "Sil(Tuberkulyoz) bo'shlig'ining yemirilishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-271",
+   "n": 271,
+   "q": "Balg'amda xolesterin kristallari quyidagi holatda aniqlanadi:",
+   "options": [
+    "Bronxitda",
+    "Krupoz pnevmoniyada",
+    "Bronxial astmada",
+    "Birlamchi sil(tuberkulyoz) o'chog'ining yemirilishida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-272",
+   "n": 272,
+   "q": "Balg'amdagi neytrofillar — quyidagilarning asosiy tarkibiy qismi hisoblanadi:",
+   "options": [
+    "shilliq",
+    "Yemirilgan sil o'chog'i",
+    "Yiring",
+    "o'pka absessi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-273",
+   "n": 273,
+   "q": "Balg'amdagi eozinofillar ko'p miqdorda quyidagi holatlarda uchraydi:",
+   "options": [
+    "Bronxopnevmoniyada",
+    "bronxitda",
+    "Krupoz pnevmoniyada",
+    "Allergik tabiatli kasalliklar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-274",
+   "n": 274,
+   "q": "O'pka absessidagi balg'am uchun quyidagilar xosdir:",
+   "options": [
+    "gematoidin kristallari",
+    "Nekrotik(chirigan) to'qimalarning b'olakchalari",
+    "Kurshman spirallari",
+    "Silindrsimon kiprikli epiteliy hujayralari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-275",
+   "n": 275,
+   "q": "O'pka kandidomikozida balg'am tarkibida quyidagilar b'oladi:",
+   "options": [
+    "Keng bo'linmalar bilan ajralgan mikeliy",
+    "Hujayra ichida joylashgan, gram-musbat, yumaloq yoki oval shakldagi,",
+    "bo'lakchalangan va atrofida bo'yalmagan zona bilan o'ralgan hujayralar",
+    "psevdomitseliya",
+    "Katta sporalar zanjiri"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-276",
+   "n": 276,
+   "q": "Birlamchi tuberkulyoz o'chog'ining parchalanishida quyidagilar xarakterlidir:",
+   "options": [
+    "elastik tolalar",
+    "gematoidin kristallari",
+    "Kurshman spirallari",
+    "Qalqonlangan elastik tolalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-277",
+   "n": 277,
+   "q": "Bronxial astmada balg'amda quyidagilar xarakterli:",
+   "options": [
+    "Ditrix tiqinlari",
+    "gematoidin kristallari",
+    "Sharko-Leyden kristallari",
+    "fibrin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-278",
+   "n": 278,
+   "q": "Bronxial astmada balg'amda quyidagilar aniqlanishi xos:",
+   "options": [
+    "Marjonsimon elastik tolalar",
+    "Yog' infiltratsiyasi bilan alveolyar makrofaglar",
+    "Kurshman spirallari",
+    "Leykotsitlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-279",
+   "n": 279,
+   "q": "Balg'amda marjonsimon tolalar.......da aniqlanadi:",
+   "options": [
+    "Bronxitda",
+    "Krupoz pnevmoniyada",
+    "Bronxial astmada",
+    "Fibroz-kavernoz tuberkulyozda(sil)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-280",
+   "n": 280,
+   "q": "Bemorlarning balg'amida .......da ko'p miqdorda limfotsitlar aniqlanadi:",
+   "options": [
+    "sil kasalligida(tuberkulyoz)",
+    "ORZ",
+    "Bronxial astmada",
+    "krupoz pnevmoniyada"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-281",
+   "n": 281,
+   "q": "Qonga bo'yalgan balg'am quyidagilarga xosdir:",
+   "options": [
+    "O'pkadagi neoplazmalar uchun",
+    "O'tkir respirator kasallik (ARI)",
+    "Bronxial astma",
+    "Zotiljam(pnevmoniya)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-282",
+   "n": 282,
+   "q": "Oshqozon tarkibidagi umumiy kislotaligi quyidagilardan iborat:",
+   "options": [
+    "Erkin xlorid kislotadan",
+    "kislota qoldig'i",
+    "Erkin va bog'langan xlorid kislotasi",
+    "Erkin xlorid kislotasi, bog'langan xlorid kislotasi va kislota qoldig'i"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-283",
+   "n": 283,
+   "q": "Axiliya - bu quyidagilarning yo'qligi:",
+   "options": [
+    "Erkin xlorid kislotasi",
+    "Erkin va bog'langan xlorid kislotasi",
+    "Erkin, bog'langan xlorid kislotasi va pepsin",
+    "Pepsin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-284",
+   "n": 284,
+   "q": "Apoptoz - bu:",
+   "options": [
+    "Gipoksiya tufayli hujayra o'limi",
+    "Gipertermiya tufayli hujayra o'limi",
+    "Genetik dasturlashtirilgan hujayra o'limi",
+    "Kimyoviy moddalar ta'sirida hujayra o'limi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-285",
+   "n": 285,
+   "q": "Bo'yashda preparatni nam fiksatsiya qilish zarur:",
+   "options": [
+    "Pappenxaymga ko'ra",
+    "Papanikolau ko'ra",
+    "Leishman ko'ra",
+    "Gramm ko'ra"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-286",
+   "n": 286,
+   "q": "Giperplaziyaning sitologik belgilari:",
+   "options": [
+    "Hujayralar soni o'zgarmaydi",
+    "Hujayralar va yadrolarning hajmi oshadi",
+    "Birlashtiruvchi to'qima elementlari paydo bo'ladi",
+    "Yadro-sitoplazmatik nisbati keskin ortadi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-287",
+   "n": 287,
+   "q": "Metaplaziyaga uchragan va silindrsimon hujayralarda eozinofil granulalari bo'lgan vakuolalar topilganda quyidagilar mavjudligini taxmin qilish mumkin:",
+   "options": [
+    "Degenerativ o'zgarishlar",
+    "Sekretsiya",
+    "Xlamidiya infektsiyasi",
+    "Gerpes virusi infektsiyasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-288",
+   "n": 288,
+   "q": "Yallig'lanishning ekssudativ bosqichi avjida sitologik preparatda quyidagilar ustunlik qiladi:",
+   "options": [
+    "neytrofillar",
+    "limfotsitlar",
+    "eozinofillar",
+    "Limfotsitlar va makrofaglar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-289",
+   "n": 289,
+   "q": "Sil mikobakteriyalari keltirib chiqargan yallig'lanishning nospetsifik yallig'lanishdan farqli belgilari:",
+   "options": [
+    "neytrofillar",
+    "epiteloid hujayralar",
+    "Pirogov-Langhans hujayralari",
+    "ko'p yadroli gigant hujayralar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-290",
+   "n": 290,
+   "q": "Papillomavirus infektsiyasining sitologik belgilari:",
+   "options": [
+    "Koilotsitoz",
+    "Koilotsitoz, parakeratoz",
+    "Koilotsitoz, parakeratoz, diskeratoz",
+    "Koilotsitoz, parakeratoz, diskeratoz, ko'p yadroli hujayralar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-291",
+   "n": 291,
+   "q": "Reproduktiv yoshdagi ayollarda papillomavirus infektsiyasi asosiy sabab hisoblanadi:",
+   "options": [
+    "yallig'lanish",
+    "Yassi hujayrali metaplaziya",
+    "Bachadon bo'yni Displaziyasi va saratoni",
+    "Sut sog'uvchilar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-292",
+   "n": 292,
+   "q": "Metaplaziya -bu bir turdagi to'qimalarning o'zgarishi:",
+   "options": [
+    "Birlamchi to'qimadan morfologik va funksional jihatdan farq qiluvchi turlarga",
+    "Birlamchi to'qimadan morfologik va funksional jihatdan farq qilmaydigan turlarga",
+    "Bog'liq bo'lmagan turlar",
+    "Xatarli o'sish belgilari bo'lgan to'qimalar",
+    "Yuqoridagi barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-293",
+   "n": 293,
+   "q": "Yaxshi o'smaning morfologik mezoni:",
+   "options": [
+    "Shoxlanish",
+    "Differentsiallashish",
+    "Proliferatsiya va dedifferentsiya",
+    "Oddiy to'qimalarga strukturaviy va hujayraviy o'xshashlik, polimorfizmning",
+    "yo'qligi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-294",
+   "n": 294,
+   "q": "Saratonning turli gistologik shakllarida (“rozetalar, piyozchalar, marvaridlar” va boshqalar) o'ziga xos shakldagi hujayra komplekslarining shakllanishi quyidagilar bilan izohlanadi:",
+   "options": [
+    "O'smaning yetukligi, ona hujayraga o'xshashligini ko'rsatadi",
+    "O'sma o'sishining maxsus \"malign\" xususiyatlari",
+    "O'sma to'qimalarida distrofik o'zgarishlar",
+    "Yetuk bo'lmagan o'smaning mavjudligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-295",
+   "n": 295,
+   "q": "Giperkeratoz surtmalarda quyidagilarning mavjudligi xarakterlidir:",
+   "options": [
+    "Och tusli sitoplazmaga ega bo'lgan ko'p sonli hujayralar",
+    "Shoxlanuvchi yadrosiz hujayralarning to'planishi",
+    "Metaplaziyaga uchragan hujayralar",
+    "Zaxira hujayralar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-296",
+   "n": 296,
+   "q": "Bachadon bo'ynidagi saraton oldi jarayonlariga quyidagilar kiradi:",
+   "options": [
+    "atrofik o'zgarishlar",
+    "Yassi hujayrali metaplaziya",
+    "Displaziya",
+    "Yallig'lanish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-297",
+   "n": 297,
+   "q": "Faqat xavfli o'smalarga xos bo'lgan atipiyaning sitologik belgilarini tanlang:",
+   "options": [
+    "Hujayra va yadrolarning noto'g'ri shakli",
+    "Xromatinning notekis taqsimlanishi",
+    "degenerativ o'zgarishlar",
+    "Xromatin noto'g'ri taqsimlangan hujayralar va yadrolarning noto'g'ri shakli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-298",
+   "n": 298,
+   "q": "Bronx epiteliy hujayralari giperplaziyasining sitologik belgilari:",
+   "options": [
+    "Hujayralar soni o'zgarmaydi",
+    "Hujayralar va yadrolarning hajmi kattalashadi",
+    "Birlashtiruvchi to'qima elementlari paydo bo'ladi",
+    "Yadro-sitoplazmatik nisbat keskin ortadi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-299",
+   "n": 299,
+   "q": "Sut bezining tuzilish birliklari:",
+   "options": [
+    "Asosiy sut oqimlari",
+    "Ulushlar",
+    "bo'lakchalar",
+    "Sut sinuslari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-300",
+   "n": 300,
+   "q": "Sut bezining terminal yo'llari va atsinuslarini quyidagilar qoplaydi:",
+   "options": [
+    "Ko'p qavatli yassi muguzlanuvchi epiteliy",
+    "Ko'p qavatli yassi muguzlanmaydigan epiteliy",
+    "Ikki qatorli silindrsimon (kubsimon) epiteliy",
+    "Bir qatorli silindrsimon (kubsimon) epiteliy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-301",
+   "n": 301,
+   "q": "Sekretning sut bezining chuqur qismlaridan so'rg'ichga o'tishiga quyidagilar",
+   "options": [
+    "yordam beradi",
+    "apokrin hujayralar",
+    "mioepitelial hujayralari",
+    "\"Og'iz tanachalari\" tipidagi hujayralar",
+    "\"Ksantom\" tipidagi hujayralar"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-302",
+   "n": 302,
+   "q": "Sut bezi punksiyasidan olingan materialda sitoplazmasining mayda hujayrali tuzilishiga ega bo'lgan ko'p yadroli makrofaglar (\"ksantom\" tipidagi hujayralar) quyidagilar bilan tavsiflanadi:",
+   "options": [
+    "Lipogranuloma uchun",
+    "Ginekomastiya",
+    "Fibroadenomalar",
+    "Fibroz-kistoz kasalligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-303",
+   "n": 303,
+   "q": "Sut bezi saratoni metastazining eng xarakterli sitologik belgisi ekssudatda quyidagilarning mavjudligidir:",
+   "options": [
+    "\"Yuzlari\" bo'lgan hujayralar",
+    "Yadrolari ekssentrik joylashgan tarqoq joylashgan prizmatik hujayralar",
+    "Keskin ifodalangan polimorfizmga ega hujayralardan iborat sharsimon tuzilmalar",
+    "Nisbatan monomorf hujayralardan tashkil topgan, polimorfizmi yaqqol",
+    "ifodalanmagan sharsimon tuzilmalar"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-304",
+   "n": 304,
+   "q": "Ko'krak bezi punksiyasida olingan materialda parchalangan hujayralarning \"yalang'och\" oval yadrolarining ko'pligi eng xarakterli:",
+   "options": [
+    "Medulyar saraton uchun",
+    "Fibroz-kistoz kasallik",
+    "Surunkali mastit",
+    "Fibroadenomalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-305",
+   "n": 305,
+   "q": "Oqsil tuzilishining asosini quyidagilar tashkil qiladi:",
+   "options": [
+    "polipeptid zanjiri",
+    "nuklein kislotalar zanjiri",
+    "Aminokislotalarning uglevodlar bilan birikishi",
+    "Ketokislotalarning birikishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-306",
+   "n": 306,
+   "q": "Oqsillarning birlamchi tuzilishini quyidagilar belgilaydi:",
+   "options": [
+    "Polipeptid zanjirlari soni",
+    "Peptid zanjiriga bog'langan uglevod komponentlarining tarkibi",
+    "Polipeptiddagi domenlar nisbati",
+    "Peptid zanjiridagi aminokislotalar ketma-ketligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-307",
+   "n": 307,
+   "q": "Oqsil denaturatsiyasi - bu:",
+   "options": [
+    "To'rtlamchi, uchlamchi va qisman ikkilamchi tuzilmaning buzulishi",
+    "Barcha tuzilmalarning buzulishi",
+    "Eruvchanlikning kamayishi",
+    "Oqsil zaryadining o'zgarishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-308",
+   "n": 308,
+   "q": "Oqsillarning denaturatsiyasi quyidagicha nomlanadi:",
+   "options": [
+    "suvsizlanish",
+    "Kuchli elektrolitlar ta'siri",
+    "5,58-8,5 oralig'ida pH o'zgarishi",
+    "Neytral tuzlar ta'siri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-309",
+   "n": 309,
+   "q": "Plazma oqsillariga quyidagilar kiradi:",
+   "options": [
+    "elastin",
+    "globulinlar",
+    "skleroproteinlar",
+    "kollagenlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-310",
+   "n": 310,
+   "q": "Alfa-oqsilni aniqlash diagnostik ahamiyatga ega:",
+   "options": [
+    "Jigar exinokokkozida",
+    "Birlamchi jigar saratoni",
+    "Yuqumli gepatit",
+    "Asoratlangan miokard infarkti"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-311",
+   "n": 311,
+   "q": "Aminokislotalarning organizmdagi asosiy massasi:",
+   "options": [
+    "Nuklein kislotalarni sintez qilish uchun ishlatiladi",
+    "Oqsillar sintezi uchun ishlatiladi",
+    "dezaminlanishga uchraydi",
+    "dekarboksillanishga uchraydi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-312",
+   "n": 312,
+   "q": "Oqsillar anabolizmini kuchaytiradi:",
+   "options": [
+    "Tireotrop gormon",
+    "Glyukokortikoidlar",
+    "Somatotrop gormon, jinsiy gormonlar",
+    "Insulin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-313",
+   "n": 313,
+   "q": "Gipoalbuminemiya kuzatiladi:",
+   "options": [
+    "Gepatitda",
+    "pankreatitda",
+    "nefrotik sindromda",
+    "Giperproteinemiyalarda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-314",
+   "n": 314,
+   "q": "Buyrakdan tashqari retension azotemiyalar quyidagi hollarda kuzatilishi mumkin:",
+   "options": [
+    "Gastritda",
+    "xolangitda",
+    "keng ko'lamli kuyishda",
+    "Renitda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-315",
+   "n": 315,
+   "q": "Qoldiq azot mochevina azoti hisobiga ortadi:",
+   "options": [
+    "O'tkir gepatitda",
+    "Yurak Ishemik kasalligida",
+    "Nefrit , surunkali buyrak yetishmovchiligida",
+    "O'tkir sariq jigar atrofiyasida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-316",
+   "n": 316,
+   "q": "Gamma-globulinlar kamayadi:",
+   "options": [
+    "yurak Ishemik kasalligida",
+    "Nurlanish kasalligi",
+    "Qizilo'ngach o'smalari",
+    "Revmatoid artrit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-317",
+   "n": 317,
+   "q": "Bens-Jons oqsilini quyidagicha aniqlash mumkin:",
+   "options": [
+    "Agglyutinatsiya reaktsiyasi bilan",
+    "Siydik oqsili elektroforezi",
+    "Siydik konsentratsiyalash",
+    "Folin reaktivi bilan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-318",
+   "n": 318,
+   "q": "Qonda fibrinogen kamayadi:",
+   "options": [
+    "Miokard infarktida",
+    "jigar sirrozida",
+    "revmatizmda",
+    "O'tkir yallig'lanishda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-319",
+   "n": 319,
+   "q": "Qonda gaptoglobin kamayganda quyidagilar kuzatiladi:",
+   "options": [
+    "gemoglobinuriya",
+    "miyoglobinuriya",
+    "Giperbilirubinemiya",
+    "azotemiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-320",
+   "n": 320,
+   "q": "C-reaktiv oqsil:",
+   "options": [
+    "Qandli diabetning belgisi",
+    "O'tkir faza oqsili",
+    "Antikoagulyant tizimning tarkibiy qismi",
+    "Revmatik jarayon belgisi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-321",
+   "n": 321,
+   "q": "Zardobda siydik kislotasi ko'tariladi:",
+   "options": [
+    "Gastrit, oshqozon yarasida",
+    "Gepatitda",
+    "Sitostatiklar bilan davolash",
+    "epilepsiya, shizofreniya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-322",
+   "n": 322,
+   "q": "Gaptoglobinning asosiy fiziologik roli:",
+   "options": [
+    "Gemoglobinni bog'lash",
+    "Antiproteolitik faollik",
+    "Immunitet reaktsiyasida ishtirok etish",
+    "Gemoglobin sintezida ishtirok etish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-323",
+   "n": 323,
+   "q": "Seruloplazminning asosiy fiziologik roli:",
+   "options": [
+    "Qon ivishida ishtirok etish",
+    "Antiproteolitik faollikni yaratish",
+    "Mis tashish",
+    "Tanadagi temirni tashish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-324",
+   "n": 324,
+   "q": "AST/ALT faolligi nisbati (De Ritis koeffitsienti) kamayadi:",
+   "options": [
+    "O'tkir va doimiy virusli gepatitda",
+    "Miokard infarktida",
+    "Jigar ichi xolestazi",
+    "miozit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-325",
+   "n": 325,
+   "q": "Immunitet tizimining periferik a'zosi:",
+   "options": [
+    "taloq",
+    "qizil ilik",
+    "jigar",
+    "qalqonsimon bez"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-326",
+   "n": 326,
+   "q": "Immun tizimi a'zosi:",
+   "options": [
+    "qalqonsimon bez",
+    "ayrisimon bez- timus",
+    "oshqozon osti bezi",
+    "buyrak usti bezlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-327",
+   "n": 327,
+   "q": "OIV infektsiyasida T4 -limfotsitlar o'limi sababi, toksinlar ta'siri:",
+   "options": [
+    "ularda OIVning ko'payishi",
+    "ularning OIV bilan aloqada bo'lishi",
+    "OIVning ularga kirib borishi",
+    "ularni bog'lash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-328",
+   "n": 328,
+   "q": "OIV infeksiyasini laboratoriya diagnostikasi usullari:",
+   "options": [
+    "Serologik, immunobloting",
+    "Umumklinik tekshiruvlar",
+    "Umumiy qon tahlili",
+    "Qonning biokimyoviy tahlili"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-329",
+   "n": 329,
+   "q": "Qonning ivishga qarshi tizimi omillari qayerda joylashgan:",
+   "options": [
+    "Plazmada",
+    "Zardobda",
+    "Semiz hujayralarda",
+    "leykositlarda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-330",
+   "n": 330,
+   "q": "Almashinmaydigan aminokislotalar quyidagilar:",
+   "options": [
+    "Lizin",
+    "guanin",
+    "Serin",
+    "Prolin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-331",
+   "n": 331,
+   "q": "Qoldiq azot mochevina azoti hisobiga quyidagi hollarda ortadi",
+   "options": [
+    "Nefritda",
+    "Bronxitda",
+    "O'tkir gepatitda",
+    "Miokard infarktida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-332",
+   "n": 332,
+   "q": "Alfa globulinlarning ortishi quyidagi holatlarda kuzatiladi:",
+   "options": [
+    "o'tkir sepsis",
+    "sanchiq",
+    "miokard infarkti",
+    "O'tkir gepatit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-333",
+   "n": 333,
+   "q": "Beta-globulin quyidagi holatlarda ortadi:",
+   "options": [
+    "qandli diabet",
+    "kamqonlik",
+    "jigar sirrozi",
+    "karotinli sariqlik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-334",
+   "n": 334,
+   "q": "Erkin bilirubin quyidagi holatlarda ortadi:",
+   "options": [
+    "Krigler-Nayar sindromi",
+    "Reaktiv gepatit",
+    "Jilber kasalligi",
+    "karotinli sariqlik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-335",
+   "n": 335,
+   "q": "A, E, K, D, F vitaminlarining ichakda so'rilishini buzilishiga quyidagilar sabab bo'lishi mumkin:",
+   "options": [
+    "Gepatitlar",
+    "oshqozon osti bezi kasalliklari",
+    "oshqozon yarasi",
+    "buyrak kasalligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-336",
+   "n": 336,
+   "q": "Surunkali miyeloleykozning rivojlangan bosqichi uchun eng xarakterli:",
+   "options": [
+    "giperleykotsitoz",
+    "agronulotsitoz",
+    "leykotsitoz limfositoz bilan",
+    "granulotsitopeniya bilan leykopeniya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-337",
+   "n": 337,
+   "q": "C- reaktiv oqsil:",
+   "options": [
+    "yallig'lanish bilan namoyon bo'ladi",
+    "normal holatda mavjud",
+    "Yallig'lanish remissiyalarida ortadi",
+    "Kasallikning kuchayishi paytida yo'qoladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-338",
+   "n": 338,
+   "q": "Quyidagi moddalardan qaysi biri trombotsitlar agregatsiyasini keltirib chiqaradi:",
+   "options": [
+    "adrenalin",
+    "aspirin",
+    "plaviks",
+    "tiklid"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-339",
+   "n": 339,
+   "q": "Seruloplazminning asosiy vazifalari nimalardan iborat:",
+   "options": [
+    "yallig'lanishning o'tkir davri oqsili",
+    "himoya",
+    "temir uchun transport oqsili",
+    "antikoagulyant"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-340",
+   "n": 340,
+   "q": "Gepatitda gepatodepressiya ko'rsatkichlari quyidagilar hisoblanadi:",
+   "options": [
+    "xolinesteraza",
+    "MNO",
+    "alfa amilaza",
+    "KFK"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-341",
+   "n": 341,
+   "q": "Organizmdagi suv-elektrolitlar almashinuvini maxsus tartibga soluvchi gormonlarga quyidagilar kiradi:",
+   "options": [
+    "Aldosteron",
+    "natriyuretik omil",
+    "paratireoid gormon",
+    "kortizol"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-342",
+   "n": 342,
+   "q": "Bemor gemogrammasida: Hb - 100 g/l, eritrotsitlar – 3.4x1012/l, leykotsitlar 8.2x109/l, blast hujayralar 72%, promielotsitlar 2%, miyelotsitlar 3%, s/i neytrofillar - 12%, lymp. Ushbu gemogramma quyidagilarga xosdir:",
+   "options": [
+    "o'tkir leykoz",
+    "leykemoid reaktsiyas",
+    "surunkali miyeloleykoz",
+    "surunkali limfoleykoz"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-343",
+   "n": 343,
+   "q": "Bemor gemogrammasida: Hb-96g/l, eritrotsitlar – 3.1x1012/l, leykotsitlar – 3.2x109/l, s/neytrofillar - 5%, s/neytrofillar - 26%, eozinofiller - 3%, monotsitlar - 5%, limfosit -57% , plazma hujayralari 4%. Ushbu gemogramma quyidagilarga xosdir:",
+   "options": [
+    "Leykemioid reaktsiya",
+    "surunkali miyeloleykoz",
+    "surunkali limfoleykoz",
+    "miyelom kasalligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-344",
+   "n": 344,
+   "q": "Bemor gemogrammasida: Hb-82g/l, eritrotsitlar – 3.3x1012/l, leykotsitlar – 86.2x109/l, blast hujayralar - 9%, miyelotsitlar - 22%, metamiyelotsitlar - 10, n/i neytrofillar - 5%, neytrofillar - 30%, bazofillar - 5%, eozinofiller - 5%, limfotsitlar",
+   "options": [
+    "9%, monositlar - 3%. Ushbu gemogramma quyidagilarga xosdir: o'tkir leykoz surunkali miyeloleykoz surunkali limfoleykoz miyelom kasalliklar"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-345",
+   "n": 345,
+   "q": "Gemogrammada: Hb - 48 g/l, eritrotsitlar – 2.7x1012/l, Ht -16.6%, leykotsitlar – 3.9x109/l, anizotsitoz: mikrotsitlar, makrositlar, anizoxromiya, poikilotsitoz. Ma'lumotlar mos keladi:",
+   "options": [
+    "temir tanqisligi anemiyasi",
+    "surunkali kasallikning anemiyasi",
+    "aplastik anemiya",
+    "gemolitik anemiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-346",
+   "n": 346,
+   "q": "Hb -51 g/l, eritrotsitlar – 2.0x1012/l, Ht -17.6%, leykotsitlar – 10.6x109/l, Normositoz, o'rtacha poykilotsitoz. Ma'lumotlar mos:",
+   "options": [
+    "temir tanqisligi anemiyasi",
+    "Surunkali kasallik anemiyasi",
+    "aplastik anemiya",
+    "gemolitik anemiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-347",
+   "n": 347,
+   "q": "Bemor B - 39 yosh. Qon ketishi bilan keldi. burundan qon ketish. Hb-37g/l, eritrotsitlar-1.1x1012/l, leykotsitlar-3.2x109/l, Ht -11.5%, makrositozga moyilligi o'rtacha anizositoz. Ma'lumotlar mos:",
+   "options": [
+    "temir tanqisligi anemiyasi",
+    "surunkali kasallikning anemiyasi",
+    "aplastik anemiya",
+    "gemolitik anemiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-348",
+   "n": 348,
+   "q": "Bemor Z. - 68 yosh. Ishtahaning yomonligi beqaror ich kelishi, bosh aylanishidan shikoyat qiladi.; Hb–100 g/l, eritrotsitlar 2.4x1012/l, leykotsitlar– 3.9x109/l, Ht -30.3%, anizositoz–makrotsitlar, megalotsitlar. Ma'lumotlar mos:",
+   "options": [
+    "temir tanqisligi anemiyasi",
+    "surunkali kasallikning anemiyasi",
+    "aplastik anemiya",
+    "megaloblastik anemiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-349",
+   "n": 349,
+   "q": "Bemor A. - 14 yosh. Bosh aylanishi holsizlik shikoyatlari. Splenomegaliya aniqlandi. Hb -102 g/l, eritrotsitlar – 3.1x1012/l, leykotsitlar – 5.9x109/l, Ht – 26.7%. Normotsitlar, poykilotsitoz. polixromatofiliya. Ma'lumotlar mos:",
+   "options": [
+    "temir tanqisligi anemiyasi",
+    "surunkali kasallikning anemiyasi",
+    "aplastik anemiya",
+    "gemolitik anemiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-350",
+   "n": 350,
+   "q": "Gram usulida bo'yash quyidagilarni aniqlaydi:",
+   "options": [
+    "kapsula mavjudligi",
+    "hujayra devorining tuzilishi",
+    "xivchinlarning joylashishi",
+    "fimbriyalarning mavjudligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-351",
+   "n": 351,
+   "q": "Mikroskopik tekshiruvda aniqlangan balg'am qanday patologiyani ko'rsatadi:",
+   "options": [
+    "ilmoqlar, o'ziga xos chiziqli xitin qobig'i bo'laklari, skolekslar, shuningdek",
+    "xolesterin kristallari:",
+    "sil kasalligi",
+    "o'pka absessi",
+    "o'pkaning exinokokkozi",
+    "bronxial astma"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-352",
+   "n": 352,
+   "q": "Immunitetning hujayra omillari uchun xos:",
+   "options": [
+    "Neytrofillar",
+    "eritrotsitlar",
+    "limfotsitlar",
+    "fibroblastlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-353",
+   "n": 353,
+   "q": "Salmonellalar - bu:",
+   "options": [
+    "harakatchan bakteriyalar",
+    "harakatsiz bakteriyalar",
+    "0 S da harakatsiz",
+    "37 S da harakatsiz"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-354",
+   "n": 354,
+   "q": "Antigenning xususiyatlariga quyidagilar kiradi:",
+   "options": [
+    "Begonalik(chujerodnost)",
+    "toksigenlik",
+    "patogenlik",
+    "virulentlik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-355",
+   "n": 355,
+   "q": "Gram usulida bo'yash uchun quyidagilar ishlatiladi:",
+   "options": [
+    "eritrozin, gensianviolet",
+    "eritrozin, tush",
+    "qizil bromkrezol",
+    "gensianviolet, fuksin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-356",
+   "n": 356,
+   "q": "Yashashi uchun kislorod zarur bo'lgan mikroorganizmlar ………. deb ataladi:",
+   "options": [
+    "obligat aeroblar",
+    "fakultativ anaeroblar",
+    "mikroaerofillar",
+    "obligat anaeroblar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-357",
+   "n": 357,
+   "q": "Organizmning nospetsifik himoyasining hujayraviy omillariga quyidagilar kiradi:",
+   "options": [
+    "antigenlar",
+    "lizotsim",
+    "neytrofillar",
+    "antitanalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-358",
+   "n": 358,
+   "q": "Surtmalarda koylotsitlar topilganda, qaysi virusli zararlanish haqida o'ylash kerak:",
+   "options": [
+    "gerpes virusi",
+    "sitomegalovirus",
+    "odam immunitet tanqisligi virusi(OITS)",
+    "gepatit B virusi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-359",
+   "n": 359,
+   "q": "Sun'iy passiv immunitet quyidagilar natijasida hosil bo'ladi:",
+   "options": [
+    "vaksinani yuborish",
+    "kasallanib o'tish",
+    "yo'ldosh orqali va ona suti bilan antitanachalar olish",
+    "zardob yuborish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-360",
+   "n": 360,
+   "q": "Bemorda retension azotemiya quyidagi sabablarga ko'ra yuzaga kelishi mumkin:",
+   "options": [
+    "keng tarqalgan kuyishlar",
+    "surunkali glomerulonefrit",
+    "zotiljam(pnevmoniya)",
+    "oshqozon yarasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-361",
+   "n": 361,
+   "q": "Shifokor bilvosita ta'sir etuvchi antikoagulyantlar bilan davolaydi. Qaysi laborator tekshiruvlar yordamida terapevtik ta'sirni nazorat qilish mumkin:",
+   "options": [
+    "trombin vaqti",
+    "qon ivish vaqti",
+    "Fibrinning parchalanish mahsulotlari(PDF)",
+    "Xalqaro normallashtirilgan ko'rsatkich (INR, MNO)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-362",
+   "n": 362,
+   "q": "Organizm himoyasining o'ziga xos gumoral omillariga quyidagilar kiradi:",
+   "options": [
+    "limfotsitlar",
+    "antitanalar",
+    "lizotsim",
+    "makrofaglar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-363",
+   "n": 363,
+   "q": "Bemorda qon zardobida mochevina va kreatinin miqdorining tobora ortib borishi qayd etilgan, bu quyidagi o'zgarishlardan dalolat beradi:",
+   "options": [
+    "buyraklarning sekretor funktsiyasini buzilishi",
+    "o'tkir pielonefrit",
+    "glomerulyar filtratsiyaning kamayishi",
+    "parenximal a'zolarda ekssudativ yallig'lanish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-364",
+   "n": 364,
+   "q": "Virusli gepatit C tashxisini qo'yish va davolashni nazorat qilish uchun eng ishonchli tahlil:",
+   "options": [
+    "ALT va AST fermentlar miqdorini aniqlash",
+    "Bilirubin miqdorini aniqlash",
+    "PZR testi",
+    "IFA"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-365",
+   "n": 365,
+   "q": "Bemorda orqa miya suyuqligidagi oqsil miqdori tekshirilganda meyoriy ko'rsatkichlar aniqlandi. Ular qaysi raqamlarga mos keladi:",
+   "options": [
+    "0,033-0,1 g/l",
+    "0,2-0,3 g/l",
+    "2,0-3,0 g/l",
+    "20,0-30,0 g/l"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-366",
+   "n": 366,
+   "q": "Sog'lom katta yoshli odamning orqa miya suyuqligida sitozining meyoriy ko'rsatkichi:",
+   "options": [
+    "1 mkl da 10 ta hujayra",
+    "1 mkl da 0 dan 5 hujayragacha",
+    "1 mklda 0 ta hujayra",
+    "1 mkl da 100 ta hujayra"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-367",
+   "n": 367,
+   "q": "Orqa miya suyuqligini tekshirishning qanday ma'lumotlari to'plami sil(tuberkulyoz) meningiti tashxisini qo'yish imkonini beradi:",
+   "options": [
+    "fibrinoz pardada sil(tuberkulyoz) mikobakteriyalarini aniqlash",
+    "1 mkl da 1000 dan ortiq hujayralar pleotsitozining mavjudligi",
+    "1 mkl da 200 hujayradan ko'p bo'lmagan pleotsitoz mavjudligi",
+    "globulinlar miqdorining ortishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-368",
+   "n": 368,
+   "q": "Qabulxonada yotgan bemorda achish kolitiga shubha qilingan. Axlatning qanday konsistensiyasi achish kolitiga xos:",
+   "options": [
+    "suyuq",
+    "mazsimon",
+    "ko'pikli",
+    "bo'tqasimon"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-369",
+   "n": 369,
+   "q": "Fenilketonuriya klinikasida birlamchi va ikkilamchi buzilishlar farqlanadi. Ikkilamchi o'zgarishlar boshlanishidan oldin tashxis qo'yish kasallikni davolash imkonini beradi. Shu munosabat bilan bolada tashxis quyidagi yoshda qo'yilishi kerak:",
+   "options": [
+    "1-oygacha",
+    "2 oygacha",
+    "6 oygacha",
+    "1-yilgacha"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-370",
+   "n": 370,
+   "q": "Alfa-fetoprotein uchun quyidagilar xos, bundan tashqari:",
+   "options": [
+    "albumin bilan sxodens, embrional rivojlanish bosqichida uning funksiyasini",
+    "bajaradi",
+    "embrionda sariqlik xaltasi, so'ngra jigar orqali ishlab chiqariladi",
+    "homilador ayollarning qonida homiladorlik davrida o'zgarmaydi",
+    "kattalarda gepatotsellyulyar saratonni tashxislash va davolashni kuzatish",
+    "maqsadida aniqlanadi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-371",
+   "n": 371,
+   "q": "Zardobda alfa-fetoprotein quyidagi holatlarda ortadi:",
+   "options": [
+    "birlamchi jigar saratoni",
+    "embrional o'sma - teratoma",
+    "xoriokarsinoma",
+    "sanab o'tilganlar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-372",
+   "n": 372,
+   "q": "Siydikda 5-gidroksiindolatsetatning sezilarli darajada oshishi diagnostik mezon hisoblanadi:",
+   "options": [
+    "qizilo'ngach o'smalari",
+    "yomon sifatli karsinoma - argentaffinomalar",
+    "havfsiz o'smalar",
+    "leykoz"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-373",
+   "n": 373,
+   "q": "Neyron-spetsifik yenolaza (NSE) uchun quyidagilar xos, bundan tashqari:",
+   "options": [
+    "sitoplazmatik glikolitik ferment",
+    "neyroektodermal kelib chiqishga ega hujayralarda, miya neyronlarida, periferik",
+    "nerv to'qimalarida mavjud",
+    "neyroektodermal va neyroendokrin tabiatli o'smalarda aniqlanadi",
+    "homilada Daun sindromini tashxislash uchun ishlatiladi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-374",
+   "n": 374,
+   "q": "Zardobdagi neyron-spetsifik enolaza(NSE) konsentratsiyasining oshishi quyidagilar uchun diagnostik ahamiyatga ega:",
+   "options": [
+    "mayda hujayrali o'pka saratoni",
+    "neyroblastoma",
+    "leykozlar",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-375",
+   "n": 375,
+   "q": "O'sma CA 15-3 antigeni quyidagi hollarda zardobda ko'payadi:",
+   "options": [
+    "ko'krak bezi saratoni",
+    "leykozlar",
+    "limfogranulomatoz",
+    "angioma"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-376",
+   "n": 376,
+   "q": "O'sma CA 19-9 antigeni quyidagi hollarda zardobda ko'payadi:",
+   "options": [
+    "oshqozon osti bezining yomon sifatli o'smalari",
+    "oshqozon va yo'g'on ichakning yomon sifatli o'smalari",
+    "o't pufagi va o't yo'llari karsinomasi",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-377",
+   "n": 377,
+   "q": "Oshqozon saratonining o'ziga xos belgisi quyidagilardir:",
+   "options": [
+    "o'sma antigen CA 72-4",
+    "alfa-fetoprotein",
+    "O'sma CA 15-3 antigeni",
+    "rak-embrional antigeni"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-378",
+   "n": 378,
+   "q": "Zardobda antigen CA 125 ko'tariladi:",
+   "options": [
+    "tuxumdon saratoni",
+    "leykoz",
+    "suyakka saraton metastazlari",
+    "prostata saratoni"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-379",
+   "n": 379,
+   "q": "Saraton embrional antigeni (CEA) uchun quyidagilar xos, bundan tashqari:",
+   "options": [
+    "o'smalar to'qimalarda turlicha joylashganida va metastazlar berganida zardobda",
+    "ko'payadi",
+    "qon zardobida, plazmasida, assitda terda, siydikda aniqlanadi",
+    "tahlilni o'smalarni erta tashxislash uchun ommaviy tekshiruvlarda qo'llash",
+    "mumkin",
+    "aniqlash o'pka saratoniga maxsus tahlil sifatida qo'llaniladi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-380",
+   "n": 380,
+   "q": "Saraton embrion antigeni zardobda ko'tariladi:",
+   "options": [
+    "oshqozon-ichak traktining o'smalari",
+    "o'pka, ko'krak o'smalari",
+    "jigar va suyak to'qimalariga metastazlar",
+    "yuqoridagilarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-381",
+   "n": 381,
+   "q": "Follikulani rag'batlantiruvchi gormon(FSG) siydikda quyidagi holatlarda ko'payadi:",
+   "options": [
+    "seminar",
+    "limfosarkoma",
+    "ko'krak bezi saratoni",
+    "o'smaning jigarga metastazlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-382",
+   "n": 382,
+   "q": "Ferritin va alfa-fetoproteinni birgalikda aniqlash quyidagilarni aniqlash uchun ishlatiladi:",
+   "options": [
+    "gepatotsellyulyar karsinoma",
+    "oshqozon osti bezi saratoni",
+    "miya o'smalari",
+    "havfsiz o'smalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-383",
+   "n": 383,
+   "q": "Polimeraza zanjir reaksiyasi (PZR tahlili) erta tashxis qo'yish uchun ishlatilmaydi:",
+   "options": [
+    "yuqumli kasalliklar",
+    "irsiy kasalliklar",
+    "onkologik kasalliklar",
+    "qon tomir patologiyasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-384",
+   "n": 384,
+   "q": "Gemostaz tizimining asosiy elementlari quyidagilar kiradi:",
+   "options": [
+    "fibrinoliz omillari",
+    "plazma omillari",
+    "antikoagulyantlar",
+    "Yuqoridagilarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-385",
+   "n": 385,
+   "q": "Koagulyatsiya tizimining omillari quyidagilardan iborat:",
+   "options": [
+    "plazma",
+    "eritrotsitlar",
+    "trombotsitlar",
+    "yuqoridagilarning hammasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-386",
+   "n": 386,
+   "q": "Qon koagulyatsiyasining tashabbuskori:",
+   "options": [
+    "III omil",
+    "X omil",
+    "XII omil",
+    "prekallikrein"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-387",
+   "n": 387,
+   "q": "Protrombinaza hosil bo'lishida trombotsitlardan ........... ajralib chiqadi:",
+   "options": [
+    "III omil",
+    "IV omil",
+    "aktomiozin",
+    "tromboksan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-388",
+   "n": 388,
+   "q": "Trombotsitlar agregatsiyasining induktori hisoblanadi:",
+   "options": [
+    "aspirin",
+    "AMF",
+    "ADF",
+    "Karbamid(mochevina)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-389",
+   "n": 389,
+   "q": "Trombotsitlar faollashtiruvchisi hisoblanmaydi:",
+   "options": [
+    "trombin",
+    "ADF",
+    "kollagen",
+    "ATF"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-390",
+   "n": 390,
+   "q": "Jigar quyidagi moddalar sintezida qatnashmaydi:",
+   "options": [
+    "III omil",
+    "VII omil",
+    "fibrinogen",
+    "protrombin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-391",
+   "n": 391,
+   "q": "\" K \" vitamini ............ sinteziga ta'sir qiladi:",
+   "options": [
+    "protrombin",
+    "fibrinogen",
+    "III omil",
+    "XII omil"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-392",
+   "n": 392,
+   "q": "Gemostazning tashqi mexanizmi quyidagilarga bog'liq:",
+   "options": [
+    "VII omil",
+    "VIII omil",
+    "IX omil",
+    "XII omil"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-393",
+   "n": 393,
+   "q": "Trombin quyidagilar ta'sirida hosil bo'ladi:",
+   "options": [
+    "omil I",
+    "VII omil",
+    "IX omil",
+    "omil X"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-394",
+   "n": 394,
+   "q": "Trombotsit-tomir gemostaz funktsiyasi:",
+   "options": [
+    "proteoliz",
+    "Adgeziya-agregatsiya",
+    "gidroliz",
+    "lizis"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-395",
+   "n": 395,
+   "q": "Eritrofosfatid achtv usulida quyidagi vazifalarni bajaradi:",
+   "options": [
+    "fibrinogen",
+    "trombin",
+    "III omil",
+    "XII omil"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-396",
+   "n": 396,
+   "q": "Trombotsitlarda quyidagilar eng katta miqdorda sintezlanadi:",
+   "options": [
+    "prostatsiklin",
+    "tromboksan",
+    "protein \"C\"",
+    "VII omil"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-397",
+   "n": 397,
+   "q": "Antikoagulyant ta'sirga ega:",
+   "options": [
+    "plazminogen",
+    "III omil",
+    "antitrombin III",
+    "streptokinaza"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-398",
+   "n": 398,
+   "q": "Fibrin degradatsiyasi mahsulotlari quyidagilarni keltirib chiqaradi:",
+   "options": [
+    "proteoliz",
+    "III omil sintezi",
+    "fibrin hosil bo'lishining blokadasi",
+    "XII omilning faollashuvi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-399",
+   "n": 399,
+   "q": "Qon laxtasining retraksiyasi quyidagi funksiyalarga bog'liq:",
+   "options": [
+    "plazma omillari",
+    "trombotsitar omillar",
+    "kinin sistemasi",
+    "complement tizimlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-400",
+   "n": 400,
+   "q": "Trombin hosil bo'lishiga to'sqinlik qiladi:",
+   "options": [
+    "kaltsiy ionlari",
+    "yuqori molekulyar og'irlikdagi kininogen",
+    "Villibrand omili",
+    "antitrombin III"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-401",
+   "n": 401,
+   "q": "Protrombin hosil bo'lishini nazorat qilish lozim:",
+   "options": [
+    "trombotsitlar agregatsiyasi",
+    "fibrinogen",
+    "rekalsifikatsiya vaqti bilan faollashtirilgan",
+    "protrombin vaqti bilan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-402",
+   "n": 402,
+   "q": "Trombin vaqtini aniqlash quyidagilar uchun ishlatiladi:",
+   "options": [
+    "geparinoterapiyani kuzatish",
+    "bilvosita antikoagulyantlarni nazorat qilish",
+    "fibrin hosil bo'lishini aniqlash",
+    "disfibrinogenemiya diagnostikasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-403",
+   "n": 403,
+   "q": "Plazmada antitrombin III ni aniqlash quyidagilar uchun ishlatiladi:",
+   "options": [
+    "DVS-sindromida iste'mol koagulopatiyasi diagnostikasi",
+    "geparinning antikoagulyant ta'sirini aniqlash",
+    "irsiy trombofiliyani aniqlash",
+    "sanab o'tilganlarning hammasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-404",
+   "n": 404,
+   "q": "Fibrinogendan fibrin hosil bo'lish bosqichi quyidagilardan iborat emas:",
+   "options": [
+    "protrombinaza hosil bo'lishi",
+    "\"A\" va \"B\" fibrinopeptidlarni ajratish",
+    "fibrin-monomerlar hosil bo'lishi",
+    "fibrin-monomerlarni fibrin-polimergacha polimerlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-405",
+   "n": 405,
+   "q": "Xageman omilining faollashtiruvchisi quyidagilar emas:",
+   "options": [
+    "oyna",
+    "kaolin",
+    "Silikon",
+    "dag'al dispers kollagen"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-406",
+   "n": 406,
+   "q": "Gemostazning plazma bo'g'inidagi uchta kompleks tarkibiga quyidagilar kiradi:",
+   "options": [
+    "3-trombotsitlar omili",
+    "omilV",
+    "VIII omil",
+    "IX omil"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-407",
+   "n": 407,
+   "q": "DVS-sinromiga quyidagi endogen omillarning barchasi sabab bo'lishi mumkin, bundan tashqari:",
+   "options": [
+    "to'qimaviy tromboplastin",
+    "Giperglikemiya",
+    "endoteliyning shikastlanishi",
+    "leykotsitlar proteazlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-408",
+   "n": 408,
+   "q": "DVS-sindromining sababi quyidagi ekzogen omil bo'lishi mumkin:",
+   "options": [
+    "bakteriyalar va viruslar",
+    "transfuzion suyuqliklar",
+    "immun komplekslar",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-409",
+   "n": 409,
+   "q": "Asosan gipokoagulyatsiya bilan kechadigan patologik holatga quyidagilar kiradi:",
+   "options": [
+    "ateroskleroz",
+    "Villibrand kasalligi",
+    "obliteratsiya qiluvchi endarterit",
+    "malign(yomon o'sma) neoplazmalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-410",
+   "n": 410,
+   "q": "Trombozdan oldingi holat uchun quyidagilar xos:",
+   "options": [
+    "fibrinolitik faollikning oshishi",
+    "gipokoagulyatsiya",
+    "gipofibrinogenemiya",
+    "trombotsitlar agregatsiyasi va adgeziyasining oshishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-411",
+   "n": 411,
+   "q": "Antitrombin III uchun quyidagilar xos, bundan tashqari:",
+   "options": [
+    "plazma oqsili, serinli proteazalar ingibitori",
+    "V va VIII omillarni ingibirlovchi antikoagulyant",
+    "plazmadagi miqdorining 30-40% ga kamayishi tromboemboliyalar xavfini",
+    "tug'diradi",
+    "pasayish sababi iste'mol qilish va jigar kasalliklari hisoblanadi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-412",
+   "n": 412,
+   "q": "Plazmada antitrombin III pasayishining sabablari quyidagilardir:",
+   "options": [
+    "yosh o'tishi bilan va jigar sirrozida jigarning sintetik faolligining pasayishi",
+    "DVS sindromida iste'mol qilish",
+    "geparinni ortiqcha yuborish",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-413",
+   "n": 413,
+   "q": "Plazmada fibrinogenning kamayishi quyidagi hollarda kuzatilmaydi:",
+   "options": [
+    "fibrinogen sintezining irsiy yetishmovchiligi",
+    "jigar sirrozi",
+    "DVS sindromi",
+    "yallig'lanishning o'tkir davri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-414",
+   "n": 414,
+   "q": "Plazmada fibrin degradatsiyasi mahsulotlarini (PDF) aniqlash quyidagilar uchun ko'rsatilgan:",
+   "options": [
+    "streptokinaza bilan davolashni nazorat qilish",
+    "davolashda plazminogen aktivatorlaridan foydalanishni monitoring qilish",
+    "tromboemboliya",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-415",
+   "n": 415,
+   "q": "Plazmada plazminogenning kamayishiga quyidagi omillar sabab bo'ladi, bundan tashqari:",
+   "options": [
+    "sintezning irsiy nuqsonlari",
+    "jigar sirrozi",
+    "birlamchi fibrinoliz",
+    "og'ir glomerulonefritlarda siydik bilan yo'qotishlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-416",
+   "n": 416,
+   "q": "Trombin hosil bo'lishini nazorat qilish kerak:",
+   "options": [
+    "trombin vaqti bilan",
+    "XII omil bilan",
+    "plazmaning geparinga bardoshliligi",
+    "protrombin vaqti bilan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-417",
+   "n": 417,
+   "q": "Fibrin hosil bo'lishini nazorat qilish kerak:",
+   "options": [
+    "fibrinogen",
+    "protrombin vaqti bilan",
+    "qisman tromboplastin vaqti bilan faollashtirilgan",
+    "antitrombin III"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-418",
+   "n": 418,
+   "q": "Fibrinolitik tizimning faolligini nazorat qilish kerak:",
+   "options": [
+    "antitrombin III",
+    "trombin vaqti bilan",
+    "protrombin vaqti bilan",
+    "euglobulinlar lizisi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-419",
+   "n": 419,
+   "q": "Fibrinoliz faollashtiruvchisi(aktivatori):",
+   "options": [
+    "kollagen",
+    "antitrombin III",
+    "lipoproteidlar",
+    "streptokinaza"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-420",
+   "n": 420,
+   "q": "Geparin terapiyasini ................................. nazorat qilish mumkin:",
+   "options": [
+    "faollashtirilgan qayta kalsifikatsiya vaqti",
+    "evglobulinlarning lizisi",
+    "qon laxtasining retraktsiyasi",
+    "fibrinogen kontsentratsiyasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-421",
+   "n": 421,
+   "q": "Bilvosita ta'sirga ega antikoagulyantlarni quyidagicha boshqarish mumkin:",
+   "options": [
+    "ivish vaqti bilan",
+    "trombin vaqti bilan",
+    "protrombin vaqti bilan",
+    "fibrin degradatsiyasi mahsulotlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-422",
+   "n": 422,
+   "q": "DVS sindromining o'tkir shaklida:",
+   "options": [
+    "fibrinogen kamayadi",
+    "fibrinogen ko'payadi",
+    "trombin vaqti qisqaradi",
+    "fibrin degradatsiyasi mahsulotlari aniqlanmaydi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-423",
+   "n": 423,
+   "q": "DVS sindromining surunkali shaklini tashxislash uchun quyidagi ta'rif ko'proq ma'lumot beradi:",
+   "options": [
+    "fibrinogen",
+    "trombin vaqti",
+    "protrombin vaqti",
+    "fibrin degradatsiyasi mahsulotlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-424",
+   "n": 424,
+   "q": "Trombotsitopeniyani aniqlash uchun tekshirish kerak:",
+   "options": [
+    "trombotsitlarning adgeziya-agregativ funktsiyasi",
+    "trombotsitlar soni",
+    "fibrinogen",
+    "trombin vaqti"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-425",
+   "n": 425,
+   "q": "Iste'mol koagulopatiyasi quyidagi holatlarda rivojlanadi:",
+   "options": [
+    "gemofiliya",
+    "DVS",
+    "Willibrand kasalligi",
+    "glansman trombosteniyasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-426",
+   "n": 426,
+   "q": "Gemofiliya uchun belgilar xos:",
+   "options": [
+    "APTT(ACHTV)ning uzayishi",
+    "APTTning(ACHTV) qisqarishi",
+    "protrombin vaqtini uzayishi",
+    "fibrinogen konsentratsiytasining kamayishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-427",
+   "n": 427,
+   "q": "Gemofiliyaning o'ziga xos belgilari:",
+   "options": [
+    "ACHTVni uzaytirish",
+    "ACHTVni qisqartirish",
+    "Protrombin vaqtining uzayishi",
+    "fibrinogen konsentratsiyasining pasayishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-428",
+   "n": 428,
+   "q": "Antitrombin III ning pasayishi quyidagilar uchun xos:",
+   "options": [
+    "yurak ishemik kasalligi",
+    "katarakta",
+    "o'tkir rinit",
+    "dispepsiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-429",
+   "n": 429,
+   "q": "Gepatotsitlarning shikastlanishi uchun quyidagilar eng xos:",
+   "options": [
+    "fibrinogenning ko'payishi",
+    "II, VII, IX, X omillar faolligining pasayishi",
+    "VII omil faolligining pasayishi",
+    "antitrombin III oshishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-430",
+   "n": 430,
+   "q": "K vitamini almashinuvi quyidagi hollarda buziladi:",
+   "options": [
+    "menorragiya",
+    "buyrak kasalliklar",
+    "burundan qon ketish",
+    "parenximatoz gepatit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-431",
+   "n": 431,
+   "q": "\"K\" avitaminozi quyidagi hollarda rivojlanmaydi:",
+   "options": [
+    "parenximatoz gepatit",
+    "obturatsion sariqlik",
+    "tuxumdonlar disfunksiyasi",
+    "antibiotiklarni og'iz orqali qabul qilish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-432",
+   "n": 432,
+   "q": "Protrombin vaqtining uzayishi quyidagi hollarda kuzatilmaydi:",
+   "options": [
+    "avitaminoz \"K\"",
+    "parenximatoz gepatit",
+    "bilvosita antikoagulyantlar bilan davolash",
+    "gemofiliya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-433",
+   "n": 433,
+   "q": "Iste'mol koagulopatiyasi(DIC — dissimineyalangan intravaskulyar koagulyatsiya) iste'mol bilan birga kelmaydi:",
+   "options": [
+    "I omil",
+    "V omil",
+    "trombotsitlar",
+    "kalsiy ionlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-434",
+   "n": 434,
+   "q": "Glansman kasalligi qaysi zararlangan bo'ladi:",
+   "options": [
+    "jigar",
+    "K vitaminining so'rilishi",
+    "trombotsitlar",
+    "kallikrein-kinin tizimi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-435",
+   "n": 435,
+   "q": "Villibrand kasalligining yuzaga kelishi quyidagilar bilan bog'liq:",
+   "options": [
+    "VIII-b omil antigenining nuqsoni",
+    "VIII-k omili nuqsoni bilan",
+    "jigar patologiyasi",
+    "fibrinogenning pasayishi bilan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-436",
+   "n": 436,
+   "q": "Gemofiliya kasalligida qaysi omillar yetishmaydi:",
+   "options": [
+    "plazma",
+    "trombotsitlar",
+    "leykotsitlar",
+    "qon tomir endoteliyasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-437",
+   "n": 437,
+   "q": "Qon tomirlar endoteliysida sintezlanadi:",
+   "options": [
+    "protrombin",
+    "Prostatsiklin",
+    "tromboksan",
+    "IX omil"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-438",
+   "n": 438,
+   "q": "Fibronektinga(glyikoprotein) quyidagilar xos:",
+   "options": [
+    "fibrin matritsasini hosil qilishda ishtirok etadi",
+    "ivish omillarini faollashtiradi",
+    "DVS-sindromida pasayadi",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-439",
+   "n": 439,
+   "q": "Protein C aniqlashning diagnostik ahamiyati:",
+   "options": [
+    "tromboemboliyalar xavfini aniqlash",
+    "tabletkali antikoagulyantlar dozasini oshirish yoki kamaytirish mezoni",
+    "jigar disfunksiyasi darajasini baholash",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-440",
+   "n": 440,
+   "q": "XIII omil tanqisligi kuzatiladi:",
+   "options": [
+    "o'tkir miyeloleykoz",
+    "DVS sindromi",
+    "Xirurgik muolajalardan so'ng",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-441",
+   "n": 441,
+   "q": "Fibrinogenni aniqlashning diagnostik ahamiyati:",
+   "options": [
+    "koagulyatsiyaning asosiy omili, qon yopishqoqligi",
+    "miokard infarkti va insultning mustaqil xavf omili",
+    "o'tkir fazali oqsil",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-442",
+   "n": 442,
+   "q": "Qon zardobida quyidagilarning ko'payishi trombotsitlarning faollashuvidan dalolat beradi:",
+   "options": [
+    "fibrinogen",
+    "antitrombin III",
+    "beta-tromboglobulin",
+    "komplement"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-443",
+   "n": 443,
+   "q": "Kefalin vaqti quyidagi holatlarda ortadi,bundan mustasno:",
+   "options": [
+    "gemofiliya A, B, C",
+    "bilvosita ta'sir etuvchi antikoagulyantlar dozasini oshirib yuborish",
+    "VII omil tanqisligi",
+    "Villebrand kasalligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-444",
+   "n": 444,
+   "q": "Protrombin vaqti quyidagi holatlarda ortadi, bundan mustasno:",
+   "options": [
+    "II, V, VII, X omillarning tug'ma tanqisligi",
+    "jigar parenximasining surunkali kasalliklari",
+    "K vitamini yetishmovchiligi",
+    "tromboz, giperkoagulyatsiya holati"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-445",
+   "n": 445,
+   "q": "Qon ketish vaqtining uzayishi quyidagilar uchun xos:",
+   "options": [
+    "turli genezli trombotsitopeniya",
+    "DVS sindromi",
+    "dezagregantlar, aspirin, geparin bilan davolash",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-446",
+   "n": 446,
+   "q": "Quyidagilardan tashqari barcha sanab o'tilgan holatlarda qon ivish vaqtining uzayishi kuzatiladi:",
+   "options": [
+    "plazma omillarining sezilarli tanqisligi (II, V, VIII, IX, X)",
+    "Trombotsitlar 3 omilining sezilarli yetishmovchiligi",
+    "trombotsitopatiyalar",
+    "geparin bilan davolashda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-447",
+   "n": 447,
+   "q": "Fibrinolizning faollashishi (evglobulin lizis vaqti qisqaradi) quyidagi hollarda kuzatiladi, bundan mustasno:",
+   "options": [
+    "DVS-sindromi",
+    "jigar sirrozi",
+    "prostata, o'pka to'qimalarida jarrohlik amaliyotlari",
+    "gematopoezning(qon yaratilishining) gipo- aplastik jarayonlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-448",
+   "n": 448,
+   "q": "Fibrin degradatsiyasi mahsulotlari (pdf) sinamasi musbat:",
+   "options": [
+    "DVS sindromi",
+    "massiv tromboz",
+    "fibrinolitik vositalar bilan davolash",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-449",
+   "n": 449,
+   "q": "Tomir-trombotsitar gemostaz buzilgan bemorda VIII omil antigeni tanqisligi mavjud va trombotsitlarning ristomitsinga adgezivligi va agregatsiyasi pasaygan. Bemorda eng ko'p ehtimoli:",
+   "options": [
+    "gemofiliya",
+    "Villibrand kasalligi",
+    "Verlgof kasalligi",
+    "gipokoagulyatsiya bosqichidagi surunkali qaytalanuvchi DVS sindromi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-450",
+   "n": 450,
+   "q": "Zardobdagi yuqori molekulyar kininogen quyidagi holatlarda kamayadi:",
+   "options": [
+    "surunkali buyrak yetishmovchiligi",
+    "jigar sirrozi",
+    "DVS sindromi",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-451",
+   "n": 451,
+   "q": "Bezgak(molyariya) parazitlarining sporogoniyasiga quyidagilar kirmaydi:",
+   "options": [
+    "zigota",
+    "oosist",
+    "shizont",
+    "sporozoit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-452",
+   "n": 452,
+   "q": "Uch kunlik bezgakning (Plasmodium vivax) odatdagi davomiyligi (davolanmasa va qayta infeksiya bo'lmasa):",
+   "options": [
+    "olti oy",
+    "bir yil",
+    "bir yarim yil",
+    "ikki yil"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-453",
+   "n": 453,
+   "q": "Afrikadan kelgan negr bemorda bezgak parazitlari topilgan. Eng kam ehtimolli tashxis:",
+   "options": [
+    "P.vivax",
+    "P.ovale",
+    "P. falciparum",
+    "P.malariae"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-454",
+   "n": 454,
+   "q": "Bizning mamlakatga olib kelingan malyariya qo'zg'atuvchilari orasida qaysi turi ko'proq o'zlashtirilishi (mukammal rivojlanishi) ehtimoli yuqori:",
+   "options": [
+    "P.ovale",
+    "P.malariae",
+    "P.vivax",
+    "P. falciparum"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-455",
+   "n": 455,
+   "q": "Eng katta ehtimol bilan p.ovale quyidagi joydan olib kelinishi mumkin:",
+   "options": [
+    "Shimoliy Afrika",
+    "Tropik Afrika",
+    "Hindiston",
+    "Yaqin Sharq"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-456",
+   "n": 456,
+   "q": "Tropik bezgakning odatdagi davomiyligi (davolanmasa va qayta infeksiya bo'lmasa):",
+   "options": [
+    "olti oy",
+    "bir yil",
+    "bir yarim yil",
+    "ikki yil"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-457",
+   "n": 457,
+   "q": "Bezgak plazmodiysi turlarini aniqlash quyidagilar uchun zarur:",
+   "options": [
+    "davolash sxemasini tayinlash",
+    "epidemiyaga qarshi tadbirlarni o'tkazish",
+    "davolanish imkoniyati to'g'risidagi prognoz",
+    "sanab o'tilganlarning hammasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-458",
+   "n": 458,
+   "q": "Laboratoriya javobida bezgak parazitlarining qaysi bosqichlari aniqlanganligini ko'rsatish kerakmi:",
+   "options": [
+    "har doim kerak",
+    "bezgakning ba'zi turlarida (ayniqsa tropik bezgakda) kerak bo'ladi",
+    "Kasallikning ba'zi bosqichlarida (inkubatsion davrda) kerak bo'ladi",
+    "umumiy qabul qilingan fikr yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-459",
+   "n": 459,
+   "q": "Romanovskiy bo'yicha bo'yoq tayyorlash uchun qonni bezgakka tekshirishda suvning reaksiyasi quyidagicha bo'lishi kerak:",
+   "options": [
+    "6,6",
+    "6,8",
+    "7",
+    "7,6"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-460",
+   "n": 460,
+   "q": "Tashqi muhit omillari ta'siriga (shu jumladan turli kimyoviy moddalar ta'siriga) eng chidamli gelmint tuxumlari:",
+   "options": [
+    "pakana solityor",
+    "Askaridalar",
+    "Qo'ng'ir trixuris (vlasoglav)",
+    "ankilostomatid"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-461",
+   "n": 461,
+   "q": "Ankilostomid tuxumlarini aniqlash uchun fulleborn bo'yicha boyitishda yuza plyonkasini olib tashlashning quyidagiga teng bo'lgan muddati maqbul hisoblanadi:",
+   "options": [
+    "10 daq",
+    "20 daq",
+    "30 daq",
+    "40 daq"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-462",
+   "n": 462,
+   "q": "Amyobiaz bilan og'rigan bemorning shilliq-qonli ajralmalarida quyidagilarni aniqlash mumkin:",
+   "options": [
+    "sistalar",
+    "sporalar",
+    "gemofaglar",
+    "polifaglar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-463",
+   "n": 463,
+   "q": "Fl.histolitio sistasining fl.coli sistasidan farqi quyidagilardan iborat:",
+   "options": [
+    "xromatoid tanachalarning mavjudligi",
+    "ekto- va endoplazmaga bo'linish",
+    "yutilgan eritrotsitlar mavjudligi",
+    "yuqoridagilarning hammasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-464",
+   "n": 464,
+   "q": "Laboratoriya ichidagi zararlanishlar quyidagi hollarda bo'lishi mumkin:",
+   "options": [
+    "askaridoz, difillobotrioz",
+    "enterobioz, sistiserkoz, gimenolepidoz",
+    "teniarinxoz",
+    "exinokokkoz"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-465",
+   "n": 465,
+   "q": "Bo'yalgan preparatni suv bilan chaygandan keyin qalin qon tomchisi yuvilib ketdi. Bunga quyidagilar sabab bo'lishi mumkin:",
+   "options": [
+    "tomchi yetarli darajada quritilmagan edi",
+    "tomchini yuvish ehtiyotkorlik bilan amalga oshirildi",
+    "tomchi juda qalin qilingan edi",
+    "tomchi juda yupqa edi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-466",
+   "n": 466,
+   "q": "Laboratoriyaga bir haftadan oldin tayyorlangan, qalin qon tomchilari keltirildi. Ularni bo'yash uchun:",
+   "options": [
+    "Romanovskiy bo'yog'i eritmasini quymoq",
+    "bo'yashdan oldin qalin tomchini fiksatsiyalamoq",
+    "oldindan preparatga 10-15 daqiqaga distillangan suv quyiladi, suv to'kib tashlanadi",
+    "va Romanovskiy bo'yicha bo'yaladi",
+    "dastlab preparatga 10-15 daqiqaga fiz.eritma quyiladi, so'ngra u to'kib tashlanadi",
+    "va keyin romanovskiy bo'yog'i eritmasi bilan bo'yaladi"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-467",
+   "n": 467,
+   "q": "Visseral leyshmanioz qo'zg'atuvchisi qaysi hujayrada ko'payadi:",
+   "options": [
+    "eritrotsitlarda",
+    "makrofaglarda",
+    "barcha qon hujayralarida",
+    "birorta ham hujayrada"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-468",
+   "n": 468,
+   "q": "IgE immunoglobulini quyidagi holatlardan qaysi birida eng ko'p ishlab chiqariladi:",
+   "options": [
+    "Virusli infeksiyalarda",
+    "Allergik reaksiyalarda",
+    "Autoimmun kasalliklarda",
+    "Bakterial infeksiyalarda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-469",
+   "n": 469,
+   "q": "Plasmodium falciparum quyidagi qaysi xususiyat bilan ajralib turadi:",
+   "options": [
+    "Faqat gepatotsitlarda yashaydi",
+    "Eritrotsitlarning faqat yosh shakllarini zararlaydi",
+    "Eritrotsitlarning barcha shakllarini zararlaydi",
+    "Shizontlar hech qachon hosil bo'lmaydi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-470",
+   "n": 470,
+   "q": "Visseral leyshmanioz qanday hujayralarda ko'payadi:",
+   "options": [
+    "Neutrofilda",
+    "Makrofagda",
+    "Eritrotsitda",
+    "Limfotsitda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-471",
+   "n": 471,
+   "q": "Laboratoriyaga plevra suyuqligi yuborildi. Quyidagi natijalar olindi: Nisbiy zichlik (Rel.pl.): 1,020 Oqsil miqdori: 30 g/l Ko'rinishi: shaffof, och sariq (ohak sariq) Rivalta testi: musbat (+) Mikroskopiyada: neytrofillar, monotsitlar, makrofaglar, epitelial hujayralar va Pirogov–Langgans hujayralarining ustunligi aniqlangan.Ushbu ma'lumotlarga ko'ra, qanday patologik holatni ehtimol qilish mumkin:",
+   "options": [
+    "Yiringli plevrit",
+    "Xolesterinli ekssudat",
+    "Seroz plevraning o'tkir yallig'lanishi",
+    "Silli (granulomatoz) plevrit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-472",
+   "n": 472,
+   "q": "DVS (Disseminatsiyalangan tomir ichki ivish) sindromi belgilari bilan bemor kasalxonaga yotqizildi. Bu holatni aniqlash uchun qaysi laborator tekshiruvlar kerak:",
+   "options": [
+    "D-dimerlar",
+    "CRB (C-reaktiv oqsil)",
+    "Fibrinogen miqdori",
+    "Jigardan qon ketish (kapilyar qon ketishi) vaqti"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-473",
+   "n": 473,
+   "q": "Tez tibbiy yordam bo'limiga o'tkir pankreatit gumoni bilan bemor olib kelindi. Dastlabki tashxisni tasdiqlash uchun qanday laborator tadqiqot muhim hisoblanadi:",
+   "options": [
+    "ALT (alanin aminotransferaza)",
+    "Alfa-amilaza qon va siydikda",
+    "Alfa-amilaza faqat siydikda",
+    "AST (aspartat aminotransferaza)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-474",
+   "n": 474,
+   "q": "Quyidagi hujayra organoidlaridan qaysi biri ko'plab fermentlarni o'z ichiga olib, organik moddalarni parchalaydi:",
+   "options": [
+    "Lizosomalar",
+    "Ribosomalar",
+    "Mitoxondriya",
+    "G. plastidlar (yashil plastidlar)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-475",
+   "n": 475,
+   "q": "Organizm ichki muhitining barqarorligini saqlash holati nima deb ataladi:",
+   "options": [
+    "Gomeostaz",
+    "Fagotsitoz",
+    "Energokinez",
+    "Gemofiliya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-476",
+   "n": 476,
+   "q": "O'tkir virusli gepatit bilan og'rigan bemorda kasallik og'irligini baholash uchun ALT (alanin aminotransferaza)dan tashqari yana qaysi laborator tekshiruv muhim hisoblanadi:",
+   "options": [
+    "AST (aspartat aminotransferaza)",
+    "Xolinesteraza",
+    "Glyukoza",
+    "Kreatinin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-477",
+   "n": 477,
+   "q": "Mitral qopqoq stenoziga chalingan bemor rejalashtirilgan operatsiya oldidan koagulologik tekshiruvdan o'tkazildi. Natijalar quyidagicha: Trombotsitlar soni — normal Qon ketish vaqti — uzaygan AVR, AChTV (APTT) — uzaygan Protrombin vaqti (PV), fibrinogen miqdori, fibrinolitik faollik, etanol testi, antitrombin III — barchasi normal. Bu holatda gemostaz tizimining qaysi bo'g'inida buzilish ehtimoli yuqori:",
+   "options": [
+    "Trombotsit-tomir va plazma bo'g'ini",
+    "Tashqi plazma bo'g'ini",
+    "Fibrinoliz tizimi",
+    "Antikoagulyant tizimi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-478",
+   "n": 478,
+   "q": "Mitral qopqoq stenozi bo'lgan bemor rejalashtirilgan operatsiyaga tayyorlanmoqda. Koagulogramma natijalari quyidagicha: Trombotsitlar soni — normal Qon ketish vaqti — uzaygan AVR va AChTV (APTT) — uzaygan PV (protrombin vaqti), fibrinogen miqdori, fibrinolitik faollik, etanol testi, antitrombin III — normal.Ushbu holatda gemostaz buzilishini aniqlashtirish uchun qanday qo'shimcha testni o'tkazish zarur:",
+   "options": [
+    "C omil darajasini aniqlash",
+    "Evglogulin lizis vaqtini aniqlash",
+    "Fibrinopeptid A miqdorini aniqlash",
+    "Trombotsitlarning agregatsiyasi va yopishish qobiliyatini aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-479",
+   "n": 479,
+   "q": "Alfa-1-antitripsinga quyidagi xususiyatlar xos, bundan mustasno:",
+   "options": [
+    "Ximotripsin, kallikrein, renin, urokinaza, plazmin, kollagenaza va elastazaga qarshi",
+    "inhibitiv ta'sir ko'rsatadi",
+    "Asosiy vazifasi — lizosomal elastazani neytrallash",
+    "Tripsinning eng kuchli ingibitori, chunki u zaif ishqoriy muhitda maksimal",
+    "faollikka ega",
+    "To'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "lab_ishi-t-480",
+   "n": 480,
+   "q": "Glomerulalarning birlamchi shikastlanishi bilan kechadigan buyrak kasalliklarida quyidagilardan qaysi biri kuzatiladi:",
+   "options": [
+    "Buyraklarning konsentratsiya qobiliyatining buzilishi",
+    "Filtratsiya jarayonining pasayishi",
+    "Reabsorbsiya (qayta so'rilish)ning buzilishi",
+    "Sekretsiya jarayonining buzilishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-481",
+   "n": 481,
+   "q": "Unib chiqqan bug'doy donalarida qaysi ferment mavjud:",
+   "options": [
+    "Amilaza",
+    "Melatonin",
+    "Lipaza",
+    "Proteaza"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-482",
+   "n": 482,
+   "q": "Ribosomalarni tashkil etuvchi moddalar:",
+   "options": [
+    "uglevodlar, RNK",
+    "oqsillar, DNK",
+    "yog'lar, DNK",
+    "oqsillar, RNK"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-483",
+   "n": 483,
+   "q": "Azotemiya quyidagilardan qaysiga olib keladi:",
+   "options": [
+    "Glomerulyar filtratsiyaning pasayishi",
+    "Tanadagi natriy miqdorining ortishi (ushlab turilishi)",
+    "Kaliy etishmovchiligi",
+    "To'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-484",
+   "n": 484,
+   "q": "Qaysi usul hujayralarda doimiy ravishda sodir bo'layotgan biokimyoviy jarayonlarning dinamikasini o'rganishga imkon beradi:",
+   "options": [
+    "Sitokimyoviy",
+    "Differentsial santrifuga",
+    "Avtoradiografiya",
+    "Gistokimyoviy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-485",
+   "n": 485,
+   "q": "Hujayradagi suv necha foizni tashkil qiladi:",
+   "options": [
+    "90%",
+    "60%",
+    "70%",
+    "56%"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-486",
+   "n": 486,
+   "q": "Qon ivishining CCK (koagulyatsiya) omillari qayerda joylashgan:",
+   "options": [
+    "Matoda",
+    "Plazmada",
+    "Zardobda",
+    "Mast hujayralarida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-487",
+   "n": 487,
+   "q": "Bilirubin nimaning parchalanishidan hosil bo'ladi:",
+   "options": [
+    "Gemoglobin",
+    "Oqsillar",
+    "Yog'lar",
+    "Glyukoza"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-488",
+   "n": 488,
+   "q": "Parenteral yo'l bilan yuqadigan gepatitlar qaysilar:",
+   "options": [
+    "B, C, D",
+    "A, E",
+    "A, B, C",
+    "C, E"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-489",
+   "n": 489,
+   "q": "Fekal-oral yo'l bilan yuqadigan gepatitlar qaysilar:",
+   "options": [
+    "A, E",
+    "B, C",
+    "C, D",
+    "B, D"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-490",
+   "n": 490,
+   "q": "Gepatit D virusining rivojlanishi uchun qaysi gepatit virusi kerak:",
+   "options": [
+    "B",
+    "A",
+    "C",
+    "E"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-491",
+   "n": 491,
+   "q": "Qalqonsimon bez gormonlarini toping:",
+   "options": [
+    "Tiroksin (T4) va Triiodotironin (T3)",
+    "Insulin va Glukagon",
+    "Adrenalin va Noradrenalin",
+    "Kortizol va Aldosteron"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-492",
+   "n": 492,
+   "q": "Jinsiy gormonlar keltirilgan qatorni toping:",
+   "options": [
+    "Testosteron, estrogen, progesteron",
+    "Insulin, glukagon, somatotropin",
+    "Adrenalin, noradrenalin, kortizol",
+    "Tiroksin, triiodotironin, kaltsitonin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-493",
+   "n": 493,
+   "q": "Kortizol gormoni qayerda ishlab chiqariladi:",
+   "options": [
+    "Buyrak usti bezi qobig'ida (korteksda)",
+    "Oshqozon osti bezida",
+    "Qalqonsimon bezda",
+    "Buyrak usti bezi ichki qatlamida (medulla)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-494",
+   "n": 494,
+   "q": "Qandli diabetning qaysi formasi eng ko'p uchraydi:",
+   "options": [
+    "2-tip qandli diabet",
+    "1-tip qandli diabet",
+    "Gestatsion diabet",
+    "Neonatal diabet"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-495",
+   "n": 495,
+   "q": "Jigar fosfor organik moddalar bilan zararlanganda qaysi ferment faolligi kamayadi:",
+   "options": [
+    "xolinesteraza",
+    "AST (Aspartat aminotransferaza)",
+    "ALT (Alanin aminotransferaza)",
+    "Amilaza"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-496",
+   "n": 496,
+   "q": "Ishqoriy fosfataza fermenti qaysi kasalliklarda ko'payadi:",
+   "options": [
+    "Buyrak va o'pka saratoni",
+    "Anemiya",
+    "O't yo'llari kasalliklari,suyak to'qimasi metobolik kasalliklari",
+    "yurak yetishmovchiligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-497",
+   "n": 497,
+   "q": "Kislotalik fosfataza fermenti qaysi kasalliklarda ko'payadi:",
+   "options": [
+    "Prostata saratoni, prostate adenomasi, suyak to'qimasining metobolik kasalliklari",
+    "O't yo'llari kasalliklari",
+    "Gepatit",
+    "Yurak yetishmovchiligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-498",
+   "n": 498,
+   "q": "Laktatdegidrogenaza fermentining nechta izomeri bor:",
+   "options": [
+    "3",
+    "5",
+    "7",
+    "9"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "lab_ishi-t-499",
+   "n": 499,
+   "q": "Laktatdegidrogenaza (LDG) ning birinchi izofermenti qachon ko'payadi:",
+   "options": [
+    "Yurak xurujida (miokard infarkti)",
+    "Buyrak kasalliklarida",
+    "Jigar shikastlanishida",
+    "Mushaklarning zo'riqishida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  }
+ ]
+}

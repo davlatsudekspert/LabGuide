@@ -1,0 +1,6237 @@
+{
+ "version": 1,
+ "direction": "tox_lab",
+ "title": "Toksikologik_laboratoriya",
+ "note": "Rasmiy PDF ro'yxati; to'g'ri javob kaliti PDF'da yo'q. key=null — tekshirilmagan; ilovaga kalitsiz kiritilmaydi.",
+ "questions": [
+  {
+   "id": "tox_lab-t-001",
+   "n": 1,
+   "q": "Zaharni aniqlang (Lujnikov E. A., 1999):",
+   "options": [
+    "zahar hayotiy funktsiyalarni buzilishiga olib keladigan va hayot uchun xavf tug'diradigan moddadir",
+    "zahar bu juda oz miqdorda yutilganda zaharlanish yoki o'limga olib keladigan moddadir",
+    "zahar tirik organizm uchun begona moddadir",
+    "zahar tanadagi \"kimyoviy gomeostaz\" ning buzilishiga olib keladigan moddadir"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-002",
+   "n": 2,
+   "q": "Qanday holatlarda ish har doim PPE yordamida amalga oshirilishi kerak?",
+   "options": [
+    "biologik omil ta'sirida shikastlanish xavfi",
+    "baxtsiz hodisalar, ishlov berish qismlari, pestitsidlarni qo'llash",
+    "parchalanish va kondensatsiya aerozollari hosil bo'lgan ishlarda",
+    "terining ifloslanishi, mikroiqlimni isitish, shovqin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-003",
+   "n": 3,
+   "q": "Toksikologiya-o'rganadigan fan:",
+   "options": [
+    "inson yoki hayvon organizmiga zaharli moddalar ta'siridan kelib chiqadigan patologik jarayonning (zaharlanish) rivojlanishi va borishi qonuniyatlari",
+    "tirik organizm va zaharning o'zaro ta'siri qonunlari",
+    "turli zaharlarning inson va hayvonlar organizmiga ta'siri",
+    "zahar va uning xususiyatlari, zaharlanish sharoitlari, organizmning zaharga bo'lgan munosabati va zaharning tanadagi o'zgarishi, dorilarning profilaktik va terapevtik ta'siri, shuningdek tanani himoya qilish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-004",
+   "n": 4,
+   "q": "O'zbekiston hududida klinik toksikologiya bo'yicha birinchi ilmiy ish muallifi:",
+   "options": [
+    "Omar Xayyom",
+    "Abu Ali Ibn Sino",
+    "Mirzo Ulug'bek",
+    "Al Beruni"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-005",
+   "n": 5,
+   "q": "\"Hamma narsa zahar va hech narsa zaharsizdir\" degan gap kimga tegishli. Dori-darmonlardan zahar dozasi bilan farq qiladi\":",
+   "options": [
+    "Paracelsga",
+    "Abu Ali Ibn Sino",
+    "Gippokratga",
+    "K. Marshga"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-006",
+   "n": 6,
+   "q": "O'rta asr o'zbek olimlaridan qaysi biri toksikologiya rivojiga eng katta hissa qo'shgan:",
+   "options": [
+    "Abu Ali Ibn Sino",
+    "Mirzo Ulug'bek",
+    "Al Beruni",
+    "Al Fargoni"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-007",
+   "n": 7,
+   "q": "Qaysi qadimiy manbada birinchi marta zaharli o'simliklar haqida ma'lumot mavjud:",
+   "options": [
+    "Ayurveda",
+    "Avesta",
+    "Eber papirusi",
+    "\"Hammurapi Qonunlari\""
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-008",
+   "n": 8,
+   "q": "Bioavailability bu:",
+   "options": [
+    "tanaga kiradigan zahar miqdori",
+    "vaqt birligi uchun tanadan chiqarilgan zahar miqdori",
+    "qon plazmasi oqsillari bilan bog'lanish",
+    "tizimli qon oqimiga yetgan zahar miqdori"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-009",
+   "n": 9,
+   "q": "Terapevtik dozalarda farmakologik vositalar natijasida kelib chiqqan lezyonlarning patogenezi (\"dori kasalligi\") quyidagilarni o'z ichiga oladi :",
+   "options": [
+    "to'g'ridan-to'g'ri yon ta'siri",
+    "farmakologik ta'sirning ikkilamchi ta'siri",
+    "o'ziga xoslik va allergik reaktsiyalar",
+    "sanab o'tilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-010",
+   "n": 10,
+   "q": "Klinik toksikologiyaning asosiy vazifalariga quyidagilar kiradi:",
+   "options": [
+    "diagnostika",
+    "davolash",
+    "zaharlarning toksikokinetikasi va toksikodinamikasini o'rganish",
+    "yuqorida aytilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-011",
+   "n": 11,
+   "q": "PPE qanday asosiy gigiena talablariga javob berishi kerak?",
+   "options": [
+    "foydalanish qulayligi, bir vaqtning o'zida bir nechta zararlardan himoya qilish.",
+    "har qanday ishda butun tanani himoya qilish",
+    "samaradorlik, shaxsiy himoya vositalarining ishchilarning fiziologik holatiga ta'siri yo'qligi",
+    "atrof-muhit ta'siridan, shovqindan himoya qilish."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-012",
+   "n": 12,
+   "q": "Ko'z va yuzni himoya qilish vositalarini ko'rsating:",
+   "options": [
+    "kapishonlar, fartuklar, qo'lqoplar",
+    "nafas olish, Astra-2, RP-K, F-62SH",
+    "quloqchalar, VTSNIIOT-2, NIAT-3",
+    "xavfsizlik ko'zoynaklari, filtrli qalqonlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-013",
+   "n": 13,
+   "q": "Paxtachilikda pestitsidlardan foydalanishning gigienik xususiyati nimada:",
+   "options": [
+    "pestitsidlarning katta miqdori va assortimentini qo'llash",
+    "pestitsidlarni kichik joylarda qo'llash",
+    "dasturda ketma-ketlikning yo'qligi",
+    "granulalar va kapsulalardan foydalanish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-014",
+   "n": 14,
+   "q": "Ushbu sog'lomlashtirish tadbirlaridan qaysi biri kimyoviy omilni yo'q qilish uchun eng radikal hisoblanadi?",
+   "options": [
+    "texnologik jarayonni takomillashtirish, muhrlash",
+    "oqilona shamollatish moslamasi",
+    "300 buyrug'i bilan tibbiy ko'riklarni o'tkazish",
+    "inhalerlar, fotariyalarni tashkil etish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-015",
+   "n": 15,
+   "q": "Mikrobiologik ishlab chiqarish atrof-muhitga tahdid soladimi va nima uchun?",
+   "options": [
+    "yo'q, chunki mikroorganizmlar shartli ravishda patogen hisoblanadi",
+    "yo'q, chunki toksinlar hosil bo'lishi mumkin",
+    "ha, chiqindilarni etarli darajada tozalash bilan ifloslanish mumkin",
+    "ha, chunki bunday ishlab chiqarishlarda chiqindilar yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-016",
+   "n": 16,
+   "q": "Pestitsidlarning bilvosita ta'siriga kim ta'sir qiladi va nima uchun?",
+   "options": [
+    "aholi, ifloslangan tashqi muhit orqali",
+    "agronomlar, hosil sifatini tekshirishda",
+    "seb va oz shifokorlari, mehnat sharoitlarini nazorat qilishda",
+    "karantin muddatlariga muvofiq ishlov berilgan dalalarda ishlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-017",
+   "n": 17,
+   "q": "Toksik ta'sirni kuchaytiradigan qanday omillar mavjud?",
+   "options": [
+    "kunduzgi yorug'lik, shovqin yo'q",
+    "mehnatning og'irligi va intensivligi",
+    "radio to'lqinlari, yorug'lik ochligi",
+    "yuqori havo harorati, CO2"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-018",
+   "n": 18,
+   "q": "Profilaktik toksikologiyaning 3 turini ayting:",
+   "options": [
+    "kimyoviy",
+    "ishlab chiqarish, oziq-ovqat, kommunal",
+    "biologik",
+    "jismoniy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-019",
+   "n": 19,
+   "q": "Kimyoviy omilni aniqlash uchun tahlil qilish kerak bo'lgan asosiy maqsadlarni sanab o'ting:",
+   "options": [
+    "texnologik jarayonni o'rganish",
+    "kasbiy zaharlanish holatlarini tekshirish, sanitariya tadbirlarining samaradorligini tekshirish, shikoyatlarni tekshirish",
+    "havoning kimyoviy moddalar bilan ifloslanishi manbalari va sabablarini aniqlash",
+    "rejalashtirilgan sanitariya tekshiruvlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-020",
+   "n": 20,
+   "q": "Havoni sanitariya-kimyoviy nazorat qilishning birinchi bosqichi nima:",
+   "options": [
+    "havoning kimyoviy moddalar bilan ifloslanishi manbalari va sabablarini aniqlash",
+    "havodan namuna olish va keyinchalik tahlil qilish",
+    "texnologik jarayonni o'rganish",
+    "havo namunalarini olish nuqtalarini tanlash va namuna olish sxemalarini tuzish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-021",
+   "n": 21,
+   "q": "Havoni sanitariya-kimyoviy nazorat qilishning ikkinchi bosqichi nima:",
+   "options": [
+    "texnologik jarayonni o'rganish",
+    "olingan ma'lumotlarni baholash va protokol tuzish",
+    "havo namunalarini olish nuqtalarini tanlash va namuna olish sxemalarini tuzish",
+    "havoning kimyoviy moddalar bilan ifloslanishi manbalari va sabablarini aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-022",
+   "n": 22,
+   "q": "Havoni sanitariya-kimyoviy nazorat qilishning uchinchi bosqichi nima:",
+   "options": [
+    "havodan namuna olish nuqtalarini tanlash va namuna olish sxemalarini tuzish",
+    "texnologik jarayonni o'rganish",
+    "havodan namuna olish va keyinchalik tahlil qilish",
+    "havoning kimyoviy moddalar bilan ifloslanishi manbalari va sabablarini aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-023",
+   "n": 23,
+   "q": "Havoni sanitariya-kimyoviy nazorat qilishning to'rtinchi bosqichi nima:",
+   "options": [
+    "olingan ma'lumotlarni baholash va protokol tuzish",
+    "texnologik jarayonni o'rganish",
+    "havodan namuna olish va keyinchalik tahlil qilish",
+    "havoning kimyoviy moddalar bilan ifloslanishi manbalari va sabablarini aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-024",
+   "n": 24,
+   "q": "Havoni sanitariya-kimyoviy nazorat qilishning beshinchi bosqichi nima:",
+   "options": [
+    "olingan ma'lumotlarni baholash va shaklda protokol tuzish",
+    "texnologik jarayonni o'rganish",
+    "sanitariya tadbirlarining samaradorligini tekshirish",
+    "havodan namuna olish va keyinchalik tahlil qilish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-025",
+   "n": 25,
+   "q": "Kimyoviy moddalar uchun havo namunalarini tahlil qilish uchun eng ko'p ishlatiladigan usullar qanday?",
+   "options": [
+    "biologik",
+    "jismoniy",
+    "kolorimetriya, polarografiya, xromatografik, radiometrik",
+    "kimyoviy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-026",
+   "n": 26,
+   "q": "Kimyoviy omil etakchi zararli omil bo'lgan sanoatning qaysi turlarini bilasiz?",
+   "options": [
+    "organik sintez sanoati, kimyo sanoati, kimyoviy birikmalarni qo'llash8",
+    "kimyoviy birikmalarni sintez qiluvchi institutlar",
+    "metallurgiya",
+    "tog' - kon sanoati"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-027",
+   "n": 27,
+   "q": "Ishlab chiqarish toksikologiyasining asosiy vazifalarini sanab o'ting:",
+   "options": [
+    "kasbiy jarohatlar va kasbiy kasalliklarning oldini olish bo'yicha chora-tadbirlarni ishlab chiqish",
+    "yangi kimyoviy birikmalarning toksikligini baholash, gigiena qoidalarini belgilash",
+    "texnologik jarayonning o'zgarishi",
+    "rejalashtirilgan sanitariya tekshiruvlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-028",
+   "n": 28,
+   "q": "Ishlab chiqarish toksikologiyasining qanday usullarini bilasiz?",
+   "options": [
+    "fiziologik, biokimyoviy, klinik va boshqalar.",
+    "patomorfologik",
+    "jismoniy",
+    "kimyoviy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-029",
+   "n": 29,
+   "q": "Professional zaharlanish eng ko'p rivojlanadigan ishlab chiqarish:",
+   "options": [
+    "ko'mir qazib olish",
+    "qo'rg'oshinni eritish",
+    "og'ir metallar va organik erituvchilar ishlab chiqarish",
+    "shisha ishlab chiqarish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-030",
+   "n": 30,
+   "q": "Tetraetil qo'rg'oshin zaharlanishining asosiy belgilari qanday:",
+   "options": [
+    "xotiraning pasayishi, deliryum, psixoz",
+    "gipertermiya, gipertoniya, salivatsiyaning pasayishi",
+    "nevritlar, parezlar",
+    "asab-ruhiy sohaning shikastlanishi, gipotenziya, bradikardiya, gipotermiya, terlashning ko'payishi, asab tizimining organik shikastlanishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-031",
+   "n": 31,
+   "q": "Simob bilan zaharlanishning asosiy belgilari:",
+   "options": [
+    "asab-ruhiy sohaning shikastlanishi, gipotenziya, bradikardiya, gipotermiya, terlashning ko'payishi, asab tizimining organik shikastlanishi.",
+    "Markaziy asab tizimining, oshqozon-ichak traktining shikastlanishi, qalqonsimon bezning funktsional holatining o'zgarishi, buyrak shikastlanishi",
+    "xotiraning pasayishi, nevritlar",
+    "parez, jigar shikastlanishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-032",
+   "n": 32,
+   "q": "Simob bilan ishlashda uskunalar va binolarning asosiy talabi nima:",
+   "options": [
+    "qattiq qoplangan pollar",
+    "devorlar va shiftlar tsement ohakida gips bilan qoplangan",
+    "devorlar va shiftlar yog'li bo'yoq bilan bo'yalgan",
+    "uskunalar ostida bo'sh joy bo'lishi kerak, ishchining yuzasi egilgan va to'kilgan simobni yig'ish uchun moslamaga ega bo'lishi kerak"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-033",
+   "n": 33,
+   "q": "Anilin qaysi asosiy organlar va tizimlarga ta'sir qiladi:",
+   "options": [
+    "metabolizm",
+    "uzoq effektlar",
+    "qon, Markaziy asab tizimi, CCC",
+    "buyraklar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-034",
+   "n": 34,
+   "q": "Biologik omilning ishchilarga ta'siri mumkin bo'lgan ishlab chiqarishning asosiy turlari qanday:",
+   "options": [
+    "antibiotiklar ishlab chiqarish, kimyoviy birikmalar ishlab chiqarish",
+    "mikrobiologiya sanoati, qishloq xo'jaligi ishlab chiqarishi, aralash ozuqa ishlab chiqarish",
+    "hayvonlarga xizmat ko'rsatish va o'qitish",
+    "biologik mahsulotlar bilan ishlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-035",
+   "n": 35,
+   "q": "Pestitsidlarning tasnifi:",
+   "options": [
+    "ishlab chiqarish maqsadi, kimyoviy tarkibi, gigienik tasnifi bo'yicha",
+    "kümülatif xususiyatlarga ko'ra",
+    "chidamlilik bo'yicha",
+    "xavf sinfi bo'yicha"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-036",
+   "n": 36,
+   "q": "Tayyorgarlik bosqichining asosiy vazifasi:",
+   "options": [
+    "konteynerlarni zararsizlantirish",
+    "ombordan pestitsidlarni qabul qilish",
+    "maxsus kiying.kiyim",
+    "idishlarni ochish, o'lchash, osib qo'yish, texnikani yuklash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-037",
+   "n": 37,
+   "q": "Qishloq xo'jaligida o'simliklarni qayta ishlashning 2 usuli qanday?",
+   "options": [
+    "kimyoviy va biokimyoviy",
+    "jismoniy va fiziologik",
+    "traktor va aviatsiya",
+    "patomorfologik va morfologik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-038",
+   "n": 38,
+   "q": "Pestitsidlar bilan ishlashni tartibga soluvchi asosiy qonun hujjati:",
+   "options": [
+    "SanPiN № 0028-94\"oO'zbekiston xalq xo 'jaligida pestitsidlarni qo'llash, saqlash va tashishda sanitariya qoidalari, gigiyena normativlari\"",
+    "O'zR \"qishloq xo'jaligini zararkunandalar, kasalliklar, begona o 'tlardan himoya qilish to'g'risida\"gi Qonuni",
+    "'simliklarni himoya qilishning o'zlarida qo 'llash uchun ruxsat etilgan kimyoviy va biologik vositalari ro'yxati.",
+    "SanPiN № 0059-96 \"pestitsidlarning gigienik tasnifi\"."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-039",
+   "n": 39,
+   "q": "Pestitsidlarning salbiy ta'sirini oldini olishning eng radikal choralari:",
+   "options": [
+    "ish va dam olish rejimi",
+    "dastlabki va davriy tibbiy ko'rik",
+    "pestitsidlarni joriy etishning PSN bosqichida tartibga solish, gigiena qoidalarini ishlab chiqish, PPE ishchilarini ta'minlash va boshqalar.",
+    "ishchilarga ko'rsatma"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-040",
+   "n": 40,
+   "q": "Amalga oshirishda toksikometriya bo'yicha majburiy tadqiqotlarni sanab o'ting to'liq eksperimental toksikologik baholash:",
+   "options": [
+    "Dl50, CL50 ta'rifi, umumiy klinika va morfologiya, turlarning sezgirligi, ksim",
+    "Dl50, CL50 ta'rifi, umumiy klinika va morfologiya, terini tirnash xususiyati beruvchi ta'sir, Limit, lim ac, Ac, Ksum, Zch, Limac, KS",
+    "Dl50, CL50 ta'rifi, umumiy klinika va morfologiya, Ksum,",
+    "Dl50, SL50, Zac, Zch ta'rifi. Limch, uzoq muddatli oqibatlar, KS"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-041",
+   "n": 41,
+   "q": "Dozalar orasidagi bo'shliqlar 1 marta bo'lgan o'rtacha o'lim dozalari (DL50) qiymatini qanday usul bilan aniqlash mumkin?",
+   "options": [
+    "Pershin usuli",
+    "van der Waerden bitta nuqta usuli",
+    "Deichmann va Le Blanc usuli",
+    "G. N. Krasovskiy usuli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-042",
+   "n": 42,
+   "q": "Pastki chegara stimullarini yig'ish usuli qanday maqsadlarda qo'llaniladi:",
+   "options": [
+    "hayvonlarda yurak-qon tomir tizimini o'rganish usuli sifatida",
+    "jigar faoliyatini o'rganish",
+    "Markaziy asab tizimining funktsional holatini baholash uchun",
+    "buyrak funktsiyasini o'rganish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-043",
+   "n": 43,
+   "q": "Sirka kislotasi bug'larining oq sichqonlarga ta'sir qilish chegarasini belgilashda mezon sifatida qanday biokimyoviy tizimdan foydalanish mumkin:",
+   "options": [
+    "atsetilxolin va xolinesteraza",
+    "biogen aminlar",
+    "katalaza va aldegid dehidrogenaza",
+    "timidilat sintetaza tizimi, transketolaza"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-044",
+   "n": 44,
+   "q": "Profilaktik toksikologiyada qo'llaniladigan uzoq muddatli ta'sirlarni o'rganish usullarini sanab o'ting:",
+   "options": [
+    "jigar faoliyatini o'rganish",
+    "buyrak funktsiyasini o'rganish",
+    "qon va gematopoez tizimini o'rganish",
+    "gonadotropik, embriotropik, mutagen, blastomogen harakatlarni o'rganish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-045",
+   "n": 45,
+   "q": "Teri rezorptiv ta'sirining mezonlari nima:",
+   "options": [
+    "qon ko'rsatkichlarining o'zgarishi",
+    "hayvonlarning omon qolishi",
+    "hayvonlarning vazni o'zgarishi",
+    "o'lim, paydo bo'lish vaqti va intoksikatsiya belgilarining og'irligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-046",
+   "n": 46,
+   "q": "Quyonlarning oshqozoniga kiritish uchun ruxsat etilgan suyuqlik miqdorini ko'rsating:",
+   "options": [
+    "100,0; 150,0; 200,0 ml",
+    "4,0; 5,0; 6,0 ml",
+    "500 ml gacha",
+    "0,5; 0,8; 1,0"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-047",
+   "n": 47,
+   "q": "Teri ostiga kalamushlarni kiritish uchun ruxsat etilgan suyuqlik miqdorini ko'rsating:",
+   "options": [
+    "1,0 ml",
+    "10,5 ml",
+    "15,0 ml",
+    "20,0 ml"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-048",
+   "n": 48,
+   "q": "Dengiz cho'chqalariga tomir ichiga yuborish uchun ruxsat etilgan suyuqlik miqdorini ko'rsating:",
+   "options": [
+    "0,2-0,5 ml",
+    "2,0 ml",
+    "15,0 ml",
+    "8,0 – 5,0 ml"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-049",
+   "n": 49,
+   "q": "Mushak ichiga yuborish uchun ruxsat etilgan suyuqlik hajmini ko'rsating:",
+   "options": [
+    "0,5 ml",
+    "5,0 ml",
+    "6,0 ml",
+    "10,0 ml"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-050",
+   "n": 50,
+   "q": "Quyonlarning qorin bo'shlig'iga kiritilishi uchun ruxsat etilgan suyuqlik miqdorini ko'rsating:",
+   "options": [
+    "0,5-1,0 ml",
+    "2,0-3,0 ml",
+    "4,0-5,0 ml",
+    "20,0-30,0 ml"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-051",
+   "n": 51,
+   "q": "Sensitizatsiyani aniqlashning qanday usullarini bilasiz:",
+   "options": [
+    "teri tomchilari testlari",
+    "oshqozon ichidagi administratsiyalar",
+    "nafas olish urug'i",
+    "rentgenografiya usuli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-052",
+   "n": 52,
+   "q": "Ko'rsatkichlarda nafas olish ta'sirida o'tkir zaharlanish xavfi sinfini aniqlang: mutlaq toksiklik 0,004, ehtimollik qiymatlari nisbati (CL84 / CL16) xavf koeffitsienti 0,0004, moyillik burchagi fuchsiyasi 9,6 va o'tkir ta'sir zonasi 3,3",
+   "options": [
+    "Kam Xavfli",
+    "o'rtacha xavfli",
+    "juda xavfli",
+    "o'ta xavfli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-053",
+   "n": 53,
+   "q": "Agar moddaning ish maydoni havosida ruxsat etilgan maksimal kontsentratsiyasi 0,5 mg / m3 ga o'rnatilgan bo'lsa, moddaning xavf darajasi bo'yicha qaysi sinfga tegishli ekanligini aniqlang",
+   "options": [
+    "o'ta xavfli",
+    "Kam Xavfli",
+    "o'rtacha xavfli",
+    "Yuqori Xavfli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-054",
+   "n": 54,
+   "q": "Tamaki xavf darajasi bo'yicha qaysi sinfga tegishli, agar uning ish zonasi havosidagi maksimal ruxsat etilgan konsentratsiyasi 3 mg / m3 darajasida o'rnatilgan bo'lsa",
+   "options": [
+    "o'ta xavfli",
+    "Kam Xavfli",
+    "o'rtacha xavfli",
+    "Yuqori Xavfli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-055",
+   "n": 55,
+   "q": "Agar oq sichqonlar uchun nafas olish ta'sirida o'rtacha o'lim kontsentratsiyasi 44610 mg/m3 bo'lsa, birikmaning toksiklik sinfini (yog' aldegidi) aniqlang",
+   "options": [
+    "juda zaharli",
+    "juda zaharli",
+    "o'rtacha zaharli",
+    "kam toksik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-056",
+   "n": 56,
+   "q": "Agar oq kalamushlar uchun nafas olish ta'sirida o'rtacha o'lim kontsentratsiyasi 3000 mg/m3 bo'lsa, birikmaning toksiklik sinfini (furan) aniqlang",
+   "options": [
+    "juda zaharli",
+    "juda zaharli",
+    "o'rtacha toksik",
+    "kam toksik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-057",
+   "n": 57,
+   "q": "Agar oq kalamushlar uchun nafas olish ta'sirida o'rtacha o'lim kontsentratsiyasi 10 mg/m3 bo'lsa, birikmaning toksiklik sinfini (siyanur xlorianiqlang",
+   "options": [
+    "juda zaharli",
+    "juda zaharli",
+    "o'rtacha toksik",
+    "kam toksik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-058",
+   "n": 58,
+   "q": "Agar oq sichqonlar uchun nafas olish ta'sirida o'rtacha o'lim kontsentratsiyasi 346,700 mg/m3 bo'lsa, birikmaning toksiklik sinfini (trikloroflorometan) aniqlang",
+   "options": [
+    "juda zaharli",
+    "juda zaharli",
+    "o'rtacha toksik",
+    "kam toksik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-059",
+   "n": 59,
+   "q": "Hayvonlarning zaharga sezgirligidagi turlarning farqlarini baholang agar turlarning sezgirlik koeffitsienti 2 ga teng bo'lsa",
+   "options": [
+    "ifoda etilmagan",
+    "ifodalangan",
+    "aniq ifodalangan",
+    "zaif ifodalangan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-060",
+   "n": 60,
+   "q": "Fop tanaga ta'sir qilganda o'zgarib turadigan asosiy organlar va tizimlar qanday:",
+   "options": [
+    "buyrak shikastlanishi",
+    "oshqozon-ichak traktining shikastlanishi",
+    "terining shikastlanishi",
+    "Markaziy asab tizimi, CCC, jigar shikastlanishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-061",
+   "n": 61,
+   "q": "Fop zaharlanishining alomatlarini ayting:",
+   "options": [
+    "diareya",
+    "isitma, salivatsiyaning kuchayishi, qorin og'rig'i",
+    "bosimning oshishi, terining qizarishi",
+    "lakrimatsiya, bradikardiya, titroq va mushaklarning fibrillyar burishishi, o'quvchilarning torayishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-062",
+   "n": 62,
+   "q": "Ro'yxatdagi hujjatlardan qaysi biri papkada bo'lishi kerak-har bir ob'ektning ishi:",
+   "options": [
+    "San aktlari.tekshiruvlar, ishchilar ro'yxati, zararli omillar ro'yxati",
+    "joriy sannadzor xaritasi, so'rovnomalar, laboratoriya asboblari protokollari. qarang.",
+    "San ishga qabul qilish to'g'risida xulosa, laboratoriya asboblarining natijalari. qarang.",
+    "asal tekshiruvlari, prof holatlarini tekshirish uchun materiallar. Zaharlanish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-063",
+   "n": 63,
+   "q": "Sanktsiyalarni qo'llashda harakatlar ketma-ketligini ko'rsating:",
+   "options": [
+    "yakuniy AKT, reja-topshiriq, qaror",
+    "sanitariya tavsifi, laboratoriya sinovlari natijalari, xulosa",
+    "tekshirish akti, sanitariya buzilishi to'g'risidagi protokol, qaror",
+    "nazorat qilinadigan obyekt bo 'yicha GTSEN bo'yicha buyruqlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-064",
+   "n": 64,
+   "q": "Aholining paxta zavodidan chang borligi haqidagi shikoyatlarini tekshirishda birinchi navbatda mehnat salomatligi bo'yicha Markaziy sog'liqni saqlash boshqarmasi shifokori nima qilishi kerak:",
+   "options": [
+    "boshqa zararlarning mavjudligi sanitariya muhofazasi zonasi (SPZ)",
+    "SPZ qiymatini va kanalizatsiya tozalash inshootlarining mavjudligini bilib oling",
+    "spzni obodonlashtirish",
+    "korxonada suv ta'minoti manbalarining mavjudligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-065",
+   "n": 65,
+   "q": "O'simlik changi ta'sirida qanday ta'sir etakchi bo'ladi:",
+   "options": [
+    "fibrogen ta'sir",
+    "toksik ta'sir",
+    "embriotrop ta'sir",
+    "allergik ta'sir"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-066",
+   "n": 66,
+   "q": "Mineral chang ta'sirida qanday ta'sir etakchi bo'ladi:",
+   "options": [
+    "sezgirlashtiruvchi ta'sir",
+    "toksik ta'sir",
+    "bezovta qiluvchi ta'sir",
+    "fibrogen ta'sir"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-067",
+   "n": 67,
+   "q": "Bu asosan aerozollarga asosan fibrogen ta'sir qilish xavfini aniqlaydi:",
+   "options": [
+    "kristalli kremniy dioksidi tarkibi",
+    "suvda katta eruvchanlik",
+    "suvda past eruvchanligi",
+    "elektr zaryadlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-068",
+   "n": 68,
+   "q": "Yuqoridagi holatlarning qaysi birida ish zonasi havosidagi kimyoviy moddalar tarkibini aniqlash kerak:",
+   "options": [
+    "texnologik jarayonni tavsiflashda",
+    "qurilish loyihalarini sanitariya ekspertizasidan o ' tkazishda",
+    "kasbiy zaharlanish holatlarini tekshirishda",
+    "qurilish jarayonini nazorat qilishda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-069",
+   "n": 69,
+   "q": "Qanday harakatlar uzoq harakatlarga tegishli:",
+   "options": [
+    "teri, rezorptiv",
+    "mutagen, blastomogen",
+    "allergik, tirnash xususiyati beruvchi",
+    "o'tkir, surunkali"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-070",
+   "n": 70,
+   "q": "Simob tanaga uzoq vaqt davomida kirganda qanday kasallikka olib kelishi mumkin:",
+   "options": [
+    "saturnizm",
+    "bissinoz",
+    "merkurializm",
+    "skolyoz"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-071",
+   "n": 71,
+   "q": "Uglerod oksidining toksik ta'sirining asosi nima:",
+   "options": [
+    "qonda karboksigemoglobin hosil bo'lishi",
+    "oqsillarning denaturatsiyasi",
+    "qonda methemoglobin hosil bo'lishi",
+    "qon xolinesteraza faolligini inhibe qilish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-072",
+   "n": 72,
+   "q": "Ko'pgina organik erituvchilar o'tkir intoksikatsiyada qanday ta'sirga ega:",
+   "options": [
+    "allergik ta'sir",
+    "kardiotoksik ta'sir",
+    "teratogen ta'sir",
+    "giyohvandlik ta'siri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-073",
+   "n": 73,
+   "q": "Qaysi kimyoviy modda aniq moddiy kumulyatsiyaga ega:",
+   "options": [
+    "organik erituvchilar",
+    "azot oksidlari",
+    "polimer moddalar",
+    "Simob"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-074",
+   "n": 74,
+   "q": "Kalamushlar va quyonlar uchun zaharning tirnash xususiyati beruvchi xususiyatlarini aniqlashning cheklovchi ko'rsatkichini aniqlang:",
+   "options": [
+    "sub'ektiv hissiyotlarning o'zgarishi",
+    "nafas olish tezligining o'zgarishi",
+    "suv oqishi",
+    "oq qon hujayralarining ko'payishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-075",
+   "n": 75,
+   "q": "Oltingugurt va xlorid kislota aerozollari bilan uzoq vaqt ishlaydigan odamlar tanasida qanday bir xil o'zgarishlar bo'lishi mumkin:",
+   "options": [
+    "teri kasalliklarining rivojlanishi",
+    "surunkali bronxitning rivojlanishi",
+    "xushbo'y analizatorning sezgirligini kamaytirish",
+    "ko'z kasalliklarining rivojlanishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-076",
+   "n": 76,
+   "q": "Agar nafas olish bilan zaharlanish ehtimoli koeffitsienti (KVIO) 25,0 bo'lsa, gidrazinning xavf darajasini aniqlang",
+   "options": [
+    "juda xavfli",
+    "xavfli",
+    "kam xavfli",
+    "o'rtacha xavfli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-077",
+   "n": 77,
+   "q": "Uzoq vaqt davomida tanlangan ta'sirga ega bo'lgan past darajadagi zaharlarning ta'sir turi bo'yicha sinfni aniqlang:",
+   "options": [
+    "I-o'ta xavfli",
+    "II-yuqori xavfli",
+    "III - o'rtacha xavfli",
+    "IV-ozgina xavfli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-078",
+   "n": 78,
+   "q": "Past darajadagi tirnash xususiyati beruvchi va kaustik zaharlarning ta'sir turi bo'yicha sinfni aniqlang:",
+   "options": [
+    "I-o'ta xavfli",
+    "II-yuqori xavfli",
+    "III - o'rtacha xavfli",
+    "IV-ozgina xavfli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-079",
+   "n": 79,
+   "q": "Nerv zaharlarining past darajadagi ta'sir turi bo'yicha sinfni aniqlang:",
+   "options": [
+    "I-o'ta xavfli",
+    "II-yuqori xavfli",
+    "III - o'rtacha xavfli",
+    "IV-ozgina xavfli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-080",
+   "n": 80,
+   "q": "Past darajadagi zaharlarning qonga ta'siri turiga qarab sinfni aniqlang:",
+   "options": [
+    "I-o'ta xavfli",
+    "II-yuqori xavfli",
+    "III - o'rtacha xavfli",
+    "IV-ozgina xavfli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-081",
+   "n": 81,
+   "q": "Gvineya cho'chqalaridan qon olish usuli:",
+   "options": [
+    "ulnar venadan",
+    "son venasidan",
+    "quyruqdan",
+    "yurakdan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-082",
+   "n": 82,
+   "q": "\"Subkronik toksiklik\" testining davomiyligi:",
+   "options": [
+    "120 kun",
+    "24±4 kun",
+    "14-30 kun",
+    "30 kun"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-083",
+   "n": 83,
+   "q": "Ruxsat etilgan maksimal konsentratsiyani aniqlash uchun asosiy toksikometrik parametrlar:",
+   "options": [
+    "texnik erishish",
+    "zararli ta'sir chegarasi",
+    "qabul qilinadigan xavf",
+    "Chegarasizlik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-084",
+   "n": 84,
+   "q": "Zararli moddalarning toksikligi ko'rsatkichlarini sanab o'ting:",
+   "options": [
+    "L50 (ichkarida), CL50, DL50 (terida)",
+    "DL 16, DL84 (ichkarida),",
+    "CL 16, CL84",
+    "Zac, Zch"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-085",
+   "n": 85,
+   "q": "Pestitsidlarni saqlash va berish uchun mo'ljallangan omborlar uy-joydan yaqinroq bo'lmasligi kerak:",
+   "options": [
+    "50 m",
+    "100 m",
+    "200 m",
+    "300 mm"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-086",
+   "n": 86,
+   "q": "Framuga yoki eshiklarni ochib, omborxonalarni kamida shamollatish kerak:",
+   "options": [
+    "kuniga uch marta",
+    "uch kun bir marta",
+    "kuniga ikki marta",
+    "kuniga bir marta"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-087",
+   "n": 87,
+   "q": "Omborlarda ishlaydiganlar ish kiyimlari bilan ta'minlangan:",
+   "options": [
+    "(quloq tiqinlari, qo'lqoplar, etiklar, xalatlar)",
+    "(poyabzal, xalat, kepka)",
+    "(gaz niqoblari, kombinezonlar, etiklar)",
+    "(qo'lqoplar, galoshlar, xalatlar, kombinezonlar)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-088",
+   "n": 88,
+   "q": "Ish kiyimlarini yuvish har birida amalga oshirilishi kerak:",
+   "options": [
+    "3-4 kun",
+    "1-2 kun",
+    "15 - 20 kun",
+    "7 - 10 kun"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-089",
+   "n": 89,
+   "q": "Ishga qabul qilishda shaxslarni tibbiy tanlash va vaqti-vaqti bilan tibbiy ko'rikdan o'tkazish muhim profilaktika chorasidir. O'zR sog'liqni saqlash vazirligining buyrug'i nima?",
+   "options": [
+    "O'zR sog'liqni saqlash vazirligining600-son buyrug'i",
+    "O'zR sog'liqni saqlash vazirligining 505-Son Buyrug'i",
+    "O'zR sog'liqni saqlash vazirligining 42-Son Buyrug'i",
+    "O'zR sog'liqni saqlash vazirligining 200-Son Buyrug'i"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-090",
+   "n": 90,
+   "q": "Qishloq xo'jaligida qaysi kasbga ega bo'lgan odamlar pestitsidlar bilan yaqin aloqada:",
+   "options": [
+    "kolxoz raisi",
+    "sovxoz direktori",
+    "agronom entomologi",
+    "bosh agronom"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-091",
+   "n": 91,
+   "q": "Odamlar, qanday kasb o'tkir zaharlanishga duchor bo'lishi mumkin:",
+   "options": [
+    "sutchi",
+    "mexanik",
+    "bu vaqtda maydonda bo'lganlarning hammasi",
+    "bosh buxgalter"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-092",
+   "n": 92,
+   "q": "Mehnat sharoitlarining sanitariya-gigienik xususiyatlari quyidagilarni beradi:",
+   "options": [
+    "yashash joyidagi poliklinika",
+    "tuman kasalxonasi",
+    "xo ' jalik raisi",
+    "SEO va JSK ma'muriyat imzosi bilan sanoat bo'limi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-093",
+   "n": 93,
+   "q": "Bosh davlat vrachining qarori bilan paxtani qo'lda yig'ish taqiqlanadi:",
+   "options": [
+    "nafaqaxo'rlar",
+    "erkaklar",
+    "harbiy xizmatchilar",
+    "18 yoshgacha bo'lgan bolalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-094",
+   "n": 94,
+   "q": "Agar modda ko'rsatkichlardan biriga muvofiq i tasniflash guruhiga tegishli bo'lsa:",
+   "options": [
+    "amaliyotga tatbiq etilishi lozim",
+    "REK qat'iy rioya qilingan holda amalga oshirilishi kerak",
+    "ishlab chiqarishdan chiqarilishi kerak",
+    "amaliyotga tatbiq etilmaydi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-095",
+   "n": 95,
+   "q": "LD50 ni aniqlash uchun necha oy kerak:",
+   "options": [
+    "5-6 oy",
+    "1-2 oy",
+    "1 yil",
+    "15 kun"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-096",
+   "n": 96,
+   "q": "Preparatning kümülatif xususiyatlarini o'rganish uchun quyidagilar zarur:",
+   "options": [
+    "2 oy davomida kalamushlarga 1/10 LD50 kunlik kirish.",
+    "6 oy davomida kalamushlarga 1/10 LD50 kunlik kirish.",
+    "kalamushlarga kunlik kirish 1/10 LD50 1 yil davomida.",
+    "15 kun davomida kalamushlarga 1/10 LD50 kunlik yuborish."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-097",
+   "n": 97,
+   "q": "Necha yil davomida yangi pestitsidning toksik va gigienik xususiyatlari uyda bo'lishi kerak va qishloq xo'jaligida ishlatilganda uning xavf darajasi to'g'risida xulosa chiqariladi:",
+   "options": [
+    "2 yil davomida",
+    "1 yil davomida",
+    "6 oy davomida",
+    "3 yil davomida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-098",
+   "n": 98,
+   "q": "Toksikologik tadqiqotlar bu:",
+   "options": [
+    "oshqozon - ichak trakti, nafas olish yo'llari, buzilmagan teri orqali tanaga takroriy qabul qilinganda yangi pestitsidning toksikligi va xavfliligini aniqlash",
+    "oshqozon-ichak trakti, nafas olish yo'llari, shikastlangan teri orqali tanaga bir marta va takroriy qabul qilinganda yangi pestitsidning toksikligi va xavfliligini aniqlash",
+    "oshqozon, nafas olish yo'llari, buzilmagan teri orqali tanaga bir marta va takroriy qabul qilinganda yangi pestitsidning toksikligi va xavfliligini aniqlash",
+    "oshqozon - ichak trakti, nafas olish yo'llari, buzilmagan teri orqali tanaga bir marta va takroriy qabul qilinganda yangi pestitsidning toksikligi va xavfliligini aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-099",
+   "n": 99,
+   "q": "O'tkir tajriba boshlanishidan oldin hayvonlar karantinda saqlanadi:",
+   "options": [
+    "7 kun",
+    "10 kun",
+    "25 kun",
+    "1 oy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-100",
+   "n": 100,
+   "q": "Surunkali eksperiment boshlanishidan oldin hayvonlar karantinda saqlanadi:",
+   "options": [
+    "40 kun",
+    "10 kun",
+    "1 oy",
+    "14 kun"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-101",
+   "n": 101,
+   "q": "Dengiz cho'chqalaridan qon olish usuli:",
+   "options": [
+    "ulnar venadan",
+    "son venasidan",
+    "yurakdan",
+    "quyruqdan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-102",
+   "n": 102,
+   "q": "Konservantlar qo'shilgan qonni tekshirish vaqti:",
+   "options": [
+    "ertasi kuni",
+    "dastlabki 3 soat ichida",
+    "5 soat ichida",
+    "birinchi soat Ichida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-103",
+   "n": 103,
+   "q": "Kengaytirilgan sxema bo'yicha kumulyatsiya turini aniqlash uchun har kuni qo'llaniladigan moddaning dozasi miqdori:",
+   "options": [
+    "1/5, 1/10, 1/20, 1/100, 1/200 DL50",
+    "1/10 DL50 5-kuni 11/2 marta ko'tariladi",
+    "1/10 - 1/20 CL50",
+    "DL50"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-104",
+   "n": 104,
+   "q": "\"Subxronik toksiklik\" testining davomiyligi:",
+   "options": [
+    "120 kun",
+    "24±4 kun",
+    "14-30 kun",
+    "30 kun"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-105",
+   "n": 105,
+   "q": "Kichik konsentratsiyalarda surunkali ta'sir qilishda qaysi zaharlar yuqori xavfli ekanligini sanab o'ting:",
+   "options": [
+    "naftalin, aseton, benzin, turpentin",
+    "akril kislota, oltingugurt dioksidi, benzil benzoat, propionaldegid",
+    "arsin, benzopiren, vodorod siyanid, trikloroatsetik kislota",
+    "qo'rg'oshin, marganets, simob, benzol, trinitrotoluol"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-106",
+   "n": 106,
+   "q": "Zararli moddalarning xavf ko'rsatkichlarini sanab o'ting:",
+   "options": [
+    "DL50, CL50, DL50",
+    "DL16, DL84",
+    "CL16, CL84",
+    "KVIO, MPC, Zac, Zch"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-107",
+   "n": 107,
+   "q": "Toksiklik darajasini sinflar bo'yicha ro'yxatlang",
+   "options": [
+    "juda zaharli, o'rtacha, o'rta, kichik",
+    "juda zaharli, juda zaharli, o'rtacha toksik, kam toksik",
+    "juda toksik, o'rta toksik, ozgina toksik",
+    "toksik, potentsial toksik, toksik bo'lmagan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-108",
+   "n": 108,
+   "q": "Natriy nitrit, uglerod disulfid, koniyoz xavfli chang kabi moddalarga sezgir bo'lgan hayvonlarning yosh guruhini aniqlang:",
+   "options": [
+    "kattalar",
+    "qariyalar",
+    "etuk yoshlar",
+    "yoshlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-109",
+   "n": 109,
+   "q": "Aminazin, ftordixloroetan kabi moddalarga sezgir bo'lgan hayvonlarning yosh guruhini aniqlang:",
+   "options": [
+    "kattalar",
+    "qariyalar",
+    "etuk yoshlar",
+    "yoshlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-110",
+   "n": 110,
+   "q": "Allil spirti, dietil efir, granozan kabi moddalar sezgir bo'lgan hayvonlarning yosh guruhini aniqlang:",
+   "options": [
+    "kattalar",
+    "qariyalar",
+    "etuk yoshlar",
+    "yoshlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-111",
+   "n": 111,
+   "q": "Toksikologik tekshiruv paytida toksikometriya bo'yicha majburiy tadqiqotlarni sanab o'ting:",
+   "options": [
+    "Dl50 ta'rifi, umumiy klinika va morfologiya",
+    "Dl50, SL50 ta'rifi, tirnash xususiyati beruvchi ta'sir, umumiy toksik ta'sir",
+    "Dl50, CL50 ta'rifi, turlarning sezgirligi, ksim",
+    "Dl50, SL50, Lim ir, REK ta'rifi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-112",
+   "n": 112,
+   "q": "Birlamchi toksikologiya va gigiena pasportini o'tkazishda toksikometriya bo'yicha majburiy tadqiqotlarni sanab o'ting:",
+   "options": [
+    "Dl50, SL50 ta'rifi, turlarning sezgirligi, Ksum",
+    "Dl50, CL50 ta'rifi, umumiy klinika va morfologiya, terini tirnash xususiyati beruvchi ta'sir, Lim it, Lim ac, Ac, Ksum",
+    "Dl50, CL50 ta'rifi, umumiy klinika va morfologiya, KSM, MPC",
+    "Dl50, SL50, Zac, Zch ta'rifi. Limch, KS, uzoq muddatli oqibatlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-113",
+   "n": 113,
+   "q": "O'tkir qo'rg'oshin kasbiy zaharlanishining tashxisi shoshilinch shifokor tomonidan, zaharlanish holatlarini aniqlamasdan, seb va ozga xabarnoma bir kundan keyin yuboriladi. O'tkir kasbiy zaharlanish holatlari qanday vaqtda tekshiriladi:",
+   "options": [
+    "48 soat ichida",
+    "3 kun ichida",
+    "12 soat ichida",
+    "24 soat ichida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-114",
+   "n": 114,
+   "q": "O'tkir qo'rg'oshin kasbiy zaharlanishining tashxisi shoshilinch shifokor tomonidan, zaharlanish holatlarini aniqlamasdan, SEO va JSKga xabarnoma bir kundan keyin yuboriladi. Yakuniy tashxis qo'yish uchun prof. zaharlanish, nimani hisobga olish kerak:",
+   "options": [
+    "mehnat sharoitlarining gigienik xususiyatlari",
+    "dastlabki asal natijalari. Tekshirish",
+    "davriy asal natijalari. Tekshirish",
+    "ShXV va ish kiyimlarining mavjudligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-115",
+   "n": 115,
+   "q": "Korxonada mineral chang etakchi zararli omil hisoblanadi. Qanday chang effekti etakchi bo'ladi:",
+   "options": [
+    "sezgirlashtiruvchi",
+    "toksik",
+    "bezovta qiluvchi",
+    "fibrogen"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-116",
+   "n": 116,
+   "q": "Korxonada mineral chang etakchi zararli omil hisoblanadi. Fibrogen aerozollarga ta'sir qilish xavfini qanday aniqlash mumkin:",
+   "options": [
+    "kristalli kremniy dioksidi tarkibi",
+    "suvda katta eruvchanlik",
+    "suvda past eruvchanligi",
+    "elektr zaryadlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-117",
+   "n": 117,
+   "q": "Paxta tozalash zavodlarini qurish loyihalarini sanitariya ekspertizasi o 'tkazishda bir qator masalalar ko'rib chiqildi. Paxta tozalash zavodlarini qurish loyihasida atrof-muhitni muhofaza qilishning asosiy choralari qanday bo'lishi kerak:",
+   "options": [
+    "havoni gazlardan tozalash inshootlari",
+    "suvni kimyoviy tozalash uchun tozalash inshooti",
+    "sanoat binolari havosidagi chang miqdorini kamaytirish bo'yicha chora-tadbirlar",
+    "sanitariya ximoya zonasi etarliligi, shamollatish havosini tozalash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-118",
+   "n": 118,
+   "q": "Paxta tozalash zavodlarini qurish loyihalarini sanitariya ekspertizasi o 'tkazishda bir qator masalalar ko'rib chiqildi. Ishlab chiqarish ob'ektlarini joylashtirishda sanitariya ximoya zonasi qiymati nimaga bog'liq:",
+   "options": [
+    "shamollatish havosini tozalash joylarini saytga joylashtirishdan",
+    "sanoat va korxona quvvatidan, zararli ta'sirlardan",
+    "korxona hududini obodonlashtirish va ko'kalamzorlashtirish hajmidan",
+    "ustaxonalar, maishiy xonalar va chiqindilarni saqlash joylarining qavatlaridan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-119",
+   "n": 119,
+   "q": "Paxta tozalash zavodlarini qurish loyihalarini sanitariya ekspertizasi o'tkazishda bir qator masalalar ko'rib chiqildi. Qancha sanitariya ximoya zonasi sinflari:",
+   "options": [
+    "Beshta",
+    "uchta",
+    "ikki",
+    "bitta"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-120",
+   "n": 120,
+   "q": "3 va 4 xavfli sinf kimyoviy moddalari. 3 va 4-sinf kimyoviy moddalarining ishchi zonasi havosi qanchalik tez-tez nazorat qilinadi:",
+   "options": [
+    "ishchilarning shikoyatlari mavjud bo'lganda",
+    "muntazam nazorat o'tkazilmaydi",
+    "nazorat zarur bo'lganda amalga oshiriladi",
+    "chorakda kamida bir marta"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-121",
+   "n": 121,
+   "q": "3 va 4 xavfli sinf kimyoviy moddalari. Ishlab chiqarish ob'ektlarida sanitariya-kimyoviy tadqiqotlar o'tkazishni kim rejalashtirmoqda:",
+   "options": [
+    "mehnat gigiyenasi bo ' limi mudiri",
+    "sanitariya bo ' limi mudiri",
+    "sanitariya-kimyo laboratoriyasi mudiri",
+    "mehnat salomatligi bo'yicha shifokorlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-122",
+   "n": 122,
+   "q": "3 va 4 xavfli sinf kimyoviy moddalari. Sanoat binolari havosidagi kimyoviy moddalar tarkibini tahlil qilish bayonnomasida kim xulosa qiladi:",
+   "options": [
+    "mehnat salomatligi bo'yicha shifokor",
+    "sanitariya-kimyo laboratoriyasi mudiri",
+    "analitik kimyogar",
+    "xavfsizlik muhandisi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-123",
+   "n": 123,
+   "q": "Galvanik ustaxonada etakchi omil xavfning 2 va 3-sinf moddalari bilan ifodalangan kimyoviy omil hisoblanadi. Havoni qayta ishlash mumkinmi?:",
+   "options": [
+    "mumkin",
+    "faqat yilning sovuq davrida",
+    "mumkin, vaqtning 50% dan oshmasligi kerak",
+    "mumkin emas"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-124",
+   "n": 124,
+   "q": "Galvanik ustaxonada etakchi omil xavfning 2 va 3-sinf moddalari bilan ifodalangan kimyoviy omil hisoblanadi. Havo balansi nima:",
+   "options": [
+    "ta'minot havosi miqdori olib tashlangan havo miqdoriga teng",
+    "ta'minot havosi miqdori olib tashlanganidan kam",
+    "ta'minot havosi miqdori olib tashlanganidan kattaroqdir",
+    "chiqarilgan havo harorati etkazib beriladigan havo haroratiga teng"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-125",
+   "n": 125,
+   "q": "Galvanik ustaxonada etakchi omil xavfning 2 va 3-sinf moddalari bilan ifodalangan kimyoviy omil hisoblanadi. Umumiy ta'minot shamollatish nima uchun mo'ljallangan:",
+   "options": [
+    "optimal havo haroratini yaratish uchun",
+    "ortiqcha namlik bilan kurashish",
+    "texnologik maqsadlar uchun",
+    "ustaxonadagi qolgan zararlarni suyultirish va olib tashlangan havoni qoplash uchun"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-126",
+   "n": 126,
+   "q": "Paxtachilik OO'zbekiston qishloq xo'jaligining yetakchi tarmog'i hisoblanadi. Mexanizatorlarning ish joyida qanday omillar doimiy ta'sir ko'rsatadi:",
+   "options": [
+    "shovqin, tebranish, meteorologik omil, chiqindi gazlar",
+    "shovqin, insektofungitsidlar, meteorologik omil",
+    "meteorologik omil, mineral, o'g'it, shovqin",
+    "elektromagnit maydon, havo tezligi, gazlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-127",
+   "n": 127,
+   "q": "Paxtachilik OO'zbekiston qishloq xo'jaligining yetakchi tarmog'i hisoblanadi. Ushbu tadbirlardan qaysi biri paxta tozalash zavodlarining tozalash zavodlarida chang bilan kurashish uchun eng samarali hisoblanadi:",
+   "options": [
+    "shamollatish samaradorligini oshirish",
+    "ishlaydigan shaxslarni shaxsiy himoya vositalari bilan ta'minlash",
+    "muhrlash, mahalliy, egzoz, umumiy ta'minot shamollatish",
+    "maxsus uy-joy binolarini qurish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-128",
+   "n": 128,
+   "q": "Ob'ektning sanitariya tekshiruvini o'tkazishda ishchilarning shaxsiy himoya vositalari bilan ta'minlanishi o'rganildi. Ularning to'g'ri qo'llanilishi, saqlanishi va zararsizlantirilishiga e'tibor qaratildi. Shaxsiy himoya vositalar ishlatilishi kerak bo'lgan ish turlarini sanab o'ting:",
+   "options": [
+    "kollektiv himoya choralari kerakli samarani bermaydigan holatlarda",
+    "kerak bo'lganda",
+    "ixtiyoriy",
+    "ishlayotgan shaxslarning tajribasi bo'yicha"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-129",
+   "n": 129,
+   "q": "Kimyoviy-toksikologik tahlil tamoyillari va yondashuvlarini ishlab chiqish bilan fan shug'ullanadi:",
+   "options": [
+    "biokimyoviy toksikologiya.",
+    "analitik toksikologiya.",
+    "farmatsevtika kimyosi.",
+    "Gigiena."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-130",
+   "n": 130,
+   "q": "Tirik organizmda toksikantlarning toksik ta'siri, harakati va o'zgarishi mexanizmlarini o'rganish bilan fan shug'ullanadi:",
+   "options": [
+    "biokimyoviy toksikologiya.",
+    "analitik toksikologiya.",
+    "farmatsevtika kimyosi.",
+    "Gigiena."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-131",
+   "n": 131,
+   "q": "Zaharlanish-bu:",
+   "options": [
+    "begona moddaning unga kirishi natijasida organizmning patologik holati.",
+    "kimyoviy etiologiya kasalligi, inson tanasiga hayotiy funktsiyalarni buzishi va hayot uchun xavf tug'dirishi mumkin bo'lgan kimyoviy moddalar kirganda rivojlanadi.",
+    "patogen omil ta'sirida tananing normal ishlashining buzilishi.",
+    "organizm tizimlarining begona antijenlarni tanadan olib tashlashga qaratilgan unga kirishiga reaktsiyasi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-132",
+   "n": 132,
+   "q": "Kimyoviy-toksikologik tekshiruv boshlanadigan bosqich:",
+   "options": [
+    "dastlabki tahlil.",
+    "tasdiqlovchi tahlil.",
+    "miqdoriy aniqlash.",
+    "natijalarni talqin qilish."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-133",
+   "n": 133,
+   "q": "Olovsiz atom yutilish usuli aniqlashda qo'llaniladi:",
+   "options": [
+    "marganets;",
+    "xrom;",
+    "simob;",
+    "qo'rg'oshin;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-134",
+   "n": 134,
+   "q": "Seziy xlorid aniqlash uchun ishlatiladi:",
+   "options": [
+    "xrom;",
+    "qo'rg'oshin;",
+    "marganets;",
+    "talliy;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-135",
+   "n": 135,
+   "q": "Qo'rg'oshin miqdorini aniqlashda usullar qo'llaniladi:",
+   "options": [
+    "atom yutilish spektrometriyasi ;",
+    "kislota-asos titrlash;",
+    "serimetriya;",
+    "atsidimetriya;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-136",
+   "n": 136,
+   "q": "Qaysi usul don va don mahsulotlarida deoksinivalenol (vomitoksin) va zearalenon tarkibini aniqlash, aniqlash va aniqlashni ta'minlaydi:",
+   "options": [
+    "kolorimetrik usul;",
+    "polarografik usul;",
+    "yupqa qatlamli xromatografiya;",
+    "yuqori samarali suyuqlik xromatografiyasi;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-137",
+   "n": 137,
+   "q": "Toksik ta'sirning eng xavfli ko'rinishlarini keltiring:",
+   "options": [
+    "zaharli qo'ziqorinlar bilan zaharlanish (120 tur), mikotoksinlar bilan zaharlanish (100 tur)",
+    "uyalar",
+    "ORVI",
+    "allergik rinit"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-138",
+   "n": 138,
+   "q": "Pestitsidlarni qo'llashning ijobiy tomonlari:",
+   "options": [
+    "ekinlarni saqlash, qishloq xo'jaligi hayvonlarini parazitlardan himoya qilish",
+    "odamlarga sezilarli ta'sir ko'rsatmaydi",
+    "atrof-muhit ob'ektlarining ifloslanishi",
+    "mahalliy aholini ish bilan ta'minlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-139",
+   "n": 139,
+   "q": "Pestitsidlarni qo'llashning salbiy oqibatlari:",
+   "options": [
+    "hasharotlarni yo'q qilish",
+    "odamlarga ta'siri, atrof-muhit ob'ektlarining ifloslanishi",
+    "yil davriga bog'liqlik",
+    "foydalanish qiyinligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-140",
+   "n": 140,
+   "q": "Tayyorgarlik bosqichida pestitsidlar bilan ishlashning asosiy xavfsizlik qoidalarini ko'rsating:",
+   "options": [
+    "faqat OO'zbekistonda ruxsat etilgan preparatlardan foydalanish (\"ro'yxat\"), tibbiy ko 'rikdan o'tgan va maxsus tayyorgarlikdan o'tgan shaxslarni qabul qilish, shaxsiy himoya vositalari bilan ta' minlash",
+    "ishlarning mavsumiyligini hisobga olish",
+    "sog'lom turmush tarzi",
+    "ratsional ovqatlanish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-141",
+   "n": 141,
+   "q": "Ishlab chiqarish ob'ektlarida havodagi kimyoviy moddalarni aniqlaydigan tashkilotlar:",
+   "options": [
+    "SEO va JSK markazlari laboratoriyalari, sanoat korxonalari laboratoriyalari",
+    "xususiy laboratoriyalar",
+    "qo'shma korxonalar laboratoriyalari",
+    "gigiena bo'limlari laboratoriyalari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-142",
+   "n": 142,
+   "q": "Ish maydoni havosidagi zararli moddalar miqdorini nazorat qilishning asosiy elementlarini ko'rsating:",
+   "options": [
+    "zararli moddalarni kimyoviy tahlil qilish, olingan natijalarni tahlil qilish va xulosa chiqarish, sog'lomlashtirish choralarini ishlab chiqish",
+    "jamoa shartnomasini tuzish",
+    "vazifa rejasini tuzish",
+    "tadqiqot aktini tuzish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-143",
+   "n": 143,
+   "q": "Organofosfat bilan zaharlanganda zaharning eng og'ir kursi zahar kelganda qayd etiladi:",
+   "options": [
+    "nafas olish yo'li bilan",
+    "og'iz orqali",
+    "perkut yo'li bilan",
+    "bo'shliq yo'li"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-144",
+   "n": 144,
+   "q": "Uzoq muddatli saqlash paytida organofosfatlarning toksikligi:",
+   "options": [
+    "ko'tariladi",
+    "kamayadi",
+    "buzuq",
+    "yo'qoladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-145",
+   "n": 145,
+   "q": "Uzoq muddatli saqlash paytida kuchli kislotalarning toksikligi:",
+   "options": [
+    "ko'tariladi",
+    "kamayadi",
+    "buzuq",
+    "yo'qoladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-146",
+   "n": 146,
+   "q": "Uzoq muddatli saqlash paytida kuchli ishqorlarning toksikligi:",
+   "options": [
+    "ko'tariladi",
+    "kamayadi",
+    "buzuq",
+    "yo'qoladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-147",
+   "n": 147,
+   "q": "FOB fizik-kimyoviy xossalari bo'yicha:",
+   "options": [
+    "aromatik qatorning organik birikmalari",
+    "fosfor kislotasining organik efirlari",
+    "fosfor tuzlari",
+    "fosfor kislotasining noorganik birikmalari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-148",
+   "n": 148,
+   "q": "FOB zaharlanishida halokatli sintez asosan amalga oshiriladi:",
+   "options": [
+    "miyada",
+    "jigarda",
+    "buyraklarda",
+    "ichakda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-149",
+   "n": 149,
+   "q": "FOB zaharlanishining asosiy klinik ko'rinishlari tanadagi to'planish bilan bog'liq:",
+   "options": [
+    "katexolaminov",
+    "atsetilxolin",
+    "serotonin",
+    "gistamin"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-150",
+   "n": 150,
+   "q": "Nafas olish yo'li bilan toksik moddalar asosan ta'sirlanadi:",
+   "options": [
+    "miya",
+    "suyaklar",
+    "buyraklar",
+    "jigar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-151",
+   "n": 151,
+   "q": "Uglerod oksidi toksikologik ahamiyatga ega bo'lgan moddalar deb tasniflanishining sabablari ro'yxatini tuzing:",
+   "options": [
+    "uglerod oksidi havo massalarining tabiiy tarkibiy qismidir",
+    "hid va ta'mga ega emas",
+    "kundalik hayotda yoqilg'ining to'liq yonishi bilan tez-tez zaharlanish",
+    "yuqorida aytilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-152",
+   "n": 152,
+   "q": "O'tkir zaharlanishlar bundan mustasno :",
+   "options": [
+    "dorilar",
+    "spirtli ichimliklar",
+    "pestitsidlar",
+    "kakao"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-153",
+   "n": 153,
+   "q": "Kimyoviy-toksikologik tahlilda qo'llaniladigan miqdoriy aniqlash usullariga qo'yiladigan talablar, bundan mustasno",
+   "options": [
+    "arzon narx",
+    "takrorlanuvchanlik",
+    "to'g'rilik",
+    "sezgirlik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-154",
+   "n": 154,
+   "q": "Simob tuzlari bilan zaharlanganda ular asosan ta'sirlanadi :",
+   "options": [
+    "jigar, mushaklar",
+    "buyraklar, yo'g'on ichak",
+    "miya",
+    "ingichka ichak, suyaklar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-155",
+   "n": 155,
+   "q": "\"Zaharli modda\" tushunchasiga quyidagilar kiradi:",
+   "options": [
+    "ushbu moddaning inson yoki hayvon organizmiga ta'siri",
+    "bu inson tanasiga kiritilganda uning kasalligi yoki o'limiga olib keladigan har qanday moddadir",
+    "bu kichik dozalarda odatda dori bo'lgan va katta dozalarda inson tanasiga toksik ta'sir ko'rsatadigan dori",
+    "zaharli modda har qanday kuchli moddadir"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-156",
+   "n": 156,
+   "q": "Tanadagi zaharli moddalarning tarqalishi quyidagilarga bog'liq emas:",
+   "options": [
+    "konsentratsiyadan",
+    "moddaning tarqalish koeffitsienti",
+    "suvda va lipidlarda eruvchanlikdan",
+    "metabolizm tezligidan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-157",
+   "n": 157,
+   "q": "Tibbiy toksikologiyani o'rganish mavzusi (eng to'liq javobni tanlang) :",
+   "options": [
+    "endogen intoksikatsiya (avtointoksikatsiya)",
+    "kimyoviy etiologiya kasalliklari (zaharlanish)",
+    "giyohvand moddalar bilan zaharlanish",
+    "maishiy va o'z joniga qasd qilish zaharlanishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-158",
+   "n": 158,
+   "q": "Toksikologiyani o'rganish mavzusi:",
+   "options": [
+    "zaharli kimyoviy",
+    "organizmning begona kimyoviy moddalar bilan o'zaro ta'siri",
+    "endogen intoksikatsiya sindromi",
+    "organik birikmalarning toksikligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-159",
+   "n": 159,
+   "q": "Boshqaruv deganda tushunish odat tusiga kiradi :",
+   "options": [
+    "rezorbsiya jarayoni, zaharning tanaga kirishi",
+    "zahar va organizmning o'zaro ta'siri jarayoni",
+    "metabolitlarning endogen intoksikatsiyasi",
+    "tanadagi zaharning tarqalishi va metabolizmi jarayoni"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-160",
+   "n": 160,
+   "q": "Toksikologiyaning asosiy vazifalaridan biri:",
+   "options": [
+    "ekzogen intoksikatsiya sharoitlarini o'rganish",
+    "begona kimyoviy moddalarning toksiklik darajasini aniqlash",
+    "zaharlarning o'ziga xos xususiyatlarini o'rganish",
+    "zaharning minimal ta'sir qiluvchi (chegara) dozasini aniqlash."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-161",
+   "n": 161,
+   "q": "O'tkir zaharlanish orasida eng ko'p qayd etilgan:",
+   "options": [
+    "ishlab chiqarish",
+    "professional",
+    "maishiy (tasodifiy, o'z joniga qasd qilish)",
+    "qasddan (zo'ravonlik bilan o'lim holatlari)"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-162",
+   "n": 162,
+   "q": "O'tkir uy zaharlanishining asosiy xavf omillari:",
+   "options": [
+    "alkogolizm va giyohvandlik",
+    "uy kimyoviy zaharlarining mavjudligi",
+    "aholining giyohvand moddalarni nazoratsiz ishlatishi",
+    "aholining kam xabardorligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-163",
+   "n": 163,
+   "q": "Kimyoviy qurollarning asosini quyidagilar tashkil etadi:",
+   "options": [
+    "zaharli moddalar va ulardan foydalanish vositalari",
+    "juda zaharli kimyoviy moddalar va toksinlar",
+    "asab ta'sirining toksik moddalari",
+    "ikkilik kimyoviy o'q-dorilar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-164",
+   "n": 164,
+   "q": "O'limga olib keladigan zaharli moddalarning asosiy guruhi:",
+   "options": [
+    "nerv-paralitik",
+    "teri rezorbsiyasi",
+    "umumiy zaharli",
+    "bo'g'ish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-165",
+   "n": 165,
+   "q": "Kumulyatsiya jarayoni quyidagilardan iborat:",
+   "options": [
+    "o'zgarmagan holda zahar to'planishi",
+    "zaharni ko'proq toksik moddaga o'zgartirish",
+    "bir nechta zaharlarning ta'sirini umumlashtirish",
+    "bir nechta zaharlarning ta'sirini kuchaytirish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-166",
+   "n": 166,
+   "q": "Zaharlarning tanadan chiqarilishi:",
+   "options": [
+    "buyraklar",
+    "o'pka",
+    "teri",
+    "yuqorida aytilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-167",
+   "n": 167,
+   "q": "To'qimalar va organlardan ajratilgan toksik moddalarni aniqlashning asosiy dastlabki usullari sifatida quyidagilar qo'llaniladi:",
+   "options": [
+    "xromatografik",
+    "kimyoviy",
+    "fotometrik",
+    "yuqorida aytilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-168",
+   "n": 168,
+   "q": "FOB shikastlanishining og'ir darajasi uchun qanday klinik ko'rinishlar xarakterlidir:",
+   "options": [
+    "spazmodik qorin og'rig'i, qusish, bo'g'ilish, ortiqcha terlash",
+    "teri va ko'rinadigan shilliq pardalarning qizil rangi, xirillash, konvulsiyalar",
+    "aniq siyanoz, paroksismal klonik-tonik konvulsiyalar",
+    "ongni yo'qotish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-169",
+   "n": 169,
+   "q": "FOB zaharlanishida o'ta og'ir (paralitik) bosqichda quyidagi barcha alomatlar qayd etiladi, bundan mustasno :",
+   "options": [
+    "komalar",
+    "mimoza",
+    "bronxoreya",
+    "konvulsiyalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-170",
+   "n": 170,
+   "q": "Qanday zaharlar o'ta zaharli zaharlar guruhiga kiradi ?",
+   "options": [
+    "Dl50 da zaharlanishni keltirib chiqaradi, < 15 mg/kg",
+    "Dl50, 15-150 mg/kg da zaharlanishni keltirib chiqaradi",
+    "Dl50, 151-1500 mg/kg da zaharlanishni keltirib chiqaradi",
+    "Dl50 da zaharlanishni keltirib chiqaradi, >1500 mg / kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-171",
+   "n": 171,
+   "q": "Qaysi zaharlar o'rtacha zaharli zaharlar guruhiga kiradi ?",
+   "options": [
+    "Dl50 da zaharlanishni keltirib chiqaradi, < 15 mg/kg",
+    "Dl50, 15-150 mg/kg da zaharlanishni keltirib chiqaradi",
+    "Dl50, 151-1500 mg/kg da zaharlanishni keltirib chiqaradi",
+    "Dl50 da zaharlanishni keltirib chiqaradi, >1500 mg / kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-172",
+   "n": 172,
+   "q": "Qanday zaharlar kam zaharli zaharlar guruhiga kiradi ?",
+   "options": [
+    "Dl50 da zaharlanishni keltirib chiqaradi, < 15 mg/kg",
+    "Dl50, 15-150 mg/kg da zaharlanishni keltirib chiqaradi",
+    "Dl50, 151-1500 mg/kg da zaharlanishni keltirib chiqaradi",
+    "Dl50 da zaharlanishni keltirib chiqaradi, >1500 mg / kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-173",
+   "n": 173,
+   "q": "FOB zaharlanishida zaharning eng og'ir kursi zahar kelganda qayd etiladi :",
+   "options": [
+    "perkut yo'li bilan",
+    "nafas olish yo'li bilan",
+    "og'iz orqali",
+    "in'ektsiya yo'li bilan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-174",
+   "n": 174,
+   "q": "Zaharning asosiy omillariga. zaharlanishning rivojlanishini belgilaydigan narsalarga quyidagilar kiradi:",
+   "options": [
+    "tanaga kirish usuli, turi va tezligi",
+    "boshqa toksik moddalar bilan birgalikda harakat qilish",
+    "kumulyatsiya va zaharga qaramlik qobiliyati",
+    "yuqorida aytilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-175",
+   "n": 175,
+   "q": "Xlorofos zaharlanishini ko'rsatadigan klinik ko'rinishlarni ko'rsating:",
+   "options": [
+    "qo'zg'alish, quruq teri, xoreoid tipidagi giperkinez, kengaygan o'quvchilar",
+    "qo'zg'alish, terlash, miyofibrilatsiya, bronxoreya, miyoz",
+    "epileptiform tipdagi tutilishlar, midriaz",
+    "qusish, qorin og'rig'i, gemoglobinuriya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-176",
+   "n": 176,
+   "q": "Kuchli zaharli moddalarni xavf-xatarga qarab tasniflash ro'yxatdagi barcha guruhlarni ajratib turadi, bundan mustasno:",
+   "options": [
+    "juda xavfli",
+    "yuqori xavfli",
+    "o'rtacha xavfli",
+    "kam xavfli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-177",
+   "n": 177,
+   "q": "Toksik ta'sir qo'llaniladigan joyga ko'ra, kuchli zaharli moddalar quyidagi guruhlarga bo'linadi:",
+   "options": [
+    "asosan mahalliy harakatlar",
+    "asosan rezorptiv ta'sir",
+    "aralash harakatga ega",
+    "ushbu harakatlarning hech biriga ega emas"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-178",
+   "n": 178,
+   "q": "Yuqorida sanab o'tilganlardan ichki sharoitda tanaga zahar olishning eng keng tarqalgan usullari quyidagilardan iborat:",
+   "options": [
+    "og'iz orqali",
+    "til osti",
+    "rektal va vaginal",
+    "vena ichiga va intraarterial"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-179",
+   "n": 179,
+   "q": "Davlat sanitariya-epidemiologiya nazorati",
+   "options": [
+    "aholining sanitariya-epidemiologik farovonligini ta 'minlash sohasida O'R qonun hujjatlari buzilishining oldini olish, aniqlash, ularga barham berish bo ' yicha faoliyat",
+    "sanitariya-epidemiyaga qarshi tadbirlarni ishlab chiqish, ishlab chiqarishni nazorat qilish",
+    "yuqumli kasalliklar va ommaviy yuqumli bo'lmagan kasalliklarning paydo bo'lishi va tarqalishining sabablarini aniqlashga qaratilgan sanitariya- epidemiologiya tekshiruvlarini o'tkazish",
+    "laboratoriya tadqiqotlarini o'tkazish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-180",
+   "n": 180,
+   "q": "Sanitariya-epidemiologiya ekspertizasi",
+   "options": [
+    "sanitariya-epidemiologik farovonlik xizmati va uning hududiy organlari, shuningdek boshqa akkreditatsiyadan o'tgan tashkilotlarning yashash muhiti omillarining odamlarga zararli ta'sirini aniqlash, ushbu ta'sir darajasini aniqlash va sanitariya-epidemiologik vaziyatni bashorat qilish bo'yicha faoliyati",
+    "sanitariya-epidemiologik farovonlik xizmati va uning hududiy organlari, shuningdek boshqa akkreditatsiyadan o'tgan tashkilotlarning loyiha va boshqa hujjatlar, xo'jalik va boshqa faoliyat ob'ektlari, mahsulotlar, ishlar, xizmatlar, davlat sanitariya-epidemiologiya qoidalari va standartlariga muvofiqligini aniqlash bo'yicha faoliyati",
+    "sanitariya-epidemiologik farovonlik xizmatining davlat sanitariya-epidemiologik qoidalari va me'yorlariga muvofiqligini (nomuvofiqligini) tasdiqlovchi hujjatni tayyorlash bo'yicha faoliyati",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-181",
+   "n": 181,
+   "q": "Ijtimoiy-gigiyena monitoringining vazifalari quyidagilardan iborat:",
+   "options": [
+    "aholining yashash muhiti va sog' lig'i omillarini gigienik baholash, aholining sanitariya-epidemiologik farovonligini ta' minlash sohasida davlat siyosatini shakllantirish",
+    "yuqumli va ommaviy yuqumli bo'lmagan kasalliklar (zaharlanish)paydo bo'lishi va tarqalishining sabablarini aniqlash",
+    "sog'lom turmush tarzi uchun motivatsiyani shakllantirish",
+    "tabiiy va ijtimoiy muhit sharoitlarini yaxshilash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-182",
+   "n": 182,
+   "q": "Xavf omillarining odamga salbiy ta'sirini kamaytirish yo'llari",
+   "options": [
+    "sog'lom turmush tarzi uchun motivatsiyani shakllantirish, tabiiy va ijtimoiy muhit sharoitlarini yaxshilash",
+    "aholiga kasalxona-poliklinika yordamini takomillashtirish",
+    "yuqumli va ommaviy yuqumli bo'lmagan kasalliklar (zaharlanish)paydo bo'lishi va tarqalishining sabablarini aniqlash",
+    "yashash muhiti va aholi salomatligi omillarini gigienik baholash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-183",
+   "n": 183,
+   "q": "Ijtimoiy ahamiyatga ega bo'lgan yuqumli bo'lmagan kasalliklarga quyidagilar kiradi",
+   "options": [
+    "qon aylanish tizimining kasalliklari, malign neoplazmalar",
+    "mushak-skelet tizimining kasalliklari",
+    "teri va teri osti to'qimalarining kasalliklari",
+    "nöropsikiyatrik kasalliklar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-184",
+   "n": 184,
+   "q": "Inson tanasiga bevosita ta'sir qiluvchi vositalarni tavsiflovchi ko'rsatkichlar guruhini tanlang",
+   "options": [
+    "mikroiqlim xususiyatlari, aqliy yuk, hissiy stress, jismoniy muhit omillari",
+    "mehnat sharoitlari (muhofaza qilish), jismoniy faollik, chekish, oila tuzilishi, tabiiy sharoitlar",
+    "kasalliklarning chastotasi va davomiyligi, nogironlik, o'lim, ruhiy qulaylik",
+    "mikroiqlim xususiyatlari, hissiy stress, mehnat sharoitlari( xavfsizlik), aqliy qulaylik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-185",
+   "n": 185,
+   "q": "Shaxsga ta'sir qiluvchi agentlarni shakllantirish elementlarini tavsiflovchi ko'rsatkichlar guruhini ko'rsating",
+   "options": [
+    "mikroiqlim xususiyatlari, aqliy yuk, hissiy stress, jismoniy muhit omillari",
+    "mehnat sharoitlari (muhofaza qilish), jismoniy faollik, chekish, oila tuzilishi, tabiiy sharoitlar",
+    "kasalliklarning chastotasi va davomiyligi, nogironlik, o'lim, ruhiy qulaylik",
+    "stress, jismoniy faoliyat"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-186",
+   "n": 186,
+   "q": "Oziq-ovqat mahsulotlarida og'ir metallar miqdori ruxsat etilgan maksimal konsentratsiyadan past bo'lsa, oziq - ovqat mahsulotlari:",
+   "options": [
+    "toza oziq-ovqat mahsulotlari",
+    "shartli oziq-ovqat mahsulotlari",
+    "oziq-ovqat maqsadlarida yaroqsiz mahsulotlar",
+    "mos keladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-187",
+   "n": 187,
+   "q": "Oziq-ovqat mahsulotlarida og'ir metallar miqdori ruxsat etilgan maksimal konsentratsiyadan yuqori bo'lsa, lekin 2 baravar ko'p bo'lmasa, oziq-ovqat mahsulotlari:",
+   "options": [
+    "toza oziq-ovqat mahsulotlari",
+    "shartli oziq-ovqat mahsulotlari",
+    "oziq-ovqat maqsadlarida yaroqsiz mahsulotlar",
+    "mos keladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-188",
+   "n": 188,
+   "q": "Laboratoriya mutaxassisi bajarishi kerak bo'lgan xavfsizlik qoidalari:",
+   "options": [
+    "konsentrlangan kislotalar kaputdagi qalin devorli shisha idishda saqlang",
+    "infektsiyalangan material bilan ishlashda infektsiya ehtimolini yodda tuting",
+    "suyultirilganda kislotani suvga quyish kerak, elektr jihozlari hammasi erga ulangan bo'lishi kerak",
+    "yuqorida aytilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-189",
+   "n": 189,
+   "q": "Sanitariya-epidemiologik farovonlik:",
+   "options": [
+    "aholi salomatligi va odamlarning yashash muhitining holati, bunda aholining soni mamlakatdagi o'rtacha ko'rsatkichdan yomonroq va atrof-muhitning ifloslanishi me'yoriy qiymatlardan oshmaydi",
+    "jamoat salomatligi va yashash muhitining bunday holati belgilangan sanitariya- gigiyena epidemiyaga qarshi qoidalar, normalar, me'yorlarga mos keladi, sog'lomlashtirish va profilaktika tadbirlarini amalga oshirish ta'minlanadi",
+    "inson salomatligi va yashash muhitining bunday holati, unda uning omillarining inson tanasiga xavfli va zararli ta'siri yo'q va uning hayoti uchun qulay sharoitlar mavjud",
+    "omillari odamlarga zararli ta'sir ko'rsatmaydigan qulay yashash muhiti va sanitariya-epidemiologik vaziyat to'g'risidagi ma'lumotlar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-190",
+   "n": 190,
+   "q": "Sanitariya qoidalari-bu qoidalar:",
+   "options": [
+    "aholining sanitariya-epidemiologik farovonligini ta'minlash, inson kasalliklarining oldini olish, uning yashash, mehnat, turmush tarzi, dam olish, o'qitish va ovqatlanish uchun qulay shart-sharoitlarni ta'minlash, shuningdek uning sog'lig'ini saqlash va mustahkamlash uchun gigienik va epidemiyaga qarshi talablarni belgilash",
+    "inson tanasiga ta'sir qilishning maqbul va ruxsat etilgan maksimal darajasini, uning yashash muhiti omillari majmuasini belgilash",
+    "inson salomatligi va uning kelajak avlodlari uchun uning yashash muhitining alohida omillari uchun zararsizlikning gigienik mezonlarini belgilash",
+    "uning yashash muhiti omillari majmuasining inson tanasiga ta'sirining maqbul va maksimal ruxsat etilgan darajasini belgilash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-191",
+   "n": 191,
+   "q": "Gigiena qoidalari-bu qoidalar:",
+   "options": [
+    "aholining yashash, mehnat, turmush tarzi, dam olish, o'qitish va ovqatlanish, sog'lig'ini saqlash va mustahkamlash hamda kasalliklarning oldini olish uchun qulay shart-sharoitlarni ta'minlash uchun gigienik va epidemiyaga qarshi talablarni belgilash",
+    "uning yashash muhiti omillari majmuasining inson tanasiga ta'sirining maqbul va maksimal ruxsat etilgan darajasini belgilash",
+    "insonning sog'lig'i uchun yashash muhitining ayrim omillarining xavfsizligi va zararsizligi uchun gigienik va epidemiologik mezonlarni belgilash",
+    "inson salomatligi va uning kelajak avlodlari uchun uning yashash muhitining individual omillari uchun zararsizlikning gigienik mezonlarini belgilash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-192",
+   "n": 192,
+   "q": "Ijtimoiy-gigiena monitoringi:",
+   "options": [
+    "sanitariya-epidemiologik farovonlik xizmati muassasalarining yashash muhitining holatini kuzatishni tashkil etish va amalga oshirish bo'yicha faoliyati",
+    "aholi salomatligi va yashash muhitini kuzatish, tahlil qilish va baholashning Davlat tizimi, shuningdek, sog'liqni saqlash ko'rsatkichlarining yashash muhiti omillari ta'siri bilan sababiy munosabatlarini aniqlash",
+    "sog'liqni saqlash organlari va muassasalarining aholi salomatligini kuzatish, zararli yashash muhitining sog'liqqa ta'sirini bartaraf etishga qaratilgan chora- tadbirlarni ishlab chiqish va amalga oshirishni ta'minlash bo'yicha faoliyati.",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-193",
+   "n": 193,
+   "q": "Tadqiqot laboratoriyasi tomonidan bajariladigan ro'yxatni qaysi hujjat tartibga soladi?",
+   "options": [
+    "laboratoriya to'g'risidagi Nizom.",
+    "akkreditatsiya sohasi.",
+    "moddiy va texnik jihozlar.",
+    "malaka xususiyatlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-194",
+   "n": 194,
+   "q": "Laboratoriya qanday talablarga javob berishi kerak?",
+   "options": [
+    "xodimlar, vakolatlar va resurslarga ega bo'lish.",
+    "tashqi va ichki ta'sir ko'rsatishni istisno qiladigan shartlarga ega bo'ling.",
+    "tadqiqot natijalari to'g'risidagi ma'lumotlarning maxfiyligini himoya qilishni ta'minlash.",
+    "aholini tabiiy ofatlardan himoya qilishni ta'minlash."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-195",
+   "n": 195,
+   "q": "Laboratoriya akkreditatsiyasi nima?",
+   "options": [
+    "bu laboratoriyaning ma'lum bir faoliyat sohasida aniq ishlarni bajarish vakolati rasman tan olingan protsedura.",
+    "bu laboratoriyaning ma'lum bir faoliyat sohasida aniq ishlarni bajarish qobiliyatini tartibga soluvchi protsedura.",
+    "bu laboratoriyaning ma'lum bir faoliyat sohasida aniq ishlarni bajarish qobiliyatini belgilaydigan protsedura.",
+    "bu laboratoriyaning rejalashtirilgan faoliyat sohasida ishlarni bajarish qobiliyatini tan oladigan protsedura."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-196",
+   "n": 196,
+   "q": "Akkreditatsiya sohasini nima tartibga soladi?",
+   "options": [
+    "faoliyat turlari, tadqiqot obyektlari va ular bo 'yicha o'tkaziladigan sinovlar ro 'yxati; nazorat maqsadlarida faoliyat turlari, tadqiqot obyektlari ro'yxati va ular bo 'yicha o'tkaziladigan sinovlar ro ' yxati.",
+    "tijorat maqsadlarida faoliyat turlari, tadqiqot ob'ektlari va ular bo'yicha o'tkazilgan sinovlar ro'yxati.",
+    "laboratoriyada barcha zarur sharoitlar mavjud bo'lgan faoliyat turlari, tadqiqot ob'ektlari va ular bo'yicha o'tkazilgan sinovlar ro'yxati.",
+    "yuqorida aytilganlarning barchasi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-197",
+   "n": 197,
+   "q": "Sinov paytida laboratoriya qanday shartlarga rioya qilishi kerak?",
+   "options": [
+    "GOST R Iso/IEC 17025-2019 standartining tavsiyalariga amal qiling.",
+    "mijozning talablariga rioya qiling va qondiring.",
+    "laboratoriya faoliyatini rasmiy tan oladigan tashkilotning ko'rsatmalariga rioya qiling.",
+    "yuqorida aytilganlarning barchasi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-198",
+   "n": 198,
+   "q": "Aholining sanitariya-epidemiologik farovonligi ta'minlanadi",
+   "options": [
+    "aholining sanitariya-epidemiologik farovonligini ta'minlash sohasida O'zR sanitariya qonunchiligini buzganlik uchun javobgarlikka tortish choralari",
+    "ijtimoiy-gigienik monitoringni o'tkazish",
+    "odamlar uchun potentsial xavf tug'diradigan faoliyat turlarini litsenziyalash; davlat sanitariya-epidemiologiya standartlarini o'tkazish",
+    "yuqorida aytilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-199",
+   "n": 199,
+   "q": "Aholining sanitariya-epidemiologik farovonligi quyidagilar orqali ta'minlanadi",
+   "options": [
+    "kasalliklarning oldini olish va ijtimoiy-gigienik monitoringni o'tkazish",
+    "davlat sanitariya-epidemiologik me'yorlari",
+    "aholini gigienik tarbiyalash va o'qitish va sog'lom turmush tarzini targ'ib qilish bo'yicha chora-tadbirlar",
+    "yuqorida aytilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-200",
+   "n": 200,
+   "q": "Gaz xromatografiyasi va suyuqlik xromatografiyasi o'rtasidagi farq nima?",
+   "options": [
+    "gaz xromatografiyasida faqat gazlar aralashmasini ajratish mumkin; suyuq xromatografiyada suyuqlik mobil faza sifatida ishlatiladi;",
+    "gaz xromatografiyasi – bu harakatlanuvchi faza sifatida ishlatiladigan xromatografiya turi-gaz.",
+    "gaz xromatografiyasi-bu gazlarni ajratish, suyuq xromatografiya-suyuqliklarni ajratish",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-201",
+   "n": 201,
+   "q": "Gaz-absorbsiya (gaz-suyuqlik) xromatografiyasi nima deb ataladi?",
+   "options": [
+    "suyuqliklarni ajratish usuli;",
+    "gazlar va suyuqliklarni ajratish usuli;",
+    "analitik gaz xromatografiyasining bir turi bo'lib, unda harakatsiz faza sifatida inert maydalangan tashuvchida uchuvchan bo'lmagan suyuqlik ishlatiladi;",
+    "qattiq sorbentda namunani ajratish usuli;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-202",
+   "n": 202,
+   "q": "Yupqa qatlamli xromatografiyaning o'ziga xos xususiyati nimada?",
+   "options": [
+    "harakatlanuvchi fazani tayyorlash uchun erituvchi aralashmasidan foydalanish;",
+    "ajralish bilan boshlang'ich pozitsiyasiga nisbatan ajratiladigan moddaning harakat yo'lini o'lchash zarurati;",
+    "faqat rangli moddalarni tahlil qilish qobiliyati;",
+    "analitik suyuqlik xromatografiyasining bir turi bo'lib, unda inert substratga mahkamlangan sorbentning yupqa qatlami statsionar faza sifatida ishlatiladi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-203",
+   "n": 203,
+   "q": "Atrof-muhitdagi zararli moddalarni tahlil qilishning kimyoviy usullari va boshqa usullar o'rtasidagi farq shundaki, kimyoviy tahlil usullari quyidagilarga asoslanadi:",
+   "options": [
+    "tahlil qilinadigan moddaning fizik xususiyatlari to'g'risida;",
+    "tahlil qilinayotgan moddaning fizik va kimyoviy xossalari bo'yicha;",
+    "tahlil qilinadigan moddaning turli xil kimyoviy xususiyatlaridan foydalanish to'g'risida;",
+    "tahlil qilinadigan moddaning fizik-mexanik xususiyatlarida."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-204",
+   "n": 204,
+   "q": "Qaror qabul qilish qoidasi:",
+   "options": [
+    "mahsulotning spetsifikatsiyasi va o'lchov natijasi bo'yicha qabul qilish yoki rad etishda o'lchov noaniqligi qanday hisobga olinishini tavsiflovchi hujjatlashtirilgan qoida.",
+    "o'lchov natijasi bo'yicha qabul qilish",
+    "o'zgarish koeffitsienti ;",
+    "Aniqlash Qobiliyati"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-205",
+   "n": 205,
+   "q": "Atrof muhitdagi zararli moddalarni tahlil qilishning fizik-kimyoviy usullari va boshqa usullar o'rtasidagi farq shundaki, fizik-kimyoviy tahlil usullari quyidagilarga asoslanadi:",
+   "options": [
+    "tahlil qilinadigan moddaning fizik xususiyatlari to'g'risida;",
+    "tahlil qilinadigan moddaning turli xil kimyoviy xususiyatlaridan foydalanish to'g'risida;",
+    "tahlil qilinadigan moddaning fizik-mexanik xususiyatlarida.",
+    "tahlil qilinadigan moddaning fizik-kimyoviy xossalarida;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-206",
+   "n": 206,
+   "q": "O'lchov birligi-bu quyidagi qoidalar bilan tavsiflangan o'lchov holati:",
+   "options": [
+    "o'lchov natijalari qonuniylashtirilgan miqdor birliklarida ifodalanadi; o'lchov xatolari ma'lum bir ehtimollik bilan belgilangan chegaralardan tashqariga chiqmaydi;",
+    "o'lchovlar ishonchli o'lchash vositalaridan foydalangan holda amalga oshiriladi;",
+    "o'lchovlar statistik usullar yordamida amalga oshiriladi",
+    "o'lchovlar advokat asboblari yordamida amalga oshiriladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-207",
+   "n": 207,
+   "q": "Standart pestitsid namunalari qanday maqsadlarda ishlatiladi?",
+   "options": [
+    "kalibrlash eritmalarini tayyorlash uchun;",
+    "asboblarni tekshirish va kalibrlash uchun;",
+    "metodlarni metrologik sertifikatlash uchun;",
+    "yuqoridagilarning barchasi to'g'ri;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-208",
+   "n": 208,
+   "q": "Agar mahsulotlarning kimyoviy tarkibi ma'lum bo'lmasa, texnikadan foydalangan holda tadqiqot natijalari asosida gigienik baholash berilishi mumkin:",
+   "options": [
+    "gaz xromatografiyasi;",
+    "xromatomass spektrometriyasi, toksikologik tajriba",
+    "fotometrik usul",
+    "Xromatografiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-209",
+   "n": 209,
+   "q": "Pestitsidlarni tahlil qilishda ekstraktlarni tozalashning qanday usullari qo'llaniladi:",
+   "options": [
+    "distillangan suv bilan yuvish;",
+    "suvsiz natriy sulfat yordamida filtrlash;",
+    "ikki marta ekstraktsiya, sulfatsiya;",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-210",
+   "n": 210,
+   "q": "Toksik elementlarning tarkibini aniqlash uchun qaysi oziq-ovqat guruhlarini tayyorlashda kislota ekstraktsiyasi (to'liq bo'lmagan minerallashuv)qo'llaniladi:",
+   "options": [
+    "barcha turdagi oziq-ovqat mahsulotlari uchun;",
+    "yog' miqdori 20 dan kam bo'lgan oziq-ovqat mahsulotlari uchun%;",
+    "yog' miqdori 60% dan yuqori bo'lgan oziq-ovqat mahsulotlari uchun.",
+    "oziq-ovqat mahsulotlarining ayrim turlari uchun;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-211",
+   "n": 211,
+   "q": "Oziq-ovqat tarkibidagi qo'rg'oshin va kadmiy miqdorini aniqlash uchun qanday tasdiqlangan tahlil usullari qo'llaniladi:",
+   "options": [
+    "Fotometrik;",
+    "Xromatografik;",
+    "atom yutilish, polarografik, inversiya-voltammetrik;",
+    "spektrometrik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-212",
+   "n": 212,
+   "q": "Quyidagilardan qaysi moddalar konservantlar guruhiga tegishli ekanligini ko'rsating:",
+   "options": [
+    "Tartrazin, indigokarmin;",
+    "benzoik kislota va uning tuzlari, sorbin kislotasi va uning tuzlari;",
+    "aspartam, saxarin, kofein;",
+    "organik xlor birikmalari."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-213",
+   "n": 213,
+   "q": "Parfyumeriya va kosmetika mahsulotlarini gigienik baholashda qanday toksikologik tadqiqotlar talab etiladi:",
+   "options": [
+    "o'tkir toksiklik; tirnash xususiyati beruvchi va allergik ta'sir;",
+    "surunkali harakat;",
+    "hipoalerjenik ta'sir",
+    "toksikologik ta'sir"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-214",
+   "n": 214,
+   "q": "Laboratoriya tajribalarida mebel polimer materiallaridan havo muhitiga toksik moddalarning ko'chishini o'rganishda qanday harorat va havo almashinuvi parametrlaridan foydalanish kerak:",
+   "options": [
+    "harorat +23°C va 3 marta havo almashinuvi;",
+    "harorat +40°C va muhrlanish;",
+    "harorat+23 °C va 1 marta havo almashinuvi;",
+    "harorat +28°C va 2 marta havo almashinuvi;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-215",
+   "n": 215,
+   "q": "Zaharning to'planishi bo'lishi mumkin:",
+   "options": [
+    "Moddiy; Funktsional;",
+    "Klinik",
+    "Allergen",
+    "kümülatif"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-216",
+   "n": 216,
+   "q": "Toksik moddalarning polimer materiallardan havo muhitiga ko'chishini gigienik baholashda ruxsat etilgan maksimal konsentratsiya hisobga olinadi:",
+   "options": [
+    "maksimal bir martalik;",
+    "O'rtacha Kunlik.",
+    "kunlik",
+    "bir martalik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-217",
+   "n": 217,
+   "q": "Moddani qayta kiritish amalga oshiriladi:",
+   "options": [
+    "o'tkir tajribada;",
+    "subakut tajribada, surunkali tajribada;",
+    "tajribaning boshida",
+    "modda kiritilganda hayvon o'lganda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-218",
+   "n": 218,
+   "q": "Polimer sintetik materiallarni gigienik tartibga solishda qanday asosiy parametrlar aniqlanadi:",
+   "options": [
+    "qo'llash sohasi;",
+    "To'yinganlik;",
+    "zaharli moddalarning migratsiya darajasi;",
+    "yuqoridagilarning barchasi to'g'ri."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-219",
+   "n": 219,
+   "q": "MPC va poyabzal o'rtasidagi asosiy farqlar qanday:",
+   "options": [
+    "ifloslantiruvchi moddalarning ruxsat etilgan miqdori bo'yicha, amal qilish muddati bo'yicha;",
+    "kattaligi bo'yicha;",
+    "toksik migratsiya darajasi bo'yicha",
+    "organik ifloslantiruvchi moddalarning chidamliligi bo'yicha"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-220",
+   "n": 220,
+   "q": "Atrof-muhitni ifloslantiruvchi moddalarga quyidagilar kiradi:",
+   "options": [
+    "doimiy organik ifloslantiruvchi moddalar, toksik elementlar, barcha muhitda mavjud bo'lgan moddalar;",
+    "kimyoviy moddalar",
+    "organik ifloslantiruvchi moddalar",
+    "toksik moddalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-221",
+   "n": 221,
+   "q": "Aholi salomatligi xavfini baholashda kimyoviy omil hisobga olinadi:",
+   "options": [
+    "ustuvor ifloslantiruvchi moddalar;",
+    "kombinatsiyalangan va murakkab harakatlar qobiliyati;",
+    "aholining kasallanishi;",
+    "yuqoridagilarning barchasi to'g'ri."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-222",
+   "n": 222,
+   "q": "Toksikologik pasport hajmida tadqiqotlar o'tkazishda quyidagilarni aniqlash kerak:",
+   "options": [
+    "xavf sinfi;",
+    "terini bezovta qiluvchi ta'sir;",
+    "kümülatif xususiyatlar;",
+    "yuqoridagilarning barchasi to'g'ri."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-223",
+   "n": 223,
+   "q": "Parfyumeriya va kosmetika tarkibiga moddalar kirishi mumkin:",
+   "options": [
+    "2 xavfli sinflar;",
+    "3 xavfli sinflar;",
+    "4 xavfli sinflar;",
+    "1 xavfli sinf"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-224",
+   "n": 224,
+   "q": "Toksikologiyada muqobil usullar quyidagilarni aniqlashga imkon beradi:",
+   "options": [
+    "umumiy toksiklik;",
+    "surunkali harakat;",
+    "maxsus harakat.",
+    "xavf sinfi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-225",
+   "n": 225,
+   "q": "Polimer materiallarni sanitariya-kimyoviy tadqiq qilishda qanday usullar asosiy hisoblanadi:",
+   "options": [
+    "Polarografik;",
+    "fotometrik, gaz xromatografik, xromatografik-mass-spektrometrik",
+    "Fiziologik",
+    "Biokimyoviy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-226",
+   "n": 226,
+   "q": "Moddalarning hayvonlarga toksik ta'sirini o'rganishda usullar qo'llaniladi:",
+   "options": [
+    "Biokimyoviy;",
+    "Fiziologik;",
+    "sanitariya-kimyoviy;",
+    "sanab o'tilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-227",
+   "n": 227,
+   "q": "Asosiy testlar toksikologik baholashda ishlatiladigan muqobil usullardagi ob'ektlardir:",
+   "options": [
+    "hujayra madaniyati, gidrobiont, bakteriyalar;",
+    "Hujayra",
+    "Mikroblar",
+    "sanab o'tilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-228",
+   "n": 228,
+   "q": "Yangi parfyumeriya va kosmetika mahsulotlarini baholashda qanday tadqiqotlar olib borilmoqda:",
+   "options": [
+    "sanitariya-kimyoviy, toksikologik, bakteriologik, klinik;",
+    "sanitariya-gigiena",
+    "Mikrobiologik",
+    "Muqobil"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-229",
+   "n": 229,
+   "q": "Toksikologiyaning asosiy bo'limlari quyidagilardan iborat:",
+   "options": [
+    "eksperimental-nazariy toksikologiya",
+    "sanitariya-gigiena (profilaktika) toksikologiyasi",
+    "klinik toksikologiya",
+    "ekologik toksikologiya"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-230",
+   "n": 230,
+   "q": "Zaharlanish odatda tushuniladi:",
+   "options": [
+    "rezorbsiya jarayoni, zaharning tanaga kirishi",
+    "zahar va organizmning o'zaro ta'siri jarayoni",
+    "metabolitlarning endogen intoksikatsiyasi",
+    "tanadagi zaharning tarqalishi va metabolizmi jarayoni"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-231",
+   "n": 231,
+   "q": "Xrom birikmalarini tanadan ajratishning asosiy yo'lini ko'rsating:",
+   "options": [
+    "tuprik",
+    "keyin",
+    "teri orqali",
+    "buyraklar orqali"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-232",
+   "n": 232,
+   "q": "Kadmiy asosan tanada qaerda to'planishini ko'rsating:",
+   "options": [
+    "o'pkada",
+    "buyraklarda",
+    "suyaklarda",
+    "miyada"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-233",
+   "n": 233,
+   "q": "Sink asosan tanada qaerda to'planishini ko'rsating:",
+   "options": [
+    "o'pkada",
+    "buyraklarda",
+    "oshqozon osti bezida",
+    "suyaklarda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-234",
+   "n": 234,
+   "q": "Turar-joy binolari, suv ta'minoti manbalari, chorva mollari, oziq-ovqat mahsulotlarini saqlash joylari, em-xashak va oziq-ovqat va suv olish joylaridan kiyinish punktlari qancha masofada joylashgan bo'lishi kerak?",
+   "options": [
+    "200 m dan yaqin emas",
+    "400 m dan yaqin emas",
+    "600 m dan yaqin emas",
+    "100 m dan yaqin emas"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-235",
+   "n": 235,
+   "q": "Pestitsidlar va agrokimyoviy moddalarni qo'llaganidan keyin qancha kun o'tlashga ruxsat beriladi?",
+   "options": [
+    "pestitsid bilan ishlov berilgan joylarda -25 kundan keyin ruxsat beriladi",
+    "pestitsid bilan ishlov berilgan joylarda -15 kundan keyin ruxsat beriladi",
+    "pestitsid bilan ishlov berilgan joylarda -35 kundan keyin ruxsat beriladi",
+    "pestitsidlar bilan ishlov berilgan joylarda -45 kundan keyin ruxsat beriladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-236",
+   "n": 236,
+   "q": "Pestitsidlar va agrokimyoviy moddalarni qo'llashda ogohlantirish belgilari qancha masofada o'rnatiladi?",
+   "options": [
+    "pestitsidlar bilan ishlov beriladigan maydon chegaralaridan kamida 50 m masofada",
+    "pestitsidlar bilan ishlov beriladigan maydon chegaralaridan kamida 150 m masofada",
+    "pestitsidlar bilan ishlov beriladigan maydon chegaralaridan kamida 300 m masofada",
+    "pestitsidlar bilan ishlov beriladigan maydon chegaralaridan kamida 250 m masofada"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-237",
+   "n": 237,
+   "q": "Kimyoviy vositalarni tashish uchun ishlatiladigan transport vositalari necha marta zararsizlantirilishi kerak (4 litr suv uchun 1 kg oqartiruvchi gruel)?",
+   "options": [
+    "oyiga kamida ikki marta",
+    "haftada kamida ikki marta",
+    "har 2 haftada kamida ikki marta",
+    "yiliga kamida ikki marta"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-238",
+   "n": 238,
+   "q": "Pestitsidlar va agrokimyoviy moddalarni qo'llashda xavf haqida ogohlantirish belgisida qanday yozuv ko'rsatilishi kerak?",
+   "options": [
+    "“ehtiyotkorlik bilan-pestitsidlar bilan ishlangan!”",
+    "“ehtiyot bo'ling-pestitsidlar!”",
+    "“pestitsidlar va pestitsidlar bilan ishlangan!”",
+    "“ehtiyot bo'ling-pestitsidlar!”"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-239",
+   "n": 239,
+   "q": "Pestitsidlar bilan erga ishlov berishda sanitariya-himoya zonasining hajmi qanday bo'lishi kerak (turar-joy binolari, hovlilardan, em-xashak saqlanadigan joylardan, suv ta'minoti manbalaridan masofa)?",
+   "options": [
+    "kamida 100 metr",
+    "kamida 200 metr",
+    "kamida 300 metr",
+    "kamida 150 metr"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-240",
+   "n": 240,
+   "q": "Pestitsidlarni aviatsiya bilan davolashda sanitariya-himoya zonasining hajmi qanday bo'lishi kerak (turar-joy binolari, hovlilardan, em-xashak saqlanadigan joylardan, suv ta'minoti manbalaridan masofa)?",
+   "options": [
+    "kamida 500 metr",
+    "kamida 1000 metr",
+    "kamida 1500 metr",
+    "kamida 100 metr"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-241",
+   "n": 241,
+   "q": "Pestitsidlar bilan ishlash qaysi soatlarda va qanday ob-havo sharoitida amalga oshirilishi kerak?",
+   "options": [
+    "28 va undan yuqori haroratda to'liq ish kunida",
+    "erta tongda va kechqurun havo oqimi bo'lmagan taqdirda va bulutli va salqin vaqtda - kunduzi",
+    "erta tongda",
+    "kechki soatlarda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-242",
+   "n": 242,
+   "q": "Qanday shamol tezligida er usti uskunalari bilan pestitsidlar va o'simliklarning agrokimyoviy moddalari bilan changlanishiga yo'l qo'yilmaydi?",
+   "options": [
+    "2 m/s dan ortiq ruxsat berilmaydi",
+    "3 m/s dan ortiq ruxsat berilmaydi",
+    "6 m/s dan ortiq ruxsat berilmaydi",
+    "1 m / s dan ortiq ruxsat berilmaydi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-243",
+   "n": 243,
+   "q": "Pestitsidlar va agrokimyoviy moddalar bilan ishlov berilgan hududlarning chegaralaridan qancha masofada ogohlantirish belgilari joylashtirilgan",
+   "options": [
+    "100 metr radiusda",
+    "150 metr radiusda",
+    "300 metr radiusda",
+    "1000 metr radiusda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-244",
+   "n": 244,
+   "q": "Suvdagi kimyoviy moddalarning ruxsat etilgan maksimal kontsentratsiyasini asoslashda surunkali sanitariya-toksikologik eksperimentning asosiy maqsadi konsentratsiyani aniqlashdir",
+   "options": [
+    "chegara",
+    "pastki chegara",
+    "minimal harakat",
+    "o'rta o'lim"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-245",
+   "n": 245,
+   "q": "Suvning organoleptik xususiyatlariga ta'siri bo'yicha kimyoviy moddaning chegara kontsentratsiyasini aniqlash eksperimentda quyidagilar yordamida amalga oshiriladi",
+   "options": [
+    "yuqori sezgir laboratoriya hayvonlari",
+    "ko'ngilli odamlar",
+    "fizik-kimyoviy tahlilning aniq usullari",
+    "moddaning molekulyar tuzilishiga asoslangan hisoblash usullari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-246",
+   "n": 246,
+   "q": "MPC tushunchasining aniq formulasini ko'rsating:",
+   "options": [
+    "tanaga ta'sir qilganda o'tkir zaharlanishni keltirib chiqarmaydigan konsentratsiya",
+    "kundalik ish paytida 8 soat yoki boshqa vaqt oralig'ida, lekin haftasiga 40 soatdan ko'p bo'lmagan kontsentratsiya, ish tajribasi davomida zamonaviy tadqiqot usullari va hozirgi va keyingi avlodlarning uzoq umr ko'rishida aniqlangan kasalliklar yoki sog'liqdagi anormalliklarni keltirib chiqarmaydi",
+    "ishchining tanasiga cheksiz uzoq vaqt ta'sir qilganda surunkali zaharlanishni keltirib chiqarmaydigan konsentratsiya",
+    "butun ish tajribasi davomida 8 soatdan ko'p bo'lmagan ish paytida kunlik aloqada bo'lgan kontsentratsiya zamonaviy tadqiqot usullari bilan aniqlangan ishchilarning normal holatidan yoki kasalliklaridan og'ishlarga olib kelmaydi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-247",
+   "n": 247,
+   "q": "Pestitsidlarning qoldiq miqdori uchun oziq-ovqat mahsulotlarining gigienik ekspertizasi quyidagilarni o'z ichiga oladi",
+   "options": [
+    "pestitsidlarni qo'llash turi, chastotasi va muddati to'g'risidagi hujjatlarni o'rganish, pestitsidlarning qoldiq miqdori uchun mahsulotlarni laboratoriya tadqiqotlari",
+    "pestitsidlarning kümülatif xususiyatlarini aniqlash",
+    "pestitsidlarning inson tanasiga doimiy ta'sirini o'rganish",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-248",
+   "n": 248,
+   "q": "Ruxsat etilgan kontsentratsiya tushunchasining aniq formulasini ko'rsating:",
+   "options": [
+    "tanaga ta'sir qilganda o'tkir zaharlanishni keltirib chiqarmaydigan konsentratsiya",
+    "kundalik ish paytida 8 soat yoki boshqa vaqt oralig'ida, lekin haftasiga 40 soatdan ko'p bo'lmagan kontsentratsiya, ish tajribasi davomida zamonaviy tadqiqot usullari va hozirgi va keyingi avlodlarning uzoq umr ko'rishida aniqlangan kasalliklar yoki sog'liqdagi anormalliklarni keltirib chiqarmaydi",
+    "ishchining tanasiga cheksiz uzoq vaqt ta'sir qilganda surunkali zaharlanishni keltirib chiqarmaydigan konsentratsiya",
+    "butun ish tajribasi davomida 8 soatdan ko'p bo'lmagan ish paytida kunlik aloqada bo'lgan kontsentratsiya zamonaviy tadqiqot usullari bilan aniqlangan ishchilarning normal holatidan yoki kasalliklaridan og'ishlarga olib kelmaydi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-249",
+   "n": 249,
+   "q": "Metodologiyada qo'llaniladigan tushunchalar, xavfni baholash:",
+   "options": [
+    "mos yozuvlar dozasi",
+    "malumot kontsentratsiyasi",
+    "muhim organlar / tizimlar",
+    "yuqorida aytilganlarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-250",
+   "n": 250,
+   "q": "Xavfni tahlil qilishning asosiy elementlari:",
+   "options": [
+    "salomatlik xavfini baholash",
+    "xatarlarni boshqarish",
+    "xavf haqida ma'lumot",
+    "yuqorida aytilganlarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-251",
+   "n": 251,
+   "q": "Xavfni baholash bosqichlari:",
+   "options": [
+    "xavfni aniqlash",
+    "dozaga javob berish bog'liqligini baholash",
+    "ta'sirni baholash, xavf xususiyatlari",
+    "yuqorida aytilganlarning barchasi to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-252",
+   "n": 252,
+   "q": "Kuchli zararkunandalarga ld 50 bo'lgan pestitsidlar kiradi",
+   "options": [
+    "50 mg/kg gacha",
+    "50-200 mg/kg",
+    "200-1000 mg/kg",
+    "1000 mg/kg dan ortiq"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-253",
+   "n": 253,
+   "q": "Pestitsidlar o'rtacha darajada chidamli bo'lib, ularning toksik tarkibiy qismlariga parchalanish vaqti",
+   "options": [
+    "2 yildan ortiq",
+    "0,5-2 yil",
+    "1-6 oy",
+    "1 oy"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-254",
+   "n": 254,
+   "q": "Pestitsidlarning xususiyati, ayniqsa oziq-ovqat gigienasi nuqtai nazaridan xavflidir.",
+   "options": [
+    "yuqori toksiklik, tashqi muhitda qarshilik, tanadagi kumulyativlik",
+    "allergik xususiyatlari",
+    "xolinesteraza faolligi",
+    "enterotropizm"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-255",
+   "n": 255,
+   "q": "Pestitsidlarning qaysi shaklidan foydalanish mehnat sharoitlarini yaxshilash uchun yaxshi natijalar beradi?",
+   "options": [
+    "suyuqlikda",
+    "kukun shaklida",
+    "granulalar shaklida",
+    "ampulalar shaklida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-256",
+   "n": 256,
+   "q": "Pestitsidlar bilan ishlashga jalb qilingan yuzni o'qitish va o'qitish qanchalik tez-tez uchraydi?",
+   "options": [
+    "har olti oyda",
+    "har yili",
+    "har ikki yilda",
+    "har 3 oyda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-257",
+   "n": 257,
+   "q": "Pestitsidlarni qabul qilish, saqlash, hisobga olish va chiqarishni kim amalga oshiradi?",
+   "options": [
+    "Omborchi",
+    "Texnolog",
+    "ombor boshlig'i",
+    "ishchi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-258",
+   "n": 258,
+   "q": "Aholi punktlaridan fan va shtangali traktor purkagichlari yordamida ishlov berishga ruxsat berilgan minimal masofa qancha?",
+   "options": [
+    "300 m",
+    "500 m",
+    "1000 m -5m"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "tox_lab-t-259",
+   "n": 259,
+   "q": "Tarqalgan urug'langan urug'lar bilan nima qilish kerak?",
+   "options": [
+    "yuviladi va ishlatiladi",
+    "yondiriladi va ko'miladi",
+    "boshqa chiqindilar bilan birga utilizatsiya qilinadi",
+    "axlatga tashlanadi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-260",
+   "n": 260,
+   "q": "Ammiakni saqlash uchun idishlar ochiq ranglarda qanday maqsadda bo'yalgan?",
+   "options": [
+    "tanib olish uchun",
+    "ularga yozuvlarni qo'llash qulayligi uchun",
+    "quyosh va portlashdan isitishni oldini olish uchun",
+    "ekish uchun"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-261",
+   "n": 261,
+   "q": "Pestitsidlar bilan ifloslangan er uchastkalari nima bilan zararsizlantiriladi?",
+   "options": [
+    "oqartirish",
+    "ammiak eritmasi",
+    "DIAZ eritmasi",
+    "suv bilan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-262",
+   "n": 262,
+   "q": "Zaharlanishning oldini olish uchun pestitsidlar bilan ishlashdan oldin nima qilish kerak?",
+   "options": [
+    "faollashtirilgan uglerodni qabul qiling",
+    "ovqatlanish",
+    "dush qabul qiling",
+    "shaxsiy himoya vositalarini kiying"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-263",
+   "n": 263,
+   "q": "Pestitsidlar bilan ishlashga kim ruxsat berilmaydi?",
+   "options": [
+    "18 yoshdan kichik shaxslar va 35 yoshgacha bo'lgan ayollar",
+    "homilador va emizikli ayollar",
+    "keksalar",
+    "ro'yxatdagi barcha toifalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-264",
+   "n": 264,
+   "q": "Ammiak qo'llash paytida shlang yorilib ketganda traktor haydovchisining to'g'ri harakatlari qanday?",
+   "options": [
+    "darhol idishni tark eting va xavfsiz masofaga qayting",
+    "qisqa vaqt ichida nosozlikni bartaraf etish va xavfsiz masofani bosib o'tish",
+    "idishni mahkam yoping va ta'mirlash guruhi kelguniga qadar ochilmang",
+    "muammolarni bartaraf etish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-265",
+   "n": 265,
+   "q": "Tanadagi organofosforlarning maksimal kontsentratsiyasi quyidagilar orqali qayd etiladi",
+   "options": [
+    "0,5-6 soat",
+    "2 kun",
+    "kiritilgandan keyin 5 kun yoki undan ko'proq",
+    "1 soat"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-266",
+   "n": 266,
+   "q": "Tanadagi organoklor birikmalarining maksimal kontsentratsiyasi quyidagilar orqali qayd etiladi",
+   "options": [
+    "0,5-6 soat",
+    "2 kun",
+    "kiritilgandan keyin 25 kun yoki undan ko'proq",
+    "kiritilgandan keyin 5 kun yoki undan ko'proq"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-267",
+   "n": 267,
+   "q": "Yuqori zaharli pestitsidlarda t50",
+   "options": [
+    "50-200 mg/kg",
+    "1 0 0 0 mg/kg dan ortiq",
+    "50 mg/kg gacha",
+    "200-1000 mg/kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-268",
+   "n": 268,
+   "q": "Td5() juda zaharli pestitsidlarda",
+   "options": [
+    "50 mg/kg gacha.",
+    "2 0 0 - 1 0 0 0 mg / kg",
+    "1 0 0 0 mg/kg dan ortiq",
+    "50-200 mg/kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-269",
+   "n": 269,
+   "q": "Kumulyatsiya koeffitsientining oshishi bilan kumulyatsiyaning og'irligi",
+   "options": [
+    "ortadi",
+    "kamayadi",
+    "o'zgarmaydi",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-270",
+   "n": 270,
+   "q": "Pestitsidlar yo'q qilinmaydi",
+   "options": [
+    "fos",
+    "xos",
+    "Simob O'z Ichiga Olgan",
+    "mis o'z ichiga olgan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-271",
+   "n": 271,
+   "q": "Xlor organik pestitsidlar ostidagi idishlar zararsizlantiriladi",
+   "options": [
+    "bug' bilan ishlov berish",
+    "ishqoriy eritmalar",
+    "30% temir xlorid p-rum",
+    "1% kaliy p-rom"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-272",
+   "n": 272,
+   "q": "Organofosfat pestitsidlari konteynerlari zararsizlantiriladi",
+   "options": [
+    "kislota bilan",
+    "ishqor bilan",
+    "Suv Bilan",
+    "tuz bilan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-273",
+   "n": 273,
+   "q": "Moddiy kumulyatsiya to'planish bilan tavsiflanadi",
+   "options": [
+    "faol moddalar",
+    "harakat effekti",
+    "metabolik mahsulotlar",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-274",
+   "n": 274,
+   "q": "Xavfning birinchi sinfiga suvda mavjud bo'lgan kimyoviy moddalar kiradi, ularning xavf darajasi odamlar uchun quyidagicha baholanadi",
+   "options": [
+    "xavfli emas",
+    "o'rtacha xavfli",
+    "xavfli",
+    "juda xavfli"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-275",
+   "n": 275,
+   "q": "Xlor preparatlari ta'siriga eng katta qarshilik",
+   "options": [
+    "enteroviruslar",
+    "coli guruhidagi bakteriyalar",
+    "Vibrio vabo",
+    "mikroblar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-276",
+   "n": 276,
+   "q": "Ish maydoni havosidagi zararli moddalar tarkibini o'rganish uchun qurilma:",
+   "options": [
+    "aktinometr",
+    "aspirator",
+    "termometr",
+    "psixrometr"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-277",
+   "n": 277,
+   "q": "Atmosferaviy havodda zararli moddalarning PDK qanday darajada belgilanadi:",
+   "options": [
+    "amal darajasida",
+    "muhim ta'sir ko'rsatuvchi darajada",
+    "keskin ta'sir ko'rsatuvchi darajada",
+    "yo'nalishdagi harakatda"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-278",
+   "n": 278,
+   "q": "Atmosfera havosida zararli moddalarni normallashtirish asosida qancha",
+   "options": [
+    "tamoyillar mavjud",
+    "-2",
+    "-3",
+    "-4",
+    "-5"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "tox_lab-t-279",
+   "n": 279,
+   "q": "Benzin sinovini olish uchun gaz analizatoriga qancha havo olish kerak?",
+   "options": [
+    "100 ml.",
+    "300 ml",
+    "200 ml",
+    "220 ml"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-280",
+   "n": 280,
+   "q": "ВаСl2 10% eritmani tayyorlash uchun ВаСl2 olish kerak?",
+   "options": [
+    "6,0 gr.",
+    "10,0 gr",
+    "9,0 gr",
+    "12,0 gr"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-281",
+   "n": 281,
+   "q": "Qo'rg'onning qanday xavf sinfiga to'g'ri keladi?",
+   "options": [
+    "3-sinf",
+    "1-sinf",
+    "2-sinf",
+    "4-sinf"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-282",
+   "n": 282,
+   "q": "Termik ishlash darajasini nazorat qilishda qanday reaktiv foydalaniladi?",
+   "options": [
+    "Vinar",
+    "Griss reaktivi",
+    "oltingugurt kislotasi",
+    "Kichik natr"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-283",
+   "n": 283,
+   "q": "1 mol/dm3 NaOH eritmasini tayyorlash uchun necha gramm NaOH olish kerak?",
+   "options": [
+    "40 gr",
+    "36,7 gr",
+    "48 gr",
+    "20 gr"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-284",
+   "n": 284,
+   "q": "Bolalarning plastik o'yinchoqlari qanday haroratda modellanadi?",
+   "options": [
+    "20ºC",
+    "37ºS",
+    "48ºS",
+    "18ºS"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-285",
+   "n": 285,
+   "q": "37ºS haroratda plastik o'yinchoqlarni modellashtirish uchun necha soat kerak bo'ladi?",
+   "options": [
+    "3 soat",
+    "6 soat",
+    "24 soat",
+    "48 soat"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-286",
+   "n": 286,
+   "q": "315. Shamol tezligini qaysi asbob aniqlaydi?",
+   "options": [
+    "anemometr",
+    "psixrometr",
+    "ariometr",
+    "termometr"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-287",
+   "n": 287,
+   "q": "% eritma deb nimaga aytiladi?",
+   "options": [
+    "100 ml distillangan suv, unda modda eriydi",
+    "modda erigan 1000 ml distillangan suv",
+    "500 ml distillangan suv, unda modda eriydi",
+    "modda erigan 10 ml distillangan suv"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-288",
+   "n": 288,
+   "q": "Standartlashtirish nima?",
+   "options": [
+    "o'lchovlar, ularning birligini ta'minlash usullari va vositalari hamda kerakli aniqlikka erishish yo'llari haqidagi fan.",
+    "yutuqlar uchun tuzatilgan fan, texnika, iqtisoddagi takroriy muammolar yechimini topish faoliyati",
+    "atrof-muhit omillarining inson organizmiga ta'sirini o'rganuvchi fan",
+    "iqtisodiyot sohasini o'rganuvchi fan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-289",
+   "n": 289,
+   "q": "Don, dukkakli va boshqa ekinlar (ichimliklar, shu jumladan jo'xori tug') urug'idan olingan oqsilli mahsulotlar tarkibidagi zaharli elementlarning mg/kg dagi qo'rg'oshinning ruxsat etilgan miqdorini (ML)-Pb ko'rsating:",
+   "options": [
+    "Rb - 0,2 mg/kg",
+    "Rb – 0,02 mg/kg",
+    "Pb - 0,31 mg / kg",
+    "Rb - 0,04 mg/kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-290",
+   "n": 290,
+   "q": "Qaysi reaktivlar prokursorlarga tegishli?",
+   "options": [
+    "sulfat kislota",
+    "kumush nitrat",
+    "natriy sulfat",
+    "vodorod periks"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-291",
+   "n": 291,
+   "q": "Ammoniy dihidrofosfat tarkibidagi fosfor miqdorini (%) hisoblang:",
+   "options": [
+    "27.2",
+    "23.5",
+    "20.8",
+    "26.9"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-292",
+   "n": 292,
+   "q": "Metafosfor kislotasini belgilang:",
+   "options": [
+    "HPO3",
+    "H3PO4",
+    "H2P2O6",
+    "H4P2O7"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-293",
+   "n": 293,
+   "q": "PI-1 ionometridan foydalanganda ammoniy-kaliyli alumning qanday konsentratsiyasi ishlatiladi?",
+   "options": [
+    "1%",
+    "2%",
+    "0,1%",
+    "0,2%"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-294",
+   "n": 294,
+   "q": "Akkreditatsiya qilingan laboratoriya qaysi NDga rioya qilishi kerak?",
+   "options": [
+    "OzDst ISO/MEK 17025-2007",
+    "OzDst 16.4 2001 yil",
+    "SanPiN 0138-03",
+    "099-93"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-295",
+   "n": 295,
+   "q": "Oziq-ovqat mahsulotlari va oziq-ovqat xom ashyosining xavfsizlik parametrlari quyidagi me'yoriy hujjat bilan belgilanadi:",
+   "options": [
+    "SanPiN 0366",
+    "GOST 23952-79",
+    "O'zDST 16.4",
+    "O'zDST 153"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-296",
+   "n": 296,
+   "q": "Ayrim oziq moddalarni (to'yingan yog' kislotalari; xolesterin; natriy) iste'mol qilishning o'rtacha kunlik xavfsiz darajasini ko'rsating:",
+   "options": [
+    "25, 300, 2400",
+    "27, 350, 2450",
+    "28, 375, 2475",
+    "30, 400, 2500"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-297",
+   "n": 297,
+   "q": "Sanitariya-gigiyena laboratoriya tadqiqotining asosiy maqsadi?",
+   "options": [
+    "inson muhitidagi kimyoviy moddalarni aniqlash;",
+    "ekologik maqsadlarda tadqiqot olib borish;",
+    "inson salomatligi uchun salbiy toksik xususiyatlarga ega kimyoviy moddalar miqdorini aniqlash.",
+    "oziq-ovqat mahsulotlarining sifat tarkibini aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-298",
+   "n": 298,
+   "q": "Aholi punktlari havosini o'rganishda metodning sezgirligiga qanday talablar qo'yiladi?",
+   "options": [
+    "dan oraliqda konsentratsiyalarni aniqlashning aniqligini ta'minlash 0,5 REK va undan yuqori;",
+    "oralig'ida konsentratsiyalarni aniqlashning aniqligini ta'minlash 0,1 REK va undan yuqori;",
+    "butun diapazonda konsentratsiyalarni aniqlashning aniqligini ta'minlash.",
+    "oralig'ida konsentratsiyalarni aniqlashning aniqligini ta'minlash 0,6 REK va undan yuqori;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-299",
+   "n": 299,
+   "q": "Ish joyidagi havoni tekshirishda usulning sezgirligiga qanday talablar qo'yiladi?",
+   "options": [
+    "dan oraliqda konsentratsiyalarni aniqlashning aniqligini ta'minlash 0,8 REK dan 10 REK gacha;",
+    "oralig'ida konsentratsiyalarni aniqlashning aniqligini ta'minlash 0,5 REK va undan yuqori;",
+    "butun diapazonda konsentratsiyalarni aniqlashning aniqligini ta'minlash.",
+    "oralig'ida konsentratsiyalarni aniqlashning aniqligini ta'minlash 0,5 REK va undan yuqori;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-300",
+   "n": 300,
+   "q": "Laboratoriya omborida metall simobning maksimal miqdori qancha miqdorda saqlanishi mumkin?",
+   "options": [
+    "0,5 kg;",
+    "1,0 kg;",
+    "3,0 kg.",
+    "3 kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-301",
+   "n": 301,
+   "q": "Laboratoriya binolarida qancha yonuvchi moddalarni saqlashga ruxsat beriladi?",
+   "options": [
+    "bir haftalik ish uchun zarur bo'lgan zahira;",
+    "kunlik ta'minot;",
+    "ruxsat berilmaydi.",
+    "Muayyan miqdorga ruxsat beriladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-302",
+   "n": 302,
+   "q": "Laboratoriyada bir ish kuni davomida umumiy qancha yonuvchi kimyoviy moddalarni saqlashga ruxsat beriladi?",
+   "options": [
+    "10 kg;",
+    "4 kg;",
+    "ruxsat berilmaydi.",
+    "5 kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-303",
+   "n": 303,
+   "q": "Xavo tortuvchi shaflarda havo harakatining tezligi qanday bo'lishi kerak?",
+   "options": [
+    "0,3—0,5 m/s;",
+    "0,5-0,7 m/s;",
+    "0,5—1,0 m/s.",
+    "0,3—0,7 m/s;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-304",
+   "n": 304,
+   "q": "Laboratoriya binolarida qanday harorat oralig'iga rioya qilish kerak?",
+   "options": [
+    "15-25 °C;",
+    "18-21 °C;",
+    "18-25 ° S.",
+    "10-15 °C;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-305",
+   "n": 305,
+   "q": "Polietilenni qayta ishlashda qanday zararli moddalar chiqarilmaydi:",
+   "options": [
+    "Formaldegid",
+    "Fenol",
+    "sirka kislotasi",
+    "uglerod oksidi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-306",
+   "n": 306,
+   "q": "Inhibitor ishlatilganda kimyoviy reaktsiya.....",
+   "options": [
+    "Tezlashmoqda",
+    "sifat jihatidan aniqlaydi",
+    "Sekinlashadi",
+    "kimyoviy reaksiya tezligi oshadi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-307",
+   "n": 307,
+   "q": "Qaysi modda xavfning 1-sinfiga kiradi:",
+   "options": [
+    "uglerod oksidi",
+    "Qo'rg'oshin",
+    "azot dioksidi",
+    "Simob"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-308",
+   "n": 308,
+   "q": "Absorbsiya nima?",
+   "options": [
+    "gazni suyuqlik bilan singdirish",
+    "gazni qattiq moddalar bilan singdirish",
+    "gazni gaz bilan singdirish",
+    "suyuq moddaning so'rilishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-309",
+   "n": 309,
+   "q": "Xavfli 1-sinf zararli moddalar bilan ishlab chiqarishni nazorat qilish chastotasi:",
+   "options": [
+    "yiliga 1 marta",
+    "oyiga 1 marta",
+    "har 10 kunda bir marta",
+    "oyiga 5 marta"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-310",
+   "n": 310,
+   "q": "Molal kontsentratsiyasi:",
+   "options": [
+    "1 dm3 eritmasida erigan moddaning mol",
+    "g 1 dm3 eritmasida erigan moddaning ekv",
+    "1 kg erituvchida eritilgan mol",
+    "1 kg erituvchida erigan moddaning mmol"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-311",
+   "n": 311,
+   "q": "Batareya suyuqligi:",
+   "options": [
+    "20% H2RO4",
+    "30% HCL",
+    "40% HSO4",
+    "10% H2SO4"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-312",
+   "n": 312,
+   "q": "Muvofiq, ichimlik suvidan namuna olish qanday talablarga muvofiq amalga oshiriladi?",
+   "options": [
+    "namuna olish belgilangan chastotada amalga oshiriladi, bu suv sifatidagi har qanday vaqtinchalik o'zgarishlarni aniqlashga imkon beradi. Namuna olish punktlari ularning vakilligini ta'minlashi kerak.",
+    "namuna hajmi yarim o'lchovli natijalarning ishonchliligini hisoblash uchun parallel tadqiqotlar o'tkazish uchun etarli bo'lishi kerak.",
+    "rejalashtirilgan tadqiqotlarni bajarish yoki tartibga solinadigan konservatsiyani bajarish uchun namunalarni etkazib berish vaqtini minimallashtirish. Namuna olish faqat sanitariya-gigiyena laboratoriyasining laboranti tomonidan amalga oshirilishi kerak",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-313",
+   "n": 313,
+   "q": "Sanitariya-gigiyena laboratoriyasining ishini qanday asosiy talablar tartibga soladi?",
+   "options": [
+    "laboratoriya nazorat qilinadigan mintaqa aholisining sanitariya-epidemiologik farovonligini ta'minlash muammolarini amaliy hal qilish zarurati tufayli tadqiqotlar ro'yxatini bajarish uchun akkreditatsiyadan o'tishi kerak.",
+    "laboratoriya akkreditatsiya sohasida belgilangan laboratoriya tadqiqotlarini tashkil etishning ixtisoslashtirilgan ko'p funktsional tizimiga ega bo'lishi kerak. Laboratoriyada barcha bosqichlarda va ularni amalga oshirish darajalarida olib borilayotgan tadqiqotlar sifatini ta'minlashning yagona tizimi qabul qilinishi kerak.",
+    "laboratoriya barcha xodimlarning o'zaro ta'sirini hisobga olgan holda har bir tadqiqot turi uchun o'ziga xos, amalda ishlab chiqilgan mehnat faoliyatini tartibga solish tizimiga ega bo'lishi kerak.",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-314",
+   "n": 314,
+   "q": "Ushbu dorilarning qaysi biri organofosfor birikmalariga tegishli",
+   "options": [
+    "Butifos, Geksoxloran",
+    "Xlorofos",
+    "Karbofos",
+    "DDT"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-315",
+   "n": 315,
+   "q": "Zaharlar tanaga teri orqali qanday yo'llar bilan kirishi mumkin:",
+   "options": [
+    "soch follikulalari orqali epidermis orqali",
+    "ter bezlari kanallari orqali",
+    "o'pka orqali",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-316",
+   "n": 316,
+   "q": "Kasbiy klinikada tekshiruvdan o'tish uchun pestitsidlar bilan ishlagan bemor uchun majburiy hujjatlar. kasalliklar:",
+   "options": [
+    "mehnat daftarchasining nusxasi",
+    "mehnat sharoitlarining sanitariya-gigienik xususiyatlari",
+    "ambulatoriya kartasidan ko'chirma",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-317",
+   "n": 317,
+   "q": "Pestitsidlar o'z maqsadlariga muvofiq taqsimlanadi:",
+   "options": [
+    "insektitsidlar",
+    "fungitsidlar",
+    "gerbitsidlar defoliantlar",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-318",
+   "n": 318,
+   "q": "Quyidagi operatsiyalarni bajarish jarayonida ishlaydigan pestitsidlar bilan aloqa qilish mumkin:",
+   "options": [
+    "saqlash",
+    "qadoqlash",
+    "urug'larni kiyintirish",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-319",
+   "n": 319,
+   "q": "Zaharlanishning oldini olish choralari quyidagilardan iborat:",
+   "options": [
+    "idishning shikastlanishiga yo'l qo'ymaslik kerak, pestitsidlar yopiq idishda saqlanishi kerak",
+    "pestitsidlarni ochiq idishda saqlash kerak",
+    "alohida xonada dudbo'ronda",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-320",
+   "n": 320,
+   "q": "Pestitsid sifatida taqdim etilgan yangi kimyoviy moddalarga quyidagi talablar qo'yiladi:",
+   "options": [
+    "ishlab chiqarish samaradorligi, gigiena talablariga javob beradi",
+    "iqtisodiy samaradorlik",
+    "standartlarga javob berishi kerak",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-321",
+   "n": 321,
+   "q": "JSST tasnifiga ko'ra, pestitsidlar qanday xavfli sinflarga bo'linadi:",
+   "options": [
+    "I A o'ta xavfli I B juda xavfli",
+    "II o'rtacha xavfli",
+    "III kam xavfli",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-322",
+   "n": 322,
+   "q": "O'tkir zaharlanishning differentsial diagnostikasi:",
+   "options": [
+    "bosh og'rig'i",
+    "ko'ngil aynish",
+    "qusish ongni yo'qotish",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-323",
+   "n": 323,
+   "q": "Surunkali zaharlanishning differentsial diagnostikasi:",
+   "options": [
+    "gepatit",
+    "gastrit",
+    "psixopatiya",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-324",
+   "n": 324,
+   "q": "O'zbekiston Respublikasida qanday pestitsidlardan foydalanish taqiqlangan :",
+   "options": [
+    "DDT, XS-2",
+    "Butifos",
+    "Karbofos",
+    "Xlorofos"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-325",
+   "n": 325,
+   "q": "O'zbekistonda qanday taniqli toksikolog gigienistlarni bilasiz :",
+   "options": [
+    "akademik Iskandarov T. I.",
+    "akademik Zohidov A. Z.",
+    "Prof. Demidenko N. M.",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-326",
+   "n": 326,
+   "q": "Pestitsidlarni qaysi atrof-muhit ob'ektlarida tartibga solish kerak:",
+   "options": [
+    "suv",
+    "tuproq havosi",
+    "oziq-ovqat mahsulotlari",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-327",
+   "n": 327,
+   "q": "Atrof-muhit ob'ektlarida pestitsidlarning ruxsat etilgan tarkibining gigienik standartlari va foydalanish shartlari qoidalari ko'rib chiqiladi:",
+   "options": [
+    "SSV, Davlat Kimyo Komissiyasi",
+    "ilmiy-tadqiqot instituti",
+    "Davlat Ekologiya Qo ' Mitasi",
+    "Vazirlar Mahkamasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-328",
+   "n": 328,
+   "q": "Yangi mahalliy pestitsidlarni dala sinovlari o'tkazish imkoniyati masalasini hal qilish uchun quyidagilar haqida ma'lumotga ega bo'lish kifoya:",
+   "options": [
+    "toksiklik darajasi",
+    "teriga tirnash xususiyati beruvchi ta'sir",
+    "ko'zning shilliq pardalarida tirnash xususiyati beruvchi ta'sir",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-329",
+   "n": 329,
+   "q": "JSST bo'yicha pestitsidlarning ekotoksikologik tasnifi:",
+   "options": [
+    "Kuchli Toksik",
+    "Toksik Zaif Toksik",
+    "deyarli toksik emas",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-330",
+   "n": 330,
+   "q": "Pestitsidlarning salbiy ta'sirini oldini olish bo'yicha eng radikal 4 ta chora nima:",
+   "options": [
+    "pestitsidlarni joriy etishni tartibga solish",
+    "gigiena qoidalarini ishlab chiqish",
+    "ishchilarni shaxsiy himoya vositalari bilan ta'minlash, ishlarni mexanizatsiyalash",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-331",
+   "n": 331,
+   "q": "Pestitsidlar ishlab chiqarish tasnifiga ko'ra guruhlarga bo'linadi:",
+   "options": [
+    "Insektitsidlar",
+    "gerbitsidlar",
+    "zootsidlar",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-332",
+   "n": 332,
+   "q": "Yangi texnika, texnologiya, kimyoviy moddalar ustidan profilaktik sanitariya nazorati bosqichlarini ko'rsating:",
+   "options": [
+    "normativ-texnik hujjatlar uchun, foydalanishga topshirilganda",
+    "atmosfera bosimining pasayishi sharoitida sinov paytida profilaktik sanitariya nazorati",
+    "loyiha ekspertizasi",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-333",
+   "n": 333,
+   "q": "Metall simobning to'kilishida qanday choralar samarasiz:",
+   "options": [
+    "qoldiqlarni xlorli temir bilan to'ldiring",
+    "san o'tkazish.- ishni tozalash, xodimlarni tibbiy ko'rikdan o'tkazish uchun yuborish",
+    "xavfsizlik qoidalariga rioya qilish",
+    "xonani sterilizatsiya qilish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-334",
+   "n": 334,
+   "q": "Pestitsidlarni qo'llash bosqichlariga tegishli bo'lmagan ish bosqichlarini ko'rsating:",
+   "options": [
+    "pestitsidlar pasportini tuzish, ishlaydigan shaxslarga ko'rsatma berish",
+    "tayyorgarlik bosqichi",
+    "loyiha ekspertizasi",
+    "gigiena qoidalarini ishlab chiqish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-335",
+   "n": 335,
+   "q": "Pestitsidlarning qanday tasnifi keng tarqalgan emas:",
+   "options": [
+    "agregat holati bo'yicha tasniflash, qo'llash usuli bo'yicha tasniflash",
+    "gigienik tasnif",
+    "profilaktik tasniflash",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-336",
+   "n": 336,
+   "q": "Pestitsidlarni qo'llashda mehnat sharoitlarini nazorat qilishda quyidagi tadbirlar amalga oshiriladi:",
+   "options": [
+    "shaxsiy himoya vositalari bilan ta'minlash, ish maydoni havosida pestitsidlarni aniqlash",
+    "dam olish joylarining mavjudligi",
+    "profilaktika choralari",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-337",
+   "n": 337,
+   "q": "Davriy tibbiy ko'riklarning maqsadlari:",
+   "options": [
+    "Prof. kasalliklarning oldini olish, umumiy kasalliklarning kamayishi",
+    "ishlab chiqarishdagi shikastlanishlarning oldini olish.",
+    "kasalliklarning oldini olish",
+    "umumiy kasallanish statistikasini yuritish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-338",
+   "n": 338,
+   "q": "300-sonli buyruq bilan tartibga solinmagan narsa:",
+   "options": [
+    "ish tajribasi",
+    "ishchining jinsi",
+    "qo'llash mumkin bo'lmagan holatlar",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-339",
+   "n": 339,
+   "q": "Qo'rg'oshinli benzinni to'kishda qanday zarur choralar talab qilinadi:",
+   "options": [
+    "toza benzin bilan yuvib tashlang, har qanday oksidlovchi bilan yoping",
+    "3 kun ishlashni to'xtating",
+    "suv bilan yuvib tashlang",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-340",
+   "n": 340,
+   "q": "Qaysi sohalarda qo'rg'oshin etakchi zararli ishlab chiqarish omili bo'lishi mumkin:",
+   "options": [
+    "toza metall olish",
+    "suvda eriydigan bo'yoqlardan foydalanish",
+    "rulmanlarni yig'ishda",
+    "gazni payvandlash paytida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-341",
+   "n": 341,
+   "q": "Ushbu birikmalarning qaysi biri tirnash xususiyati beruvchi gazlarga tegishli emas:",
+   "options": [
+    "uglevodorodlar, simob bug'lari",
+    "oltingugurt oksidlari",
+    "karbonat angidrid",
+    "kislorod"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-342",
+   "n": 342,
+   "q": "Sanitariya-epidemiologiya farovonlik va jamoat salomatligining ogoxlantiruvch sanitariya nazorati bo'yicha hujjatlarining shakllarini sanab o'ting",
+   "options": [
+    "305 / u-qurilayotgan ob'ekt uchun PSN xaritasi",
+    "303 / u -loyiha xulosasi",
+    "301 / u -er uchastkasini ajratish bo'yicha xulosa",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-343",
+   "n": 343,
+   "q": "Qishloq xo'jaligida pestitsidlardan foydalanishni nazorat qilish, bundan mustasno:",
+   "options": [
+    "qishloq vrachlik punkti shifokori",
+    "sanitariya-epidemiologik farovonlik va jamoat salomatligi",
+    "Brigadir",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-344",
+   "n": 344,
+   "q": "Zaharli bug'lar va gazlar ta'sirida nafas olish tizimini himoya qilish uchun nima ishlatiladi:",
+   "options": [
+    "sanoat filtrli gaz maskalari, izolyatsion gaz maskalari",
+    "doka bandaji",
+    "quloqchalar",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-345",
+   "n": 345,
+   "q": "Pestitsidlarni qo'llashning asosiy bosqichiga nimalar kiradi:",
+   "options": [
+    "dalalarni qayta ishlash texnikasini tayyorlash",
+    "dalalarni yer usti usulida qayta ishlash, dalalarni aviatsiya usulida qayta ishlash",
+    "pestitsidni qo'llash bo'yicha me'yoriy hujjatlarni tekshirish",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-346",
+   "n": 346,
+   "q": "Havodagi kimyoviy moddalarning past konsentratsiyasida havodan namuna olish qanday usul bilan mumkin emas:",
+   "options": [
+    "vakuum usuli, bir bosqichli usul, fotometrik usul",
+    "idishlarni havo bilan to'ldirish usuli",
+    "sentimiy usul",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-347",
+   "n": 347,
+   "q": "Pestitsidlar odamlarga ta'sir qiladigan holatlar:",
+   "options": [
+    "qo'llanilganda",
+    "ifloslangan atrof-muhit ob'ektlari orqali",
+    "ishlov berilgan maydonlarda ishlaganda",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-348",
+   "n": 348,
+   "q": "Pestitsidlarning shakllari qanday:",
+   "options": [
+    "Eritmalar",
+    "granulalar",
+    "kukunlar (changlar)",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-349",
+   "n": 349,
+   "q": "Pestitsidlarni qo'llashda ish bosqichlari:",
+   "options": [
+    "tayyorgarlik bosqichi",
+    "asosiy bosqich",
+    "yakuniy bosqich",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-350",
+   "n": 350,
+   "q": "Qishloq xo'jaligida o'simliklarni qayta ishlash usullari qanday:",
+   "options": [
+    "traktor usuli, aviatsiya usuli",
+    "qo'lda usul",
+    "yer usti",
+    "tuproq"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-351",
+   "n": 351,
+   "q": "Pestitsidlar bilan ishlash taqiqlangan shaxslar toifalari:",
+   "options": [
+    "50 yoshdan keyin ayollar, 55 yoshdan keyin erkaklar",
+    "homilador va emizikli ayollar",
+    "18 yoshgacha bo'lganlar",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-352",
+   "n": 352,
+   "q": "Pestitsidlarni saqlash omborlariga qo'yiladigan talablarni ko'rsating:",
+   "options": [
+    "2 turdagi xonaga ega bo'lgan maxsus qurilgan xona (saqlash va xodimlar uchun), mexanik egzoz shamollatish va sun'iy yoritish mavjudligi",
+    "tabiiy yorug'lik",
+    "sun'iy yoritish bo'lishi kerak",
+    "sanitariya muhofazasi zonasiga rioya qilish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-353",
+   "n": 353,
+   "q": "Pestitsidlarni ombordan chiqarish talablarini ko'rsating:",
+   "options": [
+    "rahbarning yozma ruxsati bilan berish, maxsus transport mavjud bo'lganda berish",
+    "faqat tanish shaxslarga berish",
+    "faqat tibbiy kitob mavjud bo'lganda berish",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-354",
+   "n": 354,
+   "q": "Biologik pestitsidlarning turlari:",
+   "options": [
+    "mikrobiologik pestitsidlar",
+    "qo'ziqorin pestitsidlari",
+    "antibiotiklar",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-355",
+   "n": 355,
+   "q": "Mikrobiologik pestitsidlarni nomlang:",
+   "options": [
+    "bakterial pestitsidlar",
+    "virusli pestitsidlar",
+    "zaharli pestitsidlar",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-356",
+   "n": 356,
+   "q": "Ekspress usul uchun ishlatiladigan asboblar:",
+   "options": [
+    "ug-1 universal gaz analizatori, AM -5 gaz analizatori",
+    "psixrometr",
+    "aspirator",
+    "tarozi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-357",
+   "n": 357,
+   "q": "Kimyoviy tahlil uchun havo namunalarini olish usullari qanday:",
+   "options": [
+    "aspiratsiya usuli",
+    "og'irlik usuli",
+    "Ekspress usuli",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-358",
+   "n": 358,
+   "q": "Ish joyining havo namunasini olish usulini tanlashni belgilaydigan asosiy shartlar:",
+   "options": [
+    "moddaning agregat holati (bug', gaz, chang), o'rganilayotgan kimyoviy moddaning turli absorberlarda eruvchanligi",
+    "solishtirma og'irlik",
+    "tegishli harorat",
+    "standartlarga muvofiqligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-359",
+   "n": 359,
+   "q": "Havo namunalarini olish uchun uskunalar:",
+   "options": [
+    "plastik qoplar",
+    "sorbentlar (faollashtirilgan uglerod, silika jeli) shisha idishlar",
+    "kolbalar",
+    "Tarozi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-360",
+   "n": 360,
+   "q": "Kimyoviy moddalar uchun havo namunalarini tahlil qilish uchun eng ko'p ishlatiladigan usullar:",
+   "options": [
+    "optik usul (kolorimetriya, spektrometriya va boshqalar)",
+    "elektrokimyoviy usul (polarografiya, potentsiometriya va boshqalar)",
+    "xromatografik usul (suyuq, gaz, qog'oz, yupqa qatlamli)",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-361",
+   "n": 361,
+   "q": "DST ISO/IEC 17025:2019 nima ?",
+   "options": [
+    "sinov va kalibrlash laboratoriyalarining umumiy malaka talablari, standart echimlar va kalibrlash laboratoriyalarining umumiy malaka talablari",
+    "kalibrlash laboratoriyalarining umumiy malaka talablari",
+    "gigiena standarti",
+    "normativ hujjat"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-362",
+   "n": 362,
+   "q": "Usulni tekshirish–",
+   "options": [
+    "foydalanuvchini kiritilgan ma'lumotlarning to'g'riligini tekshirish",
+    "ma'lumotni tekshirish va tasdiqlash.",
+    "Sinov",
+    "barcha javoblar noto'g'ri."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-363",
+   "n": 363,
+   "q": "%RSD nima?",
+   "options": [
+    "takrorlanuvchanlik moslik.",
+    "foizdagi nisbiy standart og'ish",
+    "qaror qabul qilish chegarasi",
+    "o'zgarish koeffitsienti"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-364",
+   "n": 364,
+   "q": "LOG nima?",
+   "options": [
+    "o'zgaruvchanlik koeffitsienti .",
+    "idrok chegarasi",
+    "qaror chegarasi;",
+    "miqdoriy chegara."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-365",
+   "n": 365,
+   "q": "Tafsilotlar darajasi nima?",
+   "options": [
+    "aniqlash chegarasi .",
+    "ishonchlilik darajasi",
+    "qaror qabul qilish chegarasi",
+    "parallel o'lchov natijalarining 50% ijobiy/salbiy bo'lgan qiymat"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-366",
+   "n": 366,
+   "q": "OZAKK uchun tarif qaysi javobda to'g'ri ko'rsatilgan?",
+   "options": [
+    "Turkiya ilmiy va texnologik tadqiqotlar Kengashi .",
+    "milliy texnologiyalar va standartlar instituti",
+    "milliy metrologiya instituti;",
+    "OO'zbekiston DUK akkreditatsiya markazi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-367",
+   "n": 367,
+   "q": "IUPAC formulasi uchun qanday javob to'g'ri?",
+   "options": [
+    "Turkiya ilmiy va texnologik tadqiqotlar Kengashi .",
+    "milliy texnologiyalar va standartlar instituti V) milliy metrologiya instituti",
+    "O'zR DUK akkreditatsiya markazi.",
+    "xalqaro nazariy va amaliy kimyo Ittifoqi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-368",
+   "n": 368,
+   "q": "ISO uchun to'g'ri tarif qanday javob beradi?",
+   "options": [
+    "xalqaro standartlashtirish tashkiloti .",
+    "milliy texnologiyalar va standartlar instituti",
+    "xalqaro elektrotexnika komissiyasi",
+    "OO'zbekiston DUK akkreditatsiya markazi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-369",
+   "n": 369,
+   "q": "Agar xalqaro, mintaqaviy yoki milliy standart usullar (masalan, ISO, IEC, OIML, EN, GOST, mahalliy DSt) yoki tan olingan texnologiya sohasidagi tashkilotlarga tegishli ilmiy nashrlarda chop etilgan usullar yoki tan olingan ishlab chiqaruvchi tomonidan ko'rsatilgan usullar qo'llanilsa va ushbu usullar, agar ular ish parametrlarini o'z ichiga olsa (tasdiqlash natijalari), laboratoriyada talab qilinadi, shundaymi ?",
+   "options": [
+    "Tekshirish .",
+    "Tasdiqlash .",
+    "o'zgarish koeffitsienti ;",
+    "sezish qobiliyati"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-370",
+   "n": 370,
+   "q": "Agar u ma'lum bir moddalar matritsasi uchun ishlab chiqilgan bo'lsa va laboratoriyada talab qilinadigan ish parametrlari to'g'risida etarli ma'lumotga ega bo'lsa, unda ?",
+   "options": [
+    "tekshirish va tasdiqlash",
+    "Tekshirish.",
+    "o'zgarish koeffitsienti ;",
+    "Tekshirish ."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-371",
+   "n": 371,
+   "q": "Agar u ma'lum bir modda matritsasi (namuna turlari) uchun ishlab chiqilgan bo'lsa va laboratoriyada zarur bo'lgan ish parametrlari to'g'risida etarli ma'lumotga ega bo'lsa agar bo'lmasa?",
+   "options": [
+    "tekshirish va tasdiqlash",
+    "Tasdiqlash",
+    "o'zgarish koeffitsienti ;",
+    "sezish qobiliyati"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-372",
+   "n": 372,
+   "q": "Usulning miqdoriy tasdiqlanishida aniqlangan ish parametrlari",
+   "options": [
+    "selektivlik, aniqlash chegarasi",
+    "miqdoriy chegara, aniqlik-aniqlik, aniqlik-aniqlik takrorlanuvchanlik, oraliq aniqlik),",
+    "ish diapazoni, chiziqlilik, xato noaniqlik",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-373",
+   "n": 373,
+   "q": "Usulni miqdoriy tekshirish paytida aniqlangan ish parametrlari",
+   "options": [
+    "selektivlik, aniqlash chegarasi",
+    "aniqlik-aniqlik, aniqlik-aniqlik (takrorlanuvchanlik, oraliq aniqlik),",
+    "ish diapazoni, chiziqlilik, xato",
+    "Noaniqlik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-374",
+   "n": 374,
+   "q": "Muvofiqlikni baholash tartibi qanday bosqichlar asosida belgilanishi mumkin?",
+   "options": [
+    "o'lchangan (Y) miqdor va test ob'ekt tomonidan amalga oshiriladi o'lchov tafsilotlarda aniqlash .",
+    "eksperimental / analitik natijalar (o'lchangan qiymat y taxminlar ).",
+    "standart o'lchov noaniqligi, u (y) va ma'lum ishonch o'lchovlar uchun daraja kengaytirilgan noaniqlik .",
+    "spetsifikatsiyada faqat ruxsat berilgan chegara (yuqori yoki past) yoki chegara ruxsatnomasi.I kabi xato (etkazib berish donor xavf a) yoki II turi xatolar (iste'molchi xavf baholash qilingan ehtimollik uchun rozilik zona, nomuvofiqlik zona va himoya xiyobon qaror qabul qilish qilmoq qoida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-375",
+   "n": 375,
+   "q": "Laboratoriyalarda o'tkaziladigan sinov jarayonlarida va ularni tayyorlashda shartli ravishda bir nechta holatlarni ko'rish mumkin: 1. Sinov natijalari bir nechta miqdorlarni o'lchash orqali olinganida. 2. Sinov natijalari to'g'ridan-to'g'ri o'lchash moslamasining indikatoridan olinganida; 3. To'g'ridan-to'g'ri sinovlar o'tkaziladigan sinov vositasida (qurilmada) o'tkaziladigan sinovlar; 4. Har bir o'lchovdan oldin yoki teng qisqa vaqt oralig'ida qayta kalibrlangan o'lchov vositalari yordamida sinovlarni o'tkazishda metrologik kuzatuvning barqarorligi. 5. Agar sinov uchun ishlatiladigan sinov uskunalari bitta birlik sifatida ishlatilsa va o'lchash uskunalarini olib tashlash (demontaj qilish) mumkin bo'lmasa. 6. O'lchovsiz testlar. 7. Namuna olish va sinovga tayyorgarlik jarayonlari. 8. Sinov protseduralarini kuzatish va nazorat qilish vositalari.",
+   "options": [
+    "1.4",
+    "1,3,5,4.",
+    "2,4,6,7,8",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-376",
+   "n": 376,
+   "q": "Zaharli elementlarni o'z ichiga olgan qatorni toping.",
+   "options": [
+    "Aflatoksin M1, Patulin",
+    "vitamin b",
+    "qo'rg'oshin, simob, rux, mis",
+    "qo'rg'oshin, simob, Benz (a) piren, rux, mis,"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-377",
+   "n": 377,
+   "q": "Mikotoksinlarning to'g'ri qatorini tanlang.",
+   "options": [
+    "aflatoksin M1, ochratoksin A, toksin t-2,",
+    "Vitamin B1, Aflatoksin M1, Ochratoksin",
+    "Qo'rg'oshin, Simob, Rux, Mis",
+    "deoksinivalenol, karbofos"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-378",
+   "n": 378,
+   "q": "Sanitariya-gigiyena laboratoriyalarining oziq-ovqat bo'linmalari hozirda qaysi SanPiN uchun ishlaydi ?",
+   "options": [
+    "SanPiN 0366, SanPiN 0383",
+    "SanPiN 0369",
+    "SanPiN 0469",
+    "SanPiN 0569"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-379",
+   "n": 379,
+   "q": "Laboratoriya tahlilini qanday sabablarga ko'ra kechiktirish mumkin?",
+   "options": [
+    "agar reagent va standart eritmalarning yaroqlilik muddati o'tgan bo'lsa, o'lchash asboblari nuqsonli bo'lsa va meteorologik omillar laboratoriya talablariga javob bermasa, davlat tanlovidan o'tmagan bo'lsa.",
+    "agar qurilmalar tekshirilmagan bo'lsa",
+    "agar Sozlama mos kelmasa",
+    "agar tahlilni olib kelish uchun transport bo'lmasa"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-380",
+   "n": 380,
+   "q": "O'zbekiston Respublikasining aholining sog' lom ovqatlanishini ta 'minlash bo'yicha qo'shimcha chora-tadbirlar to'g'risidagi qarori tasdiqlanganda.",
+   "options": [
+    "2020 yil 10-noyabr",
+    "2018 yil 8-noyabr",
+    "2021 yil 10 oktyabr",
+    "2016 yil 8 mart"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-381",
+   "n": 381,
+   "q": "O'zbekiston Respublikasining aholi sog' lom ovqatlanishini ta'minlashga doir qo'shimcha chora-tadbirlar to ' g' risidagi qarori nima?",
+   "options": [
+    "PQ- 01-1/54 - yo'q",
+    "№ PQ-5853",
+    "№ PQ-4887",
+    "№ PQ-483-1"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-382",
+   "n": 382,
+   "q": "Spirtli ichimliklar xavfsizligi to'g'risidagi umumiy texnik reglamentning qaysi bandi to'g'ri?",
+   "options": [
+    "2017 yil 13 fevral, №71",
+    "2020 yil 17-noyabr, № 724",
+    "2016 yil 31 mart, № 99",
+    "2017 yil 7-iyul, № 474"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-383",
+   "n": 383,
+   "q": "O'zbekiston Respublikasining texnik jihatdan tartibga solish to'g' risidagi Qonuniga muvofiq qaysi turdagi mahsulotlar 2020-yil 17-noyabrdagi 724-son qaror bilan belgilanadi.",
+   "options": [
+    "sut va sut mahsulotlarining xavfsizligi to'g'risida",
+    "neft mahsulotlarining xavfsizligi to'g'risida",
+    "spirtli ichimliklar xavfsizligi to'g'risida",
+    "qandolat xavfsizligi haqida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-384",
+   "n": 384,
+   "q": "Hayvonlarning zaharga sezgirligidagi turlarning farqlarini baholang agar turlarning sezgirlik koeffitsienti 7 ga teng bo'lsa",
+   "options": [
+    "ifodalanmagan",
+    "ifodalangan",
+    "aniq ifodalangan",
+    "zaif ifodalangan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-385",
+   "n": 385,
+   "q": "Hayvonlarning zaharga sezgirligidagi turlarning farqlarini baholang agar turlarning sezgirlik koeffitsienti 11 ga teng bo'lsa",
+   "options": [
+    "ifodalanmagan",
+    "ifodalangan",
+    "keskin ifodalangan",
+    "zaif ifodalangan"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-386",
+   "n": 386,
+   "q": "Agar oq kalamushlar uchun tirnash xususiyati keltirib chiqaradigan (Limir) chegara kontsentratsiyasi 1500 mg/m3 bo'lsa, stirolning xavf sinfini aniqlang",
+   "options": [
+    "juda zerikarli",
+    "juda zerikarli",
+    "juda zerikarli",
+    "o'rtacha darajada bezovta qiluvchi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-387",
+   "n": 387,
+   "q": "Pestitsid preparati eksperimental hayvonning terisiga surtildi, 15 daqiqadan so'ng preparatni qo'llash joyida kuchli qizarish, terining harorati, eritema paydo bo'ldi. Ushbu hodisani qanday reaktsiya turiga bog'lash mumkin:",
+   "options": [
+    "terining tirnash xususiyati",
+    "teri rezorptiv",
+    "yiringli hodisa",
+    "terining yallig'lanishi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-388",
+   "n": 388,
+   "q": "Uning nomidagi kolxozda yashovchi bolalar. Oxunboboyeva darsdan keyin maktabdan uyiga bordi, samolyot uchib ketdi va 30 daqiqadan so'ng bolalar hushidan ketishdi:",
+   "options": [
+    "quyosh urishi",
+    "hushidan ketish",
+    "mavsumiy defoliatsiya",
+    "radioaktiv nurlanish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-389",
+   "n": 389,
+   "q": "15 aprel kuni tumanda paxta dalalarini defoliatsiya qilish rejalashtirilgan edi, 3 kundan so'ng sug'oruvchi dalaga borib, to'shaklarda dala uchun suv ochdi. Kechqurun sug'oruvchida ko'ngil aynish, qusish, oshqozon og'rig'i, axlatning buzilishi haqida shikoyatlar paydo bo'ldi. Sug'orish moslamasining holatini aniqlang:",
+   "options": [
+    "surunkali gastritning kuchayishi",
+    "sut mahsulotlari bilan zaharlanish",
+    "quyosh urishi",
+    "defoliatsiya ta'sirining oqibatlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-390",
+   "n": 390,
+   "q": "Oq kalamushlar uchun surunkali ta'sir zonasi (Zch) 13,6, quyonlar uchun 10,9 bo'lsa, birikmaning xavf sinfini aniqlang -I",
+   "options": [
+    "II",
+    "III",
+    "IV"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "tox_lab-t-391",
+   "n": 391,
+   "q": "Agar oq sichqonlar uchun oshqozon ichidagi o'rtacha o'ldiradigan doz 325 mg/kg, oq kalamushlar 375 mg/kg, quyonlar 255 mg/kg bo'lsa, birikmaning toksiklik sinfini (monofurfulidenaseton) aniqlang -I",
+   "options": [
+    "II",
+    "III",
+    "IV"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "tox_lab-t-392",
+   "n": 392,
+   "q": "Agar oq sichqonlar uchun oshqozon ichidagi o'rtacha o'ldiradigan doz 3800 mg/kg, oq kalamushlar 4200 mg/kg, quyonlar 4117 mg/kg bo'lsa, birikmaning toksiklik sinfini (furitol 8) aniqlang -I",
+   "options": [
+    "II",
+    "III",
+    "IV"
+   ],
+   "key": null,
+   "verdict": "unverified",
+   "needs_manual": true
+  },
+  {
+   "id": "tox_lab-t-393",
+   "n": 393,
+   "q": "Sanitariya tekshiruvida ish yuqori aniqlik bilan bog'liq bo'lib, bu rang soyalarini ko'rib chiqish bilan bog'liq. Ushbu vaziyatda qaysi yorug'lik manbai oqilona:",
+   "options": [
+    "akkor lampalar",
+    "tabiiy yorug'lik",
+    "lyuminestsent lampalar",
+    "evakuatsiya yoritish uchun mo'ljallangan lampalar"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-394",
+   "n": 394,
+   "q": "Sanitariya tekshiruvida ish yuqori aniqlik bilan bog'liq bo'lib, bu rang soyalarini ko'rib chiqish bilan bog'liq. Qaysi yoritish tizimi eng oqilona:",
+   "options": [
+    "mahalliylashtirilgan tizim",
+    "kombinatsiyalangan tizim",
+    "bir tomonlama yon tizim",
+    "umumiy tizim"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-395",
+   "n": 395,
+   "q": "Sanitariya tekshiruvida ish yuqori aniqlik bilan bog'liq bo'lib, bu rang soyalarini ko'rib chiqish bilan bog'liq. Qanday vaziyatda shifokor ishlab chiqarish yoritilishini gigienik baholashi kerak:",
+   "options": [
+    "shamollatish samaradorligini aniqlash",
+    "texnologik jarayon o'zgarganidan keyin mehnat sharoitlarini baholash",
+    "shamollatish samaradorligini baholash",
+    "shaxsiy himoya vositalarining (PPzarur to'plamini aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-396",
+   "n": 396,
+   "q": "Bo'yoq va lak ishlab chiqarishda etakchi zararli ishlab chiqarish omili kimyoviy omil hisoblanadi. Ishlab chiqarish binolari havosidagi kimyoviy omilni aniqlash vaqtini aniqlash uchun nimani hisobga olish kerak:",
+   "options": [
+    "kimyoviy moddalarning xavf darajasi",
+    "texnologik jarayonning xususiyatlari",
+    "havoning ifloslanish darajasi",
+    "bajarilgan ishning tabiati va uning davomiyligi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-397",
+   "n": 397,
+   "q": "Bo'yoq va lak ishlab chiqarishda etakchi zararli ishlab chiqarish omili kimyoviy omil hisoblanadi. Agar 2-darajali xavfli kimyoviy moddalar havoga kirsa, qanchalik tez-tez nazoratni amalga oshirish kerak:",
+   "options": [
+    "oyiga bir marta",
+    "har 10 kunda 2 marta",
+    "chorakda bir marta",
+    "doimiy nazorat"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-398",
+   "n": 398,
+   "q": "Bo'yoq va lak ishlab chiqarishda etakchi zararli ishlab chiqarish omili kimyoviy omil hisoblanadi. Ushbu sog'lomlashtirish tadbirlaridan qaysi biri kimyoviy omilni yo'q qilish uchun eng radikaldir",
+   "options": [
+    "oqilona yoritish moslamasi",
+    "O'z SSV 200-son buyrug'i bilan tibbiy ko 'riklarni o'tkazish",
+    "inhalerlarni tashkil etish",
+    "texnologik jarayonni takomillashtirish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-399",
+   "n": 399,
+   "q": "O'tkir qo'rg'oshin kasbiy zaharlanishining tashxisi shoshilinch shifokor tomonidan, zaharlanish holatlarini aniqlamasdan, seb va oz xabarnomasi bir kundan keyin yuboriladi. Shifokor to'g'ri ish qildimi:",
+   "options": [
+    "shifokor prof. zaharlanish",
+    "tashxis qo'yish uchun sizga professional patologning maslahati kerak",
+    "seb va ozga xabarnoma o'z vaqtida yuborildi",
+    "shifokor to'g'ri ish qildi, ammo seb va ozga xabarnoma 12 soatdan kechiktirmay yuborilishi kerak edi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-400",
+   "n": 400,
+   "q": "Ksenobiotiklar bu:",
+   "options": [
+    "tabiiy pestitsidlar",
+    "sintetik kimyoviy moddalar",
+    "mikroorganizmlar",
+    "antibiotiklar turi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-401",
+   "n": 401,
+   "q": "O'zbekiston Respublikasining texnik jihatdan tartibga solish to'g'risidagi Qonuniga muvofiq qaysi turdagi mahsulotlar 2017-yil 7-iyuldagi 474-son qaror bilan belgilanadi.",
+   "options": [
+    "sut va sut mahsulotlarining xavfsizligi to'g'risida",
+    "neft mahsulotlarining xavfsizligi to'g'risida",
+    "spirtli ichimliklar xavfsizligi to'g'risida",
+    "qandolat xavfsizligi haqida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-402",
+   "n": 402,
+   "q": "O'zbekiston Respublikasining texnik jihatdan tartibga solish to'g' risidagi Qonuniga muvofiq qaysi turdagi mahsulotlar 2017-yil 13-fevraldagi 71-son qaror bilan belgilanadi.",
+   "options": [
+    "sut va sut mahsulotlarining xavfsizligi to'g'risida",
+    "neft mahsulotlarining xavfsizligi to'g'risida",
+    "spirtli ichimliklar xavfsizligi to'g'risida",
+    "qandolat xavfsizligi haqida"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-403",
+   "n": 403,
+   "q": "Benz (a) piren neft mahsulotlarida qaysi GOST bilan belgilanadi.",
+   "options": [
+    "GOST Iso 15302-2019",
+    "GOST Iso 10727",
+    "GOST 34515",
+    "GOST 31665"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-404",
+   "n": 404,
+   "q": "Oziq-ovqat tarkibidagi zaharli simob miqdori qanday ko'rsatmalar asosida aniqlanadi.",
+   "options": [
+    "GOST 26927",
+    "GOST 26928",
+    "GOST 26931",
+    "GOST 26929"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-405",
+   "n": 405,
+   "q": "Titrlash jarayoni nima deyiladi?",
+   "options": [
+    "tahlil qilinadigan eritmaga titrantning boshqariladigan qo'shilishi.",
+    "tahlil qilinadigan eritmaga indikator Qo'shish.",
+    "tahlil qilingan eritmani aralashtirish.",
+    "moddaning massasining uning miqdoriga nisbati."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-406",
+   "n": 406,
+   "q": "Namunalarni titrlashda qanday laboratoriya kimyoviy idishlari ishlatiladi:",
+   "options": [
+    "Pipetka",
+    "Mora Pipetkasi",
+    "Paster Pipetkasi",
+    "Buretka"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-407",
+   "n": 407,
+   "q": "Kimyoviy reagentlar va prekursorlarni saqlash talablari.",
+   "options": [
+    "tabiiy shamollatish.",
+    "prekursorlar alohida xonalarda saqlanishi kerak.",
+    "avtonom signalizatsiya",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-408",
+   "n": 408,
+   "q": "Sarf materiallarini saqlashga qo'yiladigan talablar Gostni ko'rsating",
+   "options": [
+    "4212-2016.",
+    "ISO 9001",
+    "GOST 30356",
+    "GOST 30710-2001"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-409",
+   "n": 409,
+   "q": "Laboratoriyalarda mehnat sharoitlariga qo'yiladigan talablar.",
+   "options": [
+    "laboratoriya ta'minlanishi kerak:",
+    "isitish, kanalizatsiya, issiq sovuq suv,",
+    "shamollatish, dudbo'ronlar va konditsionerlar.",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-410",
+   "n": 410,
+   "q": "Laboratoriyalarning ishlab chiqarish uskunalariga qo'yiladigan talablar.",
+   "options": [
+    "Advokatlar",
+    "kolibrovanlar,",
+    "tuproqli va yoritilgan",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-411",
+   "n": 411,
+   "q": "laboratoriya tahlilining noaniqliklari",
+   "options": [
+    "agar reaktiv va standart eritmalarning yaroqlilik muddati tugagan bo'lsa,",
+    "agar o'lchov holati past bo'lsa va taqqoslash o'tmagan bo'lsa,",
+    "agar u laboratoriyada uslubiy talablarga javob bermasa.",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-412",
+   "n": 412,
+   "q": "Pestitsidlarning qoldiq miqdorini qanday usullar bilan aniqlash mumkin.",
+   "options": [
+    "yupqa qatlamli xromatografiya usuli",
+    "gaz-suyuqlik xromatografiyasi usuli",
+    "bssokosamarali xromatografiya usuli",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-413",
+   "n": 413,
+   "q": "O'simlik pestitsidlarini aniqlash bo'yicha GOST",
+   "options": [
+    "STBENN-15662-2017, GOST-32689-1.2.3-2014",
+    "GOST-33704-2015",
+    "GOST 26928",
+    "GOST 26931"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-414",
+   "n": 414,
+   "q": "Pestitsidlarning tanaga zararli ta'siri?",
+   "options": [
+    "Bosh og'rig'i va bosh aylanishi ,",
+    "ishtahani yo'qotish va kon'yunktivit,",
+    "Markaziy va periferik asab tizimining shikastlanishi.",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-415",
+   "n": 415,
+   "q": "Pestitsidlarni aniqlash uchun qanday erituvchilar ishlatiladi?",
+   "options": [
+    "Asetonitril",
+    "Geksan",
+    "neft efiri",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-416",
+   "n": 416,
+   "q": "Qaysi oziq-ovqat mahsulotlarida simoborganik pestitsidlar aniqlanadi?",
+   "options": [
+    "don, mahsulotlar",
+    "yog'li mahsulotlar",
+    "sut mahsulotlari",
+    "qandolat mahsulotlari"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-417",
+   "n": 417,
+   "q": "GOST organofosfat pestitsidlari?",
+   "options": [
+    "GOST 30710-2001",
+    "GOST 34050-2017",
+    "GOST-32689-1.2.3-201",
+    "GOST-33704-201 5"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-418",
+   "n": 418,
+   "q": "100 ppm standart eritmani tayyorlash",
+   "options": [
+    "500g standart 100ml da eritiladi",
+    "10 mg standart 100 ml da eritiladi",
+    "1gr standarti 100 ml da eritiladi",
+    "0,5 standart 100 ml da eritiladi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-419",
+   "n": 419,
+   "q": "Sut va sut mahsulotlarida pestitsidlarni aniqlash usuli?",
+   "options": [
+    "GOST 23452-2015",
+    "GOST 34050-2017",
+    "GOST 33704-2015",
+    "GOST 30349-96"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-420",
+   "n": 420,
+   "q": "tuproqdagi xlor organik pestitsidlarning tezligini ko'rsating?",
+   "options": [
+    "HCZG-0,1 mg/kg, DDT-0,5 mg/kg",
+    "HCZG-0,2 mg/kg, DDT-0,02 mg/kg",
+    "HCZG-0,2 mg/kg, DDT-0,2 mg/kg",
+    "HCZG-0,05 mg/kg, DDT-0,1 mg/kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-421",
+   "n": 421,
+   "q": "Mikotoksinlarning inson tanasiga zararli ta'siri qanday?",
+   "options": [
+    "jigar nekrozining rivojlanishi sodir bo'ladi,",
+    "o't yo'llarining ko'payishi,",
+    "o'pka metiostazlari.",
+    "barcha javoblar to'g'ri"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-422",
+   "n": 422,
+   "q": "Standart eritma nima.",
+   "options": [
+    "aniq ma'lum konsentratsiyaga ega reagent eritmasi",
+    "molyar konsentratsiyali eritma.",
+    "foiz eritmasi",
+    "oddiy konsentratsiyali eritma"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-423",
+   "n": 423,
+   "q": "Ishchi eritma nima.",
+   "options": [
+    "suyultirilgan standart eritma,",
+    "aniq ma'lum konsentratsiyali reaktiv eritmasi",
+    "molyar konsentratsiyali eritma",
+    "foiz eritmasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-424",
+   "n": 424,
+   "q": "Sariyog' tarkibidagi organoklor pestitsidlari miqdorini ko'rsating?",
+   "options": [
+    "GXZG-1,25 mg/kg, DDT-1,0 mg/kg",
+    "GXZG -0,5 mg/kg, DDT-0,01 mg/kg",
+    "GXZG -0,2 mg/kg, DDT-0,02 mg/kg",
+    "GXZG -0,1 mg/kg, DDT-0,1 mg/kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-425",
+   "n": 425,
+   "q": "Bog'dorchilik mahsulotlarida xlor organik pestitsidlar miqdorini ko'rsating?",
+   "options": [
+    "GXZG - 0,1 mg/kg, DDT - 0,1 mg/kg",
+    "GXZG 0,5-0,05 mg/kg, DDT - 0,1 mg/kg",
+    "GXZG - 0,3 mg/kg, DDT - 0,4 mg/kg",
+    "GXZG - 0,2 mg/kg, DDT - 0,2 mg/kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-426",
+   "n": 426,
+   "q": "Don mahsulotlarida xlor organik pestitsidlarning normasini ko'rsating?",
+   "options": [
+    "GXZG - 0,5 mg/kg, DDT - 0,02 mg/kg",
+    "GXZG - 0,05 mg/kg, DDT - 0,1 mg/kg",
+    "GXZG - 0,1 mg/kg, DDT - 0,1 mg/kg",
+    "GXZG - 0,2 mg/kg, DDT - 0,02 mg/kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-427",
+   "n": 427,
+   "q": "Meva-sabzavot mahsulotlarida karbofos normasini ko'rsating?",
+   "options": [
+    "0,5 mg/kg",
+    "0,1 mg/kg",
+    "0,2 mg/kg",
+    "1,0 mg/kg"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-428",
+   "n": 428,
+   "q": "O'zbekiston Respublikasi hududining qaysi tumanlari ekologik jihatdan noqulay?",
+   "options": [
+    "Qoraqalpog' Iston Respublikasi",
+    "Xorazm viloyati",
+    "Buxoro viloyati",
+    "Navoiy viloyati"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-429",
+   "n": 429,
+   "q": "Atrof-muhit ob'ektini ko'rsating",
+   "options": [
+    "mikroorganizmlar",
+    "rasm",
+    "havo",
+    "atmosfera bosimi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-430",
+   "n": 430,
+   "q": "Aholi punktlari havosi uchun gigiena standartlarini ko'rsating",
+   "options": [
+    "PDK, ODU, PDS",
+    "taxminiy xavfsiz darajalar, ruxsat etilgan maksimal chiqindilar, ruxsat etilgan maksimal konsentratsiyalar",
+    "PDK, MDU",
+    "PDK"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-431",
+   "n": 431,
+   "q": "Surunkali simob zaharlanishining alomatini ko'rsating",
+   "options": [
+    "kulrang yuz",
+    "nafas qisilishi, yo'tal",
+    "hissiy qo'zg'aluvchanlik",
+    "ko'krak og'rig'i"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-432",
+   "n": 432,
+   "q": "Standartlashtirish bo'yicha asosiy normativ-texnik hujjat:",
+   "options": [
+    "\"texnik jihatdan tartibga solish to'g'risida\" gi qonun",
+    "Standart",
+    "Texnik Shartlar",
+    "\"standartlashtirish to'g'risida\" gi qonun"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-433",
+   "n": 433,
+   "q": "Metrologiyaning ta'rifi nima:",
+   "options": [
+    "o'lchovlarni, metodologiyani va ularning birligi va aniq aniqligini tashkil etish usullarini o'rganadigan va ishlab chiqadigan fan",
+    "o'lchash asboblari va asboblarining ishlash shartlari va qoidalarini belgilaydigan hujjatlar to'plami",
+    "davlat hududida yagona o'lchovni yaratish uchun zarur bo'lgan tashkiliy va me'yoriy-huquqiy jarayonlar va tashkilotlar majmuasi",
+    "yangi huquqiy va me'yoriy-huquqiy bazani ishlab chiqish va takomillashtirish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-434",
+   "n": 434,
+   "q": "Metrologiyaning maqsadlari qanday:",
+   "options": [
+    "kerakli va kerakli aniqlik bilan o'lchovlarning bir xilligini ta'minlash",
+    "ularning aniqligini oshirish uchun vositalar va o'lchangan usullarni ishlab chiqish va optimallashtirish",
+    "tegishli huquqiy va me'yoriy hujjatlarni yangi ishlab chiqish va optimallashtirish",
+    "yangi huquqiy va me'yoriy-huquqiy bazani ishlab chiqish va takomillashtirish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-435",
+   "n": 435,
+   "q": "Metrologiyaning vazifalari qanday:",
+   "options": [
+    "olingan natijalarning maksimal aniqligini ta'minlaydigan keng qamrovli o'lchash tizimini yaratish",
+    "o'lchash vositalari va usullarini ishlab chiqish va takomillashtirish; ularning aniqligini oshirish, yangilarini ishlab chiqish va amaldagi huquqiy va normativ- huquqiy bazani takomillashtirish",
+    "kerakli va kerakli aniqlik bilan o'lchovlarning bir xilligini ta'minlash",
+    "ularning aniqligini oshirish uchun vositalar va o'lchangan usullarni ishlab chiqish va optimallashtirish"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-436",
+   "n": 436,
+   "q": "Davlat metrologik nazorati va nazorati tarqatish sohalariga quyidagilar kiradi:",
+   "options": [
+    "sog'liqni saqlash",
+    "veterinariya",
+    "atrof-muhitni muhofaza qilish",
+    "Vazirlar Mahkamasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-437",
+   "n": 437,
+   "q": "\"O'lchov texnikasi\" nimani anglatadi:",
+   "options": [
+    "tadqiqot faoliyati va metrologik standartlarga muvofiq qayd etilgan qo'llaniladigan usullar va o'lchovlarni keyinchalik tasdiqlash",
+    "aniq belgilangan operatsiyalar to'plami, ulardan foydalanish belgilangan aniqlik ko'rsatkichlari bilan o'lchov natijalarini olishni ta'minlaydi",
+    "metrologik xususiyatlar va o'lchash vositalarining haqiqiy qiymatlarini aniqlash uchun bajariladigan operatsiyalar.",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-438",
+   "n": 438,
+   "q": "Hisobot uskunalari, o'lchash asboblari yordamida kattalik aniqlanadigan to'g'ri usulni tanlang:",
+   "options": [
+    "almashtirish usuli",
+    "nol usuli",
+    "to'g'ridan-to'g'ri baholash usuli",
+    "statistik"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-439",
+   "n": 439,
+   "q": "Tasodifiy xato deb ataladigan narsa:",
+   "options": [
+    "xato komponenti tasodifiy, takroriy o'lchovlar bilan o'zgaradi",
+    "oldingi barcha o'lchov xatolaridan ustun bo'lgan xato",
+    "o'lchangan qiymatning o'lchangan va haqiqiy qiymati o'rtasidagi farq",
+    "bu bir qator o'lchovlarda kuzatilgan xatoning bir qismi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-440",
+   "n": 440,
+   "q": "Mutlaq o'lchov xatosi nima deyiladi:",
+   "options": [
+    "o'lchangan qiymatning o'lchangan va haqiqiy ko'rsatkichi o'rtasidagi farq",
+    "o'lchov xatosining tarkibiy qismi, o'lchash uchun ishlatiladigan usulning nomukammalligi bilan izohlanadi",
+    "o'lchov shartlarini belgilaydigan har qanday parametrlarga og'ishlarning ta'sirining natijasi",
+    "o'lchangan indikatorning qiymati asta-sekin taroziga o'rnatiladigan og'irliklarning og'irligiga qarab hisoblanadi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-441",
+   "n": 441,
+   "q": "Aniqlash-bu:",
+   "options": [
+    "o'lchangan ob'ektning mulki, barcha bir xil nomdagi ob'ektlar uchun miqdoriy jihatdan umumiy, ammo miqdoriy jihatdan individualdir;",
+    "kerakli jismoniy miqdorning sifat xususiyatlarini aniqlash;",
+    "noma'lum miqdorni ma'lum bilan taqqoslash va birinchisini ikkinchisidan ko'paytma yoki lobli munosabat bilan ifodalash;",
+    "kerakli fizik miqdorning miqdoriy xususiyatlarini aniqlash."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-442",
+   "n": 442,
+   "q": "Tashqi sifat nazorati bilan taqqoslaganda tekshirish quyidagilarni ta'minlaydi:",
+   "options": [
+    "o'lchov vositalarining instrumental xatosini aniqroq nazorat qilish, instrumental xatoning tizimli tarkibiy qismini majburiy aniqlash",
+    "tibbiy tadqiqotning turli bosqichlarini nazorat qilish uchun ko'proq qamrov",
+    "ushbu qurilmada amalga oshirilgan tadqiqot usulining sezgirligi va o'ziga xosligini aniqroq aniqlash",
+    "to'g'ri javob yo'q"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-443",
+   "n": 443,
+   "q": "Kalibrlash va kalibrlash o'rtasidagi asosiy farq nima:",
+   "options": [
+    "ixtiyoriy xarakter;",
+    "deklarativ belgi;",
+    "majburiy belgi;",
+    "to'g'ri javob yo'q."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-444",
+   "n": 444,
+   "q": "Qanday o'lchash vositalari o'lchash transduserlari va hisoblash moslamalari to'plamidir:",
+   "options": [
+    "moddiy choralar;",
+    "ko'rsatkichlar;",
+    "o'lchash asboblari;",
+    "o'lchash tizimlari;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-445",
+   "n": 445,
+   "q": "To'g'ridan-to'g'ri o'lchovlar bu o'lchovlar:",
+   "options": [
+    "miqdorning kerakli qiymati ma'lum funktsional bog'liqlik bilan bog'liq bo'lgan boshqa fizik miqdorlarni to'g'ridan-to'g'ri o'lchash natijalari asosida aniqlanadi",
+    "B. jismoniy miqdorning kerakli qiymati to'g'ridan-to'g'ri ushbu miqdor o'lchovi bilan taqqoslash yo'li bilan aniqlanadi",
+    "o'lchangan qiymatni eng aniq aniqlash usuli qo'llaniladi",
+    "qurilmaning kalibrlash egri chizig'i tekis shaklga ega"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-446",
+   "n": 446,
+   "q": "O'lchov natijasidagi xato deyiladi:",
+   "options": [
+    "xuddi shu namunani ketma-ket o'lchash natijalarining og'ishi",
+    "o'lchov natijalarining haqiqiy (haqiqiy) qiymatdan og'ishi",
+    "bir xil namunada olingan ikki xil qurilmaning o'qishdagi farqi",
+    "xuddi shu namunada olingan bir xil turdagi ikkita qurilmaning o'qishdagi farqi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-447",
+   "n": 447,
+   "q": "Dinamik o'lchovlar o'lchovlardir:",
+   "options": [
+    "ko'chma laboratoriyalarda o'tkaziladi",
+    "o'lchangan qiymatning qiymati to'g'ridan-to'g'ri taroziga ketma-ket o'rnatilgan og'irliklarning massasi bilan aniqlanadi",
+    "vaqt o'tishi bilan o'zgarib turadigan fizik miqdor, bu qiymatlar mos keladigan vaqt momentlarini ko'rsatgan holda uning qiymatlari to'plami bilan ifodalanadi",
+    "namuna yoki namuna ichidagi kuchlarni aniqlash bilan bog'liq"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-448",
+   "n": 448,
+   "q": "O'lchov nima?",
+   "options": [
+    "sezgi organlari, nomogrammalar yoki boshqa har qanday usul yordamida kerakli parametrni aniqlash",
+    "o'lchangan qiymatni uning birligi bilan taqqoslash va qiymat qiymatini olish imkonini beradigan qiymat birligini saqlaydigan texnik vosita yordamida bajariladigan operatsiyalar to'plami",
+    "laboratoriya tadqiqotlari jarayonida texnik vositalardan foydalanish",
+    "ikki miqdor, jarayon, hodisalar va boshqalarni taqqoslash jarayoni."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-449",
+   "n": 449,
+   "q": "\"O'lchov texnikasi\" tushunchasiga ta'rif bering:",
+   "options": [
+    "o'lchash usullari (usullari) o'lchovlarning belgilangan metrologik talablariga muvofiqligini tekshirish va tasdiqlash;",
+    "aniq tavsiflangan operatsiyalar to'plami, ularning bajarilishi belgilangan aniqlik ko'rsatkichlari bilan o'lchov natijalarini olishni ta'minlaydi;",
+    "o'lchov vositalarining metrologik xususiyatlarining haqiqiy qiymatlarini aniqlash uchun bajariladigan operatsiyalar to'plami;",
+    "miqdorning miqdoriy qiymatini aniqlash uchun bajariladigan operatsiyalar to'plami;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-450",
+   "n": 450,
+   "q": "Kasbiy zaharlanishning oldini olish choralari qanday?",
+   "options": [
+    "ish zonasi havosidagi havo muhitining holatini nazorat qilish;",
+    "zararli ishlab chiqarish jarayonlarini avtomatlashtirish va muhrlash;",
+    "xom ashyo va tayyor materiallarni gigienik standartlashtirish;",
+    "yuqorida aytilganlarning barchasi to'g'ri."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-451",
+   "n": 451,
+   "q": "Atrof-muhitdagi zararli moddalarni tahlil qilishning fizik usullari va boshqa usullar o'rtasidagi farq shundaki, ushbu tahlil usullari quyidagilarga asoslanadi:",
+   "options": [
+    "tahlil qilinadigan moddaning fizik xususiyatlari to'g'risida;",
+    "tahlil qilinayotgan moddaning fizik va kimyoviy xossalari bo'yicha;",
+    "tahlil qilinadigan moddaning turli xil kimyoviy xususiyatlaridan foydalanish to'g'risida;",
+    "tahlil qilinadigan moddaning fizik-mexanik xususiyatlarida;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-452",
+   "n": 452,
+   "q": "GOST ISO/IEC 17025-2019 qaysi laboratoriyalar uchun mo'ljallangan?",
+   "options": [
+    "xodimlar soni va faoliyatidan qat'i nazar, barcha sinov laboratoriyalari uchun.",
+    "katta, markazlashtirilgan laboratoriyalar uchun.",
+    "davlat nazorati maqsadida tadqiqot olib boradigan laboratoriyalar uchun.",
+    "tijorat maqsadlarida tadqiqot olib boradigan laboratoriyalar uchun."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-453",
+   "n": 453,
+   "q": "Zararli moddalar tarkibini muntazam ravishda tanlab olish nimani baholashga imkon beradi?",
+   "options": [
+    "o'rganilayotgan tizimdagi zararli moddalarning tarkibi to'g'risida.",
+    "namuna olish paytida o'rganilayotgan tizimdagi zararli moddalarning tarkibi to'g'risida.",
+    "tizimdagi zararli moddalar tarkibidagi o'zgarishlar dinamikasi, tizimda zararli moddalarning to'planishi to'g'risida.",
+    "tizimdagi zararli moddaning o'zgarishi to'g'risida."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-454",
+   "n": 454,
+   "q": "\"Aholining sanitariya-epidemiologik farovonligi to'g'risida\" gi qonunga muvofiq fuqarolar",
+   "options": [
+    "omillari inson salomatligiga zararli ta'sir ko'rsatmaydigan qulay yashash muhiti, sanitariya qoidalarining bajarilishi ustidan jamoatchilik nazoratini amalga oshirish",
+    "sanitariya-epidemiologik vaziyat, mahsulot va tovarlarni ishlab chiqarish sifati va texnologiyasi to'g'risida ma'lumot olish",
+    "davlat hokimiyati organlariga, mahalliy o'zini o'zi boshqarish organlariga, davlat sanitariya-epidemiologiya nazoratini amalga oshiruvchi organlarga aholining sanitariya-epidemiologik farovonligini ta'minlash bo'yicha takliflar kiritish",
+    "yuqorida aytilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-455",
+   "n": 455,
+   "q": "Ishonchli ehtimollik P = 95 % xato qilish xavfi ko'proq emasligini anglatadi:",
+   "options": [
+    "95 %;",
+    "1%;",
+    "5%;",
+    "10%;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-456",
+   "n": 456,
+   "q": "Davlat metrologik nazorati bu:",
+   "options": [
+    "vakolatli federal ijroiya organlari tomonidan amalga oshiriladigan o'lchovlarning bir xilligini ta'minlashni davlat tomonidan tartibga solish sohasidagi nazorat faoliyati;",
+    "davlat standartlarining majburiy talablariga muvofiqligini aniqlash maqsadida tekshirish;",
+    "davlat mudofaasi uchun o'lchovlarning bir xilligini ta'minlash;",
+    "o'lchovlarning bir xilligini ta'minlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-457",
+   "n": 457,
+   "q": "O'lchov bu:",
+   "options": [
+    "miqdorning miqdoriy qiymatini aniqlash uchun bajariladigan operatsiyalar to'plami;",
+    "kimyoviy moddalar tarkibini aniqlash uchun bajariladigan operatsiyalar to'plami;",
+    "kimyoviy moddalar kontsentratsiyasini aniqlash uchun bajariladigan operatsiyalar to'plami;",
+    "natijalar to'plami"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-458",
+   "n": 458,
+   "q": "O'lchov texnikasi:",
+   "options": [
+    "miqdorning kerakli qiymati to'g'ridan-to'g'ri o'lchov vositasidan olinadigan o'lchov;",
+    "kerakli miqdor bilan funktsional bog'liq bo'lgan boshqa fizik miqdorlarning to'g'ridan-to'g'ri o'lchovlari asosida fizik miqdorning kerakli qiymatini aniqlash.",
+    "aniq tavsiflangan operatsiyalar to'plami, ularning bajarilishi belgilangan aniqlik ko'rsatkichlari bilan o'lchov natijalarini olishni ta'minlaydi;",
+    "kimyoviy moddalar tarkibini aniqlash uchun bajariladigan operatsiyalar to'plami;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-459",
+   "n": 459,
+   "q": "O'lchov vositalarini kalibrlash bu:",
+   "options": [
+    "o'lchov vositalarining metrologik xususiyatlarining haqiqiy qiymatlarini aniqlash uchun bajariladigan operatsiyalar to'plami;",
+    "o'lchov vositalarining texnik xususiyatlarini aniqlash uchun bajariladigan operatsiyalar to'plami;",
+    "o'lchov vositalarining metrologik xususiyatlarini aniqlash uchun bajariladigan operatsiyalar to'plami;",
+    "miqdorning miqdoriy qiymatini aniqlash uchun bajariladigan operatsiyalar to'plami;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-460",
+   "n": 460,
+   "q": "Sanitariya-gigiyena laboratoriya tadqiqotlarida namunani tayyorlashning asosiy maqsadi nima?",
+   "options": [
+    "sanitariya-epidemiologiya xulosasini tayyorlash.",
+    "zararli moddaning tuzilishini aniqlash.",
+    "namunaning sifat va miqdoriy tarkibi to'g'risida ma'lumot olish.",
+    "namunani uning tarkibini kamsitmasdan laboratoriyaga etkazib berish."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-461",
+   "n": 461,
+   "q": "Zararli moddaning tarkibi uchun bir martalik tanlov nimani baholashga imkon beradi?",
+   "options": [
+    "namuna olish paytida o'rganilayotgan tizimdagi zararli moddalarning tarkibi to'g'risida.",
+    "tizimdagi zararli moddalar tarkibidagi o'zgarishlar dinamikasi to'g'risida.",
+    "tizimda zararli moddalarning to'planishi haqida.",
+    "tizimdagi zararli moddaning o'zgarishi to'g'risida."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-462",
+   "n": 462,
+   "q": "Yozuvlarni boshqarish quyidagilarni ta'minlaydi:",
+   "options": [
+    "joriy ish ma'lumotlarini ro'yxatdan o'tkazish tartibini ishlab chiqish va amalga oshirish; identifikatsiya qilish, to'plash, tizimlashtirish, saqlash, ma'lumot; ishchi hujjatlarning tayyorligi va o'qilishi;qayd etilgan ma'lumotlar hajmi bo'yicha etarlilik;",
+    "ish mijozi uchun ma'lumotlarning maxfiyligiga rioya qilish; aniqlangan xatolarni to'g'ri tuzatish imkoniyati;",
+    "ish hujjatlarida yozuvlarni saqlash muddatlarini belgilash:",
+    "yuqorida aytilganlarning barchasi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-463",
+   "n": 463,
+   "q": "Laboratoriyada qo'llaniladigan o'lchash, sinov, tadqiqot usullari:",
+   "options": [
+    "uning faoliyat sohasiga mos kelish;",
+    "barcha bosqichlarni qamrab oling - namuna olish, tashish, sinovga tayyorgarlik, statistik tahlil usullari;",
+    "mijozning ehtiyojlarini qondirish;",
+    "yuqorida aytilganlarning barchasi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-464",
+   "n": 464,
+   "q": "Qanday hollarda usulning yaroqliligini baholash kerak?",
+   "options": [
+    "nostandart usullarni baholashda; to'g'ridan-to'g'ri laboratoriyada ishlab chiqilgan yoki modernizatsiya qilingan usullarni baholashda;",
+    "ularni qo'llash doirasidan tashqarida qo'llaniladigan standart usullar.",
+    "standart usullarni kengaytirish va o'zgartirish.",
+    "yuqorida aytilganlarning barchasi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-465",
+   "n": 465,
+   "q": "Tahlil natijalari sifatini ichki nazorat qilish:",
+   "options": [
+    "laboratoriyaning o'zi tomonidan laboratoriya faoliyatini eksperimental tekshirish; sifat tizimining zarur elementi;",
+    "tadqiqotlarni amalga oshirishning texnologik jarayonlari sifatini boshqarish mexanizmi;",
+    "tuzatish choralarini ko'rish uchun zarur bo'lgan ob'ektiv ma'lumot manbai;",
+    "yuqorida aytilganlarning barchasi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-466",
+   "n": 466,
+   "q": "Laboratoriyalararo nazorat bu:",
+   "options": [
+    "laboratoriya natijalari sifatini tashqi nazorat qilish; laboratoriya ishining sifatini tashqi professional sinovdan o'tkazish;",
+    "o'zaro taqqoslash orqali laboratoriya ishining professional sifatini nazorat qilish;",
+    "o'lchov birligini ta'minlash texnologiyasi;",
+    "yuqorida aytilganlarning barchasi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-467",
+   "n": 467,
+   "q": "Sinovlarni o'tkazish uchun qanday ishlab chiqarish sharoitlarini nazorat qilish va ularga rioya qilish kerak?",
+   "options": [
+    "energiya ta'minoti manbalari, yorug'lik sharoitlari, harorat qiymatlari.",
+    "namlik qiymatlari.",
+    "shovqin darajasi, elektromagnit shovqin darajasi.",
+    "yuqorida aytilganlarning barchasi"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-468",
+   "n": 468,
+   "q": "Laboratoriya binolariga texnik talablar aniqlanadi:",
+   "options": [
+    "texnik talablarga muvofiq uskunalarni joylashtirish uchun zarur bo'lgan binolarning maydoni;",
+    "uskunalarni joylashtirish uchun zarur bo'lgan xonalar hajmi",
+    "texnik talablarga muvofiq; laboratoriya xodimlarining ishlashi uchun xavfsizlik talablari;",
+    "yuqorida aytilganlarning barchasi."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-469",
+   "n": 469,
+   "q": "Sanitariya-kimyoviy tahlil quyidagi maqsadlarda amalga oshiriladi:",
+   "options": [
+    "zararli moddalarning maksimal ruxsat etilgan konsentratsiyasiga rioya etilishini nazorat qilish;",
+    "maksimal ruxsat etilgan konsentratsiyalarni sozlash;",
+    "ishlab chiqarishning texnologik sxemalarini baholash;",
+    "shamollatish samaradorligini baholash."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-470",
+   "n": 470,
+   "q": "Nuqta namunalarini tahlil qilish nimani tavsiflaydi?",
+   "options": [
+    "namunadagi tekshirilayotgan moddaning tarkibi;",
+    "tizimdagi moddalarning o'rtacha miqdori;",
+    "tizimda o'rganilayotgan moddaning to'planishi to'g'risida;",
+    "o'rganilayotgan ob'ektlar bo'yicha ekologik monitoringni yaratish qobiliyati."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-471",
+   "n": 471,
+   "q": "Nuqta namunalarini aralashtirish natijasida olingan namuna tahlilini nima tavsiflaydi?",
+   "options": [
+    "namunadagi tekshirilayotgan moddaning tarkibi;",
+    "tizimdagi moddalarning o'rtacha miqdori;",
+    "tizimda o'rganilayotgan moddaning to'planishi;",
+    "o'rganilayotgan atrof-muhit ob'ektlari bo'yicha ekologik monitoringni yaratish qobiliyati."
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-472",
+   "n": 472,
+   "q": "Kobalt, nikel, mis, rux, kadmiy, qo'rg'oshinni suvda aniqlash atom yutilish spektrometriyasining quyidagi usuli bilan amalga oshiriladi:",
+   "options": [
+    "olovli atom yutilish spektrometriyasi; elektrotermik;",
+    "sovuq bug' usuli;",
+    "gidridlarni yaratish usuli;",
+    "elektrotermik usul"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-473",
+   "n": 473,
+   "q": "Qaysi turdagi o'lchovlar uchun kerakli qiymat to'g'ridan-to'g'ri o'lchov vositasidan olinadi:",
+   "options": [
+    "dinamik bilan;",
+    "bilvosita bilan;",
+    "ko'p marta;",
+    "to'g'ri chiziqlar bilan;"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-474",
+   "n": 474,
+   "q": "O'lchov vositasini tekshirish mumkin emas. Uning metrologik xususiyatlarini nazorat qilish uchun qanday usul qo'llaniladi?",
+   "options": [
+    "Sinovlar",
+    "Milliy mezon bilan taqqoslash",
+    "metrologik sertifikatlash",
+    "sertifikatlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-475",
+   "n": 475,
+   "q": "Umumiy holatda\" nazorat \" atamasining eng to'g'ri ta'rifini ko'rsating:",
+   "options": [
+    "mahsulotni ishlab chiqarish jarayonida texnologik operatsiya",
+    "maxsus texnik vositalar yordamida fizik miqdorning qiymatini empirik ravishda topish",
+    "ish rejimlari xususiyatlarining berilgan qiymatlari uchun ob'ekt parametrlarini eksperimental aniqlash",
+    "parametrning haqiqiy qiymatining belgilangan (berilgan) qiymatlarga muvofiqligini aniqlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-476",
+   "n": 476,
+   "q": "Davlat metrologik nazorati va nazorati ostida bo'lgan o'lchash vositalari ekspluatatsiya jarayonida ... .",
+   "options": [
+    "Tekshirish",
+    "Kalibrlash",
+    "Sertifikatlash",
+    "metrologik sertifikatlash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-477",
+   "n": 477,
+   "q": "O'lchov vositalaridan foydalangan holda amalga oshiriladigan nazorat deyiladi:",
+   "options": [
+    "Mexanizatsiyalashgan",
+    "Avtomatik",
+    "Faol",
+    "O'lchash"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-478",
+   "n": 478,
+   "q": "Ushbu o'lchov vositalaridan qaysi biri davlat metrologik nazorati ostida emasligini ko'rsating:",
+   "options": [
+    "qishloq xo'jaligi bozoridagi Tarozilar",
+    "uy sharoitida tibbiy termometr",
+    "elektron Sekundomer",
+    "radiatsiya darajasini nazorat qilish uchun dozimetr"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  },
+  {
+   "id": "tox_lab-t-479",
+   "n": 479,
+   "q": "Sanitariya qonunchiligi:",
+   "options": [
+    "inson uchun uning yashash muhitining omillari uchun xavfsizlik mezonlarini belgilaydigan sanitariya qoidalari, me'yorlari va gigiena standartlari",
+    "aholining sanitariya-epidemiologik farovonligi sohasidagi ijtimoiy munosabatlarni tartibga soluvchi normativ-huquqiy hujjatlar tizimi",
+    "davlat hokimiyati va boshqaruvi organlarining hayvonot, o 'simlik dunyosini muhofaza qilish masalalari bo'yicha qonunlari, farmonlari, qarorlari va boshqa hujjatlari to'plami",
+    "normativ hujjatlar va hujjatlar to'plami"
+   ],
+   "key": null,
+   "verdict": "unverified"
+  }
+ ]
+}
