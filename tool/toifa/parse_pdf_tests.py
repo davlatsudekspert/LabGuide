@@ -13,7 +13,7 @@ def norm_quotes(s):
     return s.replace('’', "'").replace('ʻ', "'").replace('ʼ', "'").replace('‘', "'").strip()
 
 def blocks(txt):
-    parts = re.split(r'\n\s*(\d{1,4})\.\s+', '\n' + txt)
+    parts = re.split(r'\n\s*(\d{1,4})(?:\.\s+|[ \t]{2,}|(?<=\d{3})[ \t])', '\n' + txt)
     out = []
     for i in range(1, len(parts) - 1, 2):
         lines = [l.strip() for l in parts[i + 1].split('\n') if l.strip()]
