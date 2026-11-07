@@ -73,6 +73,7 @@ import '../features/reference/reference_screens.dart';
 import '../features/review/review_screens.dart';
 import '../features/settings/settings_controller.dart';
 import '../features/support/support_screens.dart';
+import '../features/toifa/lab_ishi_direction.dart';
 import '../features/toifa/toifa_bank.dart';
 import '../features/toifa/toifa_screens.dart';
 import '../features/tools/calc_info.dart';
@@ -1258,6 +1259,10 @@ GoRouter buildRouter(
                                 ),
                           ),
                         ],
+                      ),
+                      GoRoute(
+                        path: labIshiRoute,
+                        builder: (context, state) => const LabIshiScreen(),
                       ),
                       GoRoute(
                         path: 'mistakes',

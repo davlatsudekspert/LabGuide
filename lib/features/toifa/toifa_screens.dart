@@ -16,6 +16,7 @@ import '../learn/exam_screens.dart';
 import '../learn/exam_session.dart';
 import '../learn/exam_widgets.dart';
 import '../share/result_share.dart';
+import 'lab_ishi_direction.dart';
 import 'toifa_bank.dart';
 import 'toifa_controller.dart';
 import 'toifa_daily.dart';
@@ -371,6 +372,13 @@ class _ToifaHubScreenState extends State<ToifaHubScreen> {
         subtitle: l.toifaProgressRowSub,
         icon: Icons.insights_outlined,
         onTap: () => context.push('$toifaBase/progress'),
+        divider: false,
+      ),
+      LgRow(
+        title: labIshiTitle(context),
+        subtitle: labIshiRowSubtitle(context, 453),
+        icon: Icons.science_outlined,
+        onTap: () => context.push('$toifaBase/$labIshiRoute'),
         divider: false,
       ),
       LgSectionTitle(l.toifaAboutTitle),
