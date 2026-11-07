@@ -12,6 +12,8 @@ import '../../design/widgets/lg_widgets.dart';
 /// saqlanmaydi (sodda mashq).
 const labIshiAsset = 'assets/toifa/lab_ishi_tests.json';
 const labIshiRoute = 'lab-ishi';
+const toxLabAsset = 'assets/toifa/tox_lab_tests.json';
+const toxLabRoute = 'tox-lab';
 const labIshiSessionSize = 20;
 
 class LabIshiQuestion {
@@ -30,8 +32,11 @@ class LabIshiQuestion {
   final int key;
 }
 
-Future<List<LabIshiQuestion>> loadLabIshi(AssetBundle bundle) async {
-  final raw = jsonDecode(await bundle.loadString(labIshiAsset)) as Map;
+Future<List<LabIshiQuestion>> loadLabIshi(
+  AssetBundle bundle, [
+  String asset = labIshiAsset,
+]) async {
+  final raw = jsonDecode(await bundle.loadString(asset)) as Map;
   return [
     for (final e in (raw['questions'] as List))
       LabIshiQuestion.fromJson((e as Map).cast<String, Object?>()),
@@ -53,6 +58,21 @@ String labIshiTitle(BuildContext context) => _t(
   'Laboratory practice',
 );
 
+String toxLabTitle(BuildContext context) => _t(
+  context,
+  'Toksikologik laboratoriya',
+  'Токсикологическая лаборатория',
+  'Toxicology laboratory',
+);
+
+/// Tavsif: sanitariya-gigiena laboratoriyasi (klinik emas, sud-tibbiy emas).
+String toxLabAbout(BuildContext context) => _t(
+  context,
+  'Sanitariya-gigiena laboratoriyasi mutaxassisi uchun: pestitsidlar, ruxsat etilgan konsentratsiyalar, xavfni baholash, o‘lchash va metrologiya.',
+  'Для специалиста санитарно-гигиенической лаборатории: пестициды, предельно допустимые концентрации, оценка риска, измерения и метрология.',
+  'For sanitary-hygiene laboratory specialists: pesticides, maximum permissible concentrations, risk assessment, measurement and metrology.',
+);
+
 String labIshiRowSubtitle(BuildContext context, int count) => _t(
   context,
   '$count ta test savoli · mashq',
@@ -61,9 +81,12 @@ String labIshiRowSubtitle(BuildContext context, int count) => _t(
 );
 
 class LabIshiScreen extends StatefulWidget {
-  const LabIshiScreen({super.key, this.random});
+  const LabIshiScreen({super.key, this.random, this.tox = false});
 
   final Random? random;
+
+  /// true — «Toksikologik laboratoriya» yo‘nalishi (boshqa ro‘yxat).
+  final bool tox;
 
   @override
   State<LabIshiScreen> createState() => _LabIshiScreenState();
@@ -85,7 +108,10 @@ class _LabIshiScreenState extends State<LabIshiScreen> {
 
   Future<void> _load() async {
     try {
-      final all = await loadLabIshi(rootBundle);
+      final all = await loadLabIshi(
+        rootBundle,
+        widget.tox ? toxLabAsset : labIshiAsset,
+      );
       if (!mounted) return;
       setState(() => _all = all);
       _start();
@@ -119,7 +145,7 @@ class _LabIshiScreenState extends State<LabIshiScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final title = labIshiTitle(context);
+    final title = widget.tox ? toxLabTitle(context) : labIshiTitle(context);
     if (_failed) {
       return LgPage(
         title: title,
@@ -176,6 +202,10 @@ class _LabIshiScreenState extends State<LabIshiScreen> {
       showProfile: false,
       buildAllChildren: true,
       children: [
+        if (widget.tox) ...[
+          Text(toxLabAbout(context), style: text.bodySmall),
+          const SizedBox(height: 8),
+        ],
         LgNotice(
           _t(
             context,

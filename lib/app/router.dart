@@ -1265,6 +1265,11 @@ GoRouter buildRouter(
                         builder: (context, state) => const LabIshiScreen(),
                       ),
                       GoRoute(
+                        path: toxLabRoute,
+                        builder: (context, state) =>
+                            const LabIshiScreen(tox: true),
+                      ),
+                      GoRoute(
                         path: 'mistakes',
                         builder: (context, state) =>
                             const ToifaMistakesScreen(),

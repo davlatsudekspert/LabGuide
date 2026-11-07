@@ -379,6 +379,12 @@ class _ToifaHubScreenState extends State<ToifaHubScreen> {
         subtitle: labIshiRowSubtitle(context, 453),
         icon: Icons.science_outlined,
         onTap: () => context.push('$toifaBase/$labIshiRoute'),
+      ),
+      LgRow(
+        title: toxLabTitle(context),
+        subtitle: labIshiRowSubtitle(context, 244),
+        icon: Icons.biotech_outlined,
+        onTap: () => context.push('$toifaBase/$toxLabRoute'),
         divider: false,
       ),
       LgSectionTitle(l.toifaAboutTitle),
