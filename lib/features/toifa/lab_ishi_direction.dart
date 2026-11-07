@@ -14,22 +14,59 @@ const labIshiAsset = 'assets/toifa/lab_ishi_tests.json';
 const labIshiRoute = 'lab-ishi';
 const toxLabAsset = 'assets/toifa/tox_lab_tests.json';
 const toxLabRoute = 'tox-lab';
+const labDiagAsset = 'assets/toifa/lab_diagnostika_tests.json';
+const labDiagRoute = 'lab-diagnostika';
 const labIshiSessionSize = 20;
 
-class LabIshiQuestion {
-  const LabIshiQuestion(this.number, this.text, this.options, this.key);
+/// Yo'nalish turi: «Laboratoriya ishi», «Toksikologik laboratoriya» va
+/// «Laboratoriya diagnostikasi» — har birining o'z ro'yxati.
+enum LabDirection {
+  labIshi(labIshiAsset, labIshiRoute),
+  toxLab(toxLabAsset, toxLabRoute),
+  labDiag(labDiagAsset, labDiagRoute);
 
-  factory LabIshiQuestion.fromJson(Map<String, Object?> j) => LabIshiQuestion(
-    j['n']! as int,
-    j['q']! as String,
-    (j['options']! as List).cast<String>(),
-    j['key']! as int,
-  );
+  const LabDirection(this.asset, this.route);
+  final String asset;
+  final String route;
+}
+
+class LabIshiQuestion {
+  const LabIshiQuestion(
+    this.number,
+    this.text,
+    this.options,
+    this.key, {
+    this.ruText,
+    this.ruOptions,
+  });
+
+  factory LabIshiQuestion.fromJson(Map<String, Object?> j) {
+    final ru = j['ru'] as Map?;
+    return LabIshiQuestion(
+      j['n']! as int,
+      j['q']! as String,
+      (j['options']! as List).cast<String>(),
+      j['key']! as int,
+      ruText: ru?['q'] as String?,
+      ruOptions: (ru?['options'] as List?)?.cast<String>(),
+    );
+  }
 
   final int number;
   final String text;
   final List<String> options;
   final int key;
+
+  /// Yordamchi ruscha tarjima (bo'lmasa — null; rasmiy matn o'zbekcha).
+  final String? ruText;
+  final List<String>? ruOptions;
+
+  String promptFor(String lang) =>
+      lang == 'ru' && ruText != null ? ruText! : text;
+  String optionFor(int i, String lang) =>
+      lang == 'ru' && ruOptions != null && ruOptions!.length == options.length
+      ? ruOptions![i]
+      : options[i];
 }
 
 Future<List<LabIshiQuestion>> loadLabIshi(
@@ -73,6 +110,19 @@ String toxLabAbout(BuildContext context) => _t(
   'For sanitary-hygiene laboratory specialists: pesticides, maximum permissible concentrations, risk assessment, measurement and metrology.',
 );
 
+String labDiagTitle(BuildContext context) => _t(
+  context,
+  'Laboratoriya diagnostikasi',
+  'Лабораторная диагностика',
+  'Laboratory diagnostics',
+);
+
+String labDirectionTitle(BuildContext context, LabDirection d) => switch (d) {
+  LabDirection.labIshi => labIshiTitle(context),
+  LabDirection.toxLab => toxLabTitle(context),
+  LabDirection.labDiag => labDiagTitle(context),
+};
+
 String labIshiRowSubtitle(BuildContext context, int count) => _t(
   context,
   '$count ta test savoli · mashq',
@@ -81,12 +131,15 @@ String labIshiRowSubtitle(BuildContext context, int count) => _t(
 );
 
 class LabIshiScreen extends StatefulWidget {
-  const LabIshiScreen({super.key, this.random, this.tox = false});
+  const LabIshiScreen({
+    super.key,
+    this.random,
+    this.direction = LabDirection.labIshi,
+  });
 
   final Random? random;
 
-  /// true — «Toksikologik laboratoriya» yo‘nalishi (boshqa ro‘yxat).
-  final bool tox;
+  final LabDirection direction;
 
   @override
   State<LabIshiScreen> createState() => _LabIshiScreenState();
@@ -108,10 +161,7 @@ class _LabIshiScreenState extends State<LabIshiScreen> {
 
   Future<void> _load() async {
     try {
-      final all = await loadLabIshi(
-        rootBundle,
-        widget.tox ? toxLabAsset : labIshiAsset,
-      );
+      final all = await loadLabIshi(rootBundle, widget.direction.asset);
       if (!mounted) return;
       setState(() => _all = all);
       _start();
@@ -145,7 +195,8 @@ class _LabIshiScreenState extends State<LabIshiScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final title = widget.tox ? toxLabTitle(context) : labIshiTitle(context);
+    final title = labDirectionTitle(context, widget.direction);
+    final lang = Localizations.localeOf(context).languageCode;
     if (_failed) {
       return LgPage(
         title: title,
@@ -202,7 +253,7 @@ class _LabIshiScreenState extends State<LabIshiScreen> {
       showProfile: false,
       buildAllChildren: true,
       children: [
-        if (widget.tox) ...[
+        if (widget.direction == LabDirection.toxLab) ...[
           Text(toxLabAbout(context), style: text.bodySmall),
           const SizedBox(height: 8),
         ],
@@ -216,11 +267,11 @@ class _LabIshiScreenState extends State<LabIshiScreen> {
           kind: NoticeKind.info,
         ),
         const SizedBox(height: 12),
-        Text(q.text, style: text.titleMedium),
+        Text(q.promptFor(lang), style: text.titleMedium),
         const SizedBox(height: 8),
         for (var i = 0; i < q.options.length; i++)
           LgRow(
-            title: '${'ABCD'[i]}) ${q.options[i]}',
+            title: '${'ABCD'[i]}) ${q.optionFor(i, lang)}',
             icon: !answered
                 ? Icons.radio_button_unchecked
                 : i == q.key

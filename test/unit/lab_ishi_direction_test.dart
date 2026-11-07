@@ -10,7 +10,7 @@ void main() {
       LabIshiQuestion.fromJson((e as Map).cast<String, Object?>()),
   ];
 
-  for (final (asset, min) in [(labIshiAsset, 400), (toxLabAsset, 200)]) {
+  for (final (asset, min) in [(labIshiAsset, 400), (toxLabAsset, 200), (labDiagAsset, 300)]) {
     test('yo‘nalish savollari to‘g‘ri tuzilgan: $asset', () {
       final qs = read(asset);
       expect(qs.length, greaterThan(min));
@@ -27,10 +27,16 @@ void main() {
 
   test('foydalanuvchiga ko‘rinadigan matnda taqiqlangan so‘zlar yo‘q', () {
     final src = File('lib/features/toifa/lab_ishi_direction.dart')
-        .readAsStringSync()
-        .toLowerCase();
-    expect(src.contains('toifa'.toLowerCase()) &&
-        RegExp(r"'[^']*toifa[^']*'").hasMatch(src), isFalse);
-    expect(RegExp(r"'[^']*\bbank[^']*'").hasMatch(src), isFalse);
+        .readAsLinesSync()
+        .where((l) => !l.trimLeft().startsWith('//'))
+        .join('\n');
+    final literals = RegExp(r"'((?:[^'\\\n]|\\.)*)'")
+        .allMatches(src)
+        .map((m) => m.group(1)!.toLowerCase())
+        .where((l) => !l.startsWith('assets/'));
+    for (final lit in literals) {
+      expect(lit.contains('toifa'), isFalse, reason: lit);
+      expect(RegExp(r'\bbank').hasMatch(lit), isFalse, reason: lit);
+    }
   });
 }

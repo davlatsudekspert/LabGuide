@@ -1267,7 +1267,13 @@ GoRouter buildRouter(
                       GoRoute(
                         path: toxLabRoute,
                         builder: (context, state) =>
-                            const LabIshiScreen(tox: true),
+                            const LabIshiScreen(direction: LabDirection.toxLab),
+                      ),
+                      GoRoute(
+                        path: labDiagRoute,
+                        builder: (context, state) => const LabIshiScreen(
+                          direction: LabDirection.labDiag,
+                        ),
                       ),
                       GoRoute(
                         path: 'mistakes',
